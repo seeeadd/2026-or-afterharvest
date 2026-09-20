@@ -276,7 +276,7 @@
     var who = esc(t.name || 'A member'), role = esc(t.role || '');
     sec.innerHTML =
       '<div class="tstin">' +
-        '<figure class="tvid"' + ((S.faces && S.faces.length) ? ' style="background-image:url(' + S.faces[2 % S.faces.length] + ')"' : '') + '><span class="tvplay">' + PLAY + '</span>' +
+        '<figure class="tvid" style="background-image:url(' + ((t.image) || (S.faces && S.faces[2]) || '') + ')"><span class="tvplay">' + PLAY + '</span>' +
           '<span class="tvspeed"><b>1.2\u00D7</b><s>' + esc(t.length || '2 min 13 sec') + '</s>' +
             esc(t.short || '1 min 51 sec') + '</span>' +
           '<span class="tvbar"><i></i></span></figure>' +
