@@ -1080,3 +1080,9 @@ body.modalopen{overflow:hidden}
 #toast .tbar i{display:block;height:100%;width:100%;transform-origin:left;background:var(--accent);opacity:.75}
 #toast.on .tbar i{animation:toastrun 6.2s linear forwards}
 @keyframes toastrun{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+/* the bar has to sit ON the page, not in it: solid paper so the grid stops at its edge */
+.htrust{background-image:linear-gradient(var(--paper),var(--paper));background-color:#fffdf9;
+  background-repeat:no-repeat;background-size:100% 100%;
+  border-color:color-mix(in srgb,var(--ink) 12%,transparent)}
+.htrust .awd{background-image:linear-gradient(var(--paper),var(--paper));background-color:#fffefb}
+.htrust .tmeta .stars{background-image:linear-gradient(var(--paper),var(--paper));background-color:#fffefb}
