@@ -1068,17 +1068,18 @@
       var t = q('.dt', body);
       if (t) t.insertAdjacentHTML('beforebegin',
         '<p class="dmetaline">Day ' + (i + 1) + ' of ' + n + ' \u00B7 Replay the same day</p>');
+      /* what you leave with, as a labelled block rather than bullets strung across the whole row */
+      var bul = q('.dbul', body);
+      if (bul) {
+        var keep = el('div', 'dkeep', '<p class="dkeepl">You leave with</p>');
+        bul.parentNode.insertBefore(keep, bul);
+        keep.appendChild(bul);
+      }
       /* the day's own artifact, quiet, in the space the copy does not use. Day 1 has the slide there. */
       if (i > 0 && ART[i]) card.insertAdjacentHTML('beforeend', '<span class="dmark">' + ART[i] + '</span>');
     }
     var d1 = q('.d1', box);
-    if (d1) {
-      wrap(d1, 0);
-      /* Day 1's bullets run the full width under the slide and the copy: left in the right column they
-         left a hole the size of the slide under it */
-      var body = q('.dbody', d1), bul = q('.dbul', d1);
-      if (body && bul) body.appendChild(bul);
-    }
+    if (d1) wrap(d1, 0);
     qa('.d23 > *', box).forEach(function (card, i) { wrap(card, i + 1); });
   }
 
@@ -1178,10 +1179,25 @@
       '<p class="faqnote">' + esc('If yours is not here, reply to the email and ask. ' + FIRST + ' answers them herself.') +
       '</p></div>' +
       '<ol class="faqlist">' + qs.map(function (r, i) {
-        return '<li><span class="faqn">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
-          '<div><b>' + esc(r[0]) + '</b><p>' + esc(r[1]) + '</p></div></li>';
+        return '<li class="faqi' + (i === 0 ? ' open' : '') + '">' +
+          '<button class="faqq" type="button" aria-expanded="' + (i === 0 ? 'true' : 'false') + '">' +
+          '<span class="faqn">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
+          '<b>' + esc(r[0]) + '</b>' +
+          '<span class="faqx" aria-hidden="true"><i></i><i></i></span></button>' +
+          '<div class="faqa"><div><p>' + esc(r[1]) + '</p></div></div></li>';
       }).join('') + '</ol>';
     P.insertBefore(faq, closing);
+    /* one open at a time: the list stays short enough to scan, and the open one is unmistakable */
+    faq.addEventListener('click', function (e) {
+      var btn = e.target.closest('.faqq');
+      if (!btn) return;
+      var li = btn.parentNode, was = li.classList.contains('open');
+      qa('.faqi', faq).forEach(function (x) {
+        x.classList.remove('open');
+        var b = q('.faqq', x); if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!was) { li.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
   }
 
   /* the numbers band: one figure leads, the rest support it, each with where it comes from */

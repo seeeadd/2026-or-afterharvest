@@ -1939,5 +1939,81 @@ body.modalopen{overflow:hidden}
 #page .hdr.tight .cdn b{font-size:13px}
 #page .hdr.tight .btn.sm{padding:7px 12px !important;font-size:13px !important}
 @media (max-width:820px){#page .hdr.tight .nav{width:calc(100% - 2 * 14px)}}
-/* between the two: 94px was tucked under the header, 112px was too low */
-#page .hgrid{margin-top:12px}
+/* the hero's resting place: 94px tucked under the header, 106px still read as too high */
+#page .hgrid{margin-top:26px}
+
+/* ------------------------------------------- what you leave with, as a block not a strung-out row
+   Three bullets spread edge to edge read as unrelated to the copy above them. They are one thing: the
+   list of what you walk away with that day. Labelled, boxed, at a measure you can read in one go. */
+#page #days .dkeep{margin:18px 0 0;padding:15px 18px 16px;border-radius:12px;max-width:44ch;
+  border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.045)}
+#page #days .dkeepl{margin:0 0 11px;font-family:var(--label);font-size:8.5px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+#page #days .dkeep .dbul{display:grid;grid-template-columns:minmax(0,1fr) !important;gap:9px;margin:0;
+  max-width:none}
+#page #days .dkeep .dbul li{padding-left:24px;font-size:14px;line-height:1.45;
+  color:rgba(255,255,255,.76)}
+/* a tick, because the line is something you end the day holding */
+#page #days .dkeep .dbul li:before{content:'';left:3px;top:5px;width:9px;height:5px;border-radius:0;
+  background:none;border-left:1.6px solid var(--accent);border-bottom:1.6px solid var(--accent);
+  transform:rotate(-45deg);opacity:1}
+/* Day 1's block sits under its copy, beside the slide, so the row keeps two columns */
+#page #days .d1 .dbody > .dbul,#page #days .d1 .dbody > .dkeep{grid-column:auto}
+#page #days .d1 .d1body .dkeep{max-width:none}
+
+/* ------------------------------------------------------- the header, balanced and ruled
+   Everything was jammed shoulder to shoulder inside a narrow pill. A hairline between the title and the
+   clock gives the eye a stop, and the gaps get room to breathe. */
+#page .nav .cdwrap:before{content:'';flex:none;width:1px;height:22px;margin:0 4px 0 0;
+  background:color-mix(in srgb,var(--ink) 16%,transparent)}
+#page .hdr.tight .nav{width:min(716px,calc(100% - 2 * clamp(14px,3vw,34px)));
+  gap:16px !important;padding:5px 6px 5px 13px !important}
+#page .hdr.tight .cdwrap{gap:12px}
+#page .hdr.tight .cd{gap:5px}
+#page .hdr.tight .btn.sm{padding:8px 15px !important}
+
+/* ------------------------------------------------------------- the questions, collapsible
+   A list of answers nobody asked for yet is a wall of text. Closed, it is a scannable index of the
+   questions; open, one answer at a time, with the number lighting up as the marker. */
+#faq .faqlist{list-style:none;padding:0}
+#faq .faqi{display:block;position:relative;padding:0;border-bottom:1px solid var(--hair);
+  grid-template-columns:none}
+#faq .faqi:before{content:'';position:absolute;left:0;top:10px;bottom:10px;width:2px;border-radius:2px;
+  background:var(--accent);transform:scaleY(0);transform-origin:50% 0;opacity:0;
+  transition:transform .32s cubic-bezier(.2,.7,.2,1),opacity .2s ease}
+#faq .faqi.open:before{transform:scaleY(1);opacity:1}
+#faq .faqq{display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:14px;
+  width:100%;padding:19px 4px 19px 14px;margin:0;border:0;background:none;text-align:left;cursor:pointer;
+  font:inherit;color:inherit;transition:padding-left .25s ease}
+#faq .faqi.open .faqq{padding-left:20px}
+#faq .faqq b{display:block;margin:0;font-family:var(--display);font-size:19px;line-height:1.3;
+  letter-spacing:-.015em;color:var(--ink);transition:color .2s ease}
+#faq .faqn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:26px;
+  border-radius:6px;font-family:var(--label);font-size:11.5px;font-weight:700;letter-spacing:.12em;
+  color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 26%,transparent);
+  transition:background .25s ease,color .25s ease,border-color .25s ease}
+#faq .faqi.open .faqn{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+#faq .faqq:hover .faqn{border-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+/* the plus that becomes a minus */
+#faq .faqx{position:relative;flex:none;width:22px;height:22px}
+#faq .faqx i{position:absolute;left:50%;top:50%;width:13px;height:1.6px;border-radius:2px;
+  background:color-mix(in srgb,var(--ink) 55%,transparent);transform:translate(-50%,-50%);
+  transition:transform .32s cubic-bezier(.2,.7,.2,1),background .2s ease}
+#faq .faqx i:last-child{transform:translate(-50%,-50%) rotate(90deg)}
+#faq .faqi.open .faqx i{background:var(--accent)}
+#faq .faqi.open .faqx i:last-child{transform:translate(-50%,-50%) rotate(180deg);opacity:0}
+/* the answer opens on its own height, no measuring */
+#faq .faqa{display:grid;grid-template-rows:0fr;transition:grid-template-rows .34s cubic-bezier(.2,.7,.2,1)}
+#faq .faqi.open .faqa{grid-template-rows:1fr}
+#faq .faqa > div{overflow:hidden}
+#faq .faqa p{margin:0;padding:0 34px 20px 80px;max-width:62ch;font-size:15.5px;line-height:1.62;
+  color:color-mix(in srgb,var(--ink) 70%,transparent)}
+#faq .faqi.open .faqa p{padding-left:86px}
+@media (max-width:900px){
+  #faq .faqq{grid-template-columns:42px minmax(0,1fr) auto;gap:10px;padding:16px 2px 16px 10px}
+  #faq .faqq b{font-size:17px}
+  #faq .faqa p{padding:0 8px 16px 62px;font-size:14.5px}
+  #faq .faqi.open .faqa p{padding-left:68px}
+}
+/* Day 1's takeaway block matches the other two */
+#page #days .d1 .d1body .dkeep{max-width:44ch}
