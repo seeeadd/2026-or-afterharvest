@@ -1101,3 +1101,9 @@ body.modalopen{overflow:hidden}
 .htrust .tmeta .stars{padding:5px 13px;border-width:1px}
 .htrust .tmeta .stars svg{width:14px;height:14px}
 .htrust .tm2{font-size:12.5px;letter-spacing:.03em}
+/* not white: the bar is the page's own paper, one step lighter than the ground so it lifts without going stark */
+.htrust{background-image:none;background-color:color-mix(in srgb,var(--ground) 76%,#fff)}
+.htrust .awd{background-image:none;background-color:color-mix(in srgb,var(--ground) 62%,#fff)}
+.htrust .tmeta .stars{background-image:none;background-color:color-mix(in srgb,var(--ground) 62%,#fff)}
+.tksheet{background-image:none;background-color:color-mix(in srgb,var(--ground) 72%,#fff)}
+#toast{background-color:color-mix(in srgb,var(--ground) 62%,#fff)}
