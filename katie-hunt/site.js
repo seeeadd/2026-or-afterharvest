@@ -1021,7 +1021,7 @@
     }
 
     var BIO = S.bio || LP.bio || '';
-    if (BIO) {
+    if (BIO && S.host_section) {      /* off: the fit check already carries her photo and story */
       var host = el('section', 'sect z');
       host.id = 'host';
       host.innerHTML = '<div class="hostin">' +
