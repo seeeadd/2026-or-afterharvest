@@ -2181,3 +2181,21 @@ body.modalopen{overflow:hidden}
   #page .navwrap,#page .hdr.tight .navwrap{height:52px}
   #page .hdr.tight .navwrap{transform:translateY(-44px)}
 }
+
+/* ------------------------------------------------- the mark, softer: a round badge and a thin line
+   A heavy white icon inside a saturated square read as a stock icon set. Rounded, lighter and with more
+   air around the glyph, it reads as a mark somebody drew. */
+#page .nav .cal .bmark,.melogo{border-radius:50% !important}
+#page .nav .cal .bmark svg,.melogo > svg{width:56%;height:56%;stroke-width:1.5}
+#page .nav .cal .bmark:after,.melogo:after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.34),
+  inset 0 1px 0 rgba(255,255,255,.44)}
+.melogo.real{border-radius:11px !important}
+
+/* the announcement tab never runs wider than the header it sits on */
+#page #topbar{max-width:min(520px,calc(100% - 2 * clamp(14px,3vw,34px)))}
+
+/* the hero's left column comes back up */
+#page .hleft{padding-top:clamp(0px,0.5vw,9px)}
+/* only the left column rises; the pill and headline beside it stay where they are */
+#page .hleft{padding-top:0;margin-top:-16px}
+@media (max-width:900px){#page .hleft{margin-top:0}}

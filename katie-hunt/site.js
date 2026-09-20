@@ -195,11 +195,10 @@
   var ICONS = {
     /* wholesale: her whole line is "your products belong in more stores", so the mark is a shopfront with
        a parcel under the awning, not a generic carton */
-    box: '<path d="M2.6 9.4h18.8l-1.5-3.3a1.7 1.7 0 0 0-1.5-1H5.6a1.7 1.7 0 0 0-1.5 1z" fill="currentColor" ' +
-      'fill-opacity=".32" stroke="none"/>' +
-      '<path d="M2.6 9.4h18.8l-1.5-3.3a1.7 1.7 0 0 0-1.5-1H5.6a1.7 1.7 0 0 0-1.5 1z"/>' +
-      '<path d="M5.2 9.4V20.6h13.6V9.4"/>' +
-      '<rect x="9.1" y="13.4" width="5.8" height="5" rx=".8"/><path d="M12 13.4v5M9.1 15.9h5.8"/>',
+    box: '<path d="M5 8.6h14l1 11.1a1.7 1.7 0 0 1-1.7 1.9H5.7A1.7 1.7 0 0 1 4 19.7z" fill="currentColor" ' +
+      'fill-opacity=".26" stroke="none"/>' +
+      '<path d="M5 8.6h14l1 11.1a1.7 1.7 0 0 1-1.7 1.9H5.7A1.7 1.7 0 0 1 4 19.7z"/>' +
+      '<path d="M9 11V7.2a3 3 0 0 1 6 0V11"/>',
     people: '<circle cx="9.2" cy="8.2" r="3.2" fill="currentColor" fill-opacity=".28" stroke="none"/>' +
       '<circle cx="9.2" cy="8.2" r="3.2"/><path d="M3.3 19.4c.5-3.3 3-5.2 5.9-5.2s5.4 1.9 5.9 5.2"/>' +
       '<path d="M16.2 5.9a3.1 3.1 0 0 1 0 6.2M17.5 14.9c2.1.7 3.4 2.3 3.7 4.5"/>',
@@ -278,7 +277,7 @@
     if (!navwrap || !nav) return;
 
     var bar = el('div', '', '<i class="pulse"></i>' +
-      '<span class="tblong"><b class="seatn">' + seatText() + '</b>+ have registered for ' + esc(EV) + '</span>' +
+      '<span class="tblong"><b class="seatn">' + seatText() + '</b>+ already registered</span>' +
       '<span class="tbshort"><b class="seatn">' + seatText() + '</b>+ registered</span>');
     bar.id = 'topbar';
 
