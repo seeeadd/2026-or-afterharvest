@@ -51,21 +51,49 @@
     return sec;
   }
 
-  /* -------------------------------------------------------------- the gate */
+  /* -------------------------------------------------------------- the gate
+     Nothing we actually built gets blurred. The page runs to its end, then continues into invented sections
+     (what you get, the workbook, questions, the upgrade) and those are what sits behind the lock. */
+  function fakeSections(ev, who) {
+    var card = function (t, b) { return '<div class="fkc"><b>' + t + '</b><p>' + b + '</p></div>'; };
+    var qa = function (q) { return '<li><b>' + q + '</b><span>+</span></li>'; };
+    var h = '';
+    h += '<section class="fks"><p class="eyebrow c">Everything you get</p>' +
+         '<h2 class="disp">Three days, and the pieces you keep.</h2>' +
+         '<div class="fkgrid">' +
+           card('The live sessions', 'Three working sessions with ' + who + ', replays for seven days.') +
+           card('The workbook', 'The same sheets used on screen, ready to fill in during the session.') +
+           card('The pitch checklist', 'What to have ready before you contact a single store.') +
+         '</div></section>';
+    h += '<section class="fks"><div class="fkwork"><div class="fkshot"></div>' +
+         '<div><p class="eyebrow">Day by day</p><h3 class="disp">The workbook you fill in live.</h3>' +
+         '<p>Margins, minimums, the buyer list and the follow-up, in one file you keep after ' + ev + '.</p>' +
+         '<span class="fkbtn">Hold my seat</span></div></div></section>';
+    h += '<section class="fks"><p class="eyebrow c">Questions</p><h2 class="disp">Before you hold a seat.</h2>' +
+         '<ul class="fkq">' + qa('Do I need anything ready before day one?') + qa('What if I cannot make a session live?') +
+         qa('Is this right for a brand that has never sold wholesale?') + qa('What happens after the three days?') +
+         '</ul></section>';
+    h += '<section class="fks"><div class="fkprice"><p class="eyebrow">After the three days</p>' +
+         '<h3 class="disp">Keep going with the full program.</h3><p>Optional, and only if the three days land.</p>' +
+         '<span class="fkbtn">See the options</span></div></section>';
+    var wrap = el('div');
+    wrap.id = 'fake';
+    wrap.innerHTML = h;
+    return wrap;
+  }
+
   function gate() {
     var page = document.getElementById('page');
-    var from = document.getElementById(S.gate_from || 'band');   // everything from this section down is blurred
-    if (!page || !from) return;
+    if (!page) return;
+    var foot = page.querySelector('.foot');
+    var fake = fakeSections(LP.event || 'the event', LP.first || (LP.name || '').split(' ')[0] || 'me');
     var wrap = el('div');
     wrap.id = 'gatewrap';
     var inner = el('div', 'gated');
-    page.insertBefore(wrap, from);
-    while (from) {
-      var next = from.nextElementSibling;
-      inner.appendChild(from);
-      from = next;
-    }
+    inner.appendChild(fake);
     wrap.appendChild(inner);
+    if (foot) page.insertBefore(wrap, foot); else page.appendChild(wrap);
+
     var g = el('div');
     g.id = 'gate';
     g.innerHTML =
@@ -74,7 +102,6 @@
       '<a class="ubtn" href="' + mailto() + '">' + (S.gate_cta || 'Show me the full page') +
         '<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>';
     document.body.appendChild(g);
-    // it appears when the blurred part comes into view and grows the further they scroll into it
     var grow = function () {
       var r = wrap.getBoundingClientRect(), vh = innerHeight;
       var into = vh * 0.82 - r.top;
@@ -89,30 +116,36 @@
     grow();
     addEventListener('scroll', grow, {passive: true});
     addEventListener('resize', grow);
-    wrap.appendChild(g);
   }
 
-  /* ------------------------------------------------------- registration modal */
+  /* ------------------------------------------------------- registration modal
+     Our own: a live strip across the top (pulsing dot, ticking clock, room button), the seat count in the
+     brand colour with a filling bar, then the form. */
   function modal() {
     var m = el('div');
     m.id = 'modal';
-    var ev = LP.event || '3-day live event', who = LP.name || '', when = S.when || '';
+    var who = LP.name || '', first = LP.first || who.split(' ')[0] || 'me';
+    var seats = parseInt(String(S.registered || '1204').replace(/\D/g, ''), 10) || 1204;
     m.innerHTML =
-      '<div class="mcard"><span class="mtape l"></span><span class="mtape r"></span>' +
-        '<button class="mx" aria-label="Close">✕</button>' +
-        '<p class="meye">Free 3-day event ·<b>' + when + '</b></p>' +
-        '<h3>Hold your seat for <em>the three (3) days</em>.</h3>' +
-        '<p class="msub">You will get everything you need to join live for three days.</p>' +
-        '<div class="mproof" id="mproof"></div>' +
-        '<input class="mfield" placeholder="First name"><input class="mfield" placeholder="you@yourdomain.com">' +
-        '<button class="mgo">Hold my seat →</button>' +
-        '<p class="mticks">✓ Free &nbsp; ✓ 3 days live with ' + (LP.first || who.split(' ')[0] || 'me') + ' &nbsp; ✓ Show up live</p>' +
-        '<div class="mfoot"><img src="' + (S.avatar || 'img/headshot.png') + '" alt=""><div>See you there,<br><b>' + who + '</b> · ' + (LP.brand || '') + '</div></div>' +
+      '<div class="mcard"><span class="mrail"></span>' +
+        '<button class="mx" aria-label="Close">\u2715</button>' +
+        '<div class="mlive"><span class="mdot"></span><b>Room open</b>' +
+          '<span class="mclock" id="mClock">00:00:00</span>' +
+          '<span class="mzoom"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">' +
+          '<path d="M4 7h9a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm12 3.4 4.2-2.6c.5-.3 1.1.1 1.1.7v7c0 .6-.6 1-1.1.7L16 13.6z"/>' +
+          '</svg>Zoom live</span></div>' +
+        '<h3>Hold your seat for <em>' + (LP.event || 'the three days') + '</em>.</h3>' +
+        '<p class="msub">Three days, live with ' + first + '. Replays for seven days.</p>' +
+        '<div class="mseats"><div class="mnum"><b id="mCount">' + seats.toLocaleString() + '</b> registered' +
+          '<span id="mRecent">' + (S.names || ['Maya'])[0] + ' just now</span></div>' +
+          '<div class="mbar"><i id="mFill"></i></div></div>' +
+        '<div class="mrow"><input class="mfield" placeholder="First name"><input class="mfield" placeholder="you@yourdomain.com"></div>' +
+        '<button class="mgo">Hold my seat \u2192</button>' +
+        '<p class="mticks"><span>\u2713 Free</span><span>\u2713 3 days live</span><span>\u2713 Replays 7 days</span></p>' +
+        '<div class="mfoot"><img src="' + (S.avatar || 'img/headshot.jpg') + '" alt=""><div>See you there,<br><b>' + who +
+          '</b> \u00B7 ' + (LP.brand || '') + '</div></div>' +
       '</div>';
     document.body.appendChild(m);
-    var proof = m.querySelector('#mproof');
-    proof.innerHTML = '<b>' + (S.registered || '1,204') + '</b> registered<br>' +
-      '<span style="opacity:.65">' + (S.names || ['Maya'])[0] + ' just registered · 2 hours ago</span>';
     m.querySelector('.mx').onclick = function () { m.classList.remove('on'); };
     m.onclick = function (e) { if (e.target === m) m.classList.remove('on'); };
     m.querySelector('.mgo').onclick = function () { window.location.href = mailto(); };
@@ -120,6 +153,19 @@
       b.style.cursor = 'pointer';
       b.addEventListener('click', function (e) { e.preventDefault(); m.classList.add('on'); });
     });
+    // it keeps moving while they look at it
+    var n = seats, fill = m.querySelector('#mFill'), count = m.querySelector('#mCount'),
+        recent = m.querySelector('#mRecent'), names = S.names || ['Maya'], k = 0, pct = 62;
+    fill.style.width = pct + '%';
+    setInterval(function () {
+      n += 1; k++;
+      count.textContent = n.toLocaleString();
+      count.classList.add('tick');
+      setTimeout(function () { count.classList.remove('tick'); }, 700);
+      recent.textContent = names[k % names.length] + ' just now';
+      pct = Math.min(96, pct + 0.7);
+      fill.style.width = pct.toFixed(1) + '%';
+    }, 9000);
   }
 
   /* --------------------------------------------------------------- the toast */
@@ -195,7 +241,88 @@
     if (btn) card.insertBefore(d, btn); else card.appendChild(d);
   }
 
+  /* the page should look alive: the nav clock runs and the modal clock runs with it */
+  function clocks() {
+    var days = S.starts_in_days || 9;
+    var target = Date.now() + days * 864e5 + 3 * 36e5;
+    var nav = document.querySelectorAll('.cdn b');
+    var mc = function () { return document.getElementById('mClock'); };
+    var tick = function () {
+      var d = Math.max(0, target - Date.now()), s = Math.floor(d / 1000);
+      var dd = Math.floor(s / 86400), hh = Math.floor(s % 86400 / 3600), mm = Math.floor(s % 3600 / 60), ss = s % 60;
+      var p = function (v) { return (v < 10 ? '0' : '') + v; };
+      if (nav[0]) nav[0].textContent = p(dd);
+      if (nav[1]) nav[1].textContent = p(hh);
+      if (nav[2]) nav[2].textContent = p(mm);
+      if (nav[3]) nav[3].textContent = p(ss);
+      var c = mc();
+      if (c) c.textContent = p(hh) + ':' + p(mm) + ':' + p(ss);
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  /* ------------------------------------------------------------ hero layout
+     Hosted, the hero follows the reference: video top left with a booking card under it, and the date pill,
+     headline, copy and register card down the right. The pieces are the page's own, only re-stacked. */
+  function hero() {
+    var hero = document.getElementById('hero');
+    var stage = document.getElementById('stagebox');
+    if (!hero || !stage) return;
+    var phone = document.getElementById('iphone'), reg = document.getElementById('regcard');
+    var eye = document.getElementById('heroEye'), h1 = document.getElementById('headline'),
+        lede = document.getElementById('lede');
+    var grid = el('div', 'hgrid'), left = el('div', 'hleft'), right = el('div', 'hright');
+    grid.appendChild(left); grid.appendChild(right);
+    hero.appendChild(grid);
+    // trust strip above the video: badge, faces, stars, count
+    var tr = S.trust || {};
+    var names = S.names || ['Maya', 'Devon', 'Priya', 'Sam', 'Alix'];
+    var tints = ['#f2d3bd', '#cfe0f1', '#e4ded2', '#dfe8cf', '#d8d4ea'];
+    var faces = names.slice(0, 5).map(function (n, i) {
+      return '<span style="background:' + tints[i % tints.length] + '">' + initials(n) + '</span>';
+    }).join('');
+    var strip = el('div', 'htrust');
+    strip.innerHTML =
+      '<span class="htbadge"><b>' + (tr.badge_top || 'Top rated') + '</b>' + (tr.badge_bot || (LP.brand || 'Live event')) + '</span>' +
+      '<span class="htfaces">' + faces + '</span>' +
+      '<span class="htstars"><i>\u2605\u2605\u2605\u2605\u2605</i><b>Trusted by over ' +
+        (tr.count || '1,793') + '</b>' + (tr.label || 'makers') + '</span>';
+    left.appendChild(strip);
+    left.appendChild(phone);
+    // booking card under the video
+    var book = el('div', 'hbook');
+    book.innerHTML =
+      '<span class="hbtag">' + (S.book_tag || 'Secure your free spot') + '</span>' +
+      '<div class="hbrow"><div class="hbwhen"><b>' + (S.when || 'Three days') + '</b>' +
+        '<span>' + (S.when_sub || 'Live online, replays for 7 days') + '</span></div>' +
+        '<span class="btn lg hbgo">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>';
+    left.appendChild(book);
+    [eye, h1, lede, reg].forEach(function (n) { if (n) right.appendChild(n); });
+    stage.remove();
+  }
+
+  /* the header: live dot, "live in", seconds, and a button that keeps catching the eye */
+  function seconds() {
+    var cd = document.querySelector('.nav .cd');
+    if (!cd || cd.querySelector('.sec')) return;
+    var sep = el('em'), unit = el('span', 'cdn sec', '<b>00</b><small>sec</small>');
+    cd.appendChild(sep); cd.appendChild(unit);
+    var label = cd.querySelector('.cdl');
+    if (label) {
+      label.innerHTML = '<i class="livedot"></i>' + (S.live_label || 'Live in');
+      label.classList.add('live');
+    }
+    var btn = document.querySelector('.nav .btn.sm');
+    if (btn) {
+      btn.classList.add('halo');
+      btn.innerHTML = btn.innerHTML.replace('Hold my seat', S.nav_cta || 'Hold my seat');
+    }
+  }
+
   function boot() {
+    hero();
+    seconds();
     var t = testimonial();
     if (t) {
       var band = document.getElementById('band');
@@ -206,6 +333,7 @@
     if (S.gate !== false) gate();
     toast();
     sticky();
+    clocks();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
