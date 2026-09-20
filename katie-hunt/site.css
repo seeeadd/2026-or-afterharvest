@@ -1745,84 +1745,80 @@ body.modalopen{overflow:hidden}
   border:1px solid color-mix(in srgb,var(--ink) 8%,transparent)}
 
 
-/* ==================================================== the three days, as rows on a page
-   Cards everywhere made the section repeat itself. The days are the spine of the page, so they run
-   full width on hairlines: a big quiet numeral holding the left, one line of meta, the title, then what
-   happens. Nothing is authored per lead; the numeral takes their display face and their accent. */
+
+/* ======================================================= the three days, as an agenda
+   Three live sessions are a schedule, so the section reads as one: a rail down the left with a dated
+   node per day and the session beside it. No cards, no stubs, no abstract 01/02/03. The dates, the
+   faces and the accent all come from the lead, so it costs nothing per lead. */
 #page #days .d23{grid-template-columns:minmax(0,1fr);gap:0;margin-top:0}
-#page #days .drow{display:grid;grid-template-columns:clamp(96px,9vw,140px) minmax(0,1fr);
-  gap:clamp(20px,2.6vw,44px);align-items:start;padding:clamp(30px,3.2vw,46px) 0;
-  background:none;border:0;border-top:1px solid color-mix(in srgb,var(--ink) 13%,transparent);
-  border-radius:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
-#page #days .d1.drow{margin-top:clamp(28px,3vw,44px)}
-#page #days .drow:last-child{border-bottom:1px solid color-mix(in srgb,var(--ink) 13%,transparent)}
-#page #days .drow .when,#page #days .dwhen{display:none !important}
+#page #days .dagenda{position:relative;display:grid;
+  grid-template-columns:clamp(96px,8.6vw,124px) minmax(0,1fr);
+  gap:clamp(26px,3vw,48px);align-items:start;padding:clamp(28px,3vw,42px) 0;
+  background:none;border:0;border-radius:0;box-shadow:none;
+  -webkit-backdrop-filter:none;backdrop-filter:none}
+#page #days .d1.dagenda{margin-top:clamp(26px,3vw,40px)}
+#page #days .dagenda .when,#page #days .dwhen{display:none !important}
+/* the rail: one continuous line through every node, stopped at the first and last */
+#page #days .dagenda:before{content:'';position:absolute;top:0;bottom:0;width:2px;
+  left:calc(clamp(96px,8.6vw,124px) + clamp(26px,3vw,48px) / 2 - 1px);
+  background:color-mix(in srgb,var(--accent) 20%,transparent)}
+#page #days .dagenda.first:before{top:clamp(28px,3vw,42px)}
+#page #days .dagenda.last:before{bottom:auto;height:clamp(28px,3vw,42px)}
+/* the node on the rail, level with the date */
+#page #days .dagenda:after{content:'';position:absolute;top:calc(clamp(28px,3vw,42px) + 11px);
+  left:calc(clamp(96px,8.6vw,124px) + clamp(26px,3vw,48px) / 2 - 6px);
+  width:12px;height:12px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--ground) 82%,#fff)}
 
-.dnum{position:relative;padding-top:2px}
-.dnum b{display:block;font-family:var(--display);font-weight:var(--dw2,700);
-  font-size:clamp(54px,6.6vw,96px);line-height:.82;letter-spacing:-.06em;
-  color:color-mix(in srgb,var(--accent) 26%,transparent)}
-.dnum span{display:block;margin-top:10px;font-family:var(--label);font-size:8.5px;font-weight:700;
-  letter-spacing:.26em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 40%,transparent)}
-.dnum:after{content:'';display:block;width:30px;height:2px;margin-top:12px;background:var(--accent);
-  opacity:.75}
+.dnode{text-align:right;padding-top:0}
+.dnmon{display:block;font-family:var(--label);font-size:9px;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:color-mix(in srgb,var(--ink) 45%,transparent)}
+.dnday{display:block;margin-top:1px;font-family:var(--display);font-weight:var(--dw2,700);
+  font-size:clamp(38px,3.8vw,52px);line-height:.92;letter-spacing:-.045em;color:var(--ink)}
+.dntime{display:block;margin-top:7px;font-family:var(--label);font-size:11px;font-weight:600;
+  letter-spacing:.1em;color:color-mix(in srgb,var(--ink) 58%,transparent);white-space:nowrap}
+.dnlive{display:inline-flex;align-items:center;gap:5px;margin-top:9px;padding:3px 9px;border-radius:999px;
+  font-family:var(--label);font-size:8.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 34%,transparent)}
+.dnlive i{width:5px;height:5px;border-radius:50%;background:var(--accent);
+  animation:pulse 2s ease-out infinite}
 
-.dmetaline{margin:0 0 12px;font-family:var(--label);font-size:10px;font-weight:600;letter-spacing:.17em;
-  text-transform:uppercase;color:color-mix(in srgb,var(--ink) 48%,transparent)}
-#page #days .drow .dt{margin:0 0 14px;max-width:18ch}
-#page #days .drow .do{margin:0 0 10px;max-width:60ch}
-#page #days .drow .dxtra{max-width:62ch}
-/* the bullets use the width a full row gives them instead of running down one narrow column */
-#page #days .drow .dbul{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 30px;max-width:72ch}
-
-/* Day 1 keeps the slide, beside its copy, inside the row */
+.dmetaline{margin:0 0 11px;font-family:var(--label);font-size:9.5px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:color-mix(in srgb,var(--ink) 42%,transparent)}
+#page #days .dagenda .dt{margin:0 0 14px;max-width:19ch}
+#page #days .dagenda .do{margin:0 0 10px;max-width:62ch}
+#page #days .dagenda .dxtra{max-width:64ch}
+#page #days .dagenda .dbul{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 30px;max-width:74ch}
 #page #days .d1 .dbody{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);
-  gap:clamp(24px,2.8vw,46px);align-items:start}
-#page #days .d1 .macbook{margin:0;width:100%;grid-row:span 2}
+  gap:clamp(24px,2.8vw,44px);align-items:start}
+#page #days .d1 .macbook{margin:0;width:100%;grid-row:span 3}
 #page #days .d1 .d1body{min-width:0}
+#page #days .d1 .dbul{grid-template-columns:minmax(0,1fr)}
 #days{scroll-margin-top:96px}
 
-@media (max-width:900px){
-  #page #days .drow{grid-template-columns:56px minmax(0,1fr);gap:16px;padding:24px 0}
-  .dnum b{font-size:40px}
-  .dnum span{margin-top:7px;font-size:8px}
-  .dnum:after{width:22px;margin-top:9px}
-  #page #days .drow .dbul{grid-template-columns:minmax(0,1fr)}
+@media (max-width:760px){
+  #page #days .dagenda{grid-template-columns:62px minmax(0,1fr);gap:18px;padding:22px 0}
+  #page #days .dagenda:before{left:calc(62px + 9px - 1px)}
+  #page #days .dagenda:after{left:calc(62px + 9px - 5px);width:10px;height:10px;top:calc(22px + 8px)}
+  .dnday{font-size:32px}
+  .dntime{font-size:10px;margin-top:5px}
+  .dnlive{margin-top:7px;padding:2px 7px}
+  #page #days .dagenda .dt{max-width:none}
+  #page #days .dagenda .dbul{grid-template-columns:minmax(0,1fr)}
   #page #days .d1 .dbody{grid-template-columns:minmax(0,1fr);gap:18px}
 }
 
-/* ------------------------------------------ the pill sits lower, the rest of the hero does not */
+/* the date pill sits level with the trust bar again */
 #page .hero{padding-top:44px}
-#page #heroEye{margin-top:clamp(10px,1.6vw,26px)}
+#page #heroEye{margin-top:0}
 
-/* --------------------------------------------- the trust bar, see-through for real
-   A 20px backdrop blur smears the grid into a flat tone, which reads as solid however low the tint is.
-   Light blur plus a light tint, and the paper grid stays legible through the panel. */
-.htrust{background-color:color-mix(in srgb,var(--ground) 8%,transparent) !important;
-  background-image:linear-gradient(148deg,rgba(255,255,255,.16),rgba(255,255,255,.04) 50%,
-    rgba(255,255,255,.12)) !important;
-  -webkit-backdrop-filter:blur(5px) saturate(1.15);backdrop-filter:blur(5px) saturate(1.15);
-  border-color:rgba(255,255,255,.4) !important}
-.htrust .awd{background-color:rgba(255,255,255,.14) !important}
-.htrust .tmeta .stars{background-color:rgba(255,255,255,.16) !important}
-/* the numeral was too faint to hold the left, and the hairlines too faint to read as rules */
-.dnum b{color:color-mix(in srgb,var(--accent) 42%,transparent)}
-#page #days .drow{border-top-color:color-mix(in srgb,var(--ink) 17%,transparent)}
-#page #days .drow:last-child{border-bottom-color:color-mix(in srgb,var(--ink) 17%,transparent)}
-/* Day 1's copy sits in half a row, so its bullets stay in one column */
-#page #days .d1 .dbul{grid-template-columns:minmax(0,1fr)}
-/* glass, not frosted paper: no sheen, almost no tint, just enough blur to separate it from the grid */
-.htrust{background-color:rgba(255,255,255,.06) !important;background-image:none !important;
-  -webkit-backdrop-filter:blur(3px) saturate(1.04);backdrop-filter:blur(3px) saturate(1.04);
-  border:1px solid rgba(255,255,255,.5) !important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 16px 34px -30px rgba(28,20,12,.45)}
-.htrust .awd{background-color:rgba(255,255,255,.1) !important}
-.htrust .tmeta .stars{background-color:rgba(255,255,255,.12) !important}
-@media (max-width:640px){   /* on a phone the numeral heads the row instead of squeezing a side column */
-  #page #days .drow{grid-template-columns:minmax(0,1fr);gap:12px;padding:22px 0}
-  .dnum{display:flex;align-items:baseline;gap:10px;padding-top:0}
-  .dnum b{font-size:32px;line-height:1}
-  .dnum span{margin-top:0}
-  .dnum:after{display:none}
-  #page #days .drow .dt{max-width:none}
+/* scrolled, the header sits flush on the top edge: the collapsed tab still left its padding behind */
+#page .hdr.tight{padding-top:0}
+#page .hdr.tight #topbar{height:0;padding:0;margin:0;border:0}
+#page .hdr.tight .navwrap{height:auto;padding:0}
+#page .hdr.tight .nav{height:50px;border-radius:0 0 18px 18px}
+/* the slide spanned three rows but only two exist, so the row carried 88px of empty grid gaps */
+#page #days .d1 .macbook{grid-row:auto}
+@media (max-width:640px){   /* the fitted section heading ran past the right edge on a phone */
+  #page #daysh,#page #daysh span{white-space:normal !important;font-size:min(7.2vw,26px)}
 }

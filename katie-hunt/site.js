@@ -1020,27 +1020,34 @@
       var det = (S.day_detail || [])[i + 1];
       if (det && !q('.dxtra', card)) card.insertAdjacentHTML('beforeend', '<p class="dxtra">' + esc(det) + '</p>' + bullets(i + 1));
     });
-    rowDays(box, slot);
+    agendaDays(box, slot);
   }
 
-  /* Three editorial rows, not three cards. The page already has plenty of panels; the days are the
-     spine of it, so they run full width on hairlines with a big quiet numeral holding the left. Every
-     value comes from the lead's data, so it costs nothing per lead. */
-  function rowDays(box, slot) {
-    function meta(i) {
+  /* An agenda, which is what three live days actually are: a dated rail down the left with a node per
+     day, the session beside it. Not a card, not a ticket, not a numbered list. Every value comes from
+     the lead's own dates, so it costs nothing per lead. */
+  function agendaDays(box, slot) {
+    var n = qa('.d23 > *', box).length + 1;
+    function node(i) {
       var d = new Date(START.getTime() + i * 864e5);
-      return dfmt(d) + ' \u00B7 ' + slot + ' \u00B7 Live online \u00B7 Replay the same day';
+      var parts = String(dfmt(d)).split(' ');
+      return '<div class="dnode"><span class="dnmon">' + esc(parts[0] || '') + '</span>' +
+        '<b class="dnday">' + esc(parts[1] || '') + '</b>' +
+        '<span class="dntime">' + esc(slot) + '</span>' +
+        '<span class="dnlive"><i></i>Live</span></div>';
     }
     function wrap(card, i) {
-      if (q('.dnum', card)) return;
+      if (q('.dnode', card)) return;
       var body = el('div', 'dbody');
       while (card.firstChild) body.appendChild(card.firstChild);
-      card.insertAdjacentHTML('afterbegin',
-        '<div class="dnum"><b>' + pad2(i + 1) + '</b><span>Day</span></div>');
+      card.insertAdjacentHTML('afterbegin', node(i));
       card.appendChild(body);
-      card.classList.add('drow');
+      card.classList.add('dagenda');
+      if (i === 0) card.classList.add('first');
+      if (i === n - 1) card.classList.add('last');
       var t = q('.dt', body);
-      if (t) t.insertAdjacentHTML('beforebegin', '<p class="dmetaline">' + esc(meta(i)) + '</p>');
+      if (t) t.insertAdjacentHTML('beforebegin',
+        '<p class="dmetaline">Day ' + (i + 1) + ' of ' + n + ' \u00B7 Replay the same day</p>');
     }
     var d1 = q('.d1', box);
     if (d1) wrap(d1, 0);
