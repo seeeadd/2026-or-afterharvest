@@ -69,11 +69,25 @@
     g.id = 'gate';
     g.innerHTML =
       '<img class="glock" src="' + (S.lock || 'img/lock.png') + '" alt="">' +
-      '<h4>' + (S.gate_title || 'The rest of this page is locked.') + '</h4>' +
-      '<p>' + (S.gate_text || 'Reply to my email and I will unlock the full page for you, including the three day plan, the offer section and the checkout.') + '</p>' +
-      '<a class="ubtn" href="' + mailto() + '">' + (S.gate_cta || 'Reply to unlock the full page') +
-        '<svg width="15" height="15" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>' +
-      '<p class="ghint">' + (S.gate_hint || 'Takes one line. No form.') + '</p>';
+      '<b>' + (S.gate_title || 'Unlock this full page') + '</b>' +
+      '<a class="ubtn" href="' + mailto() + '">' + (S.gate_cta || 'Show me the full page') +
+        '<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>';
+    document.body.appendChild(g);
+    // it appears when the blurred part comes into view and grows the further they scroll into it
+    var grow = function () {
+      var r = wrap.getBoundingClientRect(), vh = innerHeight;
+      var into = vh * 0.82 - r.top;
+      var on = into > 0 && r.bottom > vh * 0.12;
+      g.classList.toggle('on', on);
+      if (!on) return;
+      var span = Math.max(240, r.height * 0.7);
+      var pct = Math.max(0, Math.min(1, into / span));
+      var max = innerWidth <= 560 ? 1.16 : 1.42;
+      g.style.setProperty('--gs', (1 + pct * (max - 1)).toFixed(3));
+    };
+    grow();
+    addEventListener('scroll', grow, {passive: true});
+    addEventListener('resize', grow);
     wrap.appendChild(g);
   }
 
