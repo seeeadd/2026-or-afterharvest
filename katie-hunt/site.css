@@ -715,3 +715,10 @@ body.modalopen{overflow:hidden}
   .hostpic{max-width:260px}
   .faqgrid{grid-template-columns:1fr;gap:20px}
 }
+/* close the dead space between the hero, the cue and the ticker */
+.scue{margin-top:16px}
+.nticker{margin-top:18px}
+#page .hero{padding-bottom:0}
+#page .facts{margin-top:0}
+#page .checks li{align-items:flex-start}
+.ckwhy{margin:6px 0 0;font-size:14.5px;line-height:1.55;color:color-mix(in srgb,var(--ink) 58%,transparent)}

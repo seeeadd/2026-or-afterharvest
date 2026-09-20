@@ -261,9 +261,11 @@
     var ul = $('checks');
     if (!ul || !(LP.checks || []).length) return;
     var CHK = '<svg width="14" height="14" viewBox="0 0 15 15" aria-hidden="true"><path d="M3 7.9l2.9 2.9 6.2-6.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    ul.innerHTML = LP.checks.slice(0, LP.fit_count || LP.checks.length).map(function (c) {
-      return '<li><span class="ck">' + CHK + '</span><p><b>' +
-        esc(String(c.bold).replace(/[.:]+$/, '')) + '.</b> ' + esc(c.text) + '</p></li>';
+    ul.innerHTML = LP.checks.slice(0, LP.fit_count || LP.checks.length).map(function (c, i) {
+      var why = (S.check_why || [])[i] || '';
+      return '<li><span class="ck">' + CHK + '</span><div><p><b>' +
+        esc(String(c.bold).replace(/[.:]+$/, '')) + '.</b> ' + esc(c.text) + '</p>' +
+        (why ? '<p class="ckwhy">' + esc(why) + '</p>' : '') + '</div></li>';
     }).join('');
   }
 
@@ -932,15 +934,15 @@
     var extra = $('d1o');
     if (extra && days[0] && days[0].outcome) {
       extra.insertAdjacentHTML('afterend', '<p class="dxtra">' +
-        esc(S.day_note || 'You work it in the session, on your own product, with ' + FIRST + ' on the call.') + '</p>');
+        esc((S.day_detail || [])[0] || ('You work it in the session, on your own product, with ' + FIRST + ' on the call.')) + '</p>');
     }
     qa('.d23 > *', box).forEach(function (card, i) {
       var d = days[i + 1] || {};
       if (q('.dwhen', card)) return;
       var line = el('p', 'dwhen', esc(meta(i + 1)));
       card.insertBefore(line, card.firstChild);
-      if (d.outcome && !q('.dxtra', card)) card.insertAdjacentHTML('beforeend',
-        '<p class="dxtra">' + esc('You leave with it written down, not just explained.') + '</p>');
+      var det = (S.day_detail || [])[i + 1];
+      if (det && !q('.dxtra', card)) card.insertAdjacentHTML('beforeend', '<p class="dxtra">' + esc(det) + '</p>');
     });
   }
 
