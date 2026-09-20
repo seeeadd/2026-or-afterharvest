@@ -234,7 +234,8 @@
     var rtop = q('.rtop', reg);
     if (rtop) rtop.remove();          /* the lead's podcast stat has nothing to do with holding a seat */
     rtop = null;
-    if (rtop && rtop.nextSibling) reg.insertBefore(proof, rtop.nextSibling); else reg.appendChild(proof);
+    var regBtn = q('.btn', reg);      /* proof belongs above the action, not under it */
+    if (regBtn) reg.insertBefore(proof, regBtn); else reg.appendChild(proof);
     var rbtn = q('.btn', reg);
     if (rbtn) { rbtn.setAttribute('data-reg', '1'); rbtn.setAttribute('role', 'button'); rbtn.tabIndex = 0; }
   }

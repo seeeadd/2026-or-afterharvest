@@ -1255,3 +1255,66 @@ body.modalopen{overflow:hidden}
 /* the hidden radios are absolutely positioned: keep them out of the width rule and inside their own card */
 #modal .mopt{position:relative}
 #modal .mform input[type="radio"]{width:auto;max-width:none;inset:0}
+
+/* ---------------------------------------------- sticky video: one clean overlay
+   The previous pass left two overlapping scrims (a hard seam across the middle) and the caption sat on top of
+   the unmute hint. One gradient, one stack, fixed spacing. */
+#stick .svmedia{position:relative}
+#stick .svmedia:before{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:linear-gradient(180deg,rgba(10,10,12,.34) 0 14%,rgba(10,10,12,0) 34%,rgba(10,10,12,0) 52%,rgba(10,10,12,.86) 100%)}
+#stick .svmedia:after{display:none}
+#stick .svcap{position:absolute;left:10px;right:10px;bottom:46px;z-index:3;margin:0;text-align:left;
+  font-size:13px;line-height:1.32;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+#stick .svcap b{color:#fff}
+#stick .svcap em,#stick .svcap i{color:var(--accent);font-style:normal}
+#stick .svhint{position:absolute;left:10px;right:10px;bottom:24px;z-index:3;text-align:left;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);text-shadow:0 1px 4px rgba(0,0,0,.6);
+  padding:0;background:none;backdrop-filter:none}
+#stick .svbar{left:10px;right:10px;bottom:11px}
+
+/* ------------------------------------------------------- hero: wider, tighter
+   Less air at the sides, the video column takes more of the row, and the vertical rhythm pulls in. */
+#page .hero{padding-left:clamp(14px,2vw,30px);padding-right:clamp(14px,2vw,30px);padding-top:14px}
+#page{max-width:1280px}
+.hgrid{grid-template-columns:minmax(0,1.44fr) minmax(0,1fr);gap:clamp(18px,2.2vw,34px);margin-top:18px}
+.htrust{margin-bottom:12px}
+.hbook{margin-top:14px;padding:14px}
+.hright{gap:11px}
+.hright .eyebrow{padding:7px 13px;font-size:10.5px}
+.hero h1.disp{font-size:clamp(40px,4vw,56px) !important;line-height:1.02 !important}
+.hero .lede{font-size:16.5px;max-width:48ch}
+#page #regcard{margin-top:4px;padding:14px}
+.scue{margin-top:12px}
+/* the date pill stays on one line */
+.hright .eyebrow{white-space:nowrap;width:max-content;max-width:100%;overflow:hidden;text-overflow:ellipsis;
+  font-size:10px;letter-spacing:.12em}
+/* the worksheet panel must start below the day cards, not through them */
+#takeaway{margin-top:34px}
+#page .days{padding-bottom:26px}
+
+/* ------------------------------------------------------------ the modal, tidy
+   Same button language as the page, centred options, a slimmer live strip and less air throughout. */
+#modal .mlive{padding:7px 20px;font-size:10px;letter-spacing:.16em}
+#modal .mtop{padding:12px 20px 0}
+#modal .mtop .chip{padding:5px 11px;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+#modal .mtop h3{margin:7px 0 4px}
+#modal .mseats{margin:10px 20px;padding:9px 11px;border-radius:var(--r-md,10px)}
+#modal .mform{padding:0 20px}
+#modal .mopt{align-items:center;text-align:center;padding:9px 6px}
+#modal .mopt em{font-size:13px}
+#modal .mform .btn.lg{height:46px;font-size:15px;letter-spacing:0;text-transform:none;border-radius:var(--btn-r,8px);
+  box-shadow:var(--btn-off,3px) var(--btn-off,3px) 0 var(--ink)}
+#modal .mform .btn.lg:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink)}
+#modal .mticks{padding:10px 20px 0;font-size:11.5px;gap:10px}
+#modal .mfoot{margin:10px 20px 0;padding-top:10px}
+#modal .mfoot .av{width:32px;height:32px}
+#modal .mfoot b{font-size:13px}
+#modal .mfoot small{font-size:10px;letter-spacing:.12em}
+/* options and action, stated explicitly so nothing upstream can half-apply */
+#modal .mopts .mopt{display:flex !important;flex-direction:column !important;align-items:center !important;
+  justify-content:center;gap:6px;text-align:center}
+#modal .mopts .mopt em{display:block;width:100%;text-align:center}
+#modal .mform .btn.lg{display:flex !important;align-items:center !important;justify-content:center !important;
+  gap:8px;width:100%;filter:none !important;
+  box-shadow:var(--btn-off,3px) var(--btn-off,3px) 0 var(--ink) !important;background-image:none}
+#modal .mform .btn.lg:before,#modal .mform .btn.lg:after{display:none !important;content:none !important}
