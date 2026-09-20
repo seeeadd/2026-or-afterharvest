@@ -1252,3 +1252,6 @@ body.modalopen{overflow:hidden}
 /* inputs must not keep their intrinsic width inside the two-column form */
 #modal .mform label{min-width:0;display:block}
 #modal .mform input{width:100%;max-width:100%;box-sizing:border-box}
+/* the hidden radios are absolutely positioned: keep them out of the width rule and inside their own card */
+#modal .mopt{position:relative}
+#modal .mform input[type="radio"]{width:auto;max-width:none;inset:0}
