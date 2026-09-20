@@ -475,7 +475,8 @@
       '<div class="tbody"><p class="tline"><b></b><em></em></p>' +
       '<p class="tact">' + esc(S.toast_action || 'just grabbed their free spot!') + '</p>' +
       '<p class="tago"><i></i><span></span></p></div>' +
-      '<span class="tsrc">' + esc(LP.brand || EV) + '</span>';
+      '<span class="tsrc">' + esc(LP.brand || EV) + '</span>' +
+      '<span class="tbar"><i></i></span>';
     document.body.appendChild(t);
     var i = 0;
     function show() {
