@@ -1318,3 +1318,5 @@ body.modalopen{overflow:hidden}
   gap:8px;width:100%;filter:none !important;
   box-shadow:var(--btn-off,3px) var(--btn-off,3px) 0 var(--ink) !important;background-image:none}
 #modal .mform .btn.lg:before,#modal .mform .btn.lg:after{display:none !important;content:none !important}
+/* the column must stay centred: an earlier full-width pass set margin:0 and it was never restored */
+#page{max-width:1340px;margin-left:auto !important;margin-right:auto !important}
