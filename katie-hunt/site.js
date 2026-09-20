@@ -985,13 +985,37 @@
 
     var outs = days.slice(0, 3).map(function (d) { return String(d.outcome || '').trim(); }).filter(Boolean);
     if (outs.length) {
+      /* each piece gets a drawn artifact, thin-line, in their accent: the thing you actually keep */
+      var ART = [
+        '<svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">' +
+        '<rect x="10.5" y="8.5" width="64" height="75" rx="3"/><path d="M21 26h42M21 36h42M21 46h30"/>' +
+        '<path d="M21 60h42M21 70h24" stroke-dasharray="3 4"/>' +
+        '<rect x="63" y="40" width="46" height="34" rx="3" fill="var(--paper)"/>' +
+        '<path d="M70 52h32M70 60h20"/><circle cx="101" cy="62" r="5"/></g></svg>',
+        '<svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">' +
+        '<rect x="8.5" y="14.5" width="46" height="30" rx="3"/><rect x="8.5" y="52.5" width="46" height="30" rx="3"/>' +
+        '<rect x="64.5" y="14.5" width="46" height="30" rx="3"/><rect x="64.5" y="52.5" width="46" height="30" rx="3"/>' +
+        '<path d="M16 26h20M16 33h14M72 26h20M72 33h10M16 64h20M16 71h12M72 64h20M72 71h16"/>' +
+        '<path d="M96 60l5 5 9-10" stroke-width="2"/></g></svg>',
+        '<svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">' +
+        '<path d="M12 22h62M12 34h62M12 46h40"/><rect x="10.5" y="10.5" width="65" height="48" rx="3"/>' +
+        '<path d="M30 70h60M30 80h38"/><circle cx="20" cy="70" r="3.4"/><circle cx="20" cy="80" r="3.4"/>' +
+        '<path d="M86 30l10 10 18-20" stroke-width="2"/></g></svg>'
+      ];
+      var labels = ['The numbers', 'The pitch', 'The follow-up'];
       var take = el('section', 'sect z');
       take.id = 'takeaway';
-      take.innerHTML = '<p class="seye">What you walk away with</p>' +
+      take.innerHTML = '<div class="tkhead"><p class="seye">What you walk away with</p>' +
         '<h2 class="sh">Three days in, you have the thing itself.</h2>' +
-        '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p>' +
+        '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p></div>' +
         '<div class="tkgrid">' + outs.map(function (o, i) {
-          return '<div class="tkcard"><span class="tkn">' + (i + 1) + '</span><p>' + esc(o) + '</p></div>';
+          var bl = ((S.day_bullets || [])[i] || []).slice(0, 2);
+          return '<article class="tkc">' +
+            '<span class="tkart">' + (ART[i] || '') + '</span>' +
+            '<p class="tknum">' + (i < 9 ? '0' : '') + (i + 1) + '<i></i>' + esc(labels[i] || ('Day ' + (i + 1))) + '</p>' +
+            '<p class="tkt">' + esc(o) + '</p>' +
+            (bl.length ? '<ul class="tkbul">' + bl.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') +
+            '</article>';
         }).join('') + '</div>';
       P.insertBefore(take, closing);
     }
