@@ -1017,18 +1017,23 @@
       var labels = ['The numbers', 'The pitch', 'The follow-up'];
       var take = el('section', 'sect z');
       take.id = 'takeaway';
-      take.innerHTML = '<div class="tkhead"><p class="seye">What you walk away with</p>' +
-        '<h2 class="sh">Three days in, you have the thing itself.</h2>' +
-        '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p></div>' +
-        '<div class="tkgrid">' + outs.map(function (o, i) {
-          var bl = ((S.day_bullets || [])[i] || []).slice(0, 2);
-          return '<article class="tkc">' +
-            '<span class="tkart">' + (ART[i] || '') + '</span>' +
-            '<p class="tknum">' + (i < 9 ? '0' : '') + (i + 1) + '<i></i>' + esc(labels[i] || ('Day ' + (i + 1))) + '</p>' +
-            '<p class="tkt">' + esc(o) + '</p>' +
-            (bl.length ? '<ul class="tkbul">' + bl.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') +
-            '</article>';
-        }).join('') + '</div>';
+      take.innerHTML =
+        '<div class="tksheet">' +
+          '<span class="tktab">' + esc(S.keep_tab || 'What you keep') + '</span>' +
+          '<div class="tkhead"><h2 class="sh">Three days in, you have the thing itself.</h2>' +
+          '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p></div>' +
+          '<div class="tkrows">' + outs.map(function (o, i) {
+            var bl = ((S.day_bullets || [])[i] || []).slice(0, 2);
+            return '<article class="tkrow">' +
+              '<span class="tkart">' + (ART[i] || '') + '</span>' +
+              '<div class="tkmain"><p class="tknum">' + (i < 9 ? '0' : '') + (i + 1) + '<i></i>' +
+                esc(labels[i] || ('Day ' + (i + 1))) + '</p>' +
+                '<p class="tkt">' + esc(o) + '</p></div>' +
+              (bl.length ? '<ul class="tkbul">' + bl.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') +
+                '</ul>' : '<span></span>') +
+              '</article>';
+          }).join('') + '</div>' +
+        '</div>';
       P.insertBefore(take, closing);
     }
 
