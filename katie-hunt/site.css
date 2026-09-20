@@ -1647,3 +1647,161 @@ body.modalopen{overflow:hidden}
   #modal .mstseat{margin-top:11px;padding-top:10px}
   #modal .mform .btn.lg{height:48px}
 }
+
+/* the hero starts lower: the date pill was sitting right under the header stack */
+#page .hero{padding-top:clamp(28px,3.4vw,52px)}
+
+/* ======================================================= the three days are three tickets
+   Day 1 was a bare slide on the page ground while Days 2 and 3 were cards, and each carried its date in a
+   different place. One object now: a stub with the number and the date, a punched perforation, the copy. */
+#days .dticket{position:relative;display:grid;grid-template-columns:clamp(88px,7.4vw,112px) minmax(0,1fr);
+  align-items:stretch;background:var(--paper);border-radius:var(--r-lg,14px);border:0;overflow:hidden;
+  --dperf:clamp(88px,7.4vw,112px);
+  -webkit-mask-image:radial-gradient(circle at var(--dperf) 0,transparent 9px,#000 9.5px),
+    radial-gradient(circle at var(--dperf) 100%,transparent 9px,#000 9.5px);
+  -webkit-mask-composite:source-in;
+  mask-image:radial-gradient(circle at var(--dperf) 0,transparent 9px,#000 9.5px),
+    radial-gradient(circle at var(--dperf) 100%,transparent 9px,#000 9.5px);
+  mask-composite:intersect;
+  box-shadow:none;filter:drop-shadow(0 20px 34px rgba(28,20,12,.14)) drop-shadow(0 2px 5px rgba(28,20,12,.1))}
+
+.dstub{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:2px;padding:22px 8px;text-align:center;color:var(--accent-ink);
+  background:linear-gradient(170deg,color-mix(in srgb,var(--accent) 86%,#fff) 0%,var(--accent) 44%,
+    color-mix(in srgb,var(--accent) 90%,#1a0f0a) 100%)}
+.dstub:before{content:'';position:absolute;inset:0;opacity:.14;pointer-events:none;
+  background-image:linear-gradient(color-mix(in srgb,var(--accent-ink) 60%,transparent) 1px,transparent 1px),
+    linear-gradient(90deg,color-mix(in srgb,var(--accent-ink) 60%,transparent) 1px,transparent 1px);
+  background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(120% 80% at 50% 0%,#000,transparent 74%);
+  mask-image:radial-gradient(120% 80% at 50% 0%,#000,transparent 74%)}
+.dstub > *{position:relative}
+.dsl{font-family:var(--label);font-size:8.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  opacity:.72}
+.dsn{font-family:var(--display);font-size:clamp(32px,3.2vw,42px);line-height:1;letter-spacing:-.04em}
+.dsr{display:block;width:26px;height:1px;margin:10px 0 9px;
+  background:color-mix(in srgb,var(--accent-ink) 46%,transparent)}
+.dsd{font-family:var(--label);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.dst{font-family:var(--label);font-size:9.5px;font-weight:600;letter-spacing:.1em;opacity:.8}
+.dsv{margin-top:7px;padding:2px 8px;border-radius:3px;font-family:var(--label);font-size:8px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid color-mix(in srgb,var(--accent-ink) 46%,transparent);opacity:.9}
+
+#days .dbody{position:relative;padding:26px 28px}
+#days .dbody:before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:1px;
+  background-image:linear-gradient(color-mix(in srgb,var(--ink) 28%,transparent) 55%,transparent 0);
+  background-size:1px 8px}
+/* the stub carries the date now, so the old meta rows go */
+#days .dwhen,#days .d1 .when{display:none !important}
+#days .dticket .dt{margin:0 0 10px}
+#days .dticket .do{margin:0 0 10px}
+
+/* Day 1 keeps the slide, beside the copy inside its own ticket */
+#days .d1 .dbody{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  gap:clamp(22px,2.4vw,38px);align-items:center}
+#days .d1 .macbook{margin:0;width:100%}
+#days .d1 .d1body{min-width:0}
+#days .d23{margin-top:clamp(18px,2vw,26px)}
+#days{scroll-margin-top:96px}
+
+@media (max-width:900px){
+  #days .dticket{grid-template-columns:72px minmax(0,1fr);--dperf:72px}
+  .dsn{font-size:28px}
+  .dsd,.dst{font-size:9px;letter-spacing:.1em}
+  .dsv{display:none}
+  #days .dbody{padding:20px 20px}
+  #days .d1 .dbody{grid-template-columns:minmax(0,1fr);gap:18px}
+}
+
+/* ---------------------------------------------- the lock bar is a ticket too, punched the same way */
+#gate .gbar{position:relative;gap:0;padding:0 10px 0 0;overflow:hidden;--gperf:56px;
+  -webkit-mask-image:radial-gradient(circle at var(--gperf) 0,transparent 6px,#000 6.5px),
+    radial-gradient(circle at var(--gperf) 100%,transparent 6px,#000 6.5px);
+  -webkit-mask-composite:source-in;
+  mask-image:radial-gradient(circle at var(--gperf) 0,transparent 6px,#000 6.5px),
+    radial-gradient(circle at var(--gperf) 100%,transparent 6px,#000 6.5px);
+  mask-composite:intersect;
+  box-shadow:none;filter:drop-shadow(0 18px 30px rgba(28,20,12,.4)) drop-shadow(0 2px 5px rgba(28,20,12,.24))}
+#gate .gstub{flex:none;align-self:stretch;display:grid;place-items:center;width:56px;color:var(--accent-ink);
+  background:linear-gradient(168deg,color-mix(in srgb,var(--accent) 86%,#fff),var(--accent) 52%,
+    color-mix(in srgb,var(--accent) 90%,#1a0f0a))}
+#gate .gstub .glock{width:22px;height:22px;color:var(--accent-ink)}
+#gate .gtx{position:relative;padding:11px 16px 11px 17px}
+#gate .gtx:before{content:'';position:absolute;left:0;top:9px;bottom:9px;width:1px;
+  background-image:linear-gradient(color-mix(in srgb,var(--ink) 30%,transparent) 55%,transparent 0);
+  background-size:1px 7px}
+@media (max-width:640px){
+  #gate .gbar{--gperf:44px;padding-right:8px}
+  #gate .gstub{width:44px}
+  #gate .gstub .glock{width:18px;height:18px}
+  #gate .gtx{padding:9px 10px 9px 12px}
+}
+/* the old .dc card had its own padding, radius and glass: the ticket replaces all three */
+#page #days .dticket{padding:0;border-radius:var(--r-lg,14px);background:var(--paper);
+  -webkit-backdrop-filter:none;backdrop-filter:none;align-items:stretch}
+#page #days .dticket .when{display:none !important}
+#page #days .dticket .dt{margin:0 0 10px}
+#page #days .dticket .do{margin:0 0 10px}
+#page #days .d1{align-items:stretch}
+#page #days .dticket{gap:0}     /* the stub meets the perforation, no gutter between them */
+
+/* the lock mark was drawn in the accent, which is invisible once the stub is the accent */
+#gate .gstub .glock rect{fill:color-mix(in srgb,#fff 20%,transparent);stroke:currentColor}
+#gate .gstub .glock path{stroke:currentColor;stroke-opacity:1}
+#gate .gstub .glock circle{fill:currentColor}
+
+/* --------------------------------------------------------- the announcement tab, slotted
+   It was a floating pill with its rounded bottom disappearing behind the header card, which reads as a
+   mistake. Square the bottom and it becomes a tab the header sits on. */
+#page #topbar{border-radius:10px 10px 0 0;height:36px;padding:0 18px 11px;box-shadow:none;
+  letter-spacing:.1em}
+
+/* ------------------------------------------------------- what you keep, on one baseline
+   The stagger read as an accident and the discs were small against the column. One baseline, bigger marks,
+   a measure that holds, and the panel actually visible under it. */
+#takeaway:before{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 11%,var(--ground)),
+  color-mix(in srgb,var(--accent) 4%,var(--ground)) 62%,transparent)}
+.tkroute{gap:clamp(26px,3vw,48px);padding-top:8px;align-items:start}
+.tkstop.s2,.tkstop.s3{padding-top:0}
+.tkdisc{width:clamp(96px,8.6vw,118px);height:clamp(96px,8.6vw,118px);margin-bottom:20px}
+.tkdisc svg{width:62%}
+.tkpath{top:auto}
+.tknum{margin:0 0 9px}
+.tkt{max-width:30ch}
+.tkbul{max-width:32ch}
+/* each stop is a panel, so the three read as a set rather than three loose columns */
+.tkstop{padding:22px 22px 24px;border-radius:var(--r-lg,14px);
+  background:color-mix(in srgb,var(--paper) 62%,transparent);
+  border:1px solid color-mix(in srgb,var(--ink) 7%,transparent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 16px 30px -28px rgba(28,20,12,.5)}
+
+/* ------------------------------------------------------------------ the questions, two columns
+   One long full-width list left a dead right half on every row. The title and the note hold the left
+   column and stay put; the questions run at a real measure beside them. */
+#faq{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(28px,3.6vw,64px);
+  align-items:start}
+#faq .faqhead{display:block;grid-column:1;margin:0;position:sticky;top:104px}
+#faq .faqhead .sh{margin:0 0 14px}
+#faq .faqnote{max-width:34ch;font-size:14.5px}
+#faq .faqlist{grid-column:2;border-top:1px solid var(--hair)}
+#faq .faqlist li{grid-template-columns:44px minmax(0,1fr);gap:14px;padding:20px 0}
+#faq .faqn{font-size:13px;letter-spacing:.1em;padding-top:5px}
+#faq .faqlist p{max-width:56ch}
+@media (max-width:900px){
+  #faq{grid-template-columns:minmax(0,1fr);gap:18px}
+  #faq .faqhead{position:static}
+  #faq .faqlist{grid-column:1}
+  .tkstop{padding:18px 18px 20px}
+}
+/* all three stops start on the same line (the .s2/.s3 stagger rules outrank the shorthand) */
+.tkstop.s1,.tkstop.s2,.tkstop.s3{padding-top:22px}
+.tkstop{background:color-mix(in srgb,var(--paper) 84%,transparent)}
+
+/* more see-through: the white sheen was doing most of the opacity, not the tint */
+.htrust{background-color:color-mix(in srgb,var(--ground) 14%,transparent) !important;
+  background-image:linear-gradient(148deg,rgba(255,255,255,.30),rgba(255,255,255,.08) 48%,
+    rgba(255,255,255,.20)) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);
+  border-color:rgba(255,255,255,.46) !important}
+.htrust .awd{background-color:rgba(255,255,255,.2) !important}
+.htrust .tmeta .stars{background-color:rgba(255,255,255,.24) !important}

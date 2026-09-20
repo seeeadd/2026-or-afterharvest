@@ -384,7 +384,7 @@
       '<circle cx="16" cy="20" r="1.9" fill="var(--accent)"/>' +
       '<path d="M16 21.6v2.4" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round"/></svg>';
     var gate = el('div', '',
-      '<div class="gbar">' + LOCKSVG +
+      '<div class="gbar"><span class="gstub">' + LOCKSVG + '</span>' +
       '<span class="gtx"><b>' + esc(S.gate_title || 'The rest of this page is ready') + '</b>' +
       '<small>' + esc(S.gate_hint || 'Reply to my email and I will open it') + '</small></span>' +
       '<button class="btn sm" data-noreg="1" type="button">' + esc(S.gate_cta || 'Open the full page') + ARROW + '</button></div>' +
@@ -1014,13 +1014,35 @@
         '</p>' + bullets(0));
     }
     qa('.d23 > *', box).forEach(function (card, i) {
-      var d = days[i + 1] || {};
       if (q('.dwhen', card)) return;
       var line = el('p', 'dwhen', esc(meta(i + 1)));
       card.insertBefore(line, card.firstChild);
       var det = (S.day_detail || [])[i + 1];
       if (det && !q('.dxtra', card)) card.insertAdjacentHTML('beforeend', '<p class="dxtra">' + esc(det) + '</p>' + bullets(i + 1));
     });
+    ticketDays(box, slot);
+  }
+
+  /* each day is the same object the modal and the favicon use: a stub with the number and the date, a
+     punched perforation, then what happens that day. Three days that look like three tickets. */
+  function ticketDays(box, slot) {
+    function stub(i) {
+      var d = new Date(START.getTime() + i * 864e5);
+      return '<div class="dstub"><span class="dsl">Day</span><b class="dsn">' + pad2(i + 1) + '</b>' +
+        '<span class="dsr"></span><span class="dsd">' + esc(dfmt(d)) + '</span>' +
+        '<span class="dst">' + esc(slot) + '</span><span class="dsv">Live</span></div>';
+    }
+    function wrap(card, i) {
+      if (q('.dstub', card)) return;
+      var body = el('div', 'dbody');
+      while (card.firstChild) body.appendChild(card.firstChild);
+      card.insertAdjacentHTML('afterbegin', stub(i));
+      card.appendChild(body);
+      card.classList.add('dticket');
+    }
+    var d1 = q('.d1', box);
+    if (d1) wrap(d1, 0);
+    qa('.d23 > *', box).forEach(function (card, i) { wrap(card, i + 1); });
   }
 
   /* the fit check needs more than a list: who this is for, and who it is not for */
