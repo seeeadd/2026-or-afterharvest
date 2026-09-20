@@ -2119,3 +2119,26 @@ body.modalopen{overflow:hidden}
   #page #heroEye{font-size:10.5px;letter-spacing:.08em;padding:9px 6px 9px 13px;gap:8px}
   #page #heroEye .eyd{padding:4px 9px 3px}
 }
+
+/* ------------------------------------------------ the mark is a drawn emblem, not a set of initials */
+#page .nav .cal .bmark,.melogo{position:relative;display:grid;place-items:center;overflow:hidden}
+#page .nav .cal .bmark:after,.melogo:after{content:'';position:absolute;inset:0;border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.3),inset 0 1px 0 rgba(255,255,255,.4);pointer-events:none}
+#page .nav .cal .bmark svg,.melogo > svg{width:64%;height:64%;display:block;color:var(--accent-ink)}
+.melogo.real:after{box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+
+/* the fit check's action is centred under the whole section, not parked in the portrait column */
+#page #fitc{text-align:initial}
+#page #fitc .scta{grid-column:1 / -1;width:100%;align-items:center;justify-content:center;
+  margin-left:auto;margin-right:auto;text-align:center}
+#page #fitc .scta .btn.lg{align-self:center}
+#page #fitc .sctan{text-align:center}
+#page #takeaway .scta .btn.lg{align-self:center}
+
+/* ------------------------------------------------------------ the trust bar, further back still */
+.htrust{background-color:rgba(255,255,255,.02) !important;
+  -webkit-backdrop-filter:blur(1px) saturate(1.02);backdrop-filter:blur(1px) saturate(1.02);
+  border:1px solid rgba(255,255,255,.55) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 8px 22px -24px rgba(28,20,12,.35)}
+.htrust .awd{background-color:rgba(255,255,255,.06) !important}
+.htrust .tmeta .stars{background-color:rgba(255,255,255,.06) !important}

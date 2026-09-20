@@ -162,7 +162,7 @@
     if (!cap || !nm || q('.melogo', cap)) return;
     var m = S.monogram || initials(LP.brand || BRAND);
     var html = S.logo ? '<span class="melogo real"><img src="' + esc(S.logo) + '" alt=""></span>'
-      : (m ? '<span class="melogo"><b>' + esc(m) + '</b></span>' : '');
+      : '<span class="melogo">' + emblemSVG(1.7) + '</span>';
     if (!html) return;
     cap.insertAdjacentHTML('afterbegin', html);
     cap.classList.add('haslogo');
@@ -170,9 +170,7 @@
   function brandMark() {
     var cal = q('.nav .cal'), m = S.monogram || initials(LP.brand || BRAND);
     if (!cal || !m) return;
-    cal.innerHTML = '<span class="bmark"><b>' + esc(m) + '</b></span>';
-    var b = q('b', cal);
-    b.style.fontSize = (m.length > 2 ? 11 : m.length > 1 ? 14.5 : 17) + 'px';
+    cal.innerHTML = '<span class="bmark">' + emblemSVG(1.8) + '</span>';
   }
 
   /* a call to action in the reader's own words: the day's promise turned into the button. Built from the
@@ -196,7 +194,7 @@
      already gave us (brand, event, eyebrow tags, audience), so no lead needs an icon picked by hand. */
   var ICONS = {
     box: '<path d="M3.2 7.4 12 3l8.8 4.4v9.2L12 21l-8.8-4.4z"/><path d="M3.2 7.4 12 11.8l8.8-4.4M12 11.8V21"/>' +
-      '<path d="M7.6 5.2v4.6" stroke-dasharray="2 2"/>',
+      '<path d="m7.6 5.2 8.8 4.4"/>',
     people: '<circle cx="9" cy="8.4" r="3.1"/><path d="M3.4 19.2c.5-3.1 2.9-4.9 5.6-4.9s5.1 1.8 5.6 4.9"/>' +
       '<path d="M16 6.1a3 3 0 0 1 0 5.9M17.2 14.8c2 .6 3.3 2.2 3.6 4.4"/>',
     mic: '<rect x="9" y="3" width="6" height="10.5" rx="3"/><path d="M5.6 11.6a6.4 6.4 0 0 0 12.8 0M12 18v3M9 21h6"/>',
@@ -230,6 +228,12 @@
     return 'seat';
   }
   var BICON = '';
+  /* the lead's mark: their subject drawn inside a brand tile. A graphic, not their initials. */
+  function emblemSVG(stroke) {
+    return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
+      'stroke-width="' + (stroke || 1.7) + '" stroke-linecap="round" stroke-linejoin="round">' +
+      ICONS[brandIconKey()] + '</svg>';
+  }
   function ctaIcons() {
     BICON = '<i class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
       'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + ICONS[brandIconKey()] + '</svg></i>';
