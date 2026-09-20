@@ -283,7 +283,7 @@
     bar.id = 'topbar';
     bar.innerHTML =
       '<span class="tbin"><span class="tbdot"></span>' +
-      '<b data-seat>' + seatTotal.toLocaleString() + '</b>+ ' +
+      '<b data-seat>' + seatTotal.toLocaleString() + '</b><i class="tbplus">+</i>&nbsp;' +
       (S.topbar_text || ('have registered for ' + ev)) + '</span>';
     document.body.insertBefore(bar, document.body.firstChild);
     bar.onclick = function () { document.getElementById('modal').classList.add('on'); };
@@ -347,7 +347,20 @@
     }
   }
 
+  /* the hosted page reads as their finished page: the word "concept" belongs in the email, not on it */
+  function definal() {
+    var small = document.querySelector('.nav .lw small');
+    if (small) small.innerHTML = small.innerHTML.replace(/^\s*Concept\s*(<i><\/i>|\u00B7|\u2022)?\s*/i, 'Free <i></i> ');
+    var chip = document.querySelector('.foot .cchip');
+    if (chip) chip.remove();
+    document.title = document.title.replace(/\s*\|?\s*concept\s*$/i, '').replace(/\s+concept\b/i, '');
+    document.querySelectorAll('#page .fine, #page .bline, #page .fr').forEach(function (n) {
+      n.innerHTML = n.innerHTML.replace(/\bconcept page\b/gi, 'page').replace(/\bconcept\b/gi, '').replace(/\s{2,}/g, ' ');
+    });
+  }
+
   function boot() {
+    definal();
     topbar();
     hero();
     seconds();

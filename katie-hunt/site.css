@@ -368,3 +368,5 @@ body{margin:0;display:block}
   #topbar .tbin{font-size:12px;gap:6px}
   .navwrap{top:38px}
 }
+#topbar .tbplus{font-style:normal;font-weight:800;color:var(--ink);margin-left:-2px}
+#topbar .tbin{gap:6px}
