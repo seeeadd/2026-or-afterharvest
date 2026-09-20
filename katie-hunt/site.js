@@ -1018,23 +1018,47 @@
       var take = el('section', 'sect z');
       take.id = 'takeaway';
       take.innerHTML =
-        '<div class="tksheet">' +
-          '<span class="tktab">' + esc(S.keep_tab || 'What you keep') + '</span>' +
-          '<div class="tkhead"><h2 class="sh">Three days in, you have the thing itself.</h2>' +
+        '<div class="tkhead"><span class="tktab">' + esc(S.keep_tab || 'What you keep') + '</span>' +
+          '<h2 class="sh">Three days in, you have the thing itself.</h2>' +
           '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p></div>' +
-          '<div class="tkrows">' + outs.map(function (o, i) {
+        '<div class="tkroute">' +
+          '<svg class="tkpath" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" ' +
+          'stroke-dasharray="7 9" stroke-linecap="round"/></svg>' +
+          outs.map(function (o, i) {
             var bl = ((S.day_bullets || [])[i] || []).slice(0, 2);
-            return '<article class="tkrow">' +
-              '<span class="tkart">' + (ART[i] || '') + '</span>' +
-              '<div class="tkmain"><p class="tknum">' + (i < 9 ? '0' : '') + (i + 1) + '<i></i>' +
-                esc(labels[i] || ('Day ' + (i + 1))) + '</p>' +
-                '<p class="tkt">' + esc(o) + '</p></div>' +
-              (bl.length ? '<ul class="tkbul">' + bl.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') +
-                '</ul>' : '<span></span>') +
+            return '<article class="tkstop s' + (i + 1) + '">' +
+              '<span class="tkdisc">' + (ART[i] || '') + '</span>' +
+              '<p class="tknum">' + (i < 9 ? '0' : '') + (i + 1) + '<i></i>' + esc(labels[i] || ('Day ' + (i + 1))) + '</p>' +
+              '<p class="tkt">' + esc(o) + '</p>' +
+              (bl.length ? '<ul class="tkbul">' + bl.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') +
               '</article>';
-          }).join('') + '</div>' +
+          }).join('') +
         '</div>';
       P.insertBefore(take, closing);
+      /* the route is drawn through the discs themselves, after layout, so it can never cross the copy */
+      var drawRoute = function () {
+        var route = q('.tkroute', take), svg = q('.tkpath', take);
+        if (!route || !svg) return;
+        var box = route.getBoundingClientRect();
+        var pts = qa('.tkdisc', route).map(function (d) {
+          var r = d.getBoundingClientRect();
+          return [r.left - box.left + r.width / 2, r.top - box.top + r.height / 2];
+        });
+        if (pts.length < 2) return;
+        svg.setAttribute('viewBox', '0 0 ' + Math.round(box.width) + ' ' + Math.round(box.height));
+        svg.setAttribute('width', Math.round(box.width));
+        svg.setAttribute('height', Math.round(box.height));
+        var d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+        for (var i = 1; i < pts.length; i++) {
+          var a0 = pts[i - 1], b0 = pts[i], mx = (a0[0] + b0[0]) / 2;
+          d += ' C' + mx.toFixed(1) + ' ' + a0[1].toFixed(1) + ', ' + mx.toFixed(1) + ' ' + b0[1].toFixed(1) +
+               ', ' + b0[0].toFixed(1) + ' ' + b0[1].toFixed(1);
+        }
+        q('path', svg).setAttribute('d', d);
+      };
+      drawRoute();
+      setTimeout(drawRoute, 400);
+      addEventListener('resize', drawRoute);
     }
 
     var BIO = S.bio || LP.bio || '';

@@ -676,42 +676,46 @@ body.modalopen{overflow:hidden}
 .sh{font-family:var(--display);font-size:clamp(28px,3vw,42px);line-height:1.1;letter-spacing:-.025em;color:var(--ink);
   margin:0 0 14px;max-width:22ch}
 .slede{margin:0 0 30px;font-size:17px;line-height:1.6;color:color-mix(in srgb,var(--ink) 72%,transparent);max-width:62ch}
-/* the pieces you keep: a worksheet page, ruled and tabbed, so this section is plainly not the one before it */
-#takeaway{padding-top:70px;padding-bottom:70px}
-#takeaway:before{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 7%,var(--ground)),
-  color-mix(in srgb,var(--accent) 3%,var(--ground)));border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
-  box-shadow:none}
-.tksheet{position:relative;max-width:1100px;margin:0 auto;padding:44px clamp(24px,3vw,48px) 16px;
-  background:var(--paper);border:1px solid color-mix(in srgb,var(--ink) 12%,transparent);border-radius:3px;
-  box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 2px 3px rgba(28,20,12,.06),0 34px 60px -40px rgba(28,20,12,.55)}
-.tksheet:after{content:'';position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;border-radius:3px;
-  background:repeating-linear-gradient(180deg,transparent 0 47px,color-mix(in srgb,var(--ink) 6%,transparent) 47px 48px)}
-.tktab{position:absolute;left:clamp(24px,3vw,48px);top:-15px;padding:7px 16px;border-radius:3px 3px 0 0;
-  background:var(--ink);color:var(--paper);font-family:var(--label);font-size:10px;letter-spacing:.2em;
-  text-transform:uppercase}
-.tkhead{position:relative;z-index:1;max-width:none;margin:0 0 26px}
-.tkhead .sh{margin:0 0 10px;max-width:22ch}
-.tkhead .slede{margin:0;max-width:64ch}
-.tkrows{position:relative;z-index:1}
-.tkrow{display:grid;grid-template-columns:104px minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);
-  align-items:center;padding:22px 0;border-top:1px solid color-mix(in srgb,var(--ink) 12%,transparent)}
-.tkart{display:block;width:104px;color:color-mix(in srgb,var(--ink) 32%,transparent)}
-.tkart svg{width:100%;height:auto;display:block}
-.tkrow:nth-child(2) .tkart{color:color-mix(in srgb,var(--accent) 62%,transparent)}
+/* the pieces you keep: three stops on a drawn route, not another list. The path runs behind the discs and the
+   stops sit alternately high and low, so the eye travels instead of scanning down a column. */
+#takeaway{padding-top:74px;padding-bottom:78px}
+#takeaway:before{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 8%,var(--ground)),
+  color-mix(in srgb,var(--accent) 2%,var(--ground)));border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+#takeaway .tkhead{position:relative;max-width:1100px;margin:0 auto 18px;padding-top:6px}
+#takeaway .tktab{position:static;display:inline-block;margin-bottom:14px;padding:6px 14px;border-radius:3px;
+  background:var(--ink);color:#fff;font-family:var(--label);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+#takeaway .sh{margin:0 0 10px;max-width:22ch}
+#takeaway .slede{margin:0;max-width:62ch}
+.tkroute{position:relative;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(20px,3vw,48px);padding-top:36px}
+.tkpath{position:absolute;left:0;right:0;top:112px;width:100%;height:120px;
+  color:color-mix(in srgb,var(--accent) 45%,transparent);pointer-events:none}
+.tkstop{position:relative;z-index:1}
+.tkstop.s2{padding-top:52px}
+.tkstop.s3{padding-top:14px}
+.tkdisc{display:grid;place-items:center;width:96px;height:96px;margin-bottom:18px;border-radius:50%;
+  background:var(--paper);border:1px solid color-mix(in srgb,var(--ink) 12%,transparent);
+  box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 14px 26px -20px rgba(28,20,12,.55);
+  color:color-mix(in srgb,var(--ink) 34%,transparent)}
+.tkstop.s2 .tkdisc{color:color-mix(in srgb,var(--accent) 62%,transparent);
+  border-color:color-mix(in srgb,var(--accent) 28%,transparent)}
+.tkdisc svg{width:58px;height:auto;display:block}
 .tknum{display:flex;align-items:center;gap:9px;margin:0 0 7px;font-family:var(--label);font-size:10px;
   font-weight:var(--lw);letter-spacing:.2em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 50%,transparent)}
 .tknum i{width:14px;height:1px;background:var(--accent);opacity:.75}
-.tkt{margin:0;font-family:var(--display);font-size:19px;line-height:1.32;letter-spacing:-.015em;color:var(--ink)}
+.tkt{margin:0 0 12px;font-family:var(--display);font-size:19px;line-height:1.32;letter-spacing:-.015em;color:var(--ink);
+  max-width:26ch}
 .tkbul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
 .tkbul li{position:relative;padding-left:16px;font-size:14px;line-height:1.5;
   color:color-mix(in srgb,var(--ink) 58%,transparent)}
 .tkbul li:before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:1px;
   background:var(--accent);opacity:.6;transform:rotate(45deg)}
 @media (max-width:900px){
-  .tkrow{grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start}
-  .tkbul{grid-column:2}
-  .tkart{width:72px}
-  .tksheet:after{display:none}
+  .tkroute{grid-template-columns:1fr;gap:26px;padding-top:12px}
+  .tkpath{display:none}
+  .tkstop.s2,.tkstop.s3{padding-top:0}
+  .tkdisc{width:72px;height:72px;margin-bottom:12px}
+  .tkdisc svg{width:44px}
 }
 .hostin{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:center}
 .hostpic{aspect-ratio:1/1.12;border-radius:var(--r-lg,12px);overflow:hidden;background:var(--plate);
@@ -1000,3 +1004,10 @@ body.modalopen{overflow:hidden}
 .tktab{z-index:3;color:#fff}
 .tksheet:after{z-index:0}
 .tkhead,.tkrows{position:relative;z-index:1}
+/* the route sits behind the discs, spanning the whole block, and never over the copy */
+.tkpath{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;
+  color:color-mix(in srgb,var(--accent) 42%,transparent);pointer-events:none;overflow:visible}
+.tkdisc{position:relative;z-index:2;background:var(--paper)}
+.tkstop{z-index:1}
+.tkstop.s2{padding-top:46px}
+.tkstop.s3{padding-top:8px}
