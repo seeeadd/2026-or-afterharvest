@@ -147,6 +147,98 @@
       '<path d="M86 30l10 10 18-20" stroke-width="2"/></g></svg>'
   ];
 
+  /* the lead's own mark: the initials of their brand, set in their display face on their accent. Every
+     lead has a brand name, so every lead gets a logo, and the favicon is built from the same letters. */
+  function initials(name) {
+    var skip = { to: 1, and: 1, the: 1, of: 1, for: 1, a: 1, at: 1, in: 1, on: 1, with: 1, by: 1, '&': 1 };
+    var w = String(name || '').replace(/[^A-Za-z0-9&\s]/g, ' ').split(/\s+/).filter(Boolean)
+      .filter(function (x) { return !skip[x.toLowerCase()]; });
+    if (!w.length) return '';
+    return w.map(function (x) { return x.charAt(0).toUpperCase(); }).join('').slice(0, 3);
+  }
+  /* the lead's own logo beside their name: the real one when a person saved it, their monogram otherwise */
+  function hostMark() {
+    var cap = q('.fitgrid .me figcaption'), nm = $('meName');
+    if (!cap || !nm || q('.melogo', cap)) return;
+    var m = S.monogram || initials(LP.brand || BRAND);
+    var html = S.logo ? '<span class="melogo real"><img src="' + esc(S.logo) + '" alt=""></span>'
+      : (m ? '<span class="melogo"><b>' + esc(m) + '</b></span>' : '');
+    if (!html) return;
+    cap.insertAdjacentHTML('afterbegin', html);
+    cap.classList.add('haslogo');
+  }
+  function brandMark() {
+    var cal = q('.nav .cal'), m = S.monogram || initials(LP.brand || BRAND);
+    if (!cal || !m) return;
+    cal.innerHTML = '<span class="bmark"><b>' + esc(m) + '</b></span>';
+    var b = q('b', cal);
+    b.style.fontSize = (m.length > 2 ? 11 : m.length > 1 ? 14.5 : 17) + 'px';
+  }
+
+  /* a call to action in the reader's own words: the day's promise turned into the button. Built from the
+     lead's own day titles, so no lead needs copy written by hand. */
+  function ctaFor(title) {
+    var t = String(title || '').split('|').join(' ').replace(/[.!?]+\s*$/, '').trim();
+    var w = t.split(/\s+/).slice(0, 3);
+    var tail = /^(before|after|like|and|to|the|a|an|for|with|so|that|you|your|into|of|on|in)$/i;
+    while (w.length > 2 && tail.test(w[w.length - 1])) w.pop();
+    if (!w.length) return 'Hold my seat';
+    w[0] = w[0].charAt(0).toLowerCase() + w[0].slice(1);
+    return 'Learn how to ' + w.join(' ');
+  }
+  function ctaBlock(label, note) {
+    return '<div class="scta"><span class="btn lg" data-reg="1" role="button" tabindex="0">' +
+      esc(label) + ARROW + '</span>' +
+      '<span class="sctan">' + esc(note || 'Free \u00B7 Nothing to pay') + '</span></div>';
+  }
+
+  /* the lead's own subject, drawn once and worn by every primary action. Matched from words the lead
+     already gave us (brand, event, eyebrow tags, audience), so no lead needs an icon picked by hand. */
+  var ICONS = {
+    box: '<path d="M3.2 7.4 12 3l8.8 4.4v9.2L12 21l-8.8-4.4z"/><path d="M3.2 7.4 12 11.8l8.8-4.4M12 11.8V21"/>' +
+      '<path d="M7.6 5.2v4.6" stroke-dasharray="2 2"/>',
+    people: '<circle cx="9" cy="8.4" r="3.1"/><path d="M3.4 19.2c.5-3.1 2.9-4.9 5.6-4.9s5.1 1.8 5.6 4.9"/>' +
+      '<path d="M16 6.1a3 3 0 0 1 0 5.9M17.2 14.8c2 .6 3.3 2.2 3.6 4.4"/>',
+    mic: '<rect x="9" y="3" width="6" height="10.5" rx="3"/><path d="M5.6 11.6a6.4 6.4 0 0 0 12.8 0M12 18v3M9 21h6"/>',
+    mail: '<rect x="2.8" y="5.2" width="18.4" height="13.6" rx="2.4"/><path d="m3.6 6.6 8.4 6 8.4-6"/>',
+    book: '<path d="M4 4.4h6a2.6 2.6 0 0 1 2 2.5v12a2.2 2.2 0 0 0-2-1.5H4z"/>' +
+      '<path d="M20 4.4h-6a2.6 2.6 0 0 0-2 2.5v12a2.2 2.2 0 0 1 2-1.5h6z"/>',
+    tag: '<path d="M11.2 3.2H20v8.8l-8.6 8.6a1.6 1.6 0 0 1-2.3 0l-6.5-6.5a1.6 1.6 0 0 1 0-2.3z"/>' +
+      '<circle cx="16.3" cy="7.7" r="1.5"/>',
+    pen: '<path d="M14.6 4.6 19.4 9.4 8.8 20H4v-4.8z"/><path d="m13 6.2 4.8 4.8"/>',
+    camera: '<rect x="2.8" y="6.6" width="18.4" height="12.6" rx="2.6"/><circle cx="12" cy="12.9" r="3.7"/>' +
+      '<path d="M8.6 6.6 10 4.2h4l1.4 2.4"/>',
+    seat: '<path d="M6 20v-3M18 20v-3"/><path d="M4.8 17h14.4a1.6 1.6 0 0 0 1.6-1.9l-.6-3.1H4.2l-.6 3.1A1.6 1.6 0 0 0 5 17z"/>' +
+      '<path d="M6.6 12V6.2A2.2 2.2 0 0 1 8.8 4h6.4a2.2 2.2 0 0 1 2.2 2.2V12"/>'
+  };
+  var ICONMAP = [
+    ['box', 'wholesale retail retailer store shop stockist buyer product maker craft goods order shipping'],
+    ['people', 'member membership community subscriber audience group circle club'],
+    ['mic', 'podcast show episode audio interview voice'],
+    ['mail', 'email newsletter list inbox subscriber mailing'],
+    ['book', 'course curriculum lesson teach student class school workshop'],
+    ['tag', 'price pricing margin profit money offer rate fee'],
+    ['pen', 'design brand studio illustration art creative'],
+    ['camera', 'photo photography film video shoot']
+  ];
+  function brandIconKey() {
+    var hay = [LP.brand, EV, LP.role, S.audience, (LP.eyebrow || []).join(' ')].join(' ').toLowerCase();
+    for (var i = 0; i < ICONMAP.length; i++) {
+      var words = ICONMAP[i][1].split(' ');
+      for (var j = 0; j < words.length; j++) if (hay.indexOf(words[j]) > -1) return ICONMAP[i][0];
+    }
+    return 'seat';
+  }
+  var BICON = '';
+  function ctaIcons() {
+    BICON = '<i class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+      'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + ICONS[brandIconKey()] + '</svg></i>';
+    qa('#page .btn.lg, #stick .btn, .scta .btn').forEach(function (b) {
+      if (q('.bi', b) || b.closest('#modal')) return;
+      b.insertAdjacentHTML('afterbegin', BICON);
+    });
+  }
+
   var STAR = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.4 4.2 13.4l.7-4.3-3.1-3 4.3-.6z" fill="currentColor"/></svg>';
   function stars(n) { var h = ''; for (var i = 0; i < (n || 5); i++) h += STAR; return '<span class="stars">' + h + '</span>'; }
 
@@ -255,7 +347,8 @@
     if (stage && stage.parentNode) stage.parentNode.removeChild(stage);
 
     /* hero eyebrow becomes the coloured date pill */
-    eye.innerHTML = '<i class="dot"></i>Free 3-day live event<i></i>' + esc(WHEN) + '<i></i>Live online';
+    eye.innerHTML = '<i class="dot"></i>Free 3-day live event<i></i>' +
+      '<b class="eyd">' + esc(WHEN) + '</b><i></i><span class="eyl">Live online</span>';
 
     /* registration card: social proof above the button */
     var proof = el('div', '',
@@ -1075,6 +1168,10 @@
         bul.parentNode.insertBefore(keep, bul);
         keep.appendChild(bul);
       }
+      /* the action, in the words of the day you just read about */
+      var host = q('.d1body', body) || body, keepEl = q('.dkeep', host) || q('.dkeep', body);
+      (keepEl || host).insertAdjacentHTML(keepEl ? 'afterend' : 'beforeend',
+        ctaBlock(ctaFor((LP.days || [])[i] && (LP.days || [])[i].title), 'Free \u00B7 Live with ' + FIRST));
       /* the day's own artifact, quiet, in the space the copy does not use. Day 1 has the slide there. */
       if (i > 0 && ART[i]) card.insertAdjacentHTML('beforeend', '<span class="dmark">' + ART[i] + '</span>');
     }
@@ -1094,6 +1191,7 @@
       '<p>' + esc('If you have not made your first product yet, come back later. Three days will not fix a thing you ' +
       'have not started.') + '</p>');
     fitc.appendChild(note);
+    fitc.insertAdjacentHTML('beforeend', ctaBlock('Sounds like me, hold my seat', 'Free \u00B7 Nothing to pay'));
   }
 
   /* three real sections between the days and the close: what they walk away with, who runs it, the questions
@@ -1126,6 +1224,7 @@
               '</article>';
           }).join('') +
         '</div>';
+      take.insertAdjacentHTML('beforeend', ctaBlock('Hold my seat for the three days', 'Free \u00B7 Nothing to pay'));
       P.insertBefore(take, closing);
       /* the route is drawn through the discs themselves, after layout, so it can never cross the copy */
       var drawRoute = function () {
@@ -1294,7 +1393,10 @@
 
     modal();
     toast();
+    brandMark();
+    hostMark();
     stickyVideo();
+    setTimeout(ctaIcons, 0);
     lockBar(wrap);
     clocks();
     seatTicker();
