@@ -1031,8 +1031,10 @@
     function node(i) {
       var d = new Date(START.getTime() + i * 864e5);
       var parts = String(dfmt(d)).split(' ');
-      return '<div class="dnode"><span class="dnmon">' + esc(parts[0] || '') + '</span>' +
+      var wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d.getDay()];
+      return '<div class="dnode"><span class="dnwd">' + esc(wd) + '</span>' +
         '<b class="dnday">' + esc(parts[1] || '') + '</b>' +
+        '<span class="dnmon">' + esc(parts[0] || '') + '</span>' +
         '<span class="dntime">' + esc(slot) + '</span>' +
         '<span class="dnlive"><i></i>Live</span></div>';
     }
@@ -1050,7 +1052,13 @@
         '<p class="dmetaline">Day ' + (i + 1) + ' of ' + n + ' \u00B7 Replay the same day</p>');
     }
     var d1 = q('.d1', box);
-    if (d1) wrap(d1, 0);
+    if (d1) {
+      wrap(d1, 0);
+      /* Day 1's bullets run the full width under the slide and the copy: left in the right column they
+         left a hole the size of the slide under it */
+      var body = q('.dbody', d1), bul = q('.dbul', d1);
+      if (body && bul) body.appendChild(bul);
+    }
     qa('.d23 > *', box).forEach(function (card, i) { wrap(card, i + 1); });
   }
 

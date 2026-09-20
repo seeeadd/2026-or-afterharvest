@@ -1826,3 +1826,28 @@ body.modalopen{overflow:hidden}
 /* the header's full-width hairline made sense when the header was a full-width bar; under a floating
    pill it reads as a stray rule drawn across the page */
 #page .hdr:after{display:none !important}
+
+/* ---------------------------------------------------------- agenda, second pass
+   The date column was thin and a single-digit day looked lost beside "30", Day 1 had a hole the size of
+   the slide under it, and three bullets in two columns came out ragged. */
+.dnwd{display:block;font-family:var(--label);font-size:9px;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--accent);opacity:.8}
+.dnday{margin-top:2px}
+#page #days .dnmon{display:block;margin-top:1px;font-family:var(--label);font-size:9.5px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 45%,transparent)}
+.dntime{margin-top:9px}
+/* Day 1: slide and copy on one line, the bullets underneath across both */
+#page #days .d1 .dbody > .dbul{grid-column:1 / -1;margin:clamp(18px,2vw,26px) 0 0;
+  padding-top:clamp(16px,1.8vw,24px);
+  border-top:1px solid color-mix(in srgb,var(--ink) 11%,transparent)}
+#page #days .dagenda .dbul{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px 28px;max-width:none}
+
+/* the hero sits closer to the header */
+#page .hero{padding-top:clamp(12px,1.6vw,24px)}
+
+@media (max-width:760px){
+  #page #days .dagenda .dbul{grid-template-columns:minmax(0,1fr)}
+  #page #days .d1 .dbody > .dbul{margin-top:16px;padding-top:14px}
+}
+/* the slide column was taller than the copy beside it, leaving a hole under the copy */
+#page #days .d1 .dbody{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
