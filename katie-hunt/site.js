@@ -1119,6 +1119,45 @@
     if (line) line.remove();
   }
 
+  /* the hero video reads as a device playing something: iOS-style controls, elapsed time, a creeping scrubber */
+  function playerUI() {
+    var scr = q('.ip-screen');
+    if (!scr || q('.uic', scr)) return;
+    qa('.ip-chip, .ip-scrub, .ip-play', scr).forEach(function (n) { n.remove(); });
+    var total = S.video_len || 92;
+    var bar = el('div', 'uic',
+      '<button class="uipl" type="button" aria-label="Play">' +
+        '<svg viewBox="0 0 24 24" width="13" height="13"><path d="M8 5.4v13.2c0 .8.9 1.3 1.6.9l10.4-6.6c.6-.4.6-1.3 0-1.7L9.6 4.5c-.7-.4-1.6 0-1.6.9z" fill="currentColor"/></svg>' +
+      '</button>' +
+      '<span class="uit el">0:03</span>' +
+      '<span class="uitrack"><i></i><b></b></span>' +
+      '<span class="uit rem">-1:29</span>' +
+      '<button class="uimute" type="button" aria-label="Unmute">' +
+        '<svg viewBox="0 0 24 24" width="14" height="14"><path d="M4 9h3.2L12 5v14l-4.8-4H4z" fill="currentColor"/>' +
+        '<path d="M16.5 9.5l4 5M20.5 9.5l-4 5" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>' +
+      '</button>');
+    scr.appendChild(bar);
+    var centre = el('button', 'uibig', '<span>' +
+      '<svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.4v13.2c0 .8.9 1.3 1.6.9l10.4-6.6c.6-.4.6-1.3 0-1.7L9.6 4.5c-.7-.4-1.6 0-1.6.9z" fill="currentColor"/></svg>' +
+      '</span><em>Tap for sound</em>');
+    centre.type = 'button';
+    scr.appendChild(centre);
+    var fill = q('.uitrack i', bar), knob = q('.uitrack b', bar);
+    var elp = q('.uit.el', bar), rem = q('.uit.rem', bar), t = 3;
+    var fmt = function (v) { return Math.floor(v / 60) + ':' + (v % 60 < 10 ? '0' : '') + Math.floor(v % 60); };
+    setInterval(function () {
+      t = (t + 1) % total;
+      var pct = (t / total) * 100;
+      fill.style.width = pct.toFixed(1) + '%';
+      knob.style.left = pct.toFixed(1) + '%';
+      elp.textContent = fmt(t);
+      rem.textContent = '-' + fmt(total - t);
+    }, 1000);
+    [bar, centre].forEach(function (n) {
+      n.addEventListener('click', function () { $('modal').classList.add('on'); });
+    });
+  }
+
   function start() {
     styleTokens();
     /* the base layer's compact passes are measured against the 800px canvas:
@@ -1134,6 +1173,7 @@
     copy();
     headerStack();
     heroLayout();
+    playerUI();
     restoreChecks();
     fitCopy();
     dayDetail();

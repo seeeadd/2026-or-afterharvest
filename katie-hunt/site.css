@@ -19,6 +19,11 @@
 
 /* ---------------------------------------------------------------- 1. canvas */
 :root{
+  /* the base build ships --ground/--ink/--accent but no --paper: define it here or every surface rule that
+     uses it is invalid and the element ends up transparent */
+  --paper:color-mix(in srgb,var(--ground) 58%,#fff);
+  --paper-2:color-mix(in srgb,var(--ground) 40%,#fff);
+
   --measure:1320px;                 /* content column on a wide screen */
   --gut:clamp(16px,3.2vw,40px);     /* minimum side gutter */
   --side:max(var(--gut),calc((100% - var(--measure))/2));
@@ -1107,3 +1112,53 @@ body.modalopen{overflow:hidden}
 .htrust .tmeta .stars{background-image:none;background-color:color-mix(in srgb,var(--ground) 62%,#fff)}
 .tksheet{background-image:none;background-color:color-mix(in srgb,var(--ground) 72%,#fff)}
 #toast{background-color:color-mix(in srgb,var(--ground) 62%,#fff)}
+
+/* ------------------------------------------------------------- the player UI
+   iOS-shaped controls inside the screen: a glass bar with elapsed time, a live scrubber and a mute button,
+   plus a centre play that reads as paused rather than decorative. */
+#page .ip-screen{position:relative}
+.uic{position:absolute;left:10px;right:10px;bottom:10px;display:flex;align-items:center;gap:9px;z-index:4;
+  padding:7px 10px;border-radius:999px;background:rgba(16,16,18,.42);backdrop-filter:blur(10px) saturate(1.4);
+  -webkit-backdrop-filter:blur(10px) saturate(1.4);box-shadow:0 1px 0 rgba(255,255,255,.12) inset}
+.uic button{border:0;background:none;padding:0;color:#fff;display:grid;place-items:center;cursor:pointer}
+.uipl{width:18px;height:18px;flex:none}
+.uit{font-family:var(--mono,ui-monospace,monospace);font-size:10px;letter-spacing:.02em;color:rgba(255,255,255,.88);
+  font-variant-numeric:tabular-nums;flex:none;min-width:30px}
+.uit.rem{text-align:right}
+.uitrack{position:relative;flex:1;height:3px;border-radius:99px;background:rgba(255,255,255,.28)}
+.uitrack i{position:absolute;left:0;top:0;height:100%;width:4%;border-radius:99px;background:#fff;transition:width .9s linear}
+.uitrack b{position:absolute;top:50%;left:4%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;
+  background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.5);transition:left .9s linear}
+.uimute{width:20px;height:20px;flex:none;opacity:.92}
+.uibig{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);z-index:4;display:flex;flex-direction:column;
+  align-items:center;gap:9px;border:0;background:none;cursor:pointer}
+.uibig span{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;color:#fff;
+  background:rgba(22,22,25,.34);backdrop-filter:blur(12px) saturate(1.5);-webkit-backdrop-filter:blur(12px) saturate(1.5);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),0 12px 26px -14px rgba(0,0,0,.8)}
+.uibig em{font-style:normal;font-family:var(--label);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.6)}
+@media (max-width:640px){
+  .uic{gap:7px;padding:6px 8px}
+  .uit{font-size:9px;min-width:26px}
+  .uibig span{width:46px;height:46px}
+}
+
+/* the notice: solid, compact */
+#toast{background-color:color-mix(in srgb,var(--ground) 52%,#fff) !important;background-image:none !important;
+  width:min(310px,calc(100vw - 28px));padding:12px 14px 11px;border-radius:13px}
+#toast .tav{width:36px;height:36px;font-size:11px}
+#toast .tline{font-size:14px}
+#toast .tline em{font-size:9px}
+#toast .tact{font-size:12.5px}
+#toast .tago{margin-top:6px;font-size:9px}
+#toast .tsrc{display:none}
+
+/* the booking card: compact */
+.hbook{padding:16px 16px 15px;margin-top:16px}
+.hbtape{margin-bottom:12px;padding:6px 11px;font-size:9.5px;letter-spacing:.16em}
+.hbgrid{grid-template-columns:118px minmax(0,1fr);gap:16px}
+.hbjoin{font-size:clamp(16px,1.3vw,18px);margin-bottom:8px}
+.hbwhen{margin-bottom:11px;gap:8px}
+.hbwhen b{font-size:clamp(18px,1.6vw,22px)}
+.hbwhen span{font-size:10px;letter-spacing:.14em}
+.hbook .btn.lg{height:46px;font-size:15px}
