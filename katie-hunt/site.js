@@ -226,12 +226,14 @@
 
     /* registration card: social proof above the button */
     var proof = el('div', '',
-      '<div class="rproof">' + avstack(4, 'sm') +
+      '<div class="rproof">' + avstack(6, 'sm') +
       '<span class="rrate">' + stars(5) + '<b>' + esc(state.rating) + '</b> average rating</span></div>' +
       '<div class="rseats"><b class="seatn">' + seatText() + '</b> people have their seat ' +
       '<em class="last24">· ' + comma(state.last24) + ' registered in the last 24 hours</em></div>' +
       '<div class="rlive"><i class="pulse"></i><span class="justreg"><b>' + esc(state.name) + '</b> just registered</span></div>');
     var rtop = q('.rtop', reg);
+    if (rtop) rtop.remove();          /* the lead's podcast stat has nothing to do with holding a seat */
+    rtop = null;
     if (rtop && rtop.nextSibling) reg.insertBefore(proof, rtop.nextSibling); else reg.appendChild(proof);
     var rbtn = q('.btn', reg);
     if (rbtn) { rbtn.setAttribute('data-reg', '1'); rbtn.setAttribute('role', 'button'); rbtn.tabIndex = 0; }
@@ -356,13 +358,30 @@
     var mail = 'mailto:' + encodeURIComponent(S.reply_to || '') +
       '?subject=' + encodeURIComponent(S.subject || ('Unlock the full page for ' + BRAND)) +
       '&body=' + encodeURIComponent(S.body || '');
+    var LOCKSVG = '<svg class="glock" viewBox="0 0 32 32" aria-hidden="true">' +
+      '<rect x="6.5" y="14" width="19" height="13.5" rx="3.2" fill="var(--accent)" fill-opacity=".14" ' +
+      'stroke="var(--accent)" stroke-width="1.6"/>' +
+      '<path d="M11 14v-3.4a5 5 0 0 1 10 0V14" fill="none" stroke="var(--ink)" stroke-opacity=".78" stroke-width="1.6" ' +
+      'stroke-linecap="round"/>' +
+      '<circle cx="16" cy="20" r="1.9" fill="var(--accent)"/>' +
+      '<path d="M16 21.6v2.4" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round"/></svg>';
     var gate = el('div', '',
-      '<div class="gbar"><img class="glock" src="img/lock.png" alt="">' +
-      '<span class="gtx"><b>' + esc(S.gate_title || 'Unlock this full page') + '</b>' +
-      '<small>' + esc(S.gate_hint || 'One reply is enough') + '</small></span>' +
-      '<a class="btn sm sheen" data-noreg="1" href="' + mail + '">' + esc(S.gate_cta || 'Show me the full page') + ARROW + '</a></div>');
+      '<div class="gbar">' + LOCKSVG +
+      '<span class="gtx"><b>' + esc(S.gate_title || 'The rest of this page is ready') + '</b>' +
+      '<small>' + esc(S.gate_hint || 'Reply to my email and I will open it') + '</small></span>' +
+      '<a class="btn sm" data-noreg="1" href="' + mail + '">' + esc(S.gate_cta || 'Open the full page') + ARROW + '</a></div>');
     gate.id = 'gate';
     document.body.appendChild(gate);
+    var cta = q('.btn', gate), addr = S.reply_to || '';
+    if (cta) cta.addEventListener('click', function () {
+      try { navigator.clipboard && navigator.clipboard.writeText(addr); } catch (e) {}
+      var note = el('span', 'gnote', 'Address copied: <b>' + esc(addr) + '</b>');
+      gate.appendChild(note);
+      setTimeout(function () { note.classList.add('on'); }, 30);
+      setTimeout(function () { note.classList.remove('on'); }, 5200);
+      setTimeout(function () { if (note.parentNode) note.parentNode.removeChild(note); }, 5800);
+    });
+    /* position and scale are handled by lockBar() */
     return wrap;
   }
 
@@ -433,13 +452,12 @@
   function toast() {
     var t = el('div', '');
     t.id = 'toast';
-    t.innerHTML = '<span class="fav"></span><span class="tt"><b></b> <span>just registered</span><small></small></span>';
+    t.innerHTML = '<i class="tdot"></i><span class="tt"><b></b> <span>just registered</span><small></small></span>';
     document.body.appendChild(t);
     var i = 0;
     function show() {
       var n = NAMES[i % NAMES.length], mins = 2 + (i * 3) % 11;
       i++;
-      q('.fav', t).innerHTML = face(i + 2);
       q('.tt b', t).textContent = n;
       q('.tt small', t).textContent = mins + ' minutes ago';
       state.name = n;
@@ -486,18 +504,9 @@
     var closing = $('closing'), gatewrap = $('gatewrap');
     function tick() {
       if (killed) return;
-      var past = window.pageYOffset > (($('hero') || {}).offsetHeight || 500) * 0.75;
-      var block = false;
-      [closing, gatewrap].forEach(function (n) {
-        if (!n) return;
-        var r = n.getBoundingClientRect();
-        if (r.top < window.innerHeight - 40 && r.bottom > 0) block = true;
-      });
-      s.classList.toggle('on', past && !block);
+      s.classList.add('on');            /* once it is up it stays up: scrolling back must not lose it */
     }
-    window.addEventListener('scroll', tick, { passive: true });
-    window.addEventListener('resize', tick);
-    tick();
+    setTimeout(tick, 1400);
   }
 
   /* the lock bar fades in with the blurred part and grows as you scroll into it */
@@ -510,7 +519,9 @@
       var p = clamp((vh - r.top) / (r.height + vh * 0.6), 0, 1);
       gate.classList.toggle('on', inView);
       document.body.classList.toggle('gateon', inView);
-      bar.style.setProperty('--gk', (0.9 + p * 0.26).toFixed(3));
+      bar.style.setProperty('--gk', (0.9 + p * 0.2).toFixed(3));
+      gate.style.setProperty('--gy', (8 + p * 30).toFixed(1) + 'vh');   /* climbs towards the middle */
+      gate.style.setProperty('--gs', (1 + p * 0.16).toFixed(3));
     }
     window.addEventListener('scroll', tick, { passive: true });
     window.addEventListener('resize', tick);
@@ -880,6 +891,18 @@
     })();
   }
 
+  /* the header tightens and picks up a thin brand hairline once the page is moving */
+  function headerScroll() {
+    var hdr = q('.hdr');
+    if (!hdr) return;
+    var on = function () {
+      hdr.classList.toggle('tight', scrollY > 90);
+      hdr.style.setProperty('--hline', clamp(scrollY / 420, 0, 1).toFixed(3));
+    };
+    on();
+    addEventListener('scroll', on, {passive: true});
+  }
+
   function start() {
     /* the base layer's compact passes are measured against the 800px canvas:
        they mean nothing here and fight the hosted padding */
@@ -899,6 +922,7 @@
     testimonial();
     scrollCue();
     nameTicker();
+    headerScroll();
     var wrap = gated();
 
     modal();

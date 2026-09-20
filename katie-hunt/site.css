@@ -597,3 +597,65 @@ body.modalopen{overflow:hidden}
 #page #regcard .btn.lg{box-shadow:4px 4px 0 var(--ink),0 14px 26px -20px color-mix(in srgb,var(--accent) 80%,transparent)}
 #page .nav .btn.sm{border-radius:8px;box-shadow:3px 3px 0 var(--ink)}
 #page .nav .btn.sm.halo{animation:none}
+
+/* ------------------------------------------------------------- the lock bar */
+#gate{position:fixed;left:50%;bottom:var(--gy,8vh);z-index:70;transform:translateX(-50%) scale(var(--gs,1));
+  transform-origin:50% 100%;opacity:0;pointer-events:none;transition:opacity .35s ease,bottom .5s cubic-bezier(.2,.8,.3,1),
+  transform .5s cubic-bezier(.2,.8,.3,1)}
+#gate.on{opacity:1;pointer-events:auto}
+#gate .gbar{display:flex;align-items:center;gap:14px;padding:10px 10px 10px 14px;border-radius:12px;
+  background:color-mix(in srgb,var(--paper) 96%,transparent);
+  border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 26px 50px -28px rgba(28,20,12,.62)}
+#gate .glock{width:30px;height:30px;flex:none}
+#gate .gtx{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+#gate .gtx b{font-family:var(--display);font-size:15.5px;letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
+#gate .gtx small{font-size:12px;color:color-mix(in srgb,var(--ink) 58%,transparent);white-space:nowrap}
+#gate .btn.sm{flex:none;border-radius:8px;box-shadow:3px 3px 0 var(--ink)}
+#gate .gnote{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translate(-50%,6px);opacity:0;
+  transition:opacity .3s ease,transform .3s ease;padding:7px 12px;border-radius:8px;background:var(--ink);color:var(--paper);
+  font-size:12px;white-space:nowrap}
+#gate .gnote.on{opacity:1;transform:translate(-50%,0)}
+#gate .gnote b{font-weight:700}
+@media (max-width:640px){
+  #gate{width:calc(100% - 20px)}
+  #gate .gbar{padding:9px}
+  #gate .gtx b{font-size:13.5px;white-space:normal}
+  #gate .gtx small{display:none}
+}
+
+/* --------------------------------------------- the header once you scroll */
+#page .hdr:after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;opacity:var(--hline,0);
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent) 55%,transparent) 22%,
+  color-mix(in srgb,var(--ink) 30%,transparent) 50%,color-mix(in srgb,var(--accent) 55%,transparent) 78%,transparent);
+  transition:opacity .3s ease}
+#page .hdr.tight #topbar{height:0;opacity:0;overflow:hidden;border-width:0}
+#page .hdr.tight .navwrap{height:46px}
+#page .hdr.tight .nav{max-width:760px;padding:5px 5px 5px 8px}
+#page .hdr.tight .lw small{display:none}
+#page .hdr.tight .cal,#page .hdr.tight .cal svg{width:24px !important;height:24px !important}
+#page .hdr.tight .cdn{min-width:32px;padding:2px 5px 1px}
+#page .hdr.tight .cdn b{font-size:12px}
+#page .hdr.tight .btn.sm{padding:7px 12px !important;font-size:12.5px}
+#page .hdr{transition:padding .3s ease}
+#page .navwrap,#page .nav,#page #topbar{transition:height .3s ease,max-width .3s ease,padding .3s ease,opacity .25s ease}
+
+/* -------------------------------------- hero: the video gets the wider column */
+.hgrid{grid-template-columns:minmax(0,1.28fr) minmax(0,1fr)}
+@media (max-width:900px){.hgrid{grid-template-columns:1fr}}
+
+/* the locked part is a glimpse, not a long blurred tail: it stops mid-thought so there is clearly more under it */
+#gatewrap .gated{max-height:560px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(#000 0 42%,rgba(0,0,0,.45) 74%,transparent);
+  mask-image:linear-gradient(#000 0 42%,rgba(0,0,0,.45) 74%,transparent)}
+#gatewrap{padding-bottom:26px}
+/* email registrations have no avatar */
+#toast .tdot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+#toast .fav{display:none}
+/* the sticky video: never clipped, its button never overlaps the card */
+#stick .svcard{display:flex;flex-direction:column;gap:7px}
+#stick .btn{width:100%;border-radius:8px;justify-content:center;box-shadow:3px 3px 0 var(--ink)}
+/* the glimpse starts right after the real page: no dead air before the blur */
+#gatewrap{margin-top:8px;padding-bottom:18px}
+#gatewrap #fake .fks:first-child,#gatewrap section:first-child{padding-top:26px}
