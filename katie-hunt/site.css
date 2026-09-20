@@ -659,3 +659,28 @@ body.modalopen{overflow:hidden}
 /* the glimpse starts right after the real page: no dead air before the blur */
 #gatewrap{margin-top:8px;padding-bottom:18px}
 #gatewrap #fake .fks:first-child,#gatewrap section:first-child{padding-top:26px}
+
+/* ------------------------------------------------- the lead's own finish
+   --r-*, --brd, --lift and --btn-* come from their slide via window.SITE.style, so a handmade brand gets tight
+   corners and hairlines while a digital one gets softer corners and more lift. */
+#page .btn,#gate .btn,#stick .btn{border-radius:var(--btn-r,8px)}
+#page .btn.lg.sq,#page #regcard .btn.lg,#page .nav .btn.sm,#gate .btn.sm,#stick .btn{
+  box-shadow:var(--btn-off,3px) var(--btn-off,3px) 0 var(--ink),0 14px 26px -20px color-mix(in srgb,var(--accent) 80%,transparent)}
+.hbook,#page #regcard,.htrust,#gate .gbar,.tstin,#modal .mcard{border-radius:var(--r-lg,12px)}
+.hbook,.htrust,#gate .gbar{border-color:color-mix(in srgb,var(--ink) calc(var(--brd,.1) * 100%),transparent)}
+.hbook,#page #regcard,#gate .gbar{box-shadow:0 1px 0 rgba(255,255,255,.6) inset,var(--lift,0 20px 44px -34px rgba(28,20,12,.55))}
+#page[data-finish="handmade"] .hbtape{transform:rotate(-.6deg)}
+#page[data-finish="digital"] .hbtape{border-style:solid;border-radius:6px}
+
+/* the testimonial still, and the fuller copy blocks */
+.tvid{background-size:cover;background-position:50% 30%}
+.tvid:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,9,8,.55))}
+.tvid .tvplay,.tvid .tvspeed,.tvid .tvbar{z-index:2}
+.fitnote{max-width:760px;margin:30px auto 0;text-align:left}
+.fitnote p{margin:0 0 12px;font-size:16px;line-height:1.62;color:color-mix(in srgb,var(--ink) 82%,transparent)}
+.fitnote p:last-child{margin-bottom:0;color:color-mix(in srgb,var(--ink) 62%,transparent)}
+.fitnote b{color:var(--ink)}
+.dwhen,#page .when .dmeta{font-family:var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:color-mix(in srgb,var(--ink) 55%,transparent);line-height:1.6}
+.dwhen{margin:0 0 10px}
+.dxtra{margin:10px 0 0;font-size:15px;line-height:1.6;color:color-mix(in srgb,var(--ink) 66%,transparent)}

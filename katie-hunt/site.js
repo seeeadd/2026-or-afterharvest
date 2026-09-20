@@ -276,7 +276,7 @@
     var who = esc(t.name || 'A member'), role = esc(t.role || '');
     sec.innerHTML =
       '<div class="tstin">' +
-        '<figure class="tvid"><span class="tvplay">' + PLAY + '</span>' +
+        '<figure class="tvid"' + ((S.faces && S.faces.length) ? ' style="background-image:url(' + S.faces[2 % S.faces.length] + ')"' : '') + '><span class="tvplay">' + PLAY + '</span>' +
           '<span class="tvspeed"><b>1.2\u00D7</b><s>' + esc(t.length || '2 min 13 sec') + '</s>' +
             esc(t.short || '1 min 51 sec') + '</span>' +
           '<span class="tvbar"><i></i></span></figure>' +
@@ -903,7 +903,62 @@
     addEventListener('scroll', on, {passive: true});
   }
 
+  /* the lead's finish: corners, edge weight and lift, computed from their slide (see build_site.style_for) */
+  function styleTokens() {
+    var st = S.style || {};
+    var r = document.documentElement.style;
+    if (st.r_lg) r.setProperty('--r-lg', st.r_lg);
+    if (st.r_md) r.setProperty('--r-md', st.r_md);
+    if (st.r_sm) r.setProperty('--r-sm', st.r_sm);
+    if (st.btn_r) r.setProperty('--btn-r', st.btn_r);
+    if (st.btn_off) r.setProperty('--btn-off', st.btn_off);
+    if (st.brd) r.setProperty('--brd', st.brd);
+    if (st.lift) r.setProperty('--lift', st.lift);
+    if (st.face) P.setAttribute('data-finish', st.face);
+  }
+
+  /* the day blocks: a real date and time on each, and a line on what happens in the room */
+  function dayDetail() {
+    var days = LP.days || [];
+    var box = $('days');
+    if (!box || !days.length) return;
+    var slot = S.day_time || tfmt(START);
+    var meta = function (i) {
+      var d = new Date(START.getTime() + i * 864e5);
+      return dfmt(d) + ' \u00B7 ' + slot + ' \u00B7 live, replay the same day';
+    };
+    var when1 = q('.when .dmeta', box);
+    if (when1) when1.innerHTML = 'Live session<br>' + esc(meta(0));
+    var extra = $('d1o');
+    if (extra && days[0] && days[0].outcome) {
+      extra.insertAdjacentHTML('afterend', '<p class="dxtra">' +
+        esc(S.day_note || 'You work it in the session, on your own product, with ' + FIRST + ' on the call.') + '</p>');
+    }
+    qa('.d23 > *', box).forEach(function (card, i) {
+      var d = days[i + 1] || {};
+      if (q('.dwhen', card)) return;
+      var line = el('p', 'dwhen', esc(meta(i + 1)));
+      card.insertBefore(line, card.firstChild);
+      if (d.outcome && !q('.dxtra', card)) card.insertAdjacentHTML('beforeend',
+        '<p class="dxtra">' + esc('You leave with it written down, not just explained.') + '</p>');
+    });
+  }
+
+  /* the fit check needs more than a list: who this is for, and who it is not for */
+  function fitCopy() {
+    var fitc = $('fitc');
+    if (!fitc || q('.fitnote', fitc)) return;
+    var who = S.audience || 'makers';
+    var note = el('div', 'fitnote',
+      '<p><b>It is built for ' + esc(who) + ' who already sell</b> and want the next order to be repeatable: ' +
+      'you have something people buy, and the next step is getting it in front of the right buyers without guessing.</p>' +
+      '<p>' + esc('If you have not made your first product yet, come back later. Three days will not fix a thing you ' +
+      'have not started.') + '</p>');
+    fitc.appendChild(note);
+  }
+
   function start() {
+    styleTokens();
     /* the base layer's compact passes are measured against the 800px canvas:
        they mean nothing here and fight the hosted padding */
     P.classList.remove('compact', 'compact2');
@@ -918,6 +973,8 @@
     headerStack();
     heroLayout();
     restoreChecks();
+    fitCopy();
+    dayDetail();
     factsStrip();
     testimonial();
     scrollCue();
