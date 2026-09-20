@@ -370,3 +370,37 @@ body{margin:0;display:block}
 }
 #topbar .tbplus{font-style:normal;font-weight:800;color:var(--ink);margin-left:-2px}
 #topbar .tbin{gap:6px}
+
+/* lp.js appends #numprobe (the "2011 48" numeral measurement) at runtime; build_lp strips it before the Canva
+   shot, but the hosted page runs the same script, so it has to be hidden here. Same for the font probe. */
+#numprobe,#probe{display:none !important}
+
+/* ------------------------------------------------------- slimmer header bar */
+.nav{gap:12px !important;padding:6px 6px 6px 8px !important}
+.nav .lock{gap:9px}
+.nav .cal svg{width:30px;height:30px}
+.nav .lw small{font-size:9px;letter-spacing:.14em}
+.nav .lw b{font-size:14px}
+.nav .cd{gap:5px;padding-left:12px}
+.nav .cdl{font-size:9.5px;letter-spacing:.12em;gap:6px;margin-right:2px}
+.nav .cdl .livedot{width:6px;height:6px}
+.nav .cdn{min-width:36px;padding:4px 6px 3px;border-radius:8px;gap:0}
+.nav .cdn b{font-size:14px}
+.nav .cdn small{font-size:7px;letter-spacing:.1em}
+.nav .btn.sm{margin-left:4px;padding:9px 16px !important;font-size:13.5px}
+.nav .btn.sm svg{width:12px;height:12px}
+@media (max-width:900px){.nav .cdn{min-width:34px}.nav .cdn b{font-size:13px}}
+.nav .cal,.nav .cal svg{width:28px !important;height:28px !important}
+.nav .lock{align-items:center}
+.nav .lw{line-height:1.25}
+.nav .lw small{line-height:1.2}
+.nav .cdn{padding:3px 6px 2px}
+.nav .cdn b{font-size:13px;line-height:1.05}
+.nav .btn.sm{padding:8px 14px !important;font-size:13px}
+.nav .cd em{height:auto !important}
+/* the base sheet gives the header a fixed 96px shell for the screenshot: let it hug its content */
+.navwrap{height:auto !important;padding-top:0 !important;padding-bottom:0 !important}
+.nav{height:auto !important}
+.nav .btn.sm{padding:7px 14px !important}
+.nav .cdn{padding:2px 6px 1px}
+.nav .cd{padding-right:10px}
