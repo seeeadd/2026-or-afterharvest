@@ -206,7 +206,7 @@
 
     /* booking card: tape tag, the slide on a laptop, then the join line, the dates and the action */
     var book = el('div', 'hbook',
-      '<span class="hbtape">\u2605 Secure your free spot <i>\u00B7</i> Now</span>' +
+      '<span class="hbtape">\u2605 Secure your free spot<b><i>\u00B7</i>Now</b></span>' +
       '<div class="hbgrid">' +
         '<div class="hblap"><span class="hbscr"><img src="img/slide.jpg" alt="" loading="lazy">' +
           '<i class="hbplay">' + PLAY + '</i></span><span class="hbfoot"></span></div>' +
@@ -217,6 +217,17 @@
         '</div>' +
       '</div>');
     left.appendChild(book);
+    (function () {                    /* the tape belongs with the copy, not floating in the card's corner */
+      var tape = q('.hbtape', book), main = q('.hbmain', book);
+      if (tape && main) main.insertBefore(tape, main.firstChild);
+      var grid = q('.hbgrid', book);
+      if (grid) {                     /* flatten: slide, copy, action all on one row of the card */
+        while (grid.firstChild) book.appendChild(grid.firstChild);
+        grid.remove();
+      }
+      var btn = q('.btn.lg', book);
+      if (btn && main && btn.parentNode === main) book.appendChild(btn);
+    })();
 
     right.appendChild(eye); right.appendChild(h1); right.appendChild(lede); right.appendChild(reg);
     if (stage && stage.parentNode) stage.parentNode.removeChild(stage);
@@ -533,14 +544,18 @@
     next(); setInterval(next, 3800);
     q('.svx', s).addEventListener('click', function () { killed = true; s.classList.remove('on'); });
 
-    /* it appears once the hero is behind you and steps aside for the closing
-       card and the lock bar, so it can never sit on top of a call to action */
-    var closing = $('closing'), gatewrap = $('gatewrap');
+    /* it waits until the hero is behind you: in the hero it would sit on top of the register card.
+       Below the hero it is always up, scrolling up or down, so it can never be lost mid page. */
+    var hero = q('.hero'), armed = false;
     function tick() {
       if (killed) return;
-      s.classList.add('on');            /* once it is up it stays up: scrolling back must not lose it */
+      var past = true;
+      if (hero) { var r = hero.getBoundingClientRect(); past = r.bottom < 90; }
+      if (past) armed = true;
+      s.classList.toggle('on', armed && past);
     }
-    setTimeout(tick, 1400);
+    setTimeout(function () { tick(); addEventListener('scroll', tick, { passive: true });
+      addEventListener('resize', tick); }, 1400);
   }
 
   /* the lock bar fades in with the blurred part and grows as you scroll into it */

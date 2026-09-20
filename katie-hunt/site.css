@@ -1401,3 +1401,42 @@ body.modalopen{overflow:hidden}
 #page .nav .cdn{padding:2px 5px 0;min-width:30px}
 #page .nav .btn.sm{padding:6px 12px !important}
 #page .navwrap{height:44px}
+
+/* ------------------------------------------------------- booking bar, balanced
+   One row: the slide big enough to read, the copy, the action. Even padding on all four sides, one
+   vertical centre line, nothing floating in a corner. */
+.hbook{display:grid !important;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;
+  gap:clamp(18px,1.8vw,26px);padding:22px 28px;margin-top:14px}
+.hblap{width:clamp(196px,18.5vw,252px);margin:0}
+.hbscr{border-width:4px;border-radius:9px 9px 0 0}
+.hbfoot{height:7px;margin:0 -15px}
+/* the play mark sits in the corner: dead centre it lands on the slide's own headline */
+.hbplay{left:auto;top:auto;right:9px;bottom:9px;transform:none;width:30px;height:30px;
+  box-shadow:0 6px 16px -8px rgba(0,0,0,.7),0 0 0 3px color-mix(in srgb,#fff 70%,transparent)}
+.hbplay svg{width:11px;height:11px}
+.hbmain{display:block !important;width:auto;min-width:0}
+/* the eyebrow is a line of type, not a dashed sticker: the sticker was the heaviest thing in the card */
+.hbtape{display:flex;align-items:center;gap:7px;margin:0 0 8px;padding:0;background:none;border:0;
+  font-size:9.5px;letter-spacing:.2em;transform:none;
+  color:color-mix(in srgb,var(--accent) 82%,var(--ink))}
+.hbtape i{margin:0;opacity:.4;color:var(--ink)}
+.hbtape b{display:inline-flex;align-items:center;gap:7px;font-weight:inherit;white-space:nowrap}
+.hbjoin{margin:0 0 7px;font-size:clamp(16px,1.45vw,19px);line-height:1.28}
+/* a deliberate two line stack: the date reads big, the time and LIVE sit under it as meta */
+.hbwhen{display:block;margin:0}
+.hbwhen b{display:block;font-size:clamp(17px,1.5vw,20px);line-height:1.2}
+.hbwhen span{display:block;margin-top:4px;font-size:10px}
+#page .hbook .btn.lg{grid-column:3;grid-row:1;justify-self:end;align-self:center;
+  min-width:158px;height:48px;margin:0;font-size:14.5px;padding:0 18px}
+@media (max-width:820px){
+  .hbook{grid-template-columns:132px minmax(0,1fr);gap:16px;padding:18px}
+  .hblap{width:100%}
+  .hbplay{right:6px;bottom:6px;width:22px;height:22px;box-shadow:0 4px 10px -6px rgba(0,0,0,.7),
+    0 0 0 2px color-mix(in srgb,#fff 70%,transparent)}
+  .hbplay svg{width:9px;height:9px}
+  .hbtape{display:block;font-size:9px;letter-spacing:.16em}    /* flex pushed the last word to the far edge */
+  .hbtape i{display:inline;margin:0 3px}
+  .hbtape b{display:inline}                                   /* the dot never ends a line on its own */
+  .hbjoin{font-size:15.5px}
+  #page .hbook .btn.lg{grid-column:1 / -1;grid-row:2;justify-self:stretch;width:100% !important;margin-top:12px}
+}
