@@ -1020,25 +1020,33 @@
       var det = (S.day_detail || [])[i + 1];
       if (det && !q('.dxtra', card)) card.insertAdjacentHTML('beforeend', '<p class="dxtra">' + esc(det) + '</p>' + bullets(i + 1));
     });
-    ticketDays(box, slot);
+    specDays(box, slot);
   }
 
-  /* each day is the same object the modal and the favicon use: a stub with the number and the date, a
-     punched perforation, then what happens that day. Three days that look like three tickets. */
-  function ticketDays(box, slot) {
-    function stub(i) {
+  /* Katie's own language, not another ticket: each day reads like the line sheet she teaches people to
+     build. A spec row of labelled fields across the top, a dimension rule under the title, and the
+     number set in the lead's display face. Every value comes from the lead's data, so it customises
+     itself: their accent, their faces, their dates. */
+  function specDays(box, slot) {
+    function spec(i) {
       var d = new Date(START.getTime() + i * 864e5);
-      return '<div class="dstub"><span class="dsl">Day</span><b class="dsn">' + pad2(i + 1) + '</b>' +
-        '<span class="dsr"></span><span class="dsd">' + esc(dfmt(d)) + '</span>' +
-        '<span class="dst">' + esc(slot) + '</span><span class="dsv">Live</span></div>';
+      return '<div class="dspec">' +
+        '<span class="dsf dsf-n"><i>Day</i><b>' + pad2(i + 1) + '</b></span>' +
+        '<span class="dsf"><i>Date</i><b>' + esc(dfmt(d)) + '</b></span>' +
+        '<span class="dsf"><i>Starts</i><b>' + esc(slot) + '</b></span>' +
+        '<span class="dsf"><i>Format</i><b>Live online</b></span>' +
+        '<span class="dsf dsf-r"><i>Replay</i><b>Same day</b></span>' +
+        '</div>';
     }
     function wrap(card, i) {
-      if (q('.dstub', card)) return;
+      if (q('.dspec', card)) return;
       var body = el('div', 'dbody');
       while (card.firstChild) body.appendChild(card.firstChild);
-      card.insertAdjacentHTML('afterbegin', stub(i));
+      card.insertAdjacentHTML('afterbegin', spec(i));
       card.appendChild(body);
-      card.classList.add('dticket');
+      card.classList.add('dsheet');
+      var t = q('.dt', body);              /* the dimension rule the slide uses to measure a drawing */
+      if (t) t.insertAdjacentHTML('afterend', '<span class="drule" aria-hidden="true"></span>');
     }
     var d1 = q('.d1', box);
     if (d1) wrap(d1, 0);

@@ -1651,68 +1651,6 @@ body.modalopen{overflow:hidden}
 /* the hero starts lower: the date pill was sitting right under the header stack */
 #page .hero{padding-top:clamp(28px,3.4vw,52px)}
 
-/* ======================================================= the three days are three tickets
-   Day 1 was a bare slide on the page ground while Days 2 and 3 were cards, and each carried its date in a
-   different place. One object now: a stub with the number and the date, a punched perforation, the copy. */
-#days .dticket{position:relative;display:grid;grid-template-columns:clamp(88px,7.4vw,112px) minmax(0,1fr);
-  align-items:stretch;background:var(--paper);border-radius:var(--r-lg,14px);border:0;overflow:hidden;
-  --dperf:clamp(88px,7.4vw,112px);
-  -webkit-mask-image:radial-gradient(circle at var(--dperf) 0,transparent 9px,#000 9.5px),
-    radial-gradient(circle at var(--dperf) 100%,transparent 9px,#000 9.5px);
-  -webkit-mask-composite:source-in;
-  mask-image:radial-gradient(circle at var(--dperf) 0,transparent 9px,#000 9.5px),
-    radial-gradient(circle at var(--dperf) 100%,transparent 9px,#000 9.5px);
-  mask-composite:intersect;
-  box-shadow:none;filter:drop-shadow(0 20px 34px rgba(28,20,12,.14)) drop-shadow(0 2px 5px rgba(28,20,12,.1))}
-
-.dstub{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:2px;padding:22px 8px;text-align:center;color:var(--accent-ink);
-  background:linear-gradient(170deg,color-mix(in srgb,var(--accent) 86%,#fff) 0%,var(--accent) 44%,
-    color-mix(in srgb,var(--accent) 90%,#1a0f0a) 100%)}
-.dstub:before{content:'';position:absolute;inset:0;opacity:.14;pointer-events:none;
-  background-image:linear-gradient(color-mix(in srgb,var(--accent-ink) 60%,transparent) 1px,transparent 1px),
-    linear-gradient(90deg,color-mix(in srgb,var(--accent-ink) 60%,transparent) 1px,transparent 1px);
-  background-size:22px 22px;
-  -webkit-mask-image:radial-gradient(120% 80% at 50% 0%,#000,transparent 74%);
-  mask-image:radial-gradient(120% 80% at 50% 0%,#000,transparent 74%)}
-.dstub > *{position:relative}
-.dsl{font-family:var(--label);font-size:8.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
-  opacity:.72}
-.dsn{font-family:var(--display);font-size:clamp(32px,3.2vw,42px);line-height:1;letter-spacing:-.04em}
-.dsr{display:block;width:26px;height:1px;margin:10px 0 9px;
-  background:color-mix(in srgb,var(--accent-ink) 46%,transparent)}
-.dsd{font-family:var(--label);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.dst{font-family:var(--label);font-size:9.5px;font-weight:600;letter-spacing:.1em;opacity:.8}
-.dsv{margin-top:7px;padding:2px 8px;border-radius:3px;font-family:var(--label);font-size:8px;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;
-  border:1px solid color-mix(in srgb,var(--accent-ink) 46%,transparent);opacity:.9}
-
-#days .dbody{position:relative;padding:26px 28px}
-#days .dbody:before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:1px;
-  background-image:linear-gradient(color-mix(in srgb,var(--ink) 28%,transparent) 55%,transparent 0);
-  background-size:1px 8px}
-/* the stub carries the date now, so the old meta rows go */
-#days .dwhen,#days .d1 .when{display:none !important}
-#days .dticket .dt{margin:0 0 10px}
-#days .dticket .do{margin:0 0 10px}
-
-/* Day 1 keeps the slide, beside the copy inside its own ticket */
-#days .d1 .dbody{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
-  gap:clamp(22px,2.4vw,38px);align-items:center}
-#days .d1 .macbook{margin:0;width:100%}
-#days .d1 .d1body{min-width:0}
-#days .d23{margin-top:clamp(18px,2vw,26px)}
-#days{scroll-margin-top:96px}
-
-@media (max-width:900px){
-  #days .dticket{grid-template-columns:72px minmax(0,1fr);--dperf:72px}
-  .dsn{font-size:28px}
-  .dsd,.dst{font-size:9px;letter-spacing:.1em}
-  .dsv{display:none}
-  #days .dbody{padding:20px 20px}
-  #days .d1 .dbody{grid-template-columns:minmax(0,1fr);gap:18px}
-}
-
 /* ---------------------------------------------- the lock bar is a ticket too, punched the same way */
 #gate .gbar{position:relative;gap:0;padding:0 10px 0 0;overflow:hidden;--gperf:56px;
   -webkit-mask-image:radial-gradient(circle at var(--gperf) 0,transparent 6px,#000 6.5px),
@@ -1736,14 +1674,6 @@ body.modalopen{overflow:hidden}
   #gate .gstub .glock{width:18px;height:18px}
   #gate .gtx{padding:9px 10px 9px 12px}
 }
-/* the old .dc card had its own padding, radius and glass: the ticket replaces all three */
-#page #days .dticket{padding:0;border-radius:var(--r-lg,14px);background:var(--paper);
-  -webkit-backdrop-filter:none;backdrop-filter:none;align-items:stretch}
-#page #days .dticket .when{display:none !important}
-#page #days .dticket .dt{margin:0 0 10px}
-#page #days .dticket .do{margin:0 0 10px}
-#page #days .d1{align-items:stretch}
-#page #days .dticket{gap:0}     /* the stub meets the perforation, no gutter between them */
 
 /* the lock mark was drawn in the accent, which is invisible once the stub is the accent */
 #gate .gstub .glock rect{fill:color-mix(in srgb,#fff 20%,transparent);stroke:currentColor}
@@ -1813,3 +1743,64 @@ body.modalopen{overflow:hidden}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 18px 34px -28px rgba(28,20,12,.55)}
 .tkdisc{background:color-mix(in srgb,var(--ground) 40%,#fff);
   border:1px solid color-mix(in srgb,var(--ink) 8%,transparent)}
+
+/* ================================================= the three days read like her own line sheet
+   The ticket was right for one seat, but four tickets on one page is a tic. These are the document the
+   lead actually teaches people to make: a spec row of labelled fields, a dimension rule under the title,
+   the number in their display face. Nothing here is authored per lead; it takes their accent, their
+   faces and their dates, so every lead's days look like their own paperwork. */
+#page #days .dsheet{padding:0;border-radius:var(--r-lg,14px);background:var(--paper);
+  border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);
+  -webkit-backdrop-filter:none;backdrop-filter:none;display:block;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 20px 38px -30px rgba(28,20,12,.5)}
+#page #days .dsheet .when,#page #days .dwhen{display:none !important}
+
+/* the spec row: labelled fields with hairline gutters, the way a line sheet heads a page */
+#days .dspec{position:relative;display:flex;flex-wrap:wrap;align-items:stretch;
+  border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 5%,transparent),transparent)}
+/* measure ticks along the top edge, from the slide's own technical drawing */
+#days .dspec:before{content:'';position:absolute;left:0;right:0;top:0;height:7px;pointer-events:none;
+  background-image:repeating-linear-gradient(90deg,
+    color-mix(in srgb,var(--accent) 45%,transparent) 0 1px,transparent 1px 13px);
+  opacity:.5}
+#days .dsf{display:flex;flex-direction:column;justify-content:center;gap:3px;
+  padding:15px 20px 13px;min-width:0}
+#days .dsf + .dsf{border-left:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
+#days .dsf i{font-style:normal;font-family:var(--label);font-size:8px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:color-mix(in srgb,var(--ink) 42%,transparent)}
+#days .dsf b{font-family:var(--label);font-size:12.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink);white-space:nowrap}
+#days .dsf-n b{font-family:var(--display);font-size:26px;line-height:1;letter-spacing:-.04em;
+  text-transform:none;color:var(--accent)}
+#days .dsf-n{padding-right:22px}
+/* the fields share the row the way a form header does, rather than one being shoved to the far edge */
+#days .dsf{flex:1 1 auto}
+#days .dsf-n{flex:0 0 auto}
+
+#days .dbody{padding:24px 26px 26px}
+#days .dsheet .dt{margin:0}
+#days .dsheet .do{margin:14px 0 10px}
+/* the dimension rule: a measured span with end ticks, the mark her slide uses to size a drawing */
+.drule{display:block;position:relative;height:1px;width:clamp(92px,16%,150px);margin:13px 0 0;
+  background:color-mix(in srgb,var(--accent) 55%,transparent)}
+.drule:before,.drule:after{content:'';position:absolute;top:-4px;width:1px;height:9px;
+  background:color-mix(in srgb,var(--accent) 65%,transparent)}
+.drule:before{left:0}
+.drule:after{right:0}
+
+#days .d1 .dbody{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  gap:clamp(22px,2.4vw,38px);align-items:center}
+#days .d1 .macbook{margin:0;width:100%}
+#days .d1 .d1body{min-width:0}
+#days .d23{margin-top:clamp(18px,2vw,26px)}
+#days{scroll-margin-top:96px}
+
+@media (max-width:900px){
+  #days .dsf{padding:12px 14px 11px}
+  #days .dsf b{font-size:11.5px}
+  #days .dsf-n b{font-size:22px}
+  #days .dsf-r{margin-left:0}
+  #days .dbody{padding:18px 18px 20px}
+  #days .d1 .dbody{grid-template-columns:minmax(0,1fr);gap:18px}
+}
