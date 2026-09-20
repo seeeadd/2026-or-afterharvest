@@ -226,7 +226,11 @@
         grid.remove();
       }
       var btn = q('.btn.lg', book);
-      if (btn && main && btn.parentNode === main) book.appendChild(btn);
+      if (btn && main && btn.parentNode === main) {   /* the action is a block, not a pill floating in a void */
+        var act = el('div', 'hbact');
+        book.appendChild(act); act.appendChild(btn);
+        act.insertAdjacentHTML('beforeend', '<span class="hbfine">Nothing to pay</span>');
+      }
     })();
 
     right.appendChild(eye); right.appendChild(h1); right.appendChild(lede); right.appendChild(reg);
