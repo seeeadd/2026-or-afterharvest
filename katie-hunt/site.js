@@ -957,6 +957,54 @@
     fitc.appendChild(note);
   }
 
+  /* three real sections between the days and the close: what they walk away with, who runs it, the questions
+     people actually ask. All of it from data the lead already has, so no lead needs copy written by hand. */
+  function bodySections() {
+    var days = LP.days || [], closing = $('closing');
+    if (!closing || $('takeaway')) return;
+
+    var outs = days.slice(0, 3).map(function (d) { return String(d.outcome || '').trim(); }).filter(Boolean);
+    if (outs.length) {
+      var take = el('section', 'sect z');
+      take.id = 'takeaway';
+      take.innerHTML = '<p class="seye">What you walk away with</p>' +
+        '<h2 class="sh">Three days in, you have the thing itself.</h2>' +
+        '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p>' +
+        '<div class="tkgrid">' + outs.map(function (o, i) {
+          return '<div class="tkcard"><span class="tkn">' + (i + 1) + '</span><p>' + esc(o) + '</p></div>';
+        }).join('') + '</div>';
+      P.insertBefore(take, closing);
+    }
+
+    var BIO = S.bio || LP.bio || '';
+    if (BIO) {
+      var host = el('section', 'sect z');
+      host.id = 'host';
+      host.innerHTML = '<div class="hostin">' +
+        '<div class="hostpic"><img src="img/headshot.jpg" alt="' + esc(LP.name || FIRST) + '"></div>' +
+        '<div><p class="seye">Who is running it</p>' +
+        '<h2 class="sh">' + esc(LP.name || FIRST) + '</h2>' +
+        '<p class="hostbio">' + esc(BIO) + '</p>' +
+        '<p class="hostrun">' + esc('She runs the three days herself. No panel, no guest carousel.') + '</p></div></div>';
+      P.insertBefore(host, closing);
+    }
+
+    var qs = [
+      ['Is it really free?', 'Yes. Three days, live with ' + FIRST + ', no card and nothing to buy on the way in.'],
+      ['What if I cannot make a session?', 'Register anyway. The replay of each day goes out the same evening and stays up for a week.'],
+      ['How much time does it take?', 'About an hour a day, plus the work you do in the room on your own product.'],
+      ['Do I need anything ready?', 'Bring one product line and whatever numbers you have. That is enough to start on Day 1.']
+    ];
+    var faq = el('section', 'sect z');
+    faq.id = 'faq';
+    faq.innerHTML = '<p class="seye">Before you hold a seat</p>' +
+      '<h2 class="sh">The questions people ask.</h2>' +
+      '<div class="faqgrid">' + qs.map(function (r) {
+        return '<div class="faqq"><b>' + esc(r[0]) + '</b><p>' + esc(r[1]) + '</p></div>';
+      }).join('') + '</div>';
+    P.insertBefore(faq, closing);
+  }
+
   function start() {
     styleTokens();
     /* the base layer's compact passes are measured against the 800px canvas:
@@ -975,6 +1023,7 @@
     restoreChecks();
     fitCopy();
     dayDetail();
+    bodySections();
     factsStrip();
     testimonial();
     scrollCue();
