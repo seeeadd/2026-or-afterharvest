@@ -1017,8 +1017,8 @@
     ];
     var faq = el('section', 'sect z');
     faq.id = 'faq';
-    faq.innerHTML = '<div class="faqhead"><p class="seye">Before you hold a seat</p>' +
-      '<h2 class="sh">The questions people ask.</h2>' +
+    faq.innerHTML = '<div class="faqhead"><div class="faqtitle"><p class="seye">Before you hold a seat</p>' +
+      '<h2 class="sh">The questions people ask.</h2></div>' +
       '<p class="faqnote">' + esc('If yours is not here, reply to the email and ask. ' + FIRST + ' answers them herself.') +
       '</p></div>' +
       '<ol class="faqlist">' + qs.map(function (r, i) {
