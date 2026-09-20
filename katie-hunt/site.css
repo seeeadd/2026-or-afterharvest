@@ -1011,3 +1011,11 @@ body.modalopen{overflow:hidden}
 .tkstop{z-index:1}
 .tkstop.s2{padding-top:46px}
 .tkstop.s3{padding-top:8px}
+/* the bar sits tighter now the faces read properly */
+.htrust > *{min-height:78px;padding:12px 20px}
+.htrust .awd{padding:9px 18px}
+.htrust .avstack{padding-left:22px;padding-right:22px}
+.htrust .avstack .fav{width:42px;height:42px;margin-left:-12px;border-width:2.5px}
+.htrust .tmeta{gap:6px;padding-right:22px}
+.tmeta .stars svg{width:15px;height:15px}
+.tm2{font-size:13.5px}
