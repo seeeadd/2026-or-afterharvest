@@ -193,20 +193,36 @@
   /* the lead's own subject, drawn once and worn by every primary action. Matched from words the lead
      already gave us (brand, event, eyebrow tags, audience), so no lead needs an icon picked by hand. */
   var ICONS = {
-    box: '<path d="M3.2 7.4 12 3l8.8 4.4v9.2L12 21l-8.8-4.4z"/><path d="M3.2 7.4 12 11.8l8.8-4.4M12 11.8V21"/>' +
-      '<path d="m7.6 5.2 8.8 4.4"/>',
-    people: '<circle cx="9" cy="8.4" r="3.1"/><path d="M3.4 19.2c.5-3.1 2.9-4.9 5.6-4.9s5.1 1.8 5.6 4.9"/>' +
-      '<path d="M16 6.1a3 3 0 0 1 0 5.9M17.2 14.8c2 .6 3.3 2.2 3.6 4.4"/>',
-    mic: '<rect x="9" y="3" width="6" height="10.5" rx="3"/><path d="M5.6 11.6a6.4 6.4 0 0 0 12.8 0M12 18v3M9 21h6"/>',
-    mail: '<rect x="2.8" y="5.2" width="18.4" height="13.6" rx="2.4"/><path d="m3.6 6.6 8.4 6 8.4-6"/>',
-    book: '<path d="M4 4.4h6a2.6 2.6 0 0 1 2 2.5v12a2.2 2.2 0 0 0-2-1.5H4z"/>' +
-      '<path d="M20 4.4h-6a2.6 2.6 0 0 0-2 2.5v12a2.2 2.2 0 0 1 2-1.5h6z"/>',
-    tag: '<path d="M11.2 3.2H20v8.8l-8.6 8.6a1.6 1.6 0 0 1-2.3 0l-6.5-6.5a1.6 1.6 0 0 1 0-2.3z"/>' +
-      '<circle cx="16.3" cy="7.7" r="1.5"/>',
-    pen: '<path d="M14.6 4.6 19.4 9.4 8.8 20H4v-4.8z"/><path d="m13 6.2 4.8 4.8"/>',
-    camera: '<rect x="2.8" y="6.6" width="18.4" height="12.6" rx="2.6"/><circle cx="12" cy="12.9" r="3.7"/>' +
+    /* wholesale: her whole line is "your products belong in more stores", so the mark is a shopfront with
+       a parcel under the awning, not a generic carton */
+    box: '<path d="M2.6 9.4h18.8l-1.5-3.3a1.7 1.7 0 0 0-1.5-1H5.6a1.7 1.7 0 0 0-1.5 1z" fill="currentColor" ' +
+      'fill-opacity=".32" stroke="none"/>' +
+      '<path d="M2.6 9.4h18.8l-1.5-3.3a1.7 1.7 0 0 0-1.5-1H5.6a1.7 1.7 0 0 0-1.5 1z"/>' +
+      '<path d="M5.2 9.4V20.6h13.6V9.4"/>' +
+      '<rect x="9.1" y="13.4" width="5.8" height="5" rx=".8"/><path d="M12 13.4v5M9.1 15.9h5.8"/>',
+    people: '<circle cx="9.2" cy="8.2" r="3.2" fill="currentColor" fill-opacity=".28" stroke="none"/>' +
+      '<circle cx="9.2" cy="8.2" r="3.2"/><path d="M3.3 19.4c.5-3.3 3-5.2 5.9-5.2s5.4 1.9 5.9 5.2"/>' +
+      '<path d="M16.2 5.9a3.1 3.1 0 0 1 0 6.2M17.5 14.9c2.1.7 3.4 2.3 3.7 4.5"/>',
+    mic: '<rect x="9" y="3" width="6" height="10.6" rx="3" fill="currentColor" fill-opacity=".3" stroke="none"/>' +
+      '<rect x="9" y="3" width="6" height="10.6" rx="3"/>' +
+      '<path d="M5.5 11.6a6.5 6.5 0 0 0 13 0M12 18.1V21M9.1 21h5.8"/>',
+    mail: '<path d="M3.6 6.6h16.8L12 12.9z" fill="currentColor" fill-opacity=".3" stroke="none"/>' +
+      '<rect x="2.8" y="5.2" width="18.4" height="13.6" rx="2.4"/><path d="m3.6 6.6 8.4 6.3 8.4-6.3"/>',
+    book: '<path d="M12 6.9a2.6 2.6 0 0 0-2-2.5H4v13h6a2.2 2.2 0 0 1 2 1.5z" fill="currentColor" ' +
+      'fill-opacity=".28" stroke="none"/><path d="M4 4.4h6a2.6 2.6 0 0 1 2 2.5v12a2.2 2.2 0 0 0-2-1.5H4z"/>' +
+      '<path d="M20 4.4h-6a2.6 2.6 0 0 0-2 2.5v12a2.2 2.2 0 0 1 2-1.5h6z"/><path d="M15.4 8.4h2.8M15.4 11.6h2.8"/>',
+    tag: '<path d="M11.2 3.2H20v8.8l-8.6 8.6a1.6 1.6 0 0 1-2.3 0l-6.5-6.5a1.6 1.6 0 0 1 0-2.3z" ' +
+      'fill="currentColor" fill-opacity=".28" stroke="none"/>' +
+      '<path d="M11.2 3.2H20v8.8l-8.6 8.6a1.6 1.6 0 0 1-2.3 0l-6.5-6.5a1.6 1.6 0 0 1 0-2.3z"/>' +
+      '<circle cx="16.2" cy="7.8" r="1.6"/>',
+    pen: '<path d="M14.6 4.6 19.4 9.4 8.8 20H4v-4.8z" fill="currentColor" fill-opacity=".26" stroke="none"/>' +
+      '<path d="M14.6 4.6 19.4 9.4 8.8 20H4v-4.8z"/><path d="m13 6.2 4.8 4.8M4 20l3.4-1.2"/>',
+    camera: '<circle cx="12" cy="13" r="3.8" fill="currentColor" fill-opacity=".3" stroke="none"/>' +
+      '<rect x="2.8" y="6.6" width="18.4" height="12.6" rx="2.6"/><circle cx="12" cy="13" r="3.8"/>' +
       '<path d="M8.6 6.6 10 4.2h4l1.4 2.4"/>',
-    seat: '<path d="M6 20v-3M18 20v-3"/><path d="M4.8 17h14.4a1.6 1.6 0 0 0 1.6-1.9l-.6-3.1H4.2l-.6 3.1A1.6 1.6 0 0 0 5 17z"/>' +
+    seat: '<path d="M4.2 12h15.6l-.6 3.1A1.6 1.6 0 0 1 17.6 17H6.4a1.6 1.6 0 0 1-1.6-1.9z" ' +
+      'fill="currentColor" fill-opacity=".3" stroke="none"/><path d="M6 20.4v-3.4M18 20.4v-3.4"/>' +
+      '<path d="M4.8 17h14.4a1.6 1.6 0 0 0 1.6-1.9l-.6-3.1H4.2l-.6 3.1A1.6 1.6 0 0 0 5 17z"/>' +
       '<path d="M6.6 12V6.2A2.2 2.2 0 0 1 8.8 4h6.4a2.2 2.2 0 0 1 2.2 2.2V12"/>'
   };
   var ICONMAP = [
@@ -1079,16 +1095,24 @@
     })();
   }
 
-  /* the header tightens and picks up a thin brand hairline once the page is moving */
+  /* The header docks once the page is moving. One state change, read in a frame and written only when it
+     actually flips, so scrolling never pays for a style write. The motion itself is pure transform. */
   function headerScroll() {
     var hdr = q('.hdr');
     if (!hdr) return;
-    var on = function () {
-      hdr.classList.toggle('tight', scrollY > 90);
-      hdr.style.setProperty('--hline', clamp(scrollY / 420, 0, 1).toFixed(3));
+    var tight = null, queued = false;
+    var apply = function () {
+      queued = false;
+      var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var want = tight ? y > 54 : y > 96;          /* hysteresis: no flutter at the threshold */
+      if (want === tight) return;
+      tight = want;
+      hdr.classList.toggle('tight', want);
     };
-    on();
-    addEventListener('scroll', on, {passive: true});
+    var on = function () { if (!queued) { queued = true; requestAnimationFrame(apply); } };
+    apply();
+    addEventListener('scroll', on, { passive: true });
+    addEventListener('resize', on, { passive: true });
   }
 
   /* the lead's finish: corners, edge weight and lift, computed from their slide (see build_site.style_for) */
