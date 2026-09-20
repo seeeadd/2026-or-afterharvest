@@ -22,9 +22,9 @@
   --measure:1320px;                 /* content column on a wide screen */
   --gut:clamp(16px,3.2vw,40px);     /* minimum side gutter */
   --side:max(var(--gut),calc((100% - var(--measure))/2));
-  --r-lg:28px;
-  --r-md:18px;
-  --r-sm:12px;
+  --r-lg:14px;
+  --r-md:10px;
+  --r-sm:8px;
   --tile:rgba(33,29,28,.92);
 }
 html{-webkit-text-size-adjust:100%}
@@ -81,9 +81,11 @@ body{margin:0}
 #page #headline.wrapped .mark{display:none}
 
 /* ---------------------------------------------------------- 3. header stack */
-#page .hdr{position:sticky;top:0;z-index:60;isolation:isolate}
+#page .hdr{position:sticky;top:0;z-index:60;isolation:isolate;display:flex;flex-direction:column;align-items:center;
+  padding-top:8px}
 
-#topbar{display:flex;align-items:center;justify-content:center;gap:10px;height:36px;padding:0 var(--gut);
+#topbar{display:flex;align-items:center;justify-content:center;gap:9px;height:30px;padding:0 16px;margin:0 auto;
+  width:max-content;max-width:calc(100% - 2 * var(--gut));border-radius:10px 10px 0 0;
   position:relative;overflow:hidden;color:var(--accent-ink);
   background:var(--accent) linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 70%);
   font-family:var(--label);font-size:11px;font-weight:var(--lw);letter-spacing:.1em;text-transform:uppercase;
@@ -93,7 +95,7 @@ body{margin:0}
 #topbar b{font-weight:var(--lw);font-variant-numeric:tabular-nums}
 #topbar .tbshort{display:none}
 
-#page .navwrap{height:58px;padding-top:0;display:flex;justify-content:center;align-items:center;z-index:20}
+#page .navwrap{height:52px;width:100%;max-width:900px;margin:0 auto;padding-top:0;display:flex;justify-content:center;align-items:center;z-index:20}
 #page .nav{width:min(var(--measure),calc(100% - var(--gut)*2));height:58px;gap:14px;padding:0 8px 0 10px;
   border-radius:0 0 20px 20px;background:var(--glass-solid);
   box-shadow:inset 0 0 0 1px var(--glass-brd),0 10px 26px -18px rgba(38,32,31,.5)}
@@ -233,30 +235,44 @@ body{margin:0}
 
 /* ------------------------------------------------------- 8. testimonial strip */
 .tst{padding-top:96px;padding-bottom:0}
-.tstin{display:grid;grid-template-columns:300px minmax(0,1fr);gap:44px;align-items:center;
-  padding:26px;border-radius:34px;background:var(--card);
-  box-shadow:inset 0 0 0 1px var(--card-brd),inset 0 1px 0 var(--glass-hi),var(--sh2);
-  -webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5)}
-.tvid{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:var(--plate);
-  box-shadow:inset 0 0 0 1px var(--glass-brd)}
-.tvid .tvart{position:absolute;inset:0;width:100%;height:100%}
-.tvid .tvplay{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;
-  display:grid;place-items:center;color:var(--accent-ink);background:var(--accent);
-  box-shadow:0 10px 26px -10px var(--accent-sh),inset 0 1px 0 rgba(255,255,255,.3)}
-.tvid .tvplay svg{margin-left:3px}
-.tvid .tvspeed{position:absolute;right:11px;top:11px;height:24px;padding:0 9px;border-radius:999px;display:flex;align-items:center;
-  background:rgba(20,17,16,.6);color:#fff;font-family:var(--label);font-size:9.5px;font-weight:var(--lw);letter-spacing:.12em;
-  text-transform:uppercase;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.tvid .tvbar{position:absolute;left:11px;right:11px;bottom:11px;height:4px;border-radius:2px;background:rgba(255,255,255,.4)}
-.tvid .tvbar i{position:absolute;left:0;top:0;bottom:0;width:38%;border-radius:2px;background:#fff}
-.tq{min-width:0}
-.tq blockquote{margin-top:14px;font-family:var(--display);font-weight:var(--dw);font-size:clamp(22px,2.3vw,30px);
-  line-height:1.24;letter-spacing:-.025em;color:var(--ink);text-wrap:pretty}
-.tqwho{display:flex;align-items:center;gap:12px;margin-top:20px}
-.tqwho .fav{flex:none;width:40px;height:40px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--av-ring)}
-.tqwho .fav svg{display:block;width:100%;height:100%}
-.tqwho b{font-size:15px;font-weight:600;color:var(--ink);display:block}
-.tqwho small{font-family:var(--label);font-size:9.5px;font-weight:var(--lw);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+#tst{padding:64px var(--gut) 0}
+.tstin{position:relative;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);
+  gap:38px;align-items:center;padding:30px;border-radius:16px;overflow:hidden;color:#f6f1ea;
+  background:radial-gradient(120% 130% at 8% 0%, color-mix(in srgb,var(--accent) 55%,#15120f) 0%, #15120f 62%);
+  box-shadow:0 30px 70px -44px rgba(20,14,10,.9)}
+.tvid{position:relative;margin:0;aspect-ratio:4/5;border-radius:12px;overflow:hidden;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--accent) 70%,#15120f),#0f0d0b);
+  box-shadow:0 18px 40px -26px rgba(0,0,0,.9)}
+.tvplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;
+  width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);color:#15120f}
+.tvspeed{position:absolute;left:12px;bottom:12px;padding:6px 10px;border-radius:8px;background:rgba(10,9,8,.66);
+  font-family:var(--label);font-size:10.5px;letter-spacing:.06em;line-height:1.45;color:#fff;backdrop-filter:blur(4px)}
+.tvspeed b{display:block;font-size:11.5px}
+.tvspeed s{opacity:.5;margin-right:5px}
+.tvbar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.2)}
+.tvbar i{display:block;width:38%;height:100%;background:var(--accent)}
+.tstbody{min-width:0}
+.tsteps{list-style:none;margin:0 0 22px;padding:0;position:relative}
+.tsteps:before{content:'';position:absolute;left:5px;top:12px;bottom:34px;width:1px;
+  background:linear-gradient(rgba(255,255,255,.35),rgba(255,255,255,.06))}
+.tsteps li{position:relative;padding-left:26px;margin-bottom:18px}
+.tsdot{position:absolute;left:0;top:5px;width:11px;height:11px;border-radius:50%;border:2px solid rgba(255,255,255,.4)}
+.tsdot.on{background:var(--accent);border-color:var(--accent)}
+.tsteps b{display:block;font-family:var(--label);font-size:10px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(246,241,234,.62);margin-bottom:6px}
+.tsteps p{margin:0;font-size:15.5px;line-height:1.55;color:rgba(246,241,234,.82);max-width:54ch}
+.tsteps h3{margin:0;font-family:var(--display);font-size:clamp(24px,2.4vw,34px);line-height:1.15;letter-spacing:-.02em;
+  color:#fff;max-width:20ch}
+.tsquote{margin:0;padding:18px 20px;border-radius:12px;background:color-mix(in srgb,var(--accent) 88%,#15120f);
+  box-shadow:0 16px 34px -28px rgba(0,0,0,.9)}
+.tsquote p{margin:0 0 14px;font-family:var(--display);font-style:italic;font-size:17px;line-height:1.45;
+  color:var(--accent-ink,#fff)}
+.tsquote footer{display:flex;align-items:center;gap:10px;color:var(--accent-ink,#fff)}
+.tsav{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.22);
+  font-weight:700;font-size:14px}
+.tsquote footer b{display:block;font-size:14px}
+.tsquote footer i{font-style:normal;font-size:12px;opacity:.72}
+@media (max-width:820px){.tstin{grid-template-columns:1fr;gap:22px;padding:20px}.tvid{aspect-ratio:16/10}}
 
 /* ----------------------------------------------- 9. locked area + lock bar */
 #gatewrap{position:relative;margin-top:96px}
@@ -537,3 +553,47 @@ body.modalopen{overflow:hidden}
 .tkdot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.75}
 @keyframes tkroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
 @media (max-width:640px){.nticker{margin-top:26px;padding-left:10px;gap:10px}.tkitem{padding:0 16px;font-size:12.5px}}
+
+/* ------------------------------------------------ booking card, reference shape */
+.hbook{position:relative;margin-top:20px;padding:22px 22px 20px;border-radius:12px;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  border:1px solid color-mix(in srgb,var(--ink) 9%,transparent);
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 20px 44px -34px rgba(28,20,12,.55)}
+.hbtape{display:inline-block;margin-bottom:18px;padding:7px 14px;font-family:var(--label);font-size:10.5px;
+  font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 80%,transparent);
+  background:color-mix(in srgb,var(--accent) 12%,#efe7d6);border:1px dashed color-mix(in srgb,var(--ink) 32%,transparent)}
+.hbtape i{font-style:normal;opacity:.5;margin:0 2px}
+.hbgrid{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:center}
+.hblap{position:relative}
+.hbscr{position:relative;display:block;border:3px solid var(--ink);border-radius:7px 7px 0 0;overflow:hidden;
+  background:#fff;aspect-ratio:16/10}
+.hbscr img{width:100%;height:100%;object-fit:cover;display:block}
+.hbplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;
+  width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);
+  box-shadow:0 6px 14px -8px rgba(0,0,0,.6)}
+.hbfoot{display:block;height:6px;margin:0 -12px;border-radius:0 0 4px 4px;background:var(--ink)}
+.hbmain{min-width:0}
+.hbjoin{margin:0 0 10px;font-family:var(--display);font-size:clamp(19px,1.6vw,23px);line-height:1.2;
+  letter-spacing:-.02em;color:var(--ink)}
+.hbjoin em{font-style:italic;color:var(--accent)}
+.hbwhen{display:flex;align-items:baseline;gap:10px;margin:0 0 14px;flex-wrap:wrap}
+.hbwhen b{font-family:var(--display);font-size:clamp(22px,2vw,28px);letter-spacing:-.02em;color:var(--ink)}
+.hbwhen span{font-family:var(--label);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:color-mix(in srgb,var(--ink) 55%,transparent)}
+/* the primary action: squared with a solid shadow, the way the reference does it */
+.btn.lg.sq{width:100%;border-radius:8px;font-weight:600;letter-spacing:.01em;
+  box-shadow:4px 4px 0 var(--ink),0 14px 26px -20px color-mix(in srgb,var(--accent) 80%,transparent)}
+.btn.lg.sq:hover{transform:translate(1px,1px);box-shadow:3px 3px 0 var(--ink)}
+@media (max-width:640px){.hbgrid{grid-template-columns:110px minmax(0,1fr);gap:14px}}
+
+/* ------------------------------------------------------------- badge, verified */
+.awd{gap:1px;padding:10px 18px}
+.awd b{font-size:8.5px;letter-spacing:.22em;color:color-mix(in srgb,var(--ink) 50%,transparent)}
+.awd i{font-family:var(--display);font-style:normal;font-size:15px;line-height:1.15;color:var(--ink);letter-spacing:-.01em}
+.awd u{font-family:var(--label);text-decoration:none;font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  color:color-mix(in srgb,var(--ink) 62%,transparent)}
+/* one button shape across the page: squared, with the solid shadow doing the work */
+#page .btn{border-radius:8px}
+#page #regcard .btn.lg{box-shadow:4px 4px 0 var(--ink),0 14px 26px -20px color-mix(in srgb,var(--accent) 80%,transparent)}
+#page .nav .btn.sm{border-radius:8px;box-shadow:3px 3px 0 var(--ink)}
+#page .nav .btn.sm.halo{animation:none}

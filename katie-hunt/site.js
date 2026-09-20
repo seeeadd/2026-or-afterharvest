@@ -128,6 +128,7 @@
     for (var i = 0; i < n; i++) h += '<span class="fav">' + face(i) + '</span>';
     return '<span class="avstack' + (cls ? ' ' + cls : '') + '">' + h + '</span>';
   }
+  var PLAY = '<svg viewBox="0 0 24 24" width="15" height="15"><path d="M8 5.4v13.2c0 .8.9 1.3 1.6.9l10.4-6.6c.6-.4.6-1.3 0-1.7L9.6 4.5c-.7-.4-1.6 0-1.6.9z" fill="currentColor"/></svg>';
   var STAR = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.4 4.2 13.4l.7-4.3-3.1-3 4.3-.6z" fill="currentColor"/></svg>';
   function stars(n) { var h = ''; for (var i = 0; i < (n || 5); i++) h += STAR; return '<span class="stars">' + h + '</span>'; }
 
@@ -193,7 +194,7 @@
     var aud = S.audience || 'people';
     var cnt = S.trusted_count || (LP.stats && LP.stats.length ? LP.stats[0].num : '');
     var trust = el('div', 'htrust',
-      '<span class="awd">' + AWARD + '<span><b>Top rated</b><i>3-day live event</i></span></span>' +
+      '<span class="awd"><b>Verified</b><i>' + esc(S.badge_claim || 'Top rated event') + '</i><u>' + esc(LP.brand || '') + '</u></span>' +
       avstack(5) +
       '<span class="tmeta">' + stars(5) +
       '<span class="tm2">Trusted by over <b>' + esc(cnt) + ' ' + esc(aud) + '</b></span></span>');
@@ -203,15 +204,18 @@
     vid.appendChild(phone);
     left.appendChild(vid);
 
-    /* booking card, directly under the video */
-    var book = el('div', 'hbook glass',
-      '<div class="hbrow"><span class="chip"><i class="pulse"></i>Free 3-day live event</span>' +
-      '<span class="chip dark">Live online</span></div>' +
-      '<p class="hbdate"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
-      '<rect x="1.8" y="3" width="12.4" height="11.2" rx="2.4"/><path d="M1.8 6.6h12.4M5.4 1.6v2.6M10.6 1.6v2.6" stroke-linecap="round"/></svg>' +
-      '<b>' + esc(WHEN) + '</b><span>· ' + esc(tfmt(START)) + '</span></p>' +
-      '<span class="btn lg" data-reg="1" role="button" tabindex="0">Hold my seat' + ARROW + '</span>' +
-      '<p class="fine">Free. Three days live with ' + esc(FIRST) + '.</p>');
+    /* booking card: tape tag, the slide on a laptop, then the join line, the dates and the action */
+    var book = el('div', 'hbook',
+      '<span class="hbtape">\u2605 Secure your free spot <i>\u00B7</i> Now</span>' +
+      '<div class="hbgrid">' +
+        '<div class="hblap"><span class="hbscr"><img src="img/slide.jpg" alt="" loading="lazy">' +
+          '<i class="hbplay">' + PLAY + '</i></span><span class="hbfoot"></span></div>' +
+        '<div class="hbmain">' +
+          '<p class="hbjoin">Join the <em>free</em> 3-day ' + esc(EV) + '.</p>' +
+          '<p class="hbwhen"><b>' + esc(WHEN) + '</b><span>' + esc(tfmt(START)) + ' \u00B7 Live</span></p>' +
+          '<span class="btn lg sq" data-reg="1" role="button" tabindex="0">Hold my seat' + ARROW + '</span>' +
+        '</div>' +
+      '</div>');
     left.appendChild(book);
 
     right.appendChild(eye); right.appendChild(h1); right.appendChild(lede); right.appendChild(reg);
@@ -261,30 +265,34 @@
     }).join('');
   }
 
+  /* the result card: challenge, outcome, voice. Structure from the reference, drawn in the lead's brand. */
   function testimonial() {
     var t = S.testimonial || {};
     if (!t.quote) return;
     var sec = el('section', 'tst z');
     sec.id = 'tst';
-    sec.innerHTML = '<div class="tstin">' +
-      '<figure class="tvid">' + '<svg class="tvart" viewBox="0 0 300 225" aria-hidden="true">' +
-      '<g fill="none" stroke="var(--ink)" stroke-opacity=".16" stroke-width="1.2">' +
-      '<path d="M0 168h300M0 188h300M0 148h300"/><path d="M52 225V96M248 225V96"/></g>' +
-      '<g transform="translate(110 44)">' + face(7, 80) + '</g>' +
-      '<g fill="none" stroke="var(--accent)" stroke-opacity=".5" stroke-width="1.4">' +
-      '<path d="M22 28h34M22 38h22"/><path d="M244 196h34M256 186h22"/></g></svg>' +
-      '<span class="tvspeed">1.2x</span>' +
-      '<span class="tvplay"><svg width="22" height="22" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>' +
-      '<span class="tvbar"><i></i></span></figure>' +
-      '<div class="tq"><p class="eyebrow"><i class="dot"></i>What people said<i></i>' + esc(t.length || '1 min') + '</p>' +
-      '<blockquote>' + esc(t.quote) + '</blockquote>' +
-      '<div class="tqwho"><span class="fav">' + face(3) + '</span><span><b>' + esc(t.name || '') + '</b>' +
-      '<small>' + esc(t.role || BRAND) + '</small></span></div></div></div>';
-    var closing = $('closing');
-    closing.parentNode.insertBefore(sec, closing);
+    var who = esc(t.name || 'A member'), role = esc(t.role || '');
+    sec.innerHTML =
+      '<div class="tstin">' +
+        '<figure class="tvid"><span class="tvplay">' + PLAY + '</span>' +
+          '<span class="tvspeed"><b>1.2\u00D7</b><s>' + esc(t.length || '2 min 13 sec') + '</s>' +
+            esc(t.short || '1 min 51 sec') + '</span>' +
+          '<span class="tvbar"><i></i></span></figure>' +
+        '<div class="tstbody">' +
+          '<ol class="tsteps">' +
+            '<li><span class="tsdot"></span><b>The challenge</b><p>' +
+              esc(t.challenge || ('Plenty of work going out, no clear line from it to sales.')) + '</p></li>' +
+            '<li><span class="tsdot on"></span><b>The result</b>' +
+              '<h3>' + esc(t.result || 'A plan she could run the week after.') + '</h3></li>' +
+          '</ol>' +
+          '<blockquote class="tsquote"><p>' + esc(t.quote) + '</p>' +
+            '<footer><span class="tsav">' + esc((t.name || 'A').trim().charAt(0)) + '</span>' +
+            '<span><b>' + who + '</b><i>' + role + '</i></span></footer></blockquote>' +
+        '</div>' +
+      '</div>';
+    P.insertBefore(sec, $('closing') || null);
   }
 
-  /* invented sections, appended AFTER the real page, and the only blurred part */
   function gated() {
     var days = LP.days || [], foot = q('#page > .foot');
     var wrap = el('div', ''), inner = el('div', 'gated');
@@ -889,7 +897,6 @@
     restoreChecks();
     factsStrip();
     testimonial();
-    heroSlide();
     scrollCue();
     nameTicker();
     var wrap = gated();
