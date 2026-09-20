@@ -1199,7 +1199,7 @@ body.modalopen{overflow:hidden}
 #modal .msrow .seatn{font-size:19px}
 #modal .mform{padding:0 22px;display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
 #modal .mform label{margin-bottom:10px}
-#modal .mform label:nth-of-type(3){grid-column:1 / -1}
+#modal .mform > label:nth-of-type(3){grid-column:1 / -1}   /* the phone field only, not a radio label */
 #modal .mform label span{font-size:9.5px;letter-spacing:.14em}
 #modal .mform input{padding:11px 13px;font-size:14px;border-radius:var(--r-sm,8px)}
 #modal .mavail{grid-column:1 / -1;margin:0 0 12px;gap:8px}
