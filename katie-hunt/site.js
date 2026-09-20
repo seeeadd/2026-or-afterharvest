@@ -1020,33 +1020,27 @@
       var det = (S.day_detail || [])[i + 1];
       if (det && !q('.dxtra', card)) card.insertAdjacentHTML('beforeend', '<p class="dxtra">' + esc(det) + '</p>' + bullets(i + 1));
     });
-    specDays(box, slot);
+    rowDays(box, slot);
   }
 
-  /* Katie's own language, not another ticket: each day reads like the line sheet she teaches people to
-     build. A spec row of labelled fields across the top, a dimension rule under the title, and the
-     number set in the lead's display face. Every value comes from the lead's data, so it customises
-     itself: their accent, their faces, their dates. */
-  function specDays(box, slot) {
-    function spec(i) {
+  /* Three editorial rows, not three cards. The page already has plenty of panels; the days are the
+     spine of it, so they run full width on hairlines with a big quiet numeral holding the left. Every
+     value comes from the lead's data, so it costs nothing per lead. */
+  function rowDays(box, slot) {
+    function meta(i) {
       var d = new Date(START.getTime() + i * 864e5);
-      return '<div class="dspec">' +
-        '<span class="dsf dsf-n"><i>Day</i><b>' + pad2(i + 1) + '</b></span>' +
-        '<span class="dsf"><i>Date</i><b>' + esc(dfmt(d)) + '</b></span>' +
-        '<span class="dsf"><i>Starts</i><b>' + esc(slot) + '</b></span>' +
-        '<span class="dsf"><i>Format</i><b>Live online</b></span>' +
-        '<span class="dsf dsf-r"><i>Replay</i><b>Same day</b></span>' +
-        '</div>';
+      return dfmt(d) + ' \u00B7 ' + slot + ' \u00B7 Live online \u00B7 Replay the same day';
     }
     function wrap(card, i) {
-      if (q('.dspec', card)) return;
+      if (q('.dnum', card)) return;
       var body = el('div', 'dbody');
       while (card.firstChild) body.appendChild(card.firstChild);
-      card.insertAdjacentHTML('afterbegin', spec(i));
+      card.insertAdjacentHTML('afterbegin',
+        '<div class="dnum"><b>' + pad2(i + 1) + '</b><span>Day</span></div>');
       card.appendChild(body);
-      card.classList.add('dsheet');
-      var t = q('.dt', body);              /* the dimension rule the slide uses to measure a drawing */
-      if (t) t.insertAdjacentHTML('afterend', '<span class="drule" aria-hidden="true"></span>');
+      card.classList.add('drow');
+      var t = q('.dt', body);
+      if (t) t.insertAdjacentHTML('beforebegin', '<p class="dmetaline">' + esc(meta(i)) + '</p>');
     }
     var d1 = q('.d1', box);
     if (d1) wrap(d1, 0);

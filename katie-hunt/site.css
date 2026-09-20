@@ -1744,63 +1744,85 @@ body.modalopen{overflow:hidden}
 .tkdisc{background:color-mix(in srgb,var(--ground) 40%,#fff);
   border:1px solid color-mix(in srgb,var(--ink) 8%,transparent)}
 
-/* ================================================= the three days read like her own line sheet
-   The ticket was right for one seat, but four tickets on one page is a tic. These are the document the
-   lead actually teaches people to make: a spec row of labelled fields, a dimension rule under the title,
-   the number in their display face. Nothing here is authored per lead; it takes their accent, their
-   faces and their dates, so every lead's days look like their own paperwork. */
-#page #days .dsheet{padding:0;border-radius:var(--r-lg,14px);background:var(--paper);
-  border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);
-  -webkit-backdrop-filter:none;backdrop-filter:none;display:block;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 20px 38px -30px rgba(28,20,12,.5)}
-#page #days .dsheet .when,#page #days .dwhen{display:none !important}
 
-/* the spec row: labelled fields with hairline gutters, the way a line sheet heads a page */
-#days .dspec{position:relative;display:flex;flex-wrap:wrap;align-items:stretch;
-  border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent);
-  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 5%,transparent),transparent)}
-/* measure ticks along the top edge, from the slide's own technical drawing */
-#days .dspec:before{content:'';position:absolute;left:0;right:0;top:0;height:7px;pointer-events:none;
-  background-image:repeating-linear-gradient(90deg,
-    color-mix(in srgb,var(--accent) 45%,transparent) 0 1px,transparent 1px 13px);
-  opacity:.5}
-#days .dsf{display:flex;flex-direction:column;justify-content:center;gap:3px;
-  padding:15px 20px 13px;min-width:0}
-#days .dsf + .dsf{border-left:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
-#days .dsf i{font-style:normal;font-family:var(--label);font-size:8px;font-weight:700;letter-spacing:.22em;
-  text-transform:uppercase;color:color-mix(in srgb,var(--ink) 42%,transparent)}
-#days .dsf b{font-family:var(--label);font-size:12.5px;font-weight:600;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--ink);white-space:nowrap}
-#days .dsf-n b{font-family:var(--display);font-size:26px;line-height:1;letter-spacing:-.04em;
-  text-transform:none;color:var(--accent)}
-#days .dsf-n{padding-right:22px}
-/* the fields share the row the way a form header does, rather than one being shoved to the far edge */
-#days .dsf{flex:1 1 auto}
-#days .dsf-n{flex:0 0 auto}
+/* ==================================================== the three days, as rows on a page
+   Cards everywhere made the section repeat itself. The days are the spine of the page, so they run
+   full width on hairlines: a big quiet numeral holding the left, one line of meta, the title, then what
+   happens. Nothing is authored per lead; the numeral takes their display face and their accent. */
+#page #days .d23{grid-template-columns:minmax(0,1fr);gap:0;margin-top:0}
+#page #days .drow{display:grid;grid-template-columns:clamp(96px,9vw,140px) minmax(0,1fr);
+  gap:clamp(20px,2.6vw,44px);align-items:start;padding:clamp(30px,3.2vw,46px) 0;
+  background:none;border:0;border-top:1px solid color-mix(in srgb,var(--ink) 13%,transparent);
+  border-radius:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+#page #days .d1.drow{margin-top:clamp(28px,3vw,44px)}
+#page #days .drow:last-child{border-bottom:1px solid color-mix(in srgb,var(--ink) 13%,transparent)}
+#page #days .drow .when,#page #days .dwhen{display:none !important}
 
-#days .dbody{padding:24px 26px 26px}
-#days .dsheet .dt{margin:0}
-#days .dsheet .do{margin:14px 0 10px}
-/* the dimension rule: a measured span with end ticks, the mark her slide uses to size a drawing */
-.drule{display:block;position:relative;height:1px;width:clamp(92px,16%,150px);margin:13px 0 0;
-  background:color-mix(in srgb,var(--accent) 55%,transparent)}
-.drule:before,.drule:after{content:'';position:absolute;top:-4px;width:1px;height:9px;
-  background:color-mix(in srgb,var(--accent) 65%,transparent)}
-.drule:before{left:0}
-.drule:after{right:0}
+.dnum{position:relative;padding-top:2px}
+.dnum b{display:block;font-family:var(--display);font-weight:var(--dw2,700);
+  font-size:clamp(54px,6.6vw,96px);line-height:.82;letter-spacing:-.06em;
+  color:color-mix(in srgb,var(--accent) 26%,transparent)}
+.dnum span{display:block;margin-top:10px;font-family:var(--label);font-size:8.5px;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 40%,transparent)}
+.dnum:after{content:'';display:block;width:30px;height:2px;margin-top:12px;background:var(--accent);
+  opacity:.75}
 
-#days .d1 .dbody{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
-  gap:clamp(22px,2.4vw,38px);align-items:center}
-#days .d1 .macbook{margin:0;width:100%}
-#days .d1 .d1body{min-width:0}
-#days .d23{margin-top:clamp(18px,2vw,26px)}
+.dmetaline{margin:0 0 12px;font-family:var(--label);font-size:10px;font-weight:600;letter-spacing:.17em;
+  text-transform:uppercase;color:color-mix(in srgb,var(--ink) 48%,transparent)}
+#page #days .drow .dt{margin:0 0 14px;max-width:18ch}
+#page #days .drow .do{margin:0 0 10px;max-width:60ch}
+#page #days .drow .dxtra{max-width:62ch}
+/* the bullets use the width a full row gives them instead of running down one narrow column */
+#page #days .drow .dbul{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 30px;max-width:72ch}
+
+/* Day 1 keeps the slide, beside its copy, inside the row */
+#page #days .d1 .dbody{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);
+  gap:clamp(24px,2.8vw,46px);align-items:start}
+#page #days .d1 .macbook{margin:0;width:100%;grid-row:span 2}
+#page #days .d1 .d1body{min-width:0}
 #days{scroll-margin-top:96px}
 
 @media (max-width:900px){
-  #days .dsf{padding:12px 14px 11px}
-  #days .dsf b{font-size:11.5px}
-  #days .dsf-n b{font-size:22px}
-  #days .dsf-r{margin-left:0}
-  #days .dbody{padding:18px 18px 20px}
-  #days .d1 .dbody{grid-template-columns:minmax(0,1fr);gap:18px}
+  #page #days .drow{grid-template-columns:56px minmax(0,1fr);gap:16px;padding:24px 0}
+  .dnum b{font-size:40px}
+  .dnum span{margin-top:7px;font-size:8px}
+  .dnum:after{width:22px;margin-top:9px}
+  #page #days .drow .dbul{grid-template-columns:minmax(0,1fr)}
+  #page #days .d1 .dbody{grid-template-columns:minmax(0,1fr);gap:18px}
+}
+
+/* ------------------------------------------ the pill sits lower, the rest of the hero does not */
+#page .hero{padding-top:44px}
+#page #heroEye{margin-top:clamp(10px,1.6vw,26px)}
+
+/* --------------------------------------------- the trust bar, see-through for real
+   A 20px backdrop blur smears the grid into a flat tone, which reads as solid however low the tint is.
+   Light blur plus a light tint, and the paper grid stays legible through the panel. */
+.htrust{background-color:color-mix(in srgb,var(--ground) 8%,transparent) !important;
+  background-image:linear-gradient(148deg,rgba(255,255,255,.16),rgba(255,255,255,.04) 50%,
+    rgba(255,255,255,.12)) !important;
+  -webkit-backdrop-filter:blur(5px) saturate(1.15);backdrop-filter:blur(5px) saturate(1.15);
+  border-color:rgba(255,255,255,.4) !important}
+.htrust .awd{background-color:rgba(255,255,255,.14) !important}
+.htrust .tmeta .stars{background-color:rgba(255,255,255,.16) !important}
+/* the numeral was too faint to hold the left, and the hairlines too faint to read as rules */
+.dnum b{color:color-mix(in srgb,var(--accent) 42%,transparent)}
+#page #days .drow{border-top-color:color-mix(in srgb,var(--ink) 17%,transparent)}
+#page #days .drow:last-child{border-bottom-color:color-mix(in srgb,var(--ink) 17%,transparent)}
+/* Day 1's copy sits in half a row, so its bullets stay in one column */
+#page #days .d1 .dbul{grid-template-columns:minmax(0,1fr)}
+/* glass, not frosted paper: no sheen, almost no tint, just enough blur to separate it from the grid */
+.htrust{background-color:rgba(255,255,255,.06) !important;background-image:none !important;
+  -webkit-backdrop-filter:blur(3px) saturate(1.04);backdrop-filter:blur(3px) saturate(1.04);
+  border:1px solid rgba(255,255,255,.5) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 16px 34px -30px rgba(28,20,12,.45)}
+.htrust .awd{background-color:rgba(255,255,255,.1) !important}
+.htrust .tmeta .stars{background-color:rgba(255,255,255,.12) !important}
+@media (max-width:640px){   /* on a phone the numeral heads the row instead of squeezing a side column */
+  #page #days .drow{grid-template-columns:minmax(0,1fr);gap:12px;padding:22px 0}
+  .dnum{display:flex;align-items:baseline;gap:10px;padding-top:0}
+  .dnum b{font-size:32px;line-height:1}
+  .dnum span{margin-top:0}
+  .dnum:after{display:none}
+  #page #days .drow .dt{max-width:none}
 }
