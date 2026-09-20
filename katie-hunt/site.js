@@ -145,15 +145,28 @@
   /* ------------------------------------------------------ sticky vertical video */
   function sticky() {
     if (!S.sticky) return;
+    var caps = S.sticky.captions || ["THIS ONE IS COMPLETELY <em>FREE</em>.",
+                                     "THREE DAYS, <em>LIVE</em> WITH ME.",
+                                     "I WILL SHOW YOU THE <em>WHOLE PLAN</em>."];
     var s = el('div');
     s.id = 'stick';
     s.innerHTML =
-      '<img class="sv" src="' + S.sticky.image + '" alt="">' +
-      '<button class="sx" aria-label="Close">✕</button>' +
-      '<span class="splay"><i><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.7-6.8c.6-.4.6-1.3 0-1.7L9.6 4.3c-.7-.4-1.6 0-1.6.9z" fill="currentColor"/></svg></i></span>' +
-      '<span class="sbadge"><b>' + (S.sticky.title || 'Watch the 60 second version') + '</b>' + (S.sticky.sub || 'Tap for sound') + '</span>';
+      '<div class="scard">' +
+        '<img class="sv" src="' + S.sticky.image + '" alt="">' +
+        '<button class="sx" aria-label="Close">\u2715</button>' +
+        '<span class="sunmute"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z"/>' +
+          '<path d="M11 6l4 4M15 6l-4 4" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>' +
+          (S.sticky.unmute || 'Unmute') + '</span>' +
+        '<span class="scap"><b>' + caps[0] + '</b></span>' +
+        '<span class="sclick">' + (S.sticky.tap || 'Click here to unmute') + '</span>' +
+        '<span class="sbar"><i></i></span>' +
+      '</div>' +
+      '<a class="scta">' + (S.sticky.cta || 'Save my free seat') +
+        '<svg width="13" height="13" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>';
     document.body.appendChild(s);
-    s.querySelector('.sx').onclick = function () { s.classList.remove('on'); };
+    var cap = s.querySelector('.scap b'), i = 0;
+    setInterval(function () { i = (i + 1) % caps.length; cap.innerHTML = caps[i]; }, 2600);   // it reads as playing
+    s.querySelector('.sx').onclick = function (e) { e.stopPropagation(); s.classList.remove('on'); };
     s.onclick = function () { document.getElementById('modal').classList.add('on'); };
     setTimeout(function () { s.classList.add('on'); }, 1800);
   }

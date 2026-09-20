@@ -75,20 +75,37 @@
 #toast span{opacity:.6;font-size:12px}
 #toast .tdot{width:7px;height:7px;border-radius:50%;background:#35c27a;flex:none;box-shadow:0 0 0 4px rgba(53,194,122,.18)}
 
-/* --------------------------------------------------- sticky vertical video */
-#stick{position:fixed;right:18px;bottom:18px;z-index:70;width:186px;border-radius:16px;overflow:hidden;
-  box-shadow:0 26px 60px -24px rgba(20,16,12,.65);background:#0d0d0f;transform:translateY(130%);
+/* --------------------------------------------------- sticky vertical video
+   Built to match a real VSL widget: unmute pill, close, burned-in caption, tap-to-unmute line, progress bar
+   and the booking button under the card. */
+#stick{position:fixed;right:18px;bottom:18px;z-index:70;width:196px;transform:translateY(130%);
   transition:transform .5s cubic-bezier(.2,.8,.3,1)}
 #stick.on{transform:translateY(0)}
+#stick .scard{position:relative;border-radius:16px 16px 4px 4px;overflow:hidden;background:#0d0d0f;
+  box-shadow:0 26px 60px -24px rgba(20,16,12,.7)}
 #stick .sv{position:relative;aspect-ratio:9/16;display:block;width:100%;object-fit:cover}
-#stick .sx{position:absolute;right:7px;top:7px;width:26px;height:26px;border-radius:50%;border:0;cursor:pointer;
-  background:rgba(12,12,14,.6);color:#fff;font-size:15px;line-height:1;z-index:2}
-#stick .sbadge{position:absolute;left:0;right:0;bottom:0;padding:10px 10px 11px;
-  background:linear-gradient(transparent,rgba(8,8,10,.86) 42%);color:#fff;font-size:12px;line-height:1.35}
-#stick .sbadge b{display:block;font-size:12.5px}
-#stick .splay{position:absolute;inset:0;display:grid;place-items:center;color:#fff}
-#stick .splay i{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(6px);
-  display:grid;place-items:center}
+#stick .sx{position:absolute;right:6px;top:6px;width:24px;height:24px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(12,12,14,.66);color:#fff;font-size:13px;line-height:1;z-index:3;display:grid;place-items:center}
+#stick .sunmute{position:absolute;left:8px;top:8px;z-index:3;display:inline-flex;align-items:center;gap:5px;
+  padding:5px 10px 5px 8px;border-radius:999px;background:rgba(12,12,14,.72);color:#fff;font-size:11px;font-weight:600;
+  backdrop-filter:blur(4px)}
+#stick .sunmute svg{width:12px;height:12px}
+#stick .scap{position:absolute;left:8px;right:8px;bottom:52px;z-index:2;text-align:center}
+#stick .scap b{display:inline;padding:3px 6px;background:#101012;color:#fff;font-weight:800;font-size:12.5px;
+  line-height:1.5;letter-spacing:-.01em;text-transform:uppercase;box-decoration-break:clone;
+  -webkit-box-decoration-break:clone}
+#stick .scap b em{font-style:normal;color:var(--accent)}
+#stick .sclick{position:absolute;left:8px;right:8px;bottom:22px;z-index:3;display:block;text-align:center;
+  padding:7px 8px;border-radius:9px;background:rgba(12,12,14,.72);color:#fff;font-size:11px;font-weight:600;
+  backdrop-filter:blur(4px)}
+#stick .sbar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.22);z-index:3}
+#stick .sbar i{display:block;height:100%;width:0;background:var(--accent);animation:sbar 42s linear infinite}
+@keyframes sbar{from{width:4%}to{width:100%}}
+#stick .scta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:6px;padding:11px 10px;
+  border-radius:12px;background:var(--accent);color:var(--accent-ink,#fff);font-weight:800;font-size:13px;
+  text-decoration:none;text-align:center;line-height:1.2;cursor:pointer;
+  box-shadow:0 14px 26px -14px color-mix(in srgb,var(--accent) 80%,transparent)}
+#stick .scta:hover{filter:brightness(1.05)}
 
 /* ------------------------------------------------------- testimonial strip */
 #tst{padding:54px 22px 6px}
