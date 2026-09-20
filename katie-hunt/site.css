@@ -1334,3 +1334,38 @@ body.modalopen{overflow:hidden}
 #page .navwrap{max-width:min(1100px,92vw)}
 .hero .lede{max-width:56ch}
 .faqlist p{max-width:80ch}
+
+/* ================================================ only the hero is full width
+   The previous pass stretched every section. Back to a centred measure everywhere except the hero, which keeps
+   the thin gutter so the video and the headline stay large. */
+.sect,#faq{max-width:1180px;margin-left:auto;margin-right:auto;
+  padding-left:clamp(20px,3.4vw,44px);padding-right:clamp(20px,3.4vw,44px)}
+#page .fitc,#page .days,#page .closing,#page .foot,#tst,#fake .fks{
+  padding-left:clamp(20px,3.4vw,44px);padding-right:clamp(20px,3.4vw,44px)}
+#page .fitgrid{max-width:1080px;margin-inline:auto;grid-template-columns:clamp(240px,22vw,320px) minmax(0,1fr)}
+.tkroute,#takeaway .tkhead{max-width:1100px;margin-left:auto;margin-right:auto}
+.tstin{max-width:1180px;margin-left:auto;margin-right:auto}
+#page .band.rebuilt .bstats{max-width:1240px;margin-left:auto;margin-right:auto}
+#page .days .d1,#page .days .d23,#page .days .intro,#page .daysh{max-width:1180px;margin-left:auto;margin-right:auto}
+#page .closing .ccard{max-width:1080px;margin-inline:auto}
+/* the hero stays edge to edge */
+#page .hero{padding-left:clamp(14px,2.2vw,34px);padding-right:clamp(14px,2.2vw,34px)}
+
+/* the trust bar reads as glass over the page, not a solid slab */
+.htrust{background-color:color-mix(in srgb,var(--ground) 30%,#fff) !important;
+  background-image:none !important;opacity:1;
+  backdrop-filter:blur(14px) saturate(1.35);-webkit-backdrop-filter:blur(14px) saturate(1.35);
+  border-color:color-mix(in srgb,var(--ink) 10%,transparent)}
+.htrust .awd{background-color:color-mix(in srgb,var(--ground) 22%,#fff) !important}
+
+/* the booking card: compact, slimmer action */
+.hbook{padding:12px 14px;margin-top:12px}
+.hbgrid{grid-template-columns:140px minmax(0,1fr);gap:14px;align-items:center}
+.hbtape{margin-bottom:10px;padding:5px 10px;font-size:9px}
+.hbjoin{font-size:15.5px;margin-bottom:6px}
+.hbwhen{margin-bottom:9px}
+.hbwhen b{font-size:19px}
+.hbook .btn.lg{height:40px;min-width:180px;font-size:14px;padding:0 18px}
+/* the booking action is a button, not a bar */
+.hbook .btn.lg{width:max-content !important;min-width:190px;justify-self:start;align-self:start}
+.hbmain{align-items:flex-start}

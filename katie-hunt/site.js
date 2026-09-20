@@ -684,7 +684,7 @@
   function scalePhone() {
     var vid = q('.hvid'), ph = $('iphone');
     if (!vid || !ph) return;
-    var k = clamp(vid.clientWidth / 516, 0.3, 1.34);
+    var k = clamp(vid.clientWidth / 516, 0.3, 2.2);      /* fill the column, do not stop at 1.34 */
     ph.style.transform = 'scale(' + k.toFixed(4) + ')';
     vid.style.height = Math.round(248 * k + 16) + 'px';
   }
