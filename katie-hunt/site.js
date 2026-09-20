@@ -371,17 +371,29 @@
       '<div class="gbar">' + LOCKSVG +
       '<span class="gtx"><b>' + esc(S.gate_title || 'The rest of this page is ready') + '</b>' +
       '<small>' + esc(S.gate_hint || 'Reply to my email and I will open it') + '</small></span>' +
-      '<a class="btn sm" data-noreg="1" href="' + mail + '">' + esc(S.gate_cta || 'Open the full page') + ARROW + '</a></div>');
+      '<button class="btn sm" data-noreg="1" type="button">' + esc(S.gate_cta || 'Open the full page') + ARROW + '</button></div>' +
+      '<div class="gpanel" hidden><p class="gpt">' + esc(S.panel_title || 'Reply to the email I sent you') + '</p>' +
+      '<p class="gpd">' + esc(S.panel_text || 'One line back is all it takes and I will open the rest of this page for you.') + '</p>' +
+      '<div class="gprow"><code>' + esc(S.reply_to || '') + '</code>' +
+      '<button class="gpcopy" type="button">Copy</button></div>' +
+      '<a class="gpmail" href="' + mail + '">Or open it in your mail app</a>' +
+      '<button class="gpx" type="button" aria-label="Close">\u2715</button></div>');
     gate.id = 'gate';
     document.body.appendChild(gate);
-    var cta = q('.btn', gate), addr = S.reply_to || '';
-    if (cta) cta.addEventListener('click', function () {
+    var cta = q('.btn', gate), addr = S.reply_to || '', panel = q('.gpanel', gate);
+    var copy = function (btn) {
       try { navigator.clipboard && navigator.clipboard.writeText(addr); } catch (e) {}
-      var note = el('span', 'gnote', 'Address copied: <b>' + esc(addr) + '</b>');
-      gate.appendChild(note);
-      setTimeout(function () { note.classList.add('on'); }, 30);
-      setTimeout(function () { note.classList.remove('on'); }, 5200);
-      setTimeout(function () { if (note.parentNode) note.parentNode.removeChild(note); }, 5800);
+      if (btn) { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 2200); }
+    };
+    if (cta) cta.addEventListener('click', function () {
+      panel.hidden = false;
+      requestAnimationFrame(function () { panel.classList.add('on'); });
+      copy(q('.gpcopy', panel));
+    });
+    q('.gpcopy', panel).addEventListener('click', function () { copy(this); });
+    q('.gpx', panel).addEventListener('click', function () {
+      panel.classList.remove('on');
+      setTimeout(function () { panel.hidden = true; }, 220);
     });
     /* position and scale are handled by lockBar() */
     return wrap;

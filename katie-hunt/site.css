@@ -825,3 +825,23 @@ body.modalopen{overflow:hidden}
 .bst i{display:none}
 .brest{gap:clamp(20px,2.4vw,40px)}
 .bst span{max-width:22ch}
+
+/* the unlock panel: the button can never land on a blank tab, it opens this */
+#gate .gpanel{position:absolute;left:50%;bottom:calc(100% + 12px);transform:translate(-50%,8px);width:min(420px,92vw);
+  opacity:0;transition:opacity .25s ease,transform .25s ease;padding:20px 20px 16px;border-radius:var(--r-lg,12px);
+  background:var(--paper);border:1px solid var(--hair);box-shadow:var(--sh-raise);text-align:left}
+#gate .gpanel.on{opacity:1;transform:translate(-50%,0)}
+#gate .gpt{margin:0 0 6px;font-family:var(--display);font-size:18px;letter-spacing:-.015em;color:var(--ink)}
+#gate .gpd{margin:0 0 14px;font-size:14px;line-height:1.55;color:color-mix(in srgb,var(--ink) 62%,transparent)}
+#gate .gprow{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+#gate .gprow code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;padding:10px 12px;border-radius:8px;
+  background:color-mix(in srgb,var(--ink) 5%,transparent);font-family:var(--mono,ui-monospace,monospace);font-size:13px;
+  color:var(--ink)}
+#gate .gpcopy{flex:none;padding:10px 14px;border:0;border-radius:8px;background:var(--accent);color:var(--accent-ink);
+  font-weight:600;font-size:13px;cursor:pointer}
+#gate .gpmail{display:inline-block;font-size:12.5px;color:color-mix(in srgb,var(--ink) 55%,transparent)}
+#gate .gpx{position:absolute;right:10px;top:9px;width:26px;height:26px;border:0;border-radius:50%;cursor:pointer;
+  background:color-mix(in srgb,var(--ink) 6%,transparent);color:var(--ink);font-size:12px;line-height:1}
+/* lp.js fits these headings to max-content, so the span has to be centred, not the text inside it */
+#page .daysh.fit > span,#page .fith.fit > span,#page .daysh > span,#page .fith > span{margin-left:auto;margin-right:auto}
+#page .daysh,#page .fith{display:block}
