@@ -428,7 +428,13 @@
       '<form class="mform" novalidate>' +
       '<label><span>First name</span><input type="text" name="first" autocomplete="off" placeholder="' + esc(FIRST) + '"></label>' +
       '<label><span>Email address</span><input type="email" name="email" autocomplete="off" placeholder="you@example.com"></label>' +
-      '<span class="btn lg sheen" data-submit="1" role="button" tabindex="0">Hold my seat' + ARROW + '</span></form>' +
+      '<label><span>Phone number</span><input type="tel" name="phone" autocomplete="off" placeholder="Optional, for the reminder"></label>' +
+      '<fieldset class="mavail"><legend>I am available ' + esc(WHEN) + ' to attend:</legend>' +
+      ['Yes', 'No', 'Maybe'].map(function (o, i) {
+        return '<label class="mopt"><input type="radio" name="avail" value="' + o.toLowerCase() + '"' +
+          (i === 0 ? ' checked' : '') + '><span class="mdot"></span><em>' + o + '</em></label>';
+      }).join('') + '</fieldset>' +
+      '<span class="btn lg sheen" data-submit="1" role="button" tabindex="0">Save my free seat' + ARROW + '</span></form>' +
       '<ul class="mticks"><li>' + TICK + 'Free to join</li><li>' + TICK + 'Replays for every session</li><li>' + TICK + 'Leave any time</li></ul>' +
       '<div class="mfoot"><span class="av"><img src="' + esc(S.avatar || 'img/headshot.jpg') + '" alt=""></span>' +
       '<span><b>Hosted by ' + esc(WHO) + '</b><small>' + esc(LP.role || BRAND) + '</small></span></div></div>';
