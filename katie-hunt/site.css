@@ -893,3 +893,36 @@ body.modalopen{overflow:hidden}
   color:color-mix(in srgb,var(--ink) 30%,transparent);max-width:38%;overflow:hidden;text-overflow:ellipsis;
   white-space:nowrap}
 @media (max-width:560px){#toast{left:10px;right:10px;width:auto;bottom:10px;padding:12px 13px}}
+
+/* ------------------------------------------------------------- the phone, fixed
+   The rectangular shadow came from lifting .hvid, a square box behind a rounded device. Shadows now follow the
+   phone's own silhouette, and the edge reads as metal rather than a flat grey ring. */
+.hvid{box-shadow:none !important}
+#page .iphone{filter:drop-shadow(0 26px 34px rgba(28,20,12,.26)) drop-shadow(0 5px 9px rgba(28,20,12,.18))}
+#page .ip-edge{background:linear-gradient(142deg,#f4f4f7 0%,#c9cad1 26%,#8e9099 48%,#e8e9ee 66%,#a9abb3 100%);
+  box-shadow:0 0 0 .5px rgba(0,0,0,.35),inset 0 1px 1px rgba(255,255,255,.75),inset 0 -1px 1px rgba(0,0,0,.35)}
+#page .ip-screen{box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),inset 0 14px 26px -18px rgba(0,0,0,.9)}
+#page .ip-glare{background:linear-gradient(118deg,rgba(255,255,255,.22) 0 14%,rgba(255,255,255,.06) 26%,
+  rgba(255,255,255,0) 42%),radial-gradient(120% 60% at 12% 0%,rgba(255,255,255,.16),transparent 60%)}
+#page .iphone .ib{background:linear-gradient(180deg,#d7d8de,#8f9099);box-shadow:0 0 0 .5px rgba(0,0,0,.3)}
+
+/* --------------------------------------------------- section rhythm, not repetition
+   Every second block sits on its own ground so the page does not read as one long column of the same card. */
+#takeaway{position:relative;padding-top:64px;padding-bottom:64px}
+#takeaway:before{content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--paper) 72%,transparent),
+  color-mix(in srgb,var(--paper) 40%,transparent));
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+#takeaway .tkgrid{border-top:0}
+#takeaway .tkc{border-bottom:0}
+#takeaway .tkc:first-child{border-left:0}
+#takeaway .tkc:last-child{border-right:0}
+#faq{padding-top:72px;padding-bottom:8px}
+
+/* --------------------------------------------------------- the notice, tightened */
+#toast{width:min(318px,calc(100vw - 28px));padding:12px 13px 11px;gap:11px;border-radius:12px}
+#toast .tav{width:38px;height:38px;font-size:13px}
+#toast .tline,#toast .tact{font-size:13.5px;line-height:1.32}
+#toast .tago{margin-top:5px;font-size:11.5px}
+#toast .tago i{width:6px;height:6px}
+#toast .tsrc{right:12px;top:11px;font-size:10.5px}
