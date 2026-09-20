@@ -1249,3 +1249,6 @@ body.modalopen{overflow:hidden}
 #stick .svhint{bottom:20px}
 #stick .btn{height:42px;font-size:14px;box-shadow:3px 3px 0 var(--ink)}
 #stick:hover{filter:drop-shadow(0 26px 34px rgba(28,20,12,.32)) drop-shadow(0 5px 10px rgba(28,20,12,.22))}
+/* inputs must not keep their intrinsic width inside the two-column form */
+#modal .mform label{min-width:0;display:block}
+#modal .mform input{width:100%;max-width:100%;box-sizing:border-box}
