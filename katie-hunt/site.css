@@ -321,19 +321,6 @@ body{margin:0}
 #page .gbar .btn{height:42px;padding:0 18px;font-size:14.5px}
 
 /* ------------------------------------------------------------- 10. overlays */
-#toast{position:fixed;left:18px;bottom:22px;z-index:54;display:flex;align-items:center;gap:12px;
-  padding:11px 17px 11px 11px;border-radius:999px;max-width:min(320px,calc(100% - 36px));
-  background:var(--glass-solid);box-shadow:inset 0 0 0 1px var(--glass-brd),0 20px 44px -22px rgba(38,32,31,.5);
-  -webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);
-  transform:translateY(140%);opacity:0;transition:transform .55s cubic-bezier(.22,1,.36,1),opacity .4s ease}
-#toast.on{transform:translateY(0);opacity:1}
-#toast .fav{flex:none;width:38px;height:38px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--av-ring)}
-#toast .fav svg{display:block;width:100%;height:100%}
-#toast .tt{min-width:0;line-height:1.25}
-#toast .tt b{font-size:14.5px;font-weight:600;color:var(--ink)}
-#toast .tt span{font-size:14px;color:var(--ink-soft)}
-#toast .tt small{display:block;margin-top:2px;font-family:var(--label);font-size:9px;font-weight:var(--lw);
-  letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
 #stick{position:fixed;right:18px;bottom:22px;z-index:55;width:198px;
   transform:translateY(24px);opacity:0;visibility:hidden;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .4s ease,visibility .4s}
@@ -650,9 +637,6 @@ body.modalopen{overflow:hidden}
   mask-image:linear-gradient(#000 0 42%,rgba(0,0,0,.45) 74%,transparent)}
 #gatewrap{padding-bottom:26px}
 /* email registrations have no avatar */
-#toast .tdot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;
-  box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
-#toast .fav{display:none}
 /* the sticky video: never clipped, its button never overlaps the card */
 #stick .svcard{display:flex;flex-direction:column;gap:7px}
 #stick .btn{width:100%;border-radius:8px;justify-content:center;box-shadow:3px 3px 0 var(--ink)}
@@ -887,3 +871,25 @@ body.modalopen{overflow:hidden}
 .bnote{max-width:30ch}
 @media (max-width:1100px){#page .band.rebuilt .bstats{grid-template-columns:minmax(0,1fr) auto;row-gap:24px}
   .brest{grid-column:1 / -1}}
+
+/* ------------------------------------------------------ the registration notice */
+#toast{position:fixed;left:20px;bottom:20px;z-index:80;display:flex;align-items:flex-start;gap:13px;
+  width:min(360px,calc(100vw - 32px));padding:15px 16px 14px;border-radius:14px;background:#fff;
+  box-shadow:0 2px 6px rgba(20,16,12,.06),0 26px 50px -28px rgba(20,16,12,.5);
+  transform:translateY(140%);transition:transform .5s cubic-bezier(.2,.8,.3,1);font-family:var(--body)}
+#toast.on{transform:translateY(0)}
+#toast .tav{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#f0ece6);color:color-mix(in srgb,var(--ink) 80%,transparent);
+  font-weight:700;font-size:15px;letter-spacing:.02em}
+#toast .tbody{min-width:0;flex:1}
+#toast .tline{margin:0;font-size:15px;line-height:1.35;color:var(--ink)}
+#toast .tline b{font-weight:700}
+#toast .tline em{font-style:normal;color:color-mix(in srgb,var(--ink) 52%,transparent);margin-left:4px}
+#toast .tact{margin:1px 0 0;font-size:15px;line-height:1.35;color:var(--ink)}
+#toast .tago{display:flex;align-items:center;gap:7px;margin:7px 0 0;font-size:12.5px;
+  color:color-mix(in srgb,var(--ink) 45%,transparent)}
+#toast .tago i{width:7px;height:7px;border-radius:50%;background:#35c27a;flex:none}
+#toast .tsrc{position:absolute;right:14px;top:13px;font-size:12px;
+  color:color-mix(in srgb,var(--ink) 30%,transparent);max-width:38%;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap}
+@media (max-width:560px){#toast{left:10px;right:10px;width:auto;bottom:10px;padding:12px 13px}}

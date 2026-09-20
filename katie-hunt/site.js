@@ -463,21 +463,33 @@
     return { open: open, close: close, node: m };
   }
 
+  /* the bottom-left notice: who, where, what they did, how long ago, and whose page it is */
   function toast() {
+    var cities = S.cities || ['Melbourne, AU', 'Austin, TX', 'Leeds, UK', 'Toronto, CA', 'Portland, OR',
+                              'Dublin, IE', 'Brisbane, AU', 'Nashville, TN'];
+    var surnames = S.surnames || ['D.', 'M.', 'R.', 'K.', 'B.', 'S.', 'T.', 'L.'];
     var t = el('div', '');
     t.id = 'toast';
-    t.innerHTML = '<i class="tdot"></i><span class="tt"><b></b> <span>just registered</span><small></small></span>';
+    t.innerHTML =
+      '<span class="tav"></span>' +
+      '<div class="tbody"><p class="tline"><b></b><em></em></p>' +
+      '<p class="tact">' + esc(S.toast_action || 'just grabbed their free spot!') + '</p>' +
+      '<p class="tago"><i></i><span></span></p></div>' +
+      '<span class="tsrc">' + esc(LP.brand || EV) + '</span>';
     document.body.appendChild(t);
     var i = 0;
     function show() {
-      var n = NAMES[i % NAMES.length], mins = 2 + (i * 3) % 11;
+      var n = NAMES[i % NAMES.length], sur = surnames[i % surnames.length];
+      var city = cities[(i * 3) % cities.length], mins = 2 + (i * 3) % 11;
       i++;
-      q('.tt b', t).textContent = n;
-      q('.tt small', t).textContent = mins + ' minutes ago';
+      q('.tav', t).textContent = (n.charAt(0) + sur.charAt(0)).toUpperCase();
+      q('.tline b', t).textContent = n + ' ' + sur;
+      q('.tline em', t).textContent = '\u00B7 ' + city;
+      q('.tago span', t).textContent = mins + ' minutes ago';
       state.name = n;
       qa('.justreg').forEach(function (x) { x.innerHTML = '<b>' + esc(n) + '</b> just registered'; });
       t.classList.add('on');
-      setTimeout(function () { t.classList.remove('on'); }, 5600);
+      setTimeout(function () { t.classList.remove('on'); }, 6200);
     }
     setTimeout(function () { show(); setInterval(show, 12000); }, 4200);
   }
