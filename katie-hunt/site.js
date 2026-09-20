@@ -32,7 +32,8 @@
       '<div class="tcard">' +
         '<div class="tvid">' + thumb +
           '<span class="tplay"><i><svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.7-6.8c.6-.4.6-1.3 0-1.7L9.6 4.3c-.7-.4-1.6 0-1.6.9z" fill="currentColor"/></svg></i></span>' +
-          '<span class="ttime">' + (t.length || '1 min 24 sec') + '</span>' +
+          '<span class="tspeed"><b>' + (t.speed || '1.2\u00D7') + '</b><s>' + (t.length || '2 min 13 sec') + '</s>\u26A1 ' +
+            (t.short || '1 min 51 sec') + '</span>' +
         '</div>' +
         '<div><p class="tq">' + (t.quote || '') + '</p>' +
           '<div class="twho"><span class="tav">' + initials(t.name) + '</span>' +
@@ -171,12 +172,36 @@
     setTimeout(function () { s.classList.add('on'); }, 1800);
   }
 
+  /* ------------------------------------------ social proof on the register card */
+  function proof() {
+    var card = document.getElementById('regcard');
+    if (!card || S.proof === false) return;
+    var seats = S.names || ['Maya', 'Devon', 'Priya', 'Sam', 'Alix'];
+    var tints = ['#f2d3bd', '#cfe0f1', '#e4ded2', '#dfe8cf', '#d8d4ea'];
+    var stack = seats.slice(0, 5).map(function (n, i) {
+      return '<span style="background:' + tints[i % tints.length] + '">' + initials(n) + '</span>';
+    }).join('') + '<span class="more">+</span>';
+    var d = el('div');
+    d.id = 'proof';
+    d.innerHTML =
+      '<div class="pav"><div class="pstack">' + stack + '</div>' +
+        '<span class="pstars"><i>\u2605\u2605\u2605\u2605\u2605</i>' + (S.rating || '4.9') + '</span></div>' +
+      '<p class="pline"><b>' + (S.registered || '1,204') + '</b>&nbsp;registered</p>' +
+      '<p class="pline"><span class="pdot g"></span><span class="pmono">' + (S.last24 || '18') +
+        ' registered in the last 24 hours</span></p>' +
+      '<p class="pline"><span class="pdot a"></span><span class="pmono"><b>' + seats[0] +
+        '</b> just registered <em>\u00B7 12 minutes ago</em></span></p>';
+    var btn = card.querySelector('.btn');
+    if (btn) card.insertBefore(d, btn); else card.appendChild(d);
+  }
+
   function boot() {
     var t = testimonial();
     if (t) {
       var band = document.getElementById('band');
       if (band && band.parentNode) band.parentNode.insertBefore(t, band.nextSibling);
     }
+    proof();
     modal();
     if (S.gate !== false) gate();
     toast();
@@ -184,15 +209,4 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
-})();
-
-/* Scale the fixed 800px page up on wide screens (it stays pixel-exact, just bigger), never below 1. */
-(function () {
-  var fit = function () {
-    var w = document.documentElement.clientWidth;
-    var z = w <= 820 ? 1 : Math.min(1.6, Math.max(1, w / 850));
-    document.documentElement.style.setProperty('--fit', z.toFixed(3));
-  };
-  fit();
-  addEventListener('resize', fit);
 })();
