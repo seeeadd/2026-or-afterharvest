@@ -1222,3 +1222,30 @@ body.modalopen{overflow:hidden}
 #modal .mavq{margin:0 0 8px;font-size:12.5px;color:color-mix(in srgb,var(--ink) 74%,transparent)}
 #modal .mopts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 #modal .mform .btn.lg{color:var(--accent-ink)}
+
+/* the modal never scrolls sideways */
+#modal .mcard{overflow-x:hidden}
+#modal .mform,#modal .mform input,#modal .mopts,#modal .mavail{min-width:0}
+#modal .mticks{flex-wrap:wrap}
+#modal .msrow{flex-wrap:wrap;gap:6px}
+
+/* ------------------------------------------------- the sticky video, finished
+   Device-like frame with a lit edge, a shadow that follows its shape, a gradient under the controls and a
+   scrubber with a knob, so it reads as a small player rather than a picture with text on it. */
+#stick{filter:drop-shadow(0 22px 30px rgba(28,20,12,.28)) drop-shadow(0 4px 8px rgba(28,20,12,.2))}
+#stick .svcard{box-shadow:none;border-radius:18px;padding:5px;background:linear-gradient(160deg,#2a2a2e,#101012 55%,#26262b)}
+#stick .svmedia{position:relative;border-radius:14px;overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),inset 0 10px 24px -18px rgba(0,0,0,.9)}
+#stick .svmedia:after{content:'';position:absolute;left:0;right:0;bottom:0;height:52%;pointer-events:none;
+  background:linear-gradient(transparent,rgba(8,8,10,.82))}
+#stick .svcap,#stick .svhint,#stick .svbar,#stick .svmute,#stick .svx{z-index:2}
+#stick .svmute{background:rgba(14,14,16,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14)}
+#stick .svx{background:rgba(14,14,16,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14)}
+#stick .svbar{left:10px;right:10px;bottom:9px;height:3px;border-radius:99px;background:rgba(255,255,255,.26);
+  overflow:visible}
+#stick .svbar i{position:relative;border-radius:99px;background:#fff}
+#stick .svbar i:after{content:'';position:absolute;right:-4px;top:50%;width:8px;height:8px;margin-top:-4px;
+  border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.6)}
+#stick .svhint{bottom:20px}
+#stick .btn{height:42px;font-size:14px;box-shadow:3px 3px 0 var(--ink)}
+#stick:hover{filter:drop-shadow(0 26px 34px rgba(28,20,12,.32)) drop-shadow(0 5px 10px rgba(28,20,12,.22))}
