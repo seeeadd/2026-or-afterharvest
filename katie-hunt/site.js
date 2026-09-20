@@ -125,7 +125,6 @@
     var m = el('div');
     m.id = 'modal';
     var who = LP.name || '', first = LP.first || who.split(' ')[0] || 'me';
-    var seats = parseInt(String(S.registered || '1204').replace(/\D/g, ''), 10) || 1204;
     m.innerHTML =
       '<div class="mcard"><span class="mrail"></span>' +
         '<button class="mx" aria-label="Close">\u2715</button>' +
@@ -136,7 +135,7 @@
           '</svg>Zoom live</span></div>' +
         '<h3>Hold your seat for <em>' + (LP.event || 'the three days') + '</em>.</h3>' +
         '<p class="msub">Three days, live with ' + first + '. Replays for seven days.</p>' +
-        '<div class="mseats"><div class="mnum"><b id="mCount">' + seats.toLocaleString() + '</b> registered' +
+        '<div class="mseats"><div class="mnum"><b id="mCount" data-seat>' + seatTotal.toLocaleString() + '</b> registered' +
           '<span id="mRecent">' + (S.names || ['Maya'])[0] + ' just now</span></div>' +
           '<div class="mbar"><i id="mFill"></i></div></div>' +
         '<div class="mrow"><input class="mfield" placeholder="First name"><input class="mfield" placeholder="you@yourdomain.com"></div>' +
@@ -154,14 +153,11 @@
       b.addEventListener('click', function (e) { e.preventDefault(); m.classList.add('on'); });
     });
     // it keeps moving while they look at it
-    var n = seats, fill = m.querySelector('#mFill'), count = m.querySelector('#mCount'),
-        recent = m.querySelector('#mRecent'), names = S.names || ['Maya'], k = 0, pct = 62;
+    var fill = m.querySelector('#mFill'), recent = m.querySelector('#mRecent'),
+        names = S.names || ['Maya'], k = 0, pct = 62;
     fill.style.width = pct + '%';
     setInterval(function () {
-      n += 1; k++;
-      count.textContent = n.toLocaleString();
-      count.classList.add('tick');
-      setTimeout(function () { count.classList.remove('tick'); }, 700);
+      k++;
       recent.textContent = names[k % names.length] + ' just now';
       pct = Math.min(96, pct + 0.7);
       fill.style.width = pct.toFixed(1) + '%';
@@ -232,7 +228,7 @@
     d.innerHTML =
       '<div class="pav"><div class="pstack">' + stack + '</div>' +
         '<span class="pstars"><i>\u2605\u2605\u2605\u2605\u2605</i>' + (S.rating || '4.9') + '</span></div>' +
-      '<p class="pline"><b>' + (S.registered || '1,204') + '</b>&nbsp;registered</p>' +
+      '<p class="pline"><b data-seat>' + seatTotal.toLocaleString() + '</b>&nbsp;registered</p>' +
       '<p class="pline"><span class="pdot g"></span><span class="pmono">' + (S.last24 || '18') +
         ' registered in the last 24 hours</span></p>' +
       '<p class="pline"><span class="pdot a"></span><span class="pmono"><b>' + seats[0] +
@@ -260,6 +256,37 @@
     };
     tick();
     setInterval(tick, 1000);
+  }
+
+  /* ------------------------------------------------------- the live seat count
+     One number, shown in the announcement bar, on the register card and in the modal, ticking up together. */
+  var seatTotal = parseInt(String(S.registered || '1204').replace(/\D/g, ''), 10) || 1204;
+  function paintSeats(flash) {
+    document.querySelectorAll('[data-seat]').forEach(function (n) {
+      n.textContent = seatTotal.toLocaleString();
+      if (!flash) return;
+      n.classList.add('tick');
+      setTimeout(function () { n.classList.remove('tick'); }, 700);
+    });
+  }
+  function seatTicker() {
+    paintSeats(false);
+    setInterval(function () { seatTotal += 1 + (seatTotal % 2); paintSeats(true); }, 8000);
+  }
+
+  /* --------------------------------------------------------- announcement bar
+     A slim strip above the header: same brand, its own row, sticky with it. */
+  function topbar() {
+    if (S.topbar === false) return;
+    var ev = LP.event || '3-day live event';
+    var bar = el('div');
+    bar.id = 'topbar';
+    bar.innerHTML =
+      '<span class="tbin"><span class="tbdot"></span>' +
+      '<b data-seat>' + seatTotal.toLocaleString() + '</b>+ ' +
+      (S.topbar_text || ('have registered for ' + ev)) + '</span>';
+    document.body.insertBefore(bar, document.body.firstChild);
+    bar.onclick = function () { document.getElementById('modal').classList.add('on'); };
   }
 
   /* ------------------------------------------------------------ hero layout
@@ -321,6 +348,7 @@
   }
 
   function boot() {
+    topbar();
     hero();
     seconds();
     var t = testimonial();
@@ -334,6 +362,7 @@
     toast();
     sticky();
     clocks();
+    seatTicker();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();

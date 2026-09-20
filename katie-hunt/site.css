@@ -347,3 +347,24 @@ body{margin:0;display:block}
 .htstars i{color:#f2b134;font-style:normal;letter-spacing:1.5px;font-size:13px}
 .htstars b{font-size:13.5px;font-weight:800}
 @media (max-width:560px){.htrust{gap:10px}.htfaces span{width:32px;height:32px;font-size:11px}}
+
+/* ------------------------------------------------------- announcement bar
+   Slim, sticky, in the lead's brand: the seat count ticks up here, on the card and in the modal together. */
+#topbar{position:sticky;top:0;z-index:55;padding:9px 16px;text-align:center;cursor:pointer;
+  background:color-mix(in srgb,var(--accent) 13%,var(--paper,#fff));
+  border-bottom:1px solid color-mix(in srgb,var(--accent) 26%,transparent);overflow:hidden}
+#topbar:before{content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 35%,color-mix(in srgb,var(--accent) 22%,transparent) 50%,transparent 65%);
+  transform:translateX(-110%);animation:tbsheen 6s ease-in-out infinite}
+@keyframes tbsheen{0%,70%{transform:translateX(-110%)}92%,100%{transform:translateX(110%)}}
+#topbar .tbin{position:relative;display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink)}
+#topbar b{font-weight:800;font-variant-numeric:tabular-nums;color:var(--ink);transition:transform .25s ease}
+#topbar b.tick{transform:translateY(-2px);color:var(--accent)}
+#topbar .tbdot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:livepulse 1.6s ease-out infinite}
+.navwrap{top:46px}
+[data-seat].tick{transform:translateY(-2px)}
+@media (max-width:560px){
+  #topbar{padding:7px 12px}
+  #topbar .tbin{font-size:12px;gap:6px}
+  .navwrap{top:38px}
+}
