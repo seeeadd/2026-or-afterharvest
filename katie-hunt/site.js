@@ -431,29 +431,49 @@
   function modal() {
     var m = el('div', '');
     m.id = 'modal';
+    /* the ticket, not a form in a white box: a stub carrying the event, a perforation, then the counterfoil
+       you fill in. It is the same mark as the favicon, so the page and the tab agree on what a seat is. */
     m.innerHTML = '<div class="mbd" data-close="1"></div><div class="mcard" role="dialog" aria-modal="true" aria-label="Hold my seat">' +
-      '<div class="mlive"><i class="pulse"></i>Registration open<span class="mclock">00:00:00:00</span></div>' +
       '<button class="mx" data-close="1" aria-label="Close">' +
       '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>' +
-      '<div class="mtop"><span class="chip"><i class="pulse"></i>Live on Zoom</span>' +
-      '<h3>Hold my seat for ' + esc(EV) + '.</h3>' +
-      '<p class="mwhen">' + esc(WHEN_FULL) + '</p></div>' +
-      '<div class="mseats"><div class="msrow"><b class="seatn">' + seatText() + '</b> people have their seat' +
-      '<span class="msnote" style="margin-left:auto">' + comma(state.last24) + ' in the last 24 hours</span></div>' +
-      '<div class="msbar"><i></i></div></div>' +
-      '<form class="mform" novalidate>' +
-      '<label><span>First name</span><input type="text" name="first" autocomplete="off" placeholder="' + esc(FIRST) + '"></label>' +
-      '<label><span>Email address</span><input type="email" name="email" autocomplete="off" placeholder="you@example.com"></label>' +
-      '<label><span>Phone number</span><input type="tel" name="phone" autocomplete="off" placeholder="Optional, for the reminder"></label>' +
-      '<div class="mavail"><p class="mavq">I am available ' + esc(WHEN) + ' to attend:</p><div class="mopts">' +
-      ['Yes', 'No', 'Maybe'].map(function (o, i) {
-        return '<label class="mopt"><input type="radio" name="avail" value="' + o.toLowerCase() + '"' +
-          (i === 0 ? ' checked' : '') + '><span class="mdot"></span><em>' + o + '</em></label>';
-      }).join('') + '</div></div>' +
-      '<span class="btn lg sheen" data-submit="1" role="button" tabindex="0">Save my free seat' + ARROW + '</span></form>' +
-      '<ul class="mticks"><li>' + TICK + 'Free to join</li><li>' + TICK + 'Replays for every session</li><li>' + TICK + 'Leave any time</li></ul>' +
-      '<div class="mfoot"><span class="av"><img src="' + esc(S.avatar || 'img/headshot.jpg') + '" alt=""></span>' +
-      '<span><b>Hosted by ' + esc(WHO) + '</b><small>' + esc(LP.role || BRAND) + '</small></span></div></div>';
+
+      '<div class="mstub">' +
+        '<div class="msthead"><span class="mstb">' + esc(BRAND) + '</span><span class="mstone">Admit one</span></div>' +
+        '<p class="mstk">Free seat</p>' +
+        '<h3 class="mstev">' + esc(EV) + '</h3>' +
+        '<dl class="mstmeta">' +
+          '<div><dt>Dates</dt><dd>' + esc(WHEN) + '</dd></div>' +
+          '<div><dt>Time</dt><dd>' + esc(tfmt(START)) + ' \u00B7 Live</dd></div>' +
+          '<div><dt>Where</dt><dd>Zoom, link by email</dd></div>' +
+          '<div><dt>Cost</dt><dd>Free</dd></div>' +
+        '</dl>' +
+        '<ol class="mstdays">' + (LP.days || []).slice(0, 3).map(function (d, i) {
+          return '<li><b>Day ' + (i + 1) + '</b>' +
+            esc(String(d.title).split('|').join(' ').replace(/\.$/, '')) + '</li>';
+        }).join('') + '</ol>' +
+        '<div class="mstseat"><span>Seat no.</span><b class="seatn">' + seatText() + '</b></div>' +
+        '<div class="msbar"><i></i></div>' +
+        '<p class="mstnote">' + comma(state.last24) + ' taken in the last 24 hours</p>' +
+        '<div class="mfoot"><span class="av"><img src="' + esc(S.avatar || 'img/headshot.jpg') + '" alt=""></span>' +
+        '<span><b>Hosted by ' + esc(WHO) + '</b><small>' + esc(LP.role || BRAND) + '</small></span></div>' +
+      '</div>' +
+
+      '<div class="mbody">' +
+        '<div class="mlive"><i class="pulse"></i>Registration open<span class="mclock">00:00:00:00</span>' +
+        '<em class="mlivex">left</em></div>' +
+        '<p class="mwhen">Fill this in and the Zoom link is on its way.</p>' +
+        '<form class="mform" novalidate>' +
+        '<label><span>First name</span><input type="text" name="first" autocomplete="off" placeholder="' + esc(FIRST) + '"></label>' +
+        '<label><span>Email address</span><input type="email" name="email" autocomplete="off" placeholder="you@example.com"></label>' +
+        '<label><span>Phone number</span><input type="tel" name="phone" autocomplete="off" placeholder="Optional, for the reminder"></label>' +
+        '<div class="mavail"><p class="mavq">I am available ' + esc(WHEN) + ' to attend:</p><div class="mopts">' +
+        ['Yes', 'No', 'Maybe'].map(function (o, i) {
+          return '<label class="mopt"><input type="radio" name="avail" value="' + o.toLowerCase() + '"' +
+            (i === 0 ? ' checked' : '') + '><span class="mdot"></span><em>' + o + '</em></label>';
+        }).join('') + '</div></div>' +
+        '<span class="btn lg sheen" data-submit="1" role="button" tabindex="0">Save my free seat' + ARROW + '</span></form>' +
+        '<ul class="mticks"><li>' + TICK + 'Free to join</li><li>' + TICK + 'Replays for every session</li><li>' + TICK + 'Leave any time</li></ul>' +
+      '</div></div>';
     document.body.appendChild(m);
 
     function close() { m.classList.remove('on'); document.body.classList.remove('modalopen'); }
