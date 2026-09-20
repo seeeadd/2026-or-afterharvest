@@ -404,3 +404,64 @@ body{margin:0;display:block}
 .nav .btn.sm{padding:7px 14px !important}
 .nav .cdn{padding:2px 6px 1px}
 .nav .cd{padding-right:10px}
+
+/* ================================================================ layout v2
+   Supersedes the fluid attempt above. The design's own grid, ghosts and grain are drawn at 800px, and the facts
+   strip is nowrap, so stretching sections to the viewport left them out of register. Instead: the content runs
+   in a centred column at a comfortable measure, and the background layers go full-bleed behind it. */
+#page{max-width:1060px;margin:0 auto;position:relative;overflow:visible}
+.bgl{position:fixed !important;left:50% !important;transform:translateX(-50%);width:100vw !important;
+  height:100vh !important;top:0 !important;z-index:0}
+#ground{height:100vh !important}
+#pattern{width:100vw !important;height:100vh !important}
+#ghosts{height:100vh !important}
+#grain{height:100vh !important;background-repeat:repeat}
+.hero,.fitc,.days,.closing,.foot,#tst,#fake .fks{padding-left:clamp(18px,3vw,40px);padding-right:clamp(18px,3vw,40px)}
+.hero>*,.fitc>*,.days>*,.closing>*,.foot>*,#fake .fks>*{max-width:none}
+.facts{height:auto !important;overflow:visible !important}
+.fk{flex-wrap:wrap;white-space:normal;justify-content:center;gap:10px 22px;padding:13px clamp(18px,3vw,40px) !important}
+.band{padding-left:clamp(18px,3vw,40px);padding-right:clamp(18px,3vw,40px)}
+.hgrid{grid-template-columns:minmax(0,1.06fr) minmax(0,1fr);gap:clamp(20px,2.6vw,36px)}
+.hero h1.disp{font-size:clamp(38px,4.2vw,58px) !important;max-width:14ch}
+.hero .lede{font-size:17.5px;max-width:52ch}
+.htrust{gap:12px}
+@media (max-width:900px){
+  #page{max-width:none}
+  .hero h1.disp{font-size:clamp(32px,7vw,44px) !important;max-width:none}
+}
+
+/* ---------------------------------------------------------- background v3
+   The page's own grid is drawn by lp.js at the column's width, so it stays inside the column. The area either
+   side gets the same ground and the same grid, painted in CSS, so the whole viewport reads as one surface. */
+.bgl{position:absolute !important;left:0 !important;transform:none !important;width:100% !important;top:0 !important}
+#ground,#ghosts,#grain{height:100% !important}
+#pattern{width:100% !important;height:auto !important}
+html{background:var(--ground)}
+body{background-color:var(--ground);
+  background-image:repeating-linear-gradient(0deg,color-mix(in srgb,var(--pat,#e2662f) 42%,transparent) 0 1px,transparent 1px 52px),
+                   repeating-linear-gradient(90deg,color-mix(in srgb,var(--pat,#e2662f) 42%,transparent) 0 1px,transparent 1px 52px);
+  background-position:0 0;background-attachment:fixed}
+#page{background:var(--ground)}
+
+/* ------------------------------------------------------------- trust strip v2 */
+.htrust{align-items:stretch;gap:14px}
+.htbadge{position:relative;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:9px 16px;
+  border-radius:10px;background:#17161a;border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 10px 22px -14px rgba(0,0,0,.8)}
+.htbadge:before,.htbadge:after{content:'';position:absolute;top:50%;width:9px;height:26px;transform:translateY(-50%);
+  border:1.5px solid #d8b45f;border-radius:0 12px 0 12px;opacity:.85}
+.htbadge:before{left:5px;border-right:0}
+.htbadge:after{right:5px;border-left:0;transform:translateY(-50%) scaleX(-1)}
+.htbadge b{color:#e8c56c;font-size:10px;letter-spacing:.2em}
+.htbadge span{color:#fff;font-size:10px;letter-spacing:.12em;opacity:.9}
+.htfaces span{width:42px;height:42px;margin-right:-11px;border:2.5px solid var(--paper,#fff);overflow:hidden;
+  box-shadow:0 3px 8px -3px rgba(0,0,0,.45)}
+.htfaces span svg{width:100%;height:100%;display:block}
+.htstars i{font-size:17px;letter-spacing:2px;color:#f0b429;text-shadow:0 1px 0 rgba(0,0,0,.08)}
+.htstars b{font-size:14px}
+.htstars small{font-size:12px;opacity:.6}
+#proof .pstack span.face{overflow:hidden;padding:0}
+#proof .pstack span.face svg{width:100%;height:100%;display:block}
+#proof .pstars i{font-size:15px;color:#f0b429}
+.hright .eyebrow{white-space:nowrap;font-size:11px;letter-spacing:.14em;padding:8px 15px}
+@media (max-width:900px){.hright .eyebrow{white-space:normal;font-size:10.5px}}

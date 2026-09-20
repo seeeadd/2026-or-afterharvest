@@ -10,6 +10,29 @@
     if (html != null) e.innerHTML = html;
     return e;
   };
+  /* little drawn avatars: a face per sample name, so the stack reads as people without using anyone's photo */
+  var AV = [
+    {skin: '#f0c9a6', hair: '#3b2a20', shirt: '#cfd8e8', style: 'long'},
+    {skin: '#d8a077', hair: '#1f1a17', shirt: '#e6d5c3', style: 'short'},
+    {skin: '#f5d6b8', hair: '#8a5a2b', shirt: '#d9e4d2', style: 'bun'},
+    {skin: '#a9734c', hair: '#141210', shirt: '#eadcc8', style: 'short'},
+    {skin: '#f3cdb0', hair: '#6b4a2f', shirt: '#dcd6ea', style: 'long'},
+    {skin: '#e8b98f', hair: '#2b2118', shirt: '#e8cfc2', style: 'bun'}
+  ];
+  var avatar = function (i, bg) {
+    var a = AV[i % AV.length];
+    var hair = a.style === 'long'
+      ? '<path d="M11 21c0-7 4-11 9-11s9 4 9 11v10c-2-3-3-6-3-9-2 2-5 3-9 3s-6-1-6-3c0 3-1 6-3 9z" fill="' + a.hair + '"/>'
+      : a.style === 'bun'
+        ? '<circle cx="20" cy="7" r="3.4" fill="' + a.hair + '"/><path d="M11 21c0-7 4-10 9-10s9 3 9 10c-2-2-5-3-9-3s-7 1-9 3z" fill="' + a.hair + '"/>'
+        : '<path d="M11 21c0-7 4-10 9-10s9 3 9 10c-2-3-5-4-9-4s-7 1-9 4z" fill="' + a.hair + '"/>';
+    return '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="' + (bg || '#f3ece2') + '"/>' +
+      '<path d="M8 40c1.6-7 6.2-10.5 12-10.5S30.4 33 32 40z" fill="' + a.shirt + '"/>' +
+      '<circle cx="20" cy="20" r="8.6" fill="' + a.skin + '"/>' + hair +
+      '<circle cx="17" cy="20.4" r="1" fill="#2b2118"/><circle cx="23" cy="20.4" r="1" fill="#2b2118"/>' +
+      '<path d="M17.6 24.2c1.4 1.1 3.4 1.1 4.8 0" stroke="#9a6a50" stroke-width="1.1" fill="none" stroke-linecap="round"/></svg>';
+  };
+
   var initials = function (name) {
     return (name || '').trim().split(/\s+/).slice(0, 2).map(function (w) { return w[0] || ''; }).join('').toUpperCase();
   };
@@ -221,7 +244,7 @@
     var seats = S.names || ['Maya', 'Devon', 'Priya', 'Sam', 'Alix'];
     var tints = ['#f2d3bd', '#cfe0f1', '#e4ded2', '#dfe8cf', '#d8d4ea'];
     var stack = seats.slice(0, 5).map(function (n, i) {
-      return '<span style="background:' + tints[i % tints.length] + '">' + initials(n) + '</span>';
+      return '<span class="face">' + avatar(i, tints[i % tints.length]) + '</span>';
     }).join('') + '<span class="more">+</span>';
     var d = el('div');
     d.id = 'proof';
@@ -307,14 +330,14 @@
     var names = S.names || ['Maya', 'Devon', 'Priya', 'Sam', 'Alix'];
     var tints = ['#f2d3bd', '#cfe0f1', '#e4ded2', '#dfe8cf', '#d8d4ea'];
     var faces = names.slice(0, 5).map(function (n, i) {
-      return '<span style="background:' + tints[i % tints.length] + '">' + initials(n) + '</span>';
+      return '<span title="' + n + '">' + avatar(i, tints[i % tints.length]) + '</span>';
     }).join('');
     var strip = el('div', 'htrust');
     strip.innerHTML =
-      '<span class="htbadge"><b>' + (tr.badge_top || 'Top rated') + '</b>' + (tr.badge_bot || (LP.brand || 'Live event')) + '</span>' +
+      '<span class="htbadge"><b>' + (tr.badge_top || 'Top rated') + '</b><span>' + (tr.badge_bot || (LP.brand || 'Live event')) + '</span></span>' +
       '<span class="htfaces">' + faces + '</span>' +
       '<span class="htstars"><i>\u2605\u2605\u2605\u2605\u2605</i><b>Trusted by over ' +
-        (tr.count || '1,793') + '</b>' + (tr.label || 'makers') + '</span>';
+        (tr.count || '1,793') + '</b><small>' + (tr.label || 'makers') + '</small></span>';
     left.appendChild(strip);
     left.appendChild(phone);
     // booking card under the video
@@ -361,6 +384,8 @@
 
   function boot() {
     definal();
+    var pat = document.getElementById('pattern');       // the grid was drawn 800px wide: let it cover and crop
+    if (pat) pat.setAttribute('preserveAspectRatio', 'xMidYMid slice');
     topbar();
     hero();
     seconds();
