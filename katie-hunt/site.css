@@ -1180,3 +1180,40 @@ body.modalopen{overflow:hidden}
 #modal .mopt:has(input:checked){border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,#fff)}
 #modal .mopt:has(input:checked) .mdot{border-color:var(--accent)}
 #modal .mopt:has(input:checked) .mdot:after{transform:scale(1)}
+
+/* hero left column: the bar centres over the video, the slide is bigger, the action is not a slab */
+.hleft .htrust{margin-left:auto;margin-right:auto}
+.hbgrid{grid-template-columns:160px minmax(0,1fr);gap:18px}
+.hbook .btn.lg{width:auto;min-width:200px;height:44px;padding:0 22px;font-size:15px;justify-self:start}
+.hbmain{display:flex;flex-direction:column;align-items:flex-start}
+
+/* ------------------------------------------------------- the modal fits on screen
+   It was taller than the viewport, so the first thing a visitor did was scroll. Everything is tightened and the
+   name and email share a row. */
+#modal .mcard{padding:0 0 18px;max-height:min(880px,94vh);overflow:auto}
+#modal .mtop{padding:14px 22px 0}
+#modal .mtop h3{font-size:clamp(19px,2vw,23px);line-height:1.15;margin:8px 0 5px}
+#modal .mwhen{font-size:13px}
+#modal .mseats{margin:12px 22px;padding:10px 12px}
+#modal .msrow{font-size:13px}
+#modal .msrow .seatn{font-size:19px}
+#modal .mform{padding:0 22px;display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+#modal .mform label{margin-bottom:10px}
+#modal .mform label:nth-of-type(3){grid-column:1 / -1}
+#modal .mform label span{font-size:9.5px;letter-spacing:.14em}
+#modal .mform input{padding:11px 13px;font-size:14px;border-radius:var(--r-sm,8px)}
+#modal .mavail{grid-column:1 / -1;margin:0 0 12px;gap:8px}
+#modal .mavail legend{font-size:12.5px;margin-bottom:7px}
+#modal .mopt{padding:8px 6px;gap:5px}
+#modal .mdot{width:15px;height:15px}
+#modal .mopt em{font-size:13px}
+#modal .mform .btn.lg{grid-column:1 / -1;height:48px;font-size:16px}
+#modal .mticks{padding:12px 22px 0;gap:12px;font-size:12px}
+#modal .mfoot{margin:12px 22px 0;padding-top:12px}
+#modal .mfoot .av{width:34px;height:34px}
+#modal .mlive{padding:9px 22px;font-size:11px}
+/* the availability row is three across, whatever the form grid is doing */
+#modal .mavail{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;column-gap:8px}
+#modal .mform .btn.lg{height:46px;font-size:15px;box-shadow:3px 3px 0 var(--ink)}
+#modal .mform .btn.lg:before{display:none}
+#modal .sheen:after{display:none}
