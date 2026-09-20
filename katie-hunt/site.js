@@ -429,11 +429,11 @@
       '<label><span>First name</span><input type="text" name="first" autocomplete="off" placeholder="' + esc(FIRST) + '"></label>' +
       '<label><span>Email address</span><input type="email" name="email" autocomplete="off" placeholder="you@example.com"></label>' +
       '<label><span>Phone number</span><input type="tel" name="phone" autocomplete="off" placeholder="Optional, for the reminder"></label>' +
-      '<fieldset class="mavail"><legend>I am available ' + esc(WHEN) + ' to attend:</legend>' +
+      '<div class="mavail"><p class="mavq">I am available ' + esc(WHEN) + ' to attend:</p><div class="mopts">' +
       ['Yes', 'No', 'Maybe'].map(function (o, i) {
         return '<label class="mopt"><input type="radio" name="avail" value="' + o.toLowerCase() + '"' +
           (i === 0 ? ' checked' : '') + '><span class="mdot"></span><em>' + o + '</em></label>';
-      }).join('') + '</fieldset>' +
+      }).join('') + '</div></div>' +
       '<span class="btn lg sheen" data-submit="1" role="button" tabindex="0">Save my free seat' + ARROW + '</span></form>' +
       '<ul class="mticks"><li>' + TICK + 'Free to join</li><li>' + TICK + 'Replays for every session</li><li>' + TICK + 'Leave any time</li></ul>' +
       '<div class="mfoot"><span class="av"><img src="' + esc(S.avatar || 'img/headshot.jpg') + '" alt=""></span>' +

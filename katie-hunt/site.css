@@ -1217,3 +1217,8 @@ body.modalopen{overflow:hidden}
 #modal .mform .btn.lg{height:46px;font-size:15px;box-shadow:3px 3px 0 var(--ink)}
 #modal .mform .btn.lg:before{display:none}
 #modal .sheen:after{display:none}
+/* availability: no fieldset, so nothing steals a grid cell */
+#modal .mavail{display:block !important;grid-column:1 / -1;margin:0 0 12px}
+#modal .mavq{margin:0 0 8px;font-size:12.5px;color:color-mix(in srgb,var(--ink) 74%,transparent)}
+#modal .mopts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#modal .mform .btn.lg{color:var(--accent-ink)}
