@@ -81,6 +81,7 @@
 #stick{position:fixed;right:18px;bottom:18px;z-index:70;width:196px;transform:translateY(130%);
   transition:transform .5s cubic-bezier(.2,.8,.3,1)}
 #stick.on{transform:translateY(0)}
+#stick{font-family:-apple-system,'SF Pro Text','Helvetica Neue',system-ui,sans-serif}   /* a player, not the page */
 #stick .scard{position:relative;border-radius:16px 16px 4px 4px;overflow:hidden;background:#0d0d0f;
   box-shadow:0 26px 60px -24px rgba(20,16,12,.7)}
 #stick .sv{position:relative;aspect-ratio:9/16;display:block;width:100%;object-fit:cover}
