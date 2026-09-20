@@ -1822,3 +1822,7 @@ body.modalopen{overflow:hidden}
 @media (max-width:640px){   /* the fitted section heading ran past the right edge on a phone */
   #page #daysh,#page #daysh span{white-space:normal !important;font-size:min(7.2vw,26px)}
 }
+
+/* the header's full-width hairline made sense when the header was a full-width bar; under a floating
+   pill it reads as a stray rule drawn across the page */
+#page .hdr:after{display:none !important}
