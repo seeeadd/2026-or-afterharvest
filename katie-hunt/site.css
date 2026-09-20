@@ -1851,3 +1851,18 @@ body.modalopen{overflow:hidden}
 }
 /* the slide column was taller than the copy beside it, leaving a hole under the copy */
 #page #days .d1 .dbody{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+/* tighter again: the hero starts right under the header stack */
+#page .hero{padding-top:clamp(2px,0.4vw,8px)}
+
+/* the hero grid carried an 18px top margin on top of the section padding */
+#page .hgrid{margin-top:0}
+/* the register card's content was hugging its edges */
+#page #regcard{padding:18px 22px 20px}
+
+/* --------------------------------------------- the day's own artifact, drawn quietly in the row
+   Days 2 and 3 were text on an empty field while Day 1 had the slide. Each row now carries the mark of
+   what you build that day, in the lead's accent, at the weight of a watermark. */
+#page #days .dagenda .dmark{position:absolute;right:0;top:clamp(26px,3vw,40px);pointer-events:none;
+  width:clamp(120px,13vw,186px);color:var(--accent);opacity:.17}
+#page #days .dagenda .dmark svg{width:100%;height:auto;display:block}
+@media (max-width:1100px){#page #days .dagenda .dmark{display:none}}

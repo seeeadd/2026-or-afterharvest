@@ -129,6 +129,24 @@
     return '<span class="avstack' + (cls ? ' ' + cls : '') + '">' + h + '</span>';
   }
   var PLAY = '<svg viewBox="0 0 24 24" width="15" height="15"><path d="M8 5.4v13.2c0 .8.9 1.3 1.6.9l10.4-6.6c.6-.4.6-1.3 0-1.7L9.6 4.5c-.7-.4-1.6 0-1.6.9z" fill="currentColor"/></svg>';
+  /* the three line-art marks: the takeaway route and the day rows both use them */
+  var ART = [
+      '<svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">' +
+      '<rect x="10.5" y="8.5" width="64" height="75" rx="3"/><path d="M21 26h42M21 36h42M21 46h30"/>' +
+      '<path d="M21 60h42M21 70h24" stroke-dasharray="3 4"/>' +
+      '<rect x="63" y="40" width="46" height="34" rx="3" fill="var(--paper)"/>' +
+      '<path d="M70 52h32M70 60h20"/><circle cx="101" cy="62" r="5"/></g></svg>',
+      '<svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">' +
+      '<rect x="8.5" y="14.5" width="46" height="30" rx="3"/><rect x="8.5" y="52.5" width="46" height="30" rx="3"/>' +
+      '<rect x="64.5" y="14.5" width="46" height="30" rx="3"/><rect x="64.5" y="52.5" width="46" height="30" rx="3"/>' +
+      '<path d="M16 26h20M16 33h14M72 26h20M72 33h10M16 64h20M16 71h12M72 64h20M72 71h16"/>' +
+      '<path d="M96 60l5 5 9-10" stroke-width="2"/></g></svg>',
+      '<svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">' +
+      '<path d="M12 22h62M12 34h62M12 46h40"/><rect x="10.5" y="10.5" width="65" height="48" rx="3"/>' +
+      '<path d="M30 70h60M30 80h38"/><circle cx="20" cy="70" r="3.4"/><circle cx="20" cy="80" r="3.4"/>' +
+      '<path d="M86 30l10 10 18-20" stroke-width="2"/></g></svg>'
+  ];
+
   var STAR = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.4 4.2 13.4l.7-4.3-3.1-3 4.3-.6z" fill="currentColor"/></svg>';
   function stars(n) { var h = ''; for (var i = 0; i < (n || 5); i++) h += STAR; return '<span class="stars">' + h + '</span>'; }
 
@@ -1050,6 +1068,8 @@
       var t = q('.dt', body);
       if (t) t.insertAdjacentHTML('beforebegin',
         '<p class="dmetaline">Day ' + (i + 1) + ' of ' + n + ' \u00B7 Replay the same day</p>');
+      /* the day's own artifact, quiet, in the space the copy does not use. Day 1 has the slide there. */
+      if (i > 0 && ART[i]) card.insertAdjacentHTML('beforeend', '<span class="dmark">' + ART[i] + '</span>');
     }
     var d1 = q('.d1', box);
     if (d1) {
@@ -1084,22 +1104,7 @@
     var outs = days.slice(0, 3).map(function (d) { return String(d.outcome || '').trim(); }).filter(Boolean);
     if (outs.length) {
       /* each piece gets a drawn artifact, thin-line, in their accent: the thing you actually keep */
-      var ART = [
-        '<svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">' +
-        '<rect x="10.5" y="8.5" width="64" height="75" rx="3"/><path d="M21 26h42M21 36h42M21 46h30"/>' +
-        '<path d="M21 60h42M21 70h24" stroke-dasharray="3 4"/>' +
-        '<rect x="63" y="40" width="46" height="34" rx="3" fill="var(--paper)"/>' +
-        '<path d="M70 52h32M70 60h20"/><circle cx="101" cy="62" r="5"/></g></svg>',
-        '<svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">' +
-        '<rect x="8.5" y="14.5" width="46" height="30" rx="3"/><rect x="8.5" y="52.5" width="46" height="30" rx="3"/>' +
-        '<rect x="64.5" y="14.5" width="46" height="30" rx="3"/><rect x="64.5" y="52.5" width="46" height="30" rx="3"/>' +
-        '<path d="M16 26h20M16 33h14M72 26h20M72 33h10M16 64h20M16 71h12M72 64h20M72 71h16"/>' +
-        '<path d="M96 60l5 5 9-10" stroke-width="2"/></g></svg>',
-        '<svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4">' +
-        '<path d="M12 22h62M12 34h62M12 46h40"/><rect x="10.5" y="10.5" width="65" height="48" rx="3"/>' +
-        '<path d="M30 70h60M30 80h38"/><circle cx="20" cy="70" r="3.4"/><circle cx="20" cy="80" r="3.4"/>' +
-        '<path d="M86 30l10 10 18-20" stroke-width="2"/></g></svg>'
-      ];
+
       var labels = ['The numbers', 'The pitch', 'The follow-up'];
       var take = el('section', 'sect z');
       take.id = 'takeaway';
