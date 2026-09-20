@@ -931,10 +931,16 @@
     };
     var when1 = q('.when .dmeta', box);
     if (when1) when1.innerHTML = 'Live session<br>' + esc(meta(0));
+    var bullets = function (i) {
+      var list = (S.day_bullets || [])[i] || [];
+      if (!list.length) return '';
+      return '<ul class="dbul">' + list.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>';
+    };
     var extra = $('d1o');
     if (extra && days[0] && days[0].outcome) {
       extra.insertAdjacentHTML('afterend', '<p class="dxtra">' +
-        esc((S.day_detail || [])[0] || ('You work it in the session, on your own product, with ' + FIRST + ' on the call.')) + '</p>');
+        esc((S.day_detail || [])[0] || ('You work it in the session, on your own product, with ' + FIRST + ' on the call.')) +
+        '</p>' + bullets(0));
     }
     qa('.d23 > *', box).forEach(function (card, i) {
       var d = days[i + 1] || {};
@@ -942,7 +948,7 @@
       var line = el('p', 'dwhen', esc(meta(i + 1)));
       card.insertBefore(line, card.firstChild);
       var det = (S.day_detail || [])[i + 1];
-      if (det && !q('.dxtra', card)) card.insertAdjacentHTML('beforeend', '<p class="dxtra">' + esc(det) + '</p>');
+      if (det && !q('.dxtra', card)) card.insertAdjacentHTML('beforeend', '<p class="dxtra">' + esc(det) + '</p>' + bullets(i + 1));
     });
   }
 
@@ -999,12 +1005,40 @@
     ];
     var faq = el('section', 'sect z');
     faq.id = 'faq';
-    faq.innerHTML = '<p class="seye">Before you hold a seat</p>' +
+    faq.innerHTML = '<div class="faqhead"><p class="seye">Before you hold a seat</p>' +
       '<h2 class="sh">The questions people ask.</h2>' +
-      '<div class="faqgrid">' + qs.map(function (r) {
-        return '<div class="faqq"><b>' + esc(r[0]) + '</b><p>' + esc(r[1]) + '</p></div>';
-      }).join('') + '</div>';
+      '<p class="faqnote">' + esc('If yours is not here, reply to the email and ask. ' + FIRST + ' answers them herself.') +
+      '</p></div>' +
+      '<ol class="faqlist">' + qs.map(function (r, i) {
+        return '<li><span class="faqn">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
+          '<div><b>' + esc(r[0]) + '</b><p>' + esc(r[1]) + '</p></div></li>';
+      }).join('') + '</ol>';
     P.insertBefore(faq, closing);
+  }
+
+  /* the numbers band: one figure leads, the rest support it, each with where it comes from */
+  function statsBand() {
+    var band = $('band'), box = $('bstats');
+    if (!band || !box || band.classList.contains('rebuilt')) return;
+    var stats = (LP.stats || []).slice(0, 4);
+    if (!stats.length) return;
+    var host = function (u) {
+      try { return String(u).replace(/^https?:\/\//, '').split('/')[0].replace(/^www\./, ''); } catch (e) { return ''; }
+    };
+    var lead = stats[0], rest = stats.slice(1);
+    box.innerHTML =
+      '<div class="bhead"><p class="beye">' + esc(S.stats_eye || 'The actual numbers') + '</p>' +
+      '<p class="bnote">' + esc(S.stats_note || ('Public, from ' + (LP.brand || 'their own pages') + '.')) + '</p></div>' +
+      '<div class="blead"><b>' + esc(lead.num) + '</b><span>' + esc(lead.label) + '</span>' +
+      (lead.source ? '<i>' + esc(host(lead.source)) + '</i>' : '') + '</div>' +
+      '<div class="brest">' + rest.map(function (t) {
+        return '<div class="bst"><b>' + esc(t.num) + '</b><span>' + esc(t.label) + '</span>' +
+          (t.source ? '<i>' + esc(host(t.source)) + '</i>' : '') + '</div>';
+      }).join('') + '</div>';
+    box.removeAttribute('style');
+    band.classList.add('rebuilt');
+    var line = $('bline');
+    if (line) line.remove();
   }
 
   function start() {
@@ -1027,6 +1061,7 @@
     dayDetail();
     bodySections();
     factsStrip();
+    statsBand();
     testimonial();
     scrollCue();
     nameTicker();
