@@ -1369,3 +1369,35 @@ body.modalopen{overflow:hidden}
 /* the booking action is a button, not a bar */
 .hbook .btn.lg{width:max-content !important;min-width:190px;justify-self:start;align-self:start}
 .hbmain{align-items:flex-start}
+
+/* -------------------------------------------------- hero headline, header, card */
+.hero h1.disp{font-size:clamp(46px,4.7vw,78px) !important;line-height:1 !important;letter-spacing:-.035em}
+.hero .lede{font-size:17px}
+
+/* the sticky header: narrower and shorter */
+#page .navwrap{max-width:min(880px,88vw)}
+#page .nav{gap:10px !important;padding:5px 5px 5px 8px !important}
+#page .nav .cal,#page .nav .cal svg{width:26px !important;height:26px !important}
+#page .nav .lw small{font-size:8.5px}
+#page .nav .lw b{font-size:13px}
+#page .nav .cdn{min-width:32px;padding:2px 5px 1px}
+#page .nav .cdn b{font-size:12.5px}
+#page .nav .cdn small{font-size:6.5px}
+#page .nav .btn.sm{padding:7px 13px !important;font-size:12.5px}
+#page .navwrap{height:46px}
+#topbar{height:26px;font-size:10px;padding:0 14px}
+
+/* the booking card reads as one bar: slide, the line, then the action on the right */
+.hbook{padding:12px}
+.hbgrid{grid-template-columns:132px minmax(0,1fr);gap:14px;align-items:center}
+.hbmain{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:18px;width:100%}
+.hbjoin{grid-column:1;margin:0 0 4px;font-size:15px}
+.hbwhen{grid-column:1;margin:0}
+.hbook .btn.lg{grid-column:2;grid-row:1 / span 2;align-self:center;justify-self:end;min-width:170px;height:42px}
+/* trim the header to ~48px */
+#page .nav{padding:4px 4px 4px 7px !important;gap:9px !important}
+#page .nav .lw{line-height:1.1}
+#page .nav .lw b{margin-top:2px}
+#page .nav .cdn{padding:2px 5px 0;min-width:30px}
+#page .nav .btn.sm{padding:6px 12px !important}
+#page .navwrap{height:44px}
