@@ -2199,3 +2199,42 @@ body.modalopen{overflow:hidden}
 /* only the left column rises; the pill and headline beside it stay where they are */
 #page .hleft{padding-top:0;margin-top:-16px}
 @media (max-width:900px){#page .hleft{margin-top:0}}
+
+/* ------------------------------------------- the mark is composed: subject, live arc, and the 3
+   Not an icon in a circle. Their subject sits off-centre, a broadcast arc says the thing is live, and
+   the 3 of the three days rides a disc in their own display face. */
+#page .nav .cal .bmark,.melogo{overflow:visible}
+#page .nav .cal .bmark > .bglyph,.melogo > .bglyph{width:54%;height:54%;
+  transform:translate(-4.5%,-4.5%)}
+#page .nav .cal .bmark .blive,.melogo .blive{stroke-opacity:.6}
+.b3{position:absolute;right:9%;bottom:9%;width:40%;height:40%;border-radius:50%;background:#fff;
+  display:grid;place-items:center;z-index:3;
+  box-shadow:0 0 0 1.5px color-mix(in srgb,var(--accent) 34%,#fff),0 1px 3px rgba(28,20,12,.22)}
+/* the ring breathes, the way a live dot does */
+#page .nav .cal .bmark .b3{animation:b3live 2.6s ease-out infinite}
+@keyframes b3live{
+  0%,100%{box-shadow:0 0 0 1.5px color-mix(in srgb,var(--accent) 34%,#fff),0 1px 3px rgba(28,20,12,.22)}
+  50%{box-shadow:0 0 0 2.6px color-mix(in srgb,var(--accent) 24%,#fff),0 1px 3px rgba(28,20,12,.22)}
+}
+@media (prefers-reduced-motion:reduce){#page .nav .cal .bmark .b3{animation:none}}
+.b3 b{font-family:var(--display);font-weight:var(--dw2,800);font-size:.62em;line-height:1;
+  letter-spacing:-.04em;color:var(--accent)}
+#page .nav .cal .bmark{font-size:34px}
+.melogo{font-size:38px}
+.melogo.real .b3{display:none}
+/* the old monogram rule painted every b in the mark white, which hid the 3 on its white disc */
+#page .nav .cal .bmark .b3 b,.melogo .b3 b{color:var(--accent);font-family:var(--display);
+  font-weight:var(--dw2,800);font-size:.6em;letter-spacing:-.04em;line-height:1}
+/* the numeral sizes off the disc, not off the badge */
+.b3{font-size:40%}
+#page .nav .cal .bmark .b3 b,.melogo .b3 b{font-size:.68em}
+
+/* the announcement tab is a slim strip, not a block: it was 36px tall for a 10px line */
+#page #topbar{height:27px;padding:0 15px 8px;font-size:10px;letter-spacing:.12em;border-radius:9px 9px 0 0}
+#page .hdr.tight .navwrap{transform:translateY(-35px)}
+@media (max-width:820px){
+  #page #topbar{height:25px;padding:0 12px 7px;font-size:9.5px}
+  #page .hdr.tight .navwrap{transform:translateY(-33px)}
+}
+#page .hdr.tight .navwrap{transform:translateY(-44px)}
+@media (max-width:820px){#page .hdr.tight .navwrap{transform:translateY(-42px)}}

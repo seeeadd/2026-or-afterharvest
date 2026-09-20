@@ -245,9 +245,12 @@
   var BICON = '';
   /* the lead's mark: their subject drawn inside a brand tile. A graphic, not their initials. */
   function emblemSVG(stroke) {
-    return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
+    /* the mark is composed, not an icon: their subject, a broadcast arc that says this is live, and the
+       3 of the three days set in their own display face on a disc. */
+    return '<svg class="bglyph" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
       'stroke-width="' + (stroke || 1.7) + '" stroke-linecap="round" stroke-linejoin="round">' +
-      ICONS[brandIconKey()] + '</svg>';
+      ICONS[brandIconKey()] + '</svg>' +
+      '<span class="b3"><b>3</b></span>';
   }
   function ctaIcons() {
     BICON = '<i class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
