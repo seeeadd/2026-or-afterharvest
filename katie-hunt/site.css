@@ -2744,3 +2744,22 @@ html body #page #takeaway .tkside .scta .btn{align-self:flex-start}
 #page .sctan,#page .hbfine,#page #fine,#page #cFine{font-family:var(--label);font-size:10px;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--muted)}
 #page #days .sctan{color:rgba(255,255,255,.55)}
+.xcfine{display:flex;align-items:center;gap:7px}
+.xcfine svg{width:14px;height:14px;flex:none;color:var(--accent)}
+/* the booking card: the under-line wraps, and on laptops the action takes its own row, so the copy never
+   gets squeezed to one word per line (the long "Free online challenge" line pushed the action column to 276px) */
+html body #page .hbook .hbfine{white-space:normal;text-align:center;line-height:1.4;max-width:230px}
+html body #page .hbook{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);row-gap:14px}
+html body #page .hbook .hblap,html body #page .hbook .hbmain{grid-row:1}
+html body #page .hbook .hbact{grid-row:2;grid-column:1 / -1;display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:none}
+html body #page .hbook .hbact .btn{width:100%;justify-content:center}
+html body #page .hbook .hbfine{max-width:none}
+/* the header title may take two lines at rest and never runs past its box; tight keeps one line with an ellipsis */
+html body #page .hdr:not(.tight) .nav .lw b{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;max-width:100%}
+html body #page .hdr.tight .nav .lw b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+html body #page .hdr .nav .lock,html body #page .hdr .nav .lw{min-width:0}
+html body #page .hdr .nav.crowd .hsoc{display:none !important}
+html body #page .hdr .nav.crowd .cdl{font-size:inherit}
+html body #page .hdr:not(.tight) .nav .lw b{font-size:var(--tfs,15.5px) !important;line-height:1.18}
+html body #page .hbook .hbact{justify-self:stretch;width:auto !important;max-width:none !important}

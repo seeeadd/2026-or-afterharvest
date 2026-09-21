@@ -109,6 +109,7 @@
   /* the line under every call to action (asked for 2026-09-22) */
   var CTA_NOTE = S.cta_note || ('Free online challenge: ' + dfmt(START) + ' to ' + dfmt(END));
 
+  var REG = null;                         /* the sign-up modal, once built */
   var state = {
     seats: Math.max(12, toNum(S.registered, 1204)),
     last24: Math.max(1, toNum(S.last24, 18)),
@@ -719,7 +720,8 @@
       var t = document.activeElement;
       if (t && t.matches && t.matches('[data-reg]')) { e.preventDefault(); open(); }
     });
-    return { open: open, close: close, node: m };
+    function finish(first, email) { m.classList.add('on'); document.body.classList.add('modalopen'); done(first, email); }
+    return { open: open, close: close, node: m, finish: finish };
   }
 
   function stuck() {                       /* the lead's own fit-check problems as three chips; a tap opens the form */
@@ -744,11 +746,12 @@
     c.innerHTML = '<div class="xcbd" data-xc="1"></div><div class="xccard" role="dialog" aria-label="Get the replays" data-noreg="1">' +
       '<button type="button" class="xcx" data-xc="1" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" ' +
       'stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>' +
-      '<p class="xck">Before you go</p><h3 class="xch">Can\u2019t make it live? Get the replays.</h3>' +
-      '<p class="xcp">Every day of the ' + esc(EV) + ' is recorded. Leave your email and each replay comes the same evening.</p>' +
+      '<p class="xck">Before you go</p><h3 class="xch">Save your free seat. It takes ten seconds.</h3>' +
+      '<p class="xcp">Three live days with ' + esc(FIRST) + ', ' + esc(dfmt(START) + ' to ' + dfmt(END)) + ' at ' + esc(tfmt(START)) +
+        '. Bring your questions: the live sessions are where they get answered.</p>' +
       '<form class="xcf" novalidate><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-label="Email address">' +
-      '<button type="submit" class="btn lg">Send me the replays' + ARROW + '</button></form>' +
-      '<p class="xcfine">Free. You can still join live any day.</p></div>';
+      '<button type="submit" class="btn lg">Save my free seat' + ARROW + '</button></form>' +
+      '<p class="xcfine">' + TICK + 'Can\u2019t make one day? You still get that day\u2019s replay.</p></div>';
     document.body.appendChild(c);
     function show() {
       if (seen || document.body.classList.contains('modalopen') || Date.now() - t0 < 8000) return;
@@ -762,9 +765,8 @@
       e.preventDefault();
       var v = e.target.email.value.trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { e.target.email.classList.add('bad'); e.target.email.focus(); return; }
-      q('.xccard', c).innerHTML = '<span class="mdtick">' + TICK + '</span><p class="xck">Done</p>' +
-        '<h3 class="xch">The replays are yours.</h3><p class="xcp">Each day goes to <b>' + esc(v) + '</b> the same evening.</p>' +
-        '<button type="button" class="mdclose" data-xc="1">Back to the page</button>';
+      hide();                               /* same seat, same confirmation, same calendar add as the main form */
+      if (REG && REG.finish) REG.finish('', v);
     });
     document.addEventListener('mouseout', function (e) { if (!e.relatedTarget && e.clientY < 10) show(); });
     var lastY = window.pageYOffset, lastT = Date.now();
@@ -1234,8 +1236,22 @@
     calmMask(W, H);
   }
 
+  function headerFit() {                   /* the title never runs into the countdown: the faces step aside first */
+    var nv = q('.hdr .nav'); if (!nv) return;
+    nv.classList.remove('crowd');
+    nv.style.removeProperty('--tfs');
+    var tb = q('.lw b', nv), cw = q('.cdwrap', nv), hdr = q('.hdr');
+    if (!tb || !cw || (hdr && hdr.classList.contains('tight'))) return;
+    var fs = parseFloat(getComputedStyle(tb).fontSize), guard = 0;
+    while (tb.scrollHeight > tb.clientHeight + 1 && fs > 13 && guard++ < 8) {   /* whole title in two lines: size down a little */
+      fs -= 0.5; nv.style.setProperty('--tfs', fs + 'px');
+    }
+    if (tb.scrollHeight > tb.clientHeight + 1 ||
+        (cw.offsetWidth && tb.getBoundingClientRect().right > cw.getBoundingClientRect().left - 6)) nv.classList.add('crowd');
+  }
   function layout() {
     var wide = P.clientWidth;
+    headerFit();
     scalePhone();
     statCols();
 
@@ -1695,7 +1711,7 @@
     stuck();
     exitCatch();
     dock();
-    modal();
+    REG = modal();
     toast();
     brandMark();
     hostMark();
