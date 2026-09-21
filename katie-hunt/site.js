@@ -1319,29 +1319,30 @@
       var host = q('.d1body', body) || body, keepEl = q('.dkeep', host) || q('.dkeep', body);
       (keepEl || host).insertAdjacentHTML(keepEl ? 'afterend' : 'beforeend',
         ctaBlock(ctaFor((LP.days || [])[i] && (LP.days || [])[i].title), 'Free \u00B7 Live with ' + FIRST));
-      /* Days 2+: what you leave with becomes the take-home sheet, a paper page in the column the copy leaves
-         empty (2026-09-22). Rows alternate sides, so the days zig-zag down the rail; Day 1 has the slide. */
-      var kp = i > 0 ? q('.dkeep', body) : null;
-      var items = kp ? qa('li', kp).map(function (li) { return li.textContent.trim(); }).filter(Boolean) : [];
-      if (items.length) {
-        var dd = new Date(START.getTime() + i * 864e5), dp = String(dfmt(dd)).split(' ');
-        var dwd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][dd.getDay()];
-        var ttl = String(((LP.days || [])[i] || {}).title || '').split('|').join(' ').replace(/\s+/g, ' ').trim();
-        var sheet = el('div', 'dsheet', '<div class="dspaper"><i class="dstape"></i>' +
-          '<p class="dstop"><b>Day ' + (i + 1) + '</b><span>Take-home sheet</span></p>' +
-          '<p class="dsttl">' + esc(ttl.replace(/\.$/, '')) + '</p>' +
-          '<ol class="dslist">' + items.map(function (t) {
-            return '<li><i class="dsbox"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.6l3 3.2 7-8.2"/></svg></i>' +
-              '<span>' + esc(t) + '</span></li>';
-          }).join('') + '</ol>' +
-          '<p class="dsfoot"><span>Filled in live with ' + esc(FIRST) + '</span><span>' +
-          esc(dwd + ' ' + (dp[1] || '') + ' ' + (dp[0] || '')) + '</span></p>' +
-          (ART[i] ? '<span class="dsart">' + ART[i] + '</span>' : '') + '</div>');
-        kp.parentNode.removeChild(kp);
+      /* Days 2+: the empty column shows the live session itself (2026-09-22, replacing the take-home sheet):
+         a call window with the day's title on the shared screen in the lead's own type and colours, the host's
+         camera tile, and the room. "You leave with" stays under the copy, as on Day 1. Rows alternate sides. */
+      if (i > 0) {
+        var ttl = String(((LP.days || [])[i] || {}).title || '');
+        var lines = ttl.split('|').map(function (x) { return esc(x.trim()); }).filter(Boolean);
+        var flat = ttl.split('|').join(' ').replace(/\s+/g, ' ').replace(/\.$/, '').trim();
+        var cam = i % 2 ? 'img/video.jpg' : (S.avatar || 'img/headshot.jpg');
+        var sess = el('div', 'dsess', '<div class="dswin">' +
+          '<div class="dsbar"><span class="dsdots"><i></i><i></i><i></i></span>' +
+            '<span class="dsname">Day ' + (i + 1) + ' · ' + esc(flat) + '</span>' +
+            '<span class="dslive"><b></b>Live</span></div>' +
+          '<div class="dsstage"><div class="dsslide">' +
+            '<span class="dssk">Day ' + (i + 1) + ' of ' + n + '</span>' +
+            '<span class="dsst">' + lines.join('<br>') + '</span>' +
+            '<span class="dsbrand">' + esc(BRAND) + '</span></div>' +
+            '<span class="dscam"><img src="' + esc(cam) + '" alt="" loading="lazy"><em>' + esc(FIRST) + '</em></span></div>' +
+          '<div class="dsppl">' + avstack(5, 'sm') + '<span><b class="seatn">' + seatText() + '</b> in the room</span>' +
+            '<span class="dsmic"><i></i>Q&amp;A open</span></div>' +
+          '</div>');
         var txt = el('div', 'dtext'), cta = q('.scta', body);
         [].slice.call(body.children).forEach(function (c) { if (c !== cta) txt.appendChild(c); });
         body.insertBefore(txt, body.firstChild);
-        body.appendChild(sheet);
+        body.appendChild(sess);
         if (cta) body.appendChild(cta);
         card.classList.add('hassheet');
         if (i % 2 === 0) card.classList.add('flip');

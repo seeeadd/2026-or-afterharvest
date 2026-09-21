@@ -2551,3 +2551,52 @@ html body #page #takeaway .tkside .scta .btn{align-self:flex-start}
   #dock .btn{height:46px;padding:0 18px;font-size:15px;white-space:nowrap}
   body.dockon #stick{bottom:calc(env(safe-area-inset-bottom,0px) + 78px)}
 }
+
+/* ---- Days 2+: the live session window (2026-09-22, replaces the take-home sheet in the day rows) */
+.dsess{grid-area:sheet;align-self:center;min-width:0}
+.dswin{border-radius:14px;overflow:hidden;background:#161312;
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 40px 70px -34px rgba(0,0,0,.9),0 10px 24px -12px rgba(0,0,0,.6)}
+.dsbar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.07)}
+.dsdots{display:flex;gap:6px}
+.dsdots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22)}
+.dsname{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+  font-family:var(--label);font-size:11px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.62)}
+.dslive{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;background:var(--accent);
+  font-family:var(--label);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.dslive b{width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s ease-out infinite}
+.dsstage{position:relative;aspect-ratio:16 / 10;padding:10px}
+/* the shared screen: the day's title as a slide in the lead's own type and colours */
+.dsslide{position:relative;display:flex;flex-direction:column;justify-content:center;height:100%;border-radius:8px;
+  padding:0 9% 0 8%;overflow:hidden;color:var(--ink);
+  background:radial-gradient(120% 90% at 100% 0%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 60%),
+    color-mix(in srgb,var(--ground) 80%,#fff)}
+.dsslide:before{content:'';position:absolute;left:8%;top:14%;width:38px;height:4px;border-radius:2px;background:var(--accent)}
+.dssk{margin-bottom:10px;font-family:var(--label);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent)}
+.dsst{font-family:var(--display);font-weight:var(--dw,700);font-size:clamp(22px,2.3vw,34px);line-height:1.04;
+  letter-spacing:-.025em;color:var(--ink);max-width:14ch}
+.dsbrand{position:absolute;left:8%;bottom:10%;font-family:var(--label);font-size:9px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:color-mix(in srgb,var(--ink) 45%,transparent)}
+/* the host's camera tile */
+.dscam{position:absolute;right:20px;bottom:20px;width:27%;aspect-ratio:4 / 3;border-radius:8px;overflow:hidden;
+  border:2px solid #161312;box-shadow:0 10px 22px -8px rgba(0,0,0,.6)}
+.dscam img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+.dscam em{position:absolute;left:6px;bottom:5px;padding:2px 7px;border-radius:5px;background:rgba(0,0,0,.55);
+  font-style:normal;font-family:var(--label);font-size:9.5px;font-weight:600;letter-spacing:.06em;color:#fff}
+/* the room */
+.dsppl{display:flex;align-items:center;gap:10px;padding:10px 14px 12px;border-top:1px solid rgba(255,255,255,.07);
+  font-family:var(--label);font-size:11px;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,.62)}
+.dsppl .avstack .fav{width:24px;height:24px;margin-left:-7px;border:2px solid #161312}
+.dsppl .avstack .fav:first-child{margin-left:0}
+.dsppl b{color:#fff;font-variant-numeric:tabular-nums}
+.dsmic{margin-left:auto;display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.5)}
+.dsmic i{width:7px;height:7px;border-radius:50%;background:#58c26b}
+@media (max-width:900px){.dsess{max-width:520px;margin-top:26px;align-self:start}}
+@media (max-width:760px){
+  .dsess{max-width:none;margin-top:24px}
+  .dsst{font-size:clamp(20px,6.2vw,26px)}
+  .dscam{right:16px;bottom:16px;width:30%}
+  .dsppl .avstack .fav:nth-child(n+4){display:none}
+}
