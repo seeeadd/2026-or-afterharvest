@@ -600,9 +600,9 @@
         '<em class="mlivex">left</em></div>' +
         '<p class="mwhen">Fill this in and the Zoom link is on its way.</p>' +
         '<form class="mform" novalidate>' +
-        '<label><span>First name</span><input type="text" name="first" autocomplete="off" placeholder="' + esc(FIRST) + '"></label>' +
-        '<label><span>Email address</span><input type="email" name="email" autocomplete="off" placeholder="you@example.com"></label>' +
-        '<label><span>Phone number</span><input type="tel" name="phone" autocomplete="off" placeholder="Optional, for the reminder"></label>' +
+        '<label><span>First name</span><input type="text" name="first" autocomplete="given-name" placeholder="Your first name"></label>' +
+        '<label><span>Email address</span><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></label>' +
+        '<label><span>Phone number</span><input type="tel" name="phone" autocomplete="tel" placeholder="Optional, for the reminder"></label>' +
         '<div class="mavail"><p class="mavq">I am available ' + esc(WHEN) + ' to attend:</p><div class="mopts">' +
         ['Yes', 'No', 'Maybe'].map(function (o, i) {
           return '<label class="mopt"><input type="radio" name="avail" value="' + o.toLowerCase() + '"' +
@@ -614,17 +614,64 @@
     document.body.appendChild(m);
 
     function close() { m.classList.remove('on'); document.body.classList.remove('modalopen'); }
+    var body0 = q('.mbody', m).innerHTML;
+    function ics() {
+      var z = function (d) { return d.toISOString().replace(/[-:]/g, '').replace(/\.\d+/, ''); };
+      var end = new Date(START.getTime() + 60 * 6e4), n = (LP.days || []).length || 3;
+      return { s: z(START), e: z(end), n: n, t: EV + ' (free, live with ' + WHO + ')', d: 'Live on Zoom. The link comes by email.' };
+    }
+    function done(first, email) {
+      var c = ics();
+      var file = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
+        'DTSTART:' + c.s, 'DTEND:' + c.e, 'RRULE:FREQ=DAILY;COUNT=' + c.n, 'SUMMARY:' + c.t, 'DESCRIPTION:' + c.d,
+        'END:VEVENT', 'END:VCALENDAR'].join('\r\n'));
+      var g = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.t) +
+        '&dates=' + c.s + '/' + c.e + '&recur=' + encodeURIComponent('RRULE:FREQ=DAILY;COUNT=' + c.n) +
+        '&details=' + encodeURIComponent(c.d);
+      m.classList.add('done');
+      q('.mbody', m).innerHTML = '<div class="mdone"><span class="mdtick">' + TICK + '</span>' +
+        '<p class="mdk">You are in</p><h3 class="mdh">Seat <b class="seatn">' + seatText() + '</b> is yours' +
+        (first ? ', ' + esc(first) : '') + '.</h3>' +
+        '<p class="mdp">The Zoom link is on its way' + (email ? ' to <b>' + esc(email) + '</b>' : '') + '. ' +
+        'Put the three days in your calendar now so they do not get booked over.</p>' +
+        '<div class="mdcal"><a class="btn lg" href="' + file + '" download="' + esc(LP.slug || 'event') + '.ics">Add to calendar' + ARROW + '</a>' +
+        '<a class="mdg" href="' + g + '" target="_blank" rel="noopener">Google Calendar</a></div>' +
+        '<p class="mdrep">' + TICK + 'Cannot make one live? Each day has a replay.</p>' +
+        '<button type="button" class="mdclose" data-close="1">Back to the page</button></div>';
+    }
+    function submit() {
+      var f = q('form', m); if (!f) return;
+      var first = f.first.value.trim(), email = f.email.value.trim(), ok = true;
+      [[f.first, !!first], [f.email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)]].forEach(function (x) {
+        x[0].parentNode.classList.toggle('bad', !x[1]); if (!x[1]) ok = false;
+      });
+      if (!ok) { (q('.bad input', f) || f.first).focus(); return; }
+      done(first, email);
+    }
     function open() {
+      if (m.classList.contains('done')) { m.classList.remove('done'); q('.mbody', m).innerHTML = body0; wire(); }
+      var cf = $('closing'), f = q('form', m);
+      if (cf && f) {                      /* what they typed in the closing card comes with them */
+        qa('input', cf).forEach(function (i) { if (i.value && f[i.name]) f[i.name].value = i.value; });
+      }
       m.classList.add('on');
       document.body.classList.add('modalopen');
+      setTimeout(function () { var f2 = q('form', m); if (f2) (f2.first.value ? (f2.email.value ? f2.phone : f2.email) : f2.first).focus({ preventScroll: true }); }, 80);
       var bar = q('.msbar i', m);
       if (bar) { bar.style.width = '0'; setTimeout(function () { bar.style.width = clamp(state.seats / state.cap * 100, 10, 94).toFixed(1) + '%'; }, 60); }
     }
     m.addEventListener('click', function (e) {
       if (e.target.closest('[data-close]')) close();
-      if (e.target.closest('[data-submit]')) { e.preventDefault(); close(); }
+      if (e.target.closest('[data-submit]')) { e.preventDefault(); e.stopPropagation(); submit(); }
     });
-    q('form', m).addEventListener('submit', function (e) { e.preventDefault(); close(); });
+    function wire() {
+      var f = q('form', m); if (!f) return;
+      f.addEventListener('submit', function (e) { e.preventDefault(); submit(); });
+      qa('input', f).forEach(function (i) { i.addEventListener('input', function () { i.parentNode.classList.remove('bad'); }); });
+      var sb = q('[data-submit]', f);
+      if (sb) sb.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); submit(); } });
+    }
+    wire();
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
     document.addEventListener('click', function (e) {
       var t = e.target.closest('[data-reg]');
@@ -640,6 +687,42 @@
       if (t && t.matches && t.matches('[data-reg]')) { e.preventDefault(); open(); }
     });
     return { open: open, close: close, node: m };
+  }
+
+  function dock() {
+    if ($('dock')) return;
+    var d = el('div', ''); d.id = 'dock';
+    d.innerHTML = '<span class="dkw"><b>Free</b>' + esc(dfmt(START, true)) + ' \u00B7 ' + esc(tfmt(START)) + '</span>' +
+      '<span class="btn" data-reg="1" role="button" tabindex="0">Hold my seat' + ARROW + '</span>';
+    document.body.appendChild(d);
+    var reg = $('regcard'), cl = $('closing'), queued = false;
+    function tick() {
+      queued = false;
+      var vh = window.innerHeight, show = true;
+      if (reg) show = reg.getBoundingClientRect().bottom < 0;
+      if (cl) { var r = cl.getBoundingClientRect(); if (r.top < vh && r.bottom > 0) show = false; }
+      if (document.body.classList.contains('gateon') || document.body.classList.contains('modalopen')) show = false;
+      d.classList.toggle('on', show);
+      document.body.classList.toggle('dockon', show);
+    }
+    addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(tick); } }, { passive: true });
+    setTimeout(tick, 1200);
+  }
+
+  /* the closing card's fields were drawings of fields: they become inputs, and it says when (2026-09-22) */
+  function closingForm() {
+    var cf = $('closing'); if (!cf || q('input', cf)) return;
+    var names = [['first', 'text', 'given-name', 'First name'], ['email', 'email', 'email', 'Email address']];
+    qa('.form .field', cf).forEach(function (sp, i) {
+      var d = names[i]; if (!d) return;
+      var inp = document.createElement('input');
+      inp.className = 'field'; inp.name = d[0]; inp.type = d[1]; inp.setAttribute('autocomplete', d[2]);
+      inp.placeholder = d[3]; inp.setAttribute('aria-label', d[3]);
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); var b = q('.form .btn', cf); if (b) b.click(); } });
+      sp.parentNode.replaceChild(inp, sp);
+    });
+    var t = q('.ctext', cf);
+    if (t && !q('.cwhen', t)) t.insertAdjacentHTML('beforeend', '<p class="cwhen">' + esc(WHEN) + ' \u00B7 ' + esc(tfmt(START)) + ' \u00B7 Live on Zoom</p>');
   }
 
   /* the bottom-left notice: who, where, what they did, how long ago, and whose page it is */
@@ -659,6 +742,8 @@
     document.body.appendChild(t);
     var i = 0;
     function show() {
+      var hr = q('.hero');                /* past the hero it lands on the copy */
+      if (hr && hr.getBoundingClientRect().bottom < 120) return;
       var n = NAMES[i % NAMES.length], sur = surnames[i % surnames.length];
       var city = cities[(i * 3) % cities.length], mins = 2 + (i * 3) % 11;
       i++;
@@ -704,7 +789,15 @@
     }
     next(); setInterval(next, 3800);
     /* on a phone the card is a round bubble in the corner; a tap opens it, the x folds it back (2026-09-22) */
-    var small = window.matchMedia ? window.matchMedia('(max-width:760px)') : { matches: false };
+    /* the full card needs a free right margin; with no room (phones, most laptops) it is the round bubble */
+    var small = { get matches() {
+      var W = window.innerWidth; if (W <= 760) return true;
+      var right = 0;
+      qa('.d1, #d23, .tstin, #checks, .ccard, .fitgrid, .tkgrid, .faqlist').forEach(function (n) { right = Math.max(right, n.getBoundingClientRect().right); });
+      return W - right < 222;
+    } };
+    function fit() { s.classList.toggle('bub', small.matches); if (!small.matches) s.classList.remove('open'); }
+    fit(); addEventListener('resize', debounce(fit, 150));
     s.addEventListener('click', function (e) {
       if (!small.matches || s.classList.contains('open')) return;
       s.classList.add('open'); e.preventDefault(); e.stopPropagation();
@@ -1478,6 +1571,8 @@
     headerScroll();
     var wrap = gated();
 
+    closingForm();
+    dock();
     modal();
     toast();
     brandMark();
