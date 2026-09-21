@@ -2238,3 +2238,168 @@ body.modalopen{overflow:hidden}
 }
 #page .hdr.tight .navwrap{transform:translateY(-44px)}
 @media (max-width:820px){#page .hdr.tight .navwrap{transform:translateY(-42px)}}
+
+/* =====================================================================================================
+   2026-09-22  first paint, the take-home sheets, and the page on phones and tablets
+   ===================================================================================================== */
+
+/* ---- first paint: the static page is laid out by site.js, so it is never shown half-built. The ground,
+   pattern and grain paint at once (never a white flash); the content fades in when layout and fonts are
+   done. If the script ever fails, the content still appears after 2.4s. */
+html:not(.sready) #page > :not(#ground):not(#pattern):not(#ghosts):not(#grain),
+html:not(.sready) #gate,html:not(.sready) #toast,html:not(.sready) #stick{
+  opacity:0;animation:sreadyfb .01s 2.4s forwards}
+@keyframes sreadyfb{to{opacity:1}}
+html.sready #page > .hdr{animation:sfade .45s ease backwards}
+html.sready #page > #hero{animation:srise .6s cubic-bezier(.2,.7,.2,1) backwards}
+html.sready #page > #hero{animation-delay:.06s}
+@keyframes srise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+html.sready #page > :not(#ground):not(#pattern):not(#ghosts):not(#grain):not(.hdr):not(#hero){
+  animation:sfade .5s ease backwards}
+@keyframes sfade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){html.sready #page > *{animation:none !important}}
+
+/* ---- the take-home sheet: Days 2+ carry what you leave with as a paper page in their empty column */
+html body #page #days .dagenda.hassheet .dbody{display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,.84fr);grid-template-areas:"text sheet" "cta sheet";
+  column-gap:clamp(40px,5vw,84px);row-gap:0;align-items:start}
+html body #page #days .dagenda.hassheet.flip .dbody{grid-template-columns:minmax(0,.84fr) minmax(0,1fr);
+  grid-template-areas:"sheet text" "sheet cta"}
+html body #page #days .hassheet .dtext{grid-area:text;min-width:0}
+html body #page #days .hassheet .dbody > .scta{grid-area:cta;margin-top:24px;align-self:start}
+.dsheet{grid-area:sheet;position:relative;align-self:center;padding:14px 8px 20px;transform:rotate(1.4deg)}
+.flip .dsheet{transform:rotate(-1.4deg)}
+/* the page underneath, so it reads as a sheet off a pad */
+.dsheet:before{content:'';position:absolute;inset:22px 20px 12px 14px;border-radius:5px;
+  background:color-mix(in srgb,var(--ground) 40%,#d9cfc4);transform:rotate(-3deg);opacity:.5;
+  box-shadow:0 20px 40px -22px rgba(0,0,0,.8)}
+.flip .dsheet:before{transform:rotate(3deg)}
+.dspaper{position:relative;border-radius:5px;padding:30px clamp(22px,2.4vw,30px) 20px;color:#2b2522;
+  background:color-mix(in srgb,var(--ground) 30%,#fffdf9);
+  background-image:linear-gradient(to right,transparent 42px,color-mix(in srgb,var(--accent) 26%,transparent) 42px,
+    color-mix(in srgb,var(--accent) 26%,transparent) 43px,transparent 43px);
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 34px 60px -30px rgba(0,0,0,.85),0 8px 18px -8px rgba(0,0,0,.45)}
+.dstape{position:absolute;top:-12px;left:50%;width:96px;height:26px;margin-left:-48px;transform:rotate(-2.5deg);
+  background:color-mix(in srgb,var(--accent) 34%,rgba(255,255,255,.55));opacity:.9;
+  box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.dstop{display:flex;align-items:center;gap:10px;margin:0 0 14px 30px;font-family:var(--label);
+  font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(43,37,34,.52)}
+.dstop b{padding:4px 9px 3px;border-radius:4px;background:var(--accent);color:var(--accent-ink,#fff);
+  letter-spacing:.16em}
+.dsttl{margin:0 0 18px 30px;font-family:var(--display);font-weight:var(--dw2,700);font-size:clamp(21px,1.9vw,26px);
+  line-height:1.12;letter-spacing:-.02em;color:#221c19;max-width:17ch}
+.dslist{list-style:none;margin:0;padding:0}
+.dslist li{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:start;gap:0;padding:11px 0 10px;
+  border-top:1px dashed rgba(43,37,34,.16);font-size:15.5px;line-height:1.42;color:#2b2522}
+.dslist li:last-child{border-bottom:1px dashed rgba(43,37,34,.16)}
+.dsbox{position:relative;display:block;width:16px;height:16px;margin-top:2px;border-radius:3px;
+  border:1.5px solid color-mix(in srgb,var(--accent) 70%,#2b2522)}
+.dsbox svg{position:absolute;left:-2px;top:-5px;width:22px;height:22px;fill:none;stroke:var(--accent);
+  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.dsfoot{display:flex;justify-content:space-between;gap:12px;margin:14px 0 0 30px;font-family:var(--label);
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(43,37,34,.45)}
+.dsart{position:absolute;right:16px;top:18px;width:62px;color:var(--accent);opacity:.55;pointer-events:none}
+.dsart svg{display:block;width:100%;height:auto}
+.dsart svg rect[fill]{fill:none}
+html body #page #days .hassheet .dmark{display:none}
+
+/* ---- tablets: the sheet goes under the copy, still a page, a little narrower */
+@media (max-width:900px){
+  html body #page #days .dagenda.hassheet .dbody,html body #page #days .dagenda.hassheet.flip .dbody{
+    grid-template-columns:minmax(0,1fr);grid-template-areas:"text" "sheet" "cta"}
+  .dsheet{max-width:470px;margin:26px 0 0;align-self:start}
+  html body #page #days .hassheet .dbody > .scta{margin-top:26px}
+}
+
+/* ---- phones: one column, one idea per screen, nothing repeated ------------------------------------ */
+@media (max-width:760px){
+  /* hero: date pill, headline, lede, the video, then the seat card. The trust row and the second booking
+     card repeat what the seat card already says (rating, faces, the action), so they go. */
+  html body #page .hgrid{display:flex;flex-direction:column;gap:0;margin-top:14px}
+  html body #page #heroEye{order:1}
+  html body #page #headline{order:2}
+  html body #page #lede{order:3}
+  html body #page .hvid{order:4;margin-top:22px}
+  html body #page #regcard{order:5;margin-top:22px}
+  html body #page .htrust,html body #page .hbook,html body #page .scue{display:none !important}
+  /* section heads wrap to two balanced lines at a readable size instead of one tiny fitted line */
+  html body #page #daysh,html body #page #fith{font-size:clamp(26px,7.4vw,34px) !important;line-height:1.1;
+    white-space:normal;text-wrap:balance}
+  html body #page #daysh > span,html body #page #fith > span{white-space:normal;display:inline}
+  /* header: the pill keeps the title and the action; the event line is already the hero's date pill */
+  html body #page .hdr .lw small,html body #page .hdr.tight .nav .lw small{display:none !important}
+  html body #page .hdr .lw{min-width:0;justify-content:center}
+  html body #page .hdr .lw b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+    white-space:normal;font-size:13.5px !important;line-height:1.18}
+  /* the facts strip repeats the numbers band below it */
+  html body #page #facts{display:none !important}
+  /* toasts stack on top of the bottom bar on a phone; the name ticker already says people are joining */
+  #toast{display:none !important}
+
+  /* fit check: the portrait above, the five checks at full width below it */
+  html body #page #fitc .fitgrid{display:grid;grid-template-columns:minmax(0,1fr) !important;gap:26px;
+    justify-items:stretch;margin-top:30px}
+  html body #page #fitc .me{width:100%;max-width:none;margin:0}
+  html body #page #fitc .me .photo{width:100%;height:auto;aspect-ratio:4/3.4;max-height:none}
+  html body #page #fitc .me .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+  html body #page #fitc .checks{width:100%;max-width:none;min-width:0}
+  html body #page #fitc .checks li{width:auto;max-width:none}
+
+  /* numbers band: the lead number full width, the rest in one row of three */
+  html body #page .band.rebuilt .bstats{display:grid;grid-template-columns:minmax(0,1fr) !important;row-gap:22px}
+  html body #page .band.rebuilt .bhead,html body #page .band.rebuilt .blead{width:auto;max-width:none}
+  html body #page .band.rebuilt .brest{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;
+    grid-column:auto}
+  html body #page .band.rebuilt .bst{min-width:0;width:auto}
+
+  /* the days: the date sits on one line above each session, the rail runs down the left edge */
+  html body #page #days .dagenda{grid-template-columns:minmax(0,1fr);gap:14px;padding:28px 0 28px 26px}
+  html body #page #days .dagenda:before{left:6px}
+  html body #page #days .dagenda.first:before{top:34px}
+  html body #page #days .dagenda.last:before{height:34px}
+  html body #page #days .dagenda:after{left:1px;top:34px;width:12px;height:12px}
+  html body #page #days .dnode{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;text-align:left}
+  html body #page #days .dnode > *{display:inline-block;margin:0}
+  html body #page #days .dnday{font-size:26px;line-height:1}
+  html body #page #days .dnlive{align-self:center;margin-left:2px}
+  html body #page #days .dagenda .dbody,html body #page #days .d1 .dbody{display:block}
+  html body #page #days .d1 .macbook{width:100%;max-width:420px;margin:4px 0 22px}
+  html body #page #days .d1 .d1body{width:auto}
+  html body #page #days .dagenda .dt{max-width:none}
+  html body #page #days .dkeep,html body #page #days .d1 .d1body .dkeep{max-width:none}
+  .dsheet,.flip .dsheet{transform:none;max-width:none;margin:24px 0 0;padding:12px 0 8px}
+  .dsheet:before{inset:20px 10px 4px 10px}
+  .dspaper{padding:28px 18px 18px;background-image:none}
+  .dstop,.dsttl,.dsfoot{margin-left:0}
+  .dsart{width:48px;right:12px;top:16px}
+  html body #page #days .hassheet .dbody > .scta{margin-top:24px}
+  html body #page #days .dmark{display:none}
+
+  /* the floating video: a round bubble in the corner, above the bottom bar; a tap opens the card */
+  #stick:not(.open){width:62px !important;right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
+  #stick:not(.open) .svcard{padding:3px !important;border-radius:50% !important;gap:0 !important}
+  #stick:not(.open) .svmedia{aspect-ratio:1 / 1 !important;border-radius:50% !important}
+  #stick:not(.open) .svmedia > img{object-position:50% 18%}
+  #stick:not(.open) .svcap,#stick:not(.open) .svhint,#stick:not(.open) .svbar,#stick:not(.open) .svmute,
+  #stick:not(.open) .svx,#stick:not(.open) .btn{display:none !important}
+  #stick:not(.open) .svmedia:before{content:'';position:absolute;z-index:3;right:4px;bottom:4px;width:18px;height:18px;
+    border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M3.5 2.4v5.2L7.8 5z' fill='%23fff'/%3E%3C/svg%3E") center/10px no-repeat;
+    box-shadow:0 2px 6px rgba(0,0,0,.35)}
+  #stick.open{width:176px !important;right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
+  body.gateon #stick{transform:none}
+}
+
+/* ---- three days in: one stop per row from 900px down; three columns were 94px wide on a phone */
+@media (max-width:900px){
+  /* three days in: one stop per row, the drawn disc beside its words */
+  html body #page #takeaway .tkroute{display:flex;flex-direction:column;gap:14px;padding-top:6px}
+  html body #page #takeaway .tkpath{display:none}
+  html body #page #takeaway .tkstop{display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:16px;
+    align-items:start;padding:18px 16px;border-radius:16px;width:auto;
+    background:color-mix(in srgb,var(--ground) 55%,#fff);border:1px solid var(--hair)}
+  html body #page #takeaway .tkstop.s2,html body #page #takeaway .tkstop.s3{padding-top:18px}
+  html body #page #takeaway .tkdisc{grid-row:1 / span 3;width:72px;height:72px;margin:0}
+  html body #page #takeaway .tknum,html body #page #takeaway .tkt,html body #page #takeaway .tkbul{
+    grid-column:2;width:auto;max-width:none;margin-left:0;text-align:left}
+
+}

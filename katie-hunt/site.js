@@ -699,7 +699,16 @@
       setTimeout(function () { cap.innerHTML = caps[i % caps.length]; i++; cap.style.opacity = '1'; }, 300);
     }
     next(); setInterval(next, 3800);
-    q('.svx', s).addEventListener('click', function () { killed = true; s.classList.remove('on'); });
+    /* on a phone the card is a round bubble in the corner; a tap opens it, the x folds it back (2026-09-22) */
+    var small = window.matchMedia ? window.matchMedia('(max-width:760px)') : { matches: false };
+    s.addEventListener('click', function (e) {
+      if (!small.matches || s.classList.contains('open')) return;
+      s.classList.add('open'); e.preventDefault(); e.stopPropagation();
+    }, true);
+    q('.svx', s).addEventListener('click', function (e) {
+      if (small.matches && s.classList.contains('open')) { s.classList.remove('open'); e.stopPropagation(); return; }
+      killed = true; s.classList.remove('on');
+    });
 
     /* it waits until the hero is behind you: in the hero it would sit on top of the register card.
        Below the hero it is always up, scrolling up or down, so it can never be lost mid page. */
@@ -817,8 +826,10 @@
     if (!el || !el.children.length || colW < 40) return 0;
     el.classList.remove('wrapped');
     el.style.fontSize = '100px';
+    el.style.whiteSpace = 'nowrap';        /* measure each line unbroken, or a wrapping line reads as fitting */
     var w = 0;
     [].forEach.call(el.children, function (s) { w = Math.max(w, s.scrollWidth); });
+    el.style.whiteSpace = '';
     if (!w) return 0;
     var size = 100 * colW / w;
     if (size < min) { el.classList.add('wrapped'); size = min; }
@@ -846,9 +857,18 @@
       };
       mk.setAttribute('viewBox', '0 0 ' + MARK0.w + ' ' + MARK0.h);
     }
-    var k = fsNow / MARK0.fs, pad = fsNow * 0.3;
-    mk.setAttribute('width', (MARK0.w * k).toFixed(1));
-    mk.setAttribute('height', (MARK0.h * k).toFixed(1));
+    /* fit the mark to the key phrase as it is now: lp.js can draw it before the lead's font has loaded, when
+       the phrase is narrower, and scaling by font size alone then leaves it short and riding too high */
+    var kw = q('#headline .kw'), pad = fsNow * 0.3;
+    mk.setAttribute('preserveAspectRatio', 'none');
+    if (kw && kw.offsetWidth) {
+      mk.setAttribute('width', (kw.offsetWidth + 2 * pad).toFixed(1));
+      mk.setAttribute('height', (kw.offsetHeight + 2 * pad).toFixed(1));
+    } else {
+      var k = fsNow / MARK0.fs;
+      mk.setAttribute('width', (MARK0.w * k).toFixed(1));
+      mk.setAttribute('height', (MARK0.h * k).toFixed(1));
+    }
     mk.style.left = (-pad).toFixed(1) + 'px';
     mk.style.top = (-pad).toFixed(1) + 'px';
   }
@@ -1041,13 +1061,13 @@
       var fs = fitLines(h1, colW, wide > 900 ? 80 : 62, 26);
       rescaleMark(fs);
     }
-    var fith = $('fith'), fitc = $('fitc');
-    if (fith && fitc) {
-      var fw = Math.min(fitc.clientWidth - 8, 980);
-      fitLines(fith, fw, 56, 22);
+    var fith = $('fith'), fitc = $('fitc'), daysh = $('daysh'), days = $('days');
+    if (wide <= 760) {                     /* on a phone the section heads wrap to two balanced lines (CSS) */
+      [fith, daysh].forEach(function (h) { if (h) { h.style.fontSize = ''; h.classList.add('wrapped'); } });
+    } else {
+      if (fith && fitc) fitLines(fith, Math.min((fith.clientWidth || fitc.clientWidth) - 8, 980), 56, 22);
+      if (daysh && days) fitLines(daysh, Math.min((daysh.clientWidth || days.clientWidth) - 8, 1000), 54, 22);
     }
-    var daysh = $('daysh'), days = $('days');
-    if (daysh && days) fitLines(daysh, Math.min(days.clientWidth - 8, 1000), 54, 22);
     var d1t = $('d1t');
     if (d1t) fitLines(d1t, d1t.parentNode.clientWidth - 4, 38, 20);
     qa('.dc .dt').forEach(function (n) { fitLines(n, n.parentNode.clientWidth - 56, 30, 18); });
@@ -1202,8 +1222,35 @@
       var host = q('.d1body', body) || body, keepEl = q('.dkeep', host) || q('.dkeep', body);
       (keepEl || host).insertAdjacentHTML(keepEl ? 'afterend' : 'beforeend',
         ctaBlock(ctaFor((LP.days || [])[i] && (LP.days || [])[i].title), 'Free \u00B7 Live with ' + FIRST));
-      /* the day's own artifact, quiet, in the space the copy does not use. Day 1 has the slide there. */
-      if (i > 0 && ART[i]) card.insertAdjacentHTML('beforeend', '<span class="dmark">' + ART[i] + '</span>');
+      /* Days 2+: what you leave with becomes the take-home sheet, a paper page in the column the copy leaves
+         empty (2026-09-22). Rows alternate sides, so the days zig-zag down the rail; Day 1 has the slide. */
+      var kp = i > 0 ? q('.dkeep', body) : null;
+      var items = kp ? qa('li', kp).map(function (li) { return li.textContent.trim(); }).filter(Boolean) : [];
+      if (items.length) {
+        var dd = new Date(START.getTime() + i * 864e5), dp = String(dfmt(dd)).split(' ');
+        var dwd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][dd.getDay()];
+        var ttl = String(((LP.days || [])[i] || {}).title || '').split('|').join(' ').replace(/\s+/g, ' ').trim();
+        var sheet = el('div', 'dsheet', '<div class="dspaper"><i class="dstape"></i>' +
+          '<p class="dstop"><b>Day ' + (i + 1) + '</b><span>Take-home sheet</span></p>' +
+          '<p class="dsttl">' + esc(ttl.replace(/\.$/, '')) + '</p>' +
+          '<ol class="dslist">' + items.map(function (t) {
+            return '<li><i class="dsbox"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.6l3 3.2 7-8.2"/></svg></i>' +
+              '<span>' + esc(t) + '</span></li>';
+          }).join('') + '</ol>' +
+          '<p class="dsfoot"><span>Filled in live with ' + esc(FIRST) + '</span><span>' +
+          esc(dwd + ' ' + (dp[1] || '') + ' ' + (dp[0] || '')) + '</span></p>' +
+          (ART[i] ? '<span class="dsart">' + ART[i] + '</span>' : '') + '</div>');
+        kp.parentNode.removeChild(kp);
+        var txt = el('div', 'dtext'), cta = q('.scta', body);
+        [].slice.call(body.children).forEach(function (c) { if (c !== cta) txt.appendChild(c); });
+        body.insertBefore(txt, body.firstChild);
+        body.appendChild(sheet);
+        if (cta) body.appendChild(cta);
+        card.classList.add('hassheet');
+        if (i % 2 === 0) card.classList.add('flip');
+      } else if (i > 0 && ART[i]) {
+        card.insertAdjacentHTML('beforeend', '<span class="dmark">' + ART[i] + '</span>');
+      }
     }
     var d1 = q('.d1', box);
     if (d1) wrap(d1, 0);
@@ -1437,6 +1484,14 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(layout, 30); });
     setTimeout(layout, 400);
     setTimeout(function () { background(); window.SITE_READY = { w: P.clientWidth, h: P.offsetHeight }; }, 900);
+    var shown = false;
+    function reveal() {
+      if (shown) return;
+      shown = true; layout();
+      requestAnimationFrame(function () { document.documentElement.classList.add('sready'); });
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(reveal);
+    setTimeout(reveal, 700);
   }
 
   ready(start);
