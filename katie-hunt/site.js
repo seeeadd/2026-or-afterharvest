@@ -1326,7 +1326,7 @@
         var ttl = String(((LP.days || [])[i] || {}).title || '');
         var lines = ttl.split('|').map(function (x) { return esc(x.trim()); }).filter(Boolean);
         var flat = ttl.split('|').join(' ').replace(/\s+/g, ' ').replace(/\.$/, '').trim();
-        var cam = i % 2 ? 'img/video.jpg' : (S.avatar || 'img/headshot.jpg');
+        var cam = i % 2 ? (S.avatar || 'img/headshot.jpg') : 'img/video.jpg';
         /* the shared screen is the NEXT SLIDE OF THE LEAD'S OWN DECK: their Day 1 slide art on the right (Day 3
            zooms into a detail), their wordmark, "Day N . event" in the slide's eyebrow and the title in their
            display face, first line in the accent over the hatched marker the slide uses */
@@ -1336,6 +1336,8 @@
           '<div class="dsbar"><img class="dsemb" src="favicon-32.png" alt="">' +
             '<span class="dsname"><b>Day ' + (i + 1) + '</b>' + esc(flat) + '</span>' +
             '<span class="dslive"><b></b>Live</span></div>' +
+          (i % 2 ?
+          /* screen share: the slide fills the stage, the host in a corner tile */
           '<div class="dsstage"><div class="dsslide">' +
             '<img class="dsart" src="img/slide.jpg" alt="" loading="lazy">' +
             '<div class="dscopy"><span class="dswm">' + esc(BRAND) + '</span>' +
@@ -1343,7 +1345,15 @@
               '<span class="dsst">' + tl + '</span></div></div>' +
             '<span class="dscam"><img src="' + esc(cam) + '" alt="" loading="lazy"><em>' + esc(FIRST) + '</em></span></div>' +
           '<div class="dsppl">' + avstack(5, 'sm') + '<span><b class="seatn">' + seatText() + '</b> in the room</span>' +
-            '<span class="dsmic">Replay same day</span></div>' +
+            '<span class="dsmic">Replay same day</span></div>'
+          :
+          /* speaker view: the host fills the stage, the slide shrinks to a corner, the room is a gallery strip */
+          '<div class="dsstage spk"><img class="dsspk" src="' + esc(cam) + '" alt="" loading="lazy">' +
+            '<div class="dspip"><img src="img/slide.jpg" alt="" loading="lazy"><span>Day ' + (i + 1) + '</span></div>' +
+            '<span class="dslower"><b>' + esc(WHO) + '</b>' + esc(BRAND) + ' \u00B7 live</span>' +
+            '<span class="dscap">' + esc(String(((LP.days || [])[i] || {}).outcome || flat)) + '</span></div>' +
+          '<div class="dsgal">' + [0, 1, 2, 3].map(function (k) { return '<span class="dsg">' + face(i * 4 + k) + '</span>'; }).join('') +
+            '<span class="dsgn"><b class="seatn">' + seatText() + '</b> watching</span></div>') +
           '</div>' +
           '<span class="dschat"><span class="fav">' + face(i + 2) + '</span><span><b>' + esc(NAMES[(i + 3) % NAMES.length]) +
             '</b>' + esc(chats[(i - 1) % chats.length]) + '</span></span>');
