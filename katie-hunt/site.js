@@ -1327,18 +1327,26 @@
         var lines = ttl.split('|').map(function (x) { return esc(x.trim()); }).filter(Boolean);
         var flat = ttl.split('|').join(' ').replace(/\s+/g, ' ').replace(/\.$/, '').trim();
         var cam = i % 2 ? 'img/video.jpg' : (S.avatar || 'img/headshot.jpg');
-        var sess = el('div', 'dsess', '<div class="dswin">' +
-          '<div class="dsbar"><span class="dsdots"><i></i><i></i><i></i></span>' +
-            '<span class="dsname">Day ' + (i + 1) + ' · ' + esc(flat) + '</span>' +
+        /* the shared screen is the NEXT SLIDE OF THE LEAD'S OWN DECK: their Day 1 slide art on the right (Day 3
+           zooms into a detail), their wordmark, "Day N . event" in the slide's eyebrow and the title in their
+           display face, first line in the accent over the hatched marker the slide uses */
+        var tl = lines.length ? '<span class="dsacc">' + lines[0] + '</span>' + (lines.length > 1 ? '<br>' + lines.slice(1).join('<br>') : '') : esc(flat);
+        var chats = ['Mine’s in the chat, can you check it?', 'Doing this one tonight. Thank you!'];
+        var sess = el('div', 'dsess' + (i % 2 ? '' : ' zoom'), '<div class="dswin">' +
+          '<div class="dsbar"><img class="dsemb" src="favicon-32.png" alt="">' +
+            '<span class="dsname"><b>Day ' + (i + 1) + '</b>' + esc(flat) + '</span>' +
             '<span class="dslive"><b></b>Live</span></div>' +
           '<div class="dsstage"><div class="dsslide">' +
-            '<span class="dssk">Day ' + (i + 1) + ' of ' + n + '</span>' +
-            '<span class="dsst">' + lines.join('<br>') + '</span>' +
-            '<span class="dsbrand">' + esc(BRAND) + '</span></div>' +
+            '<img class="dsart" src="img/slide.jpg" alt="" loading="lazy">' +
+            '<div class="dscopy"><span class="dswm">' + esc(BRAND) + '</span>' +
+              '<span class="dssk"><b>Day ' + (i + 1) + '</b><i></i>' + esc(EV) + '</span>' +
+              '<span class="dsst">' + tl + '</span></div></div>' +
             '<span class="dscam"><img src="' + esc(cam) + '" alt="" loading="lazy"><em>' + esc(FIRST) + '</em></span></div>' +
           '<div class="dsppl">' + avstack(5, 'sm') + '<span><b class="seatn">' + seatText() + '</b> in the room</span>' +
-            '<span class="dsmic"><i></i>Q&amp;A open</span></div>' +
-          '</div>');
+            '<span class="dsmic">Replay same day</span></div>' +
+          '</div>' +
+          '<span class="dschat"><span class="fav">' + face(i + 2) + '</span><span><b>' + esc(NAMES[(i + 3) % NAMES.length]) +
+            '</b>' + esc(chats[(i - 1) % chats.length]) + '</span></span>');
         var txt = el('div', 'dtext'), cta = q('.scta', body);
         [].slice.call(body.children).forEach(function (c) { if (c !== cta) txt.appendChild(c); });
         body.insertBefore(txt, body.firstChild);
@@ -1352,6 +1360,20 @@
     }
     var d1 = q('.d1', box);
     if (d1) wrap(d1, 0);
+    (function () {
+      var im = new Image();
+      im.onload = function () {
+        try {
+          var c = document.createElement('canvas'); c.width = 8; c.height = 8;
+          var x = c.getContext('2d'); x.drawImage(im, 0, im.height * 0.45, im.width * 0.03, im.height * 0.1, 0, 0, 8, 8);
+          var d = x.getImageData(0, 0, 8, 8).data, r = 0, g = 0, b = 0;
+          for (var k = 0; k < d.length; k += 4) { r += d[k]; g += d[k + 1]; b += d[k + 2]; }
+          var nPx = d.length / 4;
+          box.style.setProperty('--sg', 'rgb(' + Math.round(r / nPx) + ',' + Math.round(g / nPx) + ',' + Math.round(b / nPx) + ')');
+        } catch (e) { /* cross-origin or no canvas: the ground token stands in */ }
+      };
+      im.src = 'img/slide.jpg';
+    })();
     qa('.d23 > *', box).forEach(function (card, i) { wrap(card, i + 1); });
   }
 

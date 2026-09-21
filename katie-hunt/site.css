@@ -2600,3 +2600,54 @@ html body #page #takeaway .tkside .scta .btn{align-self:flex-start}
   .dscam{right:16px;bottom:16px;width:30%}
   .dsppl .avstack .fav:nth-child(n+4){display:none}
 }
+/* ---- the session window, in the lead's own deck (2026-09-22b): the screen is their next slide, the bar carries
+   their emblem and accent, a chat bubble breaks the frame */
+.dsess{position:relative}
+.dswin{background:color-mix(in srgb,var(--accent) 10%,#141110);border-color:color-mix(in srgb,var(--accent) 22%,rgba(255,255,255,.08))}
+.dsbar{gap:10px;background:color-mix(in srgb,var(--accent) 9%,rgba(255,255,255,.03))}
+.dsemb{width:20px;height:20px;border-radius:6px;display:block;flex:none}
+.dsname{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7)}
+.dsname b{flex:none;padding:2px 7px;border-radius:4px;background:rgba(255,255,255,.1);color:#fff;letter-spacing:.14em;
+  font-size:9.5px;text-transform:uppercase}
+.dsslide{padding:0;background:var(--sg,var(--ground))}
+.dsslide:before{display:none}
+.dsart{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:100% 50%;display:block}
+.dsess.zoom .dsart{transform:scale(1.55);transform-origin:86% 72%}
+.dscopy{position:absolute;left:0;top:0;bottom:0;width:62%;display:flex;flex-direction:column;justify-content:center;
+  padding:0 0 0 7%;background:linear-gradient(90deg,var(--sg,var(--ground)) 0 68%,transparent 100%)}
+.dswm{position:absolute;left:7%;top:9%;font-family:var(--label);font-size:9px;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent)}
+.dsslide .dssk{display:flex;align-items:center;gap:6px;margin:0 0 8px;font-size:8.5px;letter-spacing:.16em;
+  color:color-mix(in srgb,var(--ink) 62%,transparent)}
+.dsslide .dssk b{color:var(--accent);font-weight:800}
+.dsslide .dssk i{width:3px;height:3px;border-radius:50%;background:var(--accent)}
+.dsslide .dsst{font-size:clamp(20px,2.05vw,31px);line-height:1.02;max-width:none;color:#1f1a18}
+.dsacc{color:var(--accent);padding-bottom:3px;
+  background:repeating-linear-gradient(-55deg,color-mix(in srgb,var(--accent) 55%,transparent) 0 1.4px,transparent 1.4px 4px)
+    0 100% / 100% 32% no-repeat}
+.dsslide .dsbrand{display:none}
+.dscam{border:2px solid var(--accent)}
+.dsmic{color:rgba(255,255,255,.5)}
+.dsmic:before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.8}
+/* a message from the room, breaking the window's frame */
+.dschat{position:absolute;z-index:3;left:-28px;bottom:58px;display:flex;align-items:flex-start;gap:9px;max-width:250px;
+  padding:9px 13px 10px 9px;border-radius:14px 14px 14px 4px;background:color-mix(in srgb,var(--ground) 45%,#fff);
+  color:#2b2522;font-size:13px;line-height:1.35;box-shadow:0 18px 34px -16px rgba(0,0,0,.7);transform:rotate(-1.5deg)}
+.dschat .fav{flex:none;width:28px;height:28px;border-radius:50%;overflow:hidden;display:block}
+.dschat .fav img,.dschat .fav svg{width:100%;height:100%;object-fit:cover;display:block}
+.dschat b{display:block;margin-bottom:1px;font-family:var(--label);font-size:9.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)}
+.flip .dschat{left:auto;right:-28px;border-radius:14px 14px 4px 14px;transform:rotate(1.5deg)}
+@media (max-width:1100px){.dschat{left:-12px}.flip .dschat{right:-12px}}
+@media (max-width:760px){
+  .dschat,.flip .dschat{left:auto;right:10px;bottom:-22px;max-width:230px;font-size:12px;transform:none}
+  .dsess{margin-bottom:22px}
+  .dswm{top:8%;font-size:8px}
+  .dsslide .dssk{font-size:7.5px;margin-bottom:5px}
+  .dscopy{width:66%}
+}
+.dsslide .dssk{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;max-width:100%}
+.dsslide .dssk b,.dsslide .dssk i{display:inline-block;vertical-align:middle}
+.dsslide .dssk i{margin:0 6px 1px}
+.flip .dschat{bottom:auto;top:30%}
+@media (max-width:760px){.flip .dschat{top:auto;bottom:-22px}}
