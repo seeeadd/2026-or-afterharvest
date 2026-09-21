@@ -2680,3 +2680,67 @@ html body #page #takeaway .tkside .scta .btn{align-self:flex-start}
 .flip .dschat{top:54%}
 .dspip img{transform:scale(1.6);transform-origin:86% 55%}
 .flip .dschat{top:50%;max-width:205px;font-size:12.5px}
+
+/* =====================================================================================================
+   2026-09-22c  registration nudges: name on the ticket, where-are-you-stuck chips, the replays catch, your time
+   ===================================================================================================== */
+/* 1. the ticket carries their name as they type */
+.mstwho{display:flex;flex-direction:column;gap:3px;margin:12px 0 4px;padding:8px 0 9px;
+  border-top:1px dashed rgba(255,255,255,.35);border-bottom:1px dashed rgba(255,255,255,.35)}
+.mstwho span{font-family:var(--label);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+.mstname{font-family:var(--display);font-weight:var(--dw2,700);font-size:21px;line-height:1.1;letter-spacing:-.01em;
+  opacity:.45;transition:opacity .2s ease}
+.mstwho.filled .mstname{opacity:1}
+.mfocus{display:none;margin:-4px 0 12px;padding:8px 12px;border-radius:9px;font-size:13.5px;line-height:1.4;
+  background:color-mix(in srgb,var(--accent) 9%,transparent);color:var(--ink)}
+.mfocus.on{display:block}
+.mfocus b{color:var(--accent)}
+/* 2. one tap before the form */
+.hq{margin:18px 0 0}
+.hql{margin:0 0 9px;font-family:var(--label);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted)}
+.hqc{display:flex;flex-wrap:wrap;gap:8px}
+.hqb{appearance:none;cursor:pointer;padding:9px 15px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  color:var(--ink);background:color-mix(in srgb,var(--ground) 55%,#fff);border:1.5px solid var(--hair-2);
+  transition:border-color .15s ease,background .15s ease,color .15s ease,transform .15s ease}
+.hqb:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.hqb.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink,#fff)}
+@media (max-width:760px){
+  html body #page .hq{order:5;margin-top:22px}
+  html body #page #regcard{order:6}
+  .hqb{font-size:13.5px;padding:9px 13px}
+}
+/* 4. the replays catch */
+#xcatch{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:16px;pointer-events:none;
+  font-family:var(--body);color:var(--ink)}
+#xcatch .xcbd{position:absolute;inset:0;background:rgba(20,14,12,.42);opacity:0;transition:opacity .25s ease}
+#xcatch .xccard{position:relative;width:min(440px,100%);padding:30px 28px 24px;border-radius:18px;
+  background:color-mix(in srgb,var(--ground) 45%,#fff);box-shadow:0 40px 80px -30px rgba(20,14,12,.6);
+  opacity:0;transform:translateY(14px) scale(.98);transition:opacity .25s ease,transform .3s cubic-bezier(.2,.7,.2,1)}
+#xcatch.on{pointer-events:auto}
+#xcatch.on .xcbd{opacity:1}
+#xcatch.on .xccard{opacity:1;transform:none}
+.xcx{position:absolute;top:12px;right:12px;width:36px;height:36px;display:grid;place-items:center;border:0;border-radius:50%;
+  background:rgba(0,0,0,.05);color:var(--ink);cursor:pointer}
+.xck{margin:0 0 6px;font-family:var(--label);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.xch{margin:0 0 8px;font-family:var(--display);font-weight:var(--dw2,700);font-size:clamp(23px,2.4vw,28px);line-height:1.12;
+  letter-spacing:-.02em}
+.xcp{margin:0 0 16px;font-size:15px;line-height:1.55;color:var(--ink-soft)}
+.xcf{display:flex;flex-direction:column;gap:10px}
+.xcf input{height:50px;padding:0 16px;border-radius:12px;border:1.5px solid var(--hair-2);background:#fff;font:inherit;font-size:16px;
+  color:var(--ink);outline:none}
+.xcf input:focus{border-color:var(--accent)}
+.xcf input.bad{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent)}
+.xcf .btn{width:100%;justify-content:center}
+.xcfine{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
+#xcatch .mdtick{margin-bottom:12px}
+@media (max-width:760px){
+  #xcatch{place-items:end stretch;padding:0}
+  #xcatch .xccard{width:100%;border-radius:20px 20px 0 0;padding:26px 20px calc(env(safe-area-inset-bottom,0px) + 22px)}
+}
+/* 5. the visitor's own time, under the lead's */
+.yt{display:block;margin-top:3px;font-size:.86em;opacity:.72;font-weight:500}
+/* the under-line of every call to action reads as one label everywhere */
+#page .sctan,#page .hbfine,#page #fine,#page #cFine{font-family:var(--label);font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted)}
+#page #days .sctan{color:rgba(255,255,255,.55)}

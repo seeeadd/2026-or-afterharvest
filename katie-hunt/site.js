@@ -69,24 +69,45 @@
   var WHO = LP.name || '', BRAND = LP.brand || WHO;
   var NAMES = (S.names && S.names.length) ? S.names : ['Maya', 'Devon', 'Priya', 'Sam', 'Alix', 'Jordan', 'Noor', 'Rae'];
 
+  var TZ = S.time_zone || 'America/New_York';        /* the lead's clock (site.json / lead.json time_zone) */
+  function tzOffset(tz, t) {                          /* minutes east of UTC in tz at instant t */
+    try {
+      var p = {};
+      new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(new Date(t)).forEach(function (x) { p[x.type] = x.value; });
+      return (Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute, +p.second) - t) / 6e4;
+    } catch (e) { return -new Date(t).getTimezoneOffset(); }
+  }
   var START = (function () {
-    var d = new Date();
-    d.setHours(12, 0, 0, 0);
-    d.setDate(d.getDate() + Math.max(1, toNum(S.starts_in_days, 9)));
-    return d;
+    var now = Date.now(), wall = new Date(now + tzOffset(TZ, now) * 6e4);
+    var guess = Date.UTC(wall.getUTCFullYear(), wall.getUTCMonth(), wall.getUTCDate() + Math.max(1, toNum(S.starts_in_days, 9)),
+      toNum(S.start_hour, 12), 0, 0);
+    return new Date(guess - tzOffset(TZ, guess) * 6e4);
   })();
   var END = new Date(START.getTime() + 2 * 864e5);
 
   function dfmt(d, withWeekday) {
-    var o = { day: 'numeric', month: 'short' };
+    var o = { day: 'numeric', month: 'short', timeZone: TZ };
     if (withWeekday) o.weekday = 'short';
     return d.toLocaleDateString(undefined, o).replace(',', '');
   }
   function tfmt(d) {
-    return d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }).replace(/\s/g, ' ');
+    try {
+      return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: TZ, timeZoneName: 'short' }).replace(/\s/g, ' ');
+    } catch (e) { return d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }).replace(/\s/g, ' '); }
   }
+  function yours(d) {                                 /* "9:00 AM your time", only when the visitor's clock differs */
+    try {
+      var mine = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (!mine || tzOffset(mine, d.getTime()) === tzOffset(TZ, d.getTime())) return '';
+      return d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }).replace(/\s/g, ' ') + ' your time';
+    } catch (e) { return ''; }
+  }
+  function yoursHTML(d, cls) { var y = yours(d); return y ? '<small class="' + (cls || 'yt') + '">' + esc(y) + '</small>' : ''; }
   var WHEN = S.when || (dfmt(START, true) + ' to ' + dfmt(END, true));
   var WHEN_FULL = WHEN + ' · ' + tfmt(START) + ' · Live online';
+  /* the line under every call to action (asked for 2026-09-22) */
+  var CTA_NOTE = S.cta_note || ('Free online challenge: ' + dfmt(START) + ' to ' + dfmt(END));
 
   var state = {
     seats: Math.max(12, toNum(S.registered, 1204)),
@@ -187,7 +208,7 @@
   function ctaBlock(label, note) {
     return '<div class="scta"><span class="btn lg" data-reg="1" role="button" tabindex="0">' +
       esc(label) + ARROW + '</span>' +
-      '<span class="sctan">' + esc(note || 'Free \u00B7 Nothing to pay') + '</span></div>';
+      '<span class="sctan">' + esc(CTA_NOTE) + '</span></div>';
   }
 
   /* the lead's own subject, drawn once and worn by every primary action. Matched from words the lead
@@ -348,7 +369,7 @@
           '<i class="hbplay">' + PLAY + '</i></span><span class="hbfoot"></span></div>' +
         '<div class="hbmain">' +
           '<p class="hbjoin">Join the <em>free</em> 3-day ' + esc(EV) + '.</p>' +
-          '<p class="hbwhen"><b>' + esc(WHEN) + '</b><span>' + esc(tfmt(START)) + ' \u00B7 Live</span></p>' +
+          '<p class="hbwhen"><b>' + esc(WHEN) + '</b><span>' + esc(tfmt(START)) + ' \u00B7 Live' + yoursHTML(START) + '</span></p>' +
           '<span class="btn lg sq" data-reg="1" role="button" tabindex="0">Hold my seat' + ARROW + '</span>' +
         '</div>' +
       '</div>');
@@ -365,7 +386,7 @@
       if (btn && main && btn.parentNode === main) {   /* the action is a block, not a pill floating in a void */
         var act = el('div', 'hbact');
         book.appendChild(act); act.appendChild(btn);
-        act.insertAdjacentHTML('beforeend', '<span class="hbfine">Nothing to pay</span>');
+        act.insertAdjacentHTML('beforeend', '<span class="hbfine">' + esc(CTA_NOTE) + '</span>');
       }
     })();
 
@@ -556,8 +577,8 @@
   function copy() {
     document.title = EV + (BRAND ? ' | ' + BRAND : '');
     var fine = $('fine'), cFine = $('cFine'), footL = $('footL'), chip = q('.cchip');
-    if (fine) fine.textContent = 'Free. Three days live with ' + FIRST + '.';
-    if (cFine) cFine.textContent = 'Free. Three days live with ' + FIRST + '. Your seat is held as soon as you sign up.';
+    if (fine) fine.textContent = CTA_NOTE;
+    if (cFine) cFine.textContent = CTA_NOTE;
     if (footL) footL.textContent = 'A free 3-day live event with ' + WHO + '. ' + WHEN_FULL + '.';
     if (chip) chip.textContent = 'Free event';
     var cH = $('cH');
@@ -578,9 +599,10 @@
         '<div class="msthead"><span class="mstb">' + esc(BRAND) + '</span><span class="mstone">Admit one</span></div>' +
         '<p class="mstk">Free seat</p>' +
         '<h3 class="mstev">' + esc(EV) + '</h3>' +
+        '<div class="mstwho"><span>Admit one</span><b class="mstname">Your name here</b></div>' +
         '<dl class="mstmeta">' +
           '<div><dt>Dates</dt><dd>' + esc(WHEN) + '</dd></div>' +
-          '<div><dt>Time</dt><dd>' + esc(tfmt(START)) + ' \u00B7 Live</dd></div>' +
+          '<div><dt>Time</dt><dd>' + esc(tfmt(START)) + ' \u00B7 Live' + yoursHTML(START) + '</dd></div>' +
           '<div><dt>Where</dt><dd>Zoom, link by email</dd></div>' +
           '<div><dt>Cost</dt><dd>Free</dd></div>' +
         '</dl>' +
@@ -599,6 +621,7 @@
         '<div class="mlive"><i class="pulse"></i>Registration open<span class="mclock">00:00:00:00</span>' +
         '<em class="mlivex">left</em></div>' +
         '<p class="mwhen">Fill this in and the Zoom link is on its way.</p>' +
+        '<p class="mfocus"></p>' +
         '<form class="mform" novalidate>' +
         '<label><span>First name</span><input type="text" name="first" autocomplete="given-name" placeholder="Your first name"></label>' +
         '<label><span>Email address</span><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></label>' +
@@ -639,6 +662,12 @@
         '<p class="mdrep">' + TICK + 'Cannot make one live? Each day has a replay.</p>' +
         '<button type="button" class="mdclose" data-close="1">Back to the page</button></div>';
     }
+    function nameOnTicket() {             /* the seat is theirs before they press anything */
+      var f = q('form', m), b = q('.mstname', m); if (!f || !b) return;
+      var v = f.first.value.trim();
+      b.textContent = v || 'Your name here';
+      b.parentNode.classList.toggle('filled', !!v);
+    }
     function submit() {
       var f = q('form', m); if (!f) return;
       var first = f.first.value.trim(), email = f.email.value.trim(), ok = true;
@@ -654,6 +683,9 @@
       if (cf && f) {                      /* what they typed in the closing card comes with them */
         qa('input', cf).forEach(function (i) { if (i.value && f[i.name]) f[i.name].value = i.value; });
       }
+      nameOnTicket();
+      var fo = q('.mfocus', m);
+      if (fo) { fo.innerHTML = state.focus ? 'Your focus: <b>' + esc(state.focus) + '</b>. We work on it live.' : ''; fo.classList.toggle('on', !!state.focus); }
       m.classList.add('on');
       document.body.classList.add('modalopen');
       setTimeout(function () { var f2 = q('form', m); if (f2) (f2.first.value ? (f2.email.value ? f2.phone : f2.email) : f2.first).focus({ preventScroll: true }); }, 80);
@@ -668,6 +700,7 @@
       var f = q('form', m); if (!f) return;
       f.addEventListener('submit', function (e) { e.preventDefault(); submit(); });
       qa('input', f).forEach(function (i) { i.addEventListener('input', function () { i.parentNode.classList.remove('bad'); }); });
+      if (f.first) f.first.addEventListener('input', nameOnTicket);
       var sb = q('[data-submit]', f);
       if (sb) sb.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); submit(); } });
     }
@@ -689,10 +722,64 @@
     return { open: open, close: close, node: m };
   }
 
+  function stuck() {                       /* the lead's own fit-check problems as three chips; a tap opens the form */
+    var reg = $('regcard'), c = (LP.checks || []).slice(0, 3).map(function (k) { return String(k.bold || '').replace(/[.:]$/, '').trim(); }).filter(Boolean);
+    if (!reg || c.length < 2 || q('.hq')) return;
+    var hq = el('div', 'hq', '<p class="hql">Where are you stuck right now?</p><div class="hqc">' +
+      c.map(function (t) { return '<button type="button" class="hqb" data-reg="1">' + esc(t) + '</button>'; }).join('') + '</div>');
+    reg.parentNode.insertBefore(hq, reg);
+    hq.addEventListener('click', function (e) {
+      var b = e.target.closest('.hqb'); if (!b) return;
+      state.focus = b.textContent;
+      qa('.hqb', hq).forEach(function (x) { x.classList.toggle('on', x === b); });
+    }, true);
+  }
+
+  /* before they go: the people who cannot make the times still want the replays */
+  function exitCatch() {
+    var seen = false;
+    try { seen = sessionStorage.getItem('xcatch') === '1'; } catch (e) {}
+    if (seen || $('xcatch')) return;
+    var t0 = Date.now(), c = el('div', ''); c.id = 'xcatch';
+    c.innerHTML = '<div class="xcbd" data-xc="1"></div><div class="xccard" role="dialog" aria-label="Get the replays" data-noreg="1">' +
+      '<button type="button" class="xcx" data-xc="1" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" ' +
+      'stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>' +
+      '<p class="xck">Before you go</p><h3 class="xch">Can\u2019t make it live? Get the replays.</h3>' +
+      '<p class="xcp">Every day of the ' + esc(EV) + ' is recorded. Leave your email and each replay comes the same evening.</p>' +
+      '<form class="xcf" novalidate><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-label="Email address">' +
+      '<button type="submit" class="btn lg">Send me the replays' + ARROW + '</button></form>' +
+      '<p class="xcfine">Free. You can still join live any day.</p></div>';
+    document.body.appendChild(c);
+    function show() {
+      if (seen || document.body.classList.contains('modalopen') || Date.now() - t0 < 8000) return;
+      seen = true;
+      try { sessionStorage.setItem('xcatch', '1'); } catch (e) {}
+      c.classList.add('on');
+    }
+    function hide() { c.classList.remove('on'); }
+    c.addEventListener('click', function (e) { if (e.target.closest('[data-xc]')) hide(); });
+    q('form', c).addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = e.target.email.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { e.target.email.classList.add('bad'); e.target.email.focus(); return; }
+      q('.xccard', c).innerHTML = '<span class="mdtick">' + TICK + '</span><p class="xck">Done</p>' +
+        '<h3 class="xch">The replays are yours.</h3><p class="xcp">Each day goes to <b>' + esc(v) + '</b> the same evening.</p>' +
+        '<button type="button" class="mdclose" data-xc="1">Back to the page</button>';
+    });
+    document.addEventListener('mouseout', function (e) { if (!e.relatedTarget && e.clientY < 10) show(); });
+    var lastY = window.pageYOffset, lastT = Date.now();
+    addEventListener('scroll', function () {             /* phones: a quick flick back up after reading a while */
+      var y = window.pageYOffset, now = Date.now(), v = (lastY - y) / Math.max(1, now - lastT);
+      if (window.innerWidth <= 760 && y > 1500 && v > 2.4) show();
+      lastY = y; lastT = now;
+    }, { passive: true });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+  }
+
   function dock() {
     if ($('dock')) return;
     var d = el('div', ''); d.id = 'dock';
-    d.innerHTML = '<span class="dkw"><b>Free</b>' + esc(dfmt(START, true)) + ' \u00B7 ' + esc(tfmt(START)) + '</span>' +
+    d.innerHTML = '<span class="dkw"><b>Free online challenge</b>' + esc(dfmt(START) + ' to ' + dfmt(END)) + ' \u00B7 ' + esc(tfmt(START)) + '</span>' +
       '<span class="btn" data-reg="1" role="button" tabindex="0">Hold my seat' + ARROW + '</span>';
     document.body.appendChild(d);
     var reg = $('regcard'), cl = $('closing'), queued = false;
@@ -722,7 +809,7 @@
       sp.parentNode.replaceChild(inp, sp);
     });
     var t = q('.ctext', cf);
-    if (t && !q('.cwhen', t)) t.insertAdjacentHTML('beforeend', '<p class="cwhen">' + esc(WHEN) + ' \u00B7 ' + esc(tfmt(START)) + ' \u00B7 Live on Zoom</p>');
+    if (t && !q('.cwhen', t)) t.insertAdjacentHTML('beforeend', '<p class="cwhen">' + esc(WHEN) + ' \u00B7 ' + esc(tfmt(START)) + ' \u00B7 Live on Zoom' + (yours(START) ? ' \u00B7 ' + esc(yours(START)) : '') + '</p>');
   }
 
   /* the bottom-left notice: who, where, what they did, how long ago, and whose page it is */
@@ -1605,6 +1692,8 @@
     var wrap = gated();
 
     closingForm();
+    stuck();
+    exitCatch();
     dock();
     modal();
     toast();
