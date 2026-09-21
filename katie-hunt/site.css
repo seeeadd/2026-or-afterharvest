@@ -2403,3 +2403,95 @@ html body #page #days .hassheet .dmark{display:none}
     grid-column:2;width:auto;max-width:none;margin-left:0;text-align:left}
 
 }
+
+/* ---- the header bar (2026-09-22): the registered count joins the bar beside the action it proves, the tab
+   above is retired, and the countdown goes light so the action is the one strong thing in the bar */
+html body #page #topbar{display:none !important}
+html body #page .nav .tile{background:color-mix(in srgb,var(--ink) 5%,transparent);border:1px solid var(--hair-2);
+  box-shadow:none;width:40px;height:40px;border-radius:9px}
+html body #page .nav .tile b{color:var(--ink)}
+html body #page .nav .tile small{color:var(--muted)}
+html body #page .nav .tile[data-u="sec"]{border-color:color-mix(in srgb,var(--accent) 40%,transparent);
+  background:color-mix(in srgb,var(--accent) 8%,transparent)}
+html body #page .nav .tile[data-u="sec"] b{color:var(--accent)}
+.hsoc{display:flex;align-items:center;gap:9px;flex:none;margin:0 6px 0 2px}
+.hsoc .avstack{display:flex;align-items:center;margin:0}
+.hsoc .avstack .fav{width:28px;height:28px;margin:0 0 0 -9px;border-radius:50%;overflow:hidden;
+  border:2px solid color-mix(in srgb,var(--ground) 45%,#fff);box-shadow:none}
+.hsoc .avstack .fav:first-child{margin-left:0}
+.hsoc .avstack .fav img{width:100%;height:100%;object-fit:cover;display:block}
+.hsn{display:flex;flex-direction:column;line-height:1.05;font-family:var(--label);font-size:13px;font-weight:700;
+  color:var(--ink);font-variant-numeric:tabular-nums}
+.hsn small{margin-top:3px;font-size:8.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+html body #page .hdr.tight .hsoc{display:none}
+@media (max-width:1180px){.hsoc{display:none !important}}
+
+/* ---- what you keep, as the kit (2026-09-22): the three take-home sheets clipped together, one line per day */
+html body #page #takeaway.tkkit .tkgrid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1fr);
+  gap:clamp(44px,6vw,104px);align-items:center;max-width:1180px;margin:0 auto}
+.tkstack{position:relative;height:clamp(430px,36vw,500px);margin-top:8px}
+.tksh{position:absolute;left:7%;right:9%;top:96px;border-radius:5px;padding:28px 26px 16px;color:#2b2522;
+  background:color-mix(in srgb,var(--ground) 30%,#fffdf9);
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 26px 50px -26px rgba(40,26,20,.45),0 6px 14px -6px rgba(40,26,20,.22)}
+.tksh.s1{transform:rotate(-2.5deg);z-index:3}
+.tksh.s2{transform:translate(9%,-34px) rotate(3.5deg);z-index:2}
+.tksh.s3{transform:translate(-5%,-66px) rotate(-4.5deg);z-index:1}
+.tksh .dstop{margin:0 0 12px}
+.tksht{margin:0 0 14px;font-family:var(--display);font-weight:var(--dw2,700);font-size:clamp(20px,1.7vw,24px);
+  line-height:1.14;letter-spacing:-.02em;color:#221c19;max-width:18ch}
+.tkshl{list-style:none;margin:0;padding:0}
+.tkshl li{display:grid;grid-template-columns:28px minmax(0,1fr);padding:10px 0 9px;border-top:1px dashed rgba(43,37,34,.16);
+  font-size:14.5px;line-height:1.4}
+/* the binder clip that holds the three sheets together */
+.tkclip{position:absolute;z-index:5;top:12px;left:50%;width:78px;height:30px;margin-left:-39px;border-radius:5px 5px 3px 3px;
+  background:linear-gradient(180deg,#3a3431,#1f1b19);box-shadow:0 6px 12px -4px rgba(0,0,0,.45)}
+.tkclip:before,.tkclip:after{content:'';position:absolute;top:-17px;width:22px;height:24px;border:2.5px solid #7d7470;
+  border-bottom:0;border-radius:12px 12px 0 0}
+.tkclip:before{left:12px;transform:rotate(-8deg)}
+.tkclip:after{right:12px;transform:rotate(8deg)}
+.tkside .tktab{display:inline-block}
+.tkside .sh{margin-top:18px}
+.tkrows{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--hair)}
+.tkrows li{display:grid;grid-template-columns:70px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--hair)}
+.tkday{padding-top:5px;font-family:var(--label);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);white-space:nowrap}
+.tkrows b{display:block;margin-bottom:3px;font-family:var(--display);font-weight:var(--dw2,700);font-size:19px;color:var(--ink)}
+.tkrows p{margin:0;font-size:15.5px;line-height:1.5;color:var(--ink-soft)}
+html body #page #takeaway .tkside .scta{margin:28px 0 0;align-items:flex-start;justify-items:start;text-align:left}
+@media (max-width:900px){
+  html body #page #takeaway.tkkit .tkgrid{grid-template-columns:minmax(0,1fr);gap:26px}
+  .tkstack{order:2;height:400px;max-width:520px;width:100%;margin:6px auto 0}
+  .tkside{order:1}
+}
+@media (max-width:760px){
+  .tkstack{height:370px}
+  .tksh{top:84px}
+  .tksh{left:4%;right:6%;padding:24px 18px 12px}
+  .tksht{font-size:19px}
+  .tkshl li{font-size:13.5px}
+  .tkrows li{grid-template-columns:58px minmax(0,1fr);gap:10px;padding:14px 0}
+  .tkrows b{font-size:17.5px}
+  .tkrows p{font-size:14.5px}
+}
+/* the hero keeps its tuned resting place now that the tab above the header is gone */
+html body #page > #hero{margin-top:17px}
+@media (max-width:760px){html body #page > #hero{margin-top:25px}}
+.hsn{flex-direction:row;align-items:baseline;gap:5px;white-space:nowrap}
+.hsn small{margin-top:0}
+/* docking: the bar rests 8px down now that the tab is gone (it rested at 35px), so it rises 17px, not 44px,
+   to land in the same place against the top edge */
+html body #page .hdr.tight .navwrap{transform:translateY(-17px)}
+/* one bar, one width in both states (the docking stays smooth): at rest the faces take the room of the
+   "Starts in" words (the pulse and the DAYS / HRS / MIN / SEC tiles already say it); docked, the words come back */
+@media (min-width:1181px){
+  html body #page .hdr:not(.tight) .cdl{font-size:0;gap:0;letter-spacing:0}
+  html body #page .hdr:not(.tight) .cdwrap{gap:8px}
+}
+@media (min-width:1181px){
+  /* at the top of the page the hero's date pill sits right under the bar and says "Free 3-day live event" */
+  html body #page .hdr:not(.tight) .nav .lw small{display:none !important}
+  html body #page .hdr:not(.tight) .nav .lw b{font-size:15.5px;line-height:1.2}
+}
+.hsn{gap:0}
+.hsn small{margin-left:6px}
+html body #page #takeaway .tkside .scta .btn{align-self:flex-start}

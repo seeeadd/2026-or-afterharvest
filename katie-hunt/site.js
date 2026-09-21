@@ -297,7 +297,7 @@
     var cd = q('.cd', nav);
     if (cd) {
       var wrap = el('span', 'cdwrap',
-        '<span class="cdl"><i class="pulse"></i>Live in</span>' +
+        '<span class="cdl"><i class="pulse"></i>Starts in</span>' +
         '<span class="cd">' +
         ['days', 'hrs', 'min', 'sec'].map(function (u) {
           return '<span class="tile" data-u="' + u + '"><b>00</b><small>' + u + '</small></span>';
@@ -306,6 +306,10 @@
     }
     var cta = q('.btn.sm', nav);
     if (cta) { cta.classList.add('sheen'); cta.setAttribute('data-reg', '1'); cta.setAttribute('role', 'button'); cta.tabIndex = 0; }
+    if (cta && !q('.hsoc', nav)) {         /* who is already in, next to the action it proves (2026-09-22) */
+      cta.insertAdjacentHTML('beforebegin', '<span class="hsoc">' + avstack(3, 'sm') +
+        '<span class="hsn"><b class="seatn">' + seatText() + '</b>+<small>joined</small></span></span>');
+    }
 
     var onScroll = function () { hdr.classList.toggle('stuck', window.pageYOffset > 8); };
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -1284,24 +1288,30 @@
       var labels = ['The numbers', 'The pitch', 'The follow-up'];
       var take = el('section', 'sect z');
       take.id = 'takeaway';
+      /* the payoff of the three days: the take-home sheets from the schedule, clipped together as one kit,
+         and one line per day beside it (2026-09-22). The day rows above already list every item. */
+      var sheetsHTML = outs.map(function (o, i) {
+        var t = String(((days[i] || {}).title) || '').split('|').join(' ').replace(/\s+/g, ' ').replace(/\.$/, '').trim();
+        var its = ((S.day_bullets || [])[i] || []).slice(0, 3);
+        return '<div class="tksh s' + (i + 1) + '"><p class="dstop"><b>Day ' + (i + 1) + '</b><span>Take-home sheet</span></p>' +
+          '<p class="tksht">' + esc(t) + '</p><ol class="tkshl">' + its.map(function (x) {
+            return '<li><i class="dsbox"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.6l3 3.2 7-8.2"/></svg></i>' +
+              '<span>' + esc(x) + '</span></li>';
+          }).join('') + '</ol></div>';
+      }).reverse().join('');
+      take.classList.add('tkkit');
       take.innerHTML =
-        '<div class="tkhead"><span class="tktab">' + esc(S.keep_tab || 'What you keep') + '</span>' +
-          '<h2 class="sh">Three days in, you have the thing itself.</h2>' +
-          '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p></div>' +
-        '<div class="tkroute">' +
-          '<svg class="tkpath" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" ' +
-          'stroke-dasharray="7 9" stroke-linecap="round"/></svg>' +
-          outs.map(function (o, i) {
-            var bl = ((S.day_bullets || [])[i] || []).slice(0, 2);
-            return '<article class="tkstop s' + (i + 1) + '">' +
-              '<span class="tkdisc">' + (ART[i] || '') + '</span>' +
-              '<p class="tknum">' + (i < 9 ? '0' : '') + (i + 1) + '<i></i>' + esc(labels[i] || ('Day ' + (i + 1))) + '</p>' +
-              '<p class="tkt">' + esc(o) + '</p>' +
-              (bl.length ? '<ul class="tkbul">' + bl.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') +
-              '</article>';
-          }).join('') +
+        '<div class="tkgrid">' +
+          '<div class="tkstack" aria-hidden="true"><i class="tkclip"></i>' + sheetsHTML + '</div>' +
+          '<div class="tkside"><span class="tktab">' + esc(S.keep_tab || 'What you keep') + '</span>' +
+            '<h2 class="sh">Three days in, you have the thing itself.</h2>' +
+            '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p>' +
+            '<ol class="tkrows">' + outs.map(function (o, i) {
+              return '<li><span class="tkday">Day ' + (i + 1) + '</span><div><b>' + esc(labels[i] || ('Day ' + (i + 1))) +
+                '</b><p>' + esc(o) + '</p></div></li>';
+            }).join('') + '</ol></div>' +
         '</div>';
-      take.insertAdjacentHTML('beforeend', ctaBlock('Hold my seat for the three days', 'Free \u00B7 Nothing to pay'));
+      q('.tkside', take).insertAdjacentHTML('beforeend', ctaBlock('Hold my seat for the three days', 'Free \u00B7 Nothing to pay'));
       P.insertBefore(take, closing);
       /* the route is drawn through the discs themselves, after layout, so it can never cross the copy */
       var drawRoute = function () {
