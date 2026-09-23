@@ -1172,11 +1172,14 @@
     var hero = $('hero'), fitc = $('fitc'), days = $('days');
     var mul = clamp(W / 800, 1, 1.7);
     var slots = [
-      { edge: 'l', cy: topOf(hero) + 96, size: 300, rot: -8, crop: 0.16 },    /* top left corner, above the video */
+      /* top left corner, above the video. On a phone the hero is one column and that corner is the headline,
+         so the hero drawing is left out there and the other two carry the texture (2026-09-23) */
+      { edge: 'l', cy: topOf(hero) + 96, size: 300, rot: -8, crop: 0.16, minW: 900 },
       { edge: 'l', cy: topOf(fitc) + fitc.offsetHeight * 0.58, size: 500, rot: 8, crop: 0.42 },
       { edge: 'l', cy: topOf(days) + days.offsetHeight * 0.22, size: 520, rot: -6, crop: 0.46 }
     ];
     slots.forEach(function (sl, i) {
+      if (sl.minW && W < sl.minW) return;
       var g = G[i % G.length], mx = Math.max(g.w, g.h), mn = Math.min(g.w, g.h);
       var s = sl.size * mul / mx;
       if (mn * s < 190 * mul) s = Math.min(190 * mul / mn, 700 * mul / mx);
