@@ -462,7 +462,7 @@
             '<li><span class="tsdot"></span><b>The challenge</b><p>' +
               esc(t.challenge || ('Plenty of work going out, no clear line from it to sales.')) + '</p></li>' +
             '<li><span class="tsdot on"></span><b>The result</b>' +
-              '<h3>' + esc(t.result || 'A plan she could run the week after.') + '</h3></li>' +
+              '<h3>' + esc(t.result || 'A plan to run the week after.') + '</h3></li>' +
           '</ol>' +
           '<blockquote class="tsquote"><p>' + esc(t.quote) + '</p>' +
             '<footer><span class="tsav">' + esc((t.name || 'A').trim().charAt(0)) + '</span>' +
@@ -510,7 +510,7 @@
       }).join('') + '</ul></div>');
 
     var FAQ = [
-      ['Do I need anything before Day 1?', 'No. Bring one product line and an hour a day. Everything else is handed to you in the workbook.'],
+      ['Do I need anything before Day 1?', prepAnswer()],
       ['What if I cannot make a session live?', 'Every session is recorded and the replay lands in your inbox the same evening.'],
       ['Is this really free?', 'Yes. Three days, live with ' + FIRST + ', no card and no catch.'],
       ['Who is this for?', 'Anyone who wants ' + String(EV).toLowerCase() + ' finished rather than planned.']
@@ -850,7 +850,7 @@
     (LP.days || []).slice(0, 3).forEach(function (d, i) {
       caps.push('Day ' + (i + 1) + ': <b>' + esc(String(d.title).split('|').join(' ').replace(/\.$/, '')) + '</b>');
     });
-    caps.unshift('This is the <b>60 second version</b> of the three days.');
+    caps.unshift('The <b>60 second version</b> of the three days.');
     caps.push('It is free, and it is live with <b>' + esc(FIRST) + '</b>.');
 
     var s = el('aside', '');
@@ -862,7 +862,7 @@
       '<span class="svmute"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true">' +
       '<path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/>' +
       '<path d="M11 5.4a3.6 3.6 0 0 1 0 5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Unmute</span>' +
-      '<span class="svcap"></span><span class="svhint">Click here to unmute</span>' +
+      '<span class="svcap"></span><span class="svhint">Tap for sound</span>' +
       '<span class="svbar"><i></i></span></div>' +
       '<span class="btn" data-reg="1" role="button" tabindex="0">Hold my seat</span></div>';
     document.body.appendChild(s);
@@ -1494,16 +1494,33 @@
     qa('.d23 > *', box).forEach(function (card, i) { wrap(card, i + 1); });
   }
 
+  /* every line about the work itself is taken from the lead's own days, so no page ever carries another
+     lead's vocabulary, and nothing about the host assumes a pronoun (2026-09-23) */
+  function dayLine(i, key) {
+    var d = (LP.days || [])[i] || {};
+    var v = key === 'bullet' ? (d.bullets || [])[0] : d[key];
+    v = String(v || '').trim().replace(/[.\u2022\s]+$/, '');
+    return v ? v.charAt(0).toLowerCase() + v.slice(1) : '';
+  }
+  function prepAnswer() {
+    var b = dayLine(0, 'bullet') || dayLine(0, 'outcome');
+    return b ? 'Nothing to prepare. Day 1 starts on ' + b + ', and you work with whatever you already have.'
+             : 'Nothing to prepare. Everything you need is handed to you on Day 1.';
+  }
+
   /* the fit check needs more than a list: who this is for, and who it is not for */
   function fitCopy() {
     var fitc = $('fitc');
     if (!fitc || q('.fitnote', fitc)) return;
-    var who = S.audience || 'makers';
+    var d1 = dayLine(0, 'bullet') || dayLine(0, 'outcome'), d3 = dayLine(2, 'outcome');
+    /* S.audience is a channel label ("newsletter subscribers"), never a who-it-is-for phrase: never put it here */
+    var fitFor = S.fit_note || 'It is built for anyone who recognised themselves up there.';
+    var arc = d1 && d3 ? ' Day 1 starts on ' + d1 + ', so bring what you already have; by Day 3 you ' + d3 + '.'
+      : ' You bring the work you already have, and you leave with the next three moves made.';
     var note = el('div', 'fitnote',
-      '<p><b>It is built for ' + esc(who) + ' who already sell</b> and want the next order to be repeatable: ' +
-      'you have something people buy, and the next step is getting it in front of the right buyers without guessing.</p>' +
-      '<p>' + esc('If you have not made your first product yet, come back later. Three days will not fix a thing you ' +
-      'have not started.') + '</p>');
+      '<p><b>' + esc(fitFor) + '</b>' + esc(arc) + '</p>' +
+      '<p>' + esc(S.fit_not || ('If you have not started yet, come back for the next one. Three days can sharpen ' +
+      'work that already exists. They cannot invent it from nothing.')) + '</p>');
     fitc.appendChild(note);
     fitc.insertAdjacentHTML('beforeend', ctaBlock('Sounds like me, hold my seat', 'Free \u00B7 Nothing to pay'));
   }
@@ -1518,7 +1535,12 @@
     if (outs.length) {
       /* each piece gets a drawn artifact, thin-line, in their accent: the thing you actually keep */
 
-      var labels = ['The numbers', 'The pitch', 'The follow-up'];
+      /* the name of each piece follows what it actually is for this lead: 'The numbers' belongs to a margin
+         day, not to a goal-setting one (2026-09-23) */
+      var KIND_LABEL = { Worksheet: 'The numbers', Sheet: 'The sheet', Template: 'The template',
+        Tracker: 'The follow-up', Plan: 'The plan', Shortlist: 'The shortlist', Brief: 'The brief',
+        Checklist: 'The checklist' };
+      var labels = [];
       var take = el('section', 'sect z');
       take.id = 'takeaway';
       /* the payoff of the three days: the take-home sheets from the schedule, clipped together as one kit,
@@ -1531,7 +1553,11 @@
         if (/track|follow[- ]?up|pipeline|calendar|sequence/.test(t)) return 'Tracker';
         if (/sheet|list|catalog|menu|portfolio/.test(t)) return 'Sheet';
         if (/email|pitch|script|message|dm|post|caption|letter/.test(t)) return 'Template';
-        return 'File';
+        if (/project|shortlist|crucial few|select/.test(t)) return 'Shortlist';
+        if (/goal|focus|audience|brief|positioning|priorit|choose|pick /.test(t)) return 'Brief';
+        if (/plan|roadmap|map |schedule|week|quarter|90[- ]?day|month/.test(t)) return 'Plan';
+        if (/checklist|step|system|process|routine/.test(t)) return 'Checklist';
+        return 'Sheet';
       }
       /* the three things you walk away with, drawn as the artifacts themselves (2026-09-23: a file list read as
          a stock table). Each one is a miniature of the real deliverable, built from the lead's own day items. */
@@ -1539,13 +1565,13 @@
         var rows = items.slice(0, 3).map(function (t, k) {
           return '<span class="mkrow"><em>' + esc(String(t).replace(/\.$/, '')) + '</em><i style="width:' + (52 - k * 11) + '%"></i></span>';
         }).join('');
-        if (kind === 'Tracker') {
+        if (kind === 'Tracker' || kind === 'Plan') {
           return '<span class="mkhead">' + esc(title) + '</span><span class="mkweeks">' +
             ['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4'].map(function (w, k) {
               return '<span class="mkwk' + (k < 2 ? ' on' : '') + '"><b></b>' + w + '</span>';
             }).join('') + '</span>' + rows;
         }
-        if (kind === 'Sheet' || kind === 'Template') {
+        if (kind === 'Sheet' || kind === 'Template' || kind === 'Shortlist') {
           return '<span class="mkhead">' + esc(title) + '</span><span class="mktiles"><i></i><i></i><i></i></span>' + rows;
         }
         return '<span class="mkhead">' + esc(title) + '</span><span class="mktable">' + rows + '</span>';
@@ -1555,10 +1581,12 @@
         var items = ((S.day_bullets || [])[i] || []).slice(0, 3);
         if (!items.length) items = [o];
         var kind = kindOf(items.join(' ') + ' ' + t);
+        var lab = KIND_LABEL[kind] || ('Day ' + (i + 1));
+        if (labels.indexOf(lab) > -1) lab = lab.replace('The ', 'The second ');   /* two days, one kind */
+        labels[i] = lab;
         return '<figure class="tkart a' + (i + 1) + '">' +
           '<span class="tktape"></span>' +
-          '<span class="tkatop"><b>Day ' + (i + 1) + '</b><span>' + esc(kind) + '</span>' +
-            '<em>' + esc(labels[i] || ('Day ' + (i + 1))) + '</em></span>' +
+          '<span class="tkatop"><b>Day ' + (i + 1) + '</b><span>' + esc(kind) + '</span></span>' +
           '<span class="tkabody">' + mock(kind, items, t) + '</span></figure>';
       }).join('');
       take.classList.add('tkkit');
@@ -1611,7 +1639,7 @@
         '<div><p class="seye">Who is running it</p>' +
         '<h2 class="sh">' + esc(LP.name || FIRST) + '</h2>' +
         '<p class="hostbio">' + esc(BIO) + '</p>' +
-        '<p class="hostrun">' + esc('She runs the three days herself. No panel, no guest carousel.') + '</p></div></div>';
+        '<p class="hostrun">' + esc(FIRST + ' runs all three days. No panel, no guest carousel.') + '</p></div></div>';
       P.insertBefore(host, closing);
     }
 
@@ -1619,13 +1647,13 @@
       ['Is it really free?', 'Yes. Three days, live with ' + FIRST + ', no card and nothing to buy on the way in.'],
       ['What if I cannot make a session?', 'Register anyway. The replay of each day goes out the same evening and stays up for a week.'],
       ['How much time does it take?', 'About an hour a day, plus the work you do in the room on your own product.'],
-      ['Do I need anything ready?', 'Bring one product line and whatever numbers you have. That is enough to start on Day 1.']
+      ['Do I need anything ready?', prepAnswer()]
     ];
     var faq = el('section', 'sect z');
     faq.id = 'faq';
     faq.innerHTML = '<div class="faqhead"><div class="faqtitle"><p class="seye">Before you hold a seat</p>' +
       '<h2 class="sh">The questions people ask.</h2></div>' +
-      '<p class="faqnote">' + esc('If yours is not here, reply to the email and ask. ' + FIRST + ' answers them herself.') +
+      '<p class="faqnote">' + esc('If yours is not here, reply to the email and ask. ' + FIRST + ' answers them.') +
       '</p></div>' +
       '<ol class="faqlist">' + qs.map(function (r, i) {
         return '<li class="faqi' + (i === 0 ? ' open' : '') + '">' +
