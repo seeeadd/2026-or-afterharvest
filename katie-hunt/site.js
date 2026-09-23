@@ -1523,19 +1523,33 @@
       take.id = 'takeaway';
       /* the payoff of the three days: the take-home sheets from the schedule, clipped together as one kit,
          and one line per day beside it (2026-09-22). The day rows above already list every item. */
-      var sheetsHTML = outs.map(function (o, i) {
+      /* what you keep is a folder of files, not a pile of paper (2026-09-23): the artifacts of the three days,
+         named from the lead's own day titles and keep items, the way they would sit on your desktop after */
+      function kindOf(t) {
+        t = String(t).toLowerCase();
+        if (/price|cost|margin|number|budget|calculator|profit/.test(t)) return 'Worksheet';
+        if (/track|follow[- ]?up|pipeline|calendar|sequence/.test(t)) return 'Tracker';
+        if (/sheet|list|catalog|menu|portfolio/.test(t)) return 'Sheet';
+        if (/email|pitch|script|message|dm|post|caption|letter/.test(t)) return 'Template';
+        return 'File';
+      }
+      var filesHTML = outs.map(function (o, i) {
         var t = String(((days[i] || {}).title) || '').split('|').join(' ').replace(/\s+/g, ' ').replace(/\.$/, '').trim();
-        var its = ((S.day_bullets || [])[i] || []).slice(0, 3);
-        return '<div class="tksh s' + (i + 1) + '"><p class="dstop"><b>Day ' + (i + 1) + '</b><span>Take-home sheet</span></p>' +
-          '<p class="tksht">' + esc(t) + '</p><ol class="tkshl">' + its.map(function (x) {
-            return '<li><i class="dsbox"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.6l3 3.2 7-8.2"/></svg></i>' +
-              '<span>' + esc(x) + '</span></li>';
-          }).join('') + '</ol></div>';
-      }).reverse().join('');
+        var first = ((S.day_bullets || [])[i] || [])[0] || o;
+        return '<li><span class="tkic">' + (ART[i] || '') + '</span>' +
+          '<span class="tkfn"><b>' + esc(t) + '</b><em>' + esc(first) + '</em></span>' +
+          '<span class="tkk">' + esc(kindOf(first + ' ' + t)) + '</span>' +
+          '<span class="tkad">Day ' + (i + 1) + '</span></li>';
+      }).join('');
       take.classList.add('tkkit');
       take.innerHTML =
         '<div class="tkgrid">' +
-          '<div class="tkstack" aria-hidden="true"><i class="tkclip"></i>' + sheetsHTML + '</div>' +
+          '<div class="tkstack"><div class="tkwin"><div class="tkbar"><img class="dsemb" src="favicon-32.png" alt="">' +
+            '<span class="tkwn">' + esc(EV) + '</span><span class="tkwc">' + outs.length + ' items</span></div>' +
+            '<div class="tkcols"><span>What you keep</span><span>Kind</span><span>Added</span></div>' +
+            '<ol class="tkfiles">' + filesHTML + '</ol>' +
+            '<div class="tkwf"><span class="tkwy">Yours to keep</span><span>Saved during the live sessions</span></div>' +
+          '</div></div>' +
           '<div class="tkside"><span class="tktab">' + esc(S.keep_tab || 'What you keep') + '</span>' +
             '<h2 class="sh">Three days in, you have the thing itself.</h2>' +
             '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p>' +
