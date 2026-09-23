@@ -1533,23 +1533,39 @@
         if (/email|pitch|script|message|dm|post|caption|letter/.test(t)) return 'Template';
         return 'File';
       }
-      var filesHTML = outs.map(function (o, i) {
+      /* the three things you walk away with, drawn as the artifacts themselves (2026-09-23: a file list read as
+         a stock table). Each one is a miniature of the real deliverable, built from the lead's own day items. */
+      function mock(kind, items, title) {
+        var rows = items.slice(0, 3).map(function (t, k) {
+          return '<span class="mkrow"><em>' + esc(String(t).replace(/\.$/, '')) + '</em><i style="width:' + (52 - k * 11) + '%"></i></span>';
+        }).join('');
+        if (kind === 'Tracker') {
+          return '<span class="mkhead">' + esc(title) + '</span><span class="mkweeks">' +
+            ['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4'].map(function (w, k) {
+              return '<span class="mkwk' + (k < 2 ? ' on' : '') + '"><b></b>' + w + '</span>';
+            }).join('') + '</span>' + rows;
+        }
+        if (kind === 'Sheet' || kind === 'Template') {
+          return '<span class="mkhead">' + esc(title) + '</span><span class="mktiles"><i></i><i></i><i></i></span>' + rows;
+        }
+        return '<span class="mkhead">' + esc(title) + '</span><span class="mktable">' + rows + '</span>';
+      }
+      var artHTML = outs.map(function (o, i) {
         var t = String(((days[i] || {}).title) || '').split('|').join(' ').replace(/\s+/g, ' ').replace(/\.$/, '').trim();
-        var first = ((S.day_bullets || [])[i] || [])[0] || o;
-        return '<li><span class="tkic">' + (ART[i] || '') + '</span>' +
-          '<span class="tkfn"><b>' + esc(t) + '</b><em>' + esc(first) + '</em></span>' +
-          '<span class="tkk">' + esc(kindOf(first + ' ' + t)) + '</span>' +
-          '<span class="tkad">Day ' + (i + 1) + '</span></li>';
+        var items = ((S.day_bullets || [])[i] || []).slice(0, 3);
+        if (!items.length) items = [o];
+        var kind = kindOf(items.join(' ') + ' ' + t);
+        return '<figure class="tkart a' + (i + 1) + '">' +
+          '<span class="tktape"></span>' +
+          '<span class="tkatop"><b>Day ' + (i + 1) + '</b><span>' + esc(kind) + '</span>' +
+            '<em>' + esc(labels[i] || ('Day ' + (i + 1))) + '</em></span>' +
+          '<span class="tkabody">' + mock(kind, items, t) + '</span></figure>';
       }).join('');
       take.classList.add('tkkit');
       take.innerHTML =
         '<div class="tkgrid">' +
-          '<div class="tkstack"><div class="tkwin"><div class="tkbar"><img class="dsemb" src="favicon-32.png" alt="">' +
-            '<span class="tkwn">' + esc(EV) + '</span><span class="tkwc">' + outs.length + ' items</span></div>' +
-            '<div class="tkcols"><span>What you keep</span><span>Kind</span><span>Added</span></div>' +
-            '<ol class="tkfiles">' + filesHTML + '</ol>' +
-            '<div class="tkwf"><span class="tkwy">Yours to keep</span><span>Saved during the live sessions</span></div>' +
-          '</div></div>' +
+          '<div class="tkstack">' + artHTML +
+          '</div>' +
           '<div class="tkside"><span class="tktab">' + esc(S.keep_tab || 'What you keep') + '</span>' +
             '<h2 class="sh">Three days in, you have the thing itself.</h2>' +
             '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p>' +
