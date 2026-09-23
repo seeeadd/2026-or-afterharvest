@@ -525,7 +525,6 @@
       ['Who is this for?', 'Anyone who wants ' + String(EV).toLowerCase() + ' finished rather than planned.']
     ];
     var s3 = el('section', 'gsec z',
-      '<p class="eyebrow"><i class="dot"></i>Before you hold a seat</p>' +
       '<h2 class="gh">Questions people ask.</h2>' +
       '<div class="gfaq">' + FAQ.map(function (f) {
         return '<div><b>' + esc(f[0]) + '</b><p>' + esc(f[1]) + '</p></div>';
@@ -910,7 +909,10 @@
       var past = true;
       if (hero) { var r = hero.getBoundingClientRect(); past = r.bottom < 90; }
       if (past) armed = true;
-      s.classList.toggle('on', armed && past);
+      /* once it has come up it stays up, all the way to the footer: scrolling back toward the hero used to
+         take it away mid page (2026-09-23). It still waits for the first pass so it never lands on the
+         register card on load. */
+      s.classList.toggle('on', armed);
     }
     setTimeout(function () { tick(); addEventListener('scroll', tick, { passive: true });
       addEventListener('resize', tick); }, 1400);
@@ -1065,12 +1067,14 @@
     mk.style.top = (-pad).toFixed(1) + 'px';
   }
 
+  /* the hero device is drawn at PHONE_W x PHONE_H in lp.css and scaled to the column; keep the two in step */
+  var PHONE_W = 516, PHONE_H = 340;
   function scalePhone() {
     var vid = q('.hvid'), ph = $('iphone');
     if (!vid || !ph) return;
-    var k = clamp(vid.clientWidth / 516, 0.3, 2.2);      /* fill the column, do not stop at 1.34 */
+    var k = clamp(vid.clientWidth / PHONE_W, 0.3, 2.2);  /* fill the column, do not stop at 1.34 */
     ph.style.transform = 'scale(' + k.toFixed(4) + ')';
-    vid.style.height = Math.round(248 * k + 16) + 'px';
+    vid.style.height = Math.round(PHONE_H * k + 16) + 'px';
   }
 
   function statCols() {
@@ -1641,7 +1645,7 @@
       take.innerHTML =
         '<div class="tkgrid">' +
           '<div class="tkstack" aria-hidden="true">' + artHTML + '</div>' +
-          '<div class="tkside"><span class="tktab">' + esc(S.keep_tab || 'What you keep') + '</span>' +
+          '<div class="tkside">' +
             '<h2 class="sh">' + esc(S.keep_title || 'Three days in, you have the thing itself.') + '</h2>' +
             '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p>' +
             '<ol class="tkrows">' + outs.map(function (o, i) {
@@ -1650,15 +1654,79 @@
             }).join('') + '</ol></div>' +
         '</div>';
       q('.tkside', take).insertAdjacentHTML('beforeend', ctaBlock('Hold my seat for the three days', 'Free · Nothing to pay'));
-      /* a day row and its document answer each other: point at one and the other lifts */
-      var hot = function (i, on) {
-        qa('[data-i="' + i + '"]', take).forEach(function (x) { x.classList.toggle('hot', on); });
-      };
-      qa('[data-i]', take).forEach(function (x) {
-        x.addEventListener('mouseenter', function () { hot(x.getAttribute('data-i'), true); });
-        x.addEventListener('mouseleave', function () { hot(x.getAttribute('data-i'), false); });
-      });
       P.insertBefore(take, closing);
+      /* The three documents read one at a time (2026-09-23): a slow loop brings one card forward, sharp and a
+         shade larger, and lets the other two sit back blurred, with a drawn arrow tying that card to its own day
+         in the list. Pointing at a card or its day row takes the loop over and holds it there; moving away hands
+         it back where it left off. */
+      (function () {
+        var grid = q('.tkgrid', take), stack = q('.tkstack', take), rows = q('.tkrows', take);
+        if (!grid || !stack || !rows) return;
+        var cards = qa('.tkart', stack), n = Math.min(cards.length, rows.children.length);
+        if (!n) return;
+
+        var wire = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        wire.setAttribute('class', 'tkwire');
+        wire.setAttribute('aria-hidden', 'true');
+        grid.appendChild(wire);
+
+        var still = window.matchMedia ? matchMedia('(prefers-reduced-motion:reduce)') : { matches: false };
+        var at = 0, held = null, timer = null;
+
+        function paint() { grid.setAttribute('data-focus', held === null ? at : held); }
+
+        /* one curve per day, measured off the live boxes so it survives reflow and late fonts */
+        function draw() {
+          var gb = grid.getBoundingClientRect();
+          if (!gb.width) return;
+          wire.setAttribute('viewBox', '0 0 ' + gb.width.toFixed(1) + ' ' + gb.height.toFixed(1));
+          wire.setAttribute('width', gb.width.toFixed(1));
+          wire.setAttribute('height', gb.height.toFixed(1));
+          var out = '';
+          for (var i = 0; i < n; i++) {
+            var cb = cards[i].getBoundingClientRect(), rb = rows.children[i].getBoundingClientRect();
+            var x1 = cb.right - gb.left - 4, y1 = cb.top + cb.height / 2 - gb.top;
+            var x2 = rb.left - gb.left - 13, y2 = rb.top + rb.height / 2 - gb.top;
+            if (x2 - x1 < 26) continue;                    /* no room in the gutter: draw nothing, not a scribble */
+            var mx = x1 + (x2 - x1) * 0.55;
+            out += '<path class="tkw" data-i="' + i + '" d="M' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
+              'C' + mx.toFixed(1) + ' ' + y1.toFixed(1) + ' ' + mx.toFixed(1) + ' ' + y2.toFixed(1) +
+              ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1) + '"/>' +
+              '<path class="tkh" data-i="' + i + '" d="M' + (x2 - 7).toFixed(1) + ' ' + (y2 - 4.6).toFixed(1) +
+              'L' + x2.toFixed(1) + ' ' + y2.toFixed(1) + 'L' + (x2 - 7).toFixed(1) + ' ' + (y2 + 4.6).toFixed(1) + '"/>';
+          }
+          wire.innerHTML = out;
+          qa('.tkw', wire).forEach(function (pth) {
+            pth.style.setProperty('--len', pth.getTotalLength().toFixed(1));
+          });
+        }
+
+        function tick() { at = (at + 1) % n; paint(); }
+        function run() { if (!timer && !still.matches) timer = setInterval(tick, 4400); }
+        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+        qa('[data-i]', take).forEach(function (x) {
+          var k = parseInt(x.getAttribute('data-i'), 10);
+          if (isNaN(k) || k >= n) return;
+          x.addEventListener('mouseenter', function () { held = k; stop(); paint(); });
+          x.addEventListener('mouseleave', function () { held = null; at = k; paint(); run(); });
+        });
+
+        draw(); paint();
+        var re;
+        window.addEventListener('resize', function () { clearTimeout(re); re = setTimeout(draw, 160); }, { passive: true });
+        if (window.ResizeObserver) new ResizeObserver(function () { draw(); }).observe(grid);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+
+        /* the loop only turns while the section is on screen */
+        if (window.IntersectionObserver) {
+          new IntersectionObserver(function (es) {
+            es.forEach(function (e) {
+              if (e.isIntersecting) { draw(); if (held === null) run(); } else stop();
+            });
+          }, { threshold: 0.2 }).observe(take);
+        } else run();
+      })();
       /* light, medium and dark of the lead's own colours, one per day (2026-09-23). On the dark card the accent is
          the first of their colours that still reads at 4.5:1, so every lead's third card stays legible */
       (function () {
@@ -1733,7 +1801,7 @@
     ];
     var faq = el('section', 'sect z');
     faq.id = 'faq';
-    faq.innerHTML = '<div class="faqhead"><div class="faqtitle"><p class="seye">Before you hold a seat</p>' +
+    faq.innerHTML = '<div class="faqhead"><div class="faqtitle">' +
       '<h2 class="sh">The questions people ask.</h2></div>' +
       '<p class="faqnote">' + esc('If yours is not here, reply to the email and ask. ' + FIRST + ' answers them.') +
       '</p></div>' +

@@ -76,7 +76,7 @@ html,body{background:var(--ground);-webkit-font-smoothing:antialiased;text-rende
 .stagebox{margin-top:30px;display:grid;grid-template-columns:516px minmax(0,1fr);align-items:center}
 
 /* landscape iPhone, drawn: titanium edge, even bezel, Dynamic Island on the short side */
-.iphone{position:relative;z-index:1;width:516px;height:248px;isolation:isolate}
+.iphone{position:relative;z-index:1;width:516px;height:340px;isolation:isolate}
 .iphone:before{content:"";position:absolute;z-index:-2;left:7%;right:7%;bottom:-16px;height:30px;border-radius:50%;background:var(--contact);filter:blur(9px)}
 .ib{position:absolute;z-index:-1;height:4px;border-radius:2px;background:linear-gradient(180deg,#D6D8DC,#8A8D93)}
 .ib-pwr{top:-2px;left:29%;width:12%}
