@@ -1172,7 +1172,7 @@
     var hero = $('hero'), fitc = $('fitc'), days = $('days');
     var mul = clamp(W / 800, 1, 1.7);
     var slots = [
-      { edge: 'l', cy: topOf(hero) + hero.offsetHeight * 0.82, size: 500, rot: -7, crop: 0.52 },
+      { edge: 'l', cy: topOf(hero) + 96, size: 300, rot: -8, crop: 0.16 },    /* top left corner, above the video */
       { edge: 'l', cy: topOf(fitc) + fitc.offsetHeight * 0.58, size: 500, rot: 8, crop: 0.42 },
       { edge: 'l', cy: topOf(days) + days.offsetHeight * 0.22, size: 520, rot: -6, crop: 0.46 }
     ];
