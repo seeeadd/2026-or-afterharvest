@@ -600,13 +600,9 @@
         '<div class="msthead"><span class="mstb">' + esc(BRAND) + '</span><span class="mstone">Admit one</span></div>' +
         '<p class="mstk">Free seat</p>' +
         '<h3 class="mstev">' + esc(EV) + '</h3>' +
+        '<p class="mstwhen"><b>' + esc(WHEN) + '</b><span>' + esc(tfmt(START)) + ' \u00B7 Live' + yoursHTML(START, 'ytw') + '</span></p>' +
         '<div class="mstwho"><span>Admit one</span><b class="mstname">Your name here</b></div>' +
-        '<dl class="mstmeta">' +
-          '<div><dt>Dates</dt><dd>' + esc(WHEN) + '</dd></div>' +
-          '<div><dt>Time</dt><dd>' + esc(tfmt(START)) + ' \u00B7 Live' + yoursHTML(START) + '</dd></div>' +
-          '<div><dt>Where</dt><dd>Zoom, link by email</dd></div>' +
-          '<div><dt>Cost</dt><dd>Free</dd></div>' +
-        '</dl>' +
+        '<ul class="mstfacts"><li>Zoom, link by email</li><li>Free</li><li>Replay same day</li></ul>' +
         '<ol class="mstdays">' + (LP.days || []).slice(0, 3).map(function (d, i) {
           return '<li><b>Day ' + (i + 1) + '</b>' +
             esc(String(d.title).split('|').join(' ').replace(/\.$/, '')) + '</li>';
@@ -879,22 +875,23 @@
     next(); setInterval(next, 3800);
     /* on a phone the card is a round bubble in the corner; a tap opens it, the x folds it back (2026-09-22) */
     /* the full card needs a free right margin; with no room (phones, most laptops) it is the round bubble */
-    var small = { get matches() {
-      var W = window.innerWidth; if (W <= 760) return true;
-      var right = 0;
-      qa('.d1, #d23, .tstin, #checks, .ccard, .fitgrid, .tkgrid, .faqlist').forEach(function (n) { right = Math.max(right, n.getBoundingClientRect().right); });
-      return W - right < 222;
-    } };
-    function fit() { s.classList.toggle('bub', small.matches); if (!small.matches) s.classList.remove('open'); }
+    var small = { get matches() { return window.innerWidth <= 760; } };   /* the bubble is for phones only */
+    function fit() {
+      var W = window.innerWidth;
+      if (W <= 760) { s.style.removeProperty('--svw'); return; }
+      var right = 0;                       /* the card keeps its full shape and fits the free margin instead */
+      qa('.d1, #d23, .tstin, #checks, .ccard, .fitgrid, .tkgrid, .faqlist').forEach(function (n) {
+        right = Math.max(right, n.getBoundingClientRect().right);
+      });
+      s.style.setProperty('--svw', clamp(W - right - 20, 150, 198).toFixed(0) + 'px');
+    }
     fit(); addEventListener('resize', debounce(fit, 150));
+    /* closing folds the card into a bubble instead of killing it; a tap on the bubble opens it again */
     s.addEventListener('click', function (e) {
-      if (!small.matches || s.classList.contains('open')) return;
-      s.classList.add('open'); e.preventDefault(); e.stopPropagation();
+      if (!s.classList.contains('bub') || e.target.closest('.svx')) return;
+      s.classList.remove('bub'); e.preventDefault(); e.stopPropagation();
     }, true);
-    q('.svx', s).addEventListener('click', function (e) {
-      if (small.matches && s.classList.contains('open')) { s.classList.remove('open'); e.stopPropagation(); return; }
-      killed = true; s.classList.remove('on');
-    });
+    q('.svx', s).addEventListener('click', function (e) { e.stopPropagation(); s.classList.add('bub'); });
 
     /* it waits until the hero is behind you: in the hero it would sit on top of the register card.
        Below the hero it is always up, scrolling up or down, so it can never be lost mid page. */
@@ -1175,7 +1172,7 @@
     var hero = $('hero'), fitc = $('fitc'), days = $('days');
     var mul = clamp(W / 800, 1, 1.7);
     var slots = [
-      { edge: 'r', cy: topOf(hero) + hero.offsetHeight * 0.44, size: 520, rot: -7, crop: 0.40 },
+      { edge: 'l', cy: topOf(hero) + hero.offsetHeight * 0.82, size: 500, rot: -7, crop: 0.52 },
       { edge: 'l', cy: topOf(fitc) + fitc.offsetHeight * 0.58, size: 500, rot: 8, crop: 0.42 },
       { edge: 'l', cy: topOf(days) + days.offsetHeight * 0.22, size: 520, rot: -6, crop: 0.46 }
     ];
@@ -1204,17 +1201,21 @@
   function calmMask(W, H) {
     var k = Math.min(1, 0.10 / Math.max(LP.pat_op || 0.2, LP.ghost_op || 0.2));
     var pr = P.getBoundingClientRect(), holes = '', boxes = '';
+    function clear(el, pad) {
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      var px = pad || 14, x = r.left - pr.left - px, y = r.top - pr.top - 8;
+      var w = Math.max(el.scrollWidth, r.width) + px * 2, h = r.height + 16;
+      var d = 'M' + x.toFixed(0) + ',' + y.toFixed(0) + 'h' + w.toFixed(0) + 'v' + h.toFixed(0) + 'h-' + w.toFixed(0) + 'z';
+      holes += d; boxes += '<path d="' + d + '"/>';
+    }
     ['headline', 'fith', 'daysh'].forEach(function (id) {
       var n = $(id);
-      if (!n) return;
-      [].forEach.call(n.children, function (c) {
-        var r = c.getBoundingClientRect();
-        var x = r.left - pr.left - 14, y = r.top - pr.top - 8;
-        var w = Math.max(c.scrollWidth, r.width) + 28, h = r.height + 16;
-        var d = 'M' + x.toFixed(0) + ',' + y.toFixed(0) + 'h' + w.toFixed(0) + 'v' + h.toFixed(0) + 'h-' + w.toFixed(0) + 'z';
-        holes += d; boxes += '<path d="' + d + '"/>';
-      });
+      if (n) [].forEach.call(n.children, function (c) { clear(c); });
     });
+    /* the copy that carries the promise needs the same clear ground as the headlines */
+    [$('lede'), q('.hq'), q('#intro'), q('.fitnote')].forEach(function (n) { clear(n, 18); });
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + H + '">' +
       '<filter id="b" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="10"/></filter>' +
       '<g filter="url(#b)"><path fill-rule="evenodd" d="M-60,-60H' + (W + 60) + 'V' + (H + 60) + 'H-60z' + holes + '"/>' +

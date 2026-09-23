@@ -2763,3 +2763,60 @@ html body #page .hdr .nav.crowd .hsoc{display:none !important}
 html body #page .hdr .nav.crowd .cdl{font-size:inherit}
 html body #page .hdr:not(.tight) .nav .lw b{font-size:var(--tfs,15.5px) !important;line-height:1.18}
 html body #page .hbook .hbact{justify-self:stretch;width:auto !important;max-width:none !important}
+/* the floating card keeps its shape on every screen but phones; it narrows to the free margin (2026-09-23) */
+#stick:not(.bub){width:var(--svw,198px)}
+#stick:not(.bub) .svcap{font-size:12px}
+
+/* ---- 2026-09-23: the card stays whole, the bubble is what you get when you close it, and it invites a tap */
+#stick.bub{width:74px !important}
+#stick.bub .svcard{padding:0 !important;border-radius:50% !important;gap:0 !important;background:none !important;box-shadow:none !important}
+#stick.bub .svmedia{aspect-ratio:1 / 1 !important;border-radius:50% !important;cursor:pointer;
+  border:2.5px solid var(--accent);box-shadow:0 14px 26px -10px rgba(20,14,12,.55)}
+#stick.bub .svmedia > img{object-position:50% 18%}
+#stick.bub .svcap,#stick.bub .svhint,#stick.bub .svbar,#stick.bub .svmute,#stick.bub .svx,#stick.bub .btn{display:none !important}
+/* a soft ring that breathes, and a play badge: an invitation, not a siren */
+#stick.bub .svmedia:before{content:'';position:absolute;z-index:3;right:-2px;bottom:-2px;width:24px;height:24px;border-radius:50%;
+  background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M3.6 2.3v5.4L8 5z' fill='%23fff'/%3E%3C/svg%3E") center/11px no-repeat;
+  border:2px solid color-mix(in srgb,var(--ground) 60%,#fff);box-shadow:0 4px 10px rgba(0,0,0,.3)}
+#stick.bub .svcard:after{content:'';position:absolute;inset:-6px;border-radius:50%;pointer-events:none;
+  border:2px solid color-mix(in srgb,var(--accent) 45%,transparent);animation:svring 3.4s ease-out infinite}
+@keyframes svring{0%{transform:scale(.94);opacity:.85}70%{transform:scale(1.12);opacity:0}100%{opacity:0}}
+#stick.bub:hover .svmedia{transform:scale(1.04)}
+#stick.bub .svmedia{transition:transform .2s ease}
+@media (prefers-reduced-motion:reduce){#stick.bub .svcard:after{animation:none}}
+/* ---- the booking card: one balanced row on wide screens, the action row only when it must stack */
+@media (min-width:1101px){
+  html body #page .hbook{grid-template-columns:minmax(170px,.75fr) minmax(0,1.35fr) auto;align-items:center;row-gap:0}
+  html body #page .hbook .hbact{grid-row:1;grid-column:3;justify-self:end;width:auto !important;max-width:240px !important}
+  html body #page .hbook .hbact .btn{width:100%}
+}
+
+/* ---- the ticket stub, in three levels (2026-09-23: it read as one flat block) */
+html body #modal .mstub .mstk{font-size:9px;letter-spacing:.24em;opacity:.7;margin:0 0 6px}
+html body #modal .mstev{margin:0 0 14px;font-size:clamp(21px,2vw,25px);line-height:1.1;letter-spacing:-.02em}
+/* 2. when it runs: the one strong line */
+.mstwhen{display:flex;flex-direction:column;gap:3px;margin:0 0 14px;padding:0 0 13px;
+  border-bottom:1px solid rgba(255,255,255,.22)}
+.mstwhen b{font-family:var(--display);font-weight:var(--dw2,700);font-size:17px;line-height:1.15;letter-spacing:-.01em}
+.mstwhen span{font-family:var(--label);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.82}
+.mstwhen .ytw{display:block;margin-top:3px;font-size:10px;letter-spacing:.08em;opacity:.7}
+/* 3. their name */
+html body #modal .mstwho{margin:0 0 13px;padding:0 0 12px;border-top:0;border-bottom:1px dashed rgba(255,255,255,.3);gap:2px}
+html body #modal .mstwho span{font-size:8.5px;letter-spacing:.22em;opacity:.62}
+html body #modal .mstname{font-size:19px}
+/* 4. the facts, quiet and on one line */
+.mstfacts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;list-style:none;margin:0 0 14px;padding:0;
+  font-family:var(--label);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.72}
+.mstfacts{gap:5px 14px}
+.mstfacts li{white-space:nowrap}
+.mstfacts li:not(:last-child):after{content:'\00B7';margin-left:14px;opacity:.55}
+/* 5. the three days and the seat number are small print */
+html body #modal .mstdays{margin:0 0 12px;opacity:.86}
+html body #modal .mstdays li{padding:6px 0;font-size:12.5px;line-height:1.3;border-top:1px solid rgba(255,255,255,.14)}
+html body #modal .mstdays li b{font-size:8.5px;letter-spacing:.2em;opacity:.66;margin-right:8px}
+html body #modal .mstseat{margin-top:2px;align-items:baseline}
+html body #modal .mstseat span{font-size:8.5px;letter-spacing:.22em;opacity:.62}
+html body #modal .mstseat b{font-size:17px}
+html body #modal .mstnote{font-size:9px;letter-spacing:.14em;opacity:.6}
+/* the closed bubble keeps the size set for it */
+#stick.bub:not(.open){width:74px !important}
