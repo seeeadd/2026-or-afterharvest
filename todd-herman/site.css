@@ -3157,3 +3157,34 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
 #page #days .d1 .macbook{padding:0 16px}
 #page #days .d1 .mb-base{margin:0 -16px}
 #page #days .d1 .macbook:before{left:1%;right:1%}
+
+/* ---------------------------------------------- Day 1: one object column, laptop over its own document
+   Days 2 and 3 already span their object across both rows ("text sheet" / "cta sheet"). Day 1 never did:
+   the laptop was given grid-row:span 3 and then cancelled back to auto, and the hole was never closed.
+   Geometry says the laptop cannot close it alone (height = (col - 80)/1.54 + 42, so 536px would need an
+   840px column inside a 1013px body), so the takeaway box moves under it instead. These rules out-specify
+   the older .d1 rules rather than deleting them, so a lead whose Day 1 has no laptop keeps the old path. */
+@media (min-width:901px){
+  html body #page #days .d1.hasmac .dbody{display:grid;
+    grid-template-columns:minmax(0,.94fr) minmax(0,1fr);
+    grid-template-areas:"mac text" "mac cta";
+    column-gap:clamp(36px,4vw,64px);row-gap:0;align-items:start}
+  html body #page #days .d1.hasmac .dmaccol{grid-area:mac;align-self:stretch;min-width:0;
+    display:flex;flex-direction:column;justify-content:space-between;gap:clamp(18px,2vw,26px)}
+  html body #page #days .d1.hasmac .dmaccol.solo{justify-content:center}
+  html body #page #days .d1.hasmac .d1body{grid-area:text;min-width:0}
+  html body #page #days .d1.hasmac .dbody > .scta{grid-area:cta;
+    margin-top:clamp(18px,2vw,26px);align-self:end}
+  html body #page #days .d1.hasmac .dmaccol .dkeep{margin:0;max-width:none}
+  html body #page #days .d1.hasmac .macbook{margin:0;width:100%}
+}
+/* tablet and phone: one column, and the copy leads again. display:contents dissolves .dmaccol so the
+   laptop and the box become siblings of the copy and can be ordered across the old boundary. */
+@media (max-width:900px){
+  html body #page #days .d1.hasmac .dbody{display:flex;flex-direction:column}
+  html body #page #days .d1.hasmac .dmaccol{display:contents}
+  html body #page #days .d1.hasmac .d1body{order:1}
+  html body #page #days .d1.hasmac .macbook{order:2;width:100%;max-width:470px;margin:26px auto 0}
+  html body #page #days .d1.hasmac .dmaccol .dkeep{order:3;margin:22px 0 0;max-width:none}
+  html body #page #days .d1.hasmac .dbody > .scta{order:4;margin-top:26px}
+}

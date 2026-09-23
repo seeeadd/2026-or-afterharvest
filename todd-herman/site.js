@@ -1439,6 +1439,21 @@
       var host = q('.d1body', body) || body, keepEl = q('.dkeep', host) || q('.dkeep', body);
       (keepEl || host).insertAdjacentHTML(keepEl ? 'afterend' : 'beforeend',
         ctaBlock(ctaFor((LP.days || [])[i] && (LP.days || [])[i].title), 'Free \u00B7 Live with ' + FIRST));
+      /* Day 1's object column carries the document that comes off it (2026-09-23): the laptop is the screen
+         you watch that day and the takeaway box is what it produces, so they stack in one column and the row
+         stops leaving 255px of empty ground under a 281px laptop. The CTA moves up to be a grid child so it
+         can bottom out level with the copy. */
+      if (i === 0) {
+        var mac = q('.macbook', body), keep0 = q('.dkeep', body), cta0 = q('.scta', body);
+        if (mac) {
+          var col = el('div', 'dmaccol');
+          mac.parentNode.insertBefore(col, mac);
+          col.appendChild(mac);
+          if (keep0) col.appendChild(keep0); else col.classList.add('solo');
+          if (cta0) body.appendChild(cta0);
+          card.classList.add('hasmac');
+        }
+      }
       /* Days 2+: the empty column shows the live session itself (2026-09-22, replacing the take-home sheet):
          a call window with the day's title on the shared screen in the lead's own type and colours, the host's
          camera tile, and the room. "You leave with" stays under the copy, as on Day 1. Rows alternate sides. */
