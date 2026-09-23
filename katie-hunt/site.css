@@ -2309,6 +2309,10 @@ html body #page #days .hassheet .dmark{display:none}
     grid-template-columns:minmax(0,1fr);grid-template-areas:"text" "sheet" "cta"}
   .dsheet{max-width:470px;margin:26px 0 0;align-self:start}
   html body #page #days .hassheet .dbody > .scta{margin-top:26px}
+  /* Day 1 collapses on the same stop as its siblings: it used to hold two columns down to 760px,
+     so at ~880px the laptop shrank to a toy beside a full-height text column (2026-09-23) */
+  html body #page #days .d1 .dbody{grid-template-columns:minmax(0,1fr);gap:22px}
+  html body #page #days .d1 .macbook{max-width:470px}
 }
 
 /* ---- phones: one column, one idea per screen, nothing repeated ------------------------------------ */
@@ -3147,3 +3151,9 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
 
 /* section headers sit at the display face's lighter weight: the serif still leads, without going black */
 .sh{font-weight:var(--dw2,500)}
+
+/* the day-band laptop keeps its base flare but stops paying 28px a side for it: the lid was 391px
+   inside a 447px column, so the object read smaller than the Day 2/3 session window next to it */
+#page #days .d1 .macbook{padding:0 16px}
+#page #days .d1 .mb-base{margin:0 -16px}
+#page #days .d1 .macbook:before{left:1%;right:1%}
