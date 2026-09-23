@@ -104,18 +104,10 @@
     } catch (e) { return ''; }
   }
   function yoursHTML(d, cls) { var y = yours(d); return y ? '<small class="' + (cls || 'yt') + '">' + esc(y) + '</small>' : ''; }
-  /* the lead's zone on every bare date too, "Oct 2 to Oct 4 PDT" (asked for 2026-09-23); times carry it already */
-  var ZONE = (function () {
-    try {
-      return new Intl.DateTimeFormat('en-US', { timeZone: TZ, timeZoneName: 'short' }).formatToParts(START)
-        .filter(function (x) { return x.type === 'timeZoneName'; })[0].value;
-    } catch (e) { return ''; }
-  })();
-  function zoned(t) { return ZONE ? t + ' ' + ZONE : t; }
   var WHEN = S.when || (dfmt(START, true) + ' to ' + dfmt(END, true));
   var WHEN_FULL = WHEN + ' · ' + tfmt(START) + ' · Live online';
   /* the line under every call to action (asked for 2026-09-22) */
-  var CTA_NOTE = S.cta_note || zoned('Free online challenge: ' + dfmt(START) + ' to ' + dfmt(END));
+  var CTA_NOTE = S.cta_note || ('Free online challenge: ' + dfmt(START) + ' to ' + dfmt(END));
 
   var REG = null;                         /* the sign-up modal, once built */
   var state = {
@@ -404,8 +396,7 @@
 
     /* hero eyebrow becomes the coloured date pill */
     eye.innerHTML = '<i class="dot"></i>Free 3-day live event<i></i>' +
-      '<b class="eyd"><span class="eyfull">' + esc(zoned(WHEN)) + '</span><span class="eyshort">' +
-      esc(zoned(S.when || (dfmt(START) + ' to ' + dfmt(END)))) + '</span></b><i></i><span class="eyl">Live online</span>';
+      '<b class="eyd">' + esc(WHEN) + '</b><i></i><span class="eyl">Live online</span>';
 
     /* registration card: social proof above the button */
     var proof = el('div', '',
@@ -632,7 +623,7 @@
         '<label><span>First name</span><input type="text" name="first" autocomplete="given-name" placeholder="Your first name"></label>' +
         '<label><span>Email address</span><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></label>' +
         '<label><span>Phone number</span><input type="tel" name="phone" autocomplete="tel" placeholder="Optional, for the reminder"></label>' +
-        '<div class="mavail"><p class="mavq">I am available ' + esc(zoned(WHEN)) + ' to attend:</p><div class="mopts">' +
+        '<div class="mavail"><p class="mavq">I am available ' + esc(WHEN) + ' to attend:</p><div class="mopts">' +
         ['Yes', 'No', 'Maybe'].map(function (o, i) {
           return '<label class="mopt"><input type="radio" name="avail" value="' + o.toLowerCase() + '"' +
             (i === 0 ? ' checked' : '') + '><span class="mdot"></span><em>' + o + '</em></label>';
@@ -1542,6 +1533,8 @@
 
     var outs = days.slice(0, 3).map(function (d) { return String(d.outcome || '').trim(); }).filter(Boolean);
     if (outs.length) {
+      /* each piece gets a drawn artifact, thin-line, in their accent: the thing you actually keep */
+
       /* the name of each piece follows what it actually is for this lead: 'The numbers' belongs to a margin
          day, not to a goal-setting one (2026-09-23) */
       var KIND_LABEL = { Worksheet: 'The numbers', Sheet: 'The sheet', Template: 'The template',
@@ -1552,6 +1545,8 @@
       take.id = 'takeaway';
       /* the payoff of the three days: the take-home sheets from the schedule, clipped together as one kit,
          and one line per day beside it (2026-09-22). The day rows above already list every item. */
+      /* what you keep is a folder of files, not a pile of paper (2026-09-23): the artifacts of the three days,
+         named from the lead's own day titles and keep items, the way they would sit on your desktop after */
       function kindOf(t) {
         t = String(t).toLowerCase();
         if (/price|cost|margin|number|budget|calculator|profit/.test(t)) return 'Worksheet';
@@ -1564,128 +1559,59 @@
         if (/checklist|step|system|process|routine/.test(t)) return 'Checklist';
         return 'Sheet';
       }
-      /* the flat lay, fixed and made theirs (2026-09-23): the stacked cards come back, each one drawn as the real
-         document that day produces. lp.json site.keep holds one object per day, all keys optional:
-           {name, status, title, foot, foot_tag, kind:'table',   cols:[..], rows:[[..]], flag:{row}}
-           {name, status, title, foot, foot_tag, kind:'sheet',   head, items:[{art, name, sku, price}]}
-           {name, status, title, foot, foot_tag, kind:'tracker', who, cols:[..], rows:[{name, marks:'ssn-', next}]}
-         art is card / notebook / print / candle / box; marks are s sent, r replied, n next, - planned.
-         site.keep_title replaces the headline. Without keep each card lists that day's own keep items.
-         No tape, no seal, no placeholder bars, nothing cut off with an ellipsis. */
-      var KEEP = S.keep || [];
-      var PROD = {
-        card: '<rect x="10" y="20" width="32" height="21" rx="1.5" fill="var(--tint2)" stroke="currentColor"/><path d="M10 21l16 10 16-10" stroke="currentColor" stroke-opacity=".5"/><g transform="rotate(-7 42 24)"><rect x="30" y="7" width="22" height="30" rx="1.5" fill="#fffdf9" stroke="currentColor"/><circle cx="41" cy="19" r="5" fill="var(--tint)" stroke="var(--accent)"/><path d="M36 30h10" stroke="var(--accent)"/></g>',
-        notebook: '<rect x="19" y="6" width="27" height="36" rx="2" fill="var(--tint)" stroke="var(--accent)"/><path d="M24 6v36" stroke="var(--accent)" stroke-opacity=".55"/><path d="M41 6v36" stroke="currentColor" stroke-opacity=".5"/><rect x="27" y="14" width="10" height="6" rx="1" fill="#fffdf9" stroke="currentColor"/>',
-        print: '<rect x="17" y="5" width="30" height="38" rx="1" fill="#fffdf9" stroke="currentColor"/><rect x="21" y="9" width="22" height="30" fill="var(--tint2)"/><circle cx="36" cy="17" r="3.5" fill="var(--tint)" stroke="var(--accent)"/><path d="M21 35l7-8 5 5 4-4 6 7" stroke="currentColor" stroke-linejoin="round"/>',
-        candle: '<path d="M21 18h22v21a3 3 0 0 1-3 3H24a3 3 0 0 1-3-3z" fill="var(--tint)" stroke="currentColor"/><rect x="21" y="25" width="22" height="9" fill="#fffdf9" stroke="var(--accent)"/><path d="M32 18v-5" stroke="currentColor"/><path d="M32 6c2.2 2.4 2.2 4.4 0 5.6-2.2-1.2-2.2-3.2 0-5.6z" fill="var(--tint)" stroke="var(--accent)"/>',
-        box: '<path d="M14 17l18-8 18 8v19l-18 8-18-8z" fill="var(--tint2)" stroke="currentColor"/><path d="M14 17l18 8 18-8M32 25v19" stroke="currentColor" stroke-opacity=".55"/><path d="M23 13l18 8v6" stroke="var(--accent)"/>'
+      var KEEP_ART = {
+        Worksheet: '<rect x="34" y="88" width="52" height="8" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><path d="M28 88a32 32 0 0 1 64 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M41 88a19 19 0 0 1 38 0" stroke="currentColor" stroke-width="1.3" stroke-opacity=".4"/><path d="M33 72l5 3M60 56v5M87 72l-5 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".6"/><path d="M74 60l4 5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><path d="M60 88l17-20" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><circle cx="60" cy="88" r="3.4" fill="var(--accent)"/>',
+        Brief: '<rect x="26" y="88" width="68" height="8" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><path d="M34 88V54M86 88V60" stroke="currentColor" stroke-width="1.3" stroke-opacity=".38" stroke-dasharray="3 4"/><path d="M34 56h11l-3 4.5 3 4.5H34z" stroke="currentColor" stroke-width="1.3" stroke-opacity=".32" fill="none" stroke-linejoin="round"/><path d="M86 62h10l-3 4 3 4H86z" stroke="currentColor" stroke-width="1.3" stroke-opacity=".32" fill="none" stroke-linejoin="round"/><path d="M60 88V28" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M60 30h25l-7 9 7 9H60z" fill="var(--tint)" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/>',
+        Sheet: '<rect x="30" y="88" width="60" height="8" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><path d="M38 88V38M82 88V38" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M32 38h56" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="48" cy="42" r="2" stroke="currentColor" stroke-width="1.3"/><rect x="42" y="45" width="12" height="17" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><circle cx="72" cy="42" r="2" stroke="currentColor" stroke-width="1.3"/><rect x="66" y="45" width="12" height="17" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><circle cx="60" cy="44" r="2.2" stroke="var(--accent)" stroke-width="1.5"/><rect x="52" y="48" width="16" height="25" rx="2.5" fill="var(--tint)" stroke="var(--accent)" stroke-width="1.5"/><path d="M56 56h8M56 62h5" stroke="var(--accent)" stroke-width="1.3" stroke-opacity=".65" stroke-linecap="round"/>',
+        Template: '<rect x="32" y="88" width="56" height="8" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><rect x="40" y="72" width="40" height="15" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><path d="M60 72V50" stroke="currentColor" stroke-width="1.3"/><rect x="44" y="36" width="32" height="13" rx="6.5" fill="var(--tint)" stroke="var(--accent)" stroke-width="1.5"/><path d="M47 80h26" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><path d="M36 92h48" stroke="currentColor" stroke-width="1.3" stroke-opacity=".35"/>',
+        Shortlist: '<rect x="26" y="88" width="68" height="8" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><path d="M32 88V74M38 88V78M50 88V74M56 88V79M66 88V74M72 88V78M84 88V75M90 88V79" stroke="currentColor" stroke-width="1.3" stroke-opacity=".38" stroke-linecap="round"/><path d="M44 88V54M60 88V46M76 88V58" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><circle cx="44" cy="51" r="3.2" fill="var(--tint)" stroke="var(--accent)" stroke-width="1.5"/><circle cx="60" cy="43" r="3.2" fill="var(--tint)" stroke="var(--accent)" stroke-width="1.5"/><circle cx="76" cy="55" r="3.2" fill="var(--tint)" stroke="var(--accent)" stroke-width="1.5"/>',
+        Tracker: '<rect x="26" y="88" width="68" height="8" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><rect x="28" y="56" width="64" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M44 56v32M60 56v32M76 56v32" stroke="currentColor" stroke-width="1.3" stroke-opacity=".45"/><rect x="29" y="57" width="14" height="30" fill="var(--tint)"/><rect x="45" y="57" width="14" height="30" fill="var(--tint)"/><path d="M32 72l3.4 3.4L41 68M48 72l3.4 3.4L57 68" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M68 50v42" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><circle cx="68" cy="50" r="3.2" fill="var(--accent)"/>',
+        Plan: '<rect x="26" y="88" width="68" height="8" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><rect x="30" y="76" width="17" height="12" fill="var(--tint)"/><path d="M30 88V76h17V64h17V52h17V40h13" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/><path d="M30 76h17" stroke="var(--accent)" stroke-width="1.5"/><path d="M47 64h17M64 52h17" stroke="currentColor" stroke-width="1.3" stroke-opacity=".5"/><circle cx="90" cy="40" r="3.2" fill="var(--tint)" stroke="var(--accent)" stroke-width="1.5"/>',
+        Checklist: '<rect x="30" y="88" width="60" height="8" rx="2" fill="var(--tint2)" stroke="currentColor" stroke-width="1.3"/><rect x="30" y="30" width="60" height="58" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><rect x="37" y="37" width="46" height="13" rx="6.5" fill="var(--tint)" stroke="var(--accent)" stroke-width="1.5"/><circle cx="76" cy="43.5" r="4" fill="var(--accent)"/><rect x="37" y="56" width="46" height="13" rx="6.5" fill="var(--tint)" stroke="var(--accent)" stroke-width="1.5"/><circle cx="76" cy="62.5" r="4" fill="var(--accent)"/><rect x="37" y="75" width="46" height="13" rx="6.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-opacity=".5"/><circle cx="44" cy="81.5" r="4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-opacity=".5"/>'
       };
-      function prodArt(a) {
-        return '<svg viewBox="0 0 64 48" fill="none" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">' +
-          (PROD[a] || PROD.box) + '</svg>';
+      /* the flat lay, made theirs (2026-09-23): no tape, and each card carries the artifact its own day
+         actually produces, drawn from KEEP_ART by kind, under the lead's own seal. */
+      function mock(kind, items, title) {
+        var rows = items.slice(0, 3).map(function (t, k) {
+          return '<span class="mkrow"><em>' + esc(String(t).replace(/\.$/, '')) + '</em><i style="width:' + (46 - k * 9) + '%"></i></span>';
+        }).join('');
+        return '<span class="mktop"><span class="mkhead">' + esc(title) + '</span>' +
+          '<span class="mkart"><svg viewBox="0 0 120 96" fill="none" aria-hidden="true">' + (KEEP_ART[kind] || KEEP_ART.Sheet) +
+          '</svg></span></span><span class="mktable">' + rows + '</span>';
       }
-      function mockBody(k, items) {
-        if (k.kind === 'table' && k.rows) {
-          var n = (k.cols || k.rows[0] || []).length, fl = k.flag || {};
-          var tr = function (r, cls) {
-            return '<span class="ktr' + (cls || '') + '">' + r.map(function (c, j) {
-              return '<span' + (j ? ' class="kn"' : '') + '>' + esc(c) + '</span>';
-            }).join('') + '</span>';
-          };
-          return '<span class="kt" style="--n:' + (n - 1) + '">' + (k.cols ? tr(k.cols, ' kth') : '') +
-            k.rows.map(function (r, j) { return tr(r, j === fl.row ? ' flag' : ''); }).join('') + '</span>';
-        }
-        if (k.kind === 'sheet' && k.items) {
-          return (k.head ? '<span class="kshh"><b>' + esc(k.head) + '</b><i></i></span>' : '') +
-            '<span class="ksh">' + k.items.slice(0, 3).map(function (p) {
-              return '<span class="kp"><span class="kpimg">' + prodArt(p.art) + '</span>' +
-                '<b>' + esc(p.name) + '</b>' + (p.sku ? '<small>' + esc(p.sku) + '</small>' : '') +
-                (p.price ? '<em>' + esc(p.price) + '</em>' : '') + '</span>';
-            }).join('') + '</span>';
-        }
-        if (k.kind === 'tracker' && k.rows) {
-          var cols = k.cols || ['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4'];
-          var MK = { s: '<i class="tm s"></i>', r: '<i class="tm r"><svg viewBox="0 0 12 12"><path d="M3.2 6.2l1.9 1.9L8.9 4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>',
-                     n: '<i class="tm n"></i>', '-': '<i class="tm"></i>' };
-          return '<span class="kk" style="--n:' + cols.length + '"><span class="kkr kth"><span>' + esc(k.who || 'Store') + '</span>' +
-            cols.map(function (c) { return '<span class="kc">' + esc(c) + '</span>'; }).join('') + '<span>Next</span></span>' +
-            k.rows.map(function (r) {
-              var m = String(r.marks || '');
-              return '<span class="kkr' + (/n/.test(m) ? ' now' : '') + '"><span>' + esc(r.name) + '</span>' +
-                cols.map(function (c, j) { return '<span class="kc">' + (MK[m.charAt(j)] || MK['-']) + '</span>'; }).join('') +
-                '<span class="kx">' + esc(r.next || '') + '</span></span>';
-            }).join('') + '</span>';
-        }
-        return '<span class="kl">' + items.slice(0, 3).map(function (t) {
-          return '<span><i></i><em>' + esc(String(t).replace(/\.$/, '')) + '</em></span>';
-        }).join('') + '</span>';
-      }
+      var SEAL = (function () {
+        var b = String(LP.brand || LP.name || FIRST || '').replace(/[^A-Za-z ]/g, ' ').split(/\s+/)
+          .filter(function (w) { return w.length > 2; });
+        if (!b.length) b = [String(FIRST || 'K')];
+        return (b[0].charAt(0) + (b.length > 1 ? b[b.length - 1].charAt(0) : '')).toUpperCase();
+      })();
       var artHTML = outs.map(function (o, i) {
-        var k = KEEP[i] || {};
         var items = ((S.day_bullets || [])[i] || []).slice(0, 3);
         var t = String(((days[i] || {}).title) || '').split('|').join(' ').replace(/\s+/g, ' ').replace(/\.$/, '').trim();
         if (!items.length) items = [o];
         var kind = kindOf(items.join(' ') + ' ' + t);
-        var lab = k.name || KIND_LABEL[kind] || ('Day ' + (i + 1));
-        if (!k.name && labels.indexOf(lab) > -1) lab = lab.replace('The ', 'The second ');   /* two days, one kind */
+        var lab = KIND_LABEL[kind] || ('Day ' + (i + 1));
+        if (labels.indexOf(lab) > -1) lab = lab.replace('The ', 'The second ');   /* two days, one kind */
         labels[i] = lab;
-        var foot = k.foot || k.foot_tag ? '<span class="kfoot"><span>' + esc(k.foot || '') + '</span>' +
-          (k.foot_tag ? '<em>' + esc(k.foot_tag) + '</em>' : '') + '</span>' : '';
-        return '<figure class="tkart a' + (i + 1) + ' k-' + esc(k.kind || 'list') + '" data-i="' + i + '">' +
-          '<span class="tkatop"><b>Day ' + (i + 1) + '</b><span>' + esc(k.name ? k.name : kind) + '</span>' +
-            (k.status ? '<em>' + esc(k.status) + '</em>' : '') + '</span>' +
-          '<span class="mkhead">' + esc(k.title || t) + '</span>' +
-          mockBody(k, items) + foot + '</figure>';
+        return '<figure class="tkart a' + (i + 1) + '">' +
+          '<span class="tkatop"><b>Day ' + (i + 1) + '</b><span>' + esc(kind) + '</span>' +
+            '<em class="mkseal" title="' + esc(LP.brand || '') + '">' + esc(SEAL) + '</em></span>' +
+          '<span class="tkabody">' + mock(kind, items, t) + '</span></figure>';
       }).join('');
       take.classList.add('tkkit');
       take.innerHTML =
         '<div class="tkgrid">' +
-          '<div class="tkstack" aria-hidden="true">' + artHTML + '</div>' +
+          '<div class="tkstack">' + artHTML + '</div>' +
           '<div class="tkside"><span class="tktab">' + esc(S.keep_tab || 'What you keep') + '</span>' +
-            '<h2 class="sh">' + esc(S.keep_title || 'Three days in, you have the thing itself.') + '</h2>' +
+            '<h2 class="sh">Three days in, you have the thing itself.</h2>' +
             '<p class="slede">' + esc(S.days_intro || LP.days_intro || '') + '</p>' +
             '<ol class="tkrows">' + outs.map(function (o, i) {
-              return '<li data-i="' + i + '"><span class="tkday">Day ' + (i + 1) + '</span><div><b>' + esc(labels[i] || ('Day ' + (i + 1))) +
+              return '<li><span class="tkday">Day ' + (i + 1) + '</span><div><b>' + esc(labels[i] || ('Day ' + (i + 1))) +
                 '</b><p>' + esc(o) + '</p></div></li>';
             }).join('') + '</ol></div>' +
         '</div>';
-      q('.tkside', take).insertAdjacentHTML('beforeend', ctaBlock('Hold my seat for the three days', 'Free · Nothing to pay'));
-      /* a day row and its document answer each other: point at one and the other lifts */
-      var hot = function (i, on) {
-        qa('[data-i="' + i + '"]', take).forEach(function (x) { x.classList.toggle('hot', on); });
-      };
-      qa('[data-i]', take).forEach(function (x) {
-        x.addEventListener('mouseenter', function () { hot(x.getAttribute('data-i'), true); });
-        x.addEventListener('mouseleave', function () { hot(x.getAttribute('data-i'), false); });
-      });
+      q('.tkside', take).insertAdjacentHTML('beforeend', ctaBlock('Hold my seat for the three days', 'Free \u00B7 Nothing to pay'));
       P.insertBefore(take, closing);
-      /* light, medium and dark of the lead's own colours, one per day (2026-09-23). On the dark card the accent is
-         the first of their colours that still reads at 4.5:1, so every lead's third card stays legible */
-      (function () {
-        var dark = q('.tkart.a3', take);
-        if (!dark) return;
-        var probe = document.createElement('i');
-        dark.appendChild(probe);
-        var rgb = function (c) {
-          var m = String(c).match(/[\d.]+/g) || [];
-          return /^color\(/.test(c) ? m.slice(0, 3).map(function (v) { return v * 255; }) : m.slice(0, 3).map(Number);
-        };
-        var lum = function (c) {
-          return rgb(c).reduce(function (sum, v, k) {
-            v /= 255;
-            return sum + (v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4)) * [.2126, .7152, .0722][k];
-          }, 0);
-        };
-        var bg = lum(getComputedStyle(dark).backgroundColor);
-        var pick = ['var(--accent2)', 'color-mix(in srgb,var(--accent2) 55%,#fff)', 'color-mix(in srgb,var(--accent) 45%,#fff)', '#fff']
-          .filter(function (c) {
-            probe.style.color = c;
-            var l = lum(getComputedStyle(probe).color);
-            return (Math.max(l, bg) + .05) / (Math.min(l, bg) + .05) >= 4.5;
-          })[0];
-        dark.removeChild(probe);
-        if (pick) dark.style.setProperty('--kc-acc', pick);
-      })();
       /* the route is drawn through the discs themselves, after layout, so it can never cross the copy */
       var drawRoute = function () {
         var route = q('.tkroute', take), svg = q('.tkpath', take);
