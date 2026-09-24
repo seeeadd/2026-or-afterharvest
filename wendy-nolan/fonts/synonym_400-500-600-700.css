@@ -1,0 +1,31 @@
+/* Synonym */
+@font-face {
+  font-family: 'Synonym';
+  src: url('files/78179bcfe074ecf1.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Synonym';
+  src: url('files/d17168bc6f829520.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Synonym';
+  src: url('files/ba55cbabccac8b16.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Synonym';
+  src: url('files/064cb8f8c5e4c266.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+

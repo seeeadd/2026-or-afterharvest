@@ -3188,3 +3188,18 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
   html body #page #days .d1.hasmac .dmaccol .dkeep{order:3;margin:22px 0 0;max-width:none}
   html body #page #days .d1.hasmac .dbody > .scta{order:4;margin-top:26px}
 }
+
+/* ---- the written document, kind "brief" (2026-09-24). table/sheet/tracker are all grids of short values;
+   this is the one that holds a sentence, for a day that produces a brief, a script, an outline or a draft. */
+#takeaway .kb{display:block}
+#takeaway .kbr{display:grid;grid-template-columns:minmax(0,.44fr) minmax(0,1fr);gap:10px;align-items:baseline;
+  padding:7px 0;border-top:1px solid var(--kc-line);font-size:12px;line-height:1.4}
+#takeaway .kbr:first-child{border-top:0;padding-top:0}
+#takeaway .kbr b{font-family:var(--label);font-size:8.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--kc-faint)}
+#takeaway .kbr em{font-style:normal;color:var(--kc-body)}
+#takeaway .kbr.pull em{font-weight:700;color:var(--kc-acc)}
+#takeaway .tkart.a1 .kbr{font-size:13px}
+@media (max-width:420px){
+  #takeaway .kbr{gap:8px;font-size:11.5px;grid-template-columns:minmax(0,.5fr) minmax(0,1fr)}
+}

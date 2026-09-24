@@ -1635,6 +1635,17 @@
                 '<span class="kx">' + esc(r.next || '') + '</span></span>';
             }).join('') + '</span>';
         }
+        /* the written document (2026-09-24). The other three kinds are all grids of short values and none of
+           them can hold a sentence, so a lead whose day produces a brief, a script, an outline or a draft had
+           nowhere to put it and got forced into a table. Label down the left, their actual line beside it,
+           one row pulled out in the accent. */
+        if (k.kind === 'brief' && k.rows) {
+          return (k.head ? '<span class="kshh"><b>' + esc(k.head) + '</b><i></i></span>' : '') +
+            '<span class="kb">' + k.rows.slice(0, 4).map(function (r) {
+              return '<span class="kbr' + (r.pull ? ' pull' : '') + '"><b>' + esc(r.label) + '</b>' +
+                '<em>' + esc(r.text) + '</em></span>';
+            }).join('') + '</span>';
+        }
         return '<span class="kl">' + items.slice(0, 3).map(function (t) {
           return '<span><i></i><em>' + esc(String(t).replace(/\.$/, '')) + '</em></span>';
         }).join('') + '</span>';
