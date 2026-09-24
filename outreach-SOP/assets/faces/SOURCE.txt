@@ -1,0 +1,8 @@
+Stock portraits from Unsplash (unsplash.com/license: free for commercial use, no permission needed).
+Sample registrant faces, face-cropped with bin/thumb_face at 2.3x the face box so the head sits inside.
+f1.jpg  https://unsplash.com/photos/1753351052363-53ce102830eb
+f2.jpg  https://unsplash.com/photos/1752650732081-8f61e81813ed
+f3.jpg  https://unsplash.com/photos/1753161029114-857c9f494ccd
+f4.jpg  https://unsplash.com/photos/1753161618091-b4cf35b9aa99
+f5.jpg  https://unsplash.com/photos/1765648496278-e42497a5e40f
+f6.jpg  https://unsplash.com/photos/1783099780272-4b7de5f30034
