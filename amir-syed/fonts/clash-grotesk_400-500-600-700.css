@@ -1,0 +1,31 @@
+/* Clash Grotesk */
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('files/d7cbeb058c3503b9.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('files/3d5d8d89b80783a8.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('files/87c52e206bc41d24.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('files/4e2e810b071f00e7.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
