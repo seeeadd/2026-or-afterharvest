@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Build Your Predictable Placement Pipeline | The Recruiting Lab</title>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=tanker@400,500,600,700&display=swap">
+<link rel="stylesheet" href="fonts/switzer_400-500-600-700-800.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#F7F4F3; --ink:#141212; --accent:#C81D1D; --accent-ink:#FFFFFF; --accent2:#972020; --accent-text:#C81D1D; --head-acc:#C81D1D; --ink-soft:#413F3F; --muted:#6A6868; --hair:rgba(20,18,18,0.100); --hair-2:rgba(20,18,18,0.170); --accent-10:rgba(200,29,29,0.130); --accent-sh:rgba(200,29,29,0.550); --accent-sh2:rgba(200,29,29,0.280); --pat:#6B2A26; --pat-op:0.205; --ghost:#C81D1D; --ghost-op:0.251; --grain-img:url(grain-light.png); --grain-op:.10; --grain-blend:multiply; --wall:radial-gradient(120% 90% at 18% 0%, rgba(150,22,22,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(106,22,22,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.56); --glass-brd:rgba(255,255,255,.72); --glass-hi:rgba(255,255,255,.92); --glass-solid:rgba(253,253,252,0.940); --card:rgba(255,255,255,.62); --card-brd:rgba(20,18,18,0.060); --strip:rgba(255,255,255,.34); --well:rgba(20,18,18,0.050); --field:rgba(255,255,255,.72); --av-ring:#FEFDFD; --cap-bg:rgba(255,255,255,.74); --cap-ink:#141212; --cap-muted:#777676; --sh1:0 1px 1px rgba(13,12,12,.05),0 3px 8px -2px rgba(13,12,12,.07),0 22px 40px -22px rgba(13,12,12,.28),0 50px 90px -50px rgba(13,12,12,.30); --sh2:0 1px 1px rgba(13,12,12,.04),0 2px 6px -2px rgba(13,12,12,.06),0 14px 30px -18px rgba(13,12,12,.24); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(13,12,12,.22),0 26px 44px -18px rgba(13,12,12,.38),0 60px 90px -44px rgba(13,12,12,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(13,12,12,.36); --contact:rgba(13,12,12,.36); --plate:radial-gradient(90% 70% at 50% 100%, rgba(200,29,29,0.240), transparent 70%), linear-gradient(180deg, #FBFAFA, #F2DEDE); --band:#0F0E0F; --band-ink:#FBFAFA; --band-ink-70:rgba(251,250,250,0.700); --band-ink-50:rgba(251,250,250,0.500); --band-hair:rgba(251,250,250,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(200,29,29,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(151,32,32,0.100), transparent 70%); --ground-paint:radial-gradient(660px 540px at 96% 1%, rgba(151,32,32,0.220), transparent 70%),radial-gradient(560px 460px at 0% 14%, rgba(200,29,29,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(200,29,29,0.070), transparent 70%),radial-gradient(620px 520px at 0% 71%, rgba(151,32,32,0.100), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(200,29,29,0.080), transparent 70%),radial-gradient(460px 380px at 0% 0%, rgba(64,38,18,.08), transparent 70%),radial-gradient(520px 420px at 100% 100%, rgba(64,38,18,.09), transparent 70%), #F7F4F3; --display:"Tanker", Georgia, serif; --body:"Switzer", system-ui, sans-serif; --label:"Switzer", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:400; --dw2:400; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=c6742cb3">
+<link rel="icon" href="favicon.ico?v=3944a52d" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=85c07c36">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=d6c9b067">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=c064285e">
+<link rel="manifest" href="site.webmanifest?v=4f8be8d0">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "gary-stauble", "name": "Gary Stauble", "brand": "The Recruiting Lab", "role": "Coach, The Recruiting Lab", "event": "Build Your Predictable Placement Pipeline", "headline": {"lines": ["Your placement", "pipeline, built", "in three days."], "accent_line": 1, "mark_word": "pipeline"}, "stats": [{"num": "25K", "label": "Newsletter subscribers", "source": "https://www.therecruitinglab.com/about-gary"}, {"num": "400+", "label": "Firms coached", "source": "https://www.therecruitinglab.com/about-gary"}, {"num": "30", "label": "Years in the industry", "source": "https://www.therecruitinglab.com/about-gary"}], "days": [{"title": "Drop dead-end|searches out|of your week.", "outcome": "Rank every open search and drop the dead-end ones.", "detail": "We run the 5x5 pipeline diagnostic on every search you have open, then decide which ones get your hours this week and which ones go.", "bullets": ["Run the pipeline diagnostic on each open search", "Score each search on its odds of placing", "Drop or park the dead-end ones"]}, {"title": "Win back|dormant clients", "outcome": "Reboot dormant clients and plan one campaign.", "detail": "We go back through the clients you have already placed for, pick the ones worth a call, and build one MPC campaign aimed at the searches you want more of.", "bullets": ["List the dormant clients worth a call", "Write the reboot call for each one", "Plan one MPC campaign for a high-value search"]}, {"title": "Your 30-day|pipeline plan", "outcome": "A 5x5 pipeline plan for the next 30 days, desk by desk.", "detail": "We turn the searches you kept and the clients you rebooted into a 30-day plan with weekly targets for every desk and the calls already on the calendar.", "bullets": ["Set weekly pipeline targets per desk", "Put the calls and campaigns on the calendar", "Pick the numbers you track every week"]}], "sources_line": "Figures: therecruitinglab.com", "style": {"pattern": "grid", "mark": "underline", "video_focus": "50% 62%", "headshot_focus": "50% 18%"}, "pattern": "grid", "mark": {"kind": "swipe", "color": "#FCC8A3", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-98.4 756.6 516.8 514.3\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"83\" y=\"350.890625\" width=\"898\" height=\"412.6875\" fill=\"#4a4a4a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M-90.0 1010.0 A250.0 245.0 0 1 1 410.0 1010.0 A250.0 252.5 0 1 1 -90.0 1010.0 M-40.0 1010.0 A200.0 197.5 0 1 1 360.0 1010.0 A200.0 202.5 0 1 1 -40.0 1010.0 M35.0 1115.0 V1015.0 H100.0 V1115.0 Z M125.0 1115.0 V959.0 H190.0 V1115.0 Z M215.0 1115.0 V903.0 H280.0 V1115.0 Z\" stroke-width=\"8\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><\/g><\/svg>", "w": 516.8, "h": 514.3, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1565.1 -101.7 508.0 400.1\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"83\" y=\"350.890625\" width=\"898\" height=\"412.6875\" fill=\"#4a4a4a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(12 1780 90)\"><path d=\"M1600 240 V-42 Q1600 -60 1618 -60 H1740.8 L1770.8 -26 H2040 V240 H1600 Z M1600 30.0 H2040 \" stroke-width=\"7\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><\/g><\/g><\/svg>", "w": 508.0, "h": 400.1, "sw": 7}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"702.6 -242.8 648.8 622.8\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"83\" y=\"350.890625\" width=\"898\" height=\"412.6875\" fill=\"#4a4a4a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(-18 900 20)\"><circle cx=\"900\" cy=\"20\" r=\"150\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/circle><circle cx=\"900\" cy=\"20\" r=\"118\" stroke-width=\"4\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/circle><path d=\"M1010 120 L1060 170 M1040 150 L1210 330 Q1230 352 1252 330 Q1272 308 1250 288 L1086 118\" stroke-width=\"8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\"><\/path><\/g><\/g><\/svg>", "w": 648.8, "h": 622.8, "sw": 8}], "pat_op": 0.205, "ghost_op": 0.251, "ghost_stroke": 4.5, "fonts": {"display": "Tanker", "display_weight": 400, "body": "Switzer", "label": "Switzer"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Gary", "event_core": "Build Your Predictable Placement Pipeline", "lede": "**Learn what’s actually keeping recruiting pipelines full in 2026.** I’ll show why most owners lose 10+ hours a week to dead-end searches, and we’ll build your Predictable Placement Pipeline together with the 5x5 Pipeline System from my group coaching.", "proof": [{"num": "25K", "label": "newsletter subscribers", "source": "https://www.therecruitinglab.com/about-gary"}], "ticker": ["25,000 subscribers to 2-Minute Coaching", "Over 400 recruiting firms coached", "Over 30 years as a headhunter, owner and trainer", "The 5x5 Pipeline System"], "checks": [{"bold": "Dead-end searches", "text": "Rank every search and drop the ones that won’t place.", "hand": "drop it", "why": "His coaching page opens on it: most owners waste 10+ hours a week on dead-end searches and busywork."}, {"bold": "Feast-or-famine months", "text": "Line up next month’s searches before this month closes.", "hand": "no famine", "why": "His Marketing Power Hour exists so owners avoid feast-or-famine cycles."}, {"bold": "Busywork eats the week", "text": "Put your hours on the searches most likely to place.", "hand": "hours back", "why": "Busywork sits beside dead-end searches in his own description of the problem."}, {"bold": "Dormant clients forgotten", "text": "Reboot past clients before chasing cold ones.", "hand": "reboot them", "why": "Rebooting dormant clients is one of the tasks he names for the Marketing Power Hour."}, {"bold": "Marketing keeps slipping", "text": "Run one MPC campaign aimed at a high-value search.", "hand": "one campaign", "why": "He sells the Power Hour as the place where marketing stops being a dreaded chore."}], "days_intro": "Day 1 clears out the dead-end searches, Day 2 refills the pipeline from clients you already know, and Day 3 turns it into a 30-day plan.", "fit_count": 4};</script>
+<script src="lp.js?v=d0b2fa2d"></script>
+<script>window.SITE = {
+ "event": "Build Your Predictable Placement Pipeline",
+ "name": "Gary Stauble",
+ "brand": "The Recruiting Lab",
+ "trusted_count": "25K",
+ "audience": "newsletter subscribers",
+ "monogram": "RL",
+ "logo": "img/logo.png",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for The Recruiting Lab",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Build Your Predictable Placement Pipeline for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Gary Stauble coaches recruiting firm owners through The Recruiting Lab. He built and managed a retained executive search firm, has coached over 400 recruiting firms, and publishes 2-Minute Coaching, a bi-monthly newsletter with 25,000 subscribers.",
+ "role": "Coach, The Recruiting Lab",
+ "days_intro": "Day 1 clears out the dead-end searches, Day 2 refills the pipeline from clients you already know, and Day 3 turns it into a 30-day plan.",
+ "check_why": [
+  "His coaching page opens on it: most owners waste 10+ hours a week on dead-end searches and busywork.",
+  "His Marketing Power Hour exists so owners avoid feast-or-famine cycles.",
+  "Busywork sits beside dead-end searches in his own description of the problem.",
+  "Rebooting dormant clients is one of the tasks he names for the Marketing Power Hour.",
+  "He sells the Power Hour as the place where marketing stops being a dreaded chore."
+ ],
+ "day_detail": [
+  "We run the 5x5 pipeline diagnostic on every search you have open, then decide which ones get your hours this week and which ones go.",
+  "We go back through the clients you have already placed for, pick the ones worth a call, and build one MPC campaign aimed at the searches you want more of.",
+  "We turn the searches you kept and the clients you rebooted into a 30-day plan with weekly targets for every desk and the calls already on the calendar."
+ ],
+ "day_bullets": [
+  [
+   "Run the pipeline diagnostic on each open search",
+   "Score each search on its odds of placing",
+   "Drop or park the dead-end ones"
+  ],
+  [
+   "List the dormant clients worth a call",
+   "Write the reboot call for each one",
+   "Plan one MPC campaign for a high-value search"
+  ],
+  [
+   "Set weekly pipeline targets per desk",
+   "Put the calls and campaigns on the calendar",
+   "Pick the numbers you track every week"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Marcus R.",
+  "role": "The Recruiting Lab member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#141212"
+ },
+ "keep_title": "Three days in, your pipeline holds only searches that can place.",
+ "keep": [
+  {
+   "kind": "table",
+   "name": "Open searches",
+   "status": "Down to three",
+   "cols": [
+    "Role",
+    "Fee",
+    "Open",
+    "Excl",
+    "Subs"
+   ],
+   "rows": [
+    [
+     "Controller, Tillman",
+     "25%",
+     "34",
+     "Yes",
+     "3"
+    ],
+    [
+     "Plant mgr, Dunmore",
+     "20%",
+     "118",
+     "No",
+     "0"
+    ],
+    [
+     "VP sales, Harbor Point",
+     "30%",
+     "21",
+     "Yes",
+     "2"
+    ],
+    [
+     "HR lead, Ashgrove CU",
+     "20%",
+     "47",
+     "Yes",
+     "2"
+    ]
+   ],
+   "flag": {
+    "row": 1
+   },
+   "foot": "Drop the dead-end ones first",
+   "foot_tag": "1 dropped"
+  },
+  {
+   "kind": "brief",
+   "name": "Reboot call",
+   "status": "Ready to dial",
+   "rows": [
+    {
+     "label": "Client",
+     "text": "Keller Packaging, last hire 2024"
+    },
+    {
+     "label": "Call",
+     "text": "Dana, VP of operations"
+    },
+    {
+     "label": "MPC",
+     "text": "Plant ops lead, 12 years, will relocate",
+     "pull": true
+    },
+    {
+     "label": "Ask",
+     "text": "Worth a look before your Q1 hiring?"
+    }
+   ],
+   "foot": "Reboot dormant clients before cold ones",
+   "foot_tag": "6 on the list"
+  },
+  {
+   "kind": "tracker",
+   "name": "30-day pipeline",
+   "status": "Week 1 of 4",
+   "who": "Search",
+   "cols": [
+    "Brief",
+    "Subs",
+    "Intv",
+    "Offer"
+   ],
+   "rows": [
+    {
+     "name": "Controller, Tillman",
+     "marks": "rrrn",
+     "next": "Offer call Fri"
+    },
+    {
+     "name": "Ops director, Keller",
+     "marks": "n---",
+     "next": "Take the brief"
+    },
+    {
+     "name": "VP sales, Harbor Point",
+     "marks": "rrn-",
+     "next": "Debrief Tue"
+    }
+   ],
+   "foot": "Work the searches that can place",
+   "foot_tag": "3 live"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/VNUh9WPfl2o_maxres1_gary.jpg",
+  "still_source": "https://www.youtube.com/watch?v=VNUh9WPfl2o (TopBillers Toolkit interview, YouTube automatic still maxres1, Gary's own webcam tile cropped out of the call grid, name tag cut off)",
+  "still_focus": "50% 40%",
+  "headline": [
+   "Want me to cut the dead-end",
+   "searches from your plan?"
+  ],
+  "mark": "cut the dead-end",
+  "lede": "Your seat is saved for all three days. Before you go, there is one optional upgrade, **{price} once**. A fourth live day where I go through your 30-day pipeline plan and cut the dead-end searches, a private VIP thread, replays and my weekly scorecard.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before you head to Day 1",
+  "video_len": "1:24",
+  "pass_kick": "Placement Pipeline",
+  "pass_cells": [
+   "Day 4 live",
+   "VIP thread",
+   "Replays"
+  ],
+  "items": [
+   {
+    "bold": "Day 4, your plan with me.",
+    "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring the 30-day pipeline plan you built on Day 3."
+   },
+   {
+    "bold": "Private VIP thread.",
+    "text": "Opens {day1_date} and stays open until {close}. Send me a new job order and I\u2019ll tell you if it\u2019s worth working."
+   },
+   {
+    "bold": "Replays to keep.",
+    "text": "All three days plus Day 4, so the Day 2 reboot call is there before every dormant client you dial."
+   },
+   {
+    "bold": "My weekly pipeline scorecard.",
+    "text": "One page to score every open search each week, built on your Day 3 plan."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "138",
+  "why": "Day 3 ends with a 30-day pipeline plan, desk by desk, and nobody to tell the owner which searches in it are still dead ends once new job orders land the next week. Dead-end searches are the pain Gary opens his coaching page on, so Day 4 is Gary going through that plan and cutting them. His people gather in the live workshops of his group coaching, which publishes no member count, so the direct line is a plain private VIP thread. His voice: dead-end searches, reboot dormant clients, MPC campaign, feast-or-famine. The scorecard extends the Day 3 tracker and the weekly numbers bullet into one page they reuse every week."
+ }
+};</script>
+<script src="site.js?v=b9f41593"></script>
+</body>
+</html>
