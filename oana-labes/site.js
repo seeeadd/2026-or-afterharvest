@@ -1366,6 +1366,7 @@
     if (st.brd) r.setProperty('--brd', st.brd);
     if (st.lift) r.setProperty('--lift', st.lift);
     if (st.face) P.setAttribute('data-finish', st.face);
+    if (st.night) r.setProperty('--night', st.night);
   }
 
   /* the day blocks: a real date and time on each, and a line on what happens in the room */

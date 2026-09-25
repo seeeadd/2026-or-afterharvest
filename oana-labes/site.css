@@ -1883,15 +1883,17 @@ body.modalopen{overflow:hidden}
    The section was calm but flat: light type on the same light field as everything above and below it.
    The whole page is one tone, so the days become the beat in it. A deep slab of the lead's own ink with
    their grid drawn in light, the accent lit on the rail, and the slide sitting on it like a screen in a
-   dark room. Nothing here is per lead: every colour is mixed from their own ink and accent. */
+   dark room. Nothing here is per lead: every colour is mixed from their own ink and accent. --night is the dark
+   end of their pair (build_site.night_of): the ink on a light page, the ground on a dark one, so a dark-ground
+   lead never gets a beige slab under the light type. */
 #page #days{position:relative;isolation:isolate;overflow:hidden;
   margin:clamp(30px,4vw,64px) clamp(12px,2vw,30px);
   border-radius:clamp(18px,2.4vw,40px);
   padding-top:clamp(46px,5vw,78px);padding-bottom:clamp(46px,5vw,78px);
   background:
     radial-gradient(90% 60% at 18% 0%,color-mix(in srgb,var(--accent) 26%,transparent),transparent 62%),
-    linear-gradient(180deg,color-mix(in srgb,var(--ink) 86%,#000),
-      color-mix(in srgb,var(--ink) 94%,#000) 58%,color-mix(in srgb,var(--ink) 86%,#000))}
+    linear-gradient(180deg,color-mix(in srgb,var(--night,var(--ink)) 86%,#000),
+      color-mix(in srgb,var(--night,var(--ink)) 94%,#000) 58%,color-mix(in srgb,var(--night,var(--ink)) 86%,#000))}
 /* their own paper grid, drawn in light instead of ink */
 #page #days:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.07;
   background-image:linear-gradient(rgba(255,255,255,.9) 1px,transparent 1px),
@@ -1914,7 +1916,7 @@ body.modalopen{overflow:hidden}
 /* the rail reads as a lit line, the node as a light on it */
 #page #days .dagenda:before{background:color-mix(in srgb,var(--accent) 46%,transparent)}
 #page #days .dagenda:after{background:var(--accent);
-  box-shadow:0 0 0 5px color-mix(in srgb,var(--ink) 90%,#000),
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--night,var(--ink)) 90%,#000),
     0 0 20px 3px color-mix(in srgb,var(--accent) 65%,transparent)}
 
 #page #days .dnwd{color:var(--accent);opacity:1}
