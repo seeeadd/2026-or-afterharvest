@@ -1,0 +1,38 @@
+/* Boska */
+@font-face {
+  font-family: 'Boska';
+  src: url('files/989285dc1eb7696b.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Boska';
+  src: url('files/0d403175136ee794.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Boska';
+  src: url('files/e53261916ae895cf.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Boska';
+  src: url('files/9cf981b57e8d2ec4.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Boska';
+  src: url('files/01d588919b61ce04.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+  font-style: italic;
+}
+
+

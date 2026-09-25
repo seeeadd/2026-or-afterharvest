@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 608 620" role="img" aria-label="CEO Financial Intelligence Academy">
+  <rect x="32" y="265" width="62" height="175" fill="#c9a227"/>
+  <rect x="110" y="205" width="62" height="235" fill="#c9a227"/>
+  <rect x="188" y="152" width="62" height="288" fill="#c9a227"/>
+  <rect x="266" y="118" width="62" height="322" fill="#c9a227"/>
+  <rect x="344" y="72" width="62" height="368" fill="#c9a227"/>
+  <polyline points="32,265 94,265 110,205 172,205 188,152 250,152 266,118 328,118 344,72 406,72"
+    stroke="#0C0A06" stroke-width="5" fill="none" stroke-linejoin="miter"/>
+  <polyline points="32,300 110,238 188,182 266,148 344,100 435,38"
+    stroke="#0C0A06" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="390,12 450,5 435,38" fill="#0C0A06"/>
+  <text x="240" y="530"
+    font-family="'Arial Black','Arial',sans-serif"
+    font-weight="900" font-size="168"
+    fill="#0C0A06" text-anchor="middle">CEO</text>
+  <text x="240" y="596"
+    font-family="'Arial',sans-serif"
+    font-weight="700" font-size="36"
+    fill="#0C0A06" text-anchor="middle" letter-spacing="5">FINANCIAL INTELLIGENCE</text>
+</svg>
