@@ -209,9 +209,21 @@
      lead's own day titles, so no lead needs copy written by hand. */
   function ctaFor(title) {
     var t = String(title || '').split('|').join(' ').replace(/[.!?]+\s*$/, '').trim();
-    var w = t.split(/\s+/).slice(0, 3);
-    var tail = /^(before|after|like|and|to|the|a|an|for|with|so|that|you|your|into|of|on|in)$/i;
+    var all = t.split(/\s+/), w = all.slice(0, 3);
+    var tail = /^(before|after|like|and|to|the|a|an|for|with|so|that|you|your|into|of|on|in|first|one|paid|daily|own|new|next|my|our|their|his|her)$/i;
     while (w.length > 2 && tail.test(w[w.length - 1])) w.pop();
+    if (tail.test(w[w.length - 1] || '')) {
+      // still ends on "your" ("Shape your|first paid|product"): run on to the noun, up to 5 words, and drop
+      // "Learn how to" when the label would no longer fit a 360 px button
+      var n = w.length;
+      while (tail.test(w[w.length - 1]) && n < Math.min(5, all.length)) w = all.slice(0, ++n);
+      var run = w.join(' ');
+      if (!tail.test(w[w.length - 1]) && run.length <= 30) {
+        return ('Learn how to ' + run).length <= 30 ? 'Learn how to ' + run.charAt(0).toLowerCase() + run.slice(1)
+          : run.charAt(0).toUpperCase() + run.slice(1);
+      }
+      return 'Hold my seat';
+    }
     if (!w.length) return 'Hold my seat';
     w[0] = w[0].charAt(0).toLowerCase() + w[0].slice(1);
     return 'Learn how to ' + w.join(' ');
@@ -524,7 +536,8 @@
       ['Do I need anything before Day 1?', prepAnswer()],
       ['What if I cannot make a session live?', 'Every session is recorded and the replay lands in your inbox the same evening.'],
       ['Is this really free?', 'Yes. Three days, live with ' + FIRST + ', no card and no catch.'],
-      ['Who is this for?', 'Anyone who wants ' + String(EV).toLowerCase() + ' finished rather than planned.']
+      // every event name starts with a verb ("Build Your 2027 Pipeline Plan"), so it cannot follow "wants"
+      ['Who is this for?', 'Anyone who would rather finish the work in three live days than keep planning it.']
     ];
     var s3 = el('section', 'gsec z',
       '<h2 class="gh">Questions people ask.</h2>' +

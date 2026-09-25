@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Launch Your Faceless Theme Page VIP | Kunal Shah</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../fonts/cabinet-grotesk_400-500-600-700-800-900.css">
+<link rel="stylesheet" href="../fonts/switzer_400-500-600-700-800.css">
+<style>:root{ --ground:#070909; --ink:#FEFEFE; --accent:#81FFD9; --accent-ink:#111111; --accent2:#3fc47c; --accent-text:#81FFD9; --head-acc:#81FFD9; --ink-soft:#CDCDCD; --muted:#8C8D8D; --hair:rgba(254,254,254,0.100); --hair-2:rgba(254,254,254,0.170); --accent-10:rgba(129,255,217,0.130); --accent-sh:rgba(129,255,217,0.550); --accent-sh2:rgba(129,255,217,0.280); --pat:#81FFD9; --pat-op:0.359; --ghost:#3FC47C; --ghost-op:0.36; --grain-img:url(../grain-dark.png); --grain-op:.14; --grain-blend:overlay; --wall:radial-gradient(120% 90% at 18% 0%, rgba(97,191,163,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(44,137,87,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.07); --glass-brd:rgba(255,255,255,.12); --glass-hi:rgba(255,255,255,.10); --glass-solid:rgba(29,31,31,0.930); --card:rgba(255,255,255,.05); --card-brd:rgba(255,255,255,.08); --strip:rgba(255,255,255,.035); --well:rgba(255,255,255,.06); --field:rgba(0,0,0,.28); --av-ring:#2F3030; --cap-bg:rgba(14,14,16,.58); --cap-ink:#FFFFFF; --cap-muted:rgba(255,255,255,.72); --sh1:0 1px 1px rgba(0,0,0,.35),0 24px 44px -22px rgba(0,0,0,.65),0 60px 90px -50px rgba(0,0,0,.7); --sh2:0 1px 1px rgba(0,0,0,.3),0 16px 32px -18px rgba(0,0,0,.6); --sh-dev:0 1px 1px rgba(0,0,0,.4),0 6px 14px -4px rgba(0,0,0,.45),0 30px 50px -20px rgba(0,0,0,.7),0 70px 100px -50px rgba(0,0,0,.7); --sh-dev-sm:0 1px 1px rgba(0,0,0,.35),0 18px 34px -18px rgba(0,0,0,.7); --contact:rgba(0,0,0,.62); --plate:radial-gradient(90% 70% at 50% 100%, rgba(129,255,217,0.340), transparent 70%), linear-gradient(180deg, #252727, #060707); --band:#121414; --band-ink:#F0F0F0; --band-ink-70:rgba(240,240,240,0.700); --band-ink-50:rgba(240,240,240,0.500); --band-hair:rgba(240,240,240,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(129,255,217,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(63,196,124,0.100), transparent 70%); --ground-paint:radial-gradient(640px 540px at 96% 1%, rgba(129,255,217,0.220), transparent 70%),radial-gradient(560px 480px at 0% 15%, rgba(63,196,124,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(129,255,217,0.090), transparent 70%),radial-gradient(620px 520px at 0% 72%, rgba(129,255,217,0.070), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(63,196,124,0.070), transparent 70%),radial-gradient(520px 420px at 0% 0%, rgba(0,0,0,.35), transparent 70%),radial-gradient(560px 460px at 100% 100%, rgba(0,0,0,.35), transparent 70%), #070909; --display:"Cabinet Grotesk", Georgia, serif; --body:"Switzer", system-ui, sans-serif; --label:"Switzer", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:800; --dw2:500; }</style>
+<link rel="stylesheet" href="vip.css?v=081ea29c">
+<link rel="icon" href="../favicon.ico?v=c83156eb" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png?v=02ff84f2">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png?v=39f6c35b">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=fa2263b8">
+<link rel="manifest" href="../site.webmanifest?v=25143eef">
+</head>
+<body>
+<!-- VIP upsell, hero only. The page after registration: Jay's VIP layout (tape eyebrow + hand note, centred
+     headline with a highlighter band, lede, video left, VIP ticket card right) under a progress header.
+     Built by scripts/build_vip.py from templates/lp/vip.{html,css,js} + lp.json site.vip. Never hand-edit. -->
+<div id="vpage">
+  <div class="vbg vground"></div>
+  <div class="vbg vgrid"></div>
+  <div class="vbg vgrain"></div>
+
+  <!-- progress header: step 1 done, step 2 active, step 3 waiting; the track under it is 2/3 full -->
+  <header class="vbar">
+    <div class="vbar-in">
+      <span class="vlock">
+        <span class="vcal"><svg width="34" height="34" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <b id="vEvent"></b>
+      </span>
+      <ol class="vsteps" aria-label="Your progress">
+        <li class="done"><span class="vn"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M3.2 8.4 6.4 11.4 12.8 4.6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="vl">Seat held</span></li>
+        <li class="vwire done"></li>
+        <li class="now"><span class="vn">2</span><span class="vl">Complete your VIP upgrade</span></li>
+        <li class="vwire"></li>
+        <li class="next"><span class="vn">3</span><span class="vl">Join details</span></li>
+      </ol>
+      <span class="vstepof">Step <b>2</b> of 3</span>
+    </div>
+    <div class="vtrack"><i></i></div>
+  </header>
+
+  <!-- the seat is confirmed before we ask for anything -->
+  <p class="vheld"><span class="vdot"></span><span id="vHeld"></span></p>
+
+  <main class="vhero">
+    <div class="vkick">
+      <span class="vtape" id="vTape"></span>
+    </div>
+    <h1 class="vh1" id="vH1"></h1>
+    <p class="vlede" id="vLede"></p>
+
+    <div class="vgrid2">
+      <!-- the video: a studio display, so it never reads as the registration page's iPhone -->
+      <figure class="vmon">
+        <div class="vmon-bezel">
+          <div class="vscreen">
+            <img id="vStill" alt="">
+            <span class="vshade"></span>
+            <span class="vchip"><img id="vAva" alt=""><span><b id="vChipName"></b><small id="vChipSub"></small></span></span>
+            <button class="vplay" aria-label="Play"><span class="vring"></span><svg width="30" height="30" viewBox="0 0 24 24"><path d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5A.8.8 0 0 0 8 5.2z" fill="currentColor"/></svg></button>
+            <span class="vsound">Tap for sound</span>
+            <div class="vctl">
+              <svg width="14" height="14" viewBox="0 0 24 24"><path d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5A.8.8 0 0 0 8 5.2z" fill="currentColor"/></svg>
+              <span class="vt">0:00</span>
+              <span class="vbarline"><i></i><b></b></span>
+              <span class="vt" id="vLen"></span>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M4 9.5h3.6L12.5 5v14l-4.9-4.5H4z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+          <span class="vcam"></span>
+        </div>
+        <span class="vneck"></span><span class="vfoot"></span>
+      </figure>
+
+      <!-- the VIP card: coral slab with the pass on it (her signature hero slab), cream body with the offer -->
+      <aside class="vcard">
+        <span class="vcardtape"></span>
+        <div class="vslab">
+          <div class="vpass">
+            <span class="vstub">
+              <svg class="vroundel" width="54" height="54" viewBox="0 0 54 54"><circle cx="27" cy="27" r="24.5" fill="var(--glass-solid)" stroke="var(--ink)" stroke-width="2.2"/><circle cx="27" cy="27" r="20" fill="none" stroke="var(--ink)" stroke-width=".8" opacity=".5"/><text x="21" y="34" text-anchor="middle" font-family="var(--display)" font-style="italic" font-weight="700" font-size="19" fill="var(--accent)" id="vMonoA"></text><text x="34" y="34" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="15" fill="var(--ink)" id="vMonoB"></text></svg>
+              <small>VIP</small>
+            </span>
+            <span class="vpassbody">
+              <small class="vpk" id="vPassKick"></small>
+              <b class="vpt">VIP pass</b>
+              <span class="vpcells" id="vCells"></span>
+            </span>
+          </div>
+          <span class="vpill"><i></i>Optional upgrade</span>
+        </div>
+        <div class="vbody">
+          <div class="vprice">
+            <span class="vamt"><sup id="vCur"></sup><b id="vPrice"></b></span>
+            <span class="vterms"><b>Pay once</b><span>Replays are yours to keep</span></span>
+          </div>
+          <ul class="vlist" id="vList"></ul>
+          <a class="vcta" href="#" onclick="return false"><span id="vCta"></span><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="vsafe"><img src="../img/lock.png" alt=""><span>Secure checkout</span><i></i><span>One payment</span></div>
+          <div class="vproof"><span class="vfaces" id="vFaces"></span><span id="vProof"></span></div>
+          <a class="vno" href="#" onclick="return false" id="vNo"></a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="vtoast" id="vToast"><span class="vtav" id="vToastAv"></span><span><b id="vToastName"></b> just added VIP<small><i></i><span id="vToastAgo"></span></small></span></div>
+</div>
+<script>window.VIP = {
+ "price": 47,
+ "still_focus": "58% 40%",
+ "headline": [
+  "Want me to check your page",
+  "before your first shoutout?"
+ ],
+ "mark": "check your page",
+ "lede": "Your seat is saved for all three days. Before you go, there is one optional upgrade, **{price} once**. A fourth live day where I review your theme page and first reels, a private VIP WhatsApp group for the week, replays of all four days and my shoutout rate card.",
+ "video_title": "A quick note from {first}",
+ "video_sub": "Before you head to Day 1",
+ "video_len": "1:28",
+ "pass_kick": "Theme Page VIP",
+ "pass_cells": [
+  "Day 4",
+  "Group",
+  "Replays"
+ ],
+ "items": [
+  {
+   "bold": "Day 4, page review with me.",
+   "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring your page, three reels and the first-money plan from Day 3."
+  },
+  {
+   "bold": "Private VIP WhatsApp group.",
+   "text": "Opens {day1_date} and stays open until {close}. Send me a reel or a shoutout offer between sessions."
+  },
+  {
+   "bold": "Replays to keep.",
+   "text": "All three days plus Day 4, so the Day 2 AI reel workflow is there every time you batch a week of posts."
+  },
+  {
+   "bold": "My shoutout rate card.",
+   "text": "The Day 3 rate card as a blank you fill in again at 10K, 50K and 100K followers."
+  }
+ ],
+ "cta": "Yes, add VIP for {price}",
+ "decline": "No thanks, take me to my join details",
+ "proof": "**{vip_count} people** added VIP to their seat",
+ "vip_count": "146",
+ "pattern": "dots",
+ "logo": "../img/logo.png",
+ "name": "Kunal Shah",
+ "first_name": "Kunal",
+ "event": "Launch Your Faceless Theme Page",
+ "time_zone": "America/New_York",
+ "starts_in_days": 9,
+ "start_hour": 12,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "../img/faces/f1.jpg",
+  "../img/faces/f2.jpg",
+  "../img/faces/f3.jpg",
+  "../img/faces/f4.jpg",
+  "../img/faces/f5.jpg",
+  "../img/faces/f6.jpg"
+ ],
+ "avatar": "../img/headshot.png",
+ "still": "../img/vip-video.jpg"
+};</script>
+<script src="vip.js?v=173d397d"></script>
+</body>
+</html>

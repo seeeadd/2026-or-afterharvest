@@ -275,4 +275,14 @@ img{display:block}
   .vcta{font-size:17px}
   .vtoast{left:12px;right:12px;bottom:12px}
 }
+/* small phones: a wide label face (a mono, a heavy grotesk) pushed the step pill and the pass cells past 360 px
+   on 2026-09-25; the live step's label wraps to two lines and the pass chips tighten instead of clipping */
+@media (max-width:420px){
+  .vsteps{gap:5px;padding:5px 12px 5px 5px}
+  .vwire{width:10px}
+  .vsteps .now .vl{white-space:normal;font-size:12.5px;line-height:1.1;max-width:9.5em}
+  .vpassbody{padding-right:12px}
+  .vpcells{gap:3px}
+  .vpcells span{padding:3px 5px;letter-spacing:.06em}
+}
 @media (prefers-reduced-motion:reduce){.vring,.vsteps .now .vn::after{animation:none}.vtrack i{transition:none}}

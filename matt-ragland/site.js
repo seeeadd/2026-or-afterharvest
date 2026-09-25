@@ -536,7 +536,8 @@
       ['Do I need anything before Day 1?', prepAnswer()],
       ['What if I cannot make a session live?', 'Every session is recorded and the replay lands in your inbox the same evening.'],
       ['Is this really free?', 'Yes. Three days, live with ' + FIRST + ', no card and no catch.'],
-      ['Who is this for?', 'Anyone who wants ' + String(EV).toLowerCase() + ' finished rather than planned.']
+      // every event name starts with a verb ("Build Your 2027 Pipeline Plan"), so it cannot follow "wants"
+      ['Who is this for?', 'Anyone who would rather finish the work in three live days than keep planning it.']
     ];
     var s3 = el('section', 'gsec z',
       '<h2 class="gh">Questions people ask.</h2>' +
