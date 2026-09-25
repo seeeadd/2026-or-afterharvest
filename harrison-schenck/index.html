@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Launch Your Fractional Practice | The Fractional Incubator</title>
+<link rel="stylesheet" href="fonts/general-sans_400-500-600-700.css">
+<link rel="stylesheet" href="fonts/poppins_400-500-600-700.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#040709; --ink:#FEFEFE; --accent:#35C1DF; --accent-ink:#111111; --accent2:#30397e; --accent-text:#35C1DF; --head-acc:#35C1DF; --ink-soft:#CCCDCD; --muted:#8B8C8D; --hair:rgba(254,254,254,0.100); --hair-2:rgba(254,254,254,0.170); --accent-10:rgba(53,193,223,0.130); --accent-sh:rgba(53,193,223,0.550); --accent-sh2:rgba(53,193,223,0.280); --pat:#35C1DF; --pat-op:0.227; --ghost:#35C1DF; --ghost-op:0.278; --grain-img:url(grain-dark.png); --grain-op:.14; --grain-blend:overlay; --wall:radial-gradient(120% 90% at 18% 0%, rgba(40,145,167,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(34,40,88,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.07); --glass-brd:rgba(255,255,255,.12); --glass-hi:rgba(255,255,255,.10); --glass-solid:rgba(27,29,31,0.930); --card:rgba(255,255,255,.05); --card-brd:rgba(255,255,255,.08); --strip:rgba(255,255,255,.035); --well:rgba(255,255,255,.06); --field:rgba(0,0,0,.28); --av-ring:#2C2F30; --cap-bg:rgba(14,14,16,.58); --cap-ink:#FFFFFF; --cap-muted:rgba(255,255,255,.72); --sh1:0 1px 1px rgba(0,0,0,.35),0 24px 44px -22px rgba(0,0,0,.65),0 60px 90px -50px rgba(0,0,0,.7); --sh2:0 1px 1px rgba(0,0,0,.3),0 16px 32px -18px rgba(0,0,0,.6); --sh-dev:0 1px 1px rgba(0,0,0,.4),0 6px 14px -4px rgba(0,0,0,.45),0 30px 50px -20px rgba(0,0,0,.7),0 70px 100px -50px rgba(0,0,0,.7); --sh-dev-sm:0 1px 1px rgba(0,0,0,.35),0 18px 34px -18px rgba(0,0,0,.7); --contact:rgba(0,0,0,.62); --plate:radial-gradient(90% 70% at 50% 100%, rgba(53,193,223,0.340), transparent 70%), linear-gradient(180deg, #222527, #030607); --band:#0F1214; --band-ink:#F0F0F0; --band-ink-70:rgba(240,240,240,0.700); --band-ink-50:rgba(240,240,240,0.500); --band-hair:rgba(240,240,240,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(53,193,223,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(48,57,126,0.100), transparent 70%); --ground-paint:radial-gradient(640px 540px at 96% 1%, rgba(53,193,223,0.220), transparent 70%),radial-gradient(560px 480px at 0% 15%, rgba(48,57,126,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(53,193,223,0.090), transparent 70%),radial-gradient(620px 520px at 0% 72%, rgba(53,193,223,0.070), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(48,57,126,0.070), transparent 70%),radial-gradient(520px 420px at 0% 0%, rgba(0,0,0,.35), transparent 70%),radial-gradient(560px 460px at 100% 100%, rgba(0,0,0,.35), transparent 70%), #040709; --display:"General Sans", Georgia, serif; --body:"Poppins", system-ui, sans-serif; --label:"Poppins", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:700; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=c6742cb3">
+<link rel="icon" href="favicon.ico?v=d958ee2c" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=ff826dd5">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=7415587b">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=242cf584">
+<link rel="manifest" href="site.webmanifest?v=d207e518">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "harrison-schenck", "name": "Harrison Schenck", "brand": "The Fractional Incubator", "role": "Founder, The Fractional Incubator", "event": "Launch Your Fractional Practice", "headline": {"lines": ["Your fractional", "practice, ready", "in three days."], "accent_line": 0, "mark_word": "fractional"}, "stats": [{"num": "4.2K", "label": "On-Ramp members", "source": "https://www.skool.com/cts/about"}, {"num": "4.8K", "label": "Skool followers", "source": "https://www.skool.com/@harrisons"}, {"num": "2.02K", "label": "YouTube subscribers", "source": "https://www.youtube.com/@harrisonschenck"}, {"num": "164", "label": "Videos published", "source": "https://www.youtube.com/@harrisonschenck"}], "days": [{"title": "Turn your 9-5|skill set into|a paid offer.", "outcome": "One fractional offer with a clear buyer, outcome and monthly price.", "detail": "We take the skills you already use at work and package one of them for a company that is missing it. You finish with a buyer, the bottleneck you remove and a price you can say out loud.", "bullets": ["The buyer with a leadership gap", "Package one outcome as a fractional offer", "Set a monthly retainer you can say out loud"]}, {"title": "Build your list|and reach out.", "outcome": "A first list of companies and your first outreach messages sent.", "detail": "We list the companies that fit your offer, write the LinkedIn message that opens the conversation, and send the first ones live so it is done before you log off.", "bullets": ["List the companies that fit your offer", "Write your LinkedIn opening message", "Send your first ten messages"]}, {"title": "Win your first|fractional role.", "outcome": "Script the sales call and leave with a proposal scoped for your first engagement.", "detail": "We run the sales conversation, then scope the engagement so it fits beside your job. You leave with a proposal ready to send and the path to your first retained client.", "bullets": ["Script the first sales conversation", "Scope a proposal that fits beside your 9-5", "Turn a yes into a retained engagement"]}], "sources_line": "Figures: skool.com, youtube.com", "style": {"pattern": "grid", "mark": "underline", "video_focus": "50% 30%", "headshot_focus": "50% 22%"}, "pattern": "grid", "mark": {"kind": "swipe", "color": "#FFFFFF", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-212.5 347.2 587.5 911.6\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"84\" y=\"351.890625\" width=\"898\" height=\"409.78125\" fill=\"#595959\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(-14 140 960)\">\n          <path d=\"M-70 772 Q-60 760 -44 760 L290 758 Q306 759 308 776 L312 1190 Q312 1204 296 1205 L-52 1207 Q-68 1206 -68 1190 Z\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n          <path d=\"M70 790 H170 Q182 790 182 802 V820 Q182 832 170 832 H70 Q58 832 58 820 V802 Q58 790 70 790 Z\" stroke-width=\"6\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n          <path d=\"M-20 880 H150 V1050 H-20 Z\" stroke-width=\"6\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n          <path d=\"M65 940 m-34 0 a34 36 0 1 0 68 0 a34 36 0 1 0 -68 0 M8 1050 Q14 990 65 990 Q116 990 122 1050\" stroke-width=\"6\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n          <path d=\"M190 900 H280 M190 940 H262 M190 980 H276\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n          <path d=\"M100 790 L60 600 L-10 380 M140 790 L190 600 L230 400\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n        <\/g><\/g><\/svg>", "w": 587.5, "h": 911.6, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1472.4 -67.6 575.2 311.2\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"84\" y=\"351.890625\" width=\"898\" height=\"409.78125\" fill=\"#595959\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M1480 -60 H2010 Q2040 -60 2040 -30 V150 Q2040 180 2010 180 H1610 L1548 236 L1560 180 H1510 Q1480 180 1480 150 Z\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><\/g><\/svg>", "w": 575.2, "h": 311.2, "sw": 7}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1530.8 20.8 378.4 116.4\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"84\" y=\"351.890625\" width=\"898\" height=\"409.78125\" fill=\"#595959\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M1540 30 H1900 M1540 80 H1820 M1540 128 H1700\" stroke-width=\"9\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><\/g><\/svg>", "w": 378.4, "h": 116.4, "sw": 9}], "pat_op": 0.168, "ghost_op": 0.206, "ghost_stroke": 4.5, "fonts": {"display": "General Sans", "display_weight": 700, "body": "Poppins", "label": "Poppins"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.png", "headshot_cutout": true, "slide": "img/slide.jpg"}, "first_name": "Harrison", "event_core": "Launch Your Fractional Practice", "lede": "**Learn what’s actually working for landing fractional clients in 2026.** I’ll walk through why so many executives never get past “where do I start?”, the five things that decide whether a company says yes, and we’ll build your Launch Your Fractional Practice plan together. It’s the same system I run inside the Fractional Incubator, and it’s yours for free.", "proof": [{"num": "4.2K", "label": "members in The Fractional On-Ramp", "source": "https://www.skool.com/cts/about"}], "ticker": ["4.2K members in The Fractional On-Ramp", "4.8K followers on Skool", "2.02K YouTube subscribers", "164 videos published"], "checks": [{"bold": "Where do I start", "text": "Day 1 turns your career into one offer you can sell.", "hand": "one offer", "why": "His own members say it first: “I have no idea where to start or how to sell what I know.”"}, {"bold": "Selling what you know", "text": "Name the buyer and the bottleneck you fix.", "hand": "their bottleneck", "why": "The Incubator sells retained engagements to businesses with leadership gaps or expensive bottlenecks."}, {"bold": "Not enough credentials", "text": "Your results are your qualifications.", "hand": "results count", "why": "Nobody asks about the degree. Companies want to know you can deliver the outcome."}, {"bold": "No time beside work", "text": "Build it on the side of your 9-5.", "hand": "keep the salary", "why": "The salary is too good to pass up, so the plan fits around the job you already have."}, {"bold": "Stuck overthinking it", "text": "Leave with outreach sent and a call booked.", "hand": "start moving", "why": "The Incubator is built to help you stop overthinking and start moving."}], "days_intro": "Day 1 packages your offer, Day 2 puts it in front of companies, and Day 3 turns the first conversation into a client.", "fit_count": 4};</script>
+<script src="lp.js?v=d0b2fa2d"></script>
+<script>window.SITE = {
+ "event": "Launch Your Fractional Practice",
+ "name": "Harrison Schenck",
+ "brand": "The Fractional Incubator",
+ "trusted_count": "4.8K",
+ "audience": "skool followers",
+ "monogram": "FI",
+ "logo": "img/logo.png",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for The Fractional Incubator",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Launch Your Fractional Practice for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.png",
+ "bio": "Harrison Schenck runs the Fractional Incubator, which helps skilled professionals package and sell what they already know as consulting and fractional leadership practices. Members get step-by-step instruction, regular group support calls and a council of experts, and new members join by application.",
+ "role": "Founder, The Fractional Incubator",
+ "days_intro": "Day 1 packages your offer, Day 2 puts it in front of companies, and Day 3 turns the first conversation into a client.",
+ "check_why": [
+  "His own members say it first: \u201cI have no idea where to start or how to sell what I know.\u201d",
+  "The Incubator sells retained engagements to businesses with leadership gaps or expensive bottlenecks.",
+  "Nobody asks about the degree. Companies want to know you can deliver the outcome.",
+  "The salary is too good to pass up, so the plan fits around the job you already have.",
+  "The Incubator is built to help you stop overthinking and start moving."
+ ],
+ "day_detail": [
+  "We take the skills you already use at work and package one of them for a company that is missing it. You finish with a buyer, the bottleneck you remove and a price you can say out loud.",
+  "We list the companies that fit your offer, write the LinkedIn message that opens the conversation, and send the first ones live so it is done before you log off.",
+  "We run the sales conversation, then scope the engagement so it fits beside your job. You leave with a proposal ready to send and the path to your first retained client."
+ ],
+ "day_bullets": [
+  [
+   "The buyer with a leadership gap",
+   "Package one outcome as a fractional offer",
+   "Set a monthly retainer you can say out loud"
+  ],
+  [
+   "List the companies that fit your offer",
+   "Write your LinkedIn opening message",
+   "Send your first ten messages"
+  ],
+  [
+   "Script the first sales conversation",
+   "Scope a proposal that fits beside your 9-5",
+   "Turn a yes into a retained engagement"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Marcus R.",
+  "role": "The Fractional Incubator member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#040709"
+ },
+ "keep_title": "Three days in, your 9-5 skills have a buyer and a proposal.",
+ "keep": [
+  {
+   "kind": "brief",
+   "name": "Your fractional offer",
+   "status": "Down to one",
+   "rows": [
+    {
+     "label": "Buyer",
+     "text": "SaaS teams of 20 to 60 with no ops lead"
+    },
+    {
+     "label": "Bottleneck",
+     "text": "Hiring plans stall in the founder\u2019s inbox"
+    },
+    {
+     "label": "Offer",
+     "text": "Fractional COO, 2 days a week",
+     "pull": true
+    },
+    {
+     "label": "Price",
+     "text": "$6,000 a month, retained"
+    }
+   ],
+   "foot": "Package what you already know",
+   "foot_tag": "1 buyer"
+  },
+  {
+   "kind": "tracker",
+   "name": "Outreach list",
+   "status": "Week 1 of 2",
+   "who": "Company",
+   "cols": [
+    "Sent",
+    "Reply",
+    "Call",
+    "Prop"
+   ],
+   "rows": [
+    {
+     "name": "Ridgeline Analytics",
+     "marks": "srn",
+     "next": "Call Thursday"
+    },
+    {
+     "name": "Northpoint Dental",
+     "marks": "sn",
+     "next": "Nudge Friday"
+    },
+    {
+     "name": "Bluepeak Freight",
+     "marks": "n",
+     "next": "Send Monday"
+    }
+   ],
+   "foot": "Open the conversation on LinkedIn",
+   "foot_tag": "7 to send"
+  },
+  {
+   "kind": "table",
+   "name": "Ridgeline proposal",
+   "status": "Cut to 6 hrs a week",
+   "cols": [
+    "Work",
+    "Hrs",
+    "When"
+   ],
+   "rows": [
+    [
+     "Weekly leadership call",
+     "1",
+     "Mon 7am"
+    ],
+    [
+     "Hiring plan, 2 roles",
+     "3",
+     "Evenings"
+    ],
+    [
+     "On-site day, Fridays",
+     "8",
+     "Fri"
+    ],
+    [
+     "Async team support",
+     "2",
+     "Lunch"
+    ]
+   ],
+   "flag": {
+    "row": 2
+   },
+   "foot": "Keep the salary while you build",
+   "foot_tag": "$4,500 a month"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/M-uu-yubZ2E_maxres1.jpg",
+  "still_source": "https://www.youtube.com/watch?v=M-uu-yubZ2E (YouTube automatic still maxres1)",
+  "still_focus": "50% 30%",
+  "headline": [
+   "Want your retainer priced",
+   "with me before the call?"
+  ],
+  "mark": "retainer priced",
+  "lede": "Your seat is saved for all three days. Before you go, there is one optional upgrade, **{price} once**. A fourth live day where I go through the proposal you scoped on Day 3, a private VIP thread for the week, replays of all four days, and my proposal layout.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before you head to Day 1",
+  "video_len": "1:48",
+  "pass_kick": "Fractional launch",
+  "pass_cells": [
+   "Day 4",
+   "VIP thread",
+   "Replays"
+  ],
+  "items": [
+   {
+    "bold": "Day 4, proposal review.",
+    "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring the proposal and retainer you scoped on Day 3."
+   },
+   {
+    "bold": "Private VIP thread.",
+    "text": "Opens {day1_date} and stays open until {close}. Bring me the replies from your outreach list."
+   },
+   {
+    "bold": "Replays to keep.",
+    "text": "All three days plus Day 4, so the Day 3 sales call script is there before every call you book."
+   },
+   {
+    "bold": "My proposal layout.",
+    "text": "The short proposal I teach on Day 3, laid out so a founder reads all of it before the call."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "138",
+  "why": "Day 3 ends with a scoped proposal and a retainer for one company from the attendee's outreach list, and nobody has checked the price or the scope before the call. So Day 4 is Harrison going through that proposal live. The loudest objection is not having enough credentials, which the review answers with a proposal that reads like results. His people gather in The Fractional On-Ramp on Skool (4.2K members), so the VIP thread is the direct line between sessions. His voice: package what you already know, where do I start, start moving. The proposal layout extends Day 3's scoping bullet; his own lesson \"Proposals Aren't Contracts\" keeps proposals short. Still: every candidate still has a slide panel or a guest; this one is him alone, eyes to camera, from a different video than the VSL and sticky."
+ },
+ "fit_note": "It is built for professionals with years of skill inside a 9-5.",
+ "fit_not": "If you have no work experience to package yet, save your seat for a later round. The three days turn skills you already use at work into an offer."
+};</script>
+<script src="site.js?v=498fde28"></script>
+</body>
+</html>

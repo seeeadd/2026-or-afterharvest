@@ -39,17 +39,6 @@
   function fill(s) { return String(s || '').replace(/\{[a-z0-9_]+\}/g, function (k) { return k in TOK ? TOK[k] : k; }); }
 
   $('vEvent').textContent = V.event || '';
-  // a long event name steps its size down (to 15px) before the ellipsis cuts it
-  (function fitEvent() {
-    var el = $('vEvent'), px = 19;
-    if (!el) return;
-    el.style.fontSize = '';
-    while (el.scrollWidth > el.clientWidth + 1 && px > 15) { px -= 1; el.style.fontSize = px + 'px'; }
-  })();
-  window.addEventListener('resize', function () {
-    var el = $('vEvent'), px = 19; if (!el) return; el.style.fontSize = '';
-    while (el.scrollWidth > el.clientWidth + 1 && px > 15) { px -= 1; el.style.fontSize = px + 'px'; }
-  });
   $('vHeld').innerHTML = md(fill(V.held || 'Your seat is held for **{day1} at {time}**. The join link is on its way to your inbox.'));
   $('vTape').textContent = fill(V.tape || 'Before you close this tab');
 

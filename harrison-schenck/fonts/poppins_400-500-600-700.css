@@ -1,0 +1,31 @@
+/* Poppins */
+@font-face {
+  font-family: 'Poppins';
+  src: url('files/95cdf9bd120a763e.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('files/c7e4b456f95f21ce.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('files/802565d0483e9404.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('files/1a3f88f5e3009e32.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
