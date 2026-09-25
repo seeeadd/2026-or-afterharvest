@@ -1,0 +1,38 @@
+/* Manrope */
+@font-face {
+  font-family: 'Manrope';
+  src: url('files/3a1bbe9205f05b71.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('files/6d49de7bedc73dfb.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('files/a54834860d94ece1.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('files/8776d1adda9466fd.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('files/7f7ded4171164df0.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+
