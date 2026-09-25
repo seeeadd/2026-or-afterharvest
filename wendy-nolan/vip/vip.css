@@ -148,6 +148,21 @@ img{display:block}
     radial-gradient(circle,rgba(255,255,255,.22) 1.1px,transparent 1.6px) 0 0/16px 16px,
     radial-gradient(90% 120% at 100% 0%,rgba(255,255,255,.2),transparent 60%),
     linear-gradient(160deg,color-mix(in srgb,var(--accent) 92%,#fff),var(--accent) 45%,color-mix(in srgb,var(--accent) 82%,#000))}
+/* the slab repeats the registration page's own pattern (lp.json style.pattern), so it reads as their page */
+.vslab[data-pat="grid"]{background:
+    linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px) 0 0/22px 22px,
+    linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px) 0 0/22px 22px,
+    radial-gradient(90% 120% at 100% 0%,rgba(255,255,255,.2),transparent 60%),
+    linear-gradient(160deg,color-mix(in srgb,var(--accent) 92%,#fff),var(--accent) 45%,color-mix(in srgb,var(--accent) 82%,#000))}
+.vslab[data-pat="ruled"]{background:
+    linear-gradient(rgba(255,255,255,.17) 1px,transparent 1px) 0 0/100% 20px,
+    radial-gradient(90% 120% at 100% 0%,rgba(255,255,255,.2),transparent 60%),
+    linear-gradient(160deg,color-mix(in srgb,var(--accent) 92%,#fff),var(--accent) 45%,color-mix(in srgb,var(--accent) 82%,#000))}
+.vslab[data-pat="hatch"]{background:
+    repeating-linear-gradient(135deg,rgba(255,255,255,.13) 0 1px,transparent 1px 11px),
+    radial-gradient(90% 120% at 100% 0%,rgba(255,255,255,.2),transparent 60%),
+    linear-gradient(160deg,color-mix(in srgb,var(--accent) 92%,#fff),var(--accent) 45%,color-mix(in srgb,var(--accent) 82%,#000))}
+.vstub .vlogo{width:54px;height:54px;object-fit:contain}
 .vpass{position:relative;display:flex;align-items:stretch;border-radius:12px;background:var(--glass-solid);color:var(--ink);
   transform:rotate(-2.2deg);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 16px 28px -14px rgba(60,10,20,.55),0 3px 6px -3px rgba(60,10,20,.3);
   -webkit-mask:radial-gradient(circle 7px at 78px 0,transparent 6.5px,#000 7px) top/100% 51% no-repeat,

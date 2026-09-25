@@ -58,9 +58,15 @@
   $('vChipSub').textContent = fill(V.video_sub || '{first} for {event} VIPs');
   $('vLen').textContent = '-' + (V.video_len || '1:32');
 
+  /* their real logo in the pass stub when leads/<slug>/logo/ has one, else the monogram roundel in their faces */
+  if (V.logo) {
+    var r = document.querySelector('.vroundel'), im = document.createElement('img');
+    im.className = 'vlogo'; im.src = V.logo; im.alt = ''; r.parentNode.replaceChild(im, r);
+  }
+  if (V.pattern) document.querySelector('.vslab').setAttribute('data-pat', V.pattern);
   var nm = (V.name || '').split(/\s+/);
-  $('vMonoA').textContent = (nm[0] || '').charAt(0);
-  $('vMonoB').textContent = (nm[nm.length - 1] || '').charAt(0);
+  if ($('vMonoA')) $('vMonoA').textContent = (nm[0] || '').charAt(0);
+  if ($('vMonoB')) $('vMonoB').textContent = (nm[nm.length - 1] || '').charAt(0);
   $('vPassKick').textContent = fill(V.pass_kick || '{event}');
   $('vCells').innerHTML = (V.pass_cells || ['4 days', 'Replays', 'VIP thread']).map(function (c) { return '<span>' + esc(fill(c)) + '</span>'; }).join('');
 
