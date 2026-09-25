@@ -66,6 +66,8 @@
   /* -------------------------------------------------------------- 2. state */
   var EV = LP.event_core || LP.event || '3-day live event';
   var FIRST = LP.first_name || String(LP.name || '').split(' ')[0] || '';
+  // two hosts ("Andrei and Vladimir") take the plural verb
+  var PAIR = / and | & /.test(FIRST);
   var WHO = LP.name || '', BRAND = LP.brand || WHO;
   var NAMES = (S.names && S.names.length) ? S.names : ['Maya', 'Devon', 'Priya', 'Sam', 'Alix', 'Jordan', 'Noor', 'Rae'];
 
@@ -207,9 +209,21 @@
      lead's own day titles, so no lead needs copy written by hand. */
   function ctaFor(title) {
     var t = String(title || '').split('|').join(' ').replace(/[.!?]+\s*$/, '').trim();
-    var w = t.split(/\s+/).slice(0, 3);
-    var tail = /^(before|after|like|and|to|the|a|an|for|with|so|that|you|your|into|of|on|in)$/i;
+    var all = t.split(/\s+/), w = all.slice(0, 3);
+    var tail = /^(before|after|like|and|to|the|a|an|for|with|so|that|you|your|into|of|on|in|first|one|paid|daily|own|new|next|my|our|their|his|her)$/i;
     while (w.length > 2 && tail.test(w[w.length - 1])) w.pop();
+    if (tail.test(w[w.length - 1] || '')) {
+      // still ends on "your" ("Shape your|first paid|product"): run on to the noun, up to 5 words, and drop
+      // "Learn how to" when the label would no longer fit a 360 px button
+      var n = w.length;
+      while (tail.test(w[w.length - 1]) && n < Math.min(5, all.length)) w = all.slice(0, ++n);
+      var run = w.join(' ');
+      if (!tail.test(w[w.length - 1]) && run.length <= 30) {
+        return ('Learn how to ' + run).length <= 30 ? 'Learn how to ' + run.charAt(0).toLowerCase() + run.slice(1)
+          : run.charAt(0).toUpperCase() + run.slice(1);
+      }
+      return 'Hold my seat';
+    }
     if (!w.length) return 'Hold my seat';
     w[0] = w[0].charAt(0).toLowerCase() + w[0].slice(1);
     return 'Learn how to ' + w.join(' ');
@@ -1816,7 +1830,7 @@
         '<div><p class="seye">Who is running it</p>' +
         '<h2 class="sh">' + esc(LP.name || FIRST) + '</h2>' +
         '<p class="hostbio">' + esc(BIO) + '</p>' +
-        '<p class="hostrun">' + esc(FIRST + ' runs all three days. No panel, no guest carousel.') + '</p></div></div>';
+        '<p class="hostrun">' + esc(FIRST + (PAIR ? ' run' : ' runs') + ' all three days. No panel, no guest carousel.') + '</p></div></div>';
       P.insertBefore(host, closing);
     }
 
@@ -1830,7 +1844,7 @@
     faq.id = 'faq';
     faq.innerHTML = '<div class="faqhead"><div class="faqtitle">' +
       '<h2 class="sh">The questions people ask.</h2></div>' +
-      '<p class="faqnote">' + esc('If yours is not here, reply to the email and ask. ' + FIRST + ' answers them.') +
+      '<p class="faqnote">' + esc('If yours is not here, reply to the email and ask. ' + FIRST + (PAIR ? ' answer' : ' answers') + ' them.') +
       '</p></div>' +
       '<ol class="faqlist">' + qs.map(function (r, i) {
         return '<li class="faqi' + (i === 0 ? ' open' : '') + '">' +
