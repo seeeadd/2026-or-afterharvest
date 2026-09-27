@@ -1,0 +1,38 @@
+/* Outfit */
+@font-face {
+  font-family: 'Outfit';
+  src: url('files/e79a9215cdd83080.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('files/90f28cf1975dcf9e.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('files/882c4c3cca7cc961.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('files/24c77dbb964e000c.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('files/81ff57d0a0e89829.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+

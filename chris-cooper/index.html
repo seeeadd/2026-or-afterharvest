@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Build Your Gym Profit Plan | Two-Brain Business</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/league-spartan@5/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/league-spartan@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/league-spartan@5/700.css">
+<link rel="stylesheet" href="fonts/outfit_400-500-600-700-800.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#F1F1EF; --ink:#111111; --accent:#E5BC00; --accent-ink:#111111; --accent2:#2a5fd6; --accent-text:#A58905; --head-acc:#A58905; --ink-soft:#3E3E3D; --muted:#666665; --hair:rgba(17,17,17,0.100); --hair-2:rgba(17,17,17,0.170); --accent-10:rgba(229,188,0,0.130); --accent-sh:rgba(229,188,0,0.550); --accent-sh2:rgba(229,188,0,0.280); --pat:#E5BC00; --pat-op:0.36; --ghost:#111111; --ghost-op:0.36; --grain-img:url(grain-light.png); --grain-op:.10; --grain-blend:multiply; --wall:radial-gradient(120% 90% at 18% 0%, rgba(172,141,0,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(29,66,150,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.56); --glass-brd:rgba(255,255,255,.72); --glass-hi:rgba(255,255,255,.92); --glass-solid:rgba(252,252,251,0.940); --card:rgba(255,255,255,.62); --card-brd:rgba(17,17,17,0.060); --strip:rgba(255,255,255,.34); --well:rgba(17,17,17,0.050); --field:rgba(255,255,255,.72); --av-ring:#FDFDFD; --cap-bg:rgba(255,255,255,.74); --cap-ink:#111111; --cap-muted:#757575; --sh1:0 1px 1px rgba(11,11,11,.05),0 3px 8px -2px rgba(11,11,11,.07),0 22px 40px -22px rgba(11,11,11,.28),0 50px 90px -50px rgba(11,11,11,.30); --sh2:0 1px 1px rgba(11,11,11,.04),0 2px 6px -2px rgba(11,11,11,.06),0 14px 30px -18px rgba(11,11,11,.24); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(11,11,11,.22),0 26px 44px -18px rgba(11,11,11,.38),0 60px 90px -44px rgba(11,11,11,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(11,11,11,.36); --contact:rgba(11,11,11,.36); --plate:radial-gradient(90% 70% at 50% 100%, rgba(229,188,0,0.240), transparent 70%), linear-gradient(180deg, #F9F9F8, #F0ECD7); --band:#0E0E0E; --band-ink:#F9F9F8; --band-ink-70:rgba(249,249,248,0.700); --band-ink-50:rgba(249,249,248,0.500); --band-hair:rgba(249,249,248,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(229,188,0,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(42,95,214,0.100), transparent 70%); --ground-paint:radial-gradient(660px 540px at 96% 1%, rgba(42,95,214,0.220), transparent 70%),radial-gradient(560px 460px at 0% 14%, rgba(229,188,0,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(229,188,0,0.070), transparent 70%),radial-gradient(620px 520px at 0% 71%, rgba(42,95,214,0.100), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(229,188,0,0.080), transparent 70%),radial-gradient(460px 380px at 0% 0%, rgba(62,38,18,.08), transparent 70%),radial-gradient(520px 420px at 100% 100%, rgba(62,38,18,.09), transparent 70%), #F1F1EF; --display:"League Spartan", Georgia, serif; --body:"Outfit", system-ui, sans-serif; --label:"Outfit", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:800; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=c6742cb3">
+<link rel="icon" href="favicon.ico?v=737921a2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=3c34d3f4">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=04ab8a81">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=a4fcee33">
+<link rel="manifest" href="site.webmanifest?v=a86add24">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "chris-cooper", "name": "Chris Cooper", "brand": "Two-Brain Business", "role": "Founder, Two-Brain Business", "event": "Build Your Gym Profit Plan", "headline": {"lines": ["Your gym profit", "plan, built", "in three days."], "accent_line": 0, "mark_word": "gym profit"}, "stats": [{"num": "30K", "label": "Newsletter readers", "source": "https://twobrainbusiness.com/blog/"}, {"num": "3,000+", "label": "Gym owners worked with", "source": "https://twobrainbusiness.com/gym-mentorship-two-brain-business/"}, {"num": "9", "label": "Books published", "source": "https://twobrainbusiness.com/about/chris-cooper/"}, {"num": "2016", "label": "Founded Two-Brain", "source": "https://twobrainbusiness.com/about/chris-cooper/"}], "days": [{"title": "Find the one|number that|stalls growth", "outcome": "Your six-number gym dashboard, filled in live, and the one number to fix first.", "detail": "We put your gym on the six numbers behind gym profit: what you take home, how many members, what each one pays, how long they stay, what you earn per hour and what you spend. Then you pick the one holding the rest back.", "bullets": ["Fill in the six numbers behind gym profit", "Spot the one that has stayed flat all year", "Park the fixes that can wait"]}, {"title": "Price and sell|coaching that|pays you.", "outcome": "A rebuilt On-Ramp and a first sales talk that sells coaching at its worth.", "detail": "We rebuild your On-Ramp as a coaching package, price it for what the coaching is worth, and write the first sales conversation so it feels like a prescription instead of a pitch.", "bullets": ["Rebuild your On-Ramp as a coaching package", "Price it for what the coaching is worth", "Write your first sales talk as a prescription"]}, {"title": "Map your next|90 days|with a mentor.", "outcome": "A 90-day plan for your number, plus a free call to be matched with a mentor.", "detail": "Your number and your fix become three moves, one a month, each with a date. Then you book a free call to be matched with a Two-Brain mentor whose gym looks like yours.", "bullets": ["Turn your number into a 90-day target", "Write three moves, one a month", "Book a free call for your mentor match"]}], "sources_line": "Figures: twobrainbusiness.com", "style": {"pattern": "loops", "mark": "underline", "video_focus": "50% 32%", "headshot_focus": "61% 24%"}, "pattern": "loops", "mark": {"kind": "swipe", "color": "#E5BC00", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1596.6 -278.4 616.8 616.8\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"84\" y=\"360.59375\" width=\"898\" height=\"394.171875\" fill=\"#3a3a3a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(1905 30)\"><circle r=\"300\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/circle><circle r=\"236\" stroke-width=\"5\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/circle><circle r=\"92\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/circle><circle r=\"40\" stroke-width=\"5\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/circle><\/g><\/g><\/svg>", "w": 616.8, "h": 616.8, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-49.7 723.5 671.3 694.4\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"84\" y=\"360.59375\" width=\"898\" height=\"394.171875\" fill=\"#3a3a3a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(-70 842) rotate(-14)\"><path d=\"M120 250 C110 110 160 30 290 26 C420 30 470 110 460 250\" stroke-width=\"9\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><path d=\"M170 250 C168 150 200 92 290 90 C380 92 412 150 410 250\" stroke-width=\"6\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><path d=\"M290 190 C470 190 560 300 556 420 C554 510 510 570 486 590 L94 590 C70 570 26 510 24 420 C20 300 110 190 290 190 Z\" stroke-width=\"9\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><\/g><\/g><\/svg>", "w": 671.3, "h": 694.4, "sw": 9}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"552.4 922.8 518.4 142.2\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"84\" y=\"360.59375\" width=\"898\" height=\"394.171875\" fill=\"#3a3a3a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(560 1000) rotate(-8)\"><rect x=\"0\" y=\"0\" width=\"420\" height=\"58\" rx=\"26\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/rect><path d=\"M420 8 L500 20 L500 38 L420 50\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><path d=\"M300 0 V58\" stroke-width=\"6\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><\/g><\/g><\/svg>", "w": 518.4, "h": 142.2, "sw": 7}], "pat_op": 0.176, "ghost_op": 0.241, "ghost_stroke": 4.5, "fonts": {"display": "League Spartan", "display_weight": 800, "body": "Outfit", "label": "Outfit"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Chris", "event_core": "Build Your Gym Profit Plan", "lede": "**Learn what's actually getting gyms unstuck in 2026.** I'll walk through why more leads won't fix a leaky gym, the five things that decide whether your gym grows, and we'll build your Gym Profit Plan together. It's the same groundwork our mentors run inside Two-Brain mentorship, and it's yours for free.", "proof": [{"num": "30K", "label": "gym owners read daily", "source": "https://twobrainbusiness.com/blog/"}], "ticker": ["Read by 30,000 gym owners every morning", "3,000+ gym owners helped since 2016", "9 books on running a gym", "Every mentor trains for 24 weeks"], "checks": [{"bold": "Stuck at one number", "text": "Find which of six numbers is holding you back.", "hand": "one number", "why": "Most gym owners have plenty of information and no clear order, so the first job is picking the one thing that matters now."}, {"bold": "Buying more leads", "text": "Fix the leak before you pay for more traffic.", "hand": "leaky gym", "why": "More leads in a leaky gym just means more people walking back out."}, {"bold": "Coaching priced cheap", "text": "Rebuild your On-Ramp so coaching sells at its worth.", "hand": "On-Ramp first", "why": "If personal training stays a small slice of the gym, the On-Ramp is usually where coaching starts to look cheap."}, {"bold": "Sales talks feel pushy", "text": "Sell like you coach, with one prescription.", "hand": "sell like a coach", "why": "The Prescriptive Selling Model makes a sales talk feel like coaching instead of pushing."}, {"bold": "Working 60-hour weeks", "text": "Leave with a 90-day plan and a mentor match.", "hand": "one hour a day", "why": "Owners who already work 60-hour weeks need one clear next step, then the next one."}], "days_intro": "Day 1 finds the number, Day 2 fixes how you price and sell coaching, and Day 3 turns it into a 90-day plan.", "fit_count": 4};</script>
+<script src="lp.js?v=d0b2fa2d"></script>
+<script>window.SITE = {
+ "event": "Build Your Gym Profit Plan",
+ "name": "Chris Cooper",
+ "brand": "Two-Brain Business",
+ "trusted_count": "30K",
+ "audience": "newsletter readers",
+ "monogram": "TBB",
+ "logo": "img/logo.svg",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for Two-Brain Business",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Build Your Gym Profit Plan for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Chris Cooper started Two-Brain Business on Feb. 13, 2016 and grew it into a one-on-one mentorship practice for gym owners, led by a worldwide team of certified mentors. He has written nine books, including Two-Brain Business and Millionaire Gym Owner, and still owns a gym.",
+ "role": "Founder, Two-Brain Business",
+ "days_intro": "Day 1 finds the number, Day 2 fixes how you price and sell coaching, and Day 3 turns it into a 90-day plan.",
+ "check_why": [
+  "Most gym owners have plenty of information and no clear order, so the first job is picking the one thing that matters now.",
+  "More leads in a leaky gym just means more people walking back out.",
+  "If personal training stays a small slice of the gym, the On-Ramp is usually where coaching starts to look cheap.",
+  "The Prescriptive Selling Model makes a sales talk feel like coaching instead of pushing.",
+  "Owners who already work 60-hour weeks need one clear next step, then the next one."
+ ],
+ "day_detail": [
+  "We put your gym on the six numbers behind gym profit: what you take home, how many members, what each one pays, how long they stay, what you earn per hour and what you spend. Then you pick the one holding the rest back.",
+  "We rebuild your On-Ramp as a coaching package, price it for what the coaching is worth, and write the first sales conversation so it feels like a prescription instead of a pitch.",
+  "Your number and your fix become three moves, one a month, each with a date. Then you book a free call to be matched with a Two-Brain mentor whose gym looks like yours."
+ ],
+ "day_bullets": [
+  [
+   "Fill in the six numbers behind gym profit",
+   "Spot the one that has stayed flat all year",
+   "Park the fixes that can wait"
+  ],
+  [
+   "Rebuild your On-Ramp as a coaching package",
+   "Price it for what the coaching is worth",
+   "Write your first sales talk as a prescription"
+  ],
+  [
+   "Turn your number into a 90-day target",
+   "Write three moves, one a month",
+   "Book a free call for your mentor match"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Marcus R.",
+  "role": "Two-Brain Business member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#111111"
+ },
+ "time_zone": "America/Toronto",
+ "keep_title": "Three days in, your gym has one number and a plan to move it.",
+ "keep": [
+  {
+   "kind": "table",
+   "name": "Gym report card",
+   "status": "Down to one",
+   "cols": [
+    "KPI",
+    "Now",
+    "Goal"
+   ],
+   "rows": [
+    [
+     "What you take home",
+     "$3.1K",
+     "$8.3K"
+    ],
+    [
+     "Members",
+     "118",
+     "140"
+    ],
+    [
+     "ARM, monthly",
+     "$146",
+     "$205"
+    ],
+    [
+     "Months they stay",
+     "11",
+     "14"
+    ]
+   ],
+   "flag": {
+    "row": 2
+   },
+   "foot": "Fix one number at a time",
+   "foot_tag": "5 parked"
+  },
+  {
+   "kind": "brief",
+   "name": "My On-Ramp",
+   "status": "Ready to sell",
+   "rows": [
+    {
+     "label": "First talk",
+     "text": "What made you book today?"
+    },
+    {
+     "label": "Prescribe",
+     "text": "3 private sessions, then groups"
+    },
+    {
+     "label": "Price",
+     "text": "$399 On-Ramp, then $219 a month",
+     "pull": true
+    },
+    {
+     "label": "Not yet",
+     "text": "Free trial class, 2-for-1 deals"
+    }
+   ],
+   "foot": "Sell like you coach",
+   "foot_tag": "2 parked"
+  },
+  {
+   "kind": "tracker",
+   "name": "90-day plan",
+   "status": "Month 1 of 3",
+   "who": "Move",
+   "cols": [
+    "Wk 2",
+    "Wk 4",
+    "Wk 8",
+    "Wk 12"
+   ],
+   "rows": [
+    {
+     "name": "On-Ramp at $399",
+     "marks": "rr",
+     "next": "Sell Week"
+    },
+    {
+     "name": "Move 20 to $219",
+     "marks": "rn",
+     "next": "ARM to $158"
+    },
+    {
+     "name": "Mentor match call",
+     "marks": "n",
+     "next": "Book Friday"
+    }
+   ],
+   "foot": "One clear next step at a time",
+   "foot_tag": "3 moves"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/MBt1qZHsmZc_maxres1.jpg",
+  "still_source": "https://www.youtube.com/watch?v=MBt1qZHsmZc (YouTube automatic still maxres1)",
+  "headline": [
+   "Want me to score your gym",
+   "before your 90 days start?"
+  ],
+  "mark": "score your gym",
+  "lede": "Your seat is saved for all three days. Before you go, there is one optional upgrade, **{price} once**. A fourth live day where I check your one number and your 90-day plan, a private VIP thread for the week, replays of all four days, and my six-number scorecard.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before you head to Day 1",
+  "video_len": "1:48",
+  "pass_kick": "Gym Profit Plan",
+  "pass_cells": [
+   "Day 4 live",
+   "Replays",
+   "VIP thread"
+  ],
+  "items": [
+   {
+    "bold": "Day 4, plan review with me.",
+    "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring your report card and the 90-day plan you built on Day 3."
+   },
+   {
+    "bold": "Private VIP thread.",
+    "text": "Opens {day1_date} and stays open until {close}. Send me your numbers between sessions."
+   },
+   {
+    "bold": "Replays to keep.",
+    "text": "All three days plus Day 4, so the Day 2 On-Ramp build is there when you reprice."
+   },
+   {
+    "bold": "My six-number scorecard.",
+    "text": "The one-page sheet from Day 1, to fill in again at the end of every month."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "138",
+  "why": "Day 3 ends with a 90-day plan built around one number, and the gap is that nobody checks whether it is the right number or the right first move before the owner spends a month on it. The loudest objection is working 60-hour weeks with no clear order, so Day 4 is Chris going over the report card and the plan live. Two-Brain publishes no free community count, so the direct line is a private VIP thread. His voice: one number, leaky gym, one clear next step. The extension asset is the Day 1 six-number scorecard, reused every month the way Two-Brain mentors review numbers monthly. The still is from a different video (MBt1qZHsmZc) than the VSL frame (0k6s2rHBUiM) and the sticky (e_FXJfn_YIA): Chris alone at his bookshelf with his own books and a yellow #CEO mug."
+ }
+};</script>
+<script src="site.js?v=b9f41593"></script>
+</body>
+</html>
