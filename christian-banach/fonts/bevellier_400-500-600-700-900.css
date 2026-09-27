@@ -1,0 +1,38 @@
+/* Bevellier */
+@font-face {
+  font-family: 'Bevellier';
+  src: url('files/9ef94127f34790ab.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bevellier';
+  src: url('files/4d61edfa207b5d37.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bevellier';
+  src: url('files/4d1e28d7a459a1f2.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bevellier';
+  src: url('files/dae995888f8d5fda.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bevellier';
+  src: url('files/f38017324704edb9.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+
