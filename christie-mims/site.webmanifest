@@ -1,0 +1,19 @@
+{
+  "name": "Coach Pony 3-day event",
+  "short_name": "Christie",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#CD2B71",
+  "background_color": "#F175A9",
+  "display": "standalone"
+}
