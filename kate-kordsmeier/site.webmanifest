@@ -1,0 +1,19 @@
+{
+  "name": "Success with Soul 3-day event",
+  "short_name": "Kate",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#9B6A61",
+  "background_color": "#F4F0EB",
+  "display": "standalone"
+}
