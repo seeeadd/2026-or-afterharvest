@@ -1,0 +1,31 @@
+/* Familjen Grotesk */
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('files/4f0b7bdc0ac20b5e.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('files/584d5b9bae76f500.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('files/4a049f57ac09b98c.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('files/d74eb0304889b662.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
