@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Book Your Next Premium Client | Flux Academy</title>
+<link rel="stylesheet" href="fonts/cabinet-grotesk_400-500-600-700.css">
+<link rel="stylesheet" href="fonts/switzer_400-500-600-700.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#1A1735; --ink:#F8F8F9; --accent:#5928E5; --accent-ink:#FFFFFF; --accent2:#ffd9d9; --accent-text:#7248E9; --head-acc:#7248E9; --ink-soft:#CCCBD2; --muted:#92909F; --hair:rgba(248,248,249,0.100); --hair-2:rgba(248,248,249,0.170); --accent-10:rgba(89,40,229,0.130); --accent-sh:rgba(89,40,229,0.550); --accent-sh2:rgba(89,40,229,0.280); --pat:#8B6CFF; --pat-op:0.24; --ghost:#8B6CFF; --ghost-op:0.294; --grain-img:url(grain-dark.png); --grain-op:.14; --grain-blend:overlay; --wall:radial-gradient(120% 90% at 18% 0%, rgba(67,30,172,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(178,152,152,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.07); --glass-brd:rgba(255,255,255,.12); --glass-hi:rgba(255,255,255,.10); --glass-solid:rgba(47,44,71,0.930); --card:rgba(255,255,255,.05); --card-brd:rgba(255,255,255,.08); --strip:rgba(255,255,255,.035); --well:rgba(255,255,255,.06); --field:rgba(0,0,0,.28); --av-ring:#3F3C55; --cap-bg:rgba(14,14,16,.58); --cap-ink:#FFFFFF; --cap-muted:rgba(255,255,255,.72); --sh1:0 1px 1px rgba(0,0,0,.35),0 24px 44px -22px rgba(0,0,0,.65),0 60px 90px -50px rgba(0,0,0,.7); --sh2:0 1px 1px rgba(0,0,0,.3),0 16px 32px -18px rgba(0,0,0,.6); --sh-dev:0 1px 1px rgba(0,0,0,.4),0 6px 14px -4px rgba(0,0,0,.45),0 30px 50px -20px rgba(0,0,0,.7),0 70px 100px -50px rgba(0,0,0,.7); --sh-dev-sm:0 1px 1px rgba(0,0,0,.35),0 18px 34px -18px rgba(0,0,0,.7); --contact:rgba(0,0,0,.62); --plate:radial-gradient(90% 70% at 50% 100%, rgba(89,40,229,0.340), transparent 70%), linear-gradient(180deg, #35334D, #15122A); --band:#24213E; --band-ink:#F1F1F3; --band-ink-70:rgba(241,241,243,0.700); --band-ink-50:rgba(241,241,243,0.500); --band-hair:rgba(241,241,243,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(89,40,229,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(255,217,217,0.100), transparent 70%); --ground-paint:radial-gradient(640px 540px at 96% 1%, rgba(89,40,229,0.220), transparent 70%),radial-gradient(560px 480px at 0% 15%, rgba(255,217,217,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(89,40,229,0.090), transparent 70%),radial-gradient(620px 520px at 0% 72%, rgba(89,40,229,0.070), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(255,217,217,0.070), transparent 70%),radial-gradient(520px 420px at 0% 0%, rgba(0,0,0,.35), transparent 70%),radial-gradient(560px 460px at 100% 100%, rgba(0,0,0,.35), transparent 70%), #1A1735; --display:"Cabinet Grotesk", Georgia, serif; --body:"Switzer", system-ui, sans-serif; --label:"Switzer", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:700; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=c6742cb3">
+<link rel="icon" href="favicon.ico?v=ccadd962" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=8cc48fd3">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=fbba1bbb">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=e21d3a6e">
+<link rel="manifest" href="site.webmanifest?v=52d75915">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "ran-segall", "name": "Ran Segall", "brand": "Flux Academy", "role": "Founder, Flux Academy", "event": "Book Your Next Premium Client", "headline": {"lines": ["Price one web", "package that", "clients want."], "accent_line": 1, "mark_word": "package"}, "stats": [{"num": "1.09M", "label": "YouTube subscribers", "source": "https://www.youtube.com/@FluxAcademy"}, {"num": "150K+", "label": "Newsletter designers", "source": "https://www.flux-academy.com/"}, {"num": "20", "label": "Years as a freelancer", "source": "https://www.flux-academy.com/courses/freelancing-for-web-designers"}, {"num": "2015", "label": "Started Flux on YouTube", "source": "https://www.flux-academy.com/courses/freelancing-for-web-designers"}], "days": [{"title": "Price one web|package that|clients want.", "outcome": "One packaged web design offer, scoped and priced as a project.", "detail": "We bundle what you already deliver into one package with clear edges and a project price you can say on a call.", "bullets": ["List what you already deliver on a site", "Bundle it into one package with a clear scope", "Set one project price you can say on a call"]}, {"title": "Find the clients|who pay for it.", "outcome": "A niche, a portfolio for it and ten real prospects.", "detail": "We pick the client your package fits, rework your portfolio for them and write to ten real businesses.", "bullets": ["Choose one niche you can serve well", "Rebuild the portfolio page around it", "Write outreach to ten real prospects"]}, {"title": "Write the proposal|that closes it.", "outcome": "A discovery call script and a proposal that sells the fix.", "detail": "We practise the discovery call and turn what the client needs fixed into a proposal with one price.", "bullets": ["Run a discovery call from a script", "Name the problem the client pays to fix", "Write the proposal with one price and scope"]}], "sources_line": "Figures: youtube.com, flux-academy.com", "style": {"pattern": "ui", "mark": "underline", "video_focus": "50% 30%", "headshot_focus": "50% 18%"}, "pattern": "grid", "mark": {"kind": "underline", "color": "#5928E5", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-82.8 675.8 613.0 519.4\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"84\" y=\"359.59375\" width=\"898\" height=\"394.171875\" fill=\"#333\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(-8 230 980)\"><path d=\"M-40 850 H470 V1150 H-40 Z\" stroke-width=\"8\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\"><\/path><path d=\"M-40 850 L215 1010 L470 850\" stroke-width=\"8\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\"><\/path>\n<path d=\"M430 790 m-70 0 a70 70 0 1 0 140 0 a70 70 0 1 0 -140 0\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"miter\"><\/path><path d=\"M398 792 l22 22 l40 -44\" stroke-width=\"9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\"><\/path><\/g><\/g><\/svg>", "w": 613.0, "h": 519.4, "sw": 9}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1747.4 -167.8 475.2 475.5\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"84\" y=\"359.59375\" width=\"898\" height=\"394.171875\" fill=\"#333\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g><path d=\"M1985 70 m-230 0 a230 230 0 1 0 460 0 a230 230 0 1 0 -460 0\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"miter\"><\/path><path d=\"M1985 70 m-190 0 a190 190 0 1 0 380 0 a190 190 0 1 0 -380 0\" stroke-width=\"4\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"miter\"><\/path>\n<path d=\"M1790 130 c30 -60 60 -90 70 -40 c8 40 -40 70 -30 20 c10 -50 70 -80 90 -30 c10 30 30 10 60 -20\" stroke-width=\"6\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><\/g><\/g><\/svg>", "w": 475.2, "h": 475.5, "sw": 7}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1352.0 893.0 666.9 342.2\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"84\" y=\"359.59375\" width=\"898\" height=\"394.171875\" fill=\"#333\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(4 1700 1000)\"><path d=\"M1380 930 H2000 V1200 H1380 Z\" stroke-width=\"7\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\"><\/path><path d=\"M1380 985 H2000\" stroke-width=\"6\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"miter\"><\/path>\n<path d=\"M1412 958 h1 M1442 958 h1 M1472 958 h1\" stroke-width=\"16\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><path d=\"M1430 1030 H1760 M1430 1070 H1680\" stroke-width=\"12\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><\/g><\/g><\/svg>", "w": 666.9, "h": 342.2, "sw": 16}], "pat_op": 0.178, "ghost_op": 0.218, "ghost_stroke": 4.5, "fonts": {"display": "Cabinet Grotesk", "display_weight": 700, "body": "Switzer", "label": "Switzer"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Ran", "event_core": "Book Your Next Premium Client", "lede": "**Learn what's actually working for freelance web designers in 2026.** Why so many of us undercharge, what makes a client pay a premium price, and your plan to book one. Free, live with me.", "proof": [{"num": "12,000+", "label": "students worldwide", "source": "https://www.flux-academy.com/"}], "ticker": ["1.09M subscribers on YouTube", "150K+ designers on the newsletter", "12,000+ students worldwide", "20 years as a freelance web designer"], "checks": [{"bold": "Quoting by the hour", "text": "Price the site as one project package.", "hand": "one package", "why": "Ran's course teaches project pricing and packaged pricing as the step up from charging for time."}, {"bold": "A scope with no edges", "text": "Write what the package covers and what it leaves out.", "hand": "scope it", "why": "Scope creep and revision overload get their own lessons in Ran's course, because they eat the profit of a fixed price."}, {"bold": "Clients from anywhere", "text": "Pick one niche and shape the portfolio for it.", "hand": "pick a niche", "why": "Choosing a niche and designing a portfolio for it come before getting consistent leads in his curriculum."}, {"bold": "Awkward sales calls", "text": "Run discovery with a script you can reuse.", "hand": "ask first", "why": "The discovery session is where the client says what they need, and it sets the price before any design starts."}, {"bold": "Proposals that list features", "text": "Build the proposal on what the client needs fixed.", "hand": "sell the fix", "why": "His course walks through real proposals and how to sell without being salesy."}], "days_intro": "Day 1 prices your offer, Day 2 finds the clients, Day 3 closes one.", "fit_count": 4};</script>
+<script src="lp.js?v=d0b2fa2d"></script>
+<script>window.SITE = {
+ "event": "Book Your Next Premium Client",
+ "name": "Ran Segall",
+ "brand": "Flux Academy",
+ "trusted_count": "1.09M",
+ "audience": "youtube subscribers",
+ "monogram": "FA",
+ "logo": "img/logo.svg",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for Flux Academy",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Book Your Next Premium Client for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Ran Segall has been a freelance web designer for 20 years, starting at big advertising and branding agencies and later serving tech startups, social enterprises and restaurateurs. Since 2015 he has shared what he learned on his YouTube channel, Flux, the foundation of Flux Academy.",
+ "role": "Founder, Flux Academy",
+ "days_intro": "Day 1 prices your offer, Day 2 finds the clients, Day 3 closes one.",
+ "check_why": [
+  "Ran's course teaches project pricing and packaged pricing as the step up from charging for time.",
+  "Scope creep and revision overload get their own lessons in Ran's course, because they eat the profit of a fixed price.",
+  "Choosing a niche and designing a portfolio for it come before getting consistent leads in his curriculum.",
+  "The discovery session is where the client says what they need, and it sets the price before any design starts.",
+  "His course walks through real proposals and how to sell without being salesy."
+ ],
+ "day_detail": [
+  "We bundle what you already deliver into one package with clear edges and a project price you can say on a call.",
+  "We pick the client your package fits, rework your portfolio for them and write to ten real businesses.",
+  "We practise the discovery call and turn what the client needs fixed into a proposal with one price."
+ ],
+ "day_bullets": [
+  [
+   "List what you already deliver on a site",
+   "Bundle it into one package with a clear scope",
+   "Set one project price you can say on a call"
+  ],
+  [
+   "Choose one niche you can serve well",
+   "Rebuild the portfolio page around it",
+   "Write outreach to ten real prospects"
+  ],
+  [
+   "Run a discovery call from a script",
+   "Name the problem the client pays to fix",
+   "Write the proposal with one price and scope"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Marcus R.",
+  "role": "Flux Academy member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#1A1735"
+ },
+ "keep_title": "Three days in, a premium client has a proposal to sign.",
+ "keep": [
+  {
+   "kind": "table",
+   "name": "Site package",
+   "status": "Priced as a project",
+   "cols": [
+    "Part",
+    "Days",
+    "Price"
+   ],
+   "rows": [
+    [
+     "Strategy session",
+     "1",
+     "$1,200"
+    ],
+    [
+     "Sitemap and wireframes",
+     "3",
+     "$2,400"
+    ],
+    [
+     "Design + build, 5 pages",
+     "8",
+     "$6,400"
+    ],
+    [
+     "Revisions, unlimited",
+     "open",
+     "$0"
+    ]
+   ],
+   "flag": {
+    "row": 3
+   },
+   "foot": "One package, one project price",
+   "foot_tag": "1 to scope"
+  },
+  {
+   "kind": "tracker",
+   "name": "Outreach list",
+   "status": "Week 1 of 2",
+   "who": "Prospect",
+   "cols": [
+    "Email",
+    "Reply",
+    "Call",
+    "Prop"
+   ],
+   "rows": [
+    {
+     "name": "Physio clinic, Leeds",
+     "marks": "srn",
+     "next": "Call Thursday"
+    },
+    {
+     "name": "Dental studio, Bristol",
+     "marks": "sn",
+     "next": "Nudge Monday"
+    },
+    {
+     "name": "Pilates studio, York",
+     "marks": "n",
+     "next": "First email"
+    }
+   ],
+   "foot": "Ten real prospects, one niche",
+   "foot_tag": "7 to write"
+  },
+  {
+   "kind": "brief",
+   "name": "Proposal",
+   "status": "Ready to send",
+   "rows": [
+    {
+     "label": "Client",
+     "text": "Physio clinic, Leeds"
+    },
+    {
+     "label": "Problem",
+     "text": "New patients cannot book online after 6pm",
+     "pull": true
+    },
+    {
+     "label": "Price",
+     "text": "$10,000, one project price"
+    },
+    {
+     "label": "Revisions",
+     "text": "Two rounds, then a new scope"
+    }
+   ],
+   "foot": "Sell the fix they asked for",
+   "foot_tag": "Send Friday"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/eiz7FwVSBNk_maxres3.jpg",
+  "still_source": "https://www.youtube.com/watch?v=eiz7FwVSBNk (YouTube automatic still maxres3; Ran alone at his desk, facing the lens, violet-lit brick wall)",
+  "headline": [
+   "Want me to read the proposal",
+   "before your client does?"
+  ],
+  "mark": "read the proposal",
+  "lede": "Your seat is saved for all three days. Before you go, there is one optional upgrade, **{price} once**. A fourth live day where I read the proposal you wrote on Day 3, a private VIP thread for the week, replays of all four days and my discovery call script.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before you head to Day 1",
+  "video_len": "1:48",
+  "pass_kick": "Proposal Review",
+  "pass_cells": [
+   "Day 4",
+   "VIP thread",
+   "Replays"
+  ],
+  "items": [
+   {
+    "bold": "Day 4, proposal review.",
+    "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring the proposal you wrote on Day 3 and the price in it."
+   },
+   {
+    "bold": "Private VIP thread.",
+    "text": "Opens {day1_date} and stays open until {close}. Send me the client's reply and we work out your answer."
+   },
+   {
+    "bold": "Replays to keep.",
+    "text": "All three days plus Day 4, so the Day 1 pricing walkthrough is there before your next quote."
+   },
+   {
+    "bold": "My discovery call script.",
+    "text": "The questions I ask on the Day 3 discovery call, on one page to keep beside you on your next call."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "146",
+  "why": "Day 3 ends with a written proposal for one real prospect, with one scope and one project price. The gap is that nobody who has priced real web projects reads it before the client does, and most designers undercharge or list features when they are alone with it. The loudest objection is proposals that list features instead of the fix the client is paying for, so Day 4 is Ran reading that proposal. His people gather in the private Flux Community (course page), so the direct line is a private VIP thread. His voice: project pricing, discovery session, sell without being salesy. The extension asset is his discovery call script, extending the Day 3 bullet 'Run a discovery call from a script'. Still: a different video (eiz7FwVSBNk) from the VSL frame (1oqGaBQs4k8) and the sticky (J72CAM7Jwlo), lit in the brand violet."
+ }
+};</script>
+<script src="site.js?v=b9f41593"></script>
+</body>
+</html>
