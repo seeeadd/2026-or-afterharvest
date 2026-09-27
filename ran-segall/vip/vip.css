@@ -275,4 +275,10 @@ img{display:block}
   .vcta{font-size:17px}
   .vtoast{left:12px;right:12px;bottom:12px}
 }
+@media (max-width:400px){
+  .vsteps{gap:5px;padding:5px 10px 5px 5px;max-width:100%}
+  .vwire{width:8px}
+  .vl{font-size:12px}
+}
+
 @media (prefers-reduced-motion:reduce){.vring,.vsteps .now .vn::after{animation:none}.vtrack i{transition:none}}
