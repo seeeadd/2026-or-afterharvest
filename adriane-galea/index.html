@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reverse Engineer Your Vision | Visionaries</title>
+<link rel="stylesheet" href="fonts/pally_400-500-600-700.css">
+<link rel="stylesheet" href="fonts/cabinet-grotesk_400-500-600-700-800.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#F5EFF7; --ink:#2C2C2C; --accent:#6D1493; --accent-ink:#FFFFFF; --accent2:#D1F503; --accent-text:#6D1493; --head-acc:#6D1493; --ink-soft:#545355; --muted:#686669; --hair:rgba(44,44,44,0.100); --hair-2:rgba(44,44,44,0.170); --accent-10:rgba(109,20,147,0.130); --accent-sh:rgba(109,20,147,0.550); --accent-sh2:rgba(109,20,147,0.280); --pat:#D1F602; --pat-op:0.36; --ghost:#D1F602; --ghost-op:0.36; --grain-img:url(grain-light.png); --grain-op:.10; --grain-blend:multiply; --wall:radial-gradient(120% 90% at 18% 0%, rgba(82,15,110,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(146,172,2,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.56); --glass-brd:rgba(255,255,255,.72); --glass-hi:rgba(255,255,255,.92); --glass-solid:rgba(253,251,253,0.940); --card:rgba(255,255,255,.62); --card-brd:rgba(44,44,44,0.060); --strip:rgba(255,255,255,.34); --well:rgba(44,44,44,0.050); --field:rgba(255,255,255,.72); --av-ring:#FEFDFE; --cap-bg:rgba(255,255,255,.74); --cap-ink:#2C2C2C; --cap-muted:#747474; --sh1:0 1px 1px rgba(29,29,29,.05),0 3px 8px -2px rgba(29,29,29,.07),0 22px 40px -22px rgba(29,29,29,.28),0 50px 90px -50px rgba(29,29,29,.30); --sh2:0 1px 1px rgba(29,29,29,.04),0 2px 6px -2px rgba(29,29,29,.06),0 14px 30px -18px rgba(29,29,29,.24); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(29,29,29,.22),0 26px 44px -18px rgba(29,29,29,.38),0 60px 90px -44px rgba(29,29,29,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(29,29,29,.36); --contact:rgba(29,29,29,.36); --plate:radial-gradient(90% 70% at 50% 100%, rgba(109,20,147,0.240), transparent 70%), linear-gradient(180deg, #FAF8FB, #E7D9ED); --band:#1A1A1A; --band-ink:#FAF8FB; --band-ink-70:rgba(250,248,251,0.700); --band-ink-50:rgba(250,248,251,0.500); --band-hair:rgba(250,248,251,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(109,20,147,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(209,245,3,0.100), transparent 70%); --ground-paint:radial-gradient(660px 540px at 96% 1%, rgba(209,245,3,0.220), transparent 70%),radial-gradient(560px 460px at 0% 14%, rgba(109,20,147,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(109,20,147,0.070), transparent 70%),radial-gradient(620px 520px at 0% 71%, rgba(209,245,3,0.100), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(109,20,147,0.080), transparent 70%),radial-gradient(460px 380px at 0% 0%, rgba(76,51,31,.08), transparent 70%),radial-gradient(520px 420px at 100% 100%, rgba(76,51,31,.09), transparent 70%), #F5EFF7; --display:"Pally", Georgia, serif; --body:"Cabinet Grotesk", system-ui, sans-serif; --label:"Cabinet Grotesk", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:700; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=c6742cb3">
+<link rel="icon" href="favicon.ico?v=4364ad9a" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=638bab0c">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=809d5f95">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=266b9aec">
+<link rel="manifest" href="site.webmanifest?v=e419c0f0">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "adriane-galea", "name": "Adriane Galea", "brand": "Visionaries", "role": "Founder, Visionaries", "event": "Reverse Engineer Your Vision", "headline": {"lines": ["Name the goal", "worth 12 months", "in three days."], "accent_line": 1, "mark_word": "12 months"}, "stats": [{"num": "30K", "label": "List built in 9 months", "source": "https://visionaries.co/visionmind-mastermind/"}, {"num": "4-6", "label": "Founders per peer pod", "source": "https://visionaries.co/visionmind-mastermind/"}, {"num": "Top 10%", "label": "Podcast worldwide", "source": "https://visionaries.co/visionmind-mastermind/"}, {"num": "2026", "label": "Visionary Live sold out", "source": "https://visionaries.co/live/"}], "days": [{"title": "Find the goal|your next 12|months serve.", "outcome": "Pick the one macro goal worth 12 months of focus and write it down.", "detail": "We put every goal competing for your year on the table, then test each one against the next 12 months. You finish with your Vision Anchor in one sentence and a short list of what waits.", "bullets": ["List every goal competing for this year", "Test each one against the next 12 months", "Write your Vision Anchor in one sentence"]}, {"title": "Diagnose this|quarter, pick|one project.", "outcome": "Score what is on fire, flagged or smooth, then pick one 90-day macro project.", "detail": "We run the operational diagnostic across your whole business, trace what is on fire back to your Vision Anchor, and choose the one macro project for the next 90 days.", "bullets": ["Score each area: on fire, flagged or smooth", "Trace each fire back to your Vision Anchor", "Choose one macro project for 90 days"]}, {"title": "Guard the plan|with a check-in|every month.", "outcome": "Set the monthly check-in and peer accountability that keep the plan on track.", "detail": "We write your first monthly check-in against the macro project, name what feels heavy and what feels light, and pair you with a founder who keeps you honest.", "bullets": ["Write your first monthly check-in", "Name what feels heavy and what feels light", "Pair with a founder for accountability"]}], "sources_line": "Figures: visionaries.co", "style": {"pattern": "dots", "mark": "underline", "video_focus": "45% 30%", "headshot_focus": "50% 22%"}, "pattern": "loops", "mark": {"kind": "swipe", "color": "#FC2899", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-214.0 731.9 937.9 680.3\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"84\" y=\"351\" width=\"898\" height=\"413.90625\" fill=\"#4a4a4a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M715.5 740.3 L-205.6 1115.5 Q-187.6 1304.7 -25.5 1403.8 Z\" stroke-width=\"8\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><\/g><\/svg>", "w": 937.9, "h": 680.3, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"559.4 793.7 54.4 54.4\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"84\" y=\"351\" width=\"898\" height=\"413.90625\" fill=\"#4a4a4a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M567 801.3 Q577.2 826.8 606.2 840.5\" stroke-width=\"7\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><\/g><\/svg>", "w": 54.4, "h": 54.4, "sw": 7}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"485.2 824.2 73.9 74.0\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"84\" y=\"351\" width=\"898\" height=\"413.90625\" fill=\"#4a4a4a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M492.8 831.8 Q508.1 870 551.5 890.6\" stroke-width=\"7\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><\/g><\/svg>", "w": 73.9, "h": 74.0, "sw": 7}], "pat_op": 0.171, "ghost_op": 0.22, "ghost_stroke": 4.5, "fonts": {"display": "Pally", "display_weight": 700, "body": "Cabinet Grotesk", "label": "Cabinet Grotesk"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Adriane", "event_core": "Reverse Engineer Your Vision", "lede": "**Learn what's actually keeping founders' biggest visions on track in 2026.** I'll walk through why so much good work never moves you toward what you most want to build, the five things that decide where your next 12 months go, and together we'll Reverse Engineer Your Vision. It's the same system I run inside Visionmind, and it's yours for free.", "proof": [{"num": "30K", "label": "email list in under 9 months", "source": "https://visionaries.co/visionmind-mastermind/"}], "ticker": ["A 30K person email list, grown in under 9 months", "Visionary Live sold out for 2026", "Visionmind peer pods of 4-6 founders", "A global top 10% podcast"], "checks": [{"bold": "Busy on the wrong work", "text": "Day 1 names the one goal worth your next 12 months.", "hand": "one anchor", "why": "Her Visionmind page says founders are great at the work and murky on which work moves them."}, {"bold": "Too many goals at once", "text": "One Vision Anchor gets written down, the rest get parked.", "hand": "north star", "why": "She calls the Vision Anchor the north star everything else is reverse engineered from."}, {"bold": "No idea what is urgent", "text": "The quarter diagnostic shows what is on fire at a glance.", "hand": "on fire, flagged", "why": "Her quarterly assessment sorts the business into on fire, flagged and smooth sailing."}, {"bold": "Plans spread too thin", "text": "You leave Day 2 with one macro project for 90 days.", "hand": "90 days", "why": "Out of every quarterly assessment comes one clear macro project for the next 90 days."}, {"bold": "Drifting off the plan", "text": "A monthly check-in catches a wrong turn early.", "hand": "stay on track", "why": "Her monthly check-in is the guardrail she used with her fractional COO clients."}], "days_intro": "Day 1 names the goal, Day 2 turns it into one 90-day project, and Day 3 sets the monthly check-in that keeps it on track.", "fit_count": 4};</script>
+<script src="lp.js?v=d0b2fa2d"></script>
+<script>window.SITE = {
+ "event": "Reverse Engineer Your Vision",
+ "name": "Adriane Galea",
+ "brand": "Visionaries",
+ "trusted_count": "30K",
+ "audience": "email subscribers",
+ "monogram": "V",
+ "logo": "img/logo.png",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for Visionaries",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Reverse Engineer Your Vision for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Adriane Galea founded Visionaries, a community, events and funding home for purpose-driven women founders, and runs Visionmind, its 12-month peer mastermind. Before that she spent years as a fractional COO and operations consultant, embedded inside businesses to work through scaling strategy.",
+ "role": "Founder, Visionaries",
+ "days_intro": "Day 1 names the goal, Day 2 turns it into one 90-day project, and Day 3 sets the monthly check-in that keeps it on track.",
+ "check_why": [
+  "Her Visionmind page says founders are great at the work and murky on which work moves them.",
+  "She calls the Vision Anchor the north star everything else is reverse engineered from.",
+  "Her quarterly assessment sorts the business into on fire, flagged and smooth sailing.",
+  "Out of every quarterly assessment comes one clear macro project for the next 90 days.",
+  "Her monthly check-in is the guardrail she used with her fractional COO clients."
+ ],
+ "day_detail": [
+  "We put every goal competing for your year on the table, then test each one against the next 12 months. You finish with your Vision Anchor in one sentence and a short list of what waits.",
+  "We run the operational diagnostic across your whole business, trace what is on fire back to your Vision Anchor, and choose the one macro project for the next 90 days.",
+  "We write your first monthly check-in against the macro project, name what feels heavy and what feels light, and pair you with a founder who keeps you honest."
+ ],
+ "day_bullets": [
+  [
+   "List every goal competing for this year",
+   "Test each one against the next 12 months",
+   "Write your Vision Anchor in one sentence"
+  ],
+  [
+   "Score each area: on fire, flagged or smooth",
+   "Trace each fire back to your Vision Anchor",
+   "Choose one macro project for 90 days"
+  ],
+  [
+   "Write your first monthly check-in",
+   "Name what feels heavy and what feels light",
+   "Pair with a founder for accountability"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Hannah R.",
+  "role": "Visionaries member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#2C2C2C"
+ },
+ "keep_title": "Three days in, your next 12 months have one anchor.",
+ "time_zone": "America/New_York",
+ "keep": [
+  {
+   "kind": "brief",
+   "name": "Vision Anchor",
+   "status": "Written down",
+   "rows": [
+    {
+     "label": "Anchor",
+     "text": "Fill 3 cohorts of my group program",
+     "pull": true
+    },
+    {
+     "label": "Why this",
+     "text": "Frees me from back-to-back 1:1 client weeks"
+    },
+    {
+     "label": "By",
+     "text": "Next October, 12 months out"
+    },
+    {
+     "label": "Parked",
+     "text": "Podcast relaunch, a second offer"
+    }
+   ],
+   "foot": "One goal worth 12 months",
+   "foot_tag": "2 parked"
+  },
+  {
+   "kind": "table",
+   "name": "Quarter diagnostic",
+   "status": "1 macro project",
+   "cols": [
+    "Area",
+    "State",
+    "Q4"
+   ],
+   "rows": [
+    [
+     "Cohort sales",
+     "On fire",
+     "Macro"
+    ],
+    [
+     "Client delivery",
+     "Flagged",
+     "Hold"
+    ],
+    [
+     "Hiring a VA",
+     "Flagged",
+     "Park"
+    ],
+    [
+     "Cash flow",
+     "Smooth",
+     "Keep"
+    ]
+   ],
+   "flag": {
+    "row": 0
+   },
+   "foot": "One macro project for 90 days",
+   "foot_tag": "2 flagged"
+  },
+  {
+   "kind": "tracker",
+   "name": "Monthly check-in",
+   "status": "Month 1 of 3",
+   "who": "Month",
+   "cols": [
+    "Sent",
+    "Read",
+    "Pod",
+    "Call"
+   ],
+   "rows": [
+    {
+     "name": "Oct, waitlist page up",
+     "marks": "rrr",
+     "next": "Heavy: sales"
+    },
+    {
+     "name": "Nov, 25 on waitlist",
+     "marks": "sn",
+     "next": "Pod on Fri"
+    },
+    {
+     "name": "Dec, open cohort 1",
+     "marks": "",
+     "next": "Send Dec 1"
+    }
+   ],
+   "foot": "Stay on track, month by month",
+   "foot_tag": "2 to send"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/Hwy6f-d8oIo_maxres2.jpg",
+  "still_source": "https://www.youtube.com/watch?v=Hwy6f-d8oIo (YouTube automatic still maxres2)",
+  "still_focus": "45% 34%",
+  "headline": [
+   "Want me to read your plan",
+   "and your first check-in?"
+  ],
+  "mark": "read your plan",
+  "lede": "Your seat is saved for all three days. Before you go, there is one optional upgrade, **{price} once**. A fourth live day where I read your Vision Anchor and first monthly check-in, a private VIP space on Circle, replays of all four days and my check-in questions.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before you head to Day 1",
+  "video_len": "1:48",
+  "pass_kick": "Vision Anchor VIP",
+  "pass_cells": [
+   "Day 4",
+   "VIP circle",
+   "Replays"
+  ],
+  "items": [
+   {
+    "bold": "Day 4, check-in read with me.",
+    "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring your Vision Anchor and the check-in you wrote on Day 3."
+   },
+   {
+    "bold": "Private VIP space on Circle.",
+    "text": "Opens {day1_date} and stays open until {close}. Ask me anything between sessions."
+   },
+   {
+    "bold": "Replays to keep.",
+    "text": "All three days plus Day 4, so the quarter diagnostic is there when your next quarter starts."
+   },
+   {
+    "bold": "My check-in questions.",
+    "text": "The monthly check-in from Day 3 on one page, so you can send it to yourself every month."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "146",
+  "why": "Day 3 ends with the attendee's first monthly check-in written against a 90-day macro project, and nobody reads it; in Visionmind Adriane reads every check-in before the call, so Day 4 is her reading theirs. The loudest objection is drifting off the plan. Her people gather in the Visionaries Community on Circle (no public member count), so the direct line is a private VIP space there. Her voice: Vision Anchor, on fire, flagged, smooth sailing, stay on track. The extension asset is the Day 3 check-in as one reusable page. The still is from Hwy6f-d8oIo, a different video from the VSL frame (_HT7MiiplX0) and the sticky still (RBxTWbHGWRk); her eyes are slightly off camera in it, the best solo frame among the stills."
+ }
+};</script>
+<script src="site.js?v=b9f41593"></script>
+</body>
+</html>

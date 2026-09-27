@@ -1,0 +1,24 @@
+/* Pally */
+@font-face {
+  font-family: 'Pally';
+  src: url('files/cbcf5d2dab96bf8a.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pally';
+  src: url('files/b15864d27285c41d.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pally';
+  src: url('files/65cb2cef324db54f.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
