@@ -1,0 +1,19 @@
+{
+  "name": "Expert Empires 3-day online event",
+  "short_name": "Nick",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#F42C78",
+  "background_color": "#06152D",
+  "display": "standalone"
+}
