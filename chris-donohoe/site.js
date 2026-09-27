@@ -207,7 +207,11 @@
      lead's own day titles, so no lead needs copy written by hand. */
   function ctaFor(title) {
     var t = String(title || '').split('|').join(' ').replace(/[.!?]+\s*$/, '').trim();
-    var w = t.split(/\s+/).slice(0, 3);
+    // up to 5 words, cut before the first connector from word 3 on: a flat 3-word cut left "spot the one",
+    // "see the whole" and "price one web" on the buttons (2026-09-27)
+    var w = t.split(/\s+/).slice(0, 5);
+    var conn = /^(before|after|like|and|to|for|with|so|that|into|of|on|in|by|from|without|until|while)$/i;
+    for (var ci = 2; ci < w.length; ci++) { if (conn.test(w[ci])) { w = w.slice(0, ci); break; } }
     var tail = /^(before|after|like|and|to|the|a|an|for|with|so|that|you|your|into|of|on|in)$/i;
     while (w.length > 2 && tail.test(w[w.length - 1])) w.pop();
     if (!w.length) return 'Hold my seat';
