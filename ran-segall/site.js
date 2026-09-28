@@ -84,7 +84,8 @@
       toNum(S.start_hour, 12), 0, 0);
     return new Date(guess - tzOffset(TZ, guess) * 6e4);
   })();
-  var END = new Date(START.getTime() + 2 * 864e5);
+  var WEBINAR = LP.format === 'webinar';          /* 1-day webinar lead: one session on START's day */
+  var END = new Date(START.getTime() + (WEBINAR ? 60 * 6e4 : 2 * 864e5));
 
   function dfmt(d, withWeekday) {
     var o = { day: 'numeric', month: 'short', timeZone: TZ };
@@ -1969,6 +1970,7 @@
     window.addEventListener('load', function () { setTimeout(layout, 50); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(layout, 30); });
     setTimeout(layout, 400);
+    if (WEBINAR && window.LP_webinarize) { window.LP_webinarize(document.body); setTimeout(layout, 20); }
     setTimeout(function () { background(); window.SITE_READY = { w: P.clientWidth, h: P.offsetHeight }; }, 900);
     var shown = false;
     function reveal() {

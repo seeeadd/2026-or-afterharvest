@@ -84,7 +84,8 @@
       toNum(S.start_hour, 12), 0, 0);
     return new Date(guess - tzOffset(TZ, guess) * 6e4);
   })();
-  var END = new Date(START.getTime() + 2 * 864e5);
+  var WEBINAR = LP.format === 'webinar';          /* 1-day webinar lead: one session on START's day */
+  var END = new Date(START.getTime() + (WEBINAR ? 60 * 6e4 : 2 * 864e5));
 
   function dfmt(d, withWeekday) {
     var o = { day: 'numeric', month: 'short', timeZone: TZ };
@@ -207,7 +208,11 @@
      lead's own day titles, so no lead needs copy written by hand. */
   function ctaFor(title) {
     var t = String(title || '').split('|').join(' ').replace(/[.!?]+\s*$/, '').trim();
-    var w = t.split(/\s+/).slice(0, 3);
+    // up to 5 words, cut before the first connector from word 3 on: a flat 3-word cut left "spot the one",
+    // "see the whole" and "price one web" on the buttons (2026-09-27)
+    var w = t.split(/\s+/).slice(0, 5);
+    var conn = /^(before|after|like|and|to|for|with|so|that|into|of|on|in|by|from|without|until|while)$/i;
+    for (var ci = 2; ci < w.length; ci++) { if (conn.test(w[ci])) { w = w.slice(0, ci); break; } }
     var tail = /^(before|after|like|and|to|the|a|an|for|with|so|that|you|your|into|of|on|in)$/i;
     while (w.length > 2 && tail.test(w[w.length - 1])) w.pop();
     if (!w.length) return 'Hold my seat';
@@ -1965,6 +1970,7 @@
     window.addEventListener('load', function () { setTimeout(layout, 50); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(layout, 30); });
     setTimeout(layout, 400);
+    if (WEBINAR && window.LP_webinarize) { window.LP_webinarize(document.body); setTimeout(layout, 20); }
     setTimeout(function () { background(); window.SITE_READY = { w: P.clientWidth, h: P.offsetHeight }; }, 900);
     var shown = false;
     function reveal() {

@@ -80,6 +80,33 @@
   $('footL').innerHTML = 'Proposed free 3-day live event for ' + esc(D.brand || D.name) + '. Not a live page.';
   $('footR').textContent = D.sources_line || '';
 
+  /* 1-day webinar leads (lead.json "event_format": "webinar", Sean 2026-09-28): one session, not three days. The
+     copy stays the lead's; every "3-day" / "Day N" phrase in the rendered page becomes its webinar form. site.js
+     calls this again after it adds its own sections. */
+  window.LP_webinarize = function (root) {
+    var R = [
+      [/Free 3-day live event/g, 'Free live webinar'], [/free 3-day live event/g, 'free live webinar'],
+      [/3-day live event/g, 'live webinar'], [/Free 3-day/g, 'Free live'], [/free 3-day/g, 'free live'],
+      [/Three live days/g, 'One live session'], [/three live days/g, 'one live session'],
+      [/Three days live/g, 'One live session'], [/three days live/g, 'one live session'],
+      [/Three days, and/g, 'One session, and'], [/The three days/g, 'The webinar'], [/the three days/g, 'the webinar'],
+      [/Three days/g, 'One session'], [/three days/g, 'one session'], [/3 days/g, 'one session'],
+      [/day by day/g, 'part by part'], [/Day by day/g, 'Part by part'],
+      [/\bDay([ \u00a0])(\d)/g, 'Part$1$2'], [/\bday([ \u00a0])(\d)/g, 'part$1$2'], [/\b3-day\b/g, 'live'], [/\b3-Day\b/g, 'Live'],
+      [/\bthree-day\b/g, 'live'], [/\bThree-day\b/g, 'Live'], [/\bmulti-day\b/g, 'live']
+    ];
+    var w = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT, null), n, t;
+    while ((n = w.nextNode())) {
+      if (n.parentNode && /^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) continue;
+      t = n.nodeValue;
+      if (t.trim() === 'Day') { n.nodeValue = t.replace('Day', 'Part'); continue; }
+      R.forEach(function (r) { t = t.replace(r[0], r[1]); });
+      if (t !== n.nodeValue) n.nodeValue = t;
+    }
+    if (document.title) document.title = document.title.replace(/3-day/gi, 'live');
+  };
+  if (D.format === 'webinar') window.LP_webinarize(P);
+
   /* ---------- images ---------- */
   $('video').src = D.img.video; $('video').style.objectPosition = D.style.video_focus || '50% 30%';
   $('slide').src = D.img.slide;
@@ -316,6 +343,7 @@
     [].forEach.call(document.querySelectorAll('.pfs'), function (el) { shrinkNowrap(el, $('pfx').clientWidth, 7.5); });
     shrinkNowrap($('meName'), 236 - 24 - 28, 12);
     if (P.offsetHeight > 2700) { P.classList.add('compact'); if (D.fit_count > 3) $('checks').innerHTML = checksHTML(3); }
+    if (D.format === 'webinar') window.LP_webinarize(P);   /* the compact checks are rendered again */
     if (P.offsetHeight > 2700) P.classList.add('compact2');
     background();
     var ptop = P.getBoundingClientRect().top, cut = $('band').getBoundingClientRect().top - ptop;

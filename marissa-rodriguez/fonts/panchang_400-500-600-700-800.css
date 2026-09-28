@@ -1,0 +1,38 @@
+/* Panchang */
+@font-face {
+  font-family: 'Panchang';
+  src: url('files/afdf14e91f272f4f.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang';
+  src: url('files/aff2c24db5de6fb4.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang';
+  src: url('files/5d6b7b2a243e5709.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang';
+  src: url('files/d56c7ad01adacd9a.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang';
+  src: url('files/58de8dad8f8eced7.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+
