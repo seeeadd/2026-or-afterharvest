@@ -1,5 +1,5 @@
 {
-  "name": "Andrea Bolder 3-day event",
+  "name": "Build Your AI Income Offer",
   "short_name": "Andrea",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#E09590",
-  "background_color": "#181819",
+  "theme_color": "#FBFF00",
+  "background_color": "#000000",
   "display": "standalone"
 }
