@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Book Your First AI Workshop | AI with Kyle</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5/700.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#F5F2FA; --ink:#0B0B0B; --accent:#5E18EB; --accent-ink:#FFFFFF; --accent2:#7c3aed; --accent-text:#5E18EB; --head-acc:#5E18EB; --ink-soft:#3A393B; --muted:#6D6C6F; --hair:rgba(11,11,11,0.100); --hair-2:rgba(11,11,11,0.170); --accent-10:rgba(94,24,235,0.130); --accent-sh:rgba(94,24,235,0.550); --accent-sh2:rgba(94,24,235,0.280); --pat:#5E18EB; --pat-op:0.193; --ghost:#5E18EB; --ghost-op:0.248; --grain-img:url(grain-light.png); --grain-op:.10; --grain-blend:multiply; --wall:radial-gradient(120% 90% at 18% 0%, rgba(70,18,176,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(87,41,166,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.56); --glass-brd:rgba(255,255,255,.72); --glass-hi:rgba(255,255,255,.92); --glass-solid:rgba(253,252,254,0.940); --card:rgba(255,255,255,.62); --card-brd:rgba(11,11,11,0.060); --strip:rgba(255,255,255,.34); --well:rgba(11,11,11,0.050); --field:rgba(255,255,255,.72); --av-ring:#FEFDFE; --cap-bg:rgba(255,255,255,.74); --cap-ink:#0B0B0B; --cap-muted:#717171; --sh1:0 1px 1px rgba(7,7,7,.05),0 3px 8px -2px rgba(7,7,7,.07),0 22px 40px -22px rgba(7,7,7,.28),0 50px 90px -50px rgba(7,7,7,.30); --sh2:0 1px 1px rgba(7,7,7,.04),0 2px 6px -2px rgba(7,7,7,.06),0 14px 30px -18px rgba(7,7,7,.24); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(7,7,7,.22),0 26px 44px -18px rgba(7,7,7,.38),0 60px 90px -44px rgba(7,7,7,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(7,7,7,.36); --contact:rgba(7,7,7,.36); --plate:radial-gradient(90% 70% at 50% 100%, rgba(94,24,235,0.240), transparent 70%), linear-gradient(180deg, #FAF9FD, #E6DCF8); --band:#0B0B0C; --band-ink:#FAF9FD; --band-ink-70:rgba(250,249,253,0.700); --band-ink-50:rgba(250,249,253,0.500); --band-hair:rgba(250,249,253,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(94,24,235,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(124,58,237,0.100), transparent 70%); --ground-paint:radial-gradient(660px 540px at 96% 1%, rgba(124,58,237,0.220), transparent 70%),radial-gradient(560px 460px at 0% 14%, rgba(94,24,235,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(94,24,235,0.070), transparent 70%),radial-gradient(620px 520px at 0% 71%, rgba(124,58,237,0.100), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(94,24,235,0.080), transparent 70%),radial-gradient(460px 380px at 0% 0%, rgba(59,34,14,.08), transparent 70%),radial-gradient(520px 420px at 100% 100%, rgba(59,34,14,.09), transparent 70%), #F5F2FA; --display:"Geist Sans", Georgia, serif; --body:"Geist Sans", system-ui, sans-serif; --label:"Geist Mono", ui-monospace, monospace; --lw:500; --ltr:.12em; --dw:800; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=b37cb128">
+<link rel="icon" href="favicon.ico?v=fc7ecea2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=32687d95">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=c5439cd6">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=b2314ad1">
+<link rel="manifest" href="site.webmanifest?v=f26b70e9">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "kyle-balmer", "name": "Kyle Balmer", "brand": "AI with Kyle", "role": "Founder, AI with Kyle", "event": "Book Your First AI Workshop", "headline": {"lines": ["Pick, build and", "pitch your first", "AI workshop."], "accent_line": 2, "mark_word": "AI workshop"}, "stats": [{"num": "50K+", "label": "Newsletter readers", "source": "https://newsletter.aiwithkyle.com/"}, {"num": "79.7K", "label": "YouTube subscribers", "source": "https://www.youtube.com/@iamkylebalmer"}, {"num": "40+", "label": "Guides on AI business", "source": "https://aiwithkyle.com/ai-workshop-kit"}, {"num": "400+", "label": "Audience in Las Vegas", "source": "https://aiwithkyle.com/ai-workshop-kit"}], "days": [{"title": "Pick the firm|that'll book|a workshop", "outcome": "Choose a sector and list the ten businesses in it most likely to book an AI workshop", "detail": "We pick one sector you already understand, list ten businesses in it, and choose the one firm you will pitch first. You finish with a name, a reason and a way in.", "bullets": ["Pick one sector you already know", "List ten firms most likely to book", "Choose the first firm and your way in"]}, {"title": "Build a real|1-hour AI|workshop today", "outcome": "Shape a 1-hour AI workshop for that sector from a field-tested framework", "detail": "We build a 1-hour session around that firm's real work, with hands-on exercises in place of a tool tour. By the end you have a run sheet you could deliver next week.", "bullets": ["Set the 1-hour run sheet", "Swap demos for hands-on exercises", "Rehearse the opening ten minutes"]}, {"title": "Price it and|pitch that|first client", "outcome": "Set your workshop price, write the pitch email and book your first discovery call", "detail": "We set a flat price for the session, write the pitch email to your first firm, and plan the discovery call that follows. You leave with an email ready to send.", "bullets": ["Set one flat price for the session", "Write the pitch email to your first firm", "Book the discovery call"]}], "sources_line": "Figures: newsletter.aiwithkyle.com, youtube.com, aiwithkyle.com", "style": {"pattern": "dots", "mark": "underline", "video_focus": "50% 30%", "headshot_focus": "50% 25%"}, "pattern": "grid", "mark": {"kind": "swipe", "color": "#5E18EB", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-82.1 810.4 642.1 384.0\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"84\" y=\"356.1875\" width=\"898\" height=\"402.84375\" fill=\"#666\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(-6 300 1000)\"><path d=\"M-60 860 Q-60 842 -42 842 H520 Q538 842 538 860 V1150 H-60 Z\" stroke-width=\"7\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><path d=\"M-24 878 H502 V1150\" stroke-width=\"5\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><circle cx=\"238\" cy=\"862\" r=\"5\" stroke-width=\"4\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/circle><\/g><\/g><\/svg>", "w": 642.1, "h": 384.0, "sw": 7}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1382.7 -289.0 407.5 568.0\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"84\" y=\"356.1875\" width=\"898\" height=\"402.84375\" fill=\"#666\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(18 1560 60)\"><rect x=\"1470\" y=\"-260\" width=\"190\" height=\"360\" rx=\"95\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/rect><path d=\"M1470 -120 H1660 M1470 -60 H1660 M1470 0 H1660\" stroke-width=\"5\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><path d=\"M1440 -20 V60 Q1440 150 1565 150 Q1690 150 1690 60 V-20\" stroke-width=\"7\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><path d=\"M1565 150 V240\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><\/g><\/g><\/svg>", "w": 407.5, "h": 568.0, "sw": 7}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1534.6 818.7 586.3 440.3\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"84\" y=\"356.1875\" width=\"898\" height=\"402.84375\" fill=\"#666\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(-10 1760 1000)\"><rect x=\"1560\" y=\"880\" width=\"520\" height=\"340\" rx=\"22\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/rect><path d=\"M1572 896 L1820 1070 L2068 896\" stroke-width=\"7\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><\/g><\/g><\/svg>", "w": 586.3, "h": 440.3, "sw": 7}], "pat_op": 0.193, "ghost_op": 0.248, "ghost_stroke": 4.5, "fonts": {"display": "Geist Sans", "display_weight": 800, "body": "Geist Sans", "label": "Geist Mono"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Kyle", "event_core": "Book Your First AI Workshop", "lede": "**Learn what's actually working for selling AI workshops to businesses in 2026.** I'll walk through why you don't need decades on stage to get paid to train, the five things that decide whether a business books you, and we'll line up your first AI workshop together. It's the same groundwork I hand licence holders inside the AI Workshop Kit, and it's yours for free.", "proof": [{"num": "180+", "label": "in one marketing department", "source": "https://aiwithkyle.com/ai-workshop-kit"}], "ticker": ["Live daily at 8am UK", "50,000+ readers of the AI with Kyle newsletter", "79.7K subscribers on YouTube", "40+ AI business guides published"], "checks": [{"bold": "No PhD in AI", "text": "Businesses need a guide one step ahead of their staff.", "hand": "one step ahead", "why": "His offer page promises paid training without a PhD in AI, and his own surveys found 25%+ of staff had never used ChatGPT."}, {"bold": "No idea who pays", "text": "Day 1 names ten firms in one sector to approach.", "hand": "ten firms", "why": "Picking one sector first is what turns a skill into a list of people to email."}, {"bold": "Building from scratch", "text": "Start from a 1-hour workshop shape that already works.", "hand": "one hour", "why": "His own workshop comes in 1, 1.5, 2 and 3 hour formats, and the 1-hour one is the easiest first sale."}, {"bold": "Never done marketing", "text": "Day 3 writes the pitch email you send on Monday.", "hand": "one email", "why": "He booked his own first trainings within a few emails."}, {"bold": "Scared to present", "text": "Rehearse your opening ten minutes before anyone pays.", "hand": "first ten minutes", "why": "He calls himself an introverted Brit who learned to speak in front of 150+ professionals."}], "days_intro": "Day 1 picks the firm, Day 2 builds the workshop, and Day 3 prices it and writes the pitch you send.", "fit_count": 4, "format": "3-day"};</script>
+<script src="lp.js?v=113601bc"></script>
+<script>window.SITE = {
+ "event": "Book Your First AI Workshop",
+ "name": "Kyle Balmer",
+ "brand": "AI with Kyle",
+ "trusted_count": "79.7K",
+ "audience": "youtube subscribers",
+ "monogram": "AK",
+ "logo": "img/logo.png",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for AI with Kyle",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Book Your First AI Workshop for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Kyle Balmer trains companies on AI through talks and workshops, from NGOs in India and Switzerland to large tech companies, and has spoken to 400+ people in Las Vegas. Through the AI Workshop Kit he licenses that workshop material to new AI trainers.",
+ "role": "Founder, AI with Kyle",
+ "days_intro": "Day 1 picks the firm, Day 2 builds the workshop, and Day 3 prices it and writes the pitch you send.",
+ "check_why": [
+  "His offer page promises paid training without a PhD in AI, and his own surveys found 25%+ of staff had never used ChatGPT.",
+  "Picking one sector first is what turns a skill into a list of people to email.",
+  "His own workshop comes in 1, 1.5, 2 and 3 hour formats, and the 1-hour one is the easiest first sale.",
+  "He booked his own first trainings within a few emails.",
+  "He calls himself an introverted Brit who learned to speak in front of 150+ professionals."
+ ],
+ "day_detail": [
+  "We pick one sector you already understand, list ten businesses in it, and choose the one firm you will pitch first. You finish with a name, a reason and a way in.",
+  "We build a 1-hour session around that firm's real work, with hands-on exercises in place of a tool tour. By the end you have a run sheet you could deliver next week.",
+  "We set a flat price for the session, write the pitch email to your first firm, and plan the discovery call that follows. You leave with an email ready to send."
+ ],
+ "day_bullets": [
+  [
+   "Pick one sector you already know",
+   "List ten firms most likely to book",
+   "Choose the first firm and your way in"
+  ],
+  [
+   "Set the 1-hour run sheet",
+   "Swap demos for hands-on exercises",
+   "Rehearse the opening ten minutes"
+  ],
+  [
+   "Set one flat price for the session",
+   "Write the pitch email to your first firm",
+   "Book the discovery call"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Marcus R.",
+  "role": "AI with Kyle member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#0B0B0B"
+ },
+ "time_zone": "Europe/London",
+ "keep_title": "Three days in, your first AI workshop has a buyer and a price.",
+ "keep": [
+  {
+   "kind": "brief",
+   "name": "First buyer",
+   "status": "Down to one firm",
+   "rows": [
+    {
+     "label": "Sector",
+     "text": "Accountancy firms, 20 to 60 staff"
+    },
+    {
+     "label": "First firm",
+     "text": "Harper Lowe, 40 staff",
+     "pull": true
+    },
+    {
+     "label": "Why them",
+     "text": "Partners want month-end done faster"
+    },
+    {
+     "label": "Way in",
+     "text": "Office manager, met at a local meetup"
+    },
+    {
+     "label": "Not yet",
+     "text": "Schools and charities, slower to sign"
+    }
+   ],
+   "foot": "Ten firms listed, one picked",
+   "foot_tag": "9 parked"
+  },
+  {
+   "kind": "table",
+   "name": "Run sheet",
+   "status": "Cut to 60 mins",
+   "cols": [
+    "Part",
+    "Task",
+    "Mins"
+   ],
+   "rows": [
+    [
+     "Why AI, why now",
+     "Hands up: used ChatGPT?",
+     "10"
+    ],
+    [
+     "Prompting basics",
+     "Rewrite a client email",
+     "20"
+    ],
+    [
+     "Tool tour",
+     "Watch me click through",
+     "25"
+    ],
+    [
+     "Your own workflow",
+     "Draft a month-end note",
+     "30"
+    ]
+   ],
+   "flag": {
+    "row": 2
+   },
+   "foot": "Every exercise uses their own work",
+   "foot_tag": "1 cut"
+  },
+  {
+   "kind": "brief",
+   "name": "Pitch email",
+   "status": "Ready to send",
+   "rows": [
+    {
+     "label": "To",
+     "text": "Office manager, Harper Lowe"
+    },
+    {
+     "label": "Subject",
+     "text": "An hour of AI for your month-end",
+     "pull": true
+    },
+    {
+     "label": "Offer",
+     "text": "60-minute hands-on session, 40 staff"
+    },
+    {
+     "label": "Fee",
+     "text": "$1,500 flat, one session"
+    },
+    {
+     "label": "Ask",
+     "text": "20-minute call next Tuesday"
+    }
+   ],
+   "foot": "Ready to send, one firm at a time",
+   "foot_tag": "Send Monday"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/G5f7JApgotE_maxres1.jpg",
+  "still_source": "https://www.youtube.com/watch?v=G5f7JApgotE (YouTube automatic still maxres1)",
+  "headline": [
+   "Want me to price and polish",
+   "your AI workshop pitch?"
+  ],
+  "mark": "price and polish",
+  "lede": "Your seat is saved for all three days. There is one optional upgrade, **{price} once**: a fourth live day where I go through your AI workshop pitch and price, a private VIP thread, replays of all four days and my field-tested discovery call questions.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before you head to Day 1",
+  "video_len": "1:45",
+  "pass_kick": "First Client VIP",
+  "pass_cells": [
+   "Day 4 live",
+   "VIP thread",
+   "Replays"
+  ],
+  "items": [
+   {
+    "bold": "Day 4, pitch review with me.",
+    "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring the pitch email and price you wrote on Day 3."
+   },
+   {
+    "bold": "Private VIP thread.",
+    "text": "Opens {day1_date} and stays open until {close}. Ask me anything before your discovery call."
+   },
+   {
+    "bold": "Replays to keep.",
+    "text": "All three days plus Day 4, so the Day 2 workshop build is there when a second firm says yes."
+   },
+   {
+    "bold": "My discovery call questions.",
+    "text": "The questions I ask a business before I quote a workshop, from Day 3, on one printable page."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "138",
+  "why": "Day 3 ends with a priced pitch email to one named firm and a discovery call to book. The gap is that nobody checks the price or the pitch before it reaches a real business, and a first-timer tends to underprice. The loudest objection is being scared to present to a room of staff. His people gather in the AI with Kyle community and his kit runs Circle and WhatsApp groups, so the VIP thread is a private thread. His voice: field tested, plug and play, getting people AI-ready. The extension asset is his discovery call questions, extending Day 3's book the discovery call."
+ }
+};</script>
+<script src="site.js?v=ed8338e7"></script>
+</body>
+</html>
