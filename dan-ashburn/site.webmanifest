@@ -1,5 +1,5 @@
 {
-  "name": "Titan Network 3-day event",
+  "name": "Titan Network 3-Day Event",
   "short_name": "Dan",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#DF0303",
-  "background_color": "#141414",
+  "theme_color": "#fab827",
+  "background_color": "#131313",
   "display": "standalone"
 }

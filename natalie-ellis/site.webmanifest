@@ -1,5 +1,5 @@
 {
-  "name": "Bossbabe 3-day event",
+  "name": "The Freedom Funnel Fix",
   "short_name": "Natalie",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#FC7E52",
-  "background_color": "#0E1B26",
+  "theme_color": "#fc7e52",
+  "background_color": "#1f372f",
   "display": "standalone"
 }

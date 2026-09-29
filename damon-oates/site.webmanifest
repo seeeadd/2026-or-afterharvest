@@ -1,5 +1,5 @@
 {
-  "name": "Build Your Year of Campaigns",
+  "name": "Your 3-Day Event",
   "short_name": "Damon",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#A62646",
-  "background_color": "#0D1B35",
+  "theme_color": "#C9973A",
+  "background_color": "#F3EDE3",
   "display": "standalone"
 }
