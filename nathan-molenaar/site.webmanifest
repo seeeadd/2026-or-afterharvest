@@ -1,0 +1,19 @@
+{
+  "name": "Sketch A Client-Ready Design",
+  "short_name": "Nathan",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#e84a49",
+  "background_color": "#0f0f0f",
+  "display": "standalone"
+}
