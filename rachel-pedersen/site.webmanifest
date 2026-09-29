@@ -1,5 +1,5 @@
 {
-  "name": "Rachel Pedersen 3-day event",
+  "name": "Rachel Pedersen's 3-day event",
   "short_name": "Rachel",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#F9368D",
-  "background_color": "#FF99B2",
+  "theme_color": "#f9368d",
+  "background_color": "#f9368d",
   "display": "standalone"
 }

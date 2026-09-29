@@ -1,5 +1,5 @@
 {
-  "name": "Launch Your AI Side Business",
+  "name": "Your 3-Day Event",
   "short_name": "Chris",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#E80017",
-  "background_color": "#FFFFFF",
+  "theme_color": "#e70013",
+  "background_color": "#fdeef0",
   "display": "standalone"
 }

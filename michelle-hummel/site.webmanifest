@@ -1,5 +1,5 @@
 {
-  "name": "Your 3-day event",
+  "name": "Franchise growth webinar",
   "short_name": "Michelle",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#8B1E23",
-  "background_color": "#FDFCFB",
+  "theme_color": "#8b1e23",
+  "background_color": "#8b1e23",
   "display": "standalone"
 }

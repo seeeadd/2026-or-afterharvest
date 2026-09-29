@@ -1,5 +1,5 @@
 {
-  "name": "Build Your Dream Client Pipeline",
+  "name": "Power Positioning Live Workshop",
   "short_name": "Ahmad",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#CE3223",
-  "background_color": "#010530",
+  "theme_color": "#ce3223",
+  "background_color": "#FFFFFF",
   "display": "standalone"
 }
