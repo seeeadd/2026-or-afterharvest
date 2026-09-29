@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Launch Your Signature Offer | The Bravo Life</title>
+<link rel="stylesheet" href="fonts/zodiak_400-500-600-700-800.css">
+<link rel="stylesheet" href="fonts/general-sans_400-500-600-700-800.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#FAF3F1; --ink:#332C2C; --accent:#4B1D21; --accent-ink:#FFFFFF; --accent2:#e9e7f8; --accent-text:#4B1D21; --head-acc:#4B1D21; --ink-soft:#5B5453; --muted:#6F6867; --hair:rgba(51,44,44,0.100); --hair-2:rgba(51,44,44,0.170); --accent-10:rgba(75,29,33,0.130); --accent-sh:rgba(75,29,33,0.550); --accent-sh2:rgba(75,29,33,0.280); --pat:#4B1D21; --pat-op:0.36; --ghost:#4B1D21; --ghost-op:0.36; --grain-img:url(grain-light.png); --grain-op:.10; --grain-blend:multiply; --wall:radial-gradient(120% 90% at 18% 0%, rgba(56,22,25,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(163,162,174,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.56); --glass-brd:rgba(255,255,255,.72); --glass-hi:rgba(255,255,255,.92); --glass-solid:rgba(254,252,252,0.940); --card:rgba(255,255,255,.62); --card-brd:rgba(51,44,44,0.060); --strip:rgba(255,255,255,.34); --well:rgba(51,44,44,0.050); --field:rgba(255,255,255,.72); --av-ring:#FEFDFD; --cap-bg:rgba(255,255,255,.74); --cap-ink:#332C2C; --cap-muted:#787474; --sh1:0 1px 1px rgba(33,29,29,.05),0 3px 8px -2px rgba(33,29,29,.07),0 22px 40px -22px rgba(33,29,29,.28),0 50px 90px -50px rgba(33,29,29,.30); --sh2:0 1px 1px rgba(33,29,29,.04),0 2px 6px -2px rgba(33,29,29,.06),0 14px 30px -18px rgba(33,29,29,.24); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(33,29,29,.22),0 26px 44px -18px rgba(33,29,29,.38),0 60px 90px -44px rgba(33,29,29,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(33,29,29,.36); --contact:rgba(33,29,29,.36); --plate:radial-gradient(90% 70% at 50% 100%, rgba(75,29,33,0.240), transparent 70%), linear-gradient(180deg, #FDFAF9, #E8DEDC); --band:#1D1A1A; --band-ink:#FDFAF9; --band-ink-70:rgba(253,250,249,0.700); --band-ink-50:rgba(253,250,249,0.500); --band-hair:rgba(253,250,249,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(75,29,33,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(233,231,248,0.100), transparent 70%); --ground-paint:radial-gradient(660px 540px at 96% 1%, rgba(233,231,248,0.220), transparent 70%),radial-gradient(560px 460px at 0% 14%, rgba(75,29,33,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(75,29,33,0.070), transparent 70%),radial-gradient(620px 520px at 0% 71%, rgba(233,231,248,0.100), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(75,29,33,0.080), transparent 70%),radial-gradient(460px 380px at 0% 0%, rgba(79,51,31,.08), transparent 70%),radial-gradient(520px 420px at 100% 100%, rgba(79,51,31,.09), transparent 70%), #FAF3F1; --display:"Zodiak", Georgia, serif; --body:"General Sans", system-ui, sans-serif; --label:"General Sans", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:800; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=b37cb128">
+<link rel="icon" href="favicon.ico?v=9b8b4c9d" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=b0e75ec3">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=173e9dd2">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=4840aca6">
+<link rel="manifest" href="site.webmanifest?v=3afb2128">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "natanya-bravo", "name": "Natanya Bravo", "brand": "The Bravo Life", "role": "Founder, The Bravo Life", "event": "Launch Your Signature Offer", "headline": {"lines": ["Turn your gift", "into a paying", "signature offer."], "accent_line": 2, "mark_word": "signature offer"}, "stats": [{"num": "59.6K", "label": "YouTube subscribers", "source": "https://www.youtube.com/@NatanyaTheBravoLife"}, {"num": "1,000+", "label": "Clarity to Launch grads", "source": "https://www.natanyabravo.com/clarity-to-launch-academy"}, {"num": "70,000+", "label": "Global community", "source": "https://www.natanyabravo.com/about"}, {"num": "30,000+", "label": "Used her free class", "source": "https://www.natanyabravo.com/"}], "days": [{"title": "Pick a niche|clients pay|you to serve.", "outcome": "One niche, and the problem those clients already pay to solve.", "detail": "We run the sweet spot method together: what you are good at, what you love, what people need and what they already pay for. You leave with one niche chosen and the rest parked.", "bullets": ["Lay out your sweet spot in four parts", "Name one niche and the problem they pay to solve", "Park the niches you are not choosing yet"]}, {"title": "Build one|signature offer", "outcome": "One signature offer, priced for profit, so free sessions stop.", "detail": "We shape one signature offer around that problem, then price it for profit. By the end you can say what it is, who it is for and what it costs.", "bullets": ["Shape one offer around one result", "Price it for profit", "Say the offer in one sentence"]}, {"title": "Plan a launch|for paid clients", "outcome": "The message and launch plan for your first clients.", "detail": "We write the message your niche hears first and plan a launch window you can keep. You close with the first people you will invite, then the Academy opens.", "bullets": ["Write the message your niche hears first", "Plan a launch window you can keep", "List the first ten people you will invite"]}], "sources_line": "Figures: youtube.com, natanyabravo.com", "style": {"pattern": "dots", "mark": "underline", "video_focus": "72% 38%", "headshot_focus": "45% 22%"}, "pattern": "dots", "mark": {"kind": "swipe", "color": "#F46A3C", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-276.1 -297.9 506.1 436.0\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"83\" y=\"273.1875\" width=\"898\" height=\"567.796875\" fill=\"#303030\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(-60 -80)\"><path d=\"M212.2 0.0 Q212.2 0.0 209.9 16.4 Q207.6 32.9 203.8 48.9 Q200.0 65.0 192.6 79.7 Q185.2 94.4 178.0 109.2 Q170.7 124.1 158.6 135.3 Q146.5 146.5 134.9 158.2 Q123.3 169.8 109.6 179.0 Q95.9 188.2 80.5 194.2 Q65.0 200.1 49.0 204.1 Q33.0 208.1 16.5 209.3 Q0.0 210.6 -16.2 207.7 Q-32.4 204.9 -49.3 204.1 Q-66.1 203.4 -81.1 195.9 Q-96.0 188.5 -110.3 180.0 Q-124.5 171.4 -137.9 161.3 Q-151.2 151.2 -160.4 137.2 Q-169.6 123.2 -177.7 108.9 Q-185.9 94.7 -192.0 79.5 Q-198.2 64.4 -202.0 48.5 Q-205.9 32.6 -207.1 16.3 Q-208.3 0.0 -207.1 -16.3 Q-205.9 -32.6 -201.6 -48.4 Q-197.4 -64.1 -192.2 -79.7 Q-187.0 -95.3 -177.7 -108.8 Q-168.5 -122.4 -158.1 -135.1 Q-147.7 -147.7 -136.0 -159.4 Q-124.2 -171.0 -109.4 -178.4 Q-94.6 -185.7 -80.2 -194.2 Q-65.8 -202.6 -49.5 -206.3 Q-33.2 -209.9 -16.6 -209.2 Q-0.0 -208.6 16.6 -209.4 Q33.3 -210.2 48.7 -203.7 Q64.1 -197.1 78.9 -190.6 Q93.8 -184.1 109.8 -178.7 Q125.9 -173.3 135.8 -159.5 Q145.7 -145.7 156.1 -133.4 Q166.5 -121.0 178.2 -108.9 Q189.9 -96.7 192.8 -80.2 Q195.7 -63.6 202.2 -48.3 Q208.7 -33.1 209.6 -16.5 L210.5 -0.0 Z\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><path d=\"M168.1 0.0 Q168.1 0.0 167.2 13.2 Q166.2 26.3 165.4 39.9 Q164.7 53.5 157.8 65.2 Q150.8 76.8 143.5 87.9 Q136.1 98.9 128.0 109.4 Q119.9 119.9 110.4 129.4 Q100.9 138.8 88.7 144.5 Q76.5 150.2 64.1 154.6 Q51.7 159.0 39.3 164.4 Q26.9 169.9 13.5 168.6 Q0.0 167.3 -13.1 166.1 Q-26.1 164.9 -38.8 161.7 Q-51.5 158.5 -65.1 156.5 Q-78.7 154.5 -89.2 145.8 Q-99.7 137.2 -110.5 129.3 Q-121.3 121.3 -129.6 110.8 Q-137.9 100.2 -146.1 89.4 Q-154.3 78.6 -157.5 65.4 Q-160.7 52.2 -163.8 39.3 Q-166.9 26.4 -169.1 13.2 Q-171.2 0.0 -167.9 -13.0 Q-164.6 -26.1 -162.7 -39.2 Q-160.8 -52.2 -156.9 -65.1 Q-153.0 -78.0 -145.5 -89.1 Q-137.9 -100.2 -129.0 -110.2 Q-120.2 -120.2 -110.9 -130.0 Q-101.7 -139.9 -89.3 -145.5 Q-77.0 -151.1 -65.0 -157.1 Q-53.0 -163.2 -39.7 -165.2 Q-26.5 -167.2 -13.2 -167.2 Q-0.0 -167.2 13.2 -167.2 Q26.5 -167.2 39.2 -163.5 Q51.9 -159.8 63.8 -154.2 Q75.7 -148.6 87.4 -142.5 Q99.1 -136.4 108.7 -127.4 Q118.4 -118.4 127.9 -109.1 Q137.3 -99.7 145.1 -88.8 Q152.9 -77.9 158.1 -65.5 Q163.3 -53.1 166.9 -40.0 Q170.5 -27.0 169.6 -13.5 L168.8 -0.0 Z\" stroke-width=\"6\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><path d=\"M190 -40 C300 -60 320 120 200 130\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><\/g><\/g><\/svg>", "w": 506.1, "h": 436.0, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1394.6 751.0 872.4 398.6\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"83\" y=\"273.1875\" width=\"898\" height=\"567.796875\" fill=\"#303030\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(1500 1000) rotate(-18)\"><rect x=\"0\" y=\"0\" width=\"560\" height=\"110\" rx=\"30\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/rect><rect x=\"560\" y=\"-6\" width=\"200\" height=\"122\" rx=\"36\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/rect><path d=\"M0 22 L-80 40 L-100 55 L-80 70 L0 88\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><\/g><\/g><\/svg>", "w": 872.4, "h": 398.6, "sw": 8}], "pat_op": 0.196, "ghost_op": 0.252, "ghost_stroke": 4.5, "fonts": {"display": "Zodiak", "display_weight": 800, "body": "General Sans", "label": "General Sans"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Natanya", "event_core": "Launch Your Signature Offer", "lede": "**Learn what's actually working for launching a coaching business in 2026.** I'll walk through why new coaches keep reworking their niche, the five things that decide whether a client pays you, and we'll build your signature offer and launch plan together. It's the groundwork I teach inside Clarity to Launch Academy, yours for free.", "proof": [{"num": "1,000+", "label": "Clarity to Launch grads", "source": "https://www.natanyabravo.com/clarity-to-launch-academy"}], "ticker": ["1,000+ Clarity to Launch grads", "59.6K subscribers on YouTube", "A global community of over 70,000", "30,000+ have used her free class"], "checks": [{"bold": "Reworking your niche", "text": "Pick one niche with the sweet spot method.", "hand": "sweet spot", "why": "Her Academy page opens on people who have been reworking their niche for months."}, {"bold": "Coaching for free", "text": "Price one offer for profit on Day 2.", "hand": "price for profit", "why": "Undercharging and coaching for free is the before in her own client stories."}, {"bold": "Too many ideas", "text": "Package one service into a signature offer.", "hand": "one signature offer", "why": "She teaches one signature offer built around one problem people already pay to solve."}, {"bold": "Swirling in uncertainty", "text": "End each day with one decision, written down.", "hand": "out of the swirl", "why": "Her Academy is for people ready to stop swirling in uncertainty."}, {"bold": "No launch plan", "text": "Map a launch without hustle or hype.", "hand": "no hustle, no hype", "why": "Her promise is a launch plan that does not need hustle or hype."}], "days_intro": "Day 1 picks the niche, Day 2 builds the offer, and Day 3 plans the launch.", "fit_count": 4, "format": "3-day"};</script>
+<script src="lp.js?v=113601bc"></script>
+<script>window.SITE = {
+ "event": "Launch Your Signature Offer",
+ "name": "Natanya Bravo",
+ "brand": "The Bravo Life",
+ "trusted_count": "70,000+",
+ "audience": "global community",
+ "monogram": "BL",
+ "logo": "img/logo.png",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for The Bravo Life",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Launch Your Signature Offer for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Natanya Bravo is a coach, speaker and the founder of The Bravo Life. She led global brand marketing for Coca-Cola, BMW and Adidas, then moved to Paris and built programs, retreats and coaching for a community of over 70,000.",
+ "role": "Founder, The Bravo Life",
+ "days_intro": "Day 1 picks the niche, Day 2 builds the offer, and Day 3 plans the launch.",
+ "check_why": [
+  "Her Academy page opens on people who have been reworking their niche for months.",
+  "Undercharging and coaching for free is the before in her own client stories.",
+  "She teaches one signature offer built around one problem people already pay to solve.",
+  "Her Academy is for people ready to stop swirling in uncertainty.",
+  "Her promise is a launch plan that does not need hustle or hype."
+ ],
+ "day_detail": [
+  "We run the sweet spot method together: what you are good at, what you love, what people need and what they already pay for. You leave with one niche chosen and the rest parked.",
+  "We shape one signature offer around that problem, then price it for profit. By the end you can say what it is, who it is for and what it costs.",
+  "We write the message your niche hears first and plan a launch window you can keep. You close with the first people you will invite, then the Academy opens."
+ ],
+ "day_bullets": [
+  [
+   "Lay out your sweet spot in four parts",
+   "Name one niche and the problem they pay to solve",
+   "Park the niches you are not choosing yet"
+  ],
+  [
+   "Shape one offer around one result",
+   "Price it for profit",
+   "Say the offer in one sentence"
+  ],
+  [
+   "Write the message your niche hears first",
+   "Plan a launch window you can keep",
+   "List the first ten people you will invite"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Hannah R.",
+  "role": "The Bravo Life member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "10px",
+  "r_md": "7px",
+  "r_sm": "5px",
+  "btn_r": "6px",
+  "btn_off": "3px",
+  "brd": "0.14",
+  "lift": "0 14px 30px -26px rgba(28,20,12,.5)",
+  "face": "handmade",
+  "night": "#332C2C"
+ },
+ "keep_title": "Three days in, your gift has a name, a price and a first launch.",
+ "time_zone": "America/Los_Angeles",
+ "keep": [
+  {
+   "kind": "brief",
+   "name": "My sweet spot",
+   "status": "Down to one niche",
+   "rows": [
+    {
+     "label": "Good at",
+     "text": "12 years of salary talks in HR"
+    },
+    {
+     "label": "Love",
+     "text": "Watching a woman ask for more"
+    },
+    {
+     "label": "They pay for",
+     "text": "A raise before review season",
+     "pull": true
+    },
+    {
+     "label": "Not yet",
+     "text": "Resume rewrites, 14 free coffee chats"
+    }
+   ],
+   "foot": "Serve the people already paying",
+   "foot_tag": "3 parked"
+  },
+  {
+   "kind": "table",
+   "name": "The Raise Plan",
+   "status": "Priced at $1,200",
+   "cols": [
+    "Part",
+    "Hrs",
+    "Price"
+   ],
+   "rows": [
+    [
+     "6 coaching calls",
+     "6",
+     "$900"
+    ],
+    [
+     "Raise script edits",
+     "2",
+     "$200"
+    ],
+    [
+     "Offer letter review",
+     "1",
+     "$100"
+    ],
+    [
+     "14 coffee chats",
+     "14",
+     "$0"
+    ]
+   ],
+   "flag": {
+    "row": 3
+   },
+   "foot": "Price it for profit",
+   "foot_tag": "$1,200 each"
+  },
+  {
+   "kind": "tracker",
+   "name": "First ten invites",
+   "status": "Week 1 of 3",
+   "who": "Invite",
+   "cols": [
+    "Msg",
+    "Reply",
+    "Call",
+    "Paid"
+   ],
+   "rows": [
+    {
+     "name": "Former teammate, sales",
+     "marks": "srrn",
+     "next": "Call Thursday"
+    },
+    {
+     "name": "Coffee chat, March",
+     "marks": "srn",
+     "next": "Book a call"
+    },
+    {
+     "name": "Sister's manager",
+     "marks": "sn",
+     "next": "Follow up"
+    },
+    {
+     "name": "LinkedIn post replies",
+     "marks": "n",
+     "next": "Send Monday"
+    }
+   ],
+   "foot": "No hustle, no hype",
+   "foot_tag": "6 to go"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/PDP9JyeD5bM_maxres1.jpg",
+  "still_source": "https://www.youtube.com/watch?v=PDP9JyeD5bM (YouTube automatic still maxres1; alone, eyes to camera, red top)",
+  "still_focus": "50% 30%",
+  "headline": [
+   "Want me to read your offer",
+   "before your first invite?"
+  ],
+  "mark": "read your offer",
+  "lede": "Your seat is saved for all three days. There is one optional upgrade, **{price} once**. A fourth live day where I read your signature offer and first invite before you send it, a private VIP thread for the week, replays of all four days and my invite script.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before you head to Day 1",
+  "video_len": "1:48",
+  "pass_kick": "Signature Offer",
+  "pass_cells": [
+   "Day 4 live",
+   "VIP thread",
+   "Replays"
+  ],
+  "items": [
+   {
+    "bold": "Day 4, offer review with me.",
+    "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring your signature offer and the invite you wrote on Day 3."
+   },
+   {
+    "bold": "Private VIP thread.",
+    "text": "Opens {day1_date} and stays open until {close}. Bring me anything that pulls you back into the swirl."
+   },
+   {
+    "bold": "Replays to keep.",
+    "text": "All three days plus Day 4, so the sweet spot method is there when the next niche idea shows up."
+   },
+   {
+    "bold": "My first-client invite script.",
+    "text": "The exact message I'd send your first ten people after Day 3, on one page you can copy."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "138",
+  "why": "Day 3 ends with a written launch message and a list of the first ten people to invite, and the gap is that nobody reads the offer and the invite before they reach a real person who might pay. The loudest objection is coaching for free, so Day 4 is Natanya reading the offer and the invite. No member count is published for her Clarity to Launch community, so the direct line is a plain private VIP thread. Her voice: sweet spot, signature offer, swirl, hustle or hype. The invite script extends the Day 3 invite list and the tracker card."
+ }
+};</script>
+<script src="site.js?v=ed8338e7"></script>
+</body>
+</html>

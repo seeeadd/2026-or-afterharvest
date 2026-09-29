@@ -1,0 +1,31 @@
+/* Recia */
+@font-face {
+  font-family: 'Recia';
+  src: url('files/5225b2ebabe68f46.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Recia';
+  src: url('files/b212632f925f79bb.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Recia';
+  src: url('files/15c368cf58df4c6b.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Recia';
+  src: url('files/260157ae7ec2498f.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+

@@ -1,0 +1,31 @@
+/* Erode */
+@font-face {
+  font-family: 'Erode';
+  src: url('files/d2a1a4daf9c0f230.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Erode';
+  src: url('files/7c35dd56de42f752.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Erode';
+  src: url('files/506f0f78496394f5.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Erode';
+  src: url('files/cfd654d650d51dd9.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
