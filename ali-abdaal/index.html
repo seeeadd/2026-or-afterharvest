@@ -11,18 +11,19 @@
      sheet of every Fontshare serif/sans against crops of aliabdaal.com: headings Young Serif (OFL 1.1, self-hosted in fonts/ with its
      licence; closest free Recoleta match: heavy, soft brackets, low contrast), body Cabinet Grotesk 400 (Fontshare,
      ITF Free Font License; Elza's narrow tight proportions).
-     Hand notes: Kalam. -->
+     Hand notes: Gochi Hand (OFL 1.1, self-hosted, licence in fonts/), picked against the Superfocus annotation crops. -->
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link rel="preload" href="fonts/young-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap">
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=kalam@400,700&display=swap">
+<link rel="preload" href="fonts/gochi-hand-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <style>
+@font-face{font-family:"Gochi Hand";src:url(fonts/gochi-hand-400.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"Young Serif";src:url(fonts/young-serif-400.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
 .serif,.logo,.book h3,.book .d,.tstrip .award b,.node b,.stat b,.sticker b,.evcard .cal b{font-variant-numeric:lining-nums}
 :root{
@@ -48,7 +49,7 @@
   --line:rgba(27,23,36,.09);
   --serif:"Young Serif", Georgia, serif;
   --sans:"Cabinet Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --hand:"Kalam", "Comic Sans MS", cursive;
+  --hand:"Gochi Hand", "Comic Sans MS", cursive;
   --sh:0 1px 2px rgba(27,23,36,.05), 0 12px 32px -14px rgba(27,23,36,.22), 0 40px 80px -48px rgba(27,23,36,.30);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -58,7 +59,7 @@ img{display:block;max-width:100%}
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
 .serif{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.06}
 .nw{white-space:nowrap}
-.hand{font-family:var(--hand);font-weight:700;line-height:1.1}
+.hand{font-family:var(--hand);font-weight:400;line-height:1.1}
 
 /* marker swipe (original drawing) */
 .mk{position:relative;display:inline-block;z-index:0}
@@ -79,8 +80,7 @@ img{display:block;max-width:100%}
 .top .wrap{max-width:1400px;display:flex;align-items:center;gap:18px;height:74px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-width:0}
 .brand img{width:40px;height:40px;border-radius:11px;flex:none}
-.logo{position:relative;font:400 25px/1 var(--serif);letter-spacing:-.02em;white-space:nowrap}
-.logo svg{position:absolute;left:-6px;bottom:-9px;width:62%;height:16px}
+.brand img.logo{height:34px;width:auto;border-radius:0;display:block}
 .top .ev{font-size:14px;color:var(--ink-2);border-left:1px solid var(--line);padding-left:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cd{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2)}
 .cd b{font:600 17px/1 var(--sans);color:var(--ink);font-variant-numeric:tabular-nums;background:var(--paper);border-radius:10px;padding:8px 8px 7px;min-width:40px;text-align:center;box-shadow:0 1px 2px rgba(27,23,36,.06)}
@@ -249,28 +249,88 @@ section.s{padding:110px 0}
 .sticker span{font:18px/1.1 var(--hand);color:var(--ink)}
 .star{position:absolute;left:-8px;top:0}
 
-/* ---------- fit list ---------- */
-.fit{background:var(--warm)}
-.fgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
-.pcard-w{position:relative;max-width:420px;justify-self:center;width:100%}
-.pdisc{position:absolute;left:-8%;bottom:-6%;width:76%;aspect-ratio:1;border-radius:50%;background:var(--sun)}
-.pcard{position:relative;border-radius:26px;overflow:hidden;border:6px solid #fff;box-shadow:var(--sh);transform:rotate(3deg);aspect-ratio:4/5}
+/* ---------- fit check: playful cards, ticks and swipes that draw themselves, a floating photo ---------- */
+.fit{background:var(--warm);position:relative;overflow-x:clip}
+.fit .head{position:relative}
+.fit .head .doodle-sq{position:absolute;right:6%;top:6px}
+.fgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:76px;align-items:center}
+.pwrap{position:relative;max-width:420px;justify-self:center;width:100%;padding:10px 0 30px}
+.pdisc{position:absolute;left:-10%;bottom:0;width:78%;aspect-ratio:1;background:var(--sun);border-radius:50%;z-index:0}
+.pfloat{position:relative;z-index:1}
+.pcard{position:relative;border-radius:28px;overflow:hidden;border:7px solid #fff;box-shadow:var(--sh);aspect-ratio:4/5;transform:perspective(900px) rotate(3deg) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .pcard img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
-.pname{position:absolute;left:8%;bottom:-22px;background:#fff;border-radius:16px;padding:12px 18px;box-shadow:var(--sh);transform:rotate(-2deg)}
+.pname{position:absolute;left:6%;bottom:-18px;z-index:2;background:#fff;border-radius:16px;padding:12px 18px;box-shadow:var(--sh);transform:rotate(-2deg)}
 .pname b{display:block;font-size:16px}
 .pname span{font-size:13.5px;color:var(--ink-2)}
-.checks{list-style:none;display:grid;gap:14px}
-.checks li{display:grid;grid-template-columns:38px 1fr;gap:16px;align-items:start;background:#fff;border-radius:18px;padding:18px 22px;box-shadow:0 1px 2px rgba(27,23,36,.04)}
-.checks .tk{width:38px;height:38px;border-radius:12px;background:var(--pill-g);display:grid;place-items:center}
+.says{position:absolute;right:-40px;top:-46px;z-index:3;max-width:250px;background:#fff;border-radius:20px 20px 20px 6px;padding:14px 16px 14px;box-shadow:var(--sh);transform:rotate(2.5deg);font-size:15px;line-height:1.45}
+.says small{display:block;font:20px/1 var(--hand);color:var(--green-t);margin-bottom:6px}
+.says:after{content:"";position:absolute;left:18px;bottom:-12px;border:12px solid transparent;border-top-color:#fff;border-bottom:0;border-left:0}
+.nojudge{position:absolute;left:-18px;top:34%;z-index:3;background:var(--mint);color:var(--ink);font:24px/1 var(--hand);padding:12px 16px 10px;border-radius:14px;transform:rotate(-8deg);box-shadow:0 10px 22px -12px rgba(27,23,36,.45)}
+.dstar{position:absolute;z-index:2}
+.dstar.s1{right:6%;bottom:14%}
+.dstar.s2{left:4%;top:-2%}
+.checks{list-style:none;display:grid;gap:14px;position:relative}
+.checks li{position:relative;display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:center;background:#fff;border-radius:20px;padding:18px 22px;box-shadow:0 1px 2px rgba(27,23,36,.05),0 10px 24px -20px rgba(27,23,36,.35);cursor:pointer;user-select:none;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.checks li:nth-child(odd){transform:rotate(-.5deg)}
+.checks li:nth-child(even){transform:rotate(.5deg)}
+.checks li:hover{transform:translateY(-3px) rotate(0);box-shadow:0 1px 2px rgba(27,23,36,.05),0 18px 34px -20px rgba(27,23,36,.45)}
+.checks .tk{width:44px;height:44px;border-radius:14px;background:var(--pill-g);display:grid;place-items:center;transition:background .25s}
+.checks .tk path{stroke-dasharray:24;stroke-dashoffset:0}
+.checks li.off .tk{background:var(--ground)}
+.checks li.off .tk path{stroke-dashoffset:24}
 .checks b{display:block;font-size:17.5px}
 .checks p{color:var(--ink-2)}
-.checks .hl{color:var(--ink);font-weight:500;background:linear-gradient(transparent 58%,rgba(253,214,113,.8) 58%, rgba(253,214,113,.8) 92%,transparent 92%)}
+.checks .hl{color:var(--ink);font-weight:500;background:linear-gradient(rgba(253,214,113,.85),rgba(253,214,113,.85)) no-repeat 0 88%/100% 42%}
+.tapnote{position:absolute;left:70px;bottom:-46px;color:var(--blue-t);font-size:22px;transform:rotate(-3deg)}
+.tapnote svg{position:absolute;left:-38px;top:-24px}
+/* motion (only when the visitor allows it: JS adds .anim) */
+.anim .checks li{opacity:0}
+.anim .checks.in li{animation:pop .6s cubic-bezier(.2,1.4,.4,1) forwards;animation-delay:calc(var(--i)*140ms)}
+.anim .checks .tk path{stroke-dashoffset:24}
+.anim .checks.in li:not(.off) .tk path{animation:draw .45s ease-out forwards;animation-delay:calc(var(--i)*140ms + 380ms)}
+.anim .checks.in li.redo .tk path{animation:draw .35s ease-out forwards;animation-delay:0s}
+.anim .checks .hl{background-size:0% 42%}
+.anim .checks.in .hl{transition:background-size .7s ease;transition-delay:calc(var(--i)*140ms + 520ms);background-size:100% 42%}
+.anim .mk.draw svg{clip-path:inset(0 100% 0 0);transition:clip-path .9s cubic-bezier(.6,0,.2,1) .25s}
+.anim .in .mk.draw svg,.anim .mk.draw.in svg{clip-path:inset(0 0 0 0)}
+.anim .pfloat{animation:floaty 6s ease-in-out infinite}
+.anim .pdisc{animation:wobble 9s ease-in-out infinite}
+.anim .dstar{animation:twirl 7s ease-in-out infinite}
+.anim .dstar.s2{animation-duration:9s;animation-direction:reverse}
+.anim .says{animation:bob 5s ease-in-out infinite}
+@keyframes pop{0%{opacity:0;transform:translateY(18px) scale(.94)}100%{opacity:1}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes wobble{0%,100%{border-radius:50%;transform:scale(1) rotate(0)}33%{border-radius:47% 53% 50% 50%/52% 48% 52% 48%;transform:scale(1.03) rotate(6deg)}66%{border-radius:53% 47% 49% 51%/48% 52% 47% 53%;transform:scale(.98) rotate(-5deg)}}
+@keyframes twirl{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(18deg) scale(1.12)}}
+@keyframes bob{0%,100%{transform:rotate(2.5deg) translateY(0)}50%{transform:rotate(1deg) translateY(-5px)}}
 
 /* ---------- close ---------- */
 .close{background:var(--ground);padding-bottom:120px}
 .cbox{background:#fff;border-radius:36px;box-shadow:var(--sh);display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
 .cl{background:var(--tile);padding:56px 40px;display:grid;place-items:center;position:relative;min-height:440px}
-.mcard{width:100%;max-width:380px;aspect-ratio:1.58;border-radius:22px;background:radial-gradient(120% 90% at 0% 0%,#1d2440,transparent 60%),var(--night);color:#fff;padding:26px 26px 22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 30px 60px -30px rgba(15,19,34,.7);transform:rotate(-4deg);position:relative;overflow:hidden}
+.mtilt{width:100%;max-width:380px;perspective:900px}
+.mcard{width:100%;aspect-ratio:1.58;border-radius:22px;background:radial-gradient(120% 90% at 0% 0%,#1d2440,transparent 60%),var(--night);color:#fff;padding:26px 26px 22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 30px 60px -30px rgba(15,19,34,.7);transform:rotate(-4deg) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden;transform-style:preserve-3d}
+.mcard:before{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.16) 45%,rgba(255,255,255,.32) 50%,rgba(255,255,255,.16) 55%,transparent);transform:translateX(0) skewX(-12deg);pointer-events:none;z-index:2;opacity:0}
+.anim .mcard:before{animation:shine 6.5s ease-in-out 1.2s infinite}
+@keyframes shine{0%{opacity:1;transform:translateX(0) skewX(-12deg)}22%{opacity:1;transform:translateX(420%) skewX(-12deg)}23%,100%{opacity:0;transform:translateX(420%) skewX(-12deg)}}
+.mcard .ln i span{display:inline-block}
+.anim .mcard .ln i span.nw1{animation:ink .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes ink{0%{opacity:0;transform:translateY(-10px) rotate(-8deg) scale(1.4)}100%{opacity:1}}
+.stamp{position:absolute;right:18px;top:66px;z-index:3;font:22px/1 var(--hand);color:var(--ink);background:var(--peach);border-radius:12px;padding:9px 12px 7px;transform:rotate(9deg) scale(0);opacity:0;transition:transform .5s cubic-bezier(.2,1.6,.4,1),opacity .3s}
+.done .stamp{transform:rotate(9deg) scale(1);opacity:1}
+.hn-card svg{transform-origin:80% 90%}
+.anim .hn-card svg{animation:wig 1.8s ease-in-out infinite}
+@keyframes wig{0%,100%{transform:rotate(0)}25%{transform:rotate(-9deg)}60%{transform:rotate(6deg)}}
+.donecheck{display:block;margin-bottom:6px}
+.donecheck circle{stroke-dasharray:152;stroke-dashoffset:0}
+.donecheck path{stroke-dasharray:40;stroke-dashoffset:0}
+.anim .done .donecheck circle{stroke-dashoffset:152;animation:draw .7s ease-out .1s forwards}
+.anim .done .donecheck path{stroke-dashoffset:40;animation:draw .4s ease-out .7s forwards}
+.thanks .spark{position:absolute}
+.anim .done .thanks .spark{animation:sparkpop .6s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes sparkpop{0%{transform:scale(0) rotate(-30deg);opacity:0}100%{transform:scale(1);opacity:1}}
+.thanks{position:relative}
 .mcard:after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:3px 3px;pointer-events:none}
 .mcard .t1{font:600 19px/1.2 var(--sans)}
 .mcard .p{display:inline-block;margin-top:10px;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#c9cbd6;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);border-radius:8px;padding:6px 9px}
@@ -298,6 +358,26 @@ section.s{padding:110px 0}
 .foot{padding:34px 0 44px;color:var(--ink-2);font-size:14px}
 .foot .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
 
+
+/* ---------- floating vertical video (the template's #stick, from dan-koe, restyled for Ali) ---------- */
+#stick{position:fixed;right:22px;bottom:22px;z-index:70;width:178px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .35s,transform .35s,width .3s}
+#stick.on{opacity:1;transform:none;pointer-events:auto}
+#stick.bub{width:68px}
+#stick .sv{position:relative;border:4px solid #fff;border-radius:22px;overflow:hidden;background:#1b1724;box-shadow:var(--sh)}
+#stick .sv img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+#stick .sv:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,19,34,.25),transparent 28%,transparent 42%,rgba(15,19,34,.9));z-index:1}
+#stick .cap{position:absolute;left:12px;right:12px;bottom:64px;z-index:2;font-size:13px;line-height:1.35;color:#fff;transition:opacity .3s}
+#stick .cap b{font-weight:700}
+#stick .hint{position:absolute;left:12px;bottom:44px;z-index:2;font:18px/1 var(--hand);color:#fdd671}
+#stick .bar{position:absolute;left:12px;right:12px;bottom:34px;height:3px;border-radius:3px;background:rgba(255,255,255,.3);z-index:2}
+#stick .bar i{display:block;height:3px;border-radius:3px;width:34%;background:var(--peach)}
+#stick .x{position:absolute;top:8px;right:8px;z-index:3;width:26px;height:26px;border-radius:50%;background:rgba(15,19,34,.55);color:#fff;border:0;display:grid;place-items:center;font-size:15px;line-height:1;cursor:pointer}
+#stick .go{position:absolute;left:8px;right:8px;bottom:6px;z-index:3;text-align:center;background:var(--peach);color:var(--ink);font:700 13px var(--sans);border-radius:999px;padding:7px 0;cursor:pointer;text-decoration:none}
+#stick.bub .sv img{aspect-ratio:1;border-radius:50%}
+#stick.bub .cap,#stick.bub .hint,#stick.bub .bar,#stick.bub .go,#stick.bub .x,#stick.bub .sv:before{display:none}
+#stick.bub .sv{border-radius:50%;cursor:pointer}
+@media (max-width:760px){#stick{right:12px;bottom:14px;width:64px}#stick .cap,#stick .hint,#stick .bar,#stick .go,#stick .x,#stick .sv:before{display:none}#stick .sv{border-radius:50%;border-width:3px}#stick .sv img{aspect-ratio:1;border-radius:50%}#stick.open{width:170px}#stick.open .sv{border-radius:20px}#stick.open .sv img{aspect-ratio:9/16;border-radius:0}#stick.open .cap,#stick.open .hint,#stick.open .bar,#stick.open .go,#stick.open .x,#stick.open .sv:before{display:block}}
+@media (prefers-reduced-motion:reduce){.anim *,.anim *:before{animation:none!important}}
 /* reveal */
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
@@ -310,13 +390,21 @@ section.s{padding:110px 0}
   .hgrid{gap:44px}
   .day{grid-template-columns:64px 1fr}
   .day .well{grid-column:2}
-  .fgrid{gap:60px}
+  .fgrid{gap:70px}
+  .says{right:-6px}
 }
 @media (max-width:720px){
   body{font-size:16px}
   .wrap{padding:0 16px}
   .top .wrap{height:64px;gap:10px}
-  .top .ev,.logo,.cd .l,.cd small{display:none}
+  .top .ev,.cd .l,.cd small{display:none}
+  .brand img.logo{height:21px;width:auto}
+  .brand{gap:8px}
+  .brand img{width:32px;height:32px}
+  .brand img.logo{height:19px}
+  .btn.sm{white-space:nowrap}
+  .pwrap{max-width:300px}
+  .says{max-width:260px}
   .brand img{width:36px;height:36px}
   .cd{margin-left:auto;gap:4px}
   .cd b{font-size:14px;min-width:30px;padding:7px 5px 6px}
@@ -361,6 +449,12 @@ section.s{padding:110px 0}
   .day .well{grid-column:1/-1;padding:18px}
   .ui{padding:16px}
   .hn{display:none}
+  .tapnote{position:static;display:block;margin-top:14px;transform:rotate(-2deg);font-size:20px}
+  .tapnote svg{display:none}
+  .pname{position:relative;left:auto;bottom:auto;display:inline-block;margin:-26px 0 0 14px}
+  .says{position:relative;right:auto;top:auto;margin:20px 0 0 auto;max-width:280px}
+  .nojudge{left:-6px;font-size:20px}
+  .fit .head .doodle-sq{display:none}
   .stats{grid-template-columns:1fr}
   .stat.wide{flex-direction:column;align-items:flex-start;gap:8px}
   .sticker{right:-4px}
@@ -369,12 +463,15 @@ section.s{padding:110px 0}
   .timer .t b{font-size:32px}
   .week .c{height:60px}
 }
+@media (max-width:420px){
+  .cd b.m,.cd b.m+small{display:none}
+}
 @media (max-width:380px){
   .btn.sm span.x{display:none}
   .chip{font-size:11.5px;padding:3px 7px}
 }
 /* Young Serif defaults to old-style figures; the font: shorthand above resets this, so it comes last */
-.serif,.logo,.book h3,.book .d,.tstrip .award b,.node b,.stat b,.sticker b,.regc .num b{font-variant-numeric:lining-nums}
+.serif,.book h3,.book .d,.tstrip .award b,.node b,.stat b,.sticker b,.regc .num b{font-variant-numeric:lining-nums}
 </style>
 </head>
 <body>
@@ -384,7 +481,7 @@ section.s{padding:110px 0}
   <div class="wrap">
     <a class="brand" href="#hero" aria-label="Ali Abdaal">
       <img src="favicon.png" alt="">
-      <span class="logo">Ali Abdaal<svg viewBox="0 0 120 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12 C 30 2, 70 1, 116 5" fill="none" stroke="#58bffe" stroke-width="4" stroke-linecap="round"/></svg></span>
+      <img class="logo" src="ali-logo.png" alt="Ali Abdaal" width="677" height="195">
     </a>
     <span class="ev">Make Every Week Count Sprint</span>
     <span class="cd" aria-label="Starts in"><span class="l">Starts in</span><b class="d" id="cdD">00</b><small>days</small><b class="h" id="cdH">00</b><small>hrs</small><b class="m" id="cdM">00</b><small>min</small></span>
@@ -578,25 +675,31 @@ section.s{padding:110px 0}
   </div>
 </section>
 
-<!-- FIT LIST -->
+<!-- FIT CHECK: copy from lp.json checks; the bubble quotes Ali's own lede line from lp.json -->
 <section class="s fit" id="fit">
   <div class="wrap">
     <div class="head rv">
       <span class="pill sky">Honest fit check</span>
-      <h2 class="serif">Is this <span class="mk">perfect<svg viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path d="M4 18 C 60 9, 150 7, 296 12 L 294 26 C 190 22, 90 24, 6 28 Z" fill="#fdd671"/></svg></span> for you?</h2>
+      <h2 class="serif">Is this <span class="mk draw">perfect<svg viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path d="M4 18 C 60 9, 150 7, 296 12 L 294 26 C 190 22, 90 24, 6 28 Z" fill="#fdd671"/></svg></span> for you?</h2>
+      <svg class="doodle-sq" width="96" height="30" viewBox="0 0 96 30" aria-hidden="true"><path d="M3 20 C 12 4, 20 4, 26 18 S 40 28, 48 12 S 64 2, 72 18 S 86 26, 93 8" fill="none" stroke="#5fb193" stroke-width="3" stroke-linecap="round"/></svg>
     </div>
     <div class="fgrid">
-      <div class="pcard-w rv">
-        <span class="pdisc"></span>
-        <div class="pcard"><img src="img/headshot.jpg" alt="Ali Abdaal"></div>
+      <div class="pwrap rv" id="pwrap">
+        <span class="pdisc" aria-hidden="true"></span>
+        <svg class="dstar s1" width="30" height="30" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 3 L20.6 12.6 30.8 13 22.8 19.4 25.6 29.4 17 23.6 8.4 29.4 11.2 19.4 3.2 13 13.4 12.6Z" fill="#fdd671" stroke="#c9962a" stroke-width="2" stroke-linejoin="round"/></svg> <svg class="dstar s2" width="26" height="26" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 3 L20.6 12.6 30.8 13 22.8 19.4 25.6 29.4 17 23.6 8.4 29.4 11.2 19.4 3.2 13 13.4 12.6Z" fill="none" stroke="#a34937" stroke-width="2" stroke-linejoin="round"/></svg>
+        <div class="pfloat"><div class="pcard" id="pcard"><img src="img/headshot.jpg" alt="Ali Abdaal"></div></div>
         <div class="pname"><b>Ali Abdaal</b><span>Cofounder, Superfocus</span></div>
+        <div class="says"><small>Ali says</small>I'll walk through why most weeks fill up before the goal gets a single hour.</div>
+        <span class="nojudge" aria-hidden="true">no judgement</span>
       </div>
-      <ul class="checks rv">
-        <li><span class="tk"><svg width="16" height="16" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Weeks slip by</b><p>Plan each week around the <span class="hl">one goal</span> that matters.</p></div></li>
-        <li><span class="tk"><svg width="16" height="16" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Too many goals</b><p>Break big goals into <span class="hl">seasons you can finish</span>.</p></div></li>
-        <li><span class="tk"><svg width="16" height="16" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Calendar never empty</b><p>Block <span class="hl">goal hours</span> before the week fills up.</p></div></li>
-        <li><span class="tk"><svg width="16" height="16" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Distracted at the desk</b><p>Run <span class="hl">focus sessions</span> with a plan for distractions.</p></div></li>
-        <li><span class="tk"><svg width="16" height="16" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Plans fade by Friday</b><p>Keep a <span class="hl">weekly review</span> that holds you to the plan.</p></div></li>
+      <ul class="checks rv" id="checks">
+        <li style="--i:0" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="20" height="20" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Weeks slip by</b><p>Plan each week around the <span class="hl">one goal</span> that matters.</p></div></li>
+        <li style="--i:1" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="20" height="20" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Too many goals</b><p>Break big goals into <span class="hl">seasons you can finish</span>.</p></div></li>
+        <li style="--i:2" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="20" height="20" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Calendar never empty</b><p>Block <span class="hl">goal hours</span> before the week fills up.</p></div></li>
+        <li style="--i:3" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="20" height="20" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Distracted at the desk</b><p>Run <span class="hl">focus sessions</span> with a plan for distractions.</p></div></li>
+        <li style="--i:4" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="20" height="20" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#187656" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Plans fade by Friday</b><p>Keep a <span class="hl">weekly review</span> that holds you to the plan.</p></div></li>
+        <span class="tapnote hand" aria-hidden="true">tap the ones that sound like you
+          <svg width="34" height="30" viewBox="0 0 34 30"><path d="M32 26 C 18 26, 8 18, 7 5" fill="none" stroke="#58bffe" stroke-width="2.4" stroke-linecap="round"/><path d="M1 11 L 7 3 L 13 10" fill="none" stroke="#58bffe" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </ul>
     </div>
   </div>
@@ -607,14 +710,15 @@ section.s{padding:110px 0}
   <div class="wrap">
     <div class="cbox rv" id="cbox">
       <div class="cl">
-        <div class="mcard" aria-label="Your seat card">
+        <div class="mtilt" id="mtilt"><div class="mcard" id="mcard" aria-label="Your seat card">
+          <span class="stamp" aria-hidden="true">seat held</span>
           <div><div class="t1">Make Every Week Count Sprint</div><span class="p">Free seat</span></div>
           <div class="nm">
             <div class="ln"><i id="cardName"></i><small id="cardWhen">Day 1 to Day 3, live online</small></div>
             <span class="ico"><img src="favicon.png" alt=""></span>
           </div>
-        </div>
-        <span class="hn hand" style="left:24%;bottom:34px;color:var(--blue-t);transform:rotate(-3deg)">your name goes here
+        </div></div>
+        <span class="hn hand hn-card" style="left:24%;bottom:34px;color:var(--blue-t);transform:rotate(-3deg)">your name goes here
           <svg width="40" height="48" viewBox="0 0 40 48" style="left:-34px;top:-40px"><path d="M34 40 C 16 38, 8 26, 10 6" fill="none" stroke="#58bffe" stroke-width="2.4" stroke-linecap="round"/><path d="M3 13 L 10 4 L 17 12" fill="none" stroke="#58bffe" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </div>
       <div class="cr">
@@ -630,6 +734,9 @@ section.s{padding:110px 0}
           <p class="fine" id="cFine">Free, three live days online</p>
         </div>
         <div class="thanks" aria-live="polite">
+          <svg class="donecheck" width="58" height="58" viewBox="0 0 58 58" aria-hidden="true"><circle cx="29" cy="29" r="24" fill="none" stroke="#5fb193" stroke-width="3.5" stroke-linecap="round"/><path d="M18 30 L 26 38 L 41 21" fill="none" stroke="#187656" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="spark" style="left:66px;top:-4px;animation-delay:.9s" width="18" height="18" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 3 L20.6 12.6 30.8 13 22.8 19.4 25.6 29.4 17 23.6 8.4 29.4 11.2 19.4 3.2 13 13.4 12.6Z" fill="#fdd671" stroke="#c9962a" stroke-width="2" stroke-linejoin="round"/></svg>
+          <svg class="spark" style="left:88px;top:26px;animation-delay:1.05s" width="12" height="12" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 3 L20.6 12.6 30.8 13 22.8 19.4 25.6 29.4 17 23.6 8.4 29.4 11.2 19.4 3.2 13 13.4 12.6Z" fill="none" stroke="#a34937" stroke-width="3" stroke-linejoin="round"/></svg>
           <span class="pill g">Seat held</span>
           <h3 class="serif">You're in for all three days.</h3>
           <p id="thWhen">Day 1 starts soon, live online.</p>
@@ -642,6 +749,7 @@ section.s{padding:110px 0}
 
 <footer class="foot"><div class="wrap"><span>Free event <span aria-hidden="true">·</span> Make Every Week Count Sprint with Ali Abdaal</span><span>Figures: lifestylebusiness.com, superfocus.me</span></div></footer>
 
+<aside id="stick" aria-label="A 60 second look at the three days"><div class="sv"><img src="img/sticky.jpg" alt="Ali Abdaal"><button class="x" aria-label="Close" type="button">&times;</button><span class="cap"></span><span class="hint">tap for sound</span><span class="bar"><i></i></span><a class="go" href="#join">Hold my seat</a></div></aside>
 <script>
 (function(){
   /* the event clock, the same rule as the factory page: 9 days out, 12:00 in the lead's zone (Europe/London) */
@@ -685,12 +793,41 @@ section.s{padding:110px 0}
   var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');if(e.target.querySelector&&e.target.querySelector('#tmr'))run=true}})},{threshold:.12}):null;
   document.querySelectorAll('.rv').forEach(function(n){io?io.observe(n):n.classList.add('in')});
 
+
+  /* motion is opt-in: the page renders complete without it */
+  var motion=!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if(motion)document.body.classList.add('anim');
+
+  /* fit check: tap a card to untick / tick it again (drawn again), photo card tilts to the pointer */
+  document.querySelectorAll('#checks li').forEach(function(li){
+    function t(){li.classList.toggle('off');li.classList.remove('redo');if(!li.classList.contains('off')){void li.offsetWidth;li.classList.add('redo')}li.setAttribute('aria-pressed',li.classList.contains('off')?'false':'true')}
+    li.addEventListener('click',t);li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}});
+  });
+  function tilt(area,el,amt){if(!motion||!area||!el)return;
+    area.addEventListener('pointermove',function(e){var r=area.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.setProperty('--ry',(x*amt)+'deg');el.style.setProperty('--rx',(-y*amt)+'deg')});
+    area.addEventListener('pointerleave',function(){el.style.setProperty('--ry','0deg');el.style.setProperty('--rx','0deg')});}
+  tilt(document.getElementById('pwrap'),document.getElementById('pcard'),10);
+  tilt(document.querySelector('.cl'),document.getElementById('mcard'),14);
+
+  /* the vertical video card: after the hero, never over the sign-up */
+  var st=document.getElementById('stick'),scap=st.querySelector('.cap'),hero=document.getElementById('hero'),join=document.getElementById('join'),si=0;
+  var caps=['The <b>60 second version</b> of the three days.','Day 1: <b>Turn your 168 weekly hours into progress</b>','Day 2: <b>Protect your focus hours every day</b>','Day 3: <b>Stay on track with a weekly review loop</b>','It is free, and it is live with <b>Ali</b>.'];
+  function snext(){scap.style.opacity=0;setTimeout(function(){scap.innerHTML=caps[si%caps.length];si++;scap.style.opacity=1},300)}
+  snext();setInterval(snext,3800);
+  function stick(){var h=hero.getBoundingClientRect(),j=join.getBoundingClientRect();st.classList.toggle('on',h.bottom<90&&!(j.top<innerHeight&&j.bottom>0))}
+  addEventListener('scroll',stick,{passive:true});addEventListener('resize',stick);setTimeout(stick,600);
+  st.querySelector('.x').addEventListener('click',function(e){e.stopPropagation();st.classList.add('bub');st.classList.remove('open')});
+  st.addEventListener('click',function(e){if(e.target.closest('.go'))return;if(st.classList.contains('bub')){st.classList.remove('bub')}else if(innerWidth<=760){st.classList.toggle('open')}},true);
+
   /* the sign-up: nothing is sent or stored; the name only fills the seat card on this screen */
   var fn=document.getElementById('fName'),cn=document.getElementById('cardName');
-  fn.addEventListener('input',function(){cn.textContent=fn.value.slice(0,24)});
+  var prev='';
+  fn.addEventListener('input',function(){var v=fn.value.slice(0,24);cn.textContent='';
+    for(var k=0;k<v.length;k++){var sp=document.createElement('span');sp.textContent=v[k]===' '?'\u00a0':v[k];if(k>=prev.length||v[k]!==prev[k])sp.className='nw1';cn.appendChild(sp)}prev=v});
   document.getElementById('go').addEventListener('click',function(){
     document.getElementById('cbox').classList.add('done');
     document.querySelectorAll('.fields input').forEach(function(i){i.value=''});
+    stick();
   });
 })();
 </script>
