@@ -1,5 +1,5 @@
 {
-  "name": "Content MBA 3-day event",
+  "name": "Build Your Faceless Income Account",
   "short_name": "Clay",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#9C42F6",
-  "background_color": "#110B18",
+  "theme_color": "#9c42f6",
+  "background_color": "#150c1f",
   "display": "standalone"
 }
