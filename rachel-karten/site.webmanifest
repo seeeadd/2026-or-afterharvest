@@ -1,0 +1,19 @@
+{
+  "name": "Build Your Post System",
+  "short_name": "Rachel",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#5567cd",
+  "background_color": "#fff7d4",
+  "display": "standalone"
+}
