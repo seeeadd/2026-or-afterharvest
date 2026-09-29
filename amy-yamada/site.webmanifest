@@ -1,5 +1,5 @@
 {
-  "name": "Become the Expert AI Recommends",
+  "name": "Build Your AI Client Machine",
   "short_name": "Amy",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#1AA6AD",
-  "background_color": "#F8FAFC",
+  "theme_color": "#1fbdc4",
+  "background_color": "#022b2f",
   "display": "standalone"
 }
