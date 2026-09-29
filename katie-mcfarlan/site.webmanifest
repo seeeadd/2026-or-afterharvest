@@ -1,5 +1,5 @@
 {
-  "name": "Build Your Scalable Design Firm",
+  "name": "Build Your Design Business Foundation",
   "short_name": "Katie",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#A68B74",
-  "background_color": "#FAF9F6",
+  "theme_color": "#a68b74",
+  "background_color": "#faf9f6",
   "display": "standalone"
 }
