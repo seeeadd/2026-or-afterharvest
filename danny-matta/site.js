@@ -84,7 +84,8 @@
       toNum(S.start_hour, 12), 0, 0);
     return new Date(guess - tzOffset(TZ, guess) * 6e4);
   })();
-  var END = new Date(START.getTime() + 2 * 864e5);
+  var WEBINAR = LP.format === 'webinar';          /* 1-day webinar lead: one session on START's day */
+  var END = new Date(START.getTime() + (WEBINAR ? 60 * 6e4 : 2 * 864e5));
 
   function dfmt(d, withWeekday) {
     var o = { day: 'numeric', month: 'short', timeZone: TZ };
@@ -112,10 +113,12 @@
     } catch (e) { return ''; }
   })();
   function zoned(t) { return ZONE ? t + ' ' + ZONE : t; }
-  var WHEN = S.when || (dfmt(START, true) + ' to ' + dfmt(END, true));
+  /* a webinar is one session on one day: "Wed Oct 7", never "Wed Oct 7 to Wed Oct 7" (w2, 2026-09-29) */
+  function span(long) { return WEBINAR ? dfmt(START, long) : dfmt(START, long) + ' to ' + dfmt(END, long); }
+  var WHEN = S.when || span(true);
   var WHEN_FULL = WHEN + ' · ' + tfmt(START) + ' · Live online';
   /* the line under every call to action (asked for 2026-09-22) */
-  var CTA_NOTE = S.cta_note || zoned('Free online challenge: ' + dfmt(START) + ' to ' + dfmt(END));
+  var CTA_NOTE = S.cta_note || zoned((WEBINAR ? 'Free live webinar: ' : 'Free online challenge: ') + span());
 
   var REG = null;                         /* the sign-up modal, once built */
   var state = {
@@ -207,7 +210,11 @@
      lead's own day titles, so no lead needs copy written by hand. */
   function ctaFor(title) {
     var t = String(title || '').split('|').join(' ').replace(/[.!?]+\s*$/, '').trim();
-    var w = t.split(/\s+/).slice(0, 3);
+    // up to 5 words, cut before the first connector from word 3 on: a flat 3-word cut left "spot the one",
+    // "see the whole" and "price one web" on the buttons (2026-09-27)
+    var w = t.split(/\s+/).slice(0, 5);
+    var conn = /^(before|after|like|and|to|for|with|so|that|into|of|on|in|by|from|without|until|while)$/i;
+    for (var ci = 2; ci < w.length; ci++) { if (conn.test(w[ci])) { w = w.slice(0, ci); break; } }
     var tail = /^(before|after|like|and|to|the|a|an|for|with|so|that|you|your|into|of|on|in)$/i;
     while (w.length > 2 && tail.test(w[w.length - 1])) w.pop();
     if (!w.length) return 'Hold my seat';
@@ -405,7 +412,7 @@
     /* hero eyebrow becomes the coloured date pill */
     eye.innerHTML = '<i class="dot"></i>Free 3-day live event<i></i>' +
       '<b class="eyd"><span class="eyfull">' + esc(zoned(WHEN)) + '</span><span class="eyshort">' +
-      esc(zoned(S.when || (dfmt(START) + ' to ' + dfmt(END)))) + '</span></b><i></i><span class="eyl">Live online</span>';
+      esc(zoned(S.when || span())) + '</span></b><i></i><span class="eyl">Live online</span>';
 
     /* registration card: social proof above the button */
     var proof = el('div', '',
@@ -751,7 +758,7 @@
       '<button type="button" class="xcx" data-xc="1" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" ' +
       'stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>' +
       '<p class="xck">Before you go</p><h3 class="xch">Save your free seat. It takes ten seconds.</h3>' +
-      '<p class="xcp">Three live days with ' + esc(FIRST) + ', ' + esc(dfmt(START) + ' to ' + dfmt(END)) + ' at ' + esc(tfmt(START)) +
+      '<p class="xcp">Three live days with ' + esc(FIRST) + ', ' + esc(span()) + ' at ' + esc(tfmt(START)) +
         '. Bring your questions: the live sessions are where they get answered.</p>' +
       '<form class="xcf" novalidate><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-label="Email address">' +
       '<button type="submit" class="btn lg">Save my free seat' + ARROW + '</button></form>' +
@@ -785,7 +792,7 @@
   function dock() {
     if ($('dock')) return;
     var d = el('div', ''); d.id = 'dock';
-    d.innerHTML = '<span class="dkw"><b>Free online challenge</b>' + esc(dfmt(START) + ' to ' + dfmt(END)) + ' \u00B7 ' + esc(tfmt(START)) + '</span>' +
+    d.innerHTML = '<span class="dkw"><b>' + (WEBINAR ? 'Free live webinar' : 'Free online challenge') + '</b>' + esc(span()) + ' \u00B7 ' + esc(tfmt(START)) + '</span>' +
       '<span class="btn" data-reg="1" role="button" tabindex="0">Hold my seat' + ARROW + '</span>';
     document.body.appendChild(d);
     var reg = $('regcard'), cl = $('closing'), queued = false;
@@ -1965,6 +1972,7 @@
     window.addEventListener('load', function () { setTimeout(layout, 50); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(layout, 30); });
     setTimeout(layout, 400);
+    if (WEBINAR && window.LP_webinarize) { window.LP_webinarize(document.body); setTimeout(layout, 20); }
     setTimeout(function () { background(); window.SITE_READY = { w: P.clientWidth, h: P.offsetHeight }; }, 900);
     var shown = false;
     function reveal() {

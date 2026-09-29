@@ -1,5 +1,5 @@
 {
-  "name": "3-day event",
+  "name": "Cash Practice Scale Sprint",
   "short_name": "Danny",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#007BEA",
-  "background_color": "#FFFFFF",
+  "theme_color": "#007bea",
+  "background_color": "#EAF4FF",
   "display": "standalone"
 }
