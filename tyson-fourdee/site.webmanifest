@@ -1,5 +1,5 @@
 {
-  "name": "Tyson 4D 3-day event",
+  "name": "The Retainer Client Sprint",
   "short_name": "Tyson",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#BF0802",
-  "background_color": "#FFFFFF",
+  "theme_color": "#2ECC71",
+  "background_color": "#730501",
   "display": "standalone"
 }
