@@ -2,383 +2,1026 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Build Your 1-Hour Content System | future/proof</title>
-<link rel="stylesheet" href="fonts/cabinet-grotesk_400-500-600-700-800.css">
-<link rel="stylesheet" href="fonts/satoshi_400-500-600-700-800.css">
-<link rel="stylesheet" href="lp.css?v=9c13f38f">
-<style>:root{ --ground:#070707; --ink:#FDFDFD; --accent:#EFEFEF; --accent-ink:#111111; --accent2:#707070; --accent-text:#EFEFEF; --head-acc:#EFEFEF; --ink-soft:#CCCCCC; --muted:#8C8C8C; --hair:rgba(253,253,253,0.100); --hair-2:rgba(253,253,253,0.170); --accent-10:rgba(239,239,239,0.130); --accent-sh:rgba(239,239,239,0.550); --accent-sh2:rgba(239,239,239,0.280); --pat:#EFEFEF; --pat-op:0.282; --ghost:#EFEFEF; --ghost-op:0.347; --grain-img:url(grain-dark.png); --grain-op:.14; --grain-blend:overlay; --wall:radial-gradient(120% 90% at 18% 0%, rgba(179,179,179,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(78,78,78,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.07); --glass-brd:rgba(255,255,255,.12); --glass-hi:rgba(255,255,255,.10); --glass-solid:rgba(29,29,29,0.930); --card:rgba(255,255,255,.05); --card-brd:rgba(255,255,255,.08); --strip:rgba(255,255,255,.035); --well:rgba(255,255,255,.06); --field:rgba(0,0,0,.28); --av-ring:#2F2F2F; --cap-bg:rgba(14,14,16,.58); --cap-ink:#FFFFFF; --cap-muted:rgba(255,255,255,.72); --sh1:0 1px 1px rgba(0,0,0,.35),0 24px 44px -22px rgba(0,0,0,.65),0 60px 90px -50px rgba(0,0,0,.7); --sh2:0 1px 1px rgba(0,0,0,.3),0 16px 32px -18px rgba(0,0,0,.6); --sh-dev:0 1px 1px rgba(0,0,0,.4),0 6px 14px -4px rgba(0,0,0,.45),0 30px 50px -20px rgba(0,0,0,.7),0 70px 100px -50px rgba(0,0,0,.7); --sh-dev-sm:0 1px 1px rgba(0,0,0,.35),0 18px 34px -18px rgba(0,0,0,.7); --contact:rgba(0,0,0,.62); --plate:radial-gradient(90% 70% at 50% 100%, rgba(239,239,239,0.340), transparent 70%), linear-gradient(180deg, #252525, #060606); --band:#121212; --band-ink:#F0F0F0; --band-ink-70:rgba(240,240,240,0.700); --band-ink-50:rgba(240,240,240,0.500); --band-hair:rgba(240,240,240,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(239,239,239,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(112,112,112,0.100), transparent 70%); --ground-paint:radial-gradient(640px 540px at 96% 1%, rgba(239,239,239,0.220), transparent 70%),radial-gradient(560px 480px at 0% 15%, rgba(112,112,112,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(239,239,239,0.090), transparent 70%),radial-gradient(620px 520px at 0% 72%, rgba(239,239,239,0.070), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(112,112,112,0.070), transparent 70%),radial-gradient(520px 420px at 0% 0%, rgba(0,0,0,.35), transparent 70%),radial-gradient(560px 460px at 100% 100%, rgba(0,0,0,.35), transparent 70%), #070707; --display:"Cabinet Grotesk", Georgia, serif; --body:"Satoshi", system-ui, sans-serif; --label:"Satoshi", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:800; --dw2:500; }</style>
-<meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="site.css?v=3da99317">
+<meta name="robots" content="noindex,nofollow">
+<title>Build Your 1-Hour Content System | future/proof</title>
+<meta name="description" content="A free 3-day live event with Dan Koe to turn your interests into writing people actually read.">
 <link rel="icon" href="favicon.ico?v=7ee89a96" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=39d20ef0">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=975b8f95">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=58555601">
 <link rel="manifest" href="site.webmanifest?v=0552fb92">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,500&display=swap" rel="stylesheet">
+<style>
+/* Dan Koe, hand-made (2026-09-29). Pure black, light Satoshi (Fontshare), hairlines instead of boxes,
+   engraved line art in spotlight tiles like his book covers. No colour. */
+:root{
+  --bg:#000; --ink:#f2f2f2; --soft:#b4b4b4; --mute:#8e8e8e; --dim:#7d7d7d;
+  --hair:rgba(255,255,255,.10); --hair2:rgba(255,255,255,.16); --panel:#070707;
+  --f:'Satoshi','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip;background:#000}
+body{background:var(--bg);color:var(--ink);font:300 16px/1.7 var(--f);-webkit-font-smoothing:antialiased;overflow-x:clip;position:relative}
+.topspot{position:absolute;left:0;right:0;top:0;height:900px;pointer-events:none;z-index:0;background:radial-gradient(48% 62% at 50% -10%,rgba(255,255,255,.09),transparent 72%)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1240px,100% - 64px);margin-inline:auto;position:relative}
+.cap{font-size:11px;font-weight:300;letter-spacing:.34em;text-transform:uppercase;color:var(--mute);line-height:1.6}
+.cap i{font-style:normal;color:var(--dim);margin:0 .7em;letter-spacing:0}
+h1,h2,h3{font-weight:500;letter-spacing:-.035em;line-height:1.08;color:var(--ink)}
+h1 .g,h2 .g,h3 .g{color:#858585}
+.nw{white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#000;font:500 15px/1 var(--f);letter-spacing:-.005em;
+  padding:16px 26px;border-radius:999px;transition:background .2s,transform .2s;white-space:nowrap}
+.pill:hover{background:#dedede}
+.pill svg{flex:none}
+.pill.sm{font-size:13.5px;padding:11px 18px}
+.tlink{display:inline-flex;align-items:center;gap:8px;font-weight:400;font-size:14.5px;color:var(--ink);
+  padding-bottom:3px;border-bottom:1px solid rgba(255,255,255,.35);transition:border-color .2s}
+.tlink:hover{border-color:#fff}
+.note{margin-top:14px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--dim)}
+.faces{display:flex}
+.faces img{width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid #000;margin-left:-8px;filter:grayscale(1) contrast(1.05)}
+.faces img:first-child{margin-left:0}
+.rule{height:1px;background:var(--hair)}
+
+/* ------------------------------------------------ sticky header */
+#bar{position:fixed;left:0;right:0;top:0;z-index:40;transform:translateY(-110%);transition:transform .25s ease;
+  background:rgba(0,0,0,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--hair)}
+#bar.on{transform:none}
+#bar .in{display:flex;align-items:center;gap:22px;height:64px}
+#bar .ic{width:34px;height:34px;flex:none;border-radius:50%}
+#bar .t{font-size:14px;font-weight:400;letter-spacing:-.01em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+#bar .t small{display:block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);font-weight:300;line-height:1.3}
+#bar .cd{margin-left:auto}
+.cd{display:flex;align-items:baseline;gap:14px;font-variant-numeric:tabular-nums}
+.cd span{display:flex;align-items:baseline;gap:4px}
+.cd b{font-weight:300;font-size:18px;letter-spacing:-.02em;color:var(--ink)}
+.cd small{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+#bar .jn{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--soft);padding-left:22px;border-left:1px solid var(--hair)}
+#bar .jn b{font-weight:400;color:var(--ink)}
+
+/* ------------------------------------------------ nav */
+nav.top{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+nav.top .lg{height:30px;width:auto;opacity:.95}
+nav.top .r{display:flex;align-items:center;gap:30px;font-size:13.5px;color:var(--soft)}
+
+/* ------------------------------------------------ hero */
+.hero{position:relative;padding:34px 0 92px;overflow:clip}
+.spot{position:absolute;inset:0 0 auto 0;height:720px;pointer-events:none;
+  background:radial-gradient(52% 70% at 50% -12%,rgba(255,255,255,.085),transparent 70%)}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center;position:relative}
+.hleft{position:relative;padding-top:6px}
+.rings{position:absolute;left:50%;top:50%;width:760px;height:760px;transform:translate(-50%,-47%);pointer-events:none;z-index:0;
+  -webkit-mask:radial-gradient(closest-side,#000 55%,transparent);mask:radial-gradient(closest-side,#000 55%,transparent)}
+.trust{position:relative;z-index:1;display:flex;align-items:center;gap:16px;padding-bottom:22px;margin-bottom:26px;border-bottom:1px solid var(--hair)}
+.trust .ver{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);line-height:1.5}
+.trust .ver b{display:block;font-weight:400;font-size:13.5px;letter-spacing:-.005em;text-transform:none;color:var(--ink)}
+.trust .sep{width:1px;height:30px;background:var(--hair)}
+.trust .tx{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--soft);line-height:1.5}
+.stars{display:flex;gap:3px;margin-bottom:3px}
+.stars svg{width:11px;height:11px}
+/* the phone: flat, hairline, no chrome glow */
+.phone{position:relative;z-index:1;border-radius:34px;padding:9px;border:1px solid var(--hair2);background:#050505}
+.phone .scr{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:16/9;background:#111}
+.phone .scr img{width:100%;height:100%;object-fit:cover;object-position:48% 26%}
+.phone .scr:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 50%,rgba(0,0,0,.55))}
+.phone .isl{position:absolute;left:18px;top:50%;width:7px;height:62px;margin-top:-31px;border-radius:9px;background:#000;border:1px solid rgba(255,255,255,.07);z-index:2}
+.play{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px}
+.play i{width:66px;height:66px;border-radius:50%;border:1px solid rgba(255,255,255,.7);display:grid;place-items:center;
+  background:rgba(0,0,0,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .2s}
+.play:hover i{transform:scale(1.04)}
+.play span{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:#e8e8e8}
+.prog{position:absolute;left:34px;right:28px;bottom:18px;z-index:2;display:flex;align-items:center;gap:14px;font-size:11px;color:#ddd;font-variant-numeric:tabular-nums}
+.prog .ln{flex:1;height:1px;background:rgba(255,255,255,.3);position:relative}
+.prog .ln i{position:absolute;left:0;top:0;height:1px;width:12%;background:#fff}
+.vcap{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;position:relative;z-index:1}
+.vcap span{font-size:13px;color:var(--soft)}
+.vcap .cap{font-size:10px}
+/* the right column */
+.hright{position:relative;z-index:1;padding-top:4px}
+.hright>.cap{margin-bottom:26px;letter-spacing:.26em;font-size:10.5px}
+.hright h1{font-size:clamp(44px,5.1vw,74px);letter-spacing:-.04em;line-height:1.04}
+.lede{margin-top:28px;font-size:16.5px;color:var(--soft);max-width:34em}
+.lede b{font-weight:400;color:var(--ink)}
+.stuckq{margin-top:34px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{font-size:13px;font-weight:300;color:var(--soft);padding:8px 16px;border-radius:999px;border:1px solid var(--hair2);transition:border-color .2s,color .2s}
+.chip:hover,.chip.on{border-color:rgba(255,255,255,.6);color:var(--ink)}
+.reg{margin-top:30px;padding-top:24px;border-top:1px solid var(--hair)}
+.reg .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.reg .rt{font-size:13px;color:var(--soft)}
+.reg .rt b{font-weight:400;color:var(--ink)}
+.reg .num{font-size:13px;color:var(--soft);margin-top:10px}
+.reg .num b{font-weight:400;color:var(--ink)}
+.reg .num i{font-style:normal;color:var(--dim)}
+.reg .go{display:flex;align-items:center;gap:22px;margin-top:24px;flex-wrap:wrap}
+.reg .go .note{margin-top:0}
+
+/* ------------------------------------------------ trust strip */
+.strip{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.strip .wrap{display:flex;justify-content:space-between;gap:20px 40px;flex-wrap:wrap;padding:24px 0}
+.strip span{font-size:13.5px;color:var(--soft);white-space:nowrap}
+.strip span b{font-weight:400;color:var(--ink)}
+
+/* ------------------------------------------------ sections */
+section.s{padding:132px 0 0}
+.shead{max-width:820px}
+.shead.c{margin-inline:auto;text-align:center}
+.shead h2{font-size:clamp(34px,3.9vw,54px);margin-top:20px}
+.shead p{margin-top:20px;color:var(--soft);font-size:16.5px;text-wrap:balance}
+
+/* fit check */
+.fit{display:grid;grid-template-columns:320px minmax(0,1fr);gap:clamp(40px,6vw,90px);margin-top:70px;align-items:start}
+.port{position:relative}
+.port img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:18px;filter:grayscale(.35) contrast(1.02)}
+.port .who{margin-top:16px;padding-top:14px;border-top:1px solid var(--hair)}
+.port .who b{display:block;font-weight:400;font-size:15px}
+.port .who .cap{font-size:10px}
+.fl{list-style:none;border-top:1px solid var(--hair)}
+.fl li{display:grid;grid-template-columns:28px 230px minmax(0,1fr);gap:18px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--hair)}
+.fl svg{width:16px;height:16px;transform:translateY(2px)}
+.fl b{font-weight:400;color:var(--ink);font-size:16px}
+.fl span{color:var(--soft);font-size:15.5px}
+.fitp{margin-top:34px;max-width:40em;color:var(--soft);font-size:15.5px}
+.fitp b{font-weight:400;color:var(--ink)}
+.fitp+.fitp{margin-top:12px;color:var(--mute)}
+.fitgo{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:34px}
+.fitgo .note{margin-top:0}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:260px repeat(3,minmax(0,1fr));margin-top:0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.nums>div{padding:44px 0 44px 34px;border-left:1px solid var(--hair)}
+.nums>div:first-child{border-left:0;padding-left:0}
+.nums .n{font-weight:300;font-size:clamp(46px,5.4vw,78px);letter-spacing:-.05em;line-height:1;color:var(--ink)}
+.nums .l{margin-top:16px;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--soft)}
+.nums .src{margin-top:6px;font-size:12px;color:var(--dim)}
+.nums .src a{border-bottom:1px solid rgba(255,255,255,.18)}
+.nums .lead p{margin-top:12px;color:var(--soft);font-size:15px}
+
+/* the days */
+.tl{position:relative;margin-top:84px}
+.tl:before{content:'';position:absolute;left:54px;top:8px;bottom:40px;width:1px;background:linear-gradient(var(--hair2),var(--hair) 80%,transparent)}
+.day{display:grid;grid-template-columns:110px minmax(0,1fr);gap:clamp(24px,4vw,56px);padding-bottom:84px}
+.date{position:relative;text-align:center;padding-top:0}
+.date .dot{width:9px;height:9px;border-radius:50%;background:#000;border:1px solid #fff;margin:0 auto 18px;position:relative;z-index:1;box-shadow:0 0 0 7px #000}
+.date .wd{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);background:#000;position:relative;padding:2px 0}
+.date .dn{font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.04em;color:var(--ink);background:#000;position:relative}
+.date .mo{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);background:#000;position:relative;padding-bottom:4px}
+.date .tm{font-size:11px;color:var(--mute);background:#000;position:relative;padding:4px 0}
+.card{border:1px solid var(--hair);border-radius:22px;overflow:hidden;background:var(--panel)}
+.art{position:relative;height:320px;border-bottom:1px solid var(--hair);overflow:hidden;
+  background:radial-gradient(46% 78% at 50% -8%,rgba(255,255,255,.17),rgba(255,255,255,.04) 55%,transparent 75%),
+             radial-gradient(40% 18% at 50% 100%,rgba(255,255,255,.05),transparent 70%),#030303}
+.art svg{position:absolute;left:50%;top:52%;width:290px;height:290px;transform:translate(-50%,-50%)}
+.art .ac{position:absolute;left:24px;top:20px;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--mute)}
+.art .ar{position:absolute;right:24px;top:20px;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--mute)}
+.cbody{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,4vw,60px);padding:40px 44px 44px}
+.cbody h3{font-size:clamp(28px,2.7vw,38px);letter-spacing:-.035em;line-height:1.1;margin-top:14px}
+.cbody .out{margin-top:18px;font-size:16.5px;color:var(--ink);font-weight:300}
+.cbody .det{margin-top:12px;font-size:15px;color:var(--mute)}
+.cbody .go{margin-top:28px}
+.lw .cap{font-size:10px;padding-bottom:14px;border-bottom:1px solid var(--hair)}
+.lw ul{list-style:none}
+.lw li{display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--hair);font-size:15px;color:var(--soft)}
+.lw li em{font-style:normal;font-size:11px;color:var(--dim);font-variant-numeric:tabular-nums;letter-spacing:.08em;flex:none;width:18px}
+
+/* keep */
+.keep{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:70px}
+.tkart{border:1px solid var(--hair);border-radius:18px;background:var(--panel);padding:24px 24px 20px;display:flex;flex-direction:column;min-width:0}
+.kh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--hair)}
+.kh .cap{font-size:10px}
+.kh .st{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);white-space:nowrap;display:flex;align-items:center;gap:8px}
+.kh .st:before{content:'';width:5px;height:5px;border-radius:50%;border:1px solid #fff}
+.tkart h4{font-weight:400;font-size:19px;letter-spacing:-.02em;line-height:1.25;margin:18px 0 8px;color:var(--ink)}
+.kr{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:baseline}
+.kr .k{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.kr .v{font-size:14px;color:var(--soft);line-height:1.5}
+.kr.pull .v{color:var(--ink);font-weight:400}
+.kth,.ktr{display:grid;grid-template-columns:minmax(0,1fr) 44px 74px;gap:10px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:baseline}
+.kth span{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.kth span:nth-child(n+2),.ktr span:nth-child(n+2){text-align:right}
+.ktr span{font-size:14px;color:var(--soft);font-variant-numeric:tabular-nums}
+.ktr span:first-child{color:var(--ink);font-weight:300}
+.ktr.cut span{color:var(--dim);text-decoration:line-through;text-decoration-thickness:1px}
+.ktr.cut span:last-child{text-decoration:none;color:var(--soft)}
+.kf{margin-top:auto;padding-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.kf span{font-size:13px;color:var(--mute);line-height:1.45}
+.kf em{font-style:normal;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);border:1px solid var(--hair2);border-radius:999px;padding:6px 11px;white-space:nowrap}
+.kdays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:0}
+.kdays div{padding:22px 0 0;border-top:1px solid var(--hair)}
+.kdays b{display:block;font-weight:400;font-size:15.5px;color:var(--ink);margin-top:8px}
+.kdays p{font-size:14px;color:var(--mute);margin-top:6px}
+.kgo{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:44px}
+.kgo .note{margin-top:0}
+
+/* faq */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,7vw,120px)}
+.faq h2{font-size:clamp(34px,3.6vw,50px)}
+.faq .sub{margin-top:18px;color:var(--mute);font-size:15px;max-width:22em}
+.qa{border-top:1px solid var(--hair)}
+.q{border-bottom:1px solid var(--hair)}
+.q button{width:100%;display:grid;grid-template-columns:44px minmax(0,1fr) 20px;align-items:center;text-align:left;padding:26px 0;gap:10px}
+.q .qn{font-size:11px;color:var(--dim);letter-spacing:.1em;font-variant-numeric:tabular-nums}
+.q .qt{font-size:18px;font-weight:400;letter-spacing:-.015em;color:var(--ink)}
+.q .qx{position:relative;width:14px;height:14px}
+.q .qx:before,.q .qx:after{content:'';position:absolute;left:0;top:7px;width:14px;height:1px;background:var(--soft);transition:transform .2s}
+.q .qx:after{transform:rotate(90deg)}
+.q.open .qx:after{transform:rotate(0)}
+.q .qb{display:none;padding:0 30px 28px 54px;color:var(--soft);font-size:15.5px}
+.q.open .qb{display:block}
+
+/* testimonial */
+.tst{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(40px,6vw,90px);align-items:center;padding-top:60px;border-top:1px solid var(--hair)}
+.tv{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--hair)}
+.tv img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5)}
+.tv:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.7))}
+.tv .play{top:48%}
+.tv .play i{width:54px;height:54px}
+.tv .tl2{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;display:flex;justify-content:space-between;font-size:11px;color:#ddd}
+.steps{list-style:none;position:relative;padding-left:26px}
+.steps:before{content:'';position:absolute;left:4px;top:10px;bottom:10px;width:1px;background:var(--hair2)}
+.steps li{position:relative;padding-bottom:22px}
+.steps li:before{content:'';position:absolute;left:-26px;top:7px;width:9px;height:9px;border-radius:50%;border:1px solid #fff;background:#000}
+.steps li.on:before{background:#fff}
+.steps p{color:var(--soft);font-size:15.5px;margin-top:4px}
+.steps h3{font-size:clamp(28px,2.8vw,40px);margin-top:6px}
+.quote{margin-top:14px;padding-top:26px;border-top:1px solid var(--hair)}
+.quote p{font-size:clamp(19px,1.8vw,23px);font-weight:300;font-style:italic;line-height:1.55;color:var(--ink);letter-spacing:-.01em;max-width:34em}
+.quote footer{display:flex;align-items:center;gap:12px;margin-top:20px}
+.quote .av{width:34px;height:34px;border-radius:50%;border:1px solid var(--hair2);display:grid;place-items:center;font-size:13px;color:var(--soft)}
+.quote b{display:block;font-weight:400;font-size:14px}
+.quote i{font-style:normal;font-size:12.5px;color:var(--mute)}
+
+/* close */
+.close{position:relative;text-align:center;padding:150px 0 130px;overflow:clip}
+.close .rings2{position:absolute;left:50%;top:50%;width:980px;height:980px;transform:translate(-50%,-50%);pointer-events:none;
+  -webkit-mask:radial-gradient(closest-side,transparent 26%,#000 40%,#000 60%,transparent);mask:radial-gradient(closest-side,transparent 26%,#000 40%,#000 60%,transparent)}
+.close .spot{height:100%;background:radial-gradient(40% 60% at 50% 0%,rgba(255,255,255,.07),transparent 70%)}
+.close>.wrap{position:relative;z-index:1}
+.close .av{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 20%;margin:0 auto 26px;filter:grayscale(.3);border:1px solid var(--hair2)}
+.close h2{font-size:clamp(32px,4.8vw,68px);letter-spacing:-.04em;margin:20px auto 0}
+.close .when{margin-top:24px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--soft)}
+.cform{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:660px;margin:40px auto 0}
+.cform input{flex:1 1 200px;min-width:0;background:transparent;border:1px solid var(--hair2);color:var(--ink);font:300 15px var(--f);padding:15px 22px;border-radius:999px;outline:0;transition:border-color .2s}
+.cform input::placeholder{color:#7d7d7d}
+.cform input:focus{border-color:rgba(255,255,255,.55)}
+.close .note{margin-top:18px}
+
+/* locked tail */
+.gated{position:relative;padding:40px 0 0;filter:blur(9px);opacity:.55;pointer-events:none;user-select:none}
+.gcards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.gcards div{border:1px solid var(--hair);border-radius:18px;padding:28px;min-height:190px}
+.gcards h4{font-weight:400;font-size:18px;margin-top:40px}
+.gcards p{color:var(--mute);font-size:14px;margin-top:8px}
+#gate{position:relative;z-index:2;margin:-120px auto 0;width:min(620px,100% - 32px);display:flex;align-items:center;gap:18px;
+  padding:14px 14px 14px 22px;border:1px solid var(--hair2);border-radius:999px;background:rgba(0,0,0,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+#gate svg{flex:none}
+#gate .gt{flex:1;min-width:0;line-height:1.35}
+#gate .gt b{display:block;font-weight:400;font-size:14.5px}
+#gate .gt small{font-size:12.5px;color:var(--mute)}
+#gpanel{display:none;width:min(520px,100% - 32px);margin:14px auto 0;padding:22px 24px;border:1px solid var(--hair2);border-radius:18px;text-align:center;position:relative;z-index:2;background:#000}
+#gpanel.on{display:block}
+#gpanel p{font-size:14.5px;color:var(--soft)}
+#gpanel b{font-weight:400;color:var(--ink)}
+#gpanel code{display:inline-block;margin-top:12px;font:300 14px var(--f);color:var(--ink);border-bottom:1px solid var(--hair2);padding-bottom:2px}
+#gpanel a{display:inline-block;margin-top:14px;font-size:13px}
+
+footer.foot{margin-top:110px;border-top:1px solid var(--hair)}
+footer.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px 30px;flex-wrap:wrap;padding:28px 0 40px;font-size:12.5px;color:var(--mute)}
+footer.foot .l{display:flex;align-items:center;gap:14px}
+footer.foot em{font-style:normal;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--soft);border:1px solid var(--hair2);border-radius:999px;padding:5px 11px}
+
+/* toast */
+#toast{position:fixed;left:24px;bottom:24px;z-index:45;display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;border-radius:999px;
+  border:1px solid var(--hair2);background:rgba(0,0,0,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;pointer-events:none;max-width:calc(100% - 48px)}
+#toast.on{opacity:1;transform:none}
+#toast img{width:32px;height:32px;border-radius:50%;object-fit:cover;filter:grayscale(1)}
+#toast span{font-size:13px;color:var(--soft);line-height:1.35}
+#toast b{font-weight:400;color:var(--ink)}
+#toast small{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+
+/* the sign-up sheet */
+#modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px}
+#modal.on{display:flex}
+#modal .bd{position:absolute;inset:0;background:rgba(0,0,0,.8);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#modal .sheet{position:relative;width:min(520px,100%);max-height:calc(100vh - 40px);overflow:auto;border:1px solid var(--hair2);border-radius:24px;background:#050505;padding:40px 40px 34px;
+  background-image:radial-gradient(60% 40% at 50% 0%,rgba(255,255,255,.07),transparent 70%)}
+#modal .x{position:absolute;right:18px;top:16px;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--hair)}
+#modal h3{font-size:28px;letter-spacing:-.035em;margin-top:14px}
+#modal .mw{margin-top:10px;color:var(--soft);font-size:14.5px}
+#modal .mf{margin-top:10px;font-size:13.5px;color:var(--soft);display:none}
+#modal .mf.on{display:block}
+#modal .mf b{font-weight:400;color:var(--ink)}
+#modal form{margin-top:24px;display:grid;gap:12px}
+#modal label span{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+#modal input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--hair2);color:var(--ink);font:300 16px var(--f);padding:8px 0 10px;outline:0;border-radius:0}
+#modal input:focus{border-color:rgba(255,255,255,.6)}
+#modal label.bad input{border-color:#fff}
+#modal label.bad span:after{content:'  needed';color:var(--ink);letter-spacing:.1em}
+#modal .pill{justify-content:center;margin-top:14px;width:100%}
+#modal .done .pill{width:auto;margin-top:0}
+#modal .ticks{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:18px;font-size:12px;color:var(--mute);list-style:none}
+#modal .done h3{margin-top:18px}
+#modal .done p{margin-top:12px;color:var(--soft);font-size:15px}
+#modal .done .row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:26px}
+#modal .done .next{margin-top:30px;padding-top:22px;border-top:1px solid var(--hair)}
+
+@media (max-width:1100px){
+  .fl li{grid-template-columns:28px 190px minmax(0,1fr)}
+  .keep{grid-template-columns:1fr;max-width:620px}
+  .kdays{grid-template-columns:1fr}
+  #bar .jn{display:none}
+}
+@media (max-width:960px){
+  .wrap{width:min(1240px,100% - 40px)}
+  .hgrid{grid-template-columns:1fr;gap:48px}
+  .hright{order:-1}
+  .fit{grid-template-columns:1fr}
+  .port{max-width:320px}
+  .nums{grid-template-columns:1fr 1fr}
+  .nums>div{padding:34px 0 34px 24px}
+  .nums>div:first-child{grid-column:1/-1;border-bottom:1px solid var(--hair);padding:30px 0}
+  .nums>div:nth-child(2){border-left:0;padding-left:0}
+  .nums>div:nth-child(4){grid-column:1/-1;border-left:0;padding-left:0;border-top:1px solid var(--hair)}
+  .cbody{grid-template-columns:1fr;padding:32px 28px 34px}
+  .faq{grid-template-columns:1fr}
+  .tst{grid-template-columns:1fr}
+  .tv{max-width:300px}
+  .gcards{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  body{font-size:15px}
+  .wrap{width:calc(100% - 32px)}
+  nav.top{padding:18px 0}
+  nav.top .r a.l{display:none}
+  .hero{padding:20px 0 70px}
+  .hright h1{font-size:clamp(38px,11vw,50px)}
+  .hright .cap{font-size:10px;letter-spacing:.26em;margin-bottom:20px}
+  .lede{font-size:15.5px}
+  .trust{flex-wrap:wrap;gap:12px}
+  .trust .sep{display:none}
+  .phone{border-radius:24px;padding:6px}
+  .phone .scr{border-radius:19px}
+  .phone .isl{display:none}
+  .play i{width:54px;height:54px}
+  .prog{left:18px;right:18px;bottom:12px}
+  .rings{width:520px;height:520px}
+  .strip .wrap{justify-content:flex-start;gap:12px 26px;padding:20px 0}
+  .strip span{white-space:normal}
+  section.s{padding-top:96px}
+  .fl li{grid-template-columns:24px minmax(0,1fr);gap:4px 12px;padding:18px 0}
+  .fl li span{grid-column:2}
+  .nums .n{font-size:44px}
+  .tl:before{display:none}
+  .day{grid-template-columns:1fr;gap:18px;padding-bottom:60px}
+  .date{display:flex;align-items:center;gap:12px;text-align:left;padding-left:0}
+  .date .dot{margin:0 10px 0 10px;box-shadow:0 0 0 6px #000}
+  .date .dn{font-size:22px;line-height:1}
+  .date .wd,.date .mo,.date .tm{padding:0}
+  .art{height:230px}
+  .art svg{width:200px;height:200px}
+  .art .ac,.art .ar{top:16px;font-size:9px;letter-spacing:.28em}
+  .art .ac{left:18px}.art .ar{right:18px}
+  .cbody{padding:26px 22px 28px}
+  .kr{grid-template-columns:78px minmax(0,1fr)}
+  .tkart{padding:20px 18px 18px}
+  .q button{grid-template-columns:34px minmax(0,1fr) 20px;padding:22px 0}
+  .q .qt{font-size:16.5px}
+  .q .qb{padding:0 10px 24px 44px}
+  .close{padding:110px 0 100px}
+  .close .rings2{width:640px;height:640px}
+  .close .when{letter-spacing:.2em;line-height:1.9}
+  .cform .pill{width:100%;justify-content:center}
+  #bar .in{gap:12px;height:58px}
+  #bar .t{display:none}
+  #bar .cd{margin-left:0}
+  #bar .pill{margin-left:auto}
+  .cd{gap:9px}
+  .cd b{font-size:16px}
+  .cd small{font-size:8.5px;letter-spacing:.14em}
+  #gate{border-radius:20px;flex-wrap:wrap;margin-top:-90px}
+  #gate .pill{width:100%;justify-content:center}
+  #modal .sheet{padding:34px 22px 26px}
+  #toast{left:16px;bottom:16px;max-width:calc(100% - 32px)}
+}
+@media (max-width:440px){
+  .cd span:nth-child(4){display:none}
+  #bar .pill{padding:10px 15px}
+}
+
+/* vertical video card (kept from the template, Sean 2026-09-29: "dont remove dan's vertical video"), Dan-flat */
+#stick{position:fixed;right:22px;bottom:22px;z-index:70;width:176px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .35s,transform .35s}
+#stick.on{opacity:1;transform:none;pointer-events:auto}
+#stick.bub{width:64px}
+#stick .sv{position:relative;border:1px solid var(--hair2);border-radius:16px;overflow:hidden;background:#000}
+#stick .sv img{width:100%;aspect-ratio:9/16;object-fit:cover;filter:grayscale(1) contrast(1.05);display:block}
+#stick .sv:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 28%,transparent 45%,rgba(0,0,0,.92));z-index:1}
+#stick .cap{text-transform:none;letter-spacing:0;font-weight:300;position:absolute;left:12px;right:12px;bottom:58px;z-index:2;font-size:12.5px;line-height:1.4;color:#f2f2f2;transition:opacity .3s}
+#stick .hint{position:absolute;left:12px;bottom:38px;z-index:2;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#b4b4b4}
+#stick .bar{position:absolute;left:12px;right:12px;bottom:26px;height:1px;background:rgba(255,255,255,.28);z-index:2}
+#stick .bar i{display:block;height:1px;width:34%;background:#fff}
+#stick .x{position:absolute;top:8px;right:8px;z-index:3;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.55);border:1px solid var(--hair2);display:grid;place-items:center;font-size:12px;line-height:1}
+#stick .go{position:absolute;left:10px;right:10px;bottom:8px;z-index:3;text-align:center;background:#fff;color:#000;font:500 12.5px var(--f);border-radius:999px;padding:6px 0;cursor:pointer}
+#stick.bub .sv img{aspect-ratio:1;border-radius:50%}
+#stick.bub .cap,#stick.bub .hint,#stick.bub .bar,#stick.bub .go,#stick.bub .x,#stick.bub .sv:before{display:none}
+#stick.bub .sv{border-radius:50%;cursor:pointer}
+@media (max-width:760px){#stick{right:12px;bottom:14px;width:64px}#stick .cap,#stick .hint,#stick .bar,#stick .go,#stick .x,#stick .sv:before{display:none}#stick .sv{border-radius:50%}#stick .sv img{aspect-ratio:1;border-radius:50%}#stick.open{width:176px}#stick.open .sv{border-radius:16px}#stick.open .sv img{aspect-ratio:9/16;border-radius:0}#stick.open .cap,#stick.open .hint,#stick.open .bar,#stick.open .go,#stick.open .x,#stick.open .sv:before{display:block}}
+#stick .cap b{font-weight:500;text-transform:none;letter-spacing:0}
+</style>
 </head>
 <body>
-<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
-     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
-     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
-<div id="page">
-  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
-  <div class="bgl" id="ground"></div>
-  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
-  <div class="bgl" id="ghosts"></div>
-  <div class="bgl" id="grain"></div>
 
-  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
-  <header class="navwrap" id="navwrap">
-    <nav class="nav" id="nav">
-      <span class="lock">
-        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
-        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
-      </span>
-      <span class="cd"><span class="cdl">Starts in</span>
-        <span class="cdn"><b>00</b><small>days</small></span><em></em>
-        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
-        <span class="cdn"><b>00</b><small>min</small></span></span>
-      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    </nav>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero z" id="hero">
-    <p class="eyebrow" id="heroEye"></p>
-    <h1 id="headline" class="disp fit"></h1>
-    <p class="lede" id="lede"></p>
-    <div class="stagebox" id="stagebox">
-      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
-      <div class="iphone" id="iphone">
-        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
-        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
-          <img id="video" alt="">
-          <span class="ip-shade"></span>
-          <span class="ip-island"></span>
-          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
-          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
-          <span class="ip-scrub"><b></b></span>
-          <span class="ip-glare"></span>
-        </div></div></div>
-      </div>
-      <!-- frosted registration card -->
-      <div class="regcard glass" id="regcard">
-        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
-        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <p class="fine" id="fine"></p>
-      </div>
+<!-- sticky header: the lead's photo favicon in its own round shape, never a box behind the title -->
+<header id="bar" aria-label="Event bar">
+  <div class="wrap in">
+    <img class="ic" src="favicon.png?v=de06c0e4" alt="">
+    <div class="t"><small>Free 3-day live event</small>Build Your 1-Hour Content System</div>
+    <div class="cd" aria-label="Starts in">
+      <span><b data-cd="d">00</b><small>days</small></span>
+      <span><b data-cd="h">00</b><small>hrs</small></span>
+      <span><b data-cd="m">00</b><small>min</small></span>
+      <span><b data-cd="s">00</b><small>sec</small></span>
     </div>
-  </section>
+    <div class="jn"><div class="faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""></div><span><b class="seats">1,204</b> joined</span></div>
+    <button class="pill sm" data-reg>Hold my seat</button>
+  </div>
+</header>
 
-  <!-- slim strip of sourced facts -->
-  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+<div class="topspot"></div>
+<div class="wrap">
+  <nav class="top">
+    <a href="#top"><img class="lg" src="img/logo.png" alt="Dan Koe"></a>
+    <div class="r"><a class="l tlink" href="https://letters.thedankoe.com/">future/proof</a><button class="pill sm" data-reg>Hold my seat</button></div>
+  </nav>
+</div>
 
-  <!-- fit check -->
-  <section class="fitc z" id="fitc">
-    <p class="eyebrow c">Honest fit check</p>
-    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
-    <div class="fitgrid">
-      <figure class="me">
-        <div class="photo" id="photo"><img id="portrait" alt=""></div>
-        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
-      </figure>
-      <ul class="checks" id="checks"></ul>
-    </div>
-  </section>
-
-  <!-- stats band: the cut for page 2 sits on its top edge -->
-  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
-
-  <section class="days z" id="days">
-    <p class="eyebrow c">The three days <i></i> Live online</p>
-    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
-    <p class="intro" id="intro"></p>
-    <div class="d1">
-      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
-      <div class="macbook" id="macbook">
-        <div class="mb-lid"><div class="mb-screen">
-          <div class="mb-disp">
-            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
-            <img id="slide" alt="">
-            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
-          </div>
-          <span class="mb-notch"></span>
-          <span class="mb-glare"></span>
-        </div></div>
-        <div class="mb-base"><span class="mb-scoop"></span></div>
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hgrid">
+    <div class="hleft">
+      <svg class="rings" viewBox="0 0 800 800" fill="none" stroke="#fff" aria-hidden="true">
+        <circle cx="400" cy="400" r="140" stroke-opacity=".11"/>
+        <circle cx="400" cy="400" r="200" stroke-opacity=".09"/>
+        <circle cx="400" cy="400" r="266" stroke-opacity=".08"/>
+        <circle cx="400" cy="400" r="336" stroke-opacity=".06"/>
+        <circle cx="400" cy="400" r="392" stroke-opacity=".05"/>
+      </svg>
+      <div class="trust">
+        <div class="ver">Verified<b>Top rated event</b></div>
+        <span class="sep"></span>
+        <div class="faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""><img src="img/faces/f4.jpg" alt=""><img src="img/faces/f5.jpg" alt=""></div>
+        <div class="tx"><div class="stars" aria-label="5 stars"></div>Trusted by over 1.43M YouTube subscribers</div>
       </div>
-      <div class="d1body">
-        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
-        <h3 class="dt disp fit" id="d1t"></h3>
-        <p class="do" id="d1o"></p>
-      </div>
-    </div>
-    <div class="d23" id="d23"></div>
-  </section>
-
-  <section class="closing z" id="closing">
-    <div class="ccard glass">
-      <div class="chead">
-        <span class="av lg"><img id="cAvatar" alt=""></span>
-        <div class="ctext">
-          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
-          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+      <div class="phone">
+        <span class="isl"></span>
+        <div class="scr">
+          <img src="img/video.jpg" alt="Dan Koe talking to camera">
+          <button class="play" data-reg aria-label="Play"><i><svg width="18" height="20" viewBox="0 0 18 20"><path d="M2 1.5v17L16.5 10z" fill="none" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg></i><span>Tap for sound</span></button>
+          <div class="prog"><span>0:10</span><span class="ln"><i></i></span><span>-1:22</span></div>
         </div>
       </div>
-      <div class="form">
-        <span class="field">First name</span><span class="field">Email address</span>
-        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </div>
-      <p class="fine" id="cFine"></p>
+      <div class="vcap"><span>A note from Dan before Day 1</span><span class="cap">1:32</span></div>
     </div>
-  </section>
 
-  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+    <div class="hright">
+      <p class="cap">Free 3-day live event<i>/</i><span class="whenS">Thu Oct 8 to Sat Oct 10 EDT</span><i>/</i>Live online</p>
+      <h1><span class="g nw">Pick 3 topics</span><br><span class="nw">you can own</span><br><span class="nw">for a decade.</span></h1>
+      <p class="lede"><b>Learn what’s actually working for writing online in 2026.</b> I’ll walk through why most people post for months and nobody reads, the 5 things that decide whether your writing gets read, and we’ll build your <span class="nw">1-hour</span> content system together. It’s the same system I teach inside the Eden Creator Bootcamp, and it’s yours for free.</p>
+      <div class="stuckq">
+        <p class="cap">Where are you stuck right now?</p>
+        <div class="chips">
+          <button class="chip" data-reg data-focus>No idea what to post</button>
+          <button class="chip" data-reg data-focus>Posts nobody reads</button>
+          <button class="chip" data-reg data-focus>No time to write</button>
+        </div>
+      </div>
+      <div class="reg" id="regcard">
+        <div class="row">
+          <div class="faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""><img src="img/faces/f4.jpg" alt=""><img src="img/faces/f5.jpg" alt=""><img src="img/faces/f6.jpg" alt=""></div>
+          <span class="rt"><b>4.9</b> average rating</span>
+        </div>
+        <p class="num"><b class="seats">1,204</b> people have their seat <i>/</i> <span class="l24">18</span> registered in the last 24 hours</p>
+        <div class="go">
+          <button class="pill" data-reg>Hold my seat <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          <span class="note ctaNote">Free online challenge: Oct 8 to Oct 10 EDT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- trust strip -->
+<div class="strip">
+  <div class="wrap">
+    <span><b>346,000+</b> subscribers to future/proof</span>
+    <span><b>1.43M</b> subscribers on YouTube</span>
+    <span>Co-founder of Eden</span>
+    <span>Author of The Art of Focus</span>
+  </div>
 </div>
-<div id="probe"></div>
-<script>window.LP = {"slug": "dan-koe", "name": "Dan Koe", "brand": "future/proof", "role": "Writer, co-founder of Eden", "event": "Build Your 1-Hour Content System", "headline": {"lines": ["Pick 3 topics", "you can own", "for a decade."], "accent_line": 0, "mark_word": "3 topics"}, "stats": [{"num": "346K+", "label": "future/proof subscribers", "source": "https://letters.thedankoe.com/"}, {"num": "1.43M", "label": "YouTube subscribers", "source": "https://www.youtube.com/@DanKoeTalks"}], "days": [{"title": "Pick 3 topics|you can own|for a decade.", "outcome": "Three topics you can write about for years, and the ones to park.", "detail": "We start from what you already read, do and talk about, then keep the three that overlap.", "bullets": ["List what you read, do and talk about", "Keep the 3 topics where they overlap", "Park the ones that only chase views"]}, {"title": "Make one idea|a week of posts", "outcome": "One idea from your topics written as a week of posts and one letter.", "detail": "We take one idea and write it as short posts, a thread and a newsletter issue, in your own voice.", "bullets": ["Pick one idea from a Day 1 topic", "Write the post people stop for", "Turn it into a thread and a letter"]}, {"title": "Run it on one|hour a day", "outcome": "Your hour a day set up in Eden, so next week ships without a scramble.", "detail": "We set the system up in Eden, the workspace I built for this, and I show you where the Creator Bootcamp takes it over 30 days.", "bullets": ["Capture ideas in one place in Eden", "Split the hour: write, turn, send", "See what the Creator Bootcamp adds"]}], "sources_line": "Figures: letters.thedankoe.com, youtube.com, eden.so, thedankoe.com", "style": {"pattern": "dots", "mark": "underline", "video_focus": "48% 26%", "headshot_focus": "50% 32%", "colors": {"accent": "#EFEFEF", "secondary": "#707070"}}, "pattern": "ruled", "mark": {"kind": "swipe", "color": "#EFEFEF", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-148.6 758.0 747.0 525.8\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"77\" y=\"319.09375\" width=\"898\" height=\"494.671875\" fill=\"#4a4a4a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(-8 300 980)\"><path d=\"M-120 800 H560 V1220 H-120 Z M-120 800 L220 1020 L560 800\" stroke-width=\"7\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><\/g><\/g><\/svg>", "w": 747.0, "h": 525.8, "sw": 7}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1364.1 -187.0 315.5 457.4\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"77\" y=\"319.09375\" width=\"898\" height=\"494.671875\" fill=\"#4a4a4a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M1460 -60 V180 Q1460 250 1530 250 Q1600 250 1600 180 V-120 Q1600 -170 1550 -170 Q1500 -170 1500 -120 V140\" stroke-width=\"8\" stroke-linecap=\"round\" transform=\"rotate(-24 1530 60)\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><\/g><\/svg>", "w": 315.5, "h": 457.4, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1405.3 854.1 640.9 291.7\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"77\" y=\"319.09375\" width=\"898\" height=\"494.671875\" fill=\"#4a4a4a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(1520 1030) rotate(-18)\"><path d=\"M0 0 H520 V70 H0 Z M0 0 L-110 30 L-110 40 L0 70 M340 -8 V78\" stroke-width=\"7\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><\/g><\/g><\/svg>", "w": 640.9, "h": 291.7, "sw": 7}], "pat_op": 0.155, "ghost_op": 0.19, "ghost_stroke": 4.5, "fonts": {"display": "Cabinet Grotesk", "display_weight": 800, "body": "Satoshi", "label": "Satoshi"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Dan", "event_core": "Build Your 1-Hour Content System", "lede": "**Learn what’s actually working for writing online in 2026.** I’ll walk through why most people post for months and nobody reads, the 5 things that decide whether your writing gets read, and we’ll build your 1-hour content system together. It’s the same system I teach inside the Eden Creator Bootcamp, and it’s yours for free.", "proof": [{"num": "30 days", "label": "Eden Creator Bootcamp", "source": "https://eden.so/bootcamp"}], "ticker": ["346,000+ subscribers to future/proof", "1.43M subscribers on YouTube", "Co-founder of Eden", "Author of The Art of Focus"], "checks": [{"bold": "No idea what to post", "text": "Day 1 picks 3 topics you can write about for years.", "hand": "3 topics"}, {"bold": "Posts nobody reads", "text": "Write the post people stop for, from one idea.", "hand": "one idea"}, {"bold": "No time to write", "text": "Set up a system that runs on one hour a day.", "hand": "one hour a day"}, {"bold": "AI posts everywhere", "text": "Stand out by writing from your own interests.", "hand": "your voice"}, {"bold": "The algorithm changes", "text": "Grow a newsletter list that stays yours.", "hand": "your list"}], "days_intro": "Day 1 picks your topics, Day 2 turns one idea into a week of posts, and Day 3 sets it all running on one hour a day.", "fit_count": 4, "format": "3-day"};</script>
-<script src="lp.js?v=113601bc"></script>
-<script>window.SITE = {
- "event": "Build Your 1-Hour Content System",
- "name": "Dan Koe",
- "brand": "future/proof",
- "trusted_count": "1.43M",
- "audience": "youtube subscribers",
- "monogram": "FP",
- "logo": "img/logo.png",
- "reply_to": "sean@theafterharvest.com",
- "subject": "Unlock the full page for future/proof",
- "body": "Yes, send me the full page.\n\n",
- "gate_from": "band",
- "gate_title": "The rest of this page is ready",
- "gate_text": "Reply to my email and I will open the rest of Build Your 1-Hour Content System for you.",
- "gate_cta": "Open the full page",
- "gate_hint": "Reply to my email and I will open it",
- "when": "",
- "avatar": "img/headshot.jpg",
- "bio": "Dan Koe is the author of The Art of Focus, co-founder of Eden and a writer obsessed with the mind, the internet and the future. He writes future/proof for over 346,000 readers and teaches writing as a way to discover your life\u2019s work.",
- "role": "Writer, co-founder of Eden",
- "days_intro": "Day 1 picks your topics, Day 2 turns one idea into a week of posts, and Day 3 sets it all running on one hour a day.",
- "check_why": [
-  "",
-  "",
-  "",
-  "",
-  ""
- ],
- "day_detail": [
-  "We start from what you already read, do and talk about, then keep the three that overlap.",
-  "We take one idea and write it as short posts, a thread and a newsletter issue, in your own voice.",
-  "We set the system up in Eden, the workspace I built for this, and I show you where the Creator Bootcamp takes it over 30 days."
- ],
- "day_bullets": [
-  [
-   "List what you read, do and talk about",
-   "Keep the 3 topics where they overlap",
-   "Park the ones that only chase views"
-  ],
-  [
-   "Pick one idea from a Day 1 topic",
-   "Write the post people stop for",
-   "Turn it into a thread and a letter"
-  ],
-  [
-   "Capture ideas in one place in Eden",
-   "Split the hour: write, turn, send",
-   "See what the Creator Bootcamp adds"
-  ]
- ],
- "registered": "1,204",
- "rating": "4.9",
- "last24": "18",
- "starts_in_days": 9,
- "names": [
-  "Maya",
-  "Devon",
-  "Priya",
-  "Sam",
-  "Alix",
-  "Jordan",
-  "Noor",
-  "Rae"
- ],
- "faces": [
-  "img/faces/f1.jpg",
-  "img/faces/f2.jpg",
-  "img/faces/f3.jpg",
-  "img/faces/f4.jpg",
-  "img/faces/f5.jpg",
-  "img/faces/f6.jpg"
- ],
- "sticky": {
-  "image": "img/sticky.jpg",
-  "title": "The 60 second version",
-  "sub": "Tap for sound"
- },
- "testimonial": {
-  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
-  "name": "Marcus R.",
-  "role": "future/proof member",
-  "length": "1 min 24 sec",
-  "image": "img/testimonial.jpg"
- },
- "style": {
-  "r_lg": "16px",
-  "r_md": "12px",
-  "r_sm": "9px",
-  "btn_r": "10px",
-  "btn_off": "0px",
-  "brd": "0.08",
-  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
-  "face": "digital",
-  "night": "#070707"
- },
- "keep_title": "You leave with 3 topics, a week of posts and an hour that runs it.",
- "keep": [
-  {
-   "kind": "brief",
-   "name": "Your 3 topics",
-   "status": "Down to three",
-   "rows": [
-    {
-     "label": "You",
-     "text": "Physio, 12 years, lifts on weekends"
-    },
-    {
-     "label": "Topic 1",
-     "text": "Back pain for people who sit all day",
-     "pull": true
-    },
-    {
-     "label": "Topic 2",
-     "text": "Lifting again after 40"
-    },
-    {
-     "label": "Topic 3",
-     "text": "Recovery on a busy week"
-    },
-    {
-     "label": "Parked",
-     "text": "Supplement reviews, running shoes"
-    }
-   ],
-   "foot": "Write where your work and your life overlap",
-   "foot_tag": "2 parked"
-  },
-  {
-   "kind": "brief",
-   "name": "One idea, one week",
-   "status": "Drafted",
-   "rows": [
-    {
-     "label": "Idea",
-     "text": "Your back hurts from sitting still, so move",
-     "pull": true
-    },
-    {
-     "label": "Mon post",
-     "text": "The 2 minute reset I give every desk patient"
-    },
-    {
-     "label": "Wed thread",
-     "text": "5 mistakes that keep a sore back sore"
-    },
-    {
-     "label": "Sat letter",
-     "text": "Why rest made my back worse at 38"
-    },
-    {
-     "label": "From",
-     "text": "Topic 1, back pain for people who sit"
-    }
-   ],
-   "foot": "One idea, six pieces, one voice",
-   "foot_tag": "Week 1"
-  },
-  {
-   "kind": "table",
-   "name": "Your hour in Eden",
-   "status": "Runs daily",
-   "cols": [
-    "Block",
-    "Min",
-    "When"
-   ],
-   "rows": [
-    [
-     "Capture ideas",
-     "10",
-     "Morning"
-    ],
-    [
-     "Write one post",
-     "30",
-     "Morning"
-    ],
-    [
-     "Turn it into 3",
-     "20",
-     "Lunch"
-    ],
-    [
-     "Scroll for ideas",
-     "45",
-     "Cut"
-    ]
-   ],
-   "flag": {
-    "row": 3
-   },
-   "foot": "Sixty minutes, then close the laptop",
-   "foot_tag": "Starts Monday"
+
+<!-- FIT CHECK -->
+<section class="s" id="fitc">
+  <div class="wrap">
+    <div class="shead">
+      <p class="cap">Honest fit check</p>
+      <h2><span class="g">Is the 3-day <span class="nw">Build Your 1-Hour</span> <span class="nw">Content System</span></span> <span class="nw">perfect for you?</span></h2>
+    </div>
+    <div class="fit">
+      <div class="port">
+        <img src="img/headshot.jpg" alt="Dan Koe">
+        <div class="who"><b>Dan Koe</b><span class="cap">Writer, co-founder of Eden</span></div>
+      </div>
+      <div>
+        <ul class="fl">
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1"><circle cx="8" cy="8" r="7.3" stroke-opacity=".5"/><path d="M4.8 8.2l2.1 2.1 4.3-4.6"/></svg><b>No idea what to post</b><span>Day 1 picks 3 topics you can write about for years.</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1"><circle cx="8" cy="8" r="7.3" stroke-opacity=".5"/><path d="M4.8 8.2l2.1 2.1 4.3-4.6"/></svg><b>Posts nobody reads</b><span>Write the post people stop for, from one idea.</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1"><circle cx="8" cy="8" r="7.3" stroke-opacity=".5"/><path d="M4.8 8.2l2.1 2.1 4.3-4.6"/></svg><b>No time to write</b><span>Set up a system that runs on one hour a day.</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1"><circle cx="8" cy="8" r="7.3" stroke-opacity=".5"/><path d="M4.8 8.2l2.1 2.1 4.3-4.6"/></svg><b>AI posts everywhere</b><span>Stand out by writing from your own interests.</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1"><circle cx="8" cy="8" r="7.3" stroke-opacity=".5"/><path d="M4.8 8.2l2.1 2.1 4.3-4.6"/></svg><b>The algorithm changes</b><span>Grow a newsletter list that stays yours.</span></li>
+        </ul>
+        <p class="fitp"><b>It is built for anyone who recognised themselves up there.</b> Day 1 starts from what you already read, do and talk about, so bring what you already have; by Day 3 you have your hour a day set up in Eden, so next week ships without a scramble.</p>
+        <p class="fitp">If you have not started yet, come back for the next one. Three days can sharpen work that already exists. They cannot invent it from nothing.</p>
+        <div class="fitgo"><button class="pill" data-reg>Sounds like me, hold my seat <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button><span class="note ctaNote">Free online challenge: Oct 8 to Oct 10 EDT</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="s" id="band">
+  <div class="wrap">
+    <div class="nums">
+      <div class="lead"><p class="cap">The actual numbers</p><p>Public, from future/proof.</p></div>
+      <div><div class="n">346K+</div><div class="l">future/proof subscribers</div><div class="src"><a href="https://letters.thedankoe.com/">letters.thedankoe.com</a></div></div>
+      <div><div class="n">1.43M</div><div class="l">YouTube subscribers</div><div class="src"><a href="https://www.youtube.com/@DanKoeTalks">youtube.com/@DanKoeTalks</a></div></div>
+      <div><div class="n">30 days</div><div class="l">Eden Creator Bootcamp</div><div class="src"><a href="https://eden.so/bootcamp">eden.so/bootcamp</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE THREE DAYS -->
+<section class="s" id="days">
+  <div class="wrap">
+    <div class="shead c">
+      <p class="cap">The three days<i>/</i>Live online</p>
+      <h2><span class="g">Here's what we're doing,</span> <span class="nw">day by day.</span></h2>
+      <p>Day 1 picks your topics, Day 2 turns one idea into a week of posts, and Day 3 sets it all running on one hour a day.</p>
+    </div>
+
+    <div class="tl">
+      <!-- DAY 1 -->
+      <div class="day">
+        <div class="date" data-day="0"><div class="dot"></div><div class="wd">Thu</div><div class="dn">8</div><div class="mo">Oct</div><div class="tm">12:00 PM EDT</div></div>
+        <article class="card">
+          <div class="art">
+            <span class="ac">Day 1</span><span class="ar">I</span>
+            <!-- three topics overlapping: engraved venn, the overlap hatched -->
+            <svg viewBox="0 0 260 260" fill="none" stroke="#fff" aria-hidden="true">
+              <defs>
+                <pattern id="d1h" width="3.2" height="3.2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="3.2" stroke="#fff" stroke-width=".55"/></pattern>
+                <pattern id="d1h2" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#fff" stroke-width=".4" stroke-opacity=".55"/></pattern>
+                <clipPath id="d1a"><circle cx="130" cy="98" r="52"/></clipPath>
+                <clipPath id="d1b"><circle cx="100" cy="150" r="52"/></clipPath>
+                <clipPath id="d1c"><circle cx="160" cy="150" r="52"/></clipPath>
+              </defs>
+              <circle cx="130" cy="130" r="118" stroke-opacity=".14" stroke-width=".8"/>
+              <circle cx="130" cy="130" r="104" stroke-opacity=".22" stroke-width=".8" stroke-dasharray="1 4"/>
+              <!-- pairwise overlaps, light hatch -->
+              <g clip-path="url(#d1a)"><circle cx="100" cy="150" r="52" fill="url(#d1h2)" stroke="none"/><circle cx="160" cy="150" r="52" fill="url(#d1h2)" stroke="none"/></g>
+              <g clip-path="url(#d1b)"><circle cx="160" cy="150" r="52" fill="url(#d1h2)" stroke="none"/></g>
+              <!-- the triple overlap, dense hatch -->
+              <g clip-path="url(#d1a)"><g clip-path="url(#d1b)"><circle cx="160" cy="150" r="52" fill="url(#d1h)" stroke="none"/></g></g>
+              <g stroke-width="1.1" stroke-opacity=".9">
+                <circle cx="130" cy="98" r="52"/><circle cx="100" cy="150" r="52"/><circle cx="160" cy="150" r="52"/>
+              </g>
+              <g stroke-width=".6" stroke-opacity=".35">
+                <circle cx="130" cy="98" r="47"/><circle cx="100" cy="150" r="47"/><circle cx="160" cy="150" r="47"/>
+              </g>
+              <circle cx="130" cy="133" r="2.4" fill="#fff" stroke="none"/>
+              <g stroke-opacity=".5" stroke-width=".8"><path d="M130 22v10M130 228v10M22 130h10M228 130h10"/></g>
+            </svg>
+          </div>
+          <div class="cbody">
+            <div>
+              <p class="cap">Day 1 of 3<i>/</i>Replay the same day</p>
+              <h3><span class="nw">Pick 3 topics</span> <span class="nw">you can own</span> <span class="nw">for a decade.</span></h3>
+              <p class="out">Three topics you can write about for years, and the ones to park.</p>
+              <p class="det">We start from what you already read, do and talk about, then keep the three that overlap.</p>
+              <div class="go"><button class="tlink" data-reg>Hold my seat <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></div>
+            </div>
+            <div class="lw"><p class="cap">You leave with</p>
+              <ul><li><em>01</em>List what you read, do and talk about</li><li><em>02</em>Keep the 3 topics where they overlap</li><li><em>03</em>Park the ones that only chase views</li></ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="day">
+        <div class="date" data-day="1"><div class="dot"></div><div class="wd">Fri</div><div class="dn">9</div><div class="mo">Oct</div><div class="tm">12:00 PM EDT</div></div>
+        <article class="card">
+          <div class="art">
+            <span class="ac">Day 2</span><span class="ar">II</span>
+            <!-- one idea radiating into a week of seven marks -->
+            <svg viewBox="0 0 260 260" fill="none" stroke="#fff" aria-hidden="true">
+              <defs>
+                <pattern id="d2h" width="2.6" height="2.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="2.6" stroke="#fff" stroke-width=".5"/></pattern>
+              </defs>
+              <circle cx="130" cy="130" r="118" stroke-opacity=".12" stroke-width=".8"/>
+              <circle cx="130" cy="130" r="92" stroke-opacity=".35" stroke-width=".8"/>
+              <circle cx="130" cy="130" r="40" stroke-opacity=".25" stroke-width=".7" stroke-dasharray="1 3"/>
+              <g id="d2rays" stroke-opacity=".32" stroke-width=".55"></g>
+              <g id="d2week" stroke-width="1"></g>
+              <circle cx="130" cy="130" r="17" fill="url(#d2h)" stroke-width="1.1"/>
+              <circle cx="130" cy="130" r="22" stroke-opacity=".5" stroke-width=".6"/>
+            </svg>
+          </div>
+          <div class="cbody">
+            <div>
+              <p class="cap">Day 2 of 3<i>/</i>Replay the same day</p>
+              <h3><span class="nw">Make one idea</span> <span class="nw">a week of posts</span></h3>
+              <p class="out">One idea from your topics written as a week of posts and one letter.</p>
+              <p class="det">We take one idea and write it as short posts, a thread and a newsletter issue, in your own voice.</p>
+              <div class="go"><button class="tlink" data-reg>Hold my seat <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></div>
+            </div>
+            <div class="lw"><p class="cap">You leave with</p>
+              <ul><li><em>01</em>Pick one idea from a Day 1 topic</li><li><em>02</em>Write the post people stop for</li><li><em>03</em>Turn it into a thread and a letter</li></ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- DAY 3 -->
+      <div class="day">
+        <div class="date" data-day="2"><div class="dot"></div><div class="wd">Sat</div><div class="dn">10</div><div class="mo">Oct</div><div class="tm">12:00 PM EDT</div></div>
+        <article class="card">
+          <div class="art">
+            <span class="ac">Day 3</span><span class="ar">III</span>
+            <!-- a 24 hour ring with one hour hatched -->
+            <svg viewBox="0 0 260 260" fill="none" stroke="#fff" aria-hidden="true">
+              <defs>
+                <pattern id="d3h" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="3" stroke="#fff" stroke-width=".55"/></pattern>
+              </defs>
+              <circle cx="130" cy="130" r="118" stroke-opacity=".12" stroke-width=".8"/>
+              <circle cx="130" cy="130" r="98" stroke-opacity=".8" stroke-width="1.1"/>
+              <circle cx="130" cy="130" r="92" stroke-opacity=".3" stroke-width=".6"/>
+              <g id="d3ticks"></g>
+              <path d="M130 130 L130 38 A92 92 0 0 1 153.8 41.1 Z" fill="url(#d3h)" stroke-width=".9"/>
+              <circle cx="130" cy="130" r="58" stroke-opacity=".28" stroke-width=".6"/>
+              <circle cx="130" cy="130" r="30" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="1 3"/>
+              <path d="M130 130V60" stroke-width="1.3"/>
+              <path d="M130 130l30 30" stroke-width="1" stroke-opacity=".75"/>
+              <circle cx="130" cy="130" r="3.2" fill="#fff" stroke="none"/>
+            </svg>
+          </div>
+          <div class="cbody">
+            <div>
+              <p class="cap">Day 3 of 3<i>/</i>Replay the same day</p>
+              <h3><span class="nw">Run it on one</span> <span class="nw">hour a day</span></h3>
+              <p class="out">Your hour a day set up in Eden, so next week ships without a scramble.</p>
+              <p class="det">We set the system up in Eden, the workspace I built for this, and I show you where the Creator Bootcamp takes it over 30 days.</p>
+              <div class="go"><button class="tlink" data-reg>Hold my seat <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></div>
+            </div>
+            <div class="lw"><p class="cap">You leave with</p>
+              <ul><li><em>01</em>Capture ideas in one place in Eden</li><li><em>02</em>Split the hour: write, turn, send</li><li><em>03</em>See what the Creator Bootcamp adds</li></ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU KEEP -->
+<section class="s" id="takeaway">
+  <div class="wrap">
+    <div class="shead">
+      <p class="cap">What you keep</p>
+      <h2><span class="g">You leave with 3 topics, a week of posts</span> and an hour that runs it.</h2>
+    </div>
+    <div class="keep">
+      <div class="tkart">
+        <div class="kh"><span class="cap">Day 1 / Your 3 topics</span><span class="st">Down to three</span></div>
+        <h4>Pick 3 topics you can own for a decade</h4>
+        <div class="kr"><span class="k">You</span><span class="v">Physio, 12 years, lifts on weekends</span></div>
+        <div class="kr pull"><span class="k">Topic 1</span><span class="v">Back pain for people who sit all day</span></div>
+        <div class="kr"><span class="k">Topic 2</span><span class="v">Lifting again after 40</span></div>
+        <div class="kr"><span class="k">Topic 3</span><span class="v">Recovery on a busy week</span></div>
+        <div class="kr"><span class="k">Parked</span><span class="v">Supplement reviews, running shoes</span></div>
+        <div class="kf"><span>Write where your work and your life overlap</span><em>2 parked</em></div>
+      </div>
+      <div class="tkart">
+        <div class="kh"><span class="cap">Day 2 / One idea, one week</span><span class="st">Drafted</span></div>
+        <h4>Make one idea a week of posts</h4>
+        <div class="kr pull"><span class="k">Idea</span><span class="v">Your back hurts from sitting still, so move</span></div>
+        <div class="kr"><span class="k">Mon post</span><span class="v">The 2 minute reset I give every desk patient</span></div>
+        <div class="kr"><span class="k">Wed thread</span><span class="v">5 mistakes that keep a sore back sore</span></div>
+        <div class="kr"><span class="k">Sat letter</span><span class="v">Why rest made my back worse at 38</span></div>
+        <div class="kr"><span class="k">From</span><span class="v">Topic 1, back pain for people who sit</span></div>
+        <div class="kf"><span>One idea, six pieces, one voice</span><em>Week 1</em></div>
+      </div>
+      <div class="tkart">
+        <div class="kh"><span class="cap">Day 3 / Your hour in Eden</span><span class="st">Runs daily</span></div>
+        <h4>Run it on one hour a day</h4>
+        <div class="kth"><span>Block</span><span>Min</span><span>When</span></div>
+        <div class="ktr"><span>Capture ideas</span><span>10</span><span>Morning</span></div>
+        <div class="ktr"><span>Write one post</span><span>30</span><span>Morning</span></div>
+        <div class="ktr"><span>Turn it into 3</span><span>20</span><span>Lunch</span></div>
+        <div class="ktr cut"><span>Scroll for ideas</span><span>45</span><span>Cut</span></div>
+        <div class="kf"><span>Sixty minutes, then close the laptop</span><em>Starts Monday</em></div>
+      </div>
+    </div>
+    <div class="kdays" style="margin-top:56px">
+      <div><span class="cap">Day 1</span><b>Your 3 topics</b><p>Three topics you can write about for years, and the ones to park.</p></div>
+      <div><span class="cap">Day 2</span><b>One idea, one week</b><p>One idea from your topics written as a week of posts and one letter.</p></div>
+      <div><span class="cap">Day 3</span><b>Your hour in Eden</b><p>Your hour a day set up in Eden, so next week ships without a scramble.</p></div>
+    </div>
+    <div class="kgo"><button class="pill" data-reg>Hold my seat for the three days <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button><span class="note ctaNote">Free online challenge: Oct 8 to Oct 10 EDT</span></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="s" id="faq">
+  <div class="wrap faq">
+    <div>
+      <h2><span class="g">The questions</span><br>people ask.</h2>
+      <p class="sub">If yours is not here, reply to the email and ask. Dan answers them.</p>
+    </div>
+    <div class="qa">
+      <div class="q open"><button><span class="qn">01</span><span class="qt">Is it really free?</span><span class="qx"></span></button><div class="qb">Yes. Three days, live with Dan, no card and nothing to buy on the way in.</div></div>
+      <div class="q"><button><span class="qn">02</span><span class="qt">What if I cannot make a session?</span><span class="qx"></span></button><div class="qb">Register anyway. The replay of each day goes out the same evening and stays up for a week.</div></div>
+      <div class="q"><button><span class="qn">03</span><span class="qt">How much time does it take?</span><span class="qx"></span></button><div class="qb">About an hour a day, plus the writing you do in the room on your own topics.</div></div>
+      <div class="q"><button><span class="qn">04</span><span class="qt">Do I need anything ready?</span><span class="qx"></span></button><div class="qb">Nothing to prepare. Day 1 starts from what you already read, do and talk about, and you work with whatever you already have.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="s" id="tst">
+  <div class="wrap tst">
+    <div class="tv">
+      <img src="img/testimonial.jpg" alt="">
+      <button class="play" aria-label="Play"><i><svg width="16" height="18" viewBox="0 0 18 20"><path d="M2 1.5v17L16.5 10z" fill="none" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg></i></button>
+      <div class="tl2"><span>1 min 24 sec</span><span>1.2x</span></div>
+    </div>
+    <div>
+      <ol class="steps">
+        <li><span class="cap">The challenge</span><p>Plenty of work going out, no clear line from it to sales.</p></li>
+        <li class="on"><span class="cap">The result</span><h3>A plan to run the week after.</h3></li>
+      </ol>
+      <blockquote class="quote">
+        <p>I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.</p>
+        <footer><span class="av">M</span><span><b>Marcus R.</b><i>future/proof member</i></span></footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close" id="closing">
+  <svg class="rings2" viewBox="0 0 1000 1000" fill="none" stroke="#fff" aria-hidden="true">
+    <circle cx="500" cy="500" r="180" stroke-opacity=".1"/>
+    <circle cx="500" cy="500" r="250" stroke-opacity=".09"/>
+    <circle cx="500" cy="500" r="330" stroke-opacity=".07"/>
+    <circle cx="500" cy="500" r="420" stroke-opacity=".05"/>
+    <circle cx="500" cy="500" r="490" stroke-opacity=".04"/>
+  </svg>
+  <div class="wrap">
+    <img class="av" src="img/headshot.jpg" alt="Dan Koe">
+    <p class="cap">Free<i>/</i>Three days<i>/</i>Live online</p>
+    <h2><span class="g nw">Join the free 3-day</span><br><span class="nw">Build Your 1-Hour</span><br><span class="nw">Content System.</span></h2>
+    <p class="when" id="cWhen">Thu Oct 8 to Sat Oct 10 / 12:00 PM EDT / Live on Zoom</p>
+    <form class="cform" id="cform" novalidate>
+      <input name="first" type="text" placeholder="First name" autocomplete="given-name" aria-label="First name">
+      <input name="email" type="email" placeholder="Email address" autocomplete="email" aria-label="Email address">
+      <button class="pill" type="submit" data-reg>Hold my seat <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+    </form>
+    <p class="note ctaNote">Free online challenge: Oct 8 to Oct 10 EDT</p>
+  </div>
+</section>
+
+<!-- the rest of the page, opened on reply -->
+<div class="wrap">
+  <div class="gated" aria-hidden="true">
+    <p class="cap">What you get</p>
+    <h2 style="font-size:40px;margin-top:16px">Three days, and the pieces you keep.</h2>
+    <div class="gcards">
+      <div><h4>Pick 3 topics you can own for a decade.</h4><p>Three topics you can write about for years, and the ones to park.</p></div>
+      <div><h4>Make one idea a week of posts</h4><p>One idea from your topics written as a week of posts and one letter.</p></div>
+      <div><h4>Run it on one hour a day</h4><p>Your hour a day set up in Eden, so next week ships without a scramble.</p></div>
+    </div>
+  </div>
+  <div id="gate">
+    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="1.2"><rect x="7" y="14" width="18" height="13" rx="3"/><path d="M11 14v-3.4a5 5 0 0 1 10 0V14" stroke-opacity=".7"/><circle cx="16" cy="20.5" r="1.4" fill="#fff" stroke="none"/></svg>
+    <div class="gt"><b>The rest of this page is ready</b><small>Reply to my email and I will open it</small></div>
+    <button class="pill sm" id="gopen">Open the full page</button>
+  </div>
+  <div id="gpanel">
+    <p><b>Reply to the email I sent you</b></p>
+    <p>One line back is all it takes and I will open the rest of this page for you.</p>
+    <code>sean@theafterharvest.com</code><br>
+    <a class="tlink" href="mailto:sean%40theafterharvest.com?subject=Unlock%20the%20full%20page%20for%20future%2Fproof&amp;body=Yes%2C%20send%20me%20the%20full%20page.%0A%0A">Or open it in your mail app</a>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="l"><em>Free event</em><span id="footL">A free 3-day live event with Dan Koe. Thu Oct 8 to Sat Oct 10 / 12:00 PM EDT / Live online.</span></div>
+    <span>Figures: letters.thedankoe.com, youtube.com, eden.so, thedankoe.com</span>
+  </div>
+</footer>
+
+<div id="toast" aria-live="polite"><img src="img/faces/f1.jpg" alt=""><span><b>Maya</b> just registered<small>2 minutes ago</small></span></div>
+
+<!-- sign-up: nothing leaves the page -->
+<div id="modal" role="dialog" aria-modal="true" aria-label="Hold my seat">
+  <div class="bd" data-close></div>
+  <div class="sheet">
+    <button class="x" data-close aria-label="Close"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
+    <div class="form">
+      <p class="cap">Free seat<i>/</i>Step 1 of 3</p>
+      <h3>Build Your 1-Hour Content System</h3>
+      <p class="mw" id="mWhen">Thu Oct 8 to Sat Oct 10 / 12:00 PM EDT / Live</p>
+      <p class="mf" id="mFocus"></p>
+      <form id="mform" novalidate>
+        <label><span>First name</span><input name="first" type="text" autocomplete="given-name" placeholder="Your first name"></label>
+        <label><span>Email address</span><input name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></label>
+        <button class="pill" type="submit">Save my free seat</button>
+      </form>
+      <ul class="ticks"><li>Free to join</li><li>Replays for every session</li><li>Leave any time</li></ul>
+    </div>
+    <div class="done" hidden>
+      <p class="cap">You are in</p>
+      <h3 id="dH">Seat <span class="seatn">1,205</span> is yours.</h3>
+      <p id="dP">The Zoom link is on its way. Put the three days in your calendar now so they do not get booked over.</p>
+      <div class="row"><a class="pill sm" id="ics" download="dan-koe.ics" href="#">Add to calendar</a><a class="tlink" id="gcal" target="_blank" rel="noopener" href="#">Google Calendar</a></div>
+      <div class="next"><p>Cannot make one live? Each day has a replay.</p><a class="tlink" href="vip/" style="margin-top:14px">Next: step 2 of 3 <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* dates: the event starts 9 days out at 12:00 New York time, like every hosted page */
+  var TZ = 'America/New_York';
+  function off(tz, t) {
+    try {
+      var p = {};
+      new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(new Date(t)).forEach(function (x) { p[x.type] = x.value; });
+      return (Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute, +p.second) - t) / 6e4;
+    } catch (e) { return -new Date(t).getTimezoneOffset(); }
   }
- ],
- "vip": {
-  "price": 47,
-  "still": "video-frame-candidates/_stills/XqS7kIWMIDE_maxres3.jpg",
-  "still_source": "https://www.youtube.com/watch?v=XqS7kIWMIDE (YouTube automatic still maxres3)",
-  "headline": [
-   "Want me to read your week",
-   "of posts before you post?"
-  ],
-  "mark": "read your week",
-  "lede": "Your seat is saved for all three days. Before you go, there is one optional upgrade, **{price} once**. A fourth live day where I read your week of posts, a private VIP thread, replays of all four days and my one idea, one week page.",
-  "video_title": "A quick note from {first}",
-  "video_sub": "Before you start on Day 1",
-  "video_len": "1:48",
-  "pass_kick": "VIP pass",
-  "pass_cells": [
-   "Day 4",
-   "Thread",
-   "Replays"
-  ],
-  "items": [
-   {
-    "bold": "Day 4, post review with me.",
-    "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring the week of posts you wrote from one idea on Day 2."
-   },
-   {
-    "bold": "Private VIP thread.",
-    "text": "Opens {day1_date} and stays open until {close}. Send me a draft between sessions."
-   },
-   {
-    "bold": "Replays to keep.",
-    "text": "All three days plus Day 4, so the Day 2 breakdown is there every time you sit down to write."
-   },
-   {
-    "bold": "My one idea, one week page.",
-    "text": "The Day 2 breakdown on one page you can copy into Eden for every idea you write next."
-   }
-  ],
-  "cta": "Yes, add VIP for {price}",
-  "decline": "No thanks, take me to my join details",
-  "proof": "**{vip_count} people** added VIP to their seat",
-  "vip_count": "132",
-  "why": "Day 3 ends with the attendee holding three topics, a week of posts written from one idea and an hour a day mapped in Eden. The gap is that nobody reads those posts before they go out, so Day 4 is Dan reading them. The loudest objection is having posts nobody reads. Dan's people gather on his future/proof Substack (over 346,000 subscribers, letters.thedankoe.com) and the Eden Creator Bootcamp runs a private Discord (eden.so/bootcamp), so the direct line is a plain private VIP thread. His voice: one idea becomes a week of content, the topics you own, a system that runs on an hour a day (eden.so/bootcamp). The extension asset is the Day 2 one idea, one week breakdown as a page to copy into Eden."
- },
- "theme": "minimal",
- "font_link": "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap"
-};</script>
-<script src="site.js?v=1fae0b81"></script>
+  var now = Date.now(), wall = new Date(now + off(TZ, now) * 6e4);
+  var g = Date.UTC(wall.getUTCFullYear(), wall.getUTCMonth(), wall.getUTCDate() + 9, 12, 0, 0);
+  var START = new Date(g - off(TZ, g) * 6e4), END = new Date(START.getTime() + 2 * 864e5);
+  function f(d, o) { o.timeZone = TZ; return d.toLocaleDateString('en-US', o).replace(',', ''); }
+  var ZONE = 'EDT';
+  try { ZONE = new Intl.DateTimeFormat('en-US', { timeZone: TZ, timeZoneName: 'short' }).formatToParts(START).filter(function (x) { return x.type === 'timeZoneName'; })[0].value; } catch (e) {}
+  var TIME = START.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: TZ }) + ' ' + ZONE;
+  var WHEN = f(START, { weekday: 'short', month: 'short', day: 'numeric' }) + ' to ' + f(END, { weekday: 'short', month: 'short', day: 'numeric' });
+  var SHORT = f(START, { month: 'short', day: 'numeric' }) + ' to ' + f(END, { month: 'short', day: 'numeric' }) + ' ' + ZONE;
+  $$('.whenS').forEach(function (e) { e.textContent = WHEN + ' ' + ZONE; });
+  $$('.ctaNote').forEach(function (e) { e.textContent = 'Free online challenge: ' + SHORT; });
+  $('#cWhen').textContent = WHEN + ' / ' + TIME + ' / Live on Zoom';
+  $('#mWhen').textContent = WHEN + ' / ' + TIME + ' / Live';
+  $('#footL').textContent = 'A free 3-day live event with Dan Koe. ' + WHEN + ' / ' + TIME + ' / Live online.';
+  $$('.date').forEach(function (el) {
+    var d = new Date(START.getTime() + (+el.getAttribute('data-day')) * 864e5);
+    $('.wd', el).textContent = f(d, { weekday: 'short' });
+    $('.dn', el).textContent = f(d, { day: 'numeric' });
+    $('.mo', el).textContent = f(d, { month: 'short' });
+    $('.tm', el).textContent = TIME;
+  });
+
+  /* stars, drawn thin */
+  var STAR = '<svg viewBox="0 0 12 12"><path d="M6 .9l1.5 3.2 3.5.4-2.6 2.4.7 3.5L6 8.7 2.9 10.4l.7-3.5L1 4.5l3.5-.4z" fill="#fff" fill-opacity=".9"/></svg>';
+  $$('.stars').forEach(function (s) { s.innerHTML = STAR + STAR + STAR + STAR + STAR; });
+
+  /* line art built from loops: Day 2 rays and the week, Day 3 the 24 hour ticks */
+  var NS = 'http://www.w3.org/2000/svg';
+  function mk(tag, a, p) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); p.appendChild(e); return e; }
+  var rays = $('#d2rays'), week = $('#d2week');
+  if (rays) {
+    for (var i = 0; i < 84; i++) {
+      var a = i / 84 * Math.PI * 2, r1 = 24, r2 = (i % 12 === 0) ? 90 : (i % 3 === 0 ? 76 : 60);
+      mk('line', { x1: 130 + Math.cos(a) * r1, y1: 130 + Math.sin(a) * r1, x2: 130 + Math.cos(a) * r2, y2: 130 + Math.sin(a) * r2 }, rays);
+    }
+    for (var j = 0; j < 7; j++) {
+      var b = -Math.PI / 2 + j / 7 * Math.PI * 2, cx = 130 + Math.cos(b) * 92, cy = 130 + Math.sin(b) * 92;
+      mk('circle', { cx: cx, cy: cy, r: 9, fill: '#030303', 'stroke-opacity': '.95' }, week);
+      mk('circle', { cx: cx, cy: cy, r: 5, fill: 'url(#d2h)', 'stroke-opacity': '.5', 'stroke-width': '.6' }, week);
+    }
+  }
+  var ticks = $('#d3ticks');
+  if (ticks) {
+    for (var t = 0; t < 96; t++) {
+      var c = -Math.PI / 2 + t / 96 * Math.PI * 2, big = t % 4 === 0, r0 = big ? 104 : 100, r3 = big ? 114 : 106;
+      mk('line', { x1: 130 + Math.cos(c) * r0, y1: 130 + Math.sin(c) * r0, x2: 130 + Math.cos(c) * r3, y2: 130 + Math.sin(c) * r3,
+        stroke: '#fff', 'stroke-opacity': big ? '.8' : '.35', 'stroke-width': big ? '.9' : '.6' }, ticks);
+    }
+  }
+
+  /* countdown */
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function tick() {
+    var ms = Math.max(0, START - new Date()), s = Math.floor(ms / 1e3);
+    var v = { d: Math.floor(s / 86400), h: Math.floor(s % 86400 / 3600), m: Math.floor(s % 3600 / 60), s: s % 60 };
+    $$('[data-cd]').forEach(function (e) { e.textContent = pad(v[e.getAttribute('data-cd')]); });
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* sticky bar after the hero */
+  var bar = $('#bar'), hero = $('#top');
+  function onScroll() { bar.classList.toggle('on', hero.getBoundingClientRect().bottom < 60 && !document.body.classList.contains('mopen')); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* one "just registered" toast, then the joined number moves by one */
+  var seats = 1204;
+  function setSeats() { $$('.seats').forEach(function (e) { e.textContent = seats.toLocaleString('en-US'); }); }
+  setTimeout(function () {
+    var t = $('#toast'); t.classList.add('on'); seats += 1; setSeats();
+    setTimeout(function () { t.classList.remove('on'); }, 5200);
+  }, 7000);
+
+  /* faq */
+  $$('.q button').forEach(function (b) { b.addEventListener('click', function () { b.parentNode.classList.toggle('open'); }); });
+
+  /* gate */
+  $('#gopen').addEventListener('click', function () {
+    $('#gpanel').classList.add('on');
+    try { navigator.clipboard && navigator.clipboard.writeText('sean@theafterharvest.com'); } catch (e) {}
+  });
+
+  /* sign-up sheet: opens on any seat button, nothing is sent anywhere */
+  var M = $('#modal'), focus = '';
+  function open() {
+    var cf = $('#cform'), mf = $('#mform');
+    ['first', 'email'].forEach(function (n) { if (cf[n].value) mf[n].value = cf[n].value; });
+    var fo = $('#mFocus');
+    fo.innerHTML = focus ? 'Your focus: <b>' + focus + '</b>. We work on it live.' : '';
+    fo.classList.toggle('on', !!focus);
+    M.classList.add('on'); document.body.classList.add('mopen'); onScroll();
+    setTimeout(function () { (mf.first.value ? mf.email : mf.first).focus({ preventScroll: true }); }, 60);
+  }
+  function close() { M.classList.remove('on'); document.body.classList.remove('mopen'); onScroll(); }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-reg]');
+    if (t && !t.closest('#modal')) {
+      e.preventDefault();
+      if (t.hasAttribute('data-focus')) {
+        focus = t.textContent.trim();
+        $$('.chip').forEach(function (c) { c.classList.toggle('on', c === t); });
+      }
+      open();
+    }
+    if (e.target.closest('[data-close]')) close();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  $('#cform').addEventListener('submit', function (e) { e.preventDefault(); open(); });
+  $('#mform').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var fm = this, first = fm.first.value.trim(), email = fm.email.value.trim(), ok = true;
+    [[fm.first, !!first], [fm.email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)]].forEach(function (x) {
+      x[0].parentNode.classList.toggle('bad', !x[1]); if (!x[1]) ok = false;
+    });
+    if (!ok) return;
+    var z = function (d) { return d.toISOString().replace(/[-:]/g, '').replace(/\.\d+/, ''); };
+    var s = z(START), en = z(new Date(START.getTime() + 36e5)), title = 'Build Your 1-Hour Content System (free, live with Dan Koe)';
+    $('#ics').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
+      'DTSTART:' + s, 'DTEND:' + en, 'RRULE:FREQ=DAILY;COUNT=3', 'SUMMARY:' + title, 'DESCRIPTION:Live on Zoom. The link comes by email.',
+      'END:VEVENT', 'END:VCALENDAR'].join('\r\n'));
+    $('#gcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) +
+      '&dates=' + s + '/' + en + '&recur=' + encodeURIComponent('RRULE:FREQ=DAILY;COUNT=3');
+    seats += 1; setSeats();
+    $('#dH').innerHTML = 'Seat <span class="seatn">' + seats.toLocaleString('en-US') + '</span> is yours, ' + first.replace(/[<>&"]/g, '') + '.';
+    $('#dP').textContent = 'The Zoom link is on its way to ' + email + '. Put the three days in your calendar now so they do not get booked over.';
+    $('.form', M).hidden = true; $('.done', M).hidden = false;
+  });
+})();
+</script>
+<aside id="stick" aria-label="A 60 second look at the three days"><div class="sv"><img src="img/sticky.jpg" alt="Dan Koe"><button class="x" aria-label="Close" type="button">&times;</button><span class="cap"></span><span class="hint">Tap for sound</span><span class="bar"><i></i></span><a class="go" data-reg="1" role="button" tabindex="0">Hold my seat</a></div></aside>
+<script>
+(function(){
+  var s=document.getElementById('stick'),cap=s.querySelector('.cap'),hero=document.getElementById('top'),i=0,armed=false;
+  var caps=['The <b>60 second version</b> of the three days.','Day 1: <b>Pick 3 topics you can own for a decade</b>','Day 2: <b>Make one idea a week of posts</b>','Day 3: <b>Run it on one hour a day</b>','It is free, and it is live with <b>Dan</b>.'];
+  function next(){cap.style.opacity=0;setTimeout(function(){cap.innerHTML=caps[i%caps.length];i++;cap.style.opacity=1},300)}
+  next();setInterval(next,3800);
+  function tick(){var r=hero.getBoundingClientRect();if(r.bottom<90)armed=true;s.classList.toggle('on',armed)}
+  addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);setTimeout(tick,600);
+  s.querySelector('.x').addEventListener('click',function(e){e.stopPropagation();s.classList.add('bub');s.classList.remove('open')});
+  s.addEventListener('click',function(e){if(e.target.closest('.go'))return;if(s.classList.contains('bub')){s.classList.remove('bub')}else if(innerWidth<=760){s.classList.toggle('open')}},true);
+})();
+</script>
 </body>
 </html>

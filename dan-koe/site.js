@@ -210,7 +210,6 @@
     im.onerror = function () { cal.innerHTML = '<span class="bmark">' + emblemSVG(1.8) + '</span>'; };
   }
 
-
   /* a call to action in the reader's own words: the day's promise turned into the button. Built from the
      lead's own day titles, so no lead needs copy written by hand. */
   function ctaFor(title) {
