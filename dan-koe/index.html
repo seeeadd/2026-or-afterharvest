@@ -486,7 +486,53 @@ footer.foot em{font-style:normal;font-size:9.5px;letter-spacing:.26em;text-trans
 #stick.bub .sv{border-radius:50%;cursor:pointer}
 @media (max-width:760px){#stick{right:12px;bottom:14px;width:64px}#stick .cap,#stick .hint,#stick .bar,#stick .go,#stick .x,#stick .sv:before{display:none}#stick .sv{border-radius:50%}#stick .sv img{aspect-ratio:1;border-radius:50%}#stick.open{width:176px}#stick.open .sv{border-radius:16px}#stick.open .sv img{aspect-ratio:9/16;border-radius:0}#stick.open .cap,#stick.open .hint,#stick.open .bar,#stick.open .go,#stick.open .x,#stick.open .sv:before{display:block}}
 #stick .cap b{font-weight:500;text-transform:none;letter-spacing:0}
+
+/* ================================================= motion (html.m only; transform and opacity) */
+.pill{transition:background .2s,transform .2s}
+.pill svg,.tlink svg{transition:transform .2s}
+.pill:hover,.tlink:hover{transform:translateY(-2px)}
+.pill:hover svg,.tlink:hover svg{transform:translateX(3px)}
+.tlink{transition:border-color .2s,transform .2s}
+html.m .rvl{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+html.m .rvl.in{opacity:1;transform:none}
+/* hairlines draw left to right */
+.strip,.nums,.q,.fl li,.lw li,.kdays>div{position:relative}
+html.m .fl li,html.m .lw li,html.m .q{border-bottom-color:transparent}
+html.m .kdays>div{border-top-color:transparent}
+html.m .strip,html.m .nums{border-color:transparent}
+html.m .fl li:after,html.m .lw li:after,html.m .q:after,html.m .kdays>div:before,html.m .strip:before,html.m .strip:after,html.m .nums:before,html.m .nums:after{
+  content:'';position:absolute;left:0;right:0;height:1px;background:var(--hair);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform 1.1s cubic-bezier(.6,0,.2,1);transition-delay:calc(var(--d,0ms) + 120ms);pointer-events:none}
+html.m .fl li:after,html.m .lw li:after,html.m .q:after,html.m .strip:after,html.m .nums:after{bottom:-1px}
+html.m .kdays>div:before,html.m .strip:before,html.m .nums:before{top:-1px}
+html.m .in:after,html.m .in:before,html.m .in .lw li:after{transform:scaleX(1)}
+/* the grey headline line wipes in */
+html.m .hright h1 .g{display:inline-block;-webkit-mask-image:linear-gradient(90deg,#000 44%,transparent 56%);mask-image:linear-gradient(90deg,#000 44%,transparent 56%);
+  -webkit-mask-size:240% 100%;mask-size:240% 100%;-webkit-mask-position:100% 0;mask-position:100% 0;animation:wipe 1.4s .25s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes wipe{to{-webkit-mask-position:0 0;mask-position:0 0}}
+/* rings drift, very slowly */
+html.m .rings{animation:drift 140s linear infinite}
+html.m .close .rings2{animation:drift 180s linear infinite reverse}
+@keyframes drift{0%{transform:translate(-50%,-50%) rotate(0) scale(1)}50%{transform:translate(-50%,-50%) rotate(180deg) scale(1.025)}100%{transform:translate(-50%,-50%) rotate(360deg) scale(1)}}
+/* the play ring breathes */
+.iphone .play i{position:relative}
+html.m .iphone .play i:after{content:'';position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(255,255,255,.6);animation:breathe 3.6s cubic-bezier(.2,.6,.3,1) infinite;pointer-events:none}
+@keyframes breathe{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(1.55);opacity:0}}
+/* engraved art draws itself (set up by the script, so nothing is hidden without it) */
+.art svg.draw .dr{stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s cubic-bezier(.6,0,.2,1);transition-delay:var(--d,0ms)}
+.art svg.draw .hf{opacity:0;transition:opacity 1.2s ease;transition-delay:calc(var(--d,0ms) + 1100ms)}
+.art svg.draw.in .dr{stroke-dashoffset:0}
+.art svg.draw.in .hf{opacity:1}
+/* the timeline grows with the scroll */
+html.m .tl:before{transform-origin:50% 0;transform:scaleY(var(--tl,0));transition:transform .15s linear}
+.nums .n{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
+<script>
+/* motion: .js always; .m only when the visitor allows motion. If the page script never reports in, .m comes off so nothing stays hidden. */
+(function(d){d.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('m')}catch(e){}
+setTimeout(function(){if(!window.DKM)d.classList.remove('m')},2500)})(document.documentElement);
+</script>
 </head>
 <body>
 
@@ -857,6 +903,7 @@ footer.foot em{font-style:normal;font-size:9.5px;letter-spacing:.26em;text-trans
     <circle cx="500" cy="500" r="330" stroke-opacity=".07"/>
     <circle cx="500" cy="500" r="420" stroke-opacity=".05"/>
     <circle cx="500" cy="500" r="490" stroke-opacity=".04"/>
+    <circle cx="500" cy="500" r="455" stroke-opacity=".06" stroke-dasharray="1 6"/>
   </svg>
   <div class="wrap">
     <img class="av" src="img/headshot.jpg" alt="Dan Koe">
@@ -1088,6 +1135,71 @@ footer.foot em{font-style:normal;font-size:9.5px;letter-spacing:.26em;text-trans
   addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);setTimeout(tick,600);
   s.querySelector('.x').addEventListener('click',function(e){e.stopPropagation();s.classList.add('bub');s.classList.remove('open')});
   s.addEventListener('click',function(e){if(e.target.closest('.go'))return;if(s.classList.contains('bub')){s.classList.remove('bub')}else if(innerWidth<=760){s.classList.toggle('open')}},true);
+})();
+</script>
+<script>
+/* motion: reveals, line art, count-up, timeline. Only when html.m is on. */
+(function () {
+  window.DKM = true;
+  var H = document.documentElement;
+  if (!H.classList.contains('m') || !('IntersectionObserver' in window)) { H.classList.remove('m'); return; }
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); if (e.target._on) e.target._on(); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  function watch(el, d) { if (d != null) el.style.setProperty('--d', d + 'ms'); io.observe(el); }
+  /* fade-up groups, staggered by position in their group */
+  [ '.strip span', 'section.s .shead', '.fit .port', '.fl li', '.fitp', '.fitgo', '.nums>div', '.day', '.tkart', '.kdays>div', '.kgo',
+    '.faq>div:first-child', '.q', '.tst>div', '#closing .wrap>*', '.gated', '#gate' ].forEach(function (sel) {
+    $$(sel).forEach(function (el, i) {
+      var sib = el.parentNode ? Array.prototype.indexOf.call(el.parentNode.children, el) : i;
+      if (el.getBoundingClientRect().top < innerHeight * 0.9) { return; }   /* already on screen: leave it be */
+      el.classList.add('rvl'); watch(el, Math.min(sib, 6) * 90);
+    });
+  });
+  /* hairlines */
+  ['.strip', '.nums', '.lw li'].forEach(function (sel) { $$(sel).forEach(function (el, i) {
+    if (el.getBoundingClientRect().top < innerHeight * 0.9) { el.classList.add('in'); return; }
+    watch(el, sel === '.lw li' ? 300 + (i % 3) * 120 : 0); }); });
+  /* the engraved art draws itself */
+  $$('.art svg').forEach(function (svg) {
+    svg.classList.add('draw');
+    var n = 0;
+    $$('circle,path,line', svg).forEach(function (el) {
+      if (el.closest('pattern') || el.closest('clipPath')) return;
+      var fill = el.getAttribute('fill') || '', stroke = el.getAttribute('stroke'), dashed = el.getAttribute('stroke-dasharray');
+      if (fill.indexOf('url(') === 0 || stroke === 'none' || fill === '#fff' || dashed) { el.classList.add('hf'); return; }
+      el.setAttribute('pathLength', '1'); el.classList.add('dr'); el.style.setProperty('--d', Math.min(n++ * 40, 700) + 'ms');
+    });
+    $$('g[clip-path]', svg).forEach(function (g) { g.classList.add('hf'); });
+    watch(svg);
+  });
+  /* the numbers count up, and end exactly as written */
+  $$('.nums .n').forEach(function (el) {
+    var txt = el.textContent, m = txt.match(/^([^0-9]*)([0-9]+(?:\.[0-9]+)?)(.*)$/);
+    if (!m) return;
+    var to = parseFloat(m[2]), dec = (m[2].split('.')[1] || '').length;
+    el.style.display = 'inline-block'; el.style.minWidth = el.getBoundingClientRect().width + 'px';
+    el.textContent = m[1] + (0).toFixed(dec) + m[3];
+    el._on = function () {
+      var t0 = performance.now(), dur = 1500;
+      (function step(t) {
+        var k = Math.min(1, (t - t0) / dur), v = to * (1 - Math.pow(1 - k, 3));
+        el.textContent = k < 1 ? m[1] + v.toFixed(dec) + m[3] : txt;
+        if (k < 1) requestAnimationFrame(step);
+      })(t0);
+    };
+    watch(el);
+  });
+  /* the timeline line grows as you scroll */
+  var tl = document.querySelector('.tl'), raf = 0;
+  function grow() {
+    raf = 0; if (!tl) return;
+    var r = tl.getBoundingClientRect(), k = (innerHeight * 0.75 - r.top) / r.height;
+    tl.style.setProperty('--tl', Math.max(0, Math.min(1, k)).toFixed(3));
+  }
+  addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(grow); }, { passive: true });
+  addEventListener('resize', grow); grow();
 })();
 </script>
 </body>
