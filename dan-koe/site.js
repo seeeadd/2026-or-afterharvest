@@ -24,6 +24,7 @@
   var P = document.getElementById('page');
   if (!P) return;
   if (S.theme) document.body.classList.add('theme-' + String(S.theme).replace(/[^a-z0-9-]/gi, ''));
+  if (S.font_link) { var fl = document.createElement('link'); fl.rel = 'stylesheet'; fl.href = S.font_link; document.head.appendChild(fl); }
 
   /* ------------------------------------------------------------ 1. helpers */
   function $(id) { return document.getElementById(id); }

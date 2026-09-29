@@ -3242,3 +3242,16 @@ body.theme-minimal .htrust .awd,body.theme-minimal .awd{border:1px solid var(--h
 body.theme-minimal .awd i,body.theme-minimal .awd b{color:var(--ink)!important}
 body.theme-minimal .htrust .tmeta .stars,body.theme-minimal .tmeta .stars{border:1px solid var(--hair-2)!important;background:transparent!important;color:var(--ink)!important}
 body.theme-minimal .htrust .tmeta .stars svg,body.theme-minimal .stars svg{color:var(--ink)!important;fill:var(--ink)!important}
+
+/* Dan Koe: thedankoe.com is pure black, Poppins extra-bold headlines, thin wide-spaced caps eyebrows, white pills,
+   a spotlight glow and concentric rings (The Art of Focus cover). Loaded by lp.json site.font_link. */
+body.theme-minimal{--display:'Poppins','Helvetica Neue',Arial,sans-serif;--label:'Poppins','Helvetica Neue',Arial,sans-serif}
+body.theme-minimal #headline,body.theme-minimal h2,body.theme-minimal .disp{font-family:'Poppins','Helvetica Neue',Arial,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+body.theme-minimal #headline{font-weight:800;line-height:1.14!important}
+body.theme-minimal [class*="eyebrow"],body.theme-minimal .kicker,body.theme-minimal .tlab{font-family:'Poppins',sans-serif;font-weight:300;letter-spacing:.34em;text-transform:uppercase}
+body.theme-minimal #ground{background:
+  radial-gradient(52% 40% at 74% 8%,rgba(255,255,255,.10),transparent 70%),
+  radial-gradient(60% 50% at 20% 100%,rgba(255,255,255,.04),transparent 70%),
+  url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%271600%27%20height%3D%271600%27%20viewBox%3D%270%200%201600%201600%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-opacity%3D%27.13%27%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%2790%27%20stroke-opacity%3D%27.22%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27190%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27330%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27500%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27690%27%20stroke-opacity%3D%27.06%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27790%27%20stroke-opacity%3D%27.04%27/%3E%3C/svg%3E") right -260px top 40px/1400px 1400px no-repeat,
+  #000!important}
+body.theme-minimal{--ground:#000}
