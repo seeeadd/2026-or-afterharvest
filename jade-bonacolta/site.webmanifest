@@ -1,5 +1,5 @@
 {
-  "name": "Build a LinkedIn Brand That Pays",
+  "name": "YOUR 3-DAY EVENT",
   "short_name": "Jade",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#C49561",
-  "background_color": "#191200",
+  "theme_color": "#8a6a3d",
+  "background_color": "#15110d",
   "display": "standalone"
 }

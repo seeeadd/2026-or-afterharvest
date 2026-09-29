@@ -3205,3 +3205,11 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
 @media (max-width:420px){
   #takeaway .kbr{gap:8px;font-size:11.5px;grid-template-columns:minmax(0,.5fr) minmax(0,1fr)}
 }
+
+/* the "Learn how to ..." buttons carry the lead's own day words, so their length varies: never wider than the
+   column, and on a phone they wrap to two centred lines instead of running off the screen (2026-09-27) */
+#page .scta .btn.lg{max-width:100%}
+@media (max-width:640px){
+  html body #page .scta .btn.lg{height:auto;min-height:50px;padding:10px 20px;white-space:normal;text-align:center;
+    line-height:1.2;max-width:100%;box-sizing:border-box}
+}
