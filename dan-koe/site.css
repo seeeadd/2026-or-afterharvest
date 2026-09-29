@@ -3213,3 +3213,32 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
   html body #page .scta .btn.lg{height:auto;min-height:50px;padding:10px 20px;white-space:normal;text-align:center;
     line-height:1.2;max-width:100%;box-sizing:border-box}
 }
+
+
+/* ---------------------------------------------------------------- theme: minimal
+   lp.json site.theme = "minimal" (Dan Koe / Eden, 2026-09-29: "dan is wary of design, aligned with eden but 50% better").
+   One flat ground, a two-tone headline (first phrase muted, the rest full ink), no gold, no marquee, no hand marks,
+   hairlines instead of glows. Scoped to body.theme-minimal, so no other lead changes. */
+body.theme-minimal #ground{background:var(--ground)!important}
+body.theme-minimal #grain{opacity:.35}
+body.theme-minimal .nticker{display:none}
+body.theme-minimal #headline .acc{color:color-mix(in srgb,var(--ink) 52%,var(--ground))}
+body.theme-minimal #headline .kw{color:inherit}
+body.theme-minimal #headline .mark{display:none}
+body.theme-minimal #headline{letter-spacing:-.035em;font-weight:600}
+body.theme-minimal .stars{color:color-mix(in srgb,var(--ink) 80%,var(--ground))}
+body.theme-minimal .tmeta .stars{border-color:var(--hair-2);background:transparent}
+body.theme-minimal .tmeta,body.theme-minimal .tstin{background-image:none!important}
+body.theme-minimal .tmeta{border-color:var(--hair-2)}
+body.theme-minimal .tmeta *[style*="c2a04a"]{color:var(--ink)!important}
+body.theme-minimal .days{background-image:none!important}
+body.theme-minimal [class*="glow"],body.theme-minimal .sheen:after{display:none!important}
+body.theme-minimal .cta,body.theme-minimal [data-reg]{box-shadow:none!important}
+body.theme-minimal #pattern,body.theme-minimal #ghosts{display:none}
+body.theme-minimal .htrust .awd{border:1px solid var(--hair-2);box-shadow:none;border-radius:8px}
+body.theme-minimal .htrust .awd i{color:var(--ink)}
+body.theme-minimal .stars svg{fill:currentColor}
+body.theme-minimal .htrust .awd,body.theme-minimal .awd{border:1px solid var(--hair-2)!important;box-shadow:none!important;border-radius:8px!important}
+body.theme-minimal .awd i,body.theme-minimal .awd b{color:var(--ink)!important}
+body.theme-minimal .htrust .tmeta .stars,body.theme-minimal .tmeta .stars{border:1px solid var(--hair-2)!important;background:transparent!important;color:var(--ink)!important}
+body.theme-minimal .htrust .tmeta .stars svg,body.theme-minimal .stars svg{color:var(--ink)!important;fill:var(--ink)!important}

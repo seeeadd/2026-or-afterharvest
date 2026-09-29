@@ -23,6 +23,7 @@
   var LP = window.LP || {}, S = window.SITE || {};
   var P = document.getElementById('page');
   if (!P) return;
+  if (S.theme) document.body.classList.add('theme-' + String(S.theme).replace(/[^a-z0-9-]/gi, ''));
 
   /* ------------------------------------------------------------ 1. helpers */
   function $(id) { return document.getElementById(id); }
