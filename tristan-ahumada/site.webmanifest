@@ -1,5 +1,5 @@
 {
-  "name": "3-day live event",
+  "name": "Build Your Prospecting Machine",
   "short_name": "Tristan",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#05324E",
-  "background_color": "#FFFFFF",
+  "theme_color": "#ffcb30",
+  "background_color": "#f3f5f8",
   "display": "standalone"
 }
