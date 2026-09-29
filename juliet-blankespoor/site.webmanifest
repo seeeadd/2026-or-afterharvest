@@ -1,0 +1,19 @@
+{
+  "name": "Start Your Home Herbal Apothecary",
+  "short_name": "Juliet",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#77923a",
+  "background_color": "#FFFFFF",
+  "display": "standalone"
+}
