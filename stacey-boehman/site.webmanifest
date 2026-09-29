@@ -1,5 +1,5 @@
 {
-  "name": "Your 200k Client Plan",
+  "name": "Book Your Next 5 Clients",
   "short_name": "Stacey",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#FFFFFF",
+  "theme_color": "#c28c6e",
+  "background_color": "#f7f7ec",
   "display": "standalone"
 }
