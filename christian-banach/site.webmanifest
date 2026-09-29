@@ -1,5 +1,5 @@
 {
-  "name": "3-Day Agency Growth Event",
+  "name": "Win Your Next Big Client",
   "short_name": "Christian",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#BF9E44",
-  "background_color": "#151F3D",
+  "theme_color": "#bf9e44",
+  "background_color": "#fafafa",
   "display": "standalone"
 }

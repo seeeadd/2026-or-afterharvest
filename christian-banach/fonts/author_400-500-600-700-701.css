@@ -1,0 +1,38 @@
+/* Author */
+@font-face {
+  font-family: 'Author';
+  src: url('files/d5d1759f101e5036.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Author';
+  src: url('files/d0a02289ebf27bb7.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Author';
+  src: url('files/2b2a186fc2f1f145.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Author';
+  src: url('files/5bdaeb04e6dbec8d.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Author';
+  src: url('files/9ded5a9e90d57c1b.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: italic;
+}
+
+
