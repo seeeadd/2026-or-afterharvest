@@ -70,57 +70,97 @@ nav.top{display:flex;align-items:center;justify-content:space-between;padding:26
 nav.top .lg{height:30px;width:auto;opacity:.95}
 nav.top .r{display:flex;align-items:center;gap:30px;font-size:13.5px;color:var(--soft)}
 
-/* ------------------------------------------------ hero */
-.hero{position:relative;padding:34px 0 92px;overflow:clip}
-.spot{position:absolute;inset:0 0 auto 0;height:720px;pointer-events:none;
-  background:radial-gradient(52% 70% at 50% -12%,rgba(255,255,255,.085),transparent 70%)}
-.hgrid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center;position:relative}
-.hleft{position:relative;padding-top:6px}
-.rings{position:absolute;left:50%;top:50%;width:760px;height:760px;transform:translate(-50%,-47%);pointer-events:none;z-index:0;
-  -webkit-mask:radial-gradient(closest-side,#000 55%,transparent);mask:radial-gradient(closest-side,#000 55%,transparent)}
-.trust{position:relative;z-index:1;display:flex;align-items:center;gap:16px;padding-bottom:22px;margin-bottom:26px;border-bottom:1px solid var(--hair)}
-.trust .ver{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);line-height:1.5}
-.trust .ver b{display:block;font-weight:400;font-size:13.5px;letter-spacing:-.005em;text-transform:none;color:var(--ink)}
-.trust .sep{width:1px;height:30px;background:var(--hair)}
-.trust .tx{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--soft);line-height:1.5}
-.stars{display:flex;gap:3px;margin-bottom:3px}
+/* ------------------------------------------------ hero: the template's hero (1.44fr / 1fr), in Dan's flat black */
+.hero{position:relative;padding:22px 0 96px;overflow:clip}
+.hwrap{width:min(1400px,100% - 64px);margin-inline:auto;position:relative}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.44fr) minmax(0,1fr);gap:clamp(28px,2.4vw,40px);align-items:start;position:relative}
+.hleft{position:relative;min-width:0}
+.hright{position:relative;z-index:1;min-width:0;padding-top:30px}
+.rings{position:absolute;left:50%;top:48%;width:980px;height:980px;transform:translate(-50%,-50%);pointer-events:none;z-index:0;
+  -webkit-mask:radial-gradient(closest-side,#000 60%,transparent);mask:radial-gradient(closest-side,#000 60%,transparent)}
+/* one bordered trust strip above the phone */
+.htrust{position:relative;z-index:1;width:fit-content;max-width:100%;margin:0 auto 16px;display:flex;align-items:center;gap:22px;
+  padding:10px 24px 10px 10px;border:1px solid var(--hair2);border-radius:16px;background:rgba(255,255,255,.015)}
+.hbadge{display:flex;align-items:center;gap:12px;padding:8px 16px 8px 8px;border:1px solid var(--hair);border-radius:11px}
+.hbadge svg{width:40px;height:40px;flex:none}
+.hbadge small{display:block;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);line-height:1.4}
+.hbadge b{display:block;font-weight:400;font-size:13.5px;letter-spacing:-.005em;line-height:1.3;color:var(--ink)}
+.hbadge span{display:block;font-size:12px;color:var(--soft);line-height:1.3}
+.htrust .faces img{width:34px;height:34px;margin-left:-10px;border-width:2px}
+.htrust .faces img:first-child{margin-left:0}
+.htrust .tx{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);line-height:1.4;text-align:center}
+.stars{display:flex;gap:4px}
+.htrust .stars{padding:4px 12px;border:1px solid var(--hair2);border-radius:999px}
 .stars svg{width:11px;height:11px}
-/* the phone: flat, hairline, no chrome glow */
-.phone{position:relative;z-index:1;border-radius:34px;padding:9px;border:1px solid var(--hair2);background:#050505}
-.phone .scr{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:16/9;background:#111}
-.phone .scr img{width:100%;height:100%;object-fit:cover;object-position:48% 26%}
-.phone .scr:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 50%,rgba(0,0,0,.55))}
-.phone .isl{position:absolute;left:18px;top:50%;width:7px;height:62px;margin-top:-31px;border-radius:9px;background:#000;border:1px solid rgba(255,255,255,.07);z-index:2}
-.play{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px}
-.play i{width:66px;height:66px;border-radius:50%;border:1px solid rgba(255,255,255,.7);display:grid;place-items:center;
-  background:rgba(0,0,0,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .2s}
+/* the landscape iPhone: titanium edge, thick even bezel, island on the short side, side buttons */
+.iphone{position:relative;z-index:1;aspect-ratio:794/523}
+.ip-edge{position:absolute;inset:0;border-radius:40px;padding:3px;
+  background:linear-gradient(142deg,#4a4a4a,#161616 34%,#2b2b2b 62%,#0e0e0e 84%,#3a3a3a);
+  box-shadow:0 0 0 1px rgba(255,255,255,.10),0 50px 90px -50px rgba(0,0,0,.95)}
+.ip-bezel{height:100%;border-radius:37px;padding:13px;background:#040404;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.ip-screen{position:relative;height:100%;border-radius:27px;overflow:hidden;background:#111;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.ip-screen>img{width:100%;height:100%;object-fit:cover;object-position:48% 26%}
+.ip-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),transparent 26%,transparent 58%,rgba(0,0,0,.62))}
+.ip-glare{position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,255,255,.07),transparent 34%);pointer-events:none}
+.ip-island{position:absolute;left:12px;top:50%;width:24px;height:88px;margin-top:-44px;border-radius:9px;background:#000;box-shadow:0 0 0 .5px rgba(255,255,255,.1);z-index:3}
+.ib{position:absolute;height:5px;border-radius:2px;background:linear-gradient(#3c3c3c,#161616);box-shadow:0 0 0 .5px rgba(255,255,255,.14)}
+.ib-pwr{top:-4px;left:29%;width:12%}
+.ib-act{bottom:-4px;left:15.5%;width:4.5%}
+.ib-vu{bottom:-4px;left:22.5%;width:8.5%}
+.ib-vd{bottom:-4px;left:33%;width:8.5%}
+.play{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px}
+.play i{width:78px;height:78px;border-radius:50%;border:1px solid rgba(255,255,255,.7);display:grid;place-items:center;
+  background:rgba(0,0,0,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .2s}
 .play:hover i{transform:scale(1.04)}
-.play span{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:#e8e8e8}
-.prog{position:absolute;left:34px;right:28px;bottom:18px;z-index:2;display:flex;align-items:center;gap:14px;font-size:11px;color:#ddd;font-variant-numeric:tabular-nums}
-.prog .ln{flex:1;height:1px;background:rgba(255,255,255,.3);position:relative}
-.prog .ln i{position:absolute;left:0;top:0;height:1px;width:12%;background:#fff}
-.vcap{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;position:relative;z-index:1}
-.vcap span{font-size:13px;color:var(--soft)}
-.vcap .cap{font-size:10px}
-/* the right column */
-.hright{position:relative;z-index:1;padding-top:4px}
-.hright>.cap{margin-bottom:26px;letter-spacing:.26em;font-size:10.5px}
-.hright h1{font-size:clamp(44px,5.1vw,74px);letter-spacing:-.04em;line-height:1.04}
-.lede{margin-top:28px;font-size:16.5px;color:var(--soft);max-width:34em}
+.play span{font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:#ececec}
+.scrub{position:absolute;left:28px;right:28px;bottom:20px;z-index:2;display:flex;align-items:center;gap:16px;padding:11px 20px;border-radius:999px;
+  background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);
+  font-size:12.5px;color:#eee;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.scrub .ln{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.26);position:relative}
+.scrub .ln i{position:absolute;left:0;top:0;height:2px;width:10%;background:#fff;border-radius:2px}
+.scrub .ln b{position:absolute;left:10%;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:#fff}
+.scrub svg{flex:none}
+/* the booking card, flush under the phone */
+.hbook{position:relative;z-index:1;margin-top:16px;display:grid;grid-template-columns:190px minmax(0,1fr) auto;gap:26px;align-items:center;
+  padding:18px 24px 18px 18px;border:1px solid var(--hair2);border-radius:18px;background:rgba(255,255,255,.015)}
+.lap{position:relative}
+.lap .ls{border:1px solid rgba(255,255,255,.18);border-radius:8px 8px 2px 2px;padding:4px;background:#050505}
+.lap .ls img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:4px;filter:grayscale(.2)}
+.lap .lb{height:6px;margin:0 -12px;border:1px solid rgba(255,255,255,.18);border-top:0;border-radius:0 0 8px 8px;background:#0b0b0b}
+.lap .lp{position:absolute;right:10px;bottom:16px;width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.8);display:grid;place-items:center;background:rgba(0,0,0,.4)}
+.hbook .k{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+.hbook h4{font-weight:400;font-size:16.5px;line-height:1.35;letter-spacing:-.01em;margin-top:8px;color:var(--ink)}
+.hbook h4 em{font-style:italic;font-weight:300;color:var(--soft)}
+.hbook .w{margin-top:8px;font-size:14.5px;font-weight:400;color:var(--ink)}
+.hbook .w small{display:block;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);font-weight:300;margin-top:3px}
+.hbook .act{display:flex;flex-direction:column;align-items:center;gap:10px}
+.hbook .act .note{margin-top:0;font-size:9.5px;letter-spacing:.2em;text-align:center;max-width:210px;line-height:1.6}
+/* right column */
+.hpill{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;border:1px solid var(--hair2);border-radius:999px;padding:5px 14px 5px 14px;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);max-width:100%}
+.hpill .dt{width:5px;height:5px;border-radius:50%;background:#fff;flex:none}
+.hpill .dp{background:#fff;color:#000;border-radius:999px;padding:5px 12px;font-weight:500;letter-spacing:.16em}
+.hpill .sp{color:var(--dim)}
+.hright h1{margin-top:26px;font-size:clamp(40px,3.9vw,56px);letter-spacing:-.04em;line-height:1.06}
+.lede{margin-top:24px;font-size:16px;color:var(--soft);max-width:34em}
 .lede b{font-weight:400;color:var(--ink)}
-.stuckq{margin-top:34px}
+.stuckq{margin-top:28px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .chip{font-size:13px;font-weight:300;color:var(--soft);padding:8px 16px;border-radius:999px;border:1px solid var(--hair2);transition:border-color .2s,color .2s}
 .chip:hover,.chip.on{border-color:rgba(255,255,255,.6);color:var(--ink)}
-.reg{margin-top:30px;padding-top:24px;border-top:1px solid var(--hair)}
-.reg .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.reg .rt{font-size:13px;color:var(--soft)}
-.reg .rt b{font-weight:400;color:var(--ink)}
-.reg .num{font-size:13px;color:var(--soft);margin-top:10px}
-.reg .num b{font-weight:400;color:var(--ink)}
-.reg .num i{font-style:normal;color:var(--dim)}
-.reg .go{display:flex;align-items:center;gap:22px;margin-top:24px;flex-wrap:wrap}
-.reg .go .note{margin-top:0}
+.regcard{margin-top:16px;padding:22px;border:1px solid var(--hair2);border-radius:18px;background:rgba(255,255,255,.015)}
+.regcard .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.regcard .faces img{width:30px;height:30px}
+.regcard .rt{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--soft)}
+.regcard .rt b{font-weight:400;color:var(--ink);font-size:15px}
+.regcard .num{font-size:13px;color:var(--soft);margin-top:12px}
+.regcard .num b{font-weight:400;color:var(--ink);font-size:17px;margin-right:4px}
+.regcard .num i{font-style:normal;color:var(--dim)}
+.hjust{display:flex;align-items:center;gap:10px;margin-top:14px;padding:9px 16px;border-radius:999px;border:1px solid var(--hair);font-size:13px;color:var(--soft)}
+.hjust:before{content:'';width:5px;height:5px;border-radius:50%;background:#fff}
+.hjust b{font-weight:400;color:var(--ink)}
+.regcard .pill.wide{width:100%;justify-content:center;margin-top:14px;padding:17px 26px}
+.regcard .note{text-align:center}
 
 /* ------------------------------------------------ trust strip */
 .strip{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
@@ -340,8 +380,17 @@ footer.foot em{font-style:normal;font-size:9.5px;letter-spacing:.26em;text-trans
 }
 @media (max-width:960px){
   .wrap{width:min(1240px,100% - 40px)}
-  .hgrid{grid-template-columns:1fr;gap:48px}
-  .hright{order:-1}
+  .hwrap{width:calc(100% - 40px)}
+  .hgrid{display:flex;flex-direction:column;gap:0;align-items:stretch}
+  .iphone{width:100%}
+  .hleft,.hright{display:contents}
+  .rings,.htrust,.hbook{display:none}
+  .hpill{order:1;margin-top:10px;white-space:normal;flex-wrap:wrap;justify-content:center;border-radius:18px;row-gap:6px;align-self:flex-start}
+  .hright h1{order:2}
+  .lede{order:3}
+  .iphone{order:4;margin-top:34px}
+  .stuckq{order:5}
+  .regcard{order:6}
   .fit{grid-template-columns:1fr}
   .port{max-width:320px}
   .nums{grid-template-columns:1fr 1fr}
@@ -360,18 +409,22 @@ footer.foot em{font-style:normal;font-size:9.5px;letter-spacing:.26em;text-trans
   .wrap{width:calc(100% - 32px)}
   nav.top{padding:18px 0}
   nav.top .r a.l{display:none}
-  .hero{padding:20px 0 70px}
-  .hright h1{font-size:clamp(38px,11vw,50px)}
-  .hright .cap{font-size:10px;letter-spacing:.26em;margin-bottom:20px}
+  .hero{padding:10px 0 70px}
+  .hwrap{width:calc(100% - 32px)}
+  .hright h1{font-size:clamp(36px,10.5vw,46px);margin-top:22px}
+  .hpill{font-size:9px;letter-spacing:.14em;padding:6px 10px}
+  .hpill .dp{padding:4px 10px;letter-spacing:.12em}
   .lede{font-size:15.5px}
-  .trust{flex-wrap:wrap;gap:12px}
-  .trust .sep{display:none}
-  .phone{border-radius:24px;padding:6px}
-  .phone .scr{border-radius:19px}
-  .phone .isl{display:none}
+  .ip-edge{border-radius:24px;padding:2px}
+  .ip-bezel{border-radius:22px;padding:7px}
+  .ip-screen{border-radius:16px}
+  .ip-island{width:12px;height:44px;margin-top:-22px;left:6px;border-radius:5px}
+  .ib{height:3px}.ib-pwr{top:-2px}.ib-act,.ib-vu,.ib-vd{bottom:-2px}
   .play i{width:54px;height:54px}
-  .prog{left:18px;right:18px;bottom:12px}
-  .rings{width:520px;height:520px}
+  .play span{font-size:9px}
+  .scrub{left:10px;right:10px;bottom:9px;padding:6px 12px;gap:10px;font-size:10.5px}
+  .scrub svg:last-child{display:none}
+  .regcard{padding:18px}
   .strip .wrap{justify-content:flex-start;gap:12px 26px;padding:20px 0}
   .strip span{white-space:normal}
   section.s{padding-top:96px}
@@ -461,36 +514,49 @@ footer.foot em{font-style:normal;font-size:9.5px;letter-spacing:.26em;text-trans
   </nav>
 </div>
 
-<!-- HERO -->
+<!-- HERO: the template's hero structure, reskinned -->
 <header class="hero" id="top">
-  <div class="wrap hgrid">
+  <div class="hwrap hgrid">
     <div class="hleft">
-      <svg class="rings" viewBox="0 0 800 800" fill="none" stroke="#fff" aria-hidden="true">
-        <circle cx="400" cy="400" r="140" stroke-opacity=".11"/>
-        <circle cx="400" cy="400" r="200" stroke-opacity=".09"/>
-        <circle cx="400" cy="400" r="266" stroke-opacity=".08"/>
-        <circle cx="400" cy="400" r="336" stroke-opacity=".06"/>
-        <circle cx="400" cy="400" r="392" stroke-opacity=".05"/>
+      <svg class="rings" viewBox="0 0 1000 1000" fill="none" stroke="#fff" aria-hidden="true">
+        <circle cx="500" cy="500" r="300" stroke-opacity=".10"/>
+        <circle cx="500" cy="500" r="350" stroke-opacity=".09"/>
+        <circle cx="500" cy="500" r="408" stroke-opacity=".07"/>
+        <circle cx="500" cy="500" r="462" stroke-opacity=".05"/>
+        <circle cx="500" cy="500" r="496" stroke-opacity=".04" stroke-dasharray="1 5"/>
       </svg>
-      <div class="trust">
-        <div class="ver">Verified<b>Top rated event</b></div>
-        <span class="sep"></span>
+      <div class="htrust">
+        <div class="hbadge">
+          <!-- engraved medal: concentric rings, hatched core -->
+          <svg viewBox="0 0 40 40" fill="none" stroke="#fff" aria-hidden="true"><defs><pattern id="bh" width="2.2" height="2.2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="2.2" stroke="#fff" stroke-width=".45"/></pattern></defs>
+            <circle cx="20" cy="20" r="18.5" stroke-opacity=".35" stroke-width=".7"/><circle cx="20" cy="20" r="15.5" stroke-opacity=".8" stroke-width=".8" stroke-dasharray="1 1.6"/><circle cx="20" cy="20" r="11" stroke-width=".9"/><circle cx="20" cy="20" r="6" fill="url(#bh)" stroke-width=".7"/><circle cx="20" cy="20" r="1.3" fill="#fff" stroke="none"/></svg>
+          <div><small>Verified</small><b>Top rated event</b><span>future/proof</span></div>
+        </div>
         <div class="faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""><img src="img/faces/f4.jpg" alt=""><img src="img/faces/f5.jpg" alt=""></div>
         <div class="tx"><div class="stars" aria-label="5 stars"></div>Trusted by over 1.43M YouTube subscribers</div>
       </div>
-      <div class="phone">
-        <span class="isl"></span>
-        <div class="scr">
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
           <img src="img/video.jpg" alt="Dan Koe talking to camera">
-          <button class="play" data-reg aria-label="Play"><i><svg width="18" height="20" viewBox="0 0 18 20"><path d="M2 1.5v17L16.5 10z" fill="none" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg></i><span>Tap for sound</span></button>
-          <div class="prog"><span>0:10</span><span class="ln"><i></i></span><span>-1:22</span></div>
-        </div>
+          <span class="ip-shade"></span><span class="ip-glare"></span><span class="ip-island"></span>
+          <button class="play" data-reg aria-label="Play"><i><svg width="20" height="22" viewBox="0 0 18 20"><path d="M2 1.5v17L16.5 10z" fill="none" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg></i><span>Tap for sound</span></button>
+          <div class="scrub"><svg width="12" height="13" viewBox="0 0 12 13"><path d="M1.5 1v11L11 6.5z" fill="#fff"/></svg><span>0:10</span><span class="ln"><i></i><b></b></span><span>-1:22</span><svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="#fff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"><path d="M1 5h3l4-3v10L4 9H1z"/><path d="M12 5l4 4M16 5l-4 4"/></svg></div>
+        </div></div></div>
       </div>
-      <div class="vcap"><span>A note from Dan before Day 1</span><span class="cap">1:32</span></div>
+      <div class="hbook">
+        <div class="lap"><div class="ls"><img src="img/slide.jpg" alt="Day 1 slide"></div><div class="lb"></div><span class="lp"><svg width="10" height="11" viewBox="0 0 12 13"><path d="M2 1.5v10L10.5 6.5z" fill="none" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></span></div>
+        <div>
+          <p class="k">Secure your free spot <span style="color:var(--dim)">/</span> Now</p>
+          <h4>Join the <em>free</em> 3-day Build Your 1-Hour Content System.</h4>
+          <p class="w"><span class="whenW">Thu Oct 8 to Sat Oct 10</span><small class="timeS">12:00 PM EDT / Live</small></p>
+        </div>
+        <div class="act"><button class="pill" data-reg>Hold my seat <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button><span class="note ctaNote">Free online challenge: Oct 8 to Oct 10 EDT</span></div>
+      </div>
     </div>
 
     <div class="hright">
-      <p class="cap">Free 3-day live event<i>/</i><span class="whenS">Thu Oct 8 to Sat Oct 10 EDT</span><i>/</i>Live online</p>
+      <p class="hpill"><span class="dt"></span>Free 3-day live event<span class="sp">/</span><span class="dp whenS">Thu Oct 8 to Sat Oct 10 EDT</span><span class="sp">/</span>Live online</p>
       <h1><span class="g nw">Pick 3 topics</span><br><span class="nw">you can own</span><br><span class="nw">for a decade.</span></h1>
       <p class="lede"><b>Learn what’s actually working for writing online in 2026.</b> I’ll walk through why most people post for months and nobody reads, the 5 things that decide whether your writing gets read, and we’ll build your <span class="nw">1-hour</span> content system together. It’s the same system I teach inside the Eden Creator Bootcamp, and it’s yours for free.</p>
       <div class="stuckq">
@@ -501,16 +567,15 @@ footer.foot em{font-style:normal;font-size:9.5px;letter-spacing:.26em;text-trans
           <button class="chip" data-reg data-focus>No time to write</button>
         </div>
       </div>
-      <div class="reg" id="regcard">
+      <div class="regcard" id="regcard">
         <div class="row">
           <div class="faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""><img src="img/faces/f4.jpg" alt=""><img src="img/faces/f5.jpg" alt=""><img src="img/faces/f6.jpg" alt=""></div>
-          <span class="rt"><b>4.9</b> average rating</span>
+          <span class="rt"><span class="stars" aria-label="5 stars"></span><b>4.9</b> average rating</span>
         </div>
         <p class="num"><b class="seats">1,204</b> people have their seat <i>/</i> <span class="l24">18</span> registered in the last 24 hours</p>
-        <div class="go">
-          <button class="pill" data-reg>Hold my seat <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          <span class="note ctaNote">Free online challenge: Oct 8 to Oct 10 EDT</span>
-        </div>
+        <div class="hjust"><span><b>Maya</b> just registered</span></div>
+        <button class="pill wide" data-reg>Hold my seat <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+        <p class="note ctaNote">Free online challenge: Oct 8 to Oct 10 EDT</p>
       </div>
     </div>
   </div>
@@ -893,6 +958,8 @@ footer.foot em{font-style:normal;font-size:9.5px;letter-spacing:.26em;text-trans
   var SHORT = f(START, { month: 'short', day: 'numeric' }) + ' to ' + f(END, { month: 'short', day: 'numeric' }) + ' ' + ZONE;
   $$('.whenS').forEach(function (e) { e.textContent = WHEN + ' ' + ZONE; });
   $$('.ctaNote').forEach(function (e) { e.textContent = 'Free online challenge: ' + SHORT; });
+  $$('.whenW').forEach(function (e) { e.textContent = WHEN; });
+  $$('.timeS').forEach(function (e) { e.textContent = TIME + ' / Live'; });
   $('#cWhen').textContent = WHEN + ' / ' + TIME + ' / Live on Zoom';
   $('#mWhen').textContent = WHEN + ' / ' + TIME + ' / Live';
   $('#footL').textContent = 'A free 3-day live event with Dan Koe. ' + WHEN + ' / ' + TIME + ' / Live online.';
