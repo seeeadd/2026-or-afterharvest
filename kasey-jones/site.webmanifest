@@ -1,5 +1,5 @@
 {
-  "name": "Build Your Predictable Growth Roadmap",
+  "name": "Essentialist CEO 3-Day Event",
   "short_name": "Kasey",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#32AB71",
-  "background_color": "#F4F4F4",
+  "theme_color": "#268A5A",
+  "background_color": "#FFFFFF",
   "display": "standalone"
 }

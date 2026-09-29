@@ -96,4 +96,42 @@
     i++;
   }
   setTimeout(function () { toast(); setInterval(toast, 11000); }, 2600);
+
+  /* 1-day webinar leads (V.format, from lead.json event_format; w3 2026-09-29): the VIP page was written around a
+     fourth live day. It becomes a private VIP session after the webinar, and every other "Day N" / "three days"
+     phrase gets its webinar form, the same way lp.js LP_webinarize treats the registration page. */
+  if (V.format === 'webinar') {
+    var R = [
+      [/All three days plus Day 4/g, 'The webinar plus the VIP session'], [/all three days plus Day 4/g, 'the webinar plus the VIP session'],
+      [/[Aa] fourth live day/g, function (m) { return (m[0] === 'A' ? 'A' : 'a') + ' private VIP session'; }],
+      [/[Tt]he fourth day/g, function (m) { return (m[0] === 'T' ? 'T' : 't') + 'he VIP session'; }],
+      [/[Aa]ll four days/g, function (m) { return (m[0] === 'A' ? 'T' : 't') + 'he webinar and the VIP session'; }],
+      [/^(\s*)Day 4(\s*)$/, '$1VIP$2'],  /* a chip or cell holding only "Day 4": short, or it overflows at 390px (Tristan) */
+      [/DAY 4 LIVE/g, 'VIP SESSION LIVE'], [/DAY 4/g, 'VIP SESSION'], [/\bDay 4\b/g, 'the VIP session'],
+      [/seat is saved for all three days/g, 'seat is saved for the webinar'],
+      [/[Aa]ll three days/g, function (m) { return (m[0] === 'A' ? 'T' : 't') + 'he webinar'; }],
+      [/Three live days/g, 'One live session'], [/three live days/g, 'one live session'],
+      [/The three days/g, 'The webinar'], [/the three days/g, 'the webinar'],
+      [/Three days/g, 'One session'], [/three days/g, 'one session'],
+      [/Before you head to Day 1/g, 'Before the webinar'],
+      [/\bDay([  ])([1-3])\b/g, 'Part$1$2'], [/\bday([  ])([1-3])\b/g, 'part$1$2'],
+      [/\b3-day\b/g, 'live'], [/\b3-Day\b/g, 'Live'], [/\bthree-day\b/g, 'live'], [/\bThree-day\b/g, 'Live']
+    ];
+    var tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null), tn, tt;
+    while ((tn = tw.nextNode())) {
+      if (tn.parentNode && /^(SCRIPT|STYLE)$/.test(tn.parentNode.nodeName)) continue;
+      tt = tn.nodeValue;
+      R.forEach(function (r) { tt = tt.replace(r[0], r[1]); });
+      if (tt !== tn.nodeValue) {
+        /* a replacement can open a sentence in lower case ("the VIP session starts..."): capitalise after . ! ? and at
+           the start of a block's first text (2026-09-29-b1) */
+        tt = tt.replace(/([.!?]\s+)([a-z])/g, function (m, a, c) { return a + c.toUpperCase(); });
+        var par = tn.parentNode;
+        if (par && par.firstChild === tn && /^(block|list-item|flex|grid)$/.test(getComputedStyle(par).display))
+          tt = tt.replace(/^(\s*)([a-z])/, function (m, a, c) { return a + c.toUpperCase(); });
+        tn.nodeValue = tt;
+      }
+    }
+    if (document.title) document.title = document.title.replace(/3-day/gi, 'live');
+  }
 })();
