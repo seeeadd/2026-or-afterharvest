@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Burnout Recovery Webinar | Autism From The Inside</title>
+<link rel="stylesheet" href="fonts/teko_400-500-600-700.css">
+<link rel="stylesheet" href="fonts/cabinet-grotesk_400-500-600-700-800.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#F1EEF2; --ink:#2E2831; --accent:#461158; --accent-ink:#FFFFFF; --accent2:#424242; --accent-text:#461158; --head-acc:#461158; --ink-soft:#555058; --muted:#706B73; --hair:rgba(46,40,49,0.100); --hair-2:rgba(46,40,49,0.170); --accent-10:rgba(70,17,88,0.130); --accent-sh:rgba(70,17,88,0.550); --accent-sh2:rgba(70,17,88,0.280); --pat:#077B71; --pat-op:0.36; --ghost:#461158; --ghost-op:0.36; --grain-img:url(grain-light.png); --grain-op:.10; --grain-blend:multiply; --wall:radial-gradient(120% 90% at 18% 0%, rgba(52,13,66,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(46,46,46,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.56); --glass-brd:rgba(255,255,255,.72); --glass-hi:rgba(255,255,255,.92); --glass-solid:rgba(252,251,252,0.940); --card:rgba(255,255,255,.62); --card-brd:rgba(46,40,49,0.060); --strip:rgba(255,255,255,.34); --well:rgba(46,40,49,0.050); --field:rgba(255,255,255,.72); --av-ring:#FDFCFD; --cap-bg:rgba(255,255,255,.74); --cap-ink:#2E2831; --cap-muted:#757177; --sh1:0 1px 1px rgba(30,26,32,.05),0 3px 8px -2px rgba(30,26,32,.07),0 22px 40px -22px rgba(30,26,32,.28),0 50px 90px -50px rgba(30,26,32,.30); --sh2:0 1px 1px rgba(30,26,32,.04),0 2px 6px -2px rgba(30,26,32,.06),0 14px 30px -18px rgba(30,26,32,.24); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(30,26,32,.22),0 26px 44px -18px rgba(30,26,32,.38),0 60px 90px -44px rgba(30,26,32,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(30,26,32,.36); --contact:rgba(30,26,32,.36); --plate:radial-gradient(90% 70% at 50% 100%, rgba(70,17,88,0.240), transparent 70%), linear-gradient(180deg, #F9F7F9, #E0D8E3); --band:#1B181D; --band-ink:#F9F7F9; --band-ink-70:rgba(249,247,249,0.700); --band-ink-50:rgba(249,247,249,0.500); --band-hair:rgba(249,247,249,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(70,17,88,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(66,66,66,0.100), transparent 70%); --ground-paint:radial-gradient(660px 540px at 96% 1%, rgba(66,66,66,0.220), transparent 70%),radial-gradient(560px 460px at 0% 14%, rgba(70,17,88,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(70,17,88,0.070), transparent 70%),radial-gradient(620px 520px at 0% 71%, rgba(66,66,66,0.100), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(70,17,88,0.080), transparent 70%),radial-gradient(460px 380px at 0% 0%, rgba(76,49,34,.08), transparent 70%),radial-gradient(520px 420px at 100% 100%, rgba(76,49,34,.09), transparent 70%), #F1EEF2; --display:"Teko", Georgia, serif; --body:"Cabinet Grotesk", system-ui, sans-serif; --label:"Cabinet Grotesk", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:700; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=b37cb128">
+<link rel="icon" href="favicon.ico?v=0d5ec8e1" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1d938d4f">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=e985af63">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=586af17c">
+<link rel="manifest" href="site.webmanifest?v=2099a7a6">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "paul-micallef", "name": "Paul Micallef", "brand": "Autism From The Inside", "role": "Autistic life coach, Autism From The Inside", "event": "The Burnout Recovery Webinar", "headline": {"lines": ["Name your real", "burnout signs", "before they hit"], "accent_line": 1, "mark_word": "burnout signs"}, "stats": [{"num": "420K", "label": "YouTube subscribers", "source": "https://www.youtube.com/@autismfromtheInside"}, {"num": "742", "label": "YouTube videos published", "source": "https://www.youtube.com/@autismfromtheInside"}], "days": [{"title": "Name your real|burnout signs|before they hit", "outcome": "See why autistic burnout builds differently, and why rest alone doesn't fix it.", "detail": "We go through what autistic burnout looks like from the inside, then you map the signs your own body and senses give you before a shutdown or meltdown.", "bullets": ["Why burnout builds differently when you're autistic", "The body and sensory signs that come first", "Your own early signs, written down"]}, {"title": "Try the reset|on real triggers", "outcome": "Practice a calming reset live in the session, on your own real triggers.", "detail": "You pick one trigger from your own list and we build the reset around it: the first move, who you tell and what you drop that day.", "bullets": ["Pick one trigger from your own signs", "Write the first move you make when it shows up", "Decide what you drop on a low-battery day"]}, {"title": "Build your own|warning list", "outcome": "Leave with your personal early-warning checklist and a plan for the weeks after.", "detail": "You turn your signs into a short checklist you run each day, so the next burnout is caught while there is still room to act.", "bullets": ["A daily checklist built from your own signs", "What to do on the day a sign shows up", "A plan for the weeks after the session"]}], "sources_line": "Figures: youtube.com, autismfromtheinside.com.au", "style": {"pattern": "dots", "mark": "underline", "video_focus": "46% 30%", "headshot_focus": "50% 42%"}, "pattern": "loops", "mark": {"kind": "swipe", "color": "#EC7723", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"836.0 27.8 757.1 538.6\" fill=\"none\"><defs>\n      <clipPath id=\"gh0-clipL1\"><path d=\"M480.0 60.0 C480.0 93.3 455.0 133.0 417.0 159.9 C379.0 186.9 313.5 211.4 252.0 221.7 C190.5 232.0 109.5 232.0 48.0 221.7 C-13.5 211.4 -79.0 186.9 -117.0 159.9 C-155.0 133.0 -180.0 93.3 -180.0 60.0 C-180.0 26.7 -155.0 -13.0 -117.0 -39.9 C-79.0 -66.9 -13.5 -91.4 48.0 -101.7 C109.5 -112.0 190.5 -112.0 252.0 -101.7 C313.5 -91.4 379.0 -66.9 417.0 -39.9 C455.0 -13.0 480.0 26.7 480.0 60.0 Z\"><\/path><\/clipPath>\n      <clipPath id=\"gh0-clipL2\"><path d=\"M2130.0 1000.0 C2130.0 1045.1 2111.0 1098.7 2082.3 1135.2 C2053.5 1171.6 2003.8 1204.8 1957.3 1218.7 C1910.7 1232.7 1849.3 1232.7 1802.7 1218.7 C1756.2 1204.8 1706.5 1171.6 1677.7 1135.2 C1649.0 1098.7 1630.0 1045.1 1630.0 1000.0 C1630.0 954.9 1649.0 901.3 1677.7 864.8 C1706.5 828.4 1756.2 795.2 1802.7 781.3 C1849.3 767.3 1910.7 767.3 1957.3 781.3 C2003.8 795.2 2053.5 828.4 2082.3 864.8 C2111.0 901.3 2130.0 954.9 2130.0 1000.0 Z\"><\/path><\/clipPath>\n      <clipPath id=\"gh0-clipL3\"><path d=\"M900.0 1060.0 C900.0 1095.3 871.2 1137.3 827.4 1165.8 C783.7 1194.3 708.2 1220.3 637.4 1231.2 C566.6 1242.1 473.4 1242.1 402.6 1231.2 C331.8 1220.3 256.3 1194.3 212.6 1165.8 C168.8 1137.3 140.0 1095.3 140.0 1060.0 C140.0 1024.7 168.8 982.7 212.6 954.2 C256.3 925.7 331.8 899.7 402.6 888.8 C473.4 877.9 566.6 877.9 637.4 888.8 C708.2 899.7 783.7 925.7 827.4 954.2 C871.2 982.7 900.0 1024.7 900.0 1060.0 Z\"><\/path><\/clipPath>\n      <clipPath id=\"gh0-clipL4\"><path d=\"M1920.0 10.0 C1920.0 39.4 1888.2 74.4 1839.8 98.2 C1791.4 121.9 1708.0 143.6 1629.8 152.7 C1551.5 161.7 1448.5 161.7 1370.2 152.7 C1292.0 143.6 1208.6 121.9 1160.2 98.2 C1111.8 74.4 1080.0 39.4 1080.0 10.0 C1080.0 -19.4 1111.8 -54.4 1160.2 -78.2 C1208.6 -101.9 1292.0 -123.6 1370.2 -132.7 C1448.5 -141.7 1551.5 -141.7 1629.8 -132.7 C1708.0 -123.6 1791.4 -101.9 1839.8 -78.2 C1888.2 -54.4 1920.0 -19.4 1920.0 10.0 Z\"><\/path><\/clipPath>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"84\" y=\"360.890625\" width=\"898\" height=\"390.28125\" fill=\"#383838\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(1030 -120) rotate(14)\">\n  <path d=\"M40 360 C40 120 520 120 520 360\" stroke-width=\"16\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path>\n  <path d=\"M70 360 C70 160 490 160 490 360\" stroke-width=\"7\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path>\n  <path d=\"M-10 330 q-40 0 -40 60 v90 q0 60 40 60 h70 q30 0 30 -40 v-130 q0 -40 -30 -40 z\" stroke-width=\"10\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path>\n  <path d=\"M500 330 q-30 0 -30 40 v130 q0 40 30 40 h70 q40 0 40 -60 v-90 q0 -60 -40 -60 z\" stroke-width=\"10\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path>\n<\/g><\/g><\/svg>", "w": 757.1, "h": 538.6, "sw": 16}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-92.7 339.0 710.8 404.5\" fill=\"none\"><defs>\n      <clipPath id=\"gh1-clipL1\"><path d=\"M480.0 60.0 C480.0 93.3 455.0 133.0 417.0 159.9 C379.0 186.9 313.5 211.4 252.0 221.7 C190.5 232.0 109.5 232.0 48.0 221.7 C-13.5 211.4 -79.0 186.9 -117.0 159.9 C-155.0 133.0 -180.0 93.3 -180.0 60.0 C-180.0 26.7 -155.0 -13.0 -117.0 -39.9 C-79.0 -66.9 -13.5 -91.4 48.0 -101.7 C109.5 -112.0 190.5 -112.0 252.0 -101.7 C313.5 -91.4 379.0 -66.9 417.0 -39.9 C455.0 -13.0 480.0 26.7 480.0 60.0 Z\"><\/path><\/clipPath>\n      <clipPath id=\"gh1-clipL2\"><path d=\"M2130.0 1000.0 C2130.0 1045.1 2111.0 1098.7 2082.3 1135.2 C2053.5 1171.6 2003.8 1204.8 1957.3 1218.7 C1910.7 1232.7 1849.3 1232.7 1802.7 1218.7 C1756.2 1204.8 1706.5 1171.6 1677.7 1135.2 C1649.0 1098.7 1630.0 1045.1 1630.0 1000.0 C1630.0 954.9 1649.0 901.3 1677.7 864.8 C1706.5 828.4 1756.2 795.2 1802.7 781.3 C1849.3 767.3 1910.7 767.3 1957.3 781.3 C2003.8 795.2 2053.5 828.4 2082.3 864.8 C2111.0 901.3 2130.0 954.9 2130.0 1000.0 Z\"><\/path><\/clipPath>\n      <clipPath id=\"gh1-clipL3\"><path d=\"M900.0 1060.0 C900.0 1095.3 871.2 1137.3 827.4 1165.8 C783.7 1194.3 708.2 1220.3 637.4 1231.2 C566.6 1242.1 473.4 1242.1 402.6 1231.2 C331.8 1220.3 256.3 1194.3 212.6 1165.8 C168.8 1137.3 140.0 1095.3 140.0 1060.0 C140.0 1024.7 168.8 982.7 212.6 954.2 C256.3 925.7 331.8 899.7 402.6 888.8 C473.4 877.9 566.6 877.9 637.4 888.8 C708.2 899.7 783.7 925.7 827.4 954.2 C871.2 982.7 900.0 1024.7 900.0 1060.0 Z\"><\/path><\/clipPath>\n      <clipPath id=\"gh1-clipL4\"><path d=\"M1920.0 10.0 C1920.0 39.4 1888.2 74.4 1839.8 98.2 C1791.4 121.9 1708.0 143.6 1629.8 152.7 C1551.5 161.7 1448.5 161.7 1370.2 152.7 C1292.0 143.6 1208.6 121.9 1160.2 98.2 C1111.8 74.4 1080.0 39.4 1080.0 10.0 C1080.0 -19.4 1111.8 -54.4 1160.2 -78.2 C1208.6 -101.9 1292.0 -123.6 1370.2 -132.7 C1448.5 -141.7 1551.5 -141.7 1629.8 -132.7 C1708.0 -123.6 1791.4 -101.9 1839.8 -78.2 C1888.2 -54.4 1920.0 -19.4 1920.0 10.0 Z\"><\/path><\/clipPath>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"84\" y=\"360.890625\" width=\"898\" height=\"390.28125\" fill=\"#383838\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(-60 690) rotate(-24)\">\n  <path d=\"M0 0 C0 -70 190 -80 210 -10 C226 50 30 80 0 0 Z\" stroke-width=\"9\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path>\n  <path d=\"M205 -12 C300 -20 520 -30 700 -40 C712 -40 716 -18 700 -16 C520 -6 300 10 206 12\" stroke-width=\"9\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path>\n<\/g><\/g><\/svg>", "w": 710.8, "h": 404.5, "sw": 9}], "pat_op": 0.179, "ghost_op": 0.244, "ghost_stroke": 4.5, "fonts": {"display": "Teko", "display_weight": 700, "body": "Cabinet Grotesk", "label": "Cabinet Grotesk"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Paul", "event_core": "Burnout Recovery Webinar", "lede": "**Learn what's actually working for autistic burnout recovery in 2026.** I'll walk through why rest alone doesn't fix autistic burnout, the five things that decide whether you catch it early, and we'll build your early-warning checklist together in The Burnout Recovery Webinar. It's the same groundwork I use in my 1:1 coaching, and it's yours for free.", "proof": [{"num": "420K", "label": "YouTube subscribers", "source": "https://www.youtube.com/@autismfromtheInside"}], "ticker": ["420K YouTube subscribers", "742 YouTube videos published", "Live monthly webinars for autistic adults", "ICF-accredited life coach"], "checks": [{"bold": "Running on willpower", "text": "See why pushing through keeps burnout building.", "hand": "willpower runs out"}, {"bold": "Missing the early signs", "text": "Name the body and sensory cues that show up first.", "hand": "signs come first"}, {"bold": "Masking all day", "text": "Count what masking costs before the tank is empty.", "hand": "masking costs energy"}, {"bold": "Sensory overload", "text": "Build a short reset you can run anywhere.", "hand": "regulate first"}, {"bold": "No plan for after", "text": "Keep a weekly check so the next crash is caught early.", "hand": "catch it early"}], "days_intro": "First we name your early signs, then we practice a reset on your own triggers, and last we turn it into a checklist you keep.", "fit_count": 4, "format": "webinar"};</script>
+<script src="lp.js?v=113601bc"></script>
+<script>window.SITE = {
+ "event": "The Burnout Recovery Webinar",
+ "name": "Paul Micallef",
+ "brand": "Autism From The Inside",
+ "trusted_count": "420K",
+ "audience": "youtube subscribers",
+ "monogram": "AFI",
+ "logo": "img/logo.png",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for Autism From The Inside",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of The Burnout Recovery Webinar for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Paul Micallef is an autistic life coach, speaker, facilitator and trainer, and an ICF-accredited life coach. He discovered his own autism at 30, left a career as a Boeing stress analyst, and now coaches autistic adults, parents and partners through Autism From The Inside.",
+ "role": "Autistic life coach, Autism From The Inside",
+ "days_intro": "First we name your early signs, then we practice a reset on your own triggers, and last we turn it into a checklist you keep.",
+ "check_why": [
+  "",
+  "",
+  "",
+  "",
+  ""
+ ],
+ "day_detail": [
+  "We go through what autistic burnout looks like from the inside, then you map the signs your own body and senses give you before a shutdown or meltdown.",
+  "You pick one trigger from your own list and we build the reset around it: the first move, who you tell and what you drop that day.",
+  "You turn your signs into a short checklist you run each day, so the next burnout is caught while there is still room to act."
+ ],
+ "day_bullets": [
+  [
+   "Why burnout builds differently when you're autistic",
+   "The body and sensory signs that come first",
+   "Your own early signs, written down"
+  ],
+  [
+   "Pick one trigger from your own signs",
+   "Write the first move you make when it shows up",
+   "Decide what you drop on a low-battery day"
+  ],
+  [
+   "A daily checklist built from your own signs",
+   "What to do on the day a sign shows up",
+   "A plan for the weeks after the session"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Marcus R.",
+  "role": "Autism From The Inside member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#2E2831"
+ },
+ "keep_title": "One session in, you know your signs before the crash.",
+ "time_zone": "Australia/Melbourne",
+ "keep": [
+  {
+   "kind": "brief",
+   "name": "My early signs",
+   "status": "4 signs named",
+   "rows": [
+    {
+     "label": "Body",
+     "text": "Jaw tight by 3pm, forgot to eat lunch",
+     "pull": true
+    },
+    {
+     "label": "Senses",
+     "text": "Office lights start to buzz and hum"
+    },
+    {
+     "label": "Social",
+     "text": "Scripting every reply to a text"
+    },
+    {
+     "label": "Thinking",
+     "text": "Can't choose what to cook for dinner"
+    }
+   ],
+   "foot": "The signs come before the crash",
+   "foot_tag": "1 to watch"
+  },
+  {
+   "kind": "brief",
+   "name": "Reset plan",
+   "status": "Tried live",
+   "rows": [
+    {
+     "label": "Trigger",
+     "text": "Jaw tight by 3pm",
+     "pull": true
+    },
+    {
+     "label": "First move",
+     "text": "Lights off, headphones on, lie down"
+    },
+    {
+     "label": "Tell",
+     "text": "Text my partner: low battery tonight"
+    },
+    {
+     "label": "Drop",
+     "text": "The after-work shop run and the gym"
+    }
+   ],
+   "foot": "Regulate first, decide later",
+   "foot_tag": "2 dropped"
+  },
+  {
+   "kind": "tracker",
+   "name": "Warning checklist",
+   "status": "Week 1 of 4",
+   "who": "Sign",
+   "cols": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu"
+   ],
+   "rows": [
+    {
+     "name": "Jaw tight by 3pm",
+     "marks": "srrn",
+     "next": "Reset at 2pm"
+    },
+    {
+     "name": "Lights buzzing",
+     "marks": "-sr",
+     "next": "Desk lamp"
+    },
+    {
+     "name": "Scripting texts",
+     "marks": "--s",
+     "next": "Voice note"
+    }
+   ],
+   "foot": "Catch it early, every day",
+   "foot_tag": "1 to reset"
+  }
+ ]
+};</script>
+<script src="site.js?v=3232efb1"></script>
+</body>
+</html>
