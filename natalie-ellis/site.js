@@ -116,6 +116,8 @@
   /* a webinar is one session on one day: "Wed Oct 7", never "Wed Oct 7 to Wed Oct 7" (w2, 2026-09-29) */
   function span(long) { return WEBINAR ? dfmt(START, long) : dfmt(START, long) + ' to ' + dfmt(END, long); }
   var WHEN = S.when || span(true);
+  /* when each day (or, on a webinar, each part of the one session: 20 minutes apart, same day) starts (Clay flags, 2026-09-29) */
+  function partDate(i) { return new Date(START.getTime() + i * (WEBINAR ? 20 * 6e4 : 864e5)); }
   var WHEN_FULL = WHEN + ' · ' + tfmt(START) + ' · Live online';
   /* the line under every call to action (asked for 2026-09-22) */
   var CTA_NOTE = S.cta_note || zoned((WEBINAR ? 'Free live webinar: ' : 'Free online challenge: ') + span());
@@ -1383,8 +1385,8 @@
     if (!box || !days.length) return;
     var slot = S.day_time || tfmt(START);
     var meta = function (i) {
-      var d = new Date(START.getTime() + i * 864e5);
-      return dfmt(d) + ' \u00B7 ' + slot + ' \u00B7 live, replay the same day';
+      var d = partDate(i);
+      return dfmt(d) + ' \u00B7 ' + (WEBINAR ? tfmt(d) : slot) + ' \u00B7 live, replay the same day';
     };
     var when1 = q('.when .dmeta', box);
     if (when1) when1.innerHTML = 'Live session<br>' + esc(meta(0));
@@ -1415,7 +1417,8 @@
   function agendaDays(box, slot) {
     var n = qa('.d23 > *', box).length + 1;
     function node(i) {
-      var d = new Date(START.getTime() + i * 864e5);
+      var d = partDate(i);
+      if (WEBINAR) slot = tfmt(d);
       var parts = String(dfmt(d)).split(' ');
       var wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d.getDay()];
       return '<div class="dnode"><span class="dnwd">' + esc(wd) + '</span>' +
