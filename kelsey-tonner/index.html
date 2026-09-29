@@ -511,6 +511,49 @@ html.js.m .rv.in{opacity:1;transform:none}
   .cr{padding:34px 20px}
 }
 .hd,.dnum,.stat b,.book h3,.book .d,.tkart h4,.regc .num b,.tally b,.pm .ev,.dg .big,.dg .call{font-variant-numeric:lining-nums}
+/* locked tail: blurred teaser + lock bar */
+#gatewrap{position:relative;background:#fff}
+.gated{filter:blur(8px);opacity:.9;pointer-events:none;user-select:none;-webkit-user-select:none;max-height:600px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 80%,rgba(0,0,0,.15) 100%);mask-image:linear-gradient(180deg,#000 0,#000 80%,rgba(0,0,0,.15) 100%)}
+.gsec{padding-top:64px}
+.gsec .hd{margin-top:14px;font-size:clamp(28px,3.4vw,42px)}
+.gsub{margin-top:14px;max-width:620px;color:var(--mute)}
+.gcards{margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.gcard{background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.gcard .gn{display:block;background:var(--band);color:var(--sun);font:700 26px/1 var(--head);padding:16px 22px;border-bottom:2px dashed #fff}
+.gcard h4{margin:18px 22px 0;font:700 21px/1.2 var(--head);color:var(--ink)}
+.gcard p{margin:9px 22px 24px;color:var(--mute)}
+.glist{list-style:none;margin-top:22px;max-width:720px}
+.glist li{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.gtick{width:22px;height:22px;border-radius:50%;border:2px solid var(--sky)}
+.gfaq{margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 44px}
+.gfaq div{padding-top:16px;border-top:2px solid var(--ink)}
+.gfaq b{font:700 19px/1.2 var(--head)}
+.gfaq p{margin-top:8px;color:var(--mute)}
+.foot{padding-bottom:110px}
+#gate{position:fixed;left:0;right:0;bottom:22px;z-index:75;display:flex;justify-content:center;padding:0 16px;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
+#gate.on{opacity:1;visibility:visible}
+#gate .gbar{pointer-events:auto;display:flex;align-items:center;gap:14px;max-width:100%;padding:10px 10px 10px 16px;border-radius:6px;background:var(--ink);color:#fff;border-left:6px solid var(--sun);box-shadow:0 18px 40px -20px rgba(0,30,60,.6)}
+#gate .glock{flex:none;width:26px;height:26px}
+#gate .gtx{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+#gate .gtx b{font:700 16.5px/1.2 var(--head);color:#fff;white-space:nowrap}
+#gate .gtx small{font:400 13px/1.3 var(--body);color:var(--soft);white-space:nowrap}
+#gate .btn.sm{flex:none;white-space:nowrap}
+#gate .gpanel{position:absolute;left:50%;bottom:calc(100% + 12px);transform:translate(-50%,8px);width:min(420px,calc(100vw - 32px));opacity:0;transition:opacity .25s ease,transform .25s ease;
+  padding:22px 22px 18px;border-radius:6px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--navy);box-shadow:0 24px 50px -24px rgba(0,30,60,.55);pointer-events:auto}
+#gate .gpanel[hidden]{display:none}
+#gate .gpanel.on{opacity:1;transform:translate(-50%,0)}
+#gate .gpt{font:700 19px/1.2 var(--head);color:var(--ink);padding-right:28px}
+#gate .gpd{margin:6px 0 14px;font-size:15px;line-height:1.5;color:var(--mute)}
+#gate .gprow{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+#gate .gprow code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;padding:11px 12px;border-radius:4px;background:var(--pale);font:500 14px/1.2 var(--body);color:var(--ink)}
+#gate .gpcopy{flex:none;border:0;cursor:pointer;border-radius:4px;background:var(--navy);color:#fff;font:700 13px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:13px 16px}
+#gate .gpmail{font-size:14px;color:var(--navy);text-decoration:underline}
+#gate .gpx{position:absolute;top:12px;right:12px;width:30px;height:30px;border:0;border-radius:4px;background:var(--pale);color:var(--ink);cursor:pointer;font-size:13px}
+body.gateon #stick{transform:translateY(-70px)}
+@media (max-width:900px){.gcards,.gfaq{grid-template-columns:1fr}}
+@media (max-width:760px){#gate{bottom:14px;padding:0 10px}#gate .gbar{padding:8px 8px 8px 12px;gap:10px;width:100%}#gate .gtx b{font-size:15px;white-space:normal}#gate .gtx small{display:none}#gate .btn.sm{padding:12px 14px;font-size:13px}#gate .glock{width:22px;height:22px}.gsec{padding-top:44px}}
+@media (max-width:400px){#gate .btn.sm svg{display:none}}
 </style>
 </head>
 <body>
@@ -850,6 +893,30 @@ html.js.m .rv.in{opacity:1;transform:none}
   </div>
 </section>
 
+<!-- locked tail: blurred teaser of the rest of the page + a lock bar (Sean 2026-09-29 "wheres my unlock page blur"). Same behaviour as
+     templates/lp/site.js gated() and Dan Koe's page: nothing is sent, the button opens a panel that shows the reply address and copies it. -->
+<div id="gatewrap">
+  <div class="wrap">
+    <div class="gated" aria-hidden="true" inert>
+      <div class="gsec"><span class="cap">What you get</span><h2 class="hd">Three days, and the pieces you keep.</h2>
+        <p class="gsub">Every session is live and recorded, and each day ends with a finished piece you keep.</p>
+        <div class="gcards"><div class="gcard"><span class="gn">Day 1</span><h4>Turn visitors into booked tour guests.</h4><p>Your best tour page rewritten so more visitors book direct.</p></div><div class="gcard"><span class="gn">Day 2</span><h4>Put AI to work in your voice.</h4><p>An AI assistant that drafts your marketing and guest emails in your voice.</p></div><div class="gcard"><span class="gn">Day 3</span><h4>Map a record booking season.</h4><p>A 12-month booking plan with the three gaps to close first.</p></div></div></div>
+      <div class="gsec"><span class="cap">What it fixes</span><h2 class="hd">The workbook you fill in live.</h2>
+        <ul class="glist"><li><i class="gtick"></i><span><b>Browsers who never book.</b> Rewrite your best tour page so visitors book.</span></li><li><i class="gtick"></i><span><b>Descriptions that list stops.</b> Lead with the evening a guest will feel.</span></li><li><i class="gtick"></i><span><b>No time for marketing.</b> Set up an AI assistant that writes in your voice.</span></li><li><i class="gtick"></i><span><b>Invisible in AI search.</b> Shape your pages so AI answers can quote them.</span></li></ul></div>
+      <div class="gsec"><h2 class="hd">Questions people ask.</h2><div class="gfaq"><div><b>Do I need anything before Day 1?</b><p>Bring the work you already have. Everything else is set up live on the day.</p></div><div><b>What if I cannot make a session live?</b><p>Every session is recorded and the replay lands in your inbox the same evening.</p></div><div><b>Is this really free?</b><p>Yes. Three days, live with Kelsey, no card and no catch.</p></div><div><b>Who is this for?</b><p>Anyone who recognised themselves in the fit check. Bring what you have and leave with the next step done.</p></div></div></div>
+    </div>
+  </div>
+</div>
+<div id="gate">
+  <div class="gbar"><svg class="glock" viewBox="0 0 32 32" aria-hidden="true"><rect x="6.5" y="14" width="19" height="13.5" rx="2" fill="#ffd23f" stroke="#ffd23f" stroke-width="1.6"/><path d="M11 14v-3.4a5 5 0 0 1 10 0V14" fill="none" stroke="#ffd23f" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="20" r="1.9" fill="#1f1f4d"/></svg><span class="gtx"><b>The rest of this page is ready</b><small>Reply to my email and I will open it</small></span>
+    <button class="btn sun sm" id="gopen" type="button">Open the full page <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+  <div class="gpanel" id="gpanel" hidden><p class="gpt">Reply to the email I sent you</p>
+    <p class="gpd">One line back is all it takes and I will open the rest of this page for you.</p>
+    <div class="gprow"><code>sean@theafterharvest.com</code><button class="gpcopy" type="button">Copy</button></div>
+    <a class="gpmail" href="mailto:sean%40theafterharvest.com?subject=Unlock%20the%20full%20page%20for%20Guest%20Focus&amp;body=Yes%2C%20send%20me%20the%20full%20page.%0A%0A">Or open it in your mail app</a>
+    <button class="gpx" type="button" aria-label="Close">&#10005;</button></div>
+</div>
+
 <footer class="foot"><div class="wrap"><span>Free event <span aria-hidden="true">·</span> Book More Tours Masterclass with Kelsey Tonner</span><span>Figures: guestfocus.com, youtube.com/@guestfocus</span></div></footer>
 
 <aside id="stick" aria-label="A 60 second look at the three days"><div class="sv"><img src="img/sticky.jpg" alt="Kelsey Tonner"><button class="x" aria-label="Close" type="button">&times;</button><span class="cap2"></span><span class="bar"><i></i></span><a class="go" href="#join">Reserve my seat</a></div></aside>
@@ -951,6 +1018,21 @@ html.js.m .rv.in{opacity:1;transform:none}
   function submit(){$('#cbox').classList.add('done');ride();$$('.fields input').forEach(function(i){i.value=''});stick();var h=$('.thanks h3');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
   $('#go').addEventListener('click',submit);
   $$('.fields input').forEach(function(i){i.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();submit()}})});
+})();
+</script>
+<script>
+/* lock bar: fades in as the blurred tail scrolls into view; the button opens the reply panel (no network) */
+(function(){
+  var wrap=document.getElementById('gatewrap'),gate=document.getElementById('gate');if(!wrap||!gate)return;
+  var panel=document.getElementById('gpanel'),addr='sean@theafterharvest.com';
+  function tick(){var r=wrap.getBoundingClientRect(),vh=innerHeight,on=r.top<vh-60&&r.bottom>120;
+    gate.classList.toggle('on',on);document.body.classList.toggle('gateon',on);
+    if(!on&&!panel.hidden){panel.classList.remove('on');panel.hidden=true}}
+  addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
+  function copy(b){try{navigator.clipboard&&navigator.clipboard.writeText(addr)}catch(e){}if(b){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},2200)}}
+  document.getElementById('gopen').addEventListener('click',function(){panel.hidden=false;requestAnimationFrame(function(){panel.classList.add('on')});copy(panel.querySelector('.gpcopy'))});
+  panel.querySelector('.gpcopy').addEventListener('click',function(){copy(this)});
+  panel.querySelector('.gpx').addEventListener('click',function(){panel.classList.remove('on');setTimeout(function(){panel.hidden=true},220)});
 })();
 </script>
 </body>
