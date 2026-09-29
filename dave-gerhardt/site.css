@@ -3205,3 +3205,8 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
 @media (max-width:420px){
   #takeaway .kbr{gap:8px;font-size:11.5px;grid-template-columns:minmax(0,.5fr) minmax(0,1fr)}
 }
+
+/* sticky header icon = the lead's photo favicon */
+#page .nav .cal .bmark.favimg{background:none!important;box-shadow:none!important;border-radius:0!important;overflow:visible}
+#page .nav .cal .bmark.favimg:after{display:none!important}
+#page .nav .cal .bmark.favimg img{display:block;width:100%;height:100%;object-fit:contain;border-radius:0}

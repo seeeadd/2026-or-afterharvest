@@ -3271,3 +3271,8 @@ body.theme-minimal .dkeep,body.theme-minimal .fitc,body.theme-minimal .tkkit .k-
 body.theme-minimal .tile,body.theme-minimal .macbook{box-shadow:none!important}
 body.theme-minimal .btn{box-shadow:none!important;font-weight:600}
 body.theme-minimal .hero{padding-top:12px}
+
+/* sticky header icon = the lead's photo favicon */
+#page .nav .cal .bmark.favimg{background:none!important;box-shadow:none!important;border-radius:0!important;overflow:visible}
+#page .nav .cal .bmark.favimg:after{display:none!important}
+#page .nav .cal .bmark.favimg img{display:block;width:100%;height:100%;object-fit:contain;border-radius:0}
