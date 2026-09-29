@@ -1,5 +1,5 @@
 {
-  "name": "Launch Your Signature Group Program",
+  "name": "Build the one signature offer that sells",
   "short_name": "Shannon",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#CF373F",
-  "background_color": "#FFFFFF",
+  "theme_color": "#cf373f",
+  "background_color": "#FFF6E9",
   "display": "standalone"
 }
