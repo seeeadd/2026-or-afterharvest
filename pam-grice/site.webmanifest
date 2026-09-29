@@ -1,5 +1,5 @@
 {
-  "name": "3-day event",
+  "name": "The Crochet Profit Reset",
   "short_name": "Pam",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#175460",
-  "background_color": "#F6F1EB",
+  "theme_color": "#F6C182",
+  "background_color": "#FFF7EC",
   "display": "standalone"
 }
