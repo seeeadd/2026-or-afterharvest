@@ -1,5 +1,5 @@
 {
-  "name": "3-day event",
+  "name": "Book Your Next Client Plan",
   "short_name": "Maria",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#E50069",
-  "background_color": "#FFFFFF",
+  "theme_color": "#ff7f00",
+  "background_color": "#FFF3E6",
   "display": "standalone"
 }
