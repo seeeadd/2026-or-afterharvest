@@ -74,18 +74,35 @@ img{display:block;max-width:100%}
 .btn.sm{font-size:15px;padding:12px 20px}
 .btn.dark{background:var(--ink);color:#fff;box-shadow:none}
 
-/* ---------- sticky header ---------- */
-.top{position:sticky;top:0;z-index:50;background:rgba(239,245,245,.86);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
-.top.on{border-color:var(--line)}
-.top .wrap{max-width:1400px;display:flex;align-items:center;gap:18px;height:74px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-width:0}
-.brand img{width:40px;height:40px;border-radius:11px;flex:none}
-.brand img.logo{height:34px;width:auto;border-radius:0;display:block}
-.top .ev{font-size:14px;color:var(--ink-2);border-left:1px solid var(--line);padding-left:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cd{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2)}
-.cd b{font:600 17px/1 var(--sans);color:var(--ink);font-variant-numeric:tabular-nums;background:var(--paper);border-radius:10px;padding:8px 8px 7px;min-width:40px;text-align:center;box-shadow:0 1px 2px rgba(27,23,36,.06)}
-.cd small{font-size:11px;margin-right:4px}
-.cd .l{margin-right:4px}
+/* ---------- sticky header: the factory's floating event bar (icon + event name in two lines, live countdown, avatar stack +
+   joined, primary button), drawn soft and rounded like Ali's trust strip: white glass, 1.5px hairline, his shadow, peach pill ---------- */
+html{scroll-padding-top:96px}
+.fb{position:sticky;top:0;z-index:50;padding:10px 14px 0;pointer-events:none}
+.fb-bar{pointer-events:auto;margin:0 auto;width:min(1040px,100%);display:flex;align-items:center;gap:18px;padding:8px 8px 8px 10px;border-radius:24px;
+  background:rgba(255,255,255,.9);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border:1.5px solid rgba(27,23,36,.08);box-shadow:0 1px 2px rgba(27,23,36,.05),0 12px 30px -16px rgba(27,23,36,.24);transition:box-shadow .25s}
+.fb.on .fb-bar{box-shadow:0 1px 2px rgba(27,23,36,.06),0 18px 38px -16px rgba(27,23,36,.34)}
+.fb-id{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 auto;color:var(--ink);text-decoration:none}
+.fb-ic{width:46px;height:46px;border-radius:13px;flex:none}
+.fb-t{display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:0}
+.fb-t img{height:19px;width:auto;align-self:flex-start;border-radius:0}
+.fb-t b{font:400 16px/1.1 var(--serif);letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:lining-nums}
+.fb-cd{display:flex;align-items:center;gap:14px;flex:none;padding-left:18px;border-left:1.5px solid var(--line)}
+.fb-l{display:flex;align-items:center;gap:7px;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+.fb-l i{width:7px;height:7px;border-radius:50%;background:var(--peach);animation:fbp 2s ease-in-out infinite}
+@keyframes fbp{50%{opacity:.35}}
+.fb-tiles{display:flex;gap:5px}
+.fb-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;width:44px;height:48px;border-radius:12px;background:var(--ground);box-shadow:0 0 0 1px var(--line) inset}
+.fb-tile.s{background:#ffe8da}
+.fb-tile b{font:600 17px/1 var(--sans);color:var(--ink);font-variant-numeric:tabular-nums}
+.fb-tile small{margin-top:5px;font:600 8.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.fb-jn{display:flex;align-items:center;gap:10px;flex:none;white-space:nowrap}
+.fb-faces{display:flex}
+.fb-faces img{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-9px}
+.fb-faces img:first-child{margin-left:0}
+.fb-jn span.n{font:600 14px/1 var(--sans);color:var(--ink)}
+.fb-jn small{margin-left:5px;font:600 9.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.fb .btn.sm{flex:none;white-space:nowrap}
 
 /* ---------- hero: the factory template's structure 1:1 (katie-hunt / dan-koe), re-skinned in Ali's style ---------- */
 .hero{padding:34px 0 80px;position:relative;overflow-x:clip}
@@ -384,6 +401,9 @@ section.s{padding:110px 0}
 #stick.bub .cap,#stick.bub .hint,#stick.bub .bar,#stick.bub .go,#stick.bub .x,#stick.bub .sv:before{display:none}
 #stick.bub .sv{border-radius:50%;cursor:pointer}
 @media (max-width:760px){#stick{right:12px;bottom:14px;width:64px}#stick .cap,#stick .hint,#stick .bar,#stick .go,#stick .x,#stick .sv:before{display:none}#stick .sv{border-radius:50%;border-width:3px}#stick .sv img{aspect-ratio:1;border-radius:50%}#stick.open{width:170px}#stick.open .sv{border-radius:20px}#stick.open .sv img{aspect-ratio:9/16;border-radius:0}#stick.open .cap,#stick.open .hint,#stick.open .bar,#stick.open .go,#stick.open .x,#stick.open .sv:before{display:block}}
+@media (max-width:1180px){.fb-jn{display:none}}
+@media (max-width:900px){.fb-l{display:none}.fb-cd{padding-left:14px}}
+@media (prefers-reduced-motion:reduce){.fb-l i{animation:none}}
 @media (prefers-reduced-motion:reduce){.anim *,.anim *:before{animation:none!important}}
 /* reveal */
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
@@ -403,20 +423,17 @@ section.s{padding:110px 0}
 @media (max-width:720px){
   body{font-size:16px}
   .wrap{padding:0 16px}
-  .top .wrap{height:64px;gap:10px}
-  .top .ev,.cd .l,.cd small{display:none}
-  .brand img.logo{height:21px;width:auto}
-  .brand{gap:8px}
-  .brand img{width:32px;height:32px}
-  .brand img.logo{height:19px}
+  .fb{padding:8px 10px 0}
+  .fb-bar{gap:10px;padding:6px 6px 6px 8px;border-radius:20px}
+  .fb-cd,.fb-jn{display:none}
+  .fb-id{gap:9px}
+  .fb-ic{width:38px;height:38px;border-radius:11px}
+  .fb-t{gap:3px}
+  .fb-t img{height:15px}
+  .fb-t b{font-size:14px}
   .btn.sm{white-space:nowrap}
   .pwrap{max-width:300px}
   .says{max-width:260px}
-  .brand img{width:36px;height:36px}
-  .cd{margin-left:auto;gap:4px}
-  .cd b{font-size:14px;min-width:30px;padding:7px 5px 6px}
-  .cd b:after{font:500 10px var(--sans);color:var(--ink-2);margin-left:1px}
-  .cd b.d:after{content:"d"}.cd b.h:after{content:"h"}.cd b.m:after{content:"m"}
   .btn.sm{padding:10px 14px;font-size:14px}
   .trust .wrap{flex-direction:column;align-items:flex-start;gap:12px;padding-top:22px;padding-bottom:22px}
   .trust span{align-items:flex-start;font-size:15px}
@@ -470,9 +487,6 @@ section.s{padding:110px 0}
   .timer .t b{font-size:32px}
   .week .c{height:60px}
 }
-@media (max-width:420px){
-  .cd b.m,.cd b.m+small{display:none}
-}
 @media (max-width:380px){
   .btn.sm span.x{display:none}
   .chip{font-size:11.5px;padding:3px 7px}
@@ -483,16 +497,25 @@ section.s{padding:110px 0}
 </head>
 <body>
 
-<!-- sticky header: photo favicon, wordmark, the one countdown, button -->
-<header class="top" id="top">
-  <div class="wrap">
-    <a class="brand" href="#hero" aria-label="Ali Abdaal">
-      <img src="favicon.png" alt="">
-      <img class="logo" src="ali-logo.png" alt="Ali Abdaal" width="677" height="195">
+<!-- sticky header: the factory's floating event bar in Ali's soft rounded style: photo favicon, his wordmark over the event name,
+     live countdown (days / hrs / min / sec), avatar stack + joined, the primary button. Sticky, short on phones. -->
+<header class="fb" id="top">
+  <div class="fb-bar">
+    <a class="fb-id" href="#hero" aria-label="Ali Abdaal, The New Year Reset">
+      <img class="fb-ic" src="favicon.png" alt="">
+      <span class="fb-t"><img src="ali-logo.png" alt="Ali Abdaal" width="677" height="195"><b>The New Year Reset</b></span>
     </a>
-    <span class="ev">The New Year Reset</span>
-    <span class="cd" aria-label="Starts in"><span class="l">Starts in</span><b class="d" id="cdD">00</b><small>days</small><b class="h" id="cdH">00</b><small>hrs</small><b class="m" id="cdM">00</b><small>min</small></span>
-    <a class="btn sm" href="#join">Hold my seat<span class="x"> </span></a>
+    <div class="fb-cd" role="timer" aria-label="Starts in">
+      <span class="fb-l"><i></i>Starts in</span>
+      <span class="fb-tiles">
+        <span class="fb-tile"><b id="cdD">00</b><small>days</small></span>
+        <span class="fb-tile"><b id="cdH">00</b><small>hrs</small></span>
+        <span class="fb-tile"><b id="cdM">00</b><small>min</small></span>
+        <span class="fb-tile s"><b id="cdS">00</b><small>sec</small></span>
+      </span>
+    </div>
+    <div class="fb-jn"><span class="fb-faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""></span><span><span class="n"><b class="seats" style="font-weight:600">1,204</b>+</span><small>joined</small></span></div>
+    <a class="btn sm" href="#join">Hold my seat</a>
   </div>
 </header>
 
@@ -780,8 +803,8 @@ section.s{padding:110px 0}
   document.querySelectorAll('.dd').forEach(function(n){n.textContent=df(day(+n.dataset.day),true)});
   document.querySelectorAll('.dt').forEach(function(n){n.textContent=tf(day(+n.dataset.day))});
   function pad(n){return(n<10?'0':'')+n}
-  function tick(){var s=Math.max(0,START.getTime()-Date.now())/1e3;set('cdD',pad(Math.floor(s/86400)));set('cdH',pad(Math.floor(s%86400/3600)));set('cdM',pad(Math.floor(s%3600/60)))}
-  tick();setInterval(tick,15000);
+  function tick(){var s=Math.max(0,START.getTime()-Date.now())/1e3;set('cdD',pad(Math.floor(s/86400)));set('cdH',pad(Math.floor(s%86400/3600)));set('cdM',pad(Math.floor(s%3600/60)));set('cdS',pad(Math.floor(s%60)))}
+  tick();setInterval(tick,1000);
 
   /* header hairline on scroll */
   var top=document.getElementById('top');
