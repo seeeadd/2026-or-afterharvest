@@ -1,5 +1,5 @@
 {
-  "name": "Buy Your First Beautiful Business",
+  "name": "Build Your HoldCo Blueprint",
   "short_name": "Michael",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#54B8BB",
-  "background_color": "#0D0D1F",
+  "theme_color": "#4af4eb",
+  "background_color": "#01243b",
   "display": "standalone"
 }
