@@ -1,5 +1,5 @@
 {
-  "name": "Turn Your Gifts Into Gold",
+  "name": "Build Your Six-Figure Foundation",
   "short_name": "Cait",
   "icons": [
     {
@@ -14,6 +14,6 @@
     }
   ],
   "theme_color": "#831516",
-  "background_color": "#831516",
+  "background_color": "#FBF1EC",
   "display": "standalone"
 }
