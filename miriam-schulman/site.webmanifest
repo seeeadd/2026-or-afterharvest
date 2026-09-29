@@ -1,5 +1,5 @@
 {
-  "name": "Artpreneur 3-day event",
+  "name": "Artpreneur Bootcamp",
   "short_name": "Miriam",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#348284",
-  "background_color": "#FDEEDB",
+  "theme_color": "#FFD180",
+  "background_color": "#292B8D",
   "display": "standalone"
 }
