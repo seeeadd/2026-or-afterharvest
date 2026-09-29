@@ -1,5 +1,5 @@
 {
-  "name": "Launch Your Paid Coaching Program",
+  "name": "Sign Your First Coaching Client",
   "short_name": "Joeel",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#1E83CD",
-  "background_color": "#FFFFFF",
+  "theme_color": "#f27932",
+  "background_color": "#eaf4fb",
   "display": "standalone"
 }
