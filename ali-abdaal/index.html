@@ -493,6 +493,50 @@ section.s{padding:110px 0}
 }
 /* Young Serif defaults to old-style figures; the font: shorthand above resets this, so it comes last */
 .serif,.book h3,.book .d,.book .minidraw b,.tstrip .award b,.node b,.stat b,.sticker b,.regc .num b{font-variant-numeric:lining-nums}
+/* locked tail: blurred teaser + lock bar */
+#gatewrap{position:relative;background:var(--ground)}
+.gated{filter:blur(8px) saturate(.9);opacity:.85;pointer-events:none;user-select:none;-webkit-user-select:none;max-height:600px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 80%,rgba(0,0,0,.15) 100%);mask-image:linear-gradient(180deg,#000 0,#000 80%,rgba(0,0,0,.15) 100%)}
+.gsec{padding-top:8px;padding-bottom:64px}
+.gsec .serif{margin-top:16px;font-size:clamp(30px,3.4vw,44px)}
+.gsub{margin-top:14px;max-width:620px;color:var(--ink-2)}
+.gcards{margin-top:34px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.gcard{background:#fff;border-radius:26px;padding:26px;box-shadow:var(--sh)}
+.gcard .gn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--peach);font:400 20px/1 var(--serif)}
+.gcard h4{margin-top:16px;font:400 22px/1.15 var(--serif)}
+.gcard p{margin-top:9px;color:var(--ink-2)}
+.glist{list-style:none;margin-top:24px;max-width:720px}
+.glist li{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:14px 0;border-top:1.5px solid var(--line)}
+.gtick{width:24px;height:24px;border-radius:50%;background:var(--mint)}
+.gfaq{margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 44px}
+.gfaq div{background:#fff;border-radius:20px;padding:20px 22px;box-shadow:var(--sh)}
+.gfaq b{font:400 19px/1.2 var(--serif)}
+.gfaq p{margin-top:8px}
+.foot{padding-bottom:110px}
+#gate{position:fixed;left:0;right:0;bottom:22px;z-index:75;display:flex;justify-content:center;padding:0 16px;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
+#gate.on{opacity:1;visibility:visible}
+#gate .gbar{pointer-events:auto;display:flex;align-items:center;gap:14px;max-width:100%;padding:9px 10px 9px 18px;border-radius:999px;background:rgba(255,255,255,.94);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 0 0 1.5px rgba(27,23,36,.08),0 24px 50px -22px rgba(27,23,36,.5)}
+#gate .glock{flex:none;width:28px;height:28px}
+#gate .gtx{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+#gate .gtx b{font:400 17px/1.2 var(--serif);color:var(--ink);white-space:nowrap}
+#gate .gtx small{font:500 13px/1.3 var(--sans);color:var(--ink-2);white-space:nowrap}
+#gate .btn.sm{flex:none;white-space:nowrap;padding:12px 20px}
+#gate .gpanel{position:absolute;left:50%;bottom:calc(100% + 12px);transform:translate(-50%,8px);width:min(420px,calc(100vw - 32px));opacity:0;transition:opacity .25s ease,transform .25s ease;
+  padding:22px 22px 18px;border-radius:24px;background:#fff;box-shadow:0 0 0 1.5px rgba(27,23,36,.08),0 30px 60px -24px rgba(27,23,36,.5);pointer-events:auto}
+#gate .gpanel[hidden]{display:none}
+#gate .gpanel.on{opacity:1;transform:translate(-50%,0)}
+#gate .gpt{font:400 20px/1.2 var(--serif);color:var(--ink);padding-right:28px}
+#gate .gpd{margin:6px 0 14px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+#gate .gprow{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+#gate .gprow code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;padding:11px 14px;border-radius:14px;background:var(--ground);font:500 14px/1.2 var(--sans);color:var(--ink)}
+#gate .gpcopy{flex:none;border:0;cursor:pointer;border-radius:999px;background:var(--peach);color:var(--ink);font:600 14px/1 var(--sans);padding:12px 16px}
+#gate .gpmail{font-size:14px;color:var(--blue-t);text-decoration:underline}
+#gate .gpx{position:absolute;top:12px;right:12px;width:30px;height:30px;border:0;border-radius:50%;background:var(--ground);color:var(--ink);cursor:pointer;font-size:13px}
+body.gateon #stick{transform:translateY(-70px)}
+@media (max-width:900px){.gcards,.gfaq{grid-template-columns:1fr}}
+@media (max-width:760px){#gate{bottom:14px;padding:0 10px}#gate .gbar{padding:8px 8px 8px 14px;gap:10px;width:100%}#gate .gtx b{font-size:15px;white-space:normal}#gate .gtx small{display:none}#gate .btn.sm{padding:11px 14px;font-size:14px}#gate .glock{width:24px;height:24px}.gsec{padding-bottom:44px}}
+@media (max-width:400px){#gate .btn.sm svg{display:none}}
 </style>
 </head>
 <body>
@@ -773,6 +817,30 @@ section.s{padding:110px 0}
   </div>
 </section>
 
+<!-- locked tail: blurred teaser of the rest of the page + a lock bar (Sean 2026-09-29 "wheres my unlock page blur"). Same behaviour as
+     templates/lp/site.js gated() and Dan Koe's page: nothing is sent, the button opens a panel that shows the reply address and copies it. -->
+<div id="gatewrap">
+  <div class="wrap">
+    <div class="gated" aria-hidden="true" inert>
+      <div class="gsec"><span class="pill sky">What you get</span><h2 class="serif">Three days, and the pieces you keep.</h2>
+        <p class="gsub">Every session is live and recorded, and each day ends with a finished piece you keep.</p>
+        <div class="gcards"><div class="gcard"><span class="gn">1</span><h4>Vision: set your Quests for 90 days</h4><p>Set your Quests for the next 90 days</p></div><div class="gcard"><span class="gn">2</span><h4>Action: give every Quest a real hour</h4><p>Give every Quest a real hour in your week, set up live in Superfocus</p></div><div class="gcard"><span class="gn">3</span><h4>Accountability: your first weekly review</h4><p>Run your first weekly review, with the AI coach checking in</p></div></div></div>
+      <div class="gsec"><span class="pill g">What it fixes</span><h2 class="serif">The workbook you fill in live.</h2>
+        <ul class="glist"><li><i class="gtick"></i><span><b>New year, same goals.</b> Set Quests you can finish in 90 days.</span></li><li><i class="gtick"></i><span><b>Too many goals.</b> Pick the few Quests that matter most this season.</span></li><li><i class="gtick"></i><span><b>Goals with no hours.</b> Give every Quest a real hour in your week.</span></li><li><i class="gtick"></i><span><b>Calendar fills up first.</b> Block your Quest hours before the week fills.</span></li></ul></div>
+      <div class="gsec"><h2 class="serif">Questions people ask.</h2><div class="gfaq"><div><b>Do I need anything before Day 1?</b><p>Bring the work you already have. Everything else is set up live on the day.</p></div><div><b>What if I cannot make a session live?</b><p>Every session is recorded and the replay lands in your inbox the same evening.</p></div><div><b>Is this really free?</b><p>Yes. Three days, live with Ali, no card and no catch.</p></div><div><b>Who is this for?</b><p>Anyone who recognised themselves in the fit check. Bring what you have and leave with the next step done.</p></div></div></div>
+    </div>
+  </div>
+</div>
+<div id="gate">
+  <div class="gbar"><svg class="glock" viewBox="0 0 32 32" aria-hidden="true"><rect x="6.5" y="14" width="19" height="13.5" rx="4" fill="#fc986c" fill-opacity=".25" stroke="#1b1724" stroke-width="1.7"/><path d="M11 14v-3.4a5 5 0 0 1 10 0V14" fill="none" stroke="#1b1724" stroke-width="1.7" stroke-linecap="round"/><circle cx="16" cy="20" r="1.9" fill="#1b1724"/></svg><span class="gtx"><b>The rest of this page is ready</b><small>Reply to my email and I will open it</small></span>
+    <button class="btn sm" id="gopen" type="button">Open the full page <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+  <div class="gpanel" id="gpanel" hidden><p class="gpt">Reply to the email I sent you</p>
+    <p class="gpd">One line back is all it takes and I will open the rest of this page for you.</p>
+    <div class="gprow"><code>sean@theafterharvest.com</code><button class="gpcopy" type="button">Copy</button></div>
+    <a class="gpmail" href="mailto:sean%40theafterharvest.com?subject=Unlock%20the%20full%20page%20for%20Ali%20Abdaal&amp;body=Yes%2C%20send%20me%20the%20full%20page.%0A%0A">Or open it in your mail app</a>
+    <button class="gpx" type="button" aria-label="Close">&#10005;</button></div>
+</div>
+
 <footer class="foot"><div class="wrap"><span>Free event <span aria-hidden="true">·</span> The New Year Reset with Ali Abdaal</span><span>Figures: lifestylebusiness.com, superfocus.me</span></div></footer>
 
 <aside id="stick" aria-label="A 60 second look at the three days"><div class="sv"><img src="img/sticky.jpg" alt="Ali Abdaal"><button class="x" aria-label="Close" type="button">&times;</button><span class="cap"></span><span class="hint">tap for sound</span><span class="bar"><i></i></span><a class="go" href="#join">Hold my seat</a></div></aside>
@@ -854,6 +922,21 @@ section.s{padding:110px 0}
     document.querySelectorAll('.fields input').forEach(function(i){i.value=''});
     stick();
   });
+})();
+</script>
+<script>
+/* lock bar: fades in as the blurred tail scrolls into view; the button opens the reply panel (no network) */
+(function(){
+  var wrap=document.getElementById('gatewrap'),gate=document.getElementById('gate');if(!wrap||!gate)return;
+  var panel=document.getElementById('gpanel'),addr='sean@theafterharvest.com';
+  function tick(){var r=wrap.getBoundingClientRect(),vh=innerHeight,on=r.top<vh-60&&r.bottom>120;
+    gate.classList.toggle('on',on);document.body.classList.toggle('gateon',on);
+    if(!on&&!panel.hidden){panel.classList.remove('on');panel.hidden=true}}
+  addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
+  function copy(b){try{navigator.clipboard&&navigator.clipboard.writeText(addr)}catch(e){}if(b){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},2200)}}
+  document.getElementById('gopen').addEventListener('click',function(){panel.hidden=false;requestAnimationFrame(function(){panel.classList.add('on')});copy(panel.querySelector('.gpcopy'))});
+  panel.querySelector('.gpcopy').addEventListener('click',function(){copy(this)});
+  panel.querySelector('.gpx').addEventListener('click',function(){panel.classList.remove('on');setTimeout(function(){panel.hidden=true},220)});
 })();
 </script>
 </body>
