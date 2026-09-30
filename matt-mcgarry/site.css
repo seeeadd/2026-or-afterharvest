@@ -3206,7 +3206,880 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
   #takeaway .kbr{gap:8px;font-size:11.5px;grid-template-columns:minmax(0,.5fr) minmax(0,1fr)}
 }
 
+/* the "Learn how to ..." buttons carry the lead's own day words, so their length varies: never wider than the
+   column, and on a phone they wrap to two centred lines instead of running off the screen (2026-09-27) */
+#page .scta .btn.lg{max-width:100%}
+@media (max-width:640px){
+  html body #page .scta .btn.lg{height:auto;min-height:50px;padding:10px 20px;white-space:normal;text-align:center;
+    line-height:1.2;max-width:100%;box-sizing:border-box}
+}
+
+
+/* ---------------------------------------------------------------- theme: minimal
+   lp.json site.theme = "minimal" (Dan Koe / Eden, 2026-09-29: "dan is wary of design, aligned with eden but 50% better").
+   One flat ground, a two-tone headline (first phrase muted, the rest full ink), no gold, no marquee, no hand marks,
+   hairlines instead of glows. Scoped to body.theme-minimal, so no other lead changes. */
+body.theme-minimal #ground{background:var(--ground)!important}
+body.theme-minimal #grain{opacity:.35}
+body.theme-minimal .nticker{display:none}
+body.theme-minimal #headline .acc{color:color-mix(in srgb,var(--ink) 52%,var(--ground))}
+body.theme-minimal #headline .kw{color:inherit}
+body.theme-minimal #headline .mark{display:none}
+body.theme-minimal #headline{letter-spacing:-.035em;font-weight:600}
+body.theme-minimal .stars{color:color-mix(in srgb,var(--ink) 80%,var(--ground))}
+body.theme-minimal .tmeta .stars{border-color:var(--hair-2);background:transparent}
+body.theme-minimal .tmeta,body.theme-minimal .tstin{background-image:none!important}
+body.theme-minimal .tmeta{border-color:var(--hair-2)}
+body.theme-minimal .tmeta *[style*="c2a04a"]{color:var(--ink)!important}
+body.theme-minimal .days{background-image:none!important}
+body.theme-minimal [class*="glow"],body.theme-minimal .sheen:after{display:none!important}
+body.theme-minimal .cta,body.theme-minimal [data-reg]{box-shadow:none!important}
+body.theme-minimal #pattern,body.theme-minimal #ghosts{display:none}
+body.theme-minimal .htrust .awd{border:1px solid var(--hair-2);box-shadow:none;border-radius:8px}
+body.theme-minimal .htrust .awd i{color:var(--ink)}
+body.theme-minimal .stars svg{fill:currentColor}
+body.theme-minimal .htrust .awd,body.theme-minimal .awd{border:1px solid var(--hair-2)!important;box-shadow:none!important;border-radius:8px!important}
+body.theme-minimal .awd i,body.theme-minimal .awd b{color:var(--ink)!important}
+body.theme-minimal .htrust .tmeta .stars,body.theme-minimal .tmeta .stars{border:1px solid var(--hair-2)!important;background:transparent!important;color:var(--ink)!important}
+body.theme-minimal .htrust .tmeta .stars svg,body.theme-minimal .stars svg{color:var(--ink)!important;fill:var(--ink)!important}
+
+/* Dan Koe: thedankoe.com is pure black, Poppins extra-bold headlines, thin wide-spaced caps eyebrows, white pills,
+   a spotlight glow and concentric rings (The Art of Focus cover). Loaded by lp.json site.font_link. */
+body.theme-minimal{--display:'Poppins','Helvetica Neue',Arial,sans-serif;--label:'Poppins','Helvetica Neue',Arial,sans-serif}
+body.theme-minimal #headline,body.theme-minimal h2,body.theme-minimal .disp{font-family:'Poppins','Helvetica Neue',Arial,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+body.theme-minimal #headline{font-weight:800;line-height:1.14!important}
+body.theme-minimal [class*="eyebrow"],body.theme-minimal .kicker,body.theme-minimal .tlab{font-family:'Poppins',sans-serif;font-weight:300;letter-spacing:.34em;text-transform:uppercase}
+body.theme-minimal #ground{background:
+  radial-gradient(52% 40% at 74% 8%,rgba(255,255,255,.10),transparent 70%),
+  radial-gradient(60% 50% at 20% 100%,rgba(255,255,255,.04),transparent 70%),
+  url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%271600%27%20height%3D%271600%27%20viewBox%3D%270%200%201600%201600%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-opacity%3D%27.13%27%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%2790%27%20stroke-opacity%3D%27.22%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27190%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27330%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27500%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27690%27%20stroke-opacity%3D%27.06%27/%3E%3Ccircle%20cx%3D%27800%27%20cy%3D%27800%27%20r%3D%27790%27%20stroke-opacity%3D%27.04%27/%3E%3C/svg%3E") right -260px top 40px/1400px 1400px no-repeat,
+  #000!important}
+body.theme-minimal{--ground:#000}
+
+/* minimal theme, second pass (Sean 2026-09-29: "chunky ... same layout as ours but his design and style more"):
+   flat surfaces, hairlines, a thin dark phone, no fake chat or lower-thirds. Still only under body.theme-minimal. */
+body.theme-minimal .ip-bezel,body.theme-minimal .ip-edge{background:#0b0b0b!important;border-color:#232323!important;box-shadow:none!important}
+body.theme-minimal .ip-glare,body.theme-minimal .ip-shade{display:none}
+body.theme-minimal .iphone{filter:none!important;box-shadow:none!important}
+body.theme-minimal .dschat,body.theme-minimal .dslower,body.theme-minimal .dsgal,body.theme-minimal .dspip,body.theme-minimal .dsppl{display:none!important}
+body.theme-minimal .regcard,body.theme-minimal .glass,body.theme-minimal .ccard{background:#050505!important;border:1px solid var(--hair-2)!important;box-shadow:none!important;backdrop-filter:none!important;border-radius:16px!important}
+body.theme-minimal .band{background:none!important;border-top:1px solid var(--hair-2);border-bottom:1px solid var(--hair-2)}
+body.theme-minimal .lock{background:#000!important;border:1px solid var(--hair-2)!important;box-shadow:none!important;backdrop-filter:none!important}
+body.theme-minimal .cd,body.theme-minimal .cdl{background:transparent!important;box-shadow:none!important;border-color:var(--hair-2)!important}
+body.theme-minimal .dnode{transform:scale(.6)}
+body.theme-minimal .dkeep,body.theme-minimal .fitc,body.theme-minimal .tkkit .k-brief,body.theme-minimal .k-brief,body.theme-minimal .k-table{background:transparent!important;box-shadow:none!important;border:1px solid var(--hair-2)!important;border-radius:14px!important}
+body.theme-minimal .tile,body.theme-minimal .macbook{box-shadow:none!important}
+body.theme-minimal .btn{box-shadow:none!important;font-weight:600}
+body.theme-minimal .hero{padding-top:12px}
+
 /* sticky header icon = the lead's photo favicon */
 #page .nav .cal .bmark.favimg{background:none!important;box-shadow:none!important;border-radius:0!important;overflow:visible}
 #page .nav .cal .bmark.favimg:after{display:none!important}
 #page .nav .cal .bmark.favimg img{display:block;width:100%;height:100%;object-fit:contain;border-radius:0}
+
+/* =====================================================================================================
+   BRAND SKIN (2026-09-29): leads/<slug>/skin.json -> window.SITE.skin -> site.js skinTokens/skinDecor/skinMotion.
+   Every rule is scoped under body.skin (and a skin-* choice class), so a lead with no skin.json never sees any
+   of it. Tokens are CSS variables set from the skin; field reference in docs/brand-skin-log.md.
+   ===================================================================================================== */
+/* ---- type */
+html body.skin #page{font-family:var(--body);font-weight:var(--sk-bw,400)}
+html body.skin #page b,html body.skin #page strong{font-weight:var(--sk-bw-b,600)}
+html body.skin #page .disp,html body.skin #page #headline,html body.skin #page h2,html body.skin #page h3,html body.skin #page .sh,
+html body.skin #page .gh,html body.skin #modal h3,html body.skin #page .dt{font-family:var(--display);font-weight:var(--dw);letter-spacing:var(--sk-dtrack,-.03em)}
+html body.skin #page #headline{line-height:1.07!important}
+html body.skin #page .eyebrow,html body.skin #page .beye,html body.skin #page .dmetaline,html body.skin #page .dkeepl,html body.skin #page .hql,
+html body.skin #page .awd b,html body.skin #page .awd u,html body.skin .tm2,html body.skin #page .sctan,html body.skin #page .hbfine,
+html body.skin #page .faqn,html body.skin #page .tkday,html body.skin #page .cdl,html body.skin #page .lw small{font-family:var(--label);font-weight:var(--lw)}
+html body.skin #page .eyebrow{letter-spacing:var(--ltr)}
+/* ---- ground: flat brand ground, no borrowed texture */
+html body.skin #page #ground{background:var(--ground-paint)!important}
+html body.skin{background:var(--ground)}
+html body.skin-nopattern #page #pattern,html body.skin-nopattern #page #ghosts{display:none!important}
+html body.skin-nograin #page #grain{display:none!important}
+html body.skin-nofacts #page #facts{display:none!important}
+html body.skin-notoast #toast{display:none!important}
+html body.skin-nojoined #page .hsoc{display:none!important}
+html body.skin-norating #page .rproof .rrate{display:none!important}
+html body.skin .stars{color:var(--sk-star,var(--accent))}
+/* ---- headings: two-tone and the key-phrase mark */
+html body.skin-twotone #page #headline > span:first-child,html body.skin-twotone #page #fitL1,html body.skin-twotone #page .sktone{color:var(--sk-tone)!important}
+html body.skin-twotone #page #headline .acc:not(:first-child){color:inherit}
+html body.skin-mark-none #page #headline .mark,html body.skin-mark-swipe #page #headline .mark,html body.skin-mark-underline #page #headline .mark{display:none!important}
+html body.skin-mark-none #page #headline .kw{color:inherit}
+html body.skin #page .skmk{background-image:var(--sk-swipe);background-repeat:no-repeat;background-position:-.06em 96%;background-size:104% .42em;
+  padding:0 .04em;margin:0 -.04em;color:inherit!important;-webkit-text-fill-color:currentColor}
+html body.skin-mark-underline #page .skmk{background-size:104% .3em;background-position:-.06em 104%}
+html.skm body.skin #page .skmk.skdraw{background-size:0 .42em;transition:background-size .9s cubic-bezier(.6,0,.2,1) .25s}
+html.skm body.skin #page .skmk.skdraw.skin-in{background-size:104% .42em}
+/* ---- buttons */
+html body.skin #page .btn,html body.skin #stick .btn,html body.skin #dock .btn,html body.skin #modal .btn,html body.skin #xcatch .btn,html body.skin #gate .btn{
+  border-radius:var(--btn-r)!important;background-color:var(--accent)!important;color:var(--accent-ink)!important}
+html body.skin-shadow-flat #page .btn,html body.skin-shadow-flat #stick .btn,html body.skin-shadow-flat #modal .btn{background-image:none!important;box-shadow:none!important}
+html body.skin #page .btn .bi{display:none}
+html body.skin #page .btn.lg.sq{border-radius:var(--btn-r)!important}
+/* ---- surfaces */
+html body.skin #page .glass,html body.skin #page .regcard,html body.skin #page .hbook,html body.skin #page .ccard,html body.skin #page .htrust,
+html body.skin #page .dkeep,html body.skin #page .fitnote,html body.skin #page .tkart,html body.skin #modal .mcard,html body.skin #page .hq .hqb{
+  background:var(--sk-panel)!important;border-radius:var(--r-lg)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html body.skin #page .hq .hqb{border-radius:999px!important}
+html body.skin-border-hairline #page .glass,html body.skin-border-hairline #page .regcard,html body.skin-border-hairline #page .hbook,
+html body.skin-border-hairline #page .ccard,html body.skin-border-hairline #page .htrust,html body.skin-border-hairline #page .dkeep,
+html body.skin-border-hairline #page .tkart,html body.skin-border-hairline #page .hq .hqb{border:1px solid var(--hair-2)!important}
+html body.skin-border-none #page .glass,html body.skin-border-none #page .regcard,html body.skin-border-none #page .hbook,
+html body.skin-border-none #page .ccard,html body.skin-border-none #page .htrust{border:0!important}
+html body.skin-shadow-flat #page .glass,html body.skin-shadow-flat #page .regcard,html body.skin-shadow-flat #page .hbook,html body.skin-shadow-flat #page .ccard,
+html body.skin-shadow-flat #page .htrust,html body.skin-shadow-flat #page .hvid,html body.skin-shadow-flat #page .tkart,html body.skin-shadow-flat #page .photo{box-shadow:none!important}
+html body.skin-shadow-soft #page .regcard,html body.skin-shadow-soft #page .ccard{box-shadow:0 1px 2px rgba(0,0,0,.05),0 14px 34px -18px rgba(0,0,0,.25)!important}
+html body.skin-shadow-lifted #page .regcard,html body.skin-shadow-lifted #page .ccard,html body.skin-shadow-lifted #page .hbook{box-shadow:var(--sh1)!important}
+html body.skin-dark #page .htrust{background:color-mix(in srgb,var(--ink) 2%,transparent)!important}
+html body.skin #page .band{background:var(--band)!important}
+html body.skin-dark #page .band{background:transparent!important;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+/* ---- header */
+html body.skin #page .hdr .nav,html body.skin #page .lock{background:color-mix(in srgb,var(--ground) 86%,transparent)!important;border-color:var(--hair-2)!important}
+html body.skin #page .nav .tile{background:var(--sk-panel)!important;color:var(--ink)!important;border:1px solid var(--hair)!important;box-shadow:none!important}
+html body.skin #page .nav .tile b{color:var(--ink)!important}
+html body.skin #page .nav .sklogo{height:26px;width:auto;max-width:130px;object-fit:contain;flex:none;margin-right:10px}
+html body.skin-dark #page .nav .sklogo{filter:brightness(0) invert(1)}
+@media (max-width:760px){html body.skin-navlogo #page .nav .lw{display:none}}
+/* ---- the phone */
+html body.skin-phone #page .ip-edge{background:var(--sk-edge,var(--sk-bezel))!important;box-shadow:none!important}
+html body.skin-phone #page .ip-bezel{background:var(--sk-bezel,#0b0b0e)!important}
+html body.skin-phone-flat #page .ip-glare,html body.skin-phone-flat #page .ip-shade{display:none!important}
+html body.skin-phone-flat #page .iphone{filter:none!important}
+html body.skin #page .uibig span{background:var(--accent)!important;color:var(--accent-ink)!important}
+html body.skin-dark #page .uibig span{background:rgba(0,0,0,.28)!important;color:#fff!important;border:1px solid rgba(255,255,255,.7)}
+/* ---- trust badge */
+html body.skin #page .awd.skawd{flex-direction:row!important;align-items:center;gap:12px;text-align:left;color:var(--ink);
+  border:1px solid var(--hair-2)!important;background:transparent!important;box-shadow:none!important;border-radius:calc(var(--r-lg) * .6)!important}
+html body.skin #page .awd.skawd .skbadge{display:block;width:38px;height:38px;flex:none}
+html body.skin #page .awd.skawd .skawt{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+html body.skin #page .awd.skawd b,html body.skin #page .awd.skawd u{color:var(--muted)!important}
+html body.skin #page .awd.skawd i{color:var(--ink)!important}
+/* ---- rings and disc */
+html body.skin #page .hleft{position:relative}
+html body.skin #page .skrings{position:absolute;left:50%;top:46%;width:980px;height:980px;transform:translate(-50%,-50%);pointer-events:none;z-index:0;
+  color:var(--ink);-webkit-mask:radial-gradient(closest-side,#000 60%,transparent);mask:radial-gradient(closest-side,#000 60%,transparent)}
+html body.skin #page .hleft > *:not(.skrings){position:relative;z-index:1}
+html body.skin #page #closing{position:relative;overflow:clip}
+html body.skin #page .skrings.c{top:50%;-webkit-mask:radial-gradient(closest-side,transparent 26%,#000 40%,#000 60%,transparent);mask:radial-gradient(closest-side,transparent 26%,#000 40%,#000 60%,transparent)}
+html body.skin #page #closing > .ccard{position:relative;z-index:1}
+html.skm body.skin #page .skrings{animation:skdrift 140s linear infinite}
+html.skm body.skin #page .skrings.c{animation-direction:reverse;animation-duration:180s}
+@keyframes skdrift{0%{transform:translate(-50%,-50%) rotate(0)}50%{transform:translate(-50%,-50%) rotate(180deg) scale(1.025)}100%{transform:translate(-50%,-50%) rotate(360deg)}}
+html body.skin-disc #page .fitgrid .me{position:relative}
+html body.skin-disc #page .fitgrid .me:before{content:'';position:absolute;left:-12%;bottom:-4%;width:80%;aspect-ratio:1;border-radius:50%;background:var(--sk-disc);z-index:0}
+html body.skin-disc #page .fitgrid .me > *{position:relative;z-index:1}
+html body.skin-disc #page .hleft:before{content:'';position:absolute;left:-60px;top:-50px;width:240px;height:240px;border-radius:50%;background:var(--sk-disc);opacity:.35;z-index:0;pointer-events:none}
+@media (max-width:760px){html body.skin-disc #page .hleft:before{display:none}}
+html.skm-playful body.skin-disc #page .fitgrid .me:before{animation:skwobble 9s ease-in-out infinite}
+@keyframes skwobble{0%,100%{border-radius:50%;transform:scale(1) rotate(0)}33%{border-radius:47% 53% 50% 50%/52% 48% 52% 48%;transform:scale(1.03) rotate(6deg)}66%{border-radius:53% 47% 49% 51%/48% 52% 47% 53%;transform:scale(.98) rotate(-5deg)}}
+/* ---- day art: shared frame */
+html body.skin-art #page #days .d1.skhasart .macbook{display:none!important}
+html body.skin-art #page #days .skdsess .dswin,html body.skin-art #page #days .skdsess .dschat{display:none!important}
+html body.skin #page .skart{position:relative;width:100%;overflow:hidden;color:var(--ink)}
+@media (max-width:900px){html body.skin-art #page #days .d1.hasmac .skart{order:2;max-width:520px;margin:26px auto 0}}
+html body.skin #page .skart .ska,html body.skin #page .skart .skr{position:absolute;top:18px;font-family:var(--label);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);z-index:1}
+html body.skin #page .skart .ska{left:22px} html body.skin #page .skart .skr{right:22px}
+/* engraved: line art in a spotlight tile */
+html body.skin #page .sk-engraved{--sk-artbg:color-mix(in srgb,var(--sk-panel) 70%,var(--ground));height:300px;border:1px solid var(--hair);border-radius:var(--r-lg);
+  background:radial-gradient(46% 78% at 50% -8%,color-mix(in srgb,var(--ink) 17%,transparent),color-mix(in srgb,var(--ink) 4%,transparent) 55%,transparent 75%),var(--sk-artbg)}
+html body.skin #page .sk-engraved svg{position:absolute;left:50%;top:53%;width:270px;height:270px;transform:translate(-50%,-50%)}
+@media (max-width:760px){html body.skin #page .sk-engraved{height:230px} html body.skin #page .sk-engraved svg{width:200px;height:200px}}
+/* blueprint: a technical sheet on a fine grid */
+html body.skin #page .sk-blueprint{color:var(--accent);height:280px;border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:var(--r-md);
+  background:linear-gradient(color-mix(in srgb,var(--accent) 10%,transparent) 1px,transparent 1px) 0 0/22px 22px,
+    linear-gradient(90deg,color-mix(in srgb,var(--accent) 10%,transparent) 1px,transparent 1px) 0 0/22px 22px,var(--sk-panel)}
+html body.skin #page .sk-blueprint svg{position:absolute;left:50%;top:54%;width:min(88%,330px);height:auto;transform:translate(-50%,-50%)}
+html body.skin #page .sk-blueprint text{font-family:var(--label);font-size:11px;letter-spacing:.12em;fill:currentColor;stroke:none}
+html body.skin #page .sk-blueprint .skterm{position:absolute;left:50%;top:54%;width:min(80%,300px);transform:translate(-50%,-50%);margin-top:14px;
+  font-family:var(--label);font-size:12.5px;line-height:1.5;color:var(--ink);letter-spacing:.01em}
+html body.skin #page .sk-blueprint .skterm p{margin:0 0 6px;overflow-wrap:anywhere}
+html body.skin #page .sk-blueprint .skterm b{font-weight:500;color:var(--accent-text,var(--accent))}
+html body.skin #page .sk-blueprint .skcur u{display:inline-block;width:8px;height:14px;background:var(--accent);vertical-align:-2px;text-decoration:none}
+html.skm body.skin #page .sk-blueprint .skcur u{animation:skblink 1s steps(2) infinite}
+@keyframes skblink{50%{opacity:0}}
+/* tiles: the lead's own app, as a UI card in a soft well */
+html body.skin #page .sk-tiles{background:color-mix(in srgb,var(--ground) 55%,var(--sk-panel));border-radius:calc(var(--r-lg) * 1.4);padding:26px;border:1px solid var(--hair)}
+html body.skin #page .skui{background:var(--sk-panel);border-radius:var(--r-lg);border:1px solid var(--hair);padding:18px 20px;
+  box-shadow:0 1px 2px rgba(0,0,0,.05),0 10px 28px -16px rgba(0,0,0,.22)}
+html body.skin #page .skuh{font-weight:var(--sk-bw-b,600);font-size:16px;margin-bottom:10px;line-height:1.3}
+html body.skin #page .skrow{display:flex;align-items:center;gap:12px;padding:9px 0;font-size:14.5px;line-height:1.35;border-top:1px solid var(--hair)}
+html body.skin #page .skrow:first-of-type{border-top:0}
+html body.skin #page .sktx{flex:1;min-width:0}
+html body.skin #page .skcb{width:19px;height:19px;border-radius:6px;border:1.6px solid color-mix(in srgb,var(--ink) 30%,transparent);flex:none;display:grid;place-items:center}
+html body.skin #page .skcb.on{background:var(--ink);border-color:var(--ink);color:var(--ground)}
+html body.skin #page .skcb svg{width:11px;height:11px}
+html body.skin #page .skchip{font-size:12px;font-weight:600;border-radius:8px;padding:4px 9px;white-space:nowrap;background:color-mix(in srgb,var(--sk-note2) 16%,var(--sk-panel));color:color-mix(in srgb,var(--sk-note2) 70%,var(--ink))}
+html body.skin #page .skchip.g{background:color-mix(in srgb,var(--sk-note1) 16%,var(--sk-panel));color:color-mix(in srgb,var(--sk-note1) 60%,var(--ink))}
+html body.skin #page .sktimer{display:flex;align-items:flex-end;justify-content:space-between}
+html body.skin #page .sktimer small{display:block;font-size:13px;color:var(--muted)}
+html body.skin #page .sktimer b{font-size:38px;line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:-.02em;font-weight:600}
+html body.skin #page .skctl{display:flex;gap:8px}
+html body.skin #page .skctl i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--hair-2);color:var(--ground)}
+html body.skin #page .skctl i.k{background:var(--ink)} html body.skin #page .skctl svg{width:14px;height:14px}
+html body.skin #page .skprog{height:6px;border-radius:6px;background:var(--hair);margin:12px 0 10px;overflow:hidden}
+html body.skin #page .skprog b{display:block;height:100%;width:8%;background:var(--sk-note1);border-radius:6px;transition:width 1s linear}
+html body.skin #page .skweek{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:10px}
+html body.skin #page .skweek > div{font-size:11px;font-weight:600;color:var(--muted);text-align:center}
+html body.skin #page .skweek .skc{display:block;height:70px;border-radius:9px;background:var(--hair);position:relative;overflow:hidden;margin-top:4px}
+html body.skin #page .skweek em{position:absolute;left:3px;right:3px;border-radius:6px;background:color-mix(in srgb,var(--sk-note1) 22%,transparent);border-left:3px solid var(--sk-note1)}
+html body.skin #page .skweek em.p{background:color-mix(in srgb,var(--sk-note2) 22%,transparent);border-left-color:var(--sk-note2)}
+@media (max-width:760px){html body.skin #page .sk-tiles{padding:16px} html body.skin #page .skui{padding:14px}}
+/* stickers: playful paper shapes in the brand's colours */
+html body.skin #page .sk-stickers{height:280px;border-radius:var(--r-lg);background:color-mix(in srgb,var(--accent) 9%,var(--sk-panel));border:1px solid var(--hair)}
+html body.skin #page .sk-stickers .sknote{position:absolute;width:52%;min-height:92px;padding:16px 16px 14px;font-family:var(--sk-note,var(--body));font-size:17px;line-height:1.25;
+  border-radius:4px;box-shadow:0 12px 24px -14px rgba(0,0,0,.45);color:var(--ink)}
+html body.skin #page .sk-stickers .n0{left:9%;top:16%;background:var(--sk-mark);transform:rotate(-5deg)}
+html body.skin #page .sk-stickers .n1{right:8%;top:38%;background:color-mix(in srgb,var(--sk-note2) 45%,#fff);transform:rotate(4deg)}
+html body.skin #page .sk-stickers .skst{position:absolute;width:40px;height:40px;right:12%;top:12%}
+html body.skin #page .sk-stickers.v1 .skst{left:12%;right:auto;top:auto;bottom:14%}
+html body.skin #page .sk-stickers .skbig{position:absolute;left:10%;top:18%;width:130px;height:130px;border-radius:50%;background:var(--accent);color:var(--accent-ink);
+  display:grid;place-content:center;text-align:center;transform:rotate(-8deg);box-shadow:0 14px 28px -16px rgba(0,0,0,.5)}
+html body.skin #page .sk-stickers .skbig small{font-family:var(--label);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+html body.skin #page .sk-stickers .skbig b{font-family:var(--display);font-size:62px;line-height:.9}
+html body.skin #page .sk-stickers .skrib{position:absolute;left:6%;right:6%;top:10%;padding:10px 16px;background:var(--accent);color:var(--accent-ink);font-family:var(--display);
+  font-size:17px;line-height:1.25;border-radius:4px;transform:rotate(-2deg);text-align:center}
+html body.skin #page .sk-stickers .skcard{position:absolute;left:10%;right:10%;padding:10px 14px 10px 44px;background:var(--sk-panel);border-radius:10px;font-size:14px;line-height:1.3;
+  box-shadow:0 8px 20px -14px rgba(0,0,0,.5);border:1px solid var(--hair)}
+html body.skin #page .sk-stickers .skcard i{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:var(--sk-mark);
+  font-style:normal;font-size:12px;font-weight:700;display:grid;place-items:center;color:var(--ink)}
+html body.skin #page .sk-stickers .skcard[style*="--k:1"]{top:36%;transform:rotate(1deg)}
+html body.skin #page .sk-stickers .skcard[style*="--k:2"]{top:56%;transform:rotate(-1.2deg)}
+html body.skin #page .sk-stickers .skcard[style*="--k:3"]{top:76%;transform:rotate(.8deg)}
+@media (max-width:760px){html body.skin #page .sk-stickers{height:300px} html body.skin #page .sk-stickers .sknote{width:64%;font-size:15px}}
+/* day art draws itself (motion only; without JS or with reduced motion it is simply there) */
+html.skm body.skin #page .skart.skdraw .dr{stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s cubic-bezier(.6,0,.2,1)}
+html.skm body.skin #page .skart.skdraw .hf{opacity:0;transition:opacity 1.2s ease 1s}
+html.skm body.skin #page .skart.skdraw.skin-in .dr{stroke-dashoffset:0}
+html.skm body.skin #page .skart.skdraw.skin-in .hf{opacity:1}
+html.skm body.skin #page .skart.skdraw .skterm p,html.skm body.skin #page .sk-stickers.skdraw > span,html.skm body.skin #page .sk-tiles.skdraw .skrow{
+  opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,1.4,.4,1);transition-delay:calc(var(--k,0) * 180ms + 400ms)}
+html.skm body.skin #page .sk-tiles.skdraw .skrow:nth-child(3){--k:1} html.skm body.skin #page .sk-tiles.skdraw .skrow:nth-child(4){--k:2}
+html.skm body.skin #page .skart.skdraw.skin-in .skterm p,html.skm body.skin #page .sk-stickers.skdraw.skin-in > span,html.skm body.skin #page .sk-tiles.skdraw.skin-in .skrow{opacity:1;transform:none}
+html.skm body.skin #page .sk-stickers.skdraw.skin-in .n0{transform:rotate(-5deg)} html.skm body.skin #page .sk-stickers.skdraw.skin-in .n1{transform:rotate(4deg)}
+html.skm body.skin #page .sk-stickers.skdraw.skin-in .skbig{transform:rotate(-8deg)} html.skm body.skin #page .sk-stickers.skdraw.skin-in .skrib{transform:rotate(-2deg)}
+html.skm body.skin #page .sk-stickers.skdraw.skin-in .skcard[style*="--k:1"]{transform:rotate(1deg)} html.skm body.skin #page .sk-stickers.skdraw.skin-in .skcard[style*="--k:2"]{transform:rotate(-1.2deg)}
+html.skm body.skin #page .sk-stickers.skdraw.skin-in .skcard[style*="--k:3"]{transform:rotate(.8deg)}
+html.skm body.skin #page .sk-blueprint.skdraw rect.hf{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .3s;transition-delay:calc(var(--k,0) * 110ms + 300ms)}
+html.skm body.skin #page .sk-blueprint.skdraw.skin-in rect.hf{transform:none}
+/* ---- hand notes */
+html body.skin #page .skanch{position:relative}
+html body.skin #page .sknote-h{position:absolute;z-index:3;font-family:var(--sk-note,cursive);font-size:22px;line-height:1.1;white-space:nowrap;pointer-events:none;color:var(--sk-note1)}
+html body.skin #page .sknote-h.t2{color:var(--sk-note2)}
+html body.skin #page .sknote-h .skarw{position:absolute;width:40px;height:40px}
+html body.skin #page .sknote-h.nreg{right:-4px;top:-38px;transform:rotate(3deg)}
+html body.skin #page .sknote-h.nreg .skarw{left:-42px;top:12px}
+html body.skin #page .sknote-h.nfit{left:62px;bottom:-44px;transform:rotate(-3deg)}
+html body.skin #page .sknote-h.nfit .skarw{left:-42px;top:-26px;transform:scaleY(-1)}
+html body.skin #page .sknote-h.nday{right:10px;top:-32px;transform:rotate(4deg)}
+html body.skin #page .sknote-h.nday .skarw{display:none}
+html body.skin #page .sknote-h.nclose{left:24px;top:-34px;transform:rotate(-3deg)}
+html body.skin #page .sknote-h.nclose .skarw{display:none}
+html body.skin #page #checks.skanch{padding-bottom:10px}
+html.skm body.skin #page .sknote-h.skdraw .dr{stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset .9s ease .5s}
+html.skm body.skin #page .sknote-h.skdraw.skin-in .dr{stroke-dashoffset:0}
+html.skm-playful body.skin #page .sknote-h .skarw{animation:skwig 2.2s ease-in-out infinite;transform-origin:80% 90%}
+@keyframes skwig{0%,100%{rotate:0deg}25%{rotate:-8deg}60%{rotate:5deg}}
+@media (max-width:760px){html body.skin #page .sknote-h{display:none}}
+/* ---- fit check: tap-to-tick cards */
+html body.skin-tick #page #checks li{cursor:pointer;user-select:none;transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .25s}
+html body.skin-tick #page #checks li.off{opacity:.55}
+html body.skin-tick #page #checks li.off .ck{background:transparent!important;color:transparent!important;box-shadow:inset 0 0 0 1.5px var(--hair-2)!important}
+html.skm-playful body.skin-tick #page #checks li:hover{transform:translateY(-3px)}
+/* ---- sticky vertical video */
+html body.skin-sticky-mono #stick .svcard{background:var(--ground)!important;border:1px solid var(--hair-2);box-shadow:none!important;border-radius:var(--r-lg)}
+html body.skin-sticky-mono #stick .svmedia img{filter:grayscale(1) contrast(1.05)}
+html body.skin-sticky-card #stick .svcard{background:#fff!important;padding:4px;border-radius:22px}
+html body.skin-sticky-card #stick .svhint{font-family:var(--sk-note,var(--label));font-size:17px;letter-spacing:0;text-transform:none;color:var(--sk-mark)}
+html body.skin #stick .svbar i{background:var(--accent)}
+/* ---- closing: seat card */
+@media (min-width:901px){
+  html body.skin-close-seatcard #page #closing .ccard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"seat head" "seat form" "seat fine";column-gap:48px;padding:0!important;overflow:hidden}
+  html body.skin-close-seatcard #page #closing .ccard > .chead{grid-area:head;padding:48px 44px 0 0}
+  html body.skin-close-seatcard #page #closing .ccard > .form{grid-area:form;padding-right:44px}
+  html body.skin-close-seatcard #page #closing .ccard > .fine{grid-area:fine;padding:0 44px 40px 0}
+}
+html body.skin #page .skseat{grid-area:seat;display:grid;place-items:center;padding:48px 36px;background:color-mix(in srgb,var(--ground) 60%,var(--sk-panel));min-height:360px}
+html body.skin #page .skmc{position:relative;width:100%;max-width:370px;aspect-ratio:1.58;border-radius:22px;padding:24px 24px 20px;display:flex;flex-direction:column;justify-content:space-between;
+  background:radial-gradient(120% 90% at 0% 0%,color-mix(in srgb,var(--ink) 70%,#446),transparent 60%),var(--ink);color:var(--ground);transform:rotate(-4deg);
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.6);overflow:hidden}
+html body.skin #page .skmt{display:block;font-size:18px;line-height:1.2}
+html body.skin #page .skmp{display:inline-block;margin-top:10px;font-family:var(--label);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid color-mix(in srgb,var(--ground) 25%,transparent);border-radius:8px;padding:5px 9px;opacity:.85}
+html body.skin #page .skmn{display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+html body.skin #page .skml{flex:1;min-width:0}
+html body.skin #page .skml i{display:block;height:30px;border-bottom:1.5px dashed color-mix(in srgb,var(--ground) 45%,transparent);font:24px/30px var(--sk-note,cursive);font-style:normal;white-space:nowrap;overflow:hidden}
+html body.skin #page .skml small{display:block;margin-top:7px;font-size:12.5px;opacity:.7}
+html body.skin #page .skmi{width:50px;height:50px;border-radius:14px;background:#fff;overflow:hidden;flex:none}
+html body.skin #page .skmi img{width:100%;height:100%;display:block}
+html body.skin #page .skstamp{position:absolute;right:16px;top:60px;font:20px/1 var(--sk-note,cursive);color:var(--ink);background:var(--accent);border-radius:10px;padding:8px 11px 6px;transform:rotate(9deg);opacity:0}
+@media (max-width:900px){html body.skin #page .skseat{min-height:0;padding:30px 20px;margin:-24px -22px 22px;border-radius:var(--r-lg) var(--r-lg) 0 0}}
+html.skm body.skin #page .skmc:before{content:'';position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.14) 45%,rgba(255,255,255,.28) 50%,rgba(255,255,255,.14) 55%,transparent);transform:skewX(-12deg);animation:skshine 6.5s ease-in-out 1.2s infinite}
+@keyframes skshine{0%{transform:translateX(0) skewX(-12deg)}22%,100%{transform:translateX(420%) skewX(-12deg)}}
+/* ---- motion pack (html.skm only: set by site.js when the visitor allows motion) */
+html.skm body.skin #page .skrv{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--skd,0ms)}
+html.skm body.skin #page .skrv.skin-in{opacity:1;transform:none}
+html.skm-playful body.skin #page #checks li.skrv{transform:translateY(18px) scale(.95);transition-timing-function:cubic-bezier(.2,1.4,.4,1)}
+html.skm-playful body.skin #page #checks li.skrv.skin-in{transform:none}
+html.skm body.skin #page .btn{transition:transform .2s,background-color .2s,box-shadow .2s}
+html.skm body.skin #page .btn:hover{transform:translateY(-2px)}
+html.skm body.skin #page .btn svg{transition:transform .2s} html.skm body.skin #page .btn:hover svg{transform:translateX(3px)}
+html.skm body.skin #page .uibig span{position:relative}
+html.skm body.skin #page .uibig span:after{content:'';position:absolute;inset:-1px;border-radius:50%;border:1px solid currentColor;animation:skbreathe 3.6s cubic-bezier(.2,.6,.3,1) infinite;pointer-events:none}
+@keyframes skbreathe{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(1.55);opacity:0}}
+html.skm-playful body.skin #page .fitgrid .photo{animation:skfloat 6s ease-in-out infinite}
+@keyframes skfloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@media (prefers-reduced-motion:reduce){html body.skin *,html body.skin *:before,html body.skin *:after{animation:none!important;transition:none!important}}
+/* ---- the days: "slab" keeps the template's dark beat; "plain" (default for a skin) sits on the ground,
+   "panel" on a full-width band of the panel colour; both use the skin's own ink */
+html body.skin-days-plain #page #days,html body.skin-days-panel #page #days{background:var(--sk-days-bg)!important;margin:clamp(30px,4vw,64px) 0!important;border-radius:0!important}
+html body.skin-days-plain #page #days:before,html body.skin-days-panel #page #days:before{display:none}
+html body.skin-days-plain #page #days .daysh,html body.skin-days-plain #page #days .daysh span:not(.sktone),html body.skin-days-plain #page #days .dagenda .dt,html body.skin-days-plain #page #days .dnday,
+html body.skin-days-panel #page #days .daysh,html body.skin-days-panel #page #days .daysh span:not(.sktone),html body.skin-days-panel #page #days .dagenda .dt,html body.skin-days-panel #page #days .dnday{color:var(--ink)}
+html body.skin-days-plain #page #days .intro,html body.skin-days-plain #page #days .dagenda .dxtra,html body.skin-days-plain #page #days .dmetaline,html body.skin-days-plain #page #days .dnmon,html body.skin-days-plain #page #days .dntime,
+html body.skin-days-panel #page #days .intro,html body.skin-days-panel #page #days .dagenda .dxtra,html body.skin-days-panel #page #days .dmetaline,html body.skin-days-panel #page #days .dnmon,html body.skin-days-panel #page #days .dntime{color:var(--muted)}
+html body.skin-days-plain #page #days .dagenda .do,html body.skin-days-plain #page #days .dagenda .dbul li,html body.skin-days-plain #page #days .dkeep .dbul li,
+html body.skin-days-panel #page #days .dagenda .do,html body.skin-days-panel #page #days .dagenda .dbul li,html body.skin-days-panel #page #days .dkeep .dbul li{color:var(--ink-soft)}
+html body.skin-days-plain #page #days .dagenda:before,html body.skin-days-panel #page #days .dagenda:before{background:var(--hair-2)}
+html body.skin-days-plain #page #days .dagenda:after{box-shadow:0 0 0 5px var(--ground)}
+html body.skin-days-panel #page #days .dagenda:after{box-shadow:0 0 0 5px var(--sk-panel)}
+html body.skin-days-plain #page #days .dkeep,html body.skin-days-panel #page #days .dkeep{border:1px solid var(--hair-2)!important;background:color-mix(in srgb,var(--sk-panel) 70%,var(--ground))!important}
+html body.skin-days-panel #page #days .dkeep{background:color-mix(in srgb,var(--ground) 60%,var(--sk-panel))!important}
+html body.skin-days-plain #page #days .eyebrow,html body.skin-days-panel #page #days .eyebrow,html body.skin #page #days .dnwd,html body.skin #page #days .dkeepl{color:var(--accent-text,var(--accent))}
+html body.skin #page .tstin{background:var(--sk-slab)!important;background-image:none!important}
+html body.skin-dark #page .tstin{border:1px solid var(--hair)}
+html body.skin-close-seatcard #page #closing .chead .av{display:none}
+@media (min-width:901px){html body.skin-close-seatcard #page #closing .ccard{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+html body.skin-dark #page .melogo.real{background:var(--sk-panel)!important;box-shadow:none!important}
+html body.skin #page .skseat{position:relative}
+html body.skin #page .sknote-h.nclose{left:auto;right:18%;top:auto;bottom:34px}
+html body.skin #page .dmaccol.skanch > .sknote-h.nday{top:-30px;right:6px}
+html body.skin-dupper #page #headline,html body.skin-dupper #page .disp,html body.skin-dupper #page .sh,html body.skin-dupper #page h2,html body.skin-dupper #page .dt{text-transform:uppercase;line-height:1!important}
+/* ---- contrast: small accent words take the skin's readable accent, quiet copy takes the checked mute */
+html body.skin #page .tkday,html body.skin #page .faqn,html body.skin #page .dnlive,html body.skin #page .hbjoin em,html body.skin #page .cwhen,
+html body.skin #page .tkrows b,html body.skin #page .eyebrow,html body.skin #page .hbtape,html body.skin #page .hbtape b{color:var(--accent-text,var(--accent))!important}
+html body.skin #page .dnlive{border-color:color-mix(in srgb,var(--accent-text,var(--accent)) 50%,transparent)!important}
+html body.skin #page .fitnote p + p,html body.skin #page .slede,html body.skin #page .faqa p,html body.skin #page .faqnote,html body.skin #page .scue span{color:var(--muted)!important}
+html body.skin #page .bnote,html body.skin #page .blead i,html body.skin #page .bst i{color:var(--band-ink-70)!important}
+html body.skin-days-plain #page #days .sctan,html body.skin-days-panel #page #days .sctan{color:var(--muted)!important}
+html body.skin #page #faq .faqi.open .faqn{color:var(--accent-ink)!important}
+html body.skin #page .tmeta .stars{background:transparent!important;border:1px solid var(--hair-2)!important;color:var(--sk-star,var(--accent))!important;box-shadow:none!important}
+html body.skin #page .tmeta .stars svg{color:var(--sk-star,var(--accent))!important;fill:currentColor!important}
+html body.skin-chips-outline #page .hq .hqb{background:transparent!important;border:1px solid var(--hair-2)!important;color:var(--ink-soft)!important;box-shadow:none!important}
+html body.skin-chips-outline #page .hq .hqb.on,html body.skin-chips-outline #page .hq .hqb:hover{border-color:var(--ink)!important;color:var(--ink)!important}
+html body.skin-pill #page #heroEye{background:var(--sk-pill)!important;color:var(--sk-pill-ink)!important;border-color:transparent!important;box-shadow:none!important}
+html body.skin-chip #page #heroEye .eyd{background:var(--sk-chip)!important;color:var(--sk-chip-ink)!important}
+/* =====================================================================================================
+   HAND-PAGE OPTIONS (2026-09-29): the ideas of the hand-made pages (Kelsey Tonner, Dan Koe, Ali Abdaal) as skin
+   fields. Every rule is under body.skin + its own skin-* class, set only when skin.json turns the option on.
+   Field reference: docs/brand-skin-log.md, "Hand-page options".
+   ===================================================================================================== */
+/* ---- booking_card.style "ticket": stub, perforation with notches, barcode edge */
+html body.skin-ticket #page .hbook{grid-template-columns:auto minmax(0,1fr) auto 22px!important;gap:0!important;padding:0!important;align-items:stretch!important;overflow:hidden}
+html body.skin-ticket #page .hbook .hblap{align-self:center;width:clamp(140px,12vw,172px);margin:16px 0 16px 16px!important}
+html body.skin-ticket #page .hbook .hbmain{align-self:center;padding:16px 22px}
+html body.skin-ticket #page .hbook .hbact{position:relative;grid-column:3;grid-row:1;align-self:stretch!important;justify-content:center;padding:16px 20px;
+  border-left:2px dashed color-mix(in srgb,var(--ink) 24%,transparent)}
+html body.skin-ticket #page .hbook .hbact:before,html body.skin-ticket #page .hbook .hbact:after{content:'';position:absolute;left:-10px;width:18px;height:18px;border-radius:50%;background:var(--ground)}
+html body.skin-ticket #page .hbook .hbact:before{top:-9px} html body.skin-ticket #page .hbook .hbact:after{bottom:-9px}
+html body.skin-ticket #page .skbcode{grid-column:4;grid-row:1;margin:14px 8px 14px 0;opacity:.85;
+  background:repeating-linear-gradient(180deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 13px)}
+@media (max-width:820px){
+  html body.skin-ticket #page .hbook{grid-template-columns:120px minmax(0,1fr) 18px!important}
+  html body.skin-ticket #page .hbook .hblap{width:auto;margin:16px 0 0 16px!important;align-self:start}
+  html body.skin-ticket #page .hbook .hbmain{padding:16px 14px 12px 16px}
+  html body.skin-ticket #page .hbook .hbact{grid-column:1 / 3;grid-row:2;margin:0!important;border-left:0;border-top:2px dashed color-mix(in srgb,var(--ink) 24%,transparent);padding:14px 16px 16px}
+  html body.skin-ticket #page .hbook .hbact:before,html body.skin-ticket #page .hbook .hbact:after{display:none}
+  html body.skin-ticket #page .skbcode{grid-column:3;grid-row:1 / 3;margin:14px 6px 14px 0}
+}
+@media (max-width:520px){html body.skin-ticket #page .hbook{grid-template-columns:minmax(0,1fr) 18px!important} html body.skin-ticket #page .hbook .hblap{display:none}
+  html body.skin-ticket #page .hbook .hbact{grid-column:1} html body.skin-ticket #page .skbcode{grid-column:2}}
+
+/* ---- sections.days "band": the whole day list on one full-width colour band (colors.days_band / days_ink / days_mute) */
+html body.skin-days-band #page #days{background:var(--sk-days-bg)!important;margin:clamp(30px,4vw,64px) 0!important;border-radius:0!important}
+html body.skin-days-band #page #days:before{display:none}
+html body.skin-days-band #page #days .daysh,html body.skin-days-band #page #days .daysh span:not(.sktone),html body.skin-days-band #page #days .dagenda .dt,
+html body.skin-days-band #page #days .dnday,html body.skin-days-band #page #days .dagenda .do{color:var(--skd-ink)!important}
+html body.skin-days-band #page #days .intro,html body.skin-days-band #page #days .dagenda .dxtra,html body.skin-days-band #page #days .dnmon,html body.skin-days-band #page #days .dntime,
+html body.skin-days-band #page #days .dagenda .dbul li,html body.skin-days-band #page #days .dkeep .dbul li,html body.skin-days-band #page #days .sctan{color:var(--skd-mute)!important}
+html body.skin-days-band #page #days .eyebrow,html body.skin-days-band #page #days .dmetaline,html body.skin-days-band #page #days .dnwd,html body.skin-days-band #page #days .dkeepl,
+html body.skin-days-band #page #days .dnlive{color:var(--skd-when)!important}
+html body.skin-days-band #page #days .dkeep{background:color-mix(in srgb,var(--skd-ink) 7%,transparent)!important;border:1px solid color-mix(in srgb,var(--skd-ink) 18%,transparent)!important}
+html body.skin-days-band #page #days .dagenda:before{background:color-mix(in srgb,var(--skd-ink) 22%,transparent)}
+html body.skin-days-band #page #days .dagenda:after{background:var(--skd-when);box-shadow:0 0 0 5px var(--sk-days-bg)}
+html body.skin-days-band #page #days .btn{background-color:var(--skd-btn)!important;color:var(--skd-btn-ink)!important}
+html body.skin-days-nocta #page #days .scta{display:none!important}
+html body.skin-days-nokeep #page #days .dkeep{display:none!important}
+
+/* ---- days.numerals: big 01/02/03 in the node column ("outline-zero": the 0 drawn as an outline) */
+html body.skin-num #page #days .dagenda{grid-template-columns:clamp(110px,11vw,160px) minmax(0,1fr)}
+html body.skin-num #page #days .dagenda:before,html body.skin-num #page #days .dagenda:after{display:none}
+html body.skin-num #page #days .dnode > :not(.sknum){display:none!important}
+html body.skin-num #page #days .sknum{display:block;position:relative;z-index:1;text-align:center;font-family:var(--display);font-weight:var(--dw2,700);
+  font-size:clamp(76px,8.6vw,132px);line-height:.8;letter-spacing:-.04em;color:var(--skd-num);font-variant-numeric:lining-nums;background:var(--skd-mask);padding-bottom:10px}
+html body.skin-num #page #days .sknum .o{color:transparent;-webkit-text-stroke:2px var(--skd-num)}
+html body.skin-num #page #days .dmetaline{color:var(--skd-when);font-size:11.5px;letter-spacing:.16em}
+/* days.route: one dotted route down the numerals, filled as the page scrolls, a marker riding its end */
+html body.skin #page .skroute{position:absolute;width:6px;z-index:0;pointer-events:none;--sktl:1}
+html body.skin #page .skroute:before{content:'';position:absolute;inset:0;background:radial-gradient(circle,color-mix(in srgb,var(--skd-ink,var(--ink)) 38%,transparent) 2px,transparent 2.5px) 50% 0/6px 14px repeat-y}
+html body.skin #page .skroute i{position:absolute;inset:0;background:radial-gradient(circle,var(--skd-num) 2.4px,transparent 3px) 50% 0/6px 14px repeat-y;transform-origin:50% 0;transform:scaleY(var(--sktl))}
+html body.skin #page .skroute b{position:absolute;left:50%;top:calc(var(--sktl) * 100%);width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;
+  background:var(--sks-move);color:var(--ink);display:grid;place-items:center}
+@media (max-width:760px){
+  html body.skin-num #page #days .dagenda{grid-template-columns:minmax(0,1fr)!important;padding-left:0!important}
+  html body.skin-num #page #days .dnode{display:block!important}
+  html body.skin-num #page #days .sknum{font-size:72px;text-align:left;background:none;padding:0;display:block!important}
+  html body.skin #page .skroute{display:none}
+}
+
+/* ---- day_art.style "scenes": page-fix, thread, route-year on a panel card */
+html body.skin-art-scenes #page .sk-scene{background:var(--sk-panel);color:var(--ink);border-radius:calc(var(--r-lg) * .6);padding:18px 20px 16px;overflow:hidden;
+  border:1px solid var(--hair)}
+html body.skin-art-scenes #page #days .d1.hasmac .dmaccol{align-self:start}
+html body.skin #page .skscn-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;font-family:var(--label);font-size:12px;line-height:1.2;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text,var(--accent))}
+html body.skin #page .skscn-h b{font-weight:700;min-width:0}
+html body.skin #page .skscn-h span{font-weight:500;color:var(--muted);letter-spacing:.08em;white-space:nowrap}
+html body.skin #page .skdg{display:block;width:100%;height:auto;overflow:visible}
+html body.skin #page .skdg .skl1,html body.skin #page .skdg .skl2{fill:none;stroke:var(--ink);stroke-linecap:round;stroke-linejoin:round}
+html body.skin #page .skdg .skl1{stroke-width:1.6} html body.skin #page .skdg .skl2{stroke-width:2.2}
+html body.skin #page .skdg .sktx{font-family:var(--body);fill:var(--ink);stroke:none}
+html body.skin #page .skdg .sksm{font-size:12px;font-weight:500;fill:var(--muted)}
+html body.skin #page .skdg .skbig{font:700 15px var(--display);fill:var(--ink)}
+html body.skin #page .skdg .skold{font-size:13px;fill:var(--muted)}
+html body.skin #page .skdg .skstrike{stroke:var(--muted)}
+html body.skin #page .skdg .skdot{fill:color-mix(in srgb,var(--ink) 22%,var(--sk-panel))}
+html body.skin #page .skdg .skph{fill:color-mix(in srgb,var(--accent) 16%,var(--sk-panel))}
+html body.skin #page .skdg .sksun,html body.skin #page .skdg .skhl{fill:var(--sks-hl)}
+html body.skin #page .skdg .skhill{fill:var(--accent)}
+html body.skin #page .skdg .skwv{stroke:var(--sk-panel);stroke-width:2}
+html body.skin #page .skdg .skcl{stroke:color-mix(in srgb,var(--ink) 20%,var(--sk-panel));stroke-width:6}
+html body.skin #page .skdg .skbtnf{fill:var(--accent)}
+html body.skin #page .skdg .skbtx{font:700 12.5px var(--body);fill:var(--accent-ink);letter-spacing:.06em;text-transform:uppercase}
+html body.skin #page .skdg .skghost{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-dasharray:4 4}
+html body.skin #page .skdg .skgtx{font-size:11.5px;fill:var(--muted)}
+html body.skin #page .skdg .skmv{stroke:var(--sks-move);stroke-width:2.6}
+html body.skin #page .skdg .skbadge circle{fill:var(--ink)}
+html body.skin #page .skdg .skbadge text{font:700 12px var(--display);fill:var(--sks-hl)}
+html body.skin #page .skdg .skroute3{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1 7}
+html body.skin #page .skdg .skstop{fill:var(--accent)}
+html body.skin #page .skdg .skgapr{stroke:var(--ink);stroke-width:2;stroke-dasharray:3 3;fill:var(--sk-panel)}
+html body.skin #page .skdg .skmo{font-size:11.5px;font-weight:500;fill:var(--muted)}
+html body.skin #page .skdg .skpin path,html body.skin #page .skdg .skpin circle{fill:var(--sks-hl)}
+html body.skin #page .skdg .skpin text{font:700 14px var(--display);fill:var(--ink)}
+html body.skin #page .skdg .skcall{font:700 14px var(--display);fill:var(--ink)}
+/* the thread scene */
+html body.skin #page .skinbox{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);border:1.5px solid var(--hair-2);border-radius:8px;overflow:hidden}
+html body.skin #page .skil{list-style:none;margin:0;padding:0;background:color-mix(in srgb,var(--accent) 5%,var(--sk-panel));border-right:1.5px solid var(--hair-2)}
+html body.skin #page .skil li{padding:11px 12px;border-bottom:1px solid var(--hair);font-size:13.5px;line-height:1.3;margin:0}
+html body.skin #page .skil li:before{display:none}
+html body.skin #page .skil li:last-child{border-bottom:0}
+html body.skin #page .skil li b{display:block;font-weight:700;color:var(--ink)}
+html body.skin #page .skil li.on{background:var(--sk-panel);box-shadow:inset 3px 0 0 var(--accent)}
+html body.skin #page .sktch{display:inline-block;margin-top:6px;font:700 10.5px/1 var(--label);letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:5px 7px;
+  background:var(--sk-panel);color:var(--accent-text,var(--accent));border:1px solid var(--hair-2)}
+html body.skin #page .skil li.on .sktch{background:var(--sks-hl);border-color:var(--sks-hl);color:var(--ink)}
+html body.skin #page .skmail{padding:12px 14px;font-size:13.5px;line-height:1.5;min-width:0;color:var(--ink)}
+html body.skin #page .skmh{font-size:12px;color:var(--muted);border-bottom:1px solid var(--hair);padding-bottom:7px;margin:0 0 8px}
+html body.skin #page .skmh b{color:var(--ink)}
+html body.skin #page .skbd{min-height:6.2em;margin:0}
+html body.skin #page .sksr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+html body.skin #page .skcar{display:inline-block;width:2px;height:1.05em;background:var(--accent);vertical-align:-2px;margin-left:1px}
+html.skm body.skin #page .skcar{animation:skblink 1s steps(1) infinite}
+html body.skin #page .skvoice{display:flex;align-items:center;gap:8px;margin:8px 0 0;font:700 11px/1 var(--label);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text,var(--accent))}
+html body.skin #page .skwk{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:13px;color:var(--muted)}
+html body.skin #page .skwk b{color:var(--ink)}
+html body.skin #page .sksq{display:flex;gap:4px;margin-left:auto}
+html body.skin #page .sksq i{width:24px;height:28px;border-radius:4px;background:var(--accent);font:700 10px/28px var(--label);font-style:normal;text-align:center;color:var(--accent-ink)}
+@media (max-width:760px){
+  html body.skin-art-scenes #page .sk-scene{padding:14px 12px 12px}
+  html body.skin #page .skinbox{grid-template-columns:minmax(0,1fr)}
+  html body.skin #page .skil{display:flex;border-right:0;border-bottom:1.5px solid var(--hair-2)}
+  html body.skin #page .skil li{flex:1;min-width:0;border-bottom:0;border-right:1px solid var(--hair);padding:9px 8px;font-size:12px}
+  html body.skin #page .skil li:last-child{border-right:0}
+  html body.skin #page .skil li b{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  html body.skin #page .skil li.on{box-shadow:inset 0 3px 0 var(--accent)}
+  html body.skin #page .sktch{font-size:9.5px;padding:4px 5px;white-space:nowrap;letter-spacing:.02em}
+  html body.skin #page .skwk{flex-wrap:wrap} html body.skin #page .sksq{margin-left:0}
+}
+/* scenes draw themselves (motion only): the button slides up, the pins drop in turn */
+html.skm body.skin #page .skart.skdraw .skslide{transform:translateY(162px);transition:transform 1s cubic-bezier(.5,0,.2,1) 1.5s}
+html.skm body.skin #page .skart.skdraw.skin-in .skslide{transform:none}
+html.skm body.skin #page .skart.skdraw .skpin{transform:translateY(-26px);opacity:0;transition:transform .55s cubic-bezier(.2,1.4,.4,1),opacity .3s;transition-delay:calc(1200ms + var(--k) * 450ms)}
+html.skm body.skin #page .skart.skdraw.skin-in .skpin{transform:none;opacity:1}
+html.skm body.skin #page .sk-scene.skdraw .dr{transition-duration:1.3s}
+
+/* ---- heading.underline_word and heading.mark "band": one flat band under one word, drawn left to right */
+html body.skin #page .skuw{position:relative;display:inline-block;z-index:0;color:inherit!important;-webkit-text-fill-color:currentColor;background:none!important}
+html body.skin #page .skuw:after{content:'';position:absolute;left:-3px;right:-3px;bottom:.02em;height:.22em;background:var(--sk-uw);z-index:-1}
+html body.skin #page .skuw.skband:after{background:var(--sk-mark)}
+html body.skin #page .skuw.y:after{background:var(--sk-uw2)}
+html.skm body.skin #page .skuw.skdraw:after{transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.6,0,.2,1) .3s}
+html.skm body.skin #page .skuw.skdraw.skin-in:after{transform:scaleX(1)}
+html body.skin-mark-band #page #headline .mark{display:none!important}
+
+/* ---- fit.counter: "N of 5 sound like you" */
+html body.skin #page .sktally{display:flex;align-items:center;gap:14px;margin-top:18px;background:var(--sk-panel);border-radius:calc(var(--r-lg) * .6);padding:16px 18px;
+  border-left:5px solid var(--sks-move);max-width:420px}
+html body.skin #page .sktally b{font:700 44px/1 var(--display);color:var(--accent-text,var(--accent));font-variant-numeric:lining-nums tabular-nums;min-width:.62em}
+html body.skin #page .sktally > span{font-size:15px;color:var(--muted);line-height:1.35}
+html body.skin #page .sktally strong{color:var(--ink);display:block}
+html body.skin-notes #page .sktally{margin-top:58px}
+
+/* ---- photo_band.style "duotone": the numbers band as a full-width photo band */
+html body.skin-duo #page #band{padding:0!important;margin-left:0!important;margin-right:0!important;border-radius:0!important;background:var(--skb-ground)!important;
+  border:0!important;overflow:hidden;max-width:none!important;width:auto!important}
+html body.skin-duo #page .skngrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:600px;color:var(--skb-ink)}
+html body.skin-duo #page .skduo{position:relative;background:var(--skb-tint);overflow:hidden;min-height:420px}
+html body.skin-duo #page .skduo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:grayscale(1) contrast(1.12) brightness(1.08);mix-blend-mode:multiply}
+html body.skin-duo #page .skduo:after{content:'';position:absolute;inset:0;background:var(--skb-ground);mix-blend-mode:lighten;opacity:.9}
+html body.skin-duo #page .skduo:before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,transparent 62%,var(--skb-ground))}
+html body.skin-duo #page .skduotag{position:absolute;left:32px;bottom:32px;z-index:2;background:var(--skb-tag);color:var(--skb-tag-ink);border-radius:6px;padding:12px 16px;max-width:calc(100% - 64px)}
+html body.skin-duo #page .skduotag b{display:block;font:700 17px/1.2 var(--display)}
+html body.skin-duo #page .skduotag span{font-size:13.5px}
+html body.skin-duo #page .skncopy{padding:clamp(56px,6.5vw,96px) clamp(20px,4.4vw,64px) clamp(56px,6.5vw,96px) clamp(20px,2.8vw,40px);max-width:640px;min-width:0}
+html body.skin-duo #page .skduoe{display:inline-flex;border-radius:6px;font:700 12px/1 var(--label);letter-spacing:.14em;text-transform:uppercase;padding:9px 12px;
+  background:transparent;border:1px solid color-mix(in srgb,var(--skb-num) 55%,transparent);color:var(--skb-num)}
+html body.skin-duo #page .skduoh{color:var(--skb-ink)!important;font-size:clamp(34px,4.2vw,56px)!important;margin:18px 0 30px!important;line-height:1.06}
+html body.skin-duo #page .skstats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid color-mix(in srgb,var(--skb-ink) 18%,transparent)}
+html body.skin-duo #page .skstat{padding:22px 0 20px;border-bottom:1px solid color-mix(in srgb,var(--skb-ink) 18%,transparent);min-width:0}
+html body.skin-duo #page .skstat:nth-child(odd){padding-right:20px;border-right:1px solid color-mix(in srgb,var(--skb-ink) 18%,transparent)}
+html body.skin-duo #page .skstat:nth-child(even){padding-left:24px}
+html body.skin-duo #page .skstat b{display:block;font:700 clamp(38px,4vw,54px)/1 var(--display);letter-spacing:-.03em;color:var(--skb-num);font-variant-numeric:lining-nums tabular-nums}
+html body.skin-duo #page .skstat span{display:block;margin-top:8px;color:var(--skb-mute);font-weight:500;font-size:15.5px}
+html body.skin-duo #page .skbio{margin:28px 0 0;font-size:16.5px;line-height:1.65;color:var(--skb-mute)}
+html body.skin-duo #page .sksrc{margin:16px 0 0;font-size:12.5px;color:var(--skb-mute)}
+@media (max-width:1020px){
+  html body.skin-duo #page .skngrid{grid-template-columns:minmax(0,1fr)}
+  html body.skin-duo #page .skduo{min-height:420px}
+  html body.skin-duo #page .skduo:before{background:linear-gradient(180deg,transparent 60%,var(--skb-ground))}
+  html body.skin-duo #page .skncopy{max-width:none}
+}
+@media (max-width:720px){
+  html body.skin-duo #page .skduo{min-height:360px}
+  html body.skin-duo #page .skduotag{left:16px;bottom:20px}
+  html body.skin-duo #page .skncopy{padding:40px 16px 56px}
+  html body.skin-duo #page .skstat:nth-child(odd){padding-right:12px} html body.skin-duo #page .skstat:nth-child(even){padding-left:14px}
+  html body.skin-duo #page .skstat span{font-size:14px}
+}
+
+/* ---- closing.style "pass": the guest pass (reuses the seat card's two-column card) */
+html body.skin-close-pass #page .skpassw{background:color-mix(in srgb,var(--ground) 70%,var(--sk-panel))}
+html body.skin #page .skpass{width:100%;max-width:470px;display:grid;grid-template-columns:minmax(0,1fr) 112px;border-radius:12px;overflow:hidden;position:relative;text-align:left}
+html body.skin #page .skpm{background:var(--skp-main);color:var(--skp-main-ink);padding:20px 22px 18px;min-width:0}
+html body.skin #page .skph{display:flex;justify-content:space-between;align-items:center;gap:10px;font:700 11px/1 var(--label);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--skp-main-ink)}
+html body.skin #page .skph img{width:22px;height:22px;border-radius:5px;flex:none}
+html body.skin #page .skpev{font:700 19px/1.2 var(--display);margin:12px 0 14px}
+html body.skin #page .skpgn small,html body.skin #page .skpfl small{display:block;font:700 9.5px/1 var(--label);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--skp-main-ink);opacity:1;margin-bottom:5px}
+html body.skin #page .skpname{display:block;font:700 22px/30px var(--display);font-style:normal;border-bottom:1.5px dashed color-mix(in srgb,var(--skp-main-ink) 45%,transparent);
+  white-space:nowrap;overflow:hidden;min-height:31px}
+html body.skin #page .skpname.ph0{color:var(--skp-main-ink);font-weight:400;font-style:italic}
+html body.skin #page .skpname .c{display:inline-block;white-space:pre}
+html.skm body.skin #page .skpname .c.new{animation:skprint .28s ease-out}
+@keyframes skprint{0%{opacity:0;transform:translateY(-6px)}100%{opacity:1;transform:none}}
+html body.skin #page .skrt3{display:block;width:100%;height:auto;margin:14px 0 4px;overflow:visible}
+html body.skin #page .skrt3 .skrl{stroke:color-mix(in srgb,var(--skp-main-ink) 50%,transparent);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:.1 7;fill:none}
+html body.skin #page .skrt3 .skrs{fill:var(--skp-main);stroke:var(--skp-main-ink);stroke-width:2;transition:fill .3s}
+html body.skin #page .skrt3 .skrs.lit{fill:var(--skp-stub);stroke:var(--skp-stub)}
+html body.skin #page .skrt3 text{font:700 10.5px var(--label);fill:var(--skp-main-ink);letter-spacing:.06em}
+html body.skin #page .skrt3 .skrm{transition:transform 1.4s cubic-bezier(.6,0,.2,1)}
+html body.skin #page .skrt3 .skrm circle{fill:var(--sks-move)}
+html body.skin #page .skrt3 .skrm path{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+html body.skin #page .skpfl{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
+html body.skin #page .skpfl b{font:700 13.5px/1.25 var(--display)}
+html body.skin #page .skps{background:var(--skp-stub);color:var(--skp-stub-ink);position:relative;padding:20px 14px 16px 18px;display:flex;flex-direction:column;align-items:center;
+  justify-content:space-between;gap:10px;border-left:2px dashed color-mix(in srgb,var(--skp-stub-ink) 40%,transparent)}
+html body.skin #page .skps:before,html body.skin #page .skps:after{content:'';position:absolute;left:-10px;width:18px;height:18px;border-radius:50%;
+  background:color-mix(in srgb,var(--ground) 70%,var(--sk-panel))}
+html body.skin #page .skps:before{top:-9px} html body.skin #page .skps:after{bottom:-9px}
+html body.skin #page .skps small{font:700 9.5px/1 var(--label);letter-spacing:.16em;text-transform:uppercase}
+html body.skin #page .skpseat{font:700 22px/1 var(--display);text-align:center}
+html body.skin #page .skpseat small{display:block;margin-bottom:6px}
+html body.skin #page .skbars{width:56px;height:74px;background:repeating-linear-gradient(90deg,var(--skp-stub-ink) 0 2px,transparent 2px 4px,var(--skp-stub-ink) 4px 7px,transparent 7px 9px,var(--skp-stub-ink) 9px 10px,transparent 10px 13px)}
+html body.skin #page .skpunch{position:absolute;right:38px;top:50%;width:34px;height:34px;margin-top:-17px;border-radius:50%;background:color-mix(in srgb,var(--ground) 70%,var(--sk-panel));
+  box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--ink) 25%,transparent);transform:scale(0);transition:transform .35s cubic-bezier(.2,1.6,.4,1) 1.3s}
+html body.skin #page .skpass.done .skpunch{transform:scale(1)}
+html body.skin #page .skpstamp{position:absolute;left:50%;top:50%;z-index:3;font:700 14px/1 var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--skp-stub-ink);
+  background:var(--skp-stub);border-radius:4px;padding:9px 12px;transform:translate(-50%,-50%) rotate(-6deg) scale(0);opacity:0;
+  transition:transform .45s cubic-bezier(.2,1.5,.4,1) 1.6s,opacity .3s 1.6s}
+html body.skin #page .skpass.done .skpstamp{transform:translate(-50%,-50%) rotate(-6deg) scale(1);opacity:1}
+@media (max-width:720px){
+  html body.skin #page .skpass{grid-template-columns:minmax(0,1fr) 86px}
+  html body.skin #page .skpm{padding:16px 14px 14px}
+  html body.skin #page .skpev{font-size:17px}
+  html body.skin #page .skpfl{grid-template-columns:1fr 1fr}
+  html body.skin #page .skpfl div:last-child{display:none}
+  html body.skin #page .skps{padding:16px 8px 12px 12px}
+  html body.skin #page .skps small{white-space:nowrap;letter-spacing:.08em;font-size:9px}
+  html body.skin #page .skpseat{font-size:18px}
+  html body.skin #page .skbars{width:44px}
+  html body.skin #page .skpunch{right:24px}
+}
+
+/* ---- header.style: the floating event bar restyled (flat = Dan Koe, soft = Ali Abdaal, solid = Kelsey Tonner) */
+html body.skin-hdr #page .hdr{padding-top:10px}
+html body.skin-hdr #page .navwrap{max-width:none!important;height:auto!important}
+html body.skin-hdr #page .hdr .nav,html body.skin-hdr #page .hdr.tight .nav{width:min(var(--skh-w),calc(100% - 28px))!important;max-width:none!important;border-radius:var(--skh-r)!important;height:auto!important;
+  min-height:58px;padding:7px 7px 7px 10px!important}
+html body.skin-hdr #page .nav .lock{background:transparent!important}
+html body.skin-hdr-notop #page #topbar{display:none!important}
+html body.skin-hdr-noicon #page .nav .cal{display:none!important}
+html body.skin-hdr-round #page .nav .cal .bmark img{border-radius:50%!important}
+html body.skin-hdr-plate #page .nav .sklogo{background:#fff;border-radius:calc(var(--skh-r) * .75);padding:3px 9px;height:44px;max-width:96px;filter:none!important;box-sizing:border-box}
+html body.skin-hdr #page .nav .btn.sm{background-color:var(--skh-btn)!important;color:var(--skh-btn-ink)!important;box-shadow:none!important}
+/* flat: one hairline, no fill but a glass of the ground, no shadow; outline tiles */
+html body.skin-hdr-flat #page .hdr .nav{background:color-mix(in srgb,var(--ground) 82%,transparent)!important;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:inset 0 0 0 1px var(--hair-2)!important;border:0!important}
+html body.skin-hdr-flat #page .nav .tile{background:transparent!important;border:1px solid var(--hair-2)!important}
+html body.skin-hdr-flat #page .nav .tile:last-child{border-color:color-mix(in srgb,var(--ink) 50%,transparent)!important}
+html body.skin-hdr-flat #page .nav .tile b{font-weight:300}
+/* soft: white glass, a 1.5px hairline, a soft shadow; tiles on the ground, the seconds tinted */
+html body.skin-hdr-soft #page .hdr .nav{background:color-mix(in srgb,var(--sk-panel) 90%,transparent)!important;-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--ink) 8%,transparent),0 1px 2px color-mix(in srgb,var(--ink) 5%,transparent),0 12px 30px -16px color-mix(in srgb,var(--ink) 24%,transparent)!important;border:0!important}
+html body.skin-hdr-soft #page .nav .tile{background:var(--ground)!important;border:0!important;box-shadow:inset 0 0 0 1px var(--hair-2)!important;border-radius:calc(var(--skh-r) / 2)!important}
+html body.skin-hdr-soft #page .nav .tile:last-child{background:var(--skh-sec)!important}
+html body.skin-hdr-soft #page .nav .tile:last-child b,html body.skin-hdr-soft #page .nav .tile:last-child small{color:var(--skh-sec-ink)!important}
+/* solid: a filled bar in the brand colour, translucent tiles, the seconds and the button in the second colour */
+html body.skin-hdr-solid #page .hdr .nav{background:var(--skh-bg)!important;color:var(--skh-ink)!important;border:0!important;-webkit-backdrop-filter:none;backdrop-filter:none;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--skh-ink) 6%,transparent),0 12px 26px -16px color-mix(in srgb,var(--skh-bg) 60%,#000)!important}
+html body.skin-hdr-solid #page .nav .lw b,html body.skin-hdr-solid #page .nav .hsn,html body.skin-hdr-solid #page .nav .hsn b{color:var(--skh-ink)!important}
+html body.skin-hdr-solid #page .nav .lw small,html body.skin-hdr-solid #page .nav .cdl,html body.skin-hdr-solid #page .nav .hsn small{color:var(--skh-mute)!important}
+html body.skin-hdr-solid #page .nav .cdl .pulse,html body.skin-hdr-solid #page .nav .cdl i{background:var(--skh-sec)!important;box-shadow:none!important}
+html body.skin-hdr-solid #page .nav .tile{background:color-mix(in srgb,var(--skh-ink) 10%,transparent)!important;border:0!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--skh-ink) 30%,transparent)!important;
+  border-radius:calc(var(--skh-r) * .75)!important}
+html body.skin-hdr-solid #page .nav .tile b{color:var(--skh-ink)!important}
+html body.skin-hdr-solid #page .nav .tile small{color:var(--skh-mute)!important}
+html body.skin-hdr-solid #page .nav .tile:last-child{background:var(--skh-sec)!important;box-shadow:none!important}
+html body.skin-hdr-solid #page .nav .tile:last-child b,html body.skin-hdr-solid #page .nav .tile:last-child small{color:var(--skh-sec-ink)!important}
+html body.skin-hdr-solid #page .nav .fav,html body.skin-hdr-solid #page .nav .avstack img{border-color:var(--skh-bg)!important;box-shadow:0 0 0 2px var(--skh-bg)!important}
+html body.skin-hdr-solid #page .nav .btn.sm{border-radius:calc(var(--skh-r) * .75)!important}
+html body.skin-hdr-solid.skin-dark #page .nav .sklogo{filter:none}
+@media (max-width:760px){
+  html body.skin-hdr #page .hdr{padding-top:8px}
+  html body.skin-hdr #page .hdr .nav,html body.skin-hdr #page .hdr.tight .nav{width:calc(100% - 20px)!important;padding:6px!important;min-height:52px}
+  html body.skin-hdr-plate #page .nav .sklogo{height:38px;max-width:70px;padding:3px 6px}
+}
+/* closing.bg: the closing section on a full-width colour band, the card stays on its panel */
+html body.skin-close-band #page #closing{background:var(--skp-bg)!important;margin-top:clamp(40px,5vw,80px)!important;margin-left:0!important;margin-right:0!important;border-radius:0!important;
+  padding-top:clamp(56px,7vw,108px)!important;padding-bottom:clamp(56px,7vw,110px)!important;max-width:none!important}
+html body.skin-close-band #page #closing > .ccard{max-width:1116px;margin-left:auto;margin-right:auto}
+
+/* =====================================================================================================
+   HAND-PAGE OPTIONS, SECOND PASS (2026-09-29, Kelsey Tonner's hand page side by side with the skin): trust block,
+   nav links, sticky video "flat", lock bar "solid", section order / hide / tight / width, day rows, type caps,
+   fit split + boxed cards, takeaway row, stacked closing form, square play button, registration card top edge,
+   static facts, gated band cards. Each rule sits under its own body.skin-* class; field reference in
+   docs/brand-skin-log.md, "Hand-page options, second pass".
+   ===================================================================================================== */
+/* ---- trust_badge.art "block": a stat block on the brand colour, faces, one uppercase line */
+html body.skin-tblock #page .htrust.skblock{display:flex!important;align-items:center;gap:22px;padding:12px 22px 12px 12px!important;border:0!important;box-shadow:none!important;background:var(--sk-panel)!important}
+html body.skin-tblock #page .skblk{flex:none;display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--skt-bg);color:var(--skt-ink);
+  border-radius:calc(var(--r-lg,12px) * .6);padding:9px 16px;line-height:1.2}
+html body.skin-tblock #page .skblk small{font-family:var(--label);font-weight:var(--lw,700);font-size:10.5px;line-height:1.4;letter-spacing:.2em;text-transform:uppercase;color:var(--skt-eye)}
+html body.skin-tblock #page .skblk b{font-family:var(--display);font-weight:var(--dw,700);font-size:18px;line-height:1.15;letter-spacing:-.01em;color:var(--skt-ink)}
+html body.skin-tblock #page .skblk span{font-size:13.5px;color:var(--skt-sub)}
+html body.skin-tblock #page .htrust.skblock .avstack{flex:none}
+html body.skin-tblock #page .sktr{flex:1;min-width:0;margin:0;text-align:center;font-family:var(--label);font-weight:var(--lw,700);font-size:12.5px;line-height:1.35;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink)}
+@media (max-width:760px){
+  html body.skin-tblock #page .htrust.skblock{flex-wrap:wrap;justify-content:center;gap:12px;padding:10px 12px!important}
+  html body.skin-tblock #page .skblk b{font-size:15px}
+  html body.skin-tblock #page .sktr{flex-basis:100%;font-size:11px}
+}
+/* ---- header.nav_links: a slim underlined row above the floating header */
+html body.skin-navlinks #page .sknavl{position:relative;z-index:61;display:flex;justify-content:center;flex-wrap:wrap;gap:8px 28px;padding:14px 16px 0}
+html body.skin-navlinks #page .sknavl a{font-family:var(--label);font-weight:var(--lw,700);font-size:12.5px;line-height:1;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1.5px}
+html body.skin-navlinks #page .sknavl a:hover{color:var(--accent-text,var(--accent))}
+@media (max-width:1000px){html body.skin-navlinks #page .sknavl{display:none}}
+/* ---- sticky_video.style "flat": a plain white-edged card, the button inside the picture, square corners */
+html body.skin-sticky-flat #stick{filter:none!important}
+html body.skin-sticky-flat #stick .svcard{position:relative;padding:0!important;gap:0!important;background:var(--ink)!important;border:4px solid var(--skv-brd);border-radius:var(--skv-r)!important;
+  overflow:hidden;box-shadow:0 14px 34px -18px color-mix(in srgb,var(--ink) 55%,transparent)!important}
+html body.skin-sticky-flat #stick .svmedia{border-radius:0!important}
+html body.skin-sticky-flat #stick .svmute,html body.skin-sticky-flat #stick .svhint{display:none!important}
+html body.skin-sticky-flat #stick .svcap{bottom:62px!important;font-size:13px!important;line-height:1.35}
+html body.skin-sticky-flat #stick .svbar{bottom:44px!important;left:12px;right:12px}
+html body.skin-sticky-flat #stick .svbar i,html body.skin-sticky-flat #stick .svbar i:after{background:var(--skv-bar)!important}
+html body.skin-sticky-flat #stick .svcard > .btn{position:absolute;left:8px;right:8px;bottom:6px;width:auto!important;height:34px!important;margin:0!important;z-index:4;
+  background-color:var(--skv-btn)!important;color:var(--skv-btn-ink)!important;box-shadow:none!important;border-radius:calc(var(--skv-r) * .42)!important;font-size:12px!important}
+html body.skin-sticky-flat #stick .svx{background:color-mix(in srgb,var(--ink) 60%,transparent)!important;border:0!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+html body.skin-sticky-flat #stick.bub .svcard,html body.skin-sticky-flat #stick:not(.open) .svcard{border-width:3px}
+@media (max-width:760px){html body.skin-sticky-flat #stick:not(.open) .svcard{border-radius:50%!important;padding:0!important}}
+html body.skin-sticky-flat #stick.bub:not(.open) .svcard{border-radius:50%!important}
+/* ---- gate.style "solid": the lock bar filled in the ink colour with a coloured edge, pinned low */
+html body.skin-gate-solid #gate{left:0!important;right:0!important;bottom:22px!important;transform:none!important;display:flex;justify-content:center;padding:0 16px}
+html body.skin-gate-solid #gate .gbar{background:var(--skg-bg)!important;border:0!important;border-left:6px solid var(--skg-edge)!important;border-radius:var(--skg-r)!important;
+  padding:10px 10px 10px 16px!important;gap:14px!important;box-shadow:0 18px 40px -20px color-mix(in srgb,var(--skg-bg) 70%,#000)!important;transform:none!important}
+html body.skin-gate-solid #gate .gstub{width:auto!important;background:none!important;color:var(--skg-edge)!important}
+html body.skin-gate-solid #gate .gstub .glock{color:var(--skg-edge)!important}
+html body.skin-gate-solid #gate .gtx{padding:0!important}
+html body.skin-gate-solid #gate .gtx:before{display:none!important}
+html body.skin-gate-solid #gate .gtx b{color:var(--skg-ink)!important}
+html body.skin-gate-solid #gate .gtx small{color:var(--skg-mute)!important;font-family:var(--body);font-weight:400;font-size:13px;letter-spacing:0;text-transform:none}
+html body.skin-gate-solid #gate .gbar .btn{background-color:var(--skg-btn)!important;color:var(--skg-btn-ink)!important;box-shadow:none!important;border-radius:calc(var(--skg-r) * .7)!important}
+html body.skin-gate-solid #gate .gbar:before,html body.skin-gate-solid #gate .gbar:after{display:none!important}
+@media (max-width:760px){html body.skin-gate-solid #gate{bottom:14px!important;padding:0 10px}html body.skin-gate-solid #gate .gbar{width:100%;padding:8px 8px 8px 12px!important;gap:10px!important}}
+/* ---- sections: hide, tight (no ground gap between two bands), content width */
+html body.skin #page .skhide{display:none!important}
+html body.skin-tight #page > section:not(#hero){margin-top:0!important;margin-bottom:0!important}
+html body.skin-tight #page > #gatewrap{margin-top:0!important}
+html body.skin-width #page #takeaway,html body.skin-width #page #faq{max-width:var(--skw)!important}
+html body.skin-width #page #days > *:not(.skroute),html body.skin-width #page #fitc > *,html body.skin-width #page .gated{max-width:var(--skw);margin-left:auto;margin-right:auto}
+html body.skin-width #page #fitc > .fitgrid{max-width:var(--skw)!important}
+/* ---- days.rows "left" / "right": every day's copy on the same side, the art on the other (default alternates) */
+@media (min-width:901px){
+  html body.skin-rows-left #page #days .d1.hasmac .dbody{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr)!important;grid-template-areas:"text mac" "cta mac"!important}
+  html body.skin-rows-left #page #days .dagenda.hassheet .dbody,html body.skin-rows-left #page #days .dagenda.hassheet.flip .dbody{
+    grid-template-columns:minmax(0,1fr) minmax(0,1.08fr)!important;grid-template-areas:"text sheet" "cta sheet"!important}
+  html body.skin-rows-right #page #days .d1.hasmac .dbody{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)!important;grid-template-areas:"mac text" "mac cta"!important}
+  html body.skin-rows-right #page #days .dagenda.hassheet .dbody,html body.skin-rows-right #page #days .dagenda.hassheet.flip .dbody{
+    grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)!important;grid-template-areas:"sheet text" "sheet cta"!important}
+  html body.skin-rows-left #page #days .dsess,html body.skin-rows-right #page #days .dsess{align-self:start}
+}
+html body.skin-days-leadb #page #days .dagenda .do{font-weight:var(--sk-bw-b,700)!important}
+/* ---- type: section heads, day titles, lede, body copy and line heights (the headline caps are in site.js layout()) */
+html body.skin-type-h1 #page .hero h1.disp{font-size:min(clamp(40px,4.7vw,78px),var(--skt-h1))!important}
+@media (max-width:760px){html body.skin-type-h1p #page .hero h1.disp{font-size:min(var(--skt-h1p),11vw)!important}}
+html body.skin-type-h2 #page .sh:not(.skduoh){font-size:clamp(30px,4vw,var(--skt-h2,42px))!important}
+html body.skin-type-hl #page #headline,html body.skin-type-hl #page .sh,html body.skin-type-hl #page #fith,html body.skin-type-hl #page #daysh,
+html body.skin-type-hl #page .dt{line-height:var(--skt-hl)!important}
+html body.skin-type-lede #page #lede{font-size:var(--skt-lede)!important}
+html body.skin-type-body #page #days .dxtra,html body.skin-type-body #page #days .intro,html body.skin-type-body #page #checks p,html body.skin-type-body #page .slede,
+html body.skin-type-body #page .skbio{font-size:var(--skt-body)!important}
+html body.skin-type-line #page #lede,html body.skin-type-line #page #days .dxtra,html body.skin-type-line #page #days .intro,html body.skin-type-line #page #checks p,
+html body.skin-type-line #page .slede,html body.skin-type-line #page .skbio{line-height:var(--skt-line)!important}
+@media (max-width:760px){
+  html body.skin-type-h2 #page .sh:not(.skduoh),html body.skin-type-h2 #page #fith,html body.skin-type-h2 #page #daysh{font-size:var(--skt-h2p,34px)!important}
+  html body.skin-type-h3 #page .dt{font-size:min(var(--skt-h3),32px)!important}
+}
+/* ---- buttons in capitals (shape.button_case "upper") */
+html body.skin-btn-upper #page .btn,html body.skin-btn-upper #stick .btn,html body.skin-btn-upper #gate .btn,html body.skin-btn-upper #modal .btn{
+  text-transform:uppercase;letter-spacing:var(--skbt,.05em);font-family:var(--label);font-weight:var(--lw,700)}
+/* ---- fit.layout "split": head, sub line and tally in a sticky left column, the cards on the right, on a band */
+html body.skin-fit-bg #page #fitc{background:var(--skf-bg)!important;margin-left:0!important;margin-right:0!important;max-width:none!important}
+html body.skin-fit-noportrait #page #fitc .fitgrid > .me{display:none!important}
+html body.skin-fit-nonote #page #fitc .fitnote{display:none!important}
+html body.skin-fit-nocta #page #fitc > .scta{display:none!important}
+html body.skin-fit-split #page #fitc{padding-top:clamp(64px,7.5vw,108px)!important;padding-bottom:clamp(64px,7.5vw,108px)!important}
+html body.skin-fit-split #page #fitc .fitgrid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;gap:clamp(36px,5vw,72px)!important;align-items:start!important;margin-top:0!important;
+  max-width:var(--skw,1116px)!important;justify-items:stretch!important}
+html body.skin-fit-split #page .skfhead{position:sticky;top:120px;text-align:left;min-width:0}
+html body.skin-fit-split #page .skfhead .eyebrow{justify-content:flex-start;margin:0}
+html body.skin-fit-split #page .skfhead #fith{text-align:left!important;margin:18px 0 18px;font-size:clamp(34px,4.2vw,var(--skt-h2,54px))!important;white-space:normal}
+html body.skin-fit-split #page .skfhead #fith > span{display:block;text-align:left!important}
+html body.skin-fit-split #page .skfsub{margin:0;max-width:380px;font-size:17.5px;line-height:1.6;color:var(--muted)}
+html body.skin-fit-split #page .skfhead .sktally{margin:28px 0 0!important;max-width:380px;background:var(--ground)!important}
+html body.skin-fit-split #page #fitc #checks{grid-column:2;width:100%;margin:0!important}
+@media (max-width:900px){
+  html body.skin-fit-split #page #fitc .fitgrid{grid-template-columns:minmax(0,1fr)!important}
+  html body.skin-fit-split #page .skfhead{position:static}
+  html body.skin-fit-split #page #fitc #checks{grid-column:1}
+  html body.skin-fit-split #page .skfhead #fith{font-size:var(--skt-h2p,34px)!important}
+}
+/* ---- fit.cards "boxed": each check its own white card, title on its own line in the display face */
+html body.skin-fit-boxed #page #checks{display:grid!important;gap:12px}
+html body.skin-fit-boxed #page #checks li{background:var(--ground)!important;border:1.5px solid var(--hair-2)!important;border-radius:var(--r-lg,10px)!important;padding:16px 20px!important;
+  margin:0!important;align-items:center!important;box-shadow:none!important}
+html body.skin-fit-boxed #page #checks li:before,html body.skin-fit-boxed #page #checks li:after{display:none!important}
+html body.skin-fit-boxed #page #checks li > div > p:first-child > b:first-child{display:block;font-family:var(--display);font-weight:var(--dw,700);font-size:18px;line-height:1.25;color:var(--ink);margin-bottom:2px}
+html body.skin-fit-boxed #page #checks li > div > p:first-child{color:var(--muted)}
+html body.skin-fit-boxed #page #checks .ckwhy{display:none}
+html body.skin-tick.skin-fit-boxed #page #checks li:hover{border-color:var(--accent)!important}
+/* ---- takeaway.layout "row": the head centred, the three documents flat in a row, the button under them */
+html body.skin-tk-row #page #takeaway.tkkit .tkgrid{display:flex!important;flex-direction:column;align-items:center;gap:0}
+html body.skin-tk-row #page #takeaway .tkside{display:contents}
+html body.skin-tk-row #page #takeaway .tkside .sh{order:1;text-align:center;margin:14px auto 0;max-width:800px}
+html body.skin-tk-row #page #takeaway .tkside > .eyebrow,html body.skin-tk-row #page #takeaway .tkside > .tktab{order:0;align-self:center}
+html body.skin-tk-row #page #takeaway .tkside .slede{order:2;text-align:center;max-width:620px;margin:16px auto 0}
+html body.skin-tk-row #page #takeaway .tkrows,html body.skin-tk-row #page #takeaway .tkgrid > svg{display:none!important}
+html body.skin-tk-row #page #takeaway .tkstack{order:3;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;width:100%;height:auto!important;margin:48px 0 0!important;max-width:none!important}
+html body.skin-tk-row #page #takeaway .tkart,html body.skin-tk-row #page #takeaway .tkart.a1,html body.skin-tk-row #page #takeaway .tkart.a2,html body.skin-tk-row #page #takeaway .tkart.a3{
+  position:relative!important;left:auto!important;top:auto!important;width:auto!important;margin:0!important;transform:none!important;min-width:0;
+  border-top:5px solid var(--accent)!important;background:var(--ground)!important}
+html body.skin-tk-row #page #takeaway .tkside .scta{order:4;margin:40px auto 0!important;align-items:center!important;justify-items:center!important;text-align:center!important}
+html body.skin-tk-row #page #takeaway .tkside .scta .btn{align-self:center!important}
+@media (max-width:1020px){html body.skin-tk-row #page #takeaway .tkstack{grid-template-columns:minmax(0,1fr);max-width:560px!important}}
+/* ---- closing.form "stack": the fields one under the other on a white half, the pass on the panel half */
+html body.skin-close-stack #page #closing .ccard{background:var(--skc-card)!important}
+html body.skin-close-stack #page #closing .skseat{background:var(--sk-panel)}
+html body.skin-close-stack #page #closing .form{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important}
+html body.skin-close-stack #page #closing .form input{width:100%;background:var(--sk-panel)!important;border:1.5px solid transparent!important;border-radius:calc(var(--r-lg,10px) * .6)!important;padding:17px 18px!important;height:auto!important}
+html body.skin-close-stack #page #closing .form input:focus{border-color:var(--accent)!important;background:var(--ground)!important}
+html body.skin-close-stack #page #closing .form .btn{width:100%!important;justify-content:center}
+@media (min-width:901px){
+  html body.skin-close-stack #page #closing .ccard > .chead{padding-top:52px!important}
+  html body.skin-close-stack #page #closing .ccard > .fine{padding-bottom:46px!important}
+}
+/* ---- phone.play "square": the play button as a rounded square in the accent */
+html body.skin-play-sq #page .uibig span{width:60px!important;height:44px!important;border-radius:6px!important}
+/* ---- regcard: a coloured top edge, its own ground, who it is for, one note */
+html body.skin-reg-top #page #regcard{border-top:5px solid var(--skr-top)!important}
+html body.skin-reg-bg #page #regcard{background:var(--skr-bg)!important}
+html body.skin-reg-who #page #regcard .skwho{font-size:14.5px;color:var(--muted);margin-left:4px}
+html body.skin-reg-who #page #regcard .skwho b{color:var(--ink)}
+html body.skin #page #regcard .sknote2{display:flex;align-items:center;gap:9px;background:var(--sk-panel)!important;border-radius:calc(var(--r-lg,10px) * .6);padding:9px 14px;font-size:14.5px;color:var(--muted)}
+html body.skin #page #regcard .sknote2 b{color:var(--ink)}
+html body.skin #page #regcard .sknote2 svg{flex:none}
+/* ---- widgets.facts "static": the fact strip wraps and stays still, each fact behind a round arrow */
+html body.skin-facts-static #page #facts .fk{animation:none!important;transform:none!important;flex-wrap:wrap;justify-content:center;width:100%}
+html body.skin-facts-static #page #facts .fkc{flex-wrap:wrap;justify-content:center;gap:12px 36px;white-space:normal}
+html body.skin-facts-static #page #facts .fkd{display:none}
+html body.skin-facts-static #page #facts .fki{display:inline-flex;align-items:center;gap:8px}
+html body.skin-facts-static #page #facts .fki:before{content:'';width:16px;height:16px;border-radius:50%;flex:none;margin-right:2px;background:var(--sk-mark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.2 8h7M8.6 5.2 11.4 8l-2.8 2.8' fill='none' stroke='%23000' stroke-opacity='.8' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+html body.skin-nocue #page .scue{display:none!important}
+/* ---- photo_band: eyebrow filled, first clause of the bio in bold */
+html body.skin-duo-eyefill #page .skduoe{background:color-mix(in srgb,var(--skb-ink) 10%,transparent)!important;border-color:transparent!important}
+html body.skin-duo-biolead #page .skbio b{color:var(--skb-ink)}
+/* ---- gated.cards "band": the blurred cards carry a numbered band on top */
+html body.skin-gcards-band #page .gcards{counter-reset:skg}
+html body.skin-gcards-band #page .gcard{padding:0!important;overflow:hidden;background:var(--ground)!important;border:1px solid var(--hair-2)!important}
+html body.skin-gcards-band #page .gcard > svg{display:none}
+html body.skin-gcards-band #page .gcard:before{counter-increment:skg;content:'0' counter(skg);display:block;background:var(--sk-days-bg,var(--accent));color:var(--skd-num,var(--accent-ink));
+  font:700 26px/1 var(--display);padding:16px 22px;border-bottom:2px dashed var(--ground)}
+html body.skin-gcards-band #page .gcard h4{margin:18px 22px 0!important}
+html body.skin-gcards-band #page .gcard p{margin:9px 22px 24px!important}
+html body.skin-tk-row #page #takeaway:before{display:none!important}
+html body.skin-tk-row #page #takeaway .tkgrid .tkart{opacity:1!important;filter:none!important;box-shadow:none!important;border:1.5px solid var(--hair-2)!important;border-top:5px solid var(--accent)!important;
+  --kc-bg:var(--ground);--kc-ink:var(--ink);--kc-body:var(--ink);--kc-soft:var(--muted);--kc-faint:var(--muted);--kc-line:var(--hair-2);--kc-dash:var(--hair-2);--kc-rim:transparent;
+  --kc-acc:var(--accent);--kc-acc-ink:var(--accent-ink,#fff);--kc-dot:var(--muted);--kc-well:var(--sk-panel);--kc-art:var(--ink);--tint2:var(--sk-panel)}
+/* ---- fit.tick "arrow": the tick is a round arrow in the mark colour, hollow when unticked */
+html body.skin-fit-arrow #page #checks .ck.skarrow{background:none!important;box-shadow:none!important;width:30px;height:30px}
+html body.skin-fit-arrow #page #checks .skr{fill:var(--sk-mark);stroke:var(--sk-mark);stroke-width:2.6}
+html body.skin-fit-arrow #page #checks .ska{fill:none;stroke:var(--ink);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+html body.skin-fit-arrow #page #checks li.off .skr{fill:none;stroke:var(--muted)}
+html body.skin-fit-arrow #page #checks li.off .ska{stroke:var(--muted)}
+html body.skin-tick.skin-fit-arrow #page #checks li.off .ck{box-shadow:none!important}
+/* ---- booking_card.bold: the ticket's join line as a bold title in the display face */
+html body.skin-ticket-bold #page .hbook .hbjoin{font-family:var(--display)!important;font-weight:var(--dw,700)!important;font-size:20px!important;line-height:1.2!important;letter-spacing:-.01em}
+html body.skin-ticket-bold #page .hbook .hbjoin em{font-style:normal}
+/* ---- sections.pad: the full-width bands breathe like the hand page (days, fit band, closing band) */
+html body.skin-pad #page #days,html body.skin-pad.skin-fit-bg #page #fitc,html body.skin-pad.skin-close-band #page #closing{
+  padding-top:clamp(64px,7.5vw,var(--skpad))!important;padding-bottom:clamp(64px,7.5vw,var(--skpad))!important}
+html body.skin-pad #page #days .intro,html body.skin-pad #page #days #intro{max-width:560px;margin-left:auto;margin-right:auto;text-wrap:balance}
+/* ---- day_art.card: the scene cards on their own colour (white on a colour band) */
+html body.skin-art-card #page .sk-scene{background:var(--sks-card)!important;border-color:transparent!important}
+/* ---- closing.form "stack": the sub line, the head a size up, no glow under the button */
+html body.skin #page #closing .skcsub{margin:14px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:44ch}
+html body.skin-close-stack #page #closing .chead #cH{font-size:clamp(28px,3.2vw,42px)!important;line-height:1.06}
+html body.skin-close-stack #page #closing .form .btn:before,html body.skin-close-stack #page #closing .form .btn:after{display:none!important}
+html body.skin #page #takeaway .skeye{justify-content:center;margin:0}
+/* ---- hero.phone_order "media": on a phone the trust strip, the video and the ticket come before the headline */
+@media (max-width:760px){
+  html body.skin-hero-media #page .hgrid .htrust{order:1}
+  html body.skin-hero-media #page .hgrid .hvid{order:2}
+  html body.skin-hero-media #page .hgrid .hbook{order:3}
+  html body.skin-hero-media #page .hgrid #heroEye{order:4;margin-top:18px}
+  html body.skin-hero-media #page .hgrid #headline{order:5}
+  html body.skin-hero-media #page .hgrid #lede{order:6}
+  html body.skin-hero-media #page .hgrid .hq{order:7}
+  html body.skin-hero-media #page .hgrid #regcard{order:8}
+  html body.skin-book-phone #page .hgrid .hbook{display:grid!important;width:100%}
+}
+/* ---- decor.chips "boxed": the stuck chips as white boxes with a hairline, small corners */
+html body.skin-chips-boxed #page .hq .hqb{background:var(--ground)!important;border:1.5px solid var(--hair-2)!important;border-radius:calc(var(--r-lg,10px) * .6)!important;
+  color:var(--ink)!important;box-shadow:none!important}
+html body.skin-chips-boxed #page .hq .hqb:hover,html body.skin-chips-boxed #page .hq .hqb.on{border-color:var(--accent)!important}
