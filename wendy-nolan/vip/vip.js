@@ -20,6 +20,9 @@
     var now = Date.now(), wall = new Date(now + tzOffset(TZ, now) * 6e4);
     var guess = Date.UTC(wall.getUTCFullYear(), wall.getUTCMonth(), wall.getUTCDate() + Math.max(1, +V.starts_in_days || 9),
       +V.start_hour || 12, 0, 0);
+    var sm = /^(\d{4})-(\d\d)-(\d\d)$/.exec(V.start_date || '');       /* a real date beats the rolling default while it is ahead */
+    if (sm) { var sg = Date.UTC(+sm[1], +sm[2] - 1, +sm[3], +V.start_hour || 12, 0, 0), st = new Date(sg - tzOffset(TZ, sg) * 6e4);
+      if (st.getTime() > now) return st; }
     return new Date(guess - tzOffset(TZ, guess) * 6e4);
   })();
   function day(n) { return new Date(START.getTime() + (n - 1) * 864e5); }
@@ -32,7 +35,7 @@
     catch (e) { return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }); }
   }
   var TOK = {
-    '{day1}': dfmt(day(1), true), '{day3}': dfmt(day(3), true), '{day4}': dfmt(day(4), true),
+    '{day1}': dfmt(day(1), true), '{day2}': dfmt(day(2), true), '{day3}': dfmt(day(3), true), '{day4}': dfmt(day(4), true),
     '{day4_date}': dfmt(day(4)), '{day1_date}': dfmt(day(1)), '{close}': dfmt(day(11)),
     '{time}': tfmt(day(1)), '{first}': V.first_name || '', '{event}': V.event || '', '{price}': (V.currency || '$') + V.price
   };
@@ -82,6 +85,54 @@
   var faces = V.faces || [];
   $('vFaces').innerHTML = faces.slice(0, 4).map(function (f) { return '<img src="' + esc(f) + '" alt="">'; }).join('');
   $('vProof').innerHTML = md(fill(V.proof || '**{vip_count} people** added VIP to their seat')).replace('{vip_count}', esc(V.vip_count || '146'));
+
+
+
+  /* the card under the video: real words from the lead's audience (site.vip.voices), so the left column is never empty */
+  if (V.voices && V.voices.items) {
+    var vo = V.voices;
+    $('vVoices').innerHTML = '<aside class="vvoices"><span class="vspark" aria-hidden="true"></span><p class="vcap">' + esc(vo.cap || 'In their words') + '</p>' +
+      '<h3>' + esc(fill(vo.title || '')) + '</h3>' +
+      vo.items.map(function (it) {
+        var q = esc(fill(it.q));
+        if (it.hl && q.indexOf(esc(it.hl)) > -1) q = q.replace(esc(it.hl), '<mark>' + esc(it.hl) + '</mark>');
+        return '<blockquote><p>' + q + '</p></blockquote>';
+      }).join('') + (vo.src ? '<p class="vsrc">' + esc(fill(vo.src)) + '</p>' : '') + '</aside>';
+  }
+
+  /* the "do not close this page" strip */
+  if (V.leave) { var lv = $('vLeave'); lv.innerHTML = md(fill(V.leave)); lv.hidden = false; }
+
+  /* extra sections: compare (free seat vs VIP), timeline (VIP across the days), faq, closing ask */
+  var more = '', tick = '<svg class="vtk" width="18" height="18" viewBox="0 0 16 16" aria-label="Included"><path d="M3.2 8.4 6.4 11.4 12.8 4.6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function cell(v) { return v === true ? tick : (v ? '<span>' + esc(fill(v)) + '</span>' : '<span class="vdash" aria-label="Not included">&ndash;</span>'); }
+  function head(cap, h) { return '<span class="vspark" aria-hidden="true"></span><p class="vcap">' + esc(cap) + '</p><h2 class="vh2">' + esc(fill(h)) + '</h2>'; }
+  if (V.compare && V.compare.rows) {
+    var c = V.compare;
+    more += '<section class="vsec vcmp"><div class="vwrap">' + head(c.cap || 'Free seat or VIP', c.title || 'What VIP adds to your seat') +
+      '<div class="vtbl" role="table"><div class="vrow vrh" role="row"><span></span><b>' + esc(c.free_label || 'Free seat') + '</b><b class="vipc">' + esc(c.vip_label || 'VIP') + '</b></div>' +
+      c.rows.map(function (r) { return '<div class="vrow" role="row"><span class="vrl">' + esc(fill(r.t)) + '</span><span class="vc">' + cell(r.free) + '</span><span class="vc vipc">' + cell(r.vip) + '</span></div>'; }).join('') +
+      '</div></div></section>';
+  }
+  if (V.timeline && V.timeline.length) {
+    more += '<section class="vsec vtl"><div class="vwrap">' + head(V.timeline_cap || 'Across the three days', V.timeline_title || 'How VIP works day by day') +
+      '<ol class="vdays">' + V.timeline.map(function (d, k) {
+        return '<li><span class="vdn">0' + (k + 1) + '</span><small>' + esc(fill(d.day)) + '</small><b>' + esc(fill(d.title)) + '</b><p>' + md(fill(d.text)) + '</p></li>';
+      }).join('') + '</ol></div></section>';
+  }
+  if (V.faq && V.faq.length) {
+    more += '<section class="vsec vfaq"><div class="vwrap vnarrow">' + head(V.faq_cap || 'Before you decide', V.faq_title || 'Questions about VIP') +
+      '<div class="vqs">' + V.faq.map(function (q, k) {
+        return '<details' + (k === 0 ? ' open' : '') + '><summary>' + esc(fill(q.q)) + '</summary><p>' + md(fill(q.a)) + '</p></details>';
+      }).join('') + '</div></div></section>';
+  }
+  if (V.closing) {
+    var z = V.closing;
+    more += '<section class="vsec vend"><div class="vwrap vnarrow"><h2 class="vh2">' + esc(fill(z.title || 'Ready to add VIP?')) + '</h2><p>' + md(fill(z.text || '')) +
+      '</p><a class="vcta" href="#" onclick="return false"><span>' + esc(fill(V.cta || 'Yes, add VIP for {price}')) + '</span></a>' +
+      '<a class="vno" href="#" onclick="return false">' + esc(fill(V.decline || 'No thanks, take me to my join details')) + '</a></div></section>';
+  }
+  var mo = $('vMore'); if (mo) mo.innerHTML = more;
 
   /* progress track fills on load; the sample toast rotates through the registration page's names */
   requestAnimationFrame(function () { setTimeout(function () { document.querySelector('.vtrack').classList.add('go'); }, 120); });
