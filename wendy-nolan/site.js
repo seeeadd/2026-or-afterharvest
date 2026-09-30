@@ -23,6 +23,9 @@
   var LP = window.LP || {}, S = window.SITE || {};
   var P = document.getElementById('page');
   if (!P) return;
+  var THEME = S.skin ? S.skin.base_theme : S.theme;     /* a skin names its own base theme (or none) */
+  if (THEME) document.body.classList.add('theme-' + String(THEME).replace(/[^a-z0-9-]/gi, ''));
+  if (S.font_link) { var fl = document.createElement('link'); fl.rel = 'stylesheet'; fl.href = S.font_link; document.head.appendChild(fl); }
 
   /* ------------------------------------------------------------ 1. helpers */
   function $(id) { return document.getElementById(id); }
@@ -82,14 +85,29 @@
     var now = Date.now(), wall = new Date(now + tzOffset(TZ, now) * 6e4);
     var guess = Date.UTC(wall.getUTCFullYear(), wall.getUTCMonth(), wall.getUTCDate() + Math.max(1, toNum(S.starts_in_days, 9)),
       toNum(S.start_hour, 12), 0, 0);
-    return new Date(guess - tzOffset(TZ, guess) * 6e4);
+    var t = new Date(guess - tzOffset(TZ, guess) * 6e4);
+    return isNaN(t.getTime()) ? new Date(Math.ceil(now / 864e5) * 864e5 + 9 * 864e5 + 16 * 36e5) : t;
   })();
-  var END = new Date(START.getTime() + 2 * 864e5);
+  var WEBINAR = LP.format === 'webinar';          /* 1-day webinar lead: one session on START's day */
+  var END = new Date(START.getTime() + (WEBINAR ? 60 * 6e4 : 2 * 864e5));
 
+  /* every date on the page goes through here: one English format ("Thu Oct 8"), never the visitor's locale order,
+     and never "Invalid Date" (a bad start_hour or starts_in_days falls back to 12:00, 9 days out) */
+  function dparts(d) {
+    var o = {};
+    try {
+      new Intl.DateTimeFormat('en-US', { weekday: 'short', day: 'numeric', month: 'short', timeZone: TZ })
+        .formatToParts(d).forEach(function (x) { o[x.type] = x.value; });
+    } catch (e) {
+      o = { weekday: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d.getDay()], day: String(d.getDate()),
+            month: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getMonth()] };
+    }
+    return o;
+  }
   function dfmt(d, withWeekday) {
-    var o = { day: 'numeric', month: 'short', timeZone: TZ };
-    if (withWeekday) o.weekday = 'short';
-    return d.toLocaleDateString(undefined, o).replace(',', '');
+    if (!(d instanceof Date) || isNaN(d.getTime())) return '';
+    var o = dparts(d);
+    return (withWeekday ? o.weekday + ' ' : '') + o.month + ' ' + o.day;
   }
   function tfmt(d) {
     try {
@@ -207,17 +225,36 @@
     im.onerror = function () { cal.innerHTML = '<span class="bmark">' + emblemSVG(1.8) + '</span>'; };
   }
 
-
   /* a call to action in the reader's own words: the day's promise turned into the button. Built from the
      lead's own day titles, so no lead needs copy written by hand. */
-  function ctaFor(title) {
-    var t = String(title || '').split('|').join(' ').replace(/[.!?]+\s*$/, '').trim();
-    var w = t.split(/\s+/).slice(0, 3);
-    var tail = /^(before|after|like|and|to|the|a|an|for|with|so|that|you|your|into|of|on|in)$/i;
-    while (w.length > 2 && tail.test(w[w.length - 1])) w.pop();
-    if (!w.length) return 'Hold my seat';
-    w[0] = w[0].charAt(0).toLowerCase() + w[0].slice(1);
-    return 'Learn how to ' + w.join(' ');
+  function ctaFor(title, i) {
+    /* the whole day title as the button, or a plain "Hold my seat" line: a cut title left "Learn how to pick 3
+       topics you can" and "Learn how to turn it" on the buttons (2026-09-29). Only a short title that opens on a
+       verb reads as "Learn how to ..." */
+    var t = String(title || '').split('|').join(' ').replace(/\s+/g, ' ').replace(/[.!?]+\s*$/, '').trim();
+    var w = t ? t.split(' ') : [];
+    if (w.length && w.length <= 6 && t.length <= 40 && phraseKind(t) === 'verb')
+      return 'Learn how to ' + w[0].toLowerCase() + (w.length > 1 ? ' ' + w.slice(1).join(' ') : '');
+    return i != null ? 'Hold my seat for Day ' + (i + 1) : 'Hold my seat';
+  }
+  /* is a lead's phrase a verb phrase ("pick one goal"), a noun phrase ("your real unit cost") or unknown? Generated
+     sentences only splice a phrase whose kind is known, so no page reads "Day 1 starts on list what you read" or
+     "by Day 3 you your hour a day" (2026-09-29) */
+  var VERBS = ('add answer audit block book build choose clarify close collect craft create cut decide define design draft ' +
+    'edit film find fix follow get grow identify land launch list lock make map name open outline package pick pitch plan ' +
+    'post pre-sell prepare presell price protect publish put raise record rewrite run schedule score script sell send set ' +
+    'shape ship sketch spot start stay test track turn understand use validate write learn leave walk see work build draw ' +
+    'bring join go share show kill fill simplify replace swap stop tighten scan read reach ask earn grab hire invite ' +
+    'match offer position refine reframe remove reset sort trim upgrade').split(' ');
+  var NOUNISH = ('a an the your my our their one two three four five six seven ten every each this that these those ' +
+    'day week month first last next new real simple clear').split(' ');
+  function phraseKind(t) {
+    var w0 = String(t || '').trim().split(/\s+/)[0] || '';
+    w0 = w0.toLowerCase().replace(/[^a-z0-9-]/g, '');
+    if (!w0) return '';
+    if (VERBS.indexOf(w0) > -1) return 'verb';
+    if (NOUNISH.indexOf(w0) > -1 || /^\d/.test(w0)) return 'noun';
+    return '';
   }
   function ctaBlock(label, note) {
     return '<div class="scta"><span class="btn lg" data-reg="1" role="button" tabindex="0">' +
@@ -500,8 +537,7 @@
     var s1 = el('section', 'gsec z',
       '<p class="eyebrow"><i class="dot"></i>What you get</p>' +
       '<h2 class="gh">Three days, and the pieces you keep.</h2>' +
-      '<p class="gsub">Every session is live and recorded, and you finish with the working version of ' +
-      esc(String(days[0] && days[0].title || '').split('|').join(' ').toLowerCase() || 'your plan') + '</p>' +
+      '<p class="gsub">Every session is live and recorded, and each day ends with a finished piece you keep.</p>' +
       '<div class="gcards">' + days.slice(0, 3).map(function (d, i) {
         return '<div class="gcard">' + ICONS[i % 3] + '<h4>' + esc(String(d.title).split('|').join(' ')) +
           '</h4><p>' + esc(d.outcome) + '</p></div>';
@@ -527,7 +563,7 @@
       ['Do I need anything before Day 1?', prepAnswer()],
       ['What if I cannot make a session live?', 'Every session is recorded and the replay lands in your inbox the same evening.'],
       ['Is this really free?', 'Yes. Three days, live with ' + FIRST + ', no card and no catch.'],
-      ['Who is this for?', 'Anyone who wants ' + String(EV).toLowerCase() + ' finished rather than planned.']
+      ['Who is this for?', 'Anyone who recognised themselves in the fit check. Bring the work you already have and leave with the next step done.']
     ];
     var s3 = el('section', 'gsec z',
       '<h2 class="gh">Questions people ask.</h2>' +
@@ -1100,7 +1136,7 @@
     fk.innerHTML = FACTS_ONE;
     var one = q('.fkc', fk).scrollWidth;
     var room = box.clientWidth - 2 * parseFloat(getComputedStyle(box).paddingLeft || 0);
-    if (one <= box.clientWidth - 40) {
+    if (one <= box.clientWidth - 40 || document.body.classList.contains('skin-facts-static')) {
       box.classList.add('still'); box.classList.remove('mq');
       fk.style.removeProperty('--mqs');
     } else {
@@ -1273,6 +1309,7 @@
   }
   function layout() {
     var wide = P.clientWidth;
+    var TY = (SK && SK.type) || {};           /* skin type caps (skin.json "type"); empty for every other page */
     headerFit();
     scalePhone();
     statCols();
@@ -1280,19 +1317,20 @@
     var right = q('.hright'), h1 = $('headline');
     if (h1 && right) {
       var colW = (right.clientWidth || wide) - 2;
-      var fs = fitLines(h1, colW, wide > 900 ? 80 : 62, 26);
+      var fs = fitLines(h1, colW, wide > 900 ? (+TY.h1 || 80) : wide > 760 ? (+TY.h1 || 62) : (+TY.h1_phone || 62), 26);
       rescaleMark(fs);
     }
     var fith = $('fith'), fitc = $('fitc'), daysh = $('daysh'), days = $('days');
     if (wide <= 760) {                     /* on a phone the section heads wrap to two balanced lines (CSS) */
       [fith, daysh].forEach(function (h) { if (h) { h.style.fontSize = ''; h.classList.add('wrapped'); } });
     } else {
-      if (fith && fitc) fitLines(fith, Math.min((fith.clientWidth || fitc.clientWidth) - 8, 980), 56, 22);
-      if (daysh && days) fitLines(daysh, Math.min((daysh.clientWidth || days.clientWidth) - 8, 1000), 54, 22);
+      if (fith && document.body.classList.contains('skin-fit-split')) { fith.style.fontSize = ''; fith.classList.add('wrapped'); }
+      else if (fith && fitc) fitLines(fith, Math.min((fith.clientWidth || fitc.clientWidth) - 8, 980), +TY.h2 || 56, 22);
+      if (daysh && days) fitLines(daysh, Math.min((daysh.clientWidth || days.clientWidth) - 8, 1000), +TY.h2 || 54, 22);
     }
     var d1t = $('d1t');
-    if (d1t) fitLines(d1t, d1t.parentNode.clientWidth - 4, 38, 20);
-    qa('.dc .dt').forEach(function (n) { fitLines(n, n.parentNode.clientWidth - 56, 30, 18); });
+    if (d1t) fitLines(d1t, d1t.parentNode.clientWidth - 4, +TY.h3 || 38, 20);
+    qa('.dc .dt').forEach(function (n) { fitLines(n, n.parentNode.clientWidth - (TY.h3 ? 4 : 56), +TY.h3 || 30, 18); });
     qa('.bs .n').forEach(function (n) { n.style.fontSize = ''; shrinkTo(n, n.parentNode.clientWidth - 16, 20); });
     qa('.pfn').forEach(function (n) { shrinkTo(n, n.parentNode.clientWidth, 11); });
     qa('.pfs').forEach(function (n) { shrinkTo(n, n.parentNode.clientWidth, 7.5); });
@@ -1316,6 +1354,921 @@
       lw.classList.add('two');
       nm.style.fontSize = '13px';
     }
+  }
+
+  /* ======================================================== 10. brand skin
+     leads/<slug>/skin.json (optional) arrives as window.SITE.skin. No skin = today's page, untouched. Everything
+     here is data driven: tokens become CSS variables, choices become body classes (skin-*), and the extra drawings
+     (trust badge, day art, notes, rings) come from the small libraries below. Field reference: docs/brand-skin-log.md */
+  var SK = S.skin && typeof S.skin === 'object' ? S.skin : null;
+  function hexRGB(h) {
+    h = String(h || '').trim().replace('#', '');
+    if (h.length === 3) h = h.replace(/(.)/g, '$1$1');
+    if (!/^[0-9a-f]{6}$/i.test(h)) return null;
+    return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+  }
+  function rgba(h, a) { var c = hexRGB(h); return c ? 'rgba(' + c.join(',') + ',' + a + ')' : h; }
+  function relLum(h) {
+    var c = hexRGB(h); if (!c) return 0.5;
+    return c.map(function (v) { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); })
+      .reduce(function (s, v, k) { return s + v * [.2126, .7152, .0722][k]; }, 0);
+  }
+  function fam(f, fb) { return f && f.family ? '"' + f.family + '", ' + fb : ''; }
+  var SKDARK = false;
+  function skinTokens() {
+    if (!SK) return;
+    var c = SK.colors || {}, f = SK.fonts || {}, sh = SK.shape || {}, r = document.body.style, B = document.body.classList;
+    SKDARK = c.ground ? relLum(c.ground) < 0.2 : !!SK.dark;
+    B.add('skin', 'skin-' + (SKDARK ? 'dark' : 'light'));
+    if (SK.name) B.add('skin-' + String(SK.name).replace(/[^a-z0-9-]/gi, ''));
+    var set = function (k, v) { if (v != null && v !== '') r.setProperty(k, v); };
+    /* colours: the lead's sampled hexes, and the derived tokens lp.css reads */
+    var ground = c.ground, ink = c.ink, mute = c.mute, acc = c.accent;
+    set('--ground', ground); set('--ink', ink); set('--cap-ink', ink);
+    if (mute) { set('--muted', mute); set('--cap-muted', mute); set('--ink-soft', 'color-mix(in srgb,' + ink + ' 62%,' + mute + ')'); }
+    if (c.line) { set('--hair', c.line); set('--hair-2', 'color-mix(in srgb,' + c.line + ' 60%,' + (ink || '#888') + ' 12%)'); }
+    else if (ink) { set('--hair', rgba(ink, SKDARK ? .12 : .10)); set('--hair-2', rgba(ink, SKDARK ? .2 : .17)); }
+    if (acc) {
+      set('--accent', acc); set('--head-acc', c.accent_text || acc); set('--accent-text', c.accent_text || acc);
+      set('--accent-10', rgba(acc, .13)); set('--accent-sh', rgba(acc, .5)); set('--accent-sh2', rgba(acc, .26));
+      set('--pat', acc); set('--ghost', acc);
+    }
+    set('--accent-ink', c.accent_ink); set('--accent2', c.accent2);
+    var panel = c.panel || (SKDARK ? 'color-mix(in srgb,' + ground + ' 94%,#fff)' : '#ffffff');
+    set('--sk-panel', panel);
+    ['--card', '--glass', '--glass-solid', '--glass-hi', '--field', '--cap-bg', '--strip'].forEach(function (k) { set(k, panel); });
+    set('--well', c.well || (ink ? rgba(ink, .05) : null));
+    set('--card-brd', c.line || (ink ? rgba(ink, .1) : null)); set('--glass-brd', c.line || (ink ? rgba(ink, .1) : null));
+    set('--av-ring', ground);
+    if (ground) {
+      var spot = (SK.decor || {}).spot;
+      set('--ground-paint', spot ? 'radial-gradient(48% 34% at 50% -4%,' + rgba(SKDARK ? '#ffffff' : (acc || ink), SKDARK ? .09 : .08) +
+        ',transparent 72%),' + ground : ground);
+      set('--wall', ground);
+    }
+    set('--band', c.band || (SKDARK ? panel : (c.night || ink)));
+    var bandInk = c.band_ink || (SKDARK ? ink : ground);
+    set('--band-ink', bandInk); set('--band-ink-70', 'color-mix(in srgb,' + bandInk + ' 72%,transparent)');
+    set('--band-ink-50', 'color-mix(in srgb,' + bandInk + ' 55%,transparent)'); set('--band-hair', 'color-mix(in srgb,' + bandInk + ' 14%,transparent)');
+    set('--band-paint', 'none');
+    set('--sk-tone', (SK.heading || {}).tone || mute || ink);
+    set('--sk-note1', c.note1 || acc); set('--sk-note2', c.note2 || c.accent2 || acc);
+    set('--sk-mark', (SK.heading || {}).mark_color || c.accent2 || acc);
+    set('--sk-accent2', c.accent2 || acc);
+    if (c.pill) { set('--sk-pill', c.pill); set('--sk-pill-ink', c.pill_ink || ink); B.add('skin-pill'); }   /* the hero date pill */
+    if (c.chip) { set('--sk-chip', c.chip); set('--sk-chip-ink', c.chip_ink || '#ffffff'); B.add('skin-chip'); }
+    /* type: display, body, label and the hand-note face */
+    if (f.display) { set('--display', fam(f.display, 'Georgia, serif')); set('--dw', f.display.weight || 600); set('--dw2', f.display.weight2 || f.display.weight || 500);
+      set('--sk-dtrack', f.display.tracking || '-.03em'); if (f.display['case'] === 'upper') B.add('skin-dupper'); }
+    if (f.body) { set('--body', fam(f.body, 'system-ui, sans-serif')); set('--sk-bw', f.body.weight || 400); set('--sk-bw-b', f.body.bold || 600); }
+    if (f.label) { set('--label', fam(f.label, 'system-ui, sans-serif')); set('--lw', f.label.weight || 600); set('--ltr', f.label.tracking || '.15em'); }
+    if (f.note) set('--sk-note', fam(f.note, 'cursive'));
+    /* shape: corners, edges and lift */
+    if (sh.radius != null) {
+      var R = +sh.radius;
+      set('--r-lg', R + 'px'); set('--r-md', Math.round(R * .72) + 'px'); set('--r-sm', Math.round(R * .5) + 'px'); set('--sk-r', R + 'px');
+    }
+    var btn = sh.button || 'pill';
+    set('--btn-r', btn === 'pill' ? '999px' : btn === 'square' ? '4px' : Math.round((+sh.radius || 12) * .6) + 'px');
+    B.add('skin-btn-' + btn, 'skin-shadow-' + (sh.shadow || 'soft'), 'skin-border-' + (sh.border || 'hairline'));
+    if (sh.shadow === 'flat') ['--sh1', '--sh2', '--lift', '--sh-dev', '--sh-dev-sm', '--sh-raise'].forEach(function (k) { set(k, 'none'); });
+    if (sh.shadow === 'lifted') { set('--sh1', '0 1px 2px ' + rgba(ink || '#000', .05) + ',0 12px 32px -14px ' + rgba(ink || '#000', .22) + ',0 40px 80px -48px ' + rgba(ink || '#000', .3)); set('--sh2', 'var(--sh1)'); }
+    /* the phone */
+    var ph = SK.phone || {};
+    set('--sk-bezel', ph.bezel); set('--sk-edge', ph.edge);
+    if (ph.bezel || ph.edge) B.add('skin-phone');
+    if (ph.style) B.add('skin-phone-' + ph.style);
+    /* choices */
+    var hd = SK.heading || {}, dec = SK.decor || {}, w = SK.widgets || {};
+    if (hd.two_tone) B.add('skin-twotone');
+    B.add('skin-mark-' + (hd.mark || 'keep'));
+    if (dec.pattern === false) B.add('skin-nopattern');
+    if (dec.grain === false) B.add('skin-nograin');
+    if (dec.rings) B.add('skin-rings');
+    if (dec.disc) { B.add('skin-disc'); set('--sk-disc', dec.disc); }
+    if (w.toast === false) B.add('skin-notoast');
+    if (w.joined === false) B.add('skin-nojoined');
+    if (w.rating === false) B.add('skin-norating');
+    if (w.ticker === false) S.ticker = false;
+    if (w.facts === false) B.add('skin-nofacts');
+    B.add('skin-sticky-' + ((SK.sticky_video || {}).style || 'keep'));
+    B.add('skin-close-' + ((SK.closing || {}).style || 'keep'));
+    if ((SK.annotations || {}).on) B.add('skin-notes');
+    if (SK.stars) set('--sk-star', SK.stars);
+    if (dec.chips) B.add('skin-chips-' + dec.chips);
+    var sdays = (SK.sections || {}).days || 'plain';
+    B.add('skin-days-' + sdays);
+    set('--sk-slab', c.night || (SKDARK ? panel : ink));
+    set('--sk-days-bg', sdays === 'panel' ? panel : sdays === 'band' ? (c.days_band || c.band || ink) : 'transparent');
+    /* ---- options from the hand-made pages (2026-09-29, docs/brand-skin-log.md "Hand-page options") */
+    var dy = SK.days || {}, band = sdays === 'band';
+    if (band) {
+      set('--skd-ink', c.days_ink || '#ffffff');
+      set('--skd-mute', c.days_mute || 'color-mix(in srgb,' + (c.days_ink || '#ffffff') + ' 84%,' + (c.days_band || c.band || ink) + ')');
+      set('--skd-btn', c.days_button || c.accent2 || acc); set('--skd-btn-ink', c.days_button_ink || ink);
+    }
+    set('--skd-num', c.days_num || (band ? (c.accent2 || acc) : (c.accent_text || acc)));
+    set('--skd-when', band ? (c.days_num || c.accent2 || acc) : (c.accent_text || acc));
+    set('--skd-mask', band ? (c.days_band || c.band || ink) : sdays === 'panel' ? panel : (ground || '#fff'));
+    if (dy.numerals) B.add('skin-num', 'skin-num-' + dy.numerals);
+    if (dy.route) B.add('skin-route');
+    if (dy.cta === false) B.add('skin-days-nocta');
+    if (dy.keep === false) B.add('skin-days-nokeep');
+    if ((SK.booking_card || {}).style === 'ticket') B.add('skin-ticket');
+    var hd2 = SK.heading || {};
+    set('--sk-uw', hd2.underline_color || hd2.mark_color || c.accent2 || acc);
+    set('--sk-uw2', hd2.underline_color2 || c.accent2 || hd2.underline_color || acc);
+    var art = SK.day_art || {};
+    set('--sks-hl', art.highlight || hd2.mark_color || c.accent2 || acc);
+    set('--sks-move', art.move || hd2.underline_color || acc);
+    var pb = SK.photo_band || {};
+    if (pb.style === 'duotone') {
+      B.add('skin-duo');
+      set('--skb-ground', pb.ground || ink); set('--skb-tint', pb.tint || acc);
+      set('--skb-ink', pb.ink || '#ffffff'); set('--skb-num', pb.num || c.accent2 || '#ffffff');
+      set('--skb-mute', pb.mute || 'color-mix(in srgb,' + (pb.ink || '#ffffff') + ' 80%,' + (pb.ground || ink) + ')');
+      set('--skb-tag', pb.tag || c.accent2 || acc); set('--skb-tag-ink', pb.tag_ink || ink);
+    }
+    var cl = SK.closing || {};
+    if (cl.style === 'pass') {
+      set('--skp-main', cl.main || acc); set('--skp-main-ink', cl.main_ink || c.accent_ink || '#ffffff');
+      set('--skp-stub', cl.stub || c.accent2 || acc); set('--skp-stub-ink', cl.stub_ink || ink);
+      if (cl.bg) { set('--skp-bg', cl.bg); B.add('skin-close-band'); }
+    }
+    var hh = SK.header || {};
+    if (hh.style) {
+      B.add('skin-hdr', 'skin-hdr-' + hh.style);
+      set('--skh-r', (hh.radius != null ? +hh.radius : (hh.style === 'solid' ? 4 : hh.style === 'soft' ? 24 : 16)) + 'px');
+      set('--skh-w', (hh.width || 1080) + 'px');
+      set('--skh-bg', hh.bg || acc); set('--skh-ink', hh.ink || (hh.style === 'solid' ? (c.accent_ink || '#ffffff') : ink));
+      set('--skh-mute', hh.mute || (hh.style === 'solid' ? 'color-mix(in srgb,' + (hh.ink || c.accent_ink || '#ffffff') + ' 82%,' + (hh.bg || acc) + ')' : mute || ink));
+      set('--skh-sec', hh.sec || (hh.style === 'solid' ? (c.accent2 || acc) : 'color-mix(in srgb,' + (c.accent2 || acc) + ' 26%,' + panel + ')'));
+      set('--skh-sec-ink', hh.sec_ink || ink);
+      set('--skh-btn', hh.button || acc); set('--skh-btn-ink', hh.button_ink || (hh.button ? ink : c.accent_ink));
+      if (hh.logo_plate) B.add('skin-hdr-plate');
+      if (hh.icon === 'round') B.add('skin-hdr-round');
+      if (hh.icon === 'none') B.add('skin-hdr-noicon');
+      if (hh.topbar === false) B.add('skin-hdr-notop');
+    }
+    skinTokens2(c, set, B, panel);
+  }
+
+  /* ---- hand-page options, second pass (2026-09-29, Kelsey Tonner side by side): trust block, nav links, sticky
+     video and lock bar styles, section order, day rows, type scale, fit split, takeaway row, stacked closing form.
+     Tokens and classes only; the elements are added in skinHand2(). */
+  function skinTokens2(c, set, B, panel) {
+    var ink = c.ink, acc = c.accent;
+    var tb = SK.trust_badge || {};
+    if (tb.art === 'block') {
+      B.add('skin-tblock');
+      set('--skt-bg', tb.bg || c.days_band || acc); set('--skt-ink', tb.ink || '#ffffff');
+      set('--skt-eye', tb.eyebrow_color || c.accent2 || tb.ink || '#ffffff');
+      set('--skt-sub', tb.sub_color || 'color-mix(in srgb,' + (tb.ink || '#ffffff') + ' 84%,' + (tb.bg || c.days_band || acc) + ')');
+    }
+    var sv = SK.sticky_video || {};
+    if (sv.style === 'flat') {
+      set('--skv-brd', sv.border || '#ffffff'); set('--skv-btn', sv.button || c.accent2 || acc);
+      set('--skv-btn-ink', sv.button_ink || (sv.button || c.accent2 ? ink : c.accent_ink) || '#ffffff');
+      set('--skv-bar', sv.bar || sv.button || c.accent2 || acc); set('--skv-r', (sv.radius != null ? +sv.radius : 12) + 'px');
+    }
+    var g = SK.gate || {};
+    if (g.style === 'solid') {
+      B.add('skin-gate-solid');
+      set('--skg-bg', g.bg || ink); set('--skg-ink', g.ink || '#ffffff');
+      set('--skg-mute', g.mute || 'color-mix(in srgb,' + (g.ink || '#ffffff') + ' 80%,' + (g.bg || ink) + ')');
+      set('--skg-edge', g.edge || c.accent2 || acc); set('--skg-btn', g.button || c.accent2 || acc);
+      set('--skg-btn-ink', g.button_ink || (g.button || c.accent2 ? ink : c.accent_ink) || '#ffffff');
+      set('--skg-r', (g.radius != null ? +g.radius : 6) + 'px');
+    }
+    var se = SK.sections || {};
+    if (se.tight) B.add('skin-tight');
+    if (se.width) { B.add('skin-width'); set('--skw', (+se.width) + 'px'); }
+    var dy = SK.days || {};
+    if (dy.rows === 'left' || dy.rows === 'right') B.add('skin-rows-' + dy.rows);
+    if (dy.lead_bold) B.add('skin-days-leadb');
+    var ty = SK.type || {};
+    if (ty.h1) { B.add('skin-type-h1'); set('--skt-h1', (+ty.h1) + 'px'); }
+    if (ty.h1_phone) { B.add('skin-type-h1p'); set('--skt-h1p', (+ty.h1_phone) + 'px'); }
+    if (ty.h2) set('--skt-h2', (+ty.h2) + 'px');
+    if (ty.h2_phone) set('--skt-h2p', (+ty.h2_phone) + 'px');
+    if (ty.h3) set('--skt-h3', (+ty.h3) + 'px');
+    if (ty.lede) set('--skt-lede', (+ty.lede) + 'px');
+    if (ty.body) set('--skt-body', (+ty.body) + 'px');
+    if (ty.line) set('--skt-line', ty.line);
+    if (ty.head_line) set('--skt-hl', ty.head_line);
+    if (ty.h2 || ty.h2_phone) B.add('skin-type-h2');
+    if (ty.h3) B.add('skin-type-h3');
+    if (ty.lede) B.add('skin-type-lede');
+    if (ty.body) B.add('skin-type-body');
+    if (ty.line) B.add('skin-type-line');
+    if (ty.head_line) B.add('skin-type-hl');
+    var sh = SK.shape || {};
+    if (sh.button_case === 'upper') { B.add('skin-btn-upper'); set('--skbt', sh.button_tracking || '.05em'); }
+    var fit = SK.fit || {};
+    if (fit.layout === 'split') {
+      B.add('skin-fit-split');
+      if (fit.bg) { B.add('skin-fit-bg'); set('--skf-bg', fit.bg); }
+    }
+    if (fit.portrait === false) B.add('skin-fit-noportrait');
+    if (fit.note === false) B.add('skin-fit-nonote');
+    if (fit.cta === false) B.add('skin-fit-nocta');
+    if (fit.cards === 'boxed') B.add('skin-fit-boxed');
+    if ((SK.takeaway || {}).layout === 'row') B.add('skin-tk-row');
+    if ((SK.hero || {}).phone_order === 'media') B.add('skin-hero-media');
+    if ((SK.booking_card || {}).phone) B.add('skin-book-phone');
+    if ((SK.decor || {}).chips === 'boxed') B.add('skin-chips-boxed');
+    if (fit.tick === 'arrow') B.add('skin-fit-arrow');
+    if ((SK.booking_card || {}).bold) B.add('skin-ticket-bold');
+    if (se.pad) { B.add('skin-pad'); set('--skpad', (+se.pad) + 'px'); }
+    var da2 = SK.day_art || {};
+    if (da2.card) { B.add('skin-art-card'); set('--sks-card', da2.card); }
+    var cl = SK.closing || {};
+    if (cl.form === 'stack') { B.add('skin-close-stack'); set('--skc-card', cl.card || '#ffffff'); }
+    var ph = SK.phone || {};
+    if (ph.play === 'square') B.add('skin-play-sq');
+    var rc = SK.regcard || {};
+    if (rc.top) { B.add('skin-reg-top'); set('--skr-top', rc.top === true ? acc : rc.top); }
+    if (rc.bg) { B.add('skin-reg-bg'); set('--skr-bg', rc.bg); }
+    var w = SK.widgets || {};
+    if (w.facts === 'static') B.add('skin-facts-static');
+    if (w.cue === false) B.add('skin-nocue');
+    var pb = SK.photo_band || {};
+    if (pb.bio_lead) B.add('skin-duo-biolead');
+    if (pb.eyebrow_style === 'fill') B.add('skin-duo-eyefill');
+    if (((SK.header || {}).nav_links || []).length) B.add('skin-navlinks');
+    if ((SK.gated || {}).cards === 'band') B.add('skin-gcards-band');
+  }
+
+  /* ---- swipe / underline marks under a key phrase, drawn once, coloured from the skin */
+  function markURI(kind, col) {
+    var d = kind === 'underline'
+      ? '<path d="M3 20 C 60 14, 140 12, 297 16" fill="none" stroke="' + col + '" stroke-width="5" stroke-linecap="round"/>'
+      : '<path d="M4 18 C 60 9, 150 7, 296 12 L 294 26 C 190 22, 90 24, 6 28 Z" fill="' + col + '"/>';
+    return 'url("data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 30" preserveAspectRatio="none">' + d + '</svg>') + '")';
+  }
+
+  /* ---- trust badge art: four originals, all drawn in currentColor + the accent */
+  var BADGE = {
+    rings: function (id) {
+      return '<svg class="skbadge" viewBox="0 0 40 40" fill="none" stroke="currentColor" aria-hidden="true"><defs><pattern id="' + id + '" width="2.2" height="2.2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="2.2" stroke="currentColor" stroke-width=".45"/></pattern></defs>' +
+        '<circle cx="20" cy="20" r="18.5" stroke-opacity=".35" stroke-width=".7"/><circle cx="20" cy="20" r="15.5" stroke-opacity=".8" stroke-width=".8" stroke-dasharray="1 1.6"/>' +
+        '<circle cx="20" cy="20" r="11" stroke-width=".9"/><circle cx="20" cy="20" r="6" fill="url(#' + id + ')" stroke-width=".7"/><circle cx="20" cy="20" r="1.3" fill="currentColor" stroke="none"/></svg>';
+    },
+    medal: function () {
+      return '<svg class="skbadge" viewBox="0 0 40 40" aria-hidden="true"><path d="M13 3h6l3 9h-6zM27 3h-6l-3 9h6z" fill="var(--sk-accent2)" opacity=".85"/>' +
+        '<circle cx="20" cy="24" r="12" fill="var(--sk-mark)" stroke="currentColor" stroke-opacity=".35" stroke-width="1.2"/>' +
+        '<circle cx="20" cy="24" r="8.4" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1" stroke-dasharray="1.4 1.8"/>' +
+        '<path d="M20 18.6l1.7 3.4 3.7.5-2.7 2.6.7 3.7-3.4-1.8-3.3 1.8.6-3.7-2.7-2.6 3.8-.5z" fill="currentColor"/></svg>';
+    },
+    laurel: function () { return AWARD.replace('<svg ', '<svg class="skbadge" '); },
+    star: function () {
+      var p = '', n = 12;
+      for (var i = 0; i < n * 2; i++) {
+        var a = Math.PI * i / n - Math.PI / 2, rr = i % 2 ? 13.5 : 18;
+        p += (i ? 'L' : 'M') + (20 + Math.cos(a) * rr).toFixed(1) + ' ' + (20 + Math.sin(a) * rr).toFixed(1);
+      }
+      return '<svg class="skbadge" viewBox="0 0 40 40" aria-hidden="true"><path d="' + p + 'Z" fill="var(--accent)"/>' +
+        '<circle cx="20" cy="20" r="9.5" fill="none" stroke="var(--accent-ink)" stroke-opacity=".7" stroke-width="1"/>' +
+        '<path d="M15.6 20.4l3 3 6-6.4" fill="none" stroke="var(--accent-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    }
+  };
+
+  /* ---- day art: four original styles x three variants. Every stroke that should draw itself carries .dr;
+     fills that fade in after the lines carry .hf. Texts come from the lead's own day bullets. */
+  function dayBullets(i) {
+    var b = ((S.day_bullets || [])[i] || ((LP.days || [])[i] || {}).bullets || []).slice(0, 3);
+    return b.length ? b : [String(((LP.days || [])[i] || {}).outcome || '')].filter(Boolean);
+  }
+  function dayTitle(i) { return String(((LP.days || [])[i] || {}).title || '').split('|').join(' ').replace(/\s+/g, ' ').replace(/\.$/, '').trim(); }
+  var ROMAN = ['I', 'II', 'III', 'IV'];
+  function ring(cx, cy, r, extra) { return '<circle class="dr" pathLength="1" cx="' + cx + '" cy="' + cy + '" r="' + r + '" ' + (extra || '') + '/>'; }
+  var DAYART = {
+    engraved: function (i, v, id) {
+      var h = '<defs><pattern id="' + id + 'h" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="3" stroke="currentColor" stroke-width=".55"/></pattern>' +
+        '<pattern id="' + id + 'l" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5" stroke="currentColor" stroke-width=".4" stroke-opacity=".55"/></pattern></defs>';
+      var g = ring(130, 130, 118, 'stroke-opacity=".14" stroke-width=".8"');
+      if (v === 0) {                                  /* three circles, the overlap hatched */
+        g += '<defs><clipPath id="' + id + 'a"><circle cx="130" cy="98" r="52"/></clipPath><clipPath id="' + id + 'b"><circle cx="100" cy="150" r="52"/></clipPath></defs>' +
+          '<g class="hf" clip-path="url(#' + id + 'a)"><circle cx="100" cy="150" r="52" fill="url(#' + id + 'l)"/><circle cx="160" cy="150" r="52" fill="url(#' + id + 'l)"/></g>' +
+          '<g class="hf" clip-path="url(#' + id + 'a)"><g clip-path="url(#' + id + 'b)"><circle cx="160" cy="150" r="52" fill="url(#' + id + 'h)"/></g></g>' +
+          '<g stroke-width="1.1">' + ring(130, 98, 52) + ring(100, 150, 52) + ring(160, 150, 52) + '</g>' +
+          '<g stroke-width=".6" stroke-opacity=".35">' + ring(130, 98, 47) + ring(100, 150, 47) + ring(160, 150, 47) + '</g>' +
+          '<circle class="hf" cx="130" cy="133" r="2.4" fill="currentColor" stroke="none"/>';
+      } else if (v === 1) {                           /* one idea radiating into seven */
+        var rays = '';
+        for (var k = 0; k < 72; k++) {
+          var a = k / 72 * Math.PI * 2, r2 = k % 12 === 0 ? 90 : k % 3 === 0 ? 76 : 60;
+          rays += 'M' + (130 + Math.cos(a) * 24).toFixed(1) + ' ' + (130 + Math.sin(a) * 24).toFixed(1) + 'L' + (130 + Math.cos(a) * r2).toFixed(1) + ' ' + (130 + Math.sin(a) * r2).toFixed(1);
+        }
+        g += ring(130, 130, 92, 'stroke-opacity=".35" stroke-width=".8"') + '<path class="hf" d="' + rays + '" stroke-opacity=".3" stroke-width=".55"/>';
+        for (var j = 0; j < 7; j++) {
+          var b = -Math.PI / 2 + j / 7 * Math.PI * 2, x = 130 + Math.cos(b) * 92, y = 130 + Math.sin(b) * 92;
+          g += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="9" fill="var(--sk-artbg)" class="dr" pathLength="1"/>' +
+            '<circle class="hf" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="5" fill="url(#' + id + 'h)" stroke-opacity=".5" stroke-width=".6"/>';
+        }
+        g += '<circle class="hf" cx="130" cy="130" r="17" fill="url(#' + id + 'h)" stroke-width="1.1"/>' + ring(130, 130, 22, 'stroke-opacity=".5" stroke-width=".6"');
+      } else {                                        /* a dial with one hour hatched */
+        var t = '';
+        for (var q = 0; q < 96; q++) {
+          var cq = -Math.PI / 2 + q / 96 * Math.PI * 2, big = q % 4 === 0, r0 = big ? 104 : 100, r3 = big ? 114 : 106;
+          t += 'M' + (130 + Math.cos(cq) * r0).toFixed(1) + ' ' + (130 + Math.sin(cq) * r0).toFixed(1) + 'L' + (130 + Math.cos(cq) * r3).toFixed(1) + ' ' + (130 + Math.sin(cq) * r3).toFixed(1);
+        }
+        g += ring(130, 130, 98, 'stroke-opacity=".8" stroke-width="1.1"') + '<path class="hf" d="' + t + '" stroke-opacity=".5" stroke-width=".7"/>' +
+          '<path class="hf" d="M130 130 L130 38 A92 92 0 0 1 153.8 41.1 Z" fill="url(#' + id + 'h)" stroke-width=".9"/>' +
+          ring(130, 130, 58, 'stroke-opacity=".28" stroke-width=".6"') +
+          '<path class="dr" pathLength="1" d="M130 130V60" stroke-width="1.3"/><path class="dr" pathLength="1" d="M130 130l30 30" stroke-width="1"/>' +
+          '<circle class="hf" cx="130" cy="130" r="3.2" fill="currentColor" stroke="none"/>';
+      }
+      return '<div class="skart sk-engraved"><span class="ska">Day ' + (i + 1) + '</span><span class="skr">' + ROMAN[i] + '</span>' +
+        '<svg viewBox="0 0 260 260" fill="none" stroke="currentColor" aria-hidden="true">' + h + g + '</svg></div>';
+    },
+    blueprint: function (i, v) {
+      var b = dayBullets(i), g = '';
+      if (v === 0) {                                  /* three nodes wired into one */
+        var P = [[50, 60], [50, 150], [210, 105]];
+        g = '<path class="dr" pathLength="1" d="M74 60 C 130 60, 130 105, 186 105"/><path class="dr" pathLength="1" d="M74 150 C 130 150, 130 105, 186 105"/>' +
+          P.map(function (p, k) { return '<rect class="dr" pathLength="1" x="' + (p[0] - 24) + '" y="' + (p[1] - 18) + '" width="48" height="36" rx="6"/>' +
+            '<text class="hf" x="' + p[0] + '" y="' + (p[1] + 5) + '" text-anchor="middle">' + (k < 2 ? '0' + (k + 1) : 'OUT') + '</text>'; }).join('') +
+          '<circle class="hf" cx="130" cy="105" r="3" fill="currentColor"/>';
+      } else if (v === 1) {                           /* a terminal running the day's steps */
+        g = '<rect class="dr" pathLength="1" x="14" y="22" width="232" height="166" rx="8"/><path class="dr" pathLength="1" d="M14 44h232"/>' +
+          '<circle class="hf" cx="28" cy="33" r="3" fill="currentColor"/><circle class="hf" cx="40" cy="33" r="3" fill="currentColor" fill-opacity=".5"/>';
+        g += '</svg><div class="skterm">' + b.map(function (t, k) { return '<p style="--k:' + k + '"><b>$</b> ' + esc(String(t).toLowerCase()) + '</p>'; }).join('') +
+          '<p class="skcur" style="--k:' + b.length + '"><b>$</b> <u></u></p></div><svg style="display:none">';
+      } else {                                        /* bars that climb */
+        var H = [34, 52, 48, 76, 98, 130];
+        g = '<path class="dr" pathLength="1" d="M20 180h220M20 180V28"/>' + H.map(function (hh, k) {
+          return '<rect class="hf" x="' + (36 + k * 34) + '" y="' + (180 - hh) + '" width="20" height="' + hh + '" rx="2" fill="currentColor" fill-opacity="' + (0.14 + k * 0.1).toFixed(2) + '" style="--k:' + k + '"/>';
+        }).join('') + '<path class="dr" pathLength="1" d="M46 140 L80 124 L114 128 L148 100 L182 76 L216 44" stroke-width="2"/><circle class="hf" cx="216" cy="44" r="4.5" fill="currentColor"/>';
+      }
+      return '<div class="skart sk-blueprint"><span class="ska">Day ' + (i + 1) + '</span><span class="skr">' + esc(String(i + 1).length < 2 ? '0' + (i + 1) : i + 1) + '</span>' +
+        '<svg viewBox="0 0 260 210" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">' + g + '</svg></div>';
+    },
+    tiles: function (i, v) {
+      var b = dayBullets(i), CK = '<svg viewBox="0 0 12 12"><path class="dr" pathLength="1" d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      var rows = b.map(function (t, k) {
+        return '<div class="skrow"><span class="skcb' + (k === 0 ? ' on' : '') + '">' + (k === 0 ? CK : '') + '</span><span class="sktx">' + esc(t) + '</span>' +
+          (k === 0 ? '<span class="skchip g">Day ' + (i + 1) + '</span>' : k === b.length - 1 ? '<span class="skchip">' + (v === 2 ? 'Sunday' : 'Next') + '</span>' : '') + '</div>';
+      }).join('');
+      var top = '';
+      if (v === 0) top = '<div class="skuh">' + esc(dayTitle(i)) + '</div>';
+      else if (v === 1) top = '<div class="sktimer"><span><small>Focus session</small><b class="sktm">25:00</b></span><span class="skctl"><i></i><i class="k">' + CK + '</i></span></div><div class="skprog"><b></b></div>';
+      else top = '<div class="skweek">' + ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(function (d, k) {
+        var ht = [24, 30, 18, 28, 0, 34, 20][k], tp = [10, 30, 8, 24, 0, 6, 36][k];
+        return '<div>' + d + '<span class="skc">' + (ht ? '<em class="' + (k % 3 === 2 ? 'p' : '') + '" style="top:' + tp + 'px;height:' + ht + 'px"></em>' : '') + '</span></div>';
+      }).join('') + '</div>';
+      return '<div class="skart sk-tiles"><div class="skui">' + top + rows + '</div></div>';
+    },
+    stickers: function (i, v) {
+      var b = dayBullets(i);
+      var star = '<svg class="skst" viewBox="0 0 34 34"><path d="M17 3 L20.6 12.6 30.8 13 22.8 19.4 25.6 29.4 17 23.6 8.4 29.4 11.2 19.4 3.2 13 13.4 12.6Z" fill="var(--sk-mark)" stroke="var(--ink)" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+      if (v === 0) return '<div class="skart sk-stickers v0">' + b.slice(0, 2).map(function (t, k) {
+        return '<span class="sknote n' + k + '" style="--k:' + k + '">' + esc(t) + '</span>'; }).join('') + star + '</div>';
+      if (v === 1) return '<div class="skart sk-stickers v1"><span class="skbig" style="--k:0"><small>Day</small><b>' + (i + 1) + '</b></span>' +
+        '<span class="sknote n1" style="--k:1">' + esc(b[0] || dayTitle(i)) + '</span>' + star + '</div>';
+      return '<div class="skart sk-stickers v2"><span class="skrib" style="--k:0">' + esc(dayTitle(i)) + '</span>' +
+        b.slice(0, 3).map(function (t, k) { return '<span class="skcard" style="--k:' + (k + 1) + '"><i>' + (k + 1) + '</i>' + esc(t) + '</span>'; }).join('') + '</div>';
+    },
+    /* scenes (from Kelsey Tonner's hand page): one small picture of the day's work, in the brand's colours.
+       Kind per day from day_art.scenes[i].kind, else variants: 0 page-fix, 1 thread, 2 route-year. Every text is a
+       skin field, else the day's own title, bullets and outcome. Budgets: docs/brand-skin-log.md */
+    scenes: function (i, v) {
+      var sc = ((SK.day_art || {}).scenes || [])[i] || {}, b = dayBullets(i);
+      var kind = sc.kind || ['page-fix', 'thread', 'route-year'][v] || 'page-fix';
+      return (SCENE[kind] || SCENE['page-fix'])(i, sc, b);
+    }
+  };
+
+  /* wrap a string into at most `max` lines of about `n` characters (never splits a word) */
+  function wrapT(t, n, max) {
+    var L = [], cur = '';
+    String(t || '').split(/\s+/).filter(Boolean).forEach(function (w) {
+      if (cur && (cur + ' ' + w).length > n) { L.push(cur); cur = w; } else cur = cur ? cur + ' ' + w : w;
+    });
+    if (cur) L.push(cur);
+    if (L.length > max) L = L.slice(0, max - 1).concat([L.slice(max - 1).join(' ')]);
+    return L;
+  }
+  function sceneHead(label, meta) {
+    return '<div class="skscn-h"><b>' + esc(label) + '</b>' + (meta ? '<span>' + esc(meta) + '</span>' : '') + '</div>';
+  }
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var SCENE = {
+    /* before/after of one page: the old line struck through, the new one highlighted, the button slides up */
+    'page-fix': function (i, sc, b) {
+      var title = sc.title || dayTitle(i), before = sc.before || b[0] || '', after = sc.after || b[1] || b[0] || '';
+      var btn = sc.button || 'Sign up', was = sc.was || 'was down here';
+      var bl = wrapT(before, 36, 2), al = wrapT(after, 29, 2);
+      var y0 = 157 + (bl.length - 1) * 17, ya = y0 + 28;
+      var g = '<rect class="dr skl2" pathLength="1" x="6" y="6" width="428" height="250" rx="8"/><path class="dr skl1" pathLength="1" d="M6 32h428"/>' +
+        '<circle class="hf skdot" cx="22" cy="19" r="4"/><circle class="hf skdot" cx="36" cy="19" r="4"/><circle class="hf skdot" cx="50" cy="19" r="4"/>' +
+        '<text class="hf sktx sksm" x="70" y="23">' + esc(wrapT(title, 30, 1)[0]) + '</text>' +
+        '<rect class="hf skph" x="22" y="46" width="268" height="84" rx="6"/><circle class="hf sksun" cx="244" cy="72" r="12"/>' +
+        '<path class="hf skhill" d="M22 112c40-22 70-28 104-12s62 8 94-12 50-10 70 2v34a6 6 0 0 1-6 6H28a6 6 0 0 1-6-6z"/>' +
+        '<path class="dr skl1 skwv" pathLength="1" d="M40 122c10-4 20-4 30 0s20 4 30 0M150 122c10-4 20-4 30 0s20 4 30 0"/>';
+      bl.forEach(function (l, k) {
+        var y = 157 + k * 17;
+        g += '<text class="hf sktx skold" x="22" y="' + y + '">' + esc(l) + '</text>' +
+          '<path class="dr skl1 skstrike" pathLength="1" d="M20 ' + (y - 4) + 'h' + Math.min(268, Math.round(l.length * 6.4) + 6) + '"/>';
+      });
+      al.forEach(function (l, k) {
+        var y = ya + k * 24;
+        g += '<rect class="hf skhl" x="20" y="' + (y - 15) + '" width="' + Math.min(290, Math.round(l.length * 8.3) + 8) + '" height="20" rx="2"/>' +
+          '<text class="hf sktx skbig" x="23" y="' + y + '">' + esc(l) + '</text>';
+      });
+      var yl = Math.min(246, ya + al.length * 24 + 4);
+      if (yl < 240) g += '<path class="dr skl1 skcl" pathLength="1" d="M22 ' + yl + 'h180' + (yl + 12 < 250 ? 'M22 ' + (yl + 12) + 'h120' : '') + '"/>';
+      g += '<rect class="hf skghost" x="318" y="208" width="100" height="32" rx="6"/>' +
+        '<text class="hf sktx skgtx" x="368" y="228" text-anchor="middle">' + esc(was) + '</text>' +
+        '<path class="dr skl2 skmv" pathLength="1" d="M368 200V96M359 106l9-11 9 11"/>' +
+        '<g class="skslide"><rect class="skbtnf" x="318" y="46" width="100" height="32" rx="6"/><text class="sktx skbtx" x="368" y="66.5" text-anchor="middle">' + esc(btn) + '</text></g>' +
+        '<g class="hf skbadge"><circle cx="262" cy="19" r="10"/><text x="262" y="23" text-anchor="middle">1</text></g>' +
+        '<g class="hf skbadge"><circle cx="300" cy="' + (ya - 6) + '" r="10"/><text x="300" y="' + (ya - 2) + '" text-anchor="middle">2</text></g>' +
+        '<g class="hf skbadge"><circle cx="418" cy="46" r="10"/><text x="418" y="50" text-anchor="middle">3</text></g>';
+      var aria = 'Before and after: ' + before + ', then ' + after + ', with the ' + btn + ' button moved up';
+      return '<div class="skart sk-scene sk-pagefix">' + sceneHead(sc.label || 'Before and after', sc.meta || ('Day ' + (i + 1))) +
+        '<svg class="skdg" viewBox="0 0 440 262" role="img" aria-label="' + esc(aria) + '">' + g + '</svg></div>';
+    },
+    /* an inbox: three items with timing chips, the open one drafts itself */
+    thread: function (i, sc, b) {
+      var items = (sc.items || b.map(function (t) { return { title: t }; })).slice(0, 3);
+      var chips = sc.chips || ['Today', 'Tomorrow', 'Next week'], open = sc.open != null ? +sc.open : Math.min(1, items.length - 1);
+      var it = items[open] || items[0] || { title: dayTitle(i) };
+      var draft = sc.draft || String(((LP.days || [])[i] || {}).outcome || it.title || '');
+      var W = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+      return '<div class="skart sk-scene sk-thread">' + sceneHead(sc.label || dayTitle(i), sc.meta || ('Day ' + (i + 1))) +
+        '<div class="skinbox"><ul class="skil">' + items.map(function (x, k) {
+          return '<li' + (k === open ? ' class="on"' : '') + '><b>' + esc(x.title || x) + '</b><span class="sktch">' + esc(x.when || chips[k] || '') + '</span></li>';
+        }).join('') + '</ul>' +
+        '<div class="skmail"><p class="skmh">' + esc(sc.draft_label || 'Draft') + ' · <b>' + esc(sc.subject || it.title || it) + '</b></p>' +
+          '<p class="skbd"><span class="sksr">' + esc(draft) + '</span><span class="skty" aria-hidden="true">' + esc(draft) + '</span><span class="skcar" aria-hidden="true"></span></p>' +
+          '<p class="skvoice"><svg width="30" height="16" viewBox="0 0 30 16" aria-hidden="true"><path d="M2 8h0M6 4v8M10 1v14M14 5v6M18 2v12M22 6v4M26 3v10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>' + esc(sc.voice || 'Drafted live') + '</p></div></div>' +
+        (sc.week ? '<div class="skwk"><b>' + esc(sc.week) + '</b><span class="sksq">' + W.map(function (d) { return '<i>' + d + '</i>'; }).join('') + '</span></div>' : '') +
+        '</div>';
+    },
+    /* twelve months on one dotted route, pins drop on the gaps */
+    'route-year': function (i, sc, b) {
+      var X = [26, 61, 97, 132, 167, 202, 238, 273, 308, 344, 379, 414], Y = [138, 159, 163, 145, 122, 112, 124, 147, 163, 158, 136, 116];
+      var gaps = (sc.gaps || [10, 7, 2]).slice(0, 3).map(function (m) { return clamp(Math.round(+m) || 0, 0, 11); });
+      var d = 'M' + X[0] + ' ' + Y[0];
+      for (var k = 1; k < 12; k++) { var mx = (X[k - 1] + X[k]) / 2; d += ' C' + mx + ' ' + Y[k - 1] + ' ' + mx + ' ' + Y[k] + ' ' + X[k] + ' ' + Y[k]; }
+      var g = '<path class="hf skroute3" d="' + d + '"/>';
+      for (var m = 0; m < 12; m++) {
+        g += (gaps.indexOf(m) > -1 ? '<circle class="hf skgapr" cx="' + X[m] + '" cy="' + Y[m] + '" r="8"/>' : '<circle class="hf skstop" cx="' + X[m] + '" cy="' + Y[m] + '" r="5.5"/>') +
+          '<text class="hf sktx skmo" x="' + X[m] + '" y="' + (Y[m] + 26) + '" text-anchor="middle">' + MONTHS[m] + '</text>';
+      }
+      gaps.forEach(function (m, k) {
+        var x = X[m], y = Y[m];
+        g += '<g class="skpin" style="--k:' + (k + 1) + '"><path d="M' + (x - 8) + ' ' + (y - 28) + 'L' + x + ' ' + (y - 12) + 'L' + (x + 8) + ' ' + (y - 28) + 'Z"/>' +
+          '<circle cx="' + x + '" cy="' + (y - 36) + '" r="13"/><text x="' + x + '" y="' + (y - 31) + '" text-anchor="middle">' + (k + 1) + '</text></g>';
+      });
+      var call = wrapT(sc.call || ('Fix gap 1 first'), 22, 2), p1 = X[gaps[0] || 0], left = p1 > 230;
+      var cx = left ? Math.max(16, p1 - 200) : Math.min(p1 + 40, 280), cy = 40;
+      call.forEach(function (l, k) { g += '<text class="hf sktx skcall" x="' + cx + '" y="' + (cy + k * 18) + '">' + esc(l) + '</text>'; });
+      var ax = left ? cx + Math.min(170, Math.round(Math.max.apply(null, call.map(function (l) { return l.length; })) * 7.6) + 8) : cx - 8;
+      var py = Y[gaps[0] || 0] - 52;
+      g += '<path class="dr skl2 skmv" pathLength="1" d="M' + ax + ' ' + (cy + 10) + 'C' + (left ? ax + 24 : ax - 24) + ' ' + (cy + 10) + ' ' + (p1 + (left ? -10 : 10)) + ' ' + (cy + 20) + ' ' + (p1 + (left ? -6 : 6)) + ' ' + py + '"/>' +
+        '<path class="dr skl2 skmv" pathLength="1" d="M' + (p1 + (left ? -13 : -1)) + ' ' + (py - 8) + 'l' + (left ? 7 : 7) + ' 8 ' + (left ? 4 : -7) + ' ' + (left ? -11 : -8) + '"/>';
+      var lg = sc.legend || ['On track', 'A gap to close'];
+      g += '<circle class="hf skstop" cx="26" cy="232" r="5.5"/><text class="hf sktx sksm" x="38" y="236">' + esc(lg[0]) + '</text>' +
+        '<circle class="hf skgapr" cx="176" cy="232" r="7"/><text class="hf sktx sksm" x="190" y="236">' + esc(lg[1]) + '</text>';
+      var aria = 'Twelve months on one route with ' + gaps.length + ' gaps pinned: ' + gaps.map(function (m, k) { return (k + 1) + ' ' + MONTHS[m]; }).join(', ');
+      return '<div class="skart sk-scene sk-year">' + sceneHead(sc.label || dayTitle(i), sc.meta || ('12 months, ' + gaps.length + ' gaps')) +
+        '<svg class="skdg" viewBox="0 0 440 262" role="img" aria-label="' + esc(aria) + '">' + g + '</svg></div>';
+    }
+  };
+
+  function skinDecor() {
+    if (!SK) return;
+    var B = document.body.classList, hd = SK.heading || {};
+    skinFitTitle();
+    /* key-phrase mark */
+    if (hd.mark === 'swipe' || hd.mark === 'underline') {
+      document.body.style.setProperty('--sk-swipe', markURI(hd.mark, (SK.heading || {}).mark_color || (SK.colors || {}).accent2 || (SK.colors || {}).accent || '#fdd671'));
+      qa('#headline .kw, #fith .perf').forEach(function (k) { k.classList.add('skmk'); });
+    }
+    /* two-tone section heads: the part up to the first comma, or the first line, in the tone colour */
+    if (hd.two_tone) {
+      qa('#daysh > span, #page .sh').forEach(function (h) {
+        if (q('.sktone', h) || h.children.length) return;
+        var t = h.textContent, i = t.indexOf(',');
+        if (i > 3 && i < t.length - 4) h.innerHTML = '<span class="sktone">' + esc(t.slice(0, i + 1)) + '</span>' + esc(t.slice(i + 1));
+      });
+    }
+    /* trust badge art */
+    var art = (SK.trust_badge || {}).art, awd = q('.htrust .awd');
+    if (awd && art && BADGE[art] && !q('.skbadge', awd)) {
+      awd.insertAdjacentHTML('afterbegin', BADGE[art]('skbh'));
+      awd.classList.add('skawd');
+      var txt = el('span', 'skawt'); while (awd.children.length > 1) txt.appendChild(awd.children[1]); awd.appendChild(txt);
+    }
+    /* the lead's own logo in the header, beside the favicon */
+    if (SK.nav_logo && S.logo) {
+      var lock = q('.nav .lock');
+      if (lock && !q('.sklogo', lock)) { var cal = q('.cal', lock); (cal || lock).insertAdjacentHTML(cal ? 'afterend' : 'afterbegin', '<img class="sklogo" src="' + esc(S.logo) + '" alt="' + esc(BRAND) + '">'); B.add('skin-navlogo'); }
+    }
+    /* day art */
+    var da = SK.day_art || {}, style = da.style;
+    if (style && DAYART[style]) {
+      B.add('skin-art', 'skin-art-' + style);
+      var vs = da.variants || [0, 1, 2];
+      qa('#days .dagenda').forEach(function (card, i) {
+        if (q('.skart', card)) return;
+        var html = DAYART[style](i, (vs[i % vs.length] || 0) % 3, 'skd' + i);
+        if (i === 0) {
+          var mac = q('.macbook', card);
+          if (mac && !da.keep_slide) { mac.insertAdjacentHTML('beforebegin', html); card.classList.add('skhasart'); }
+        } else {
+          var ss = q('.dsess', card);
+          if (ss) { ss.innerHTML = html; ss.classList.add('skdsess'); card.classList.add('skhasart'); }
+        }
+      });
+    }
+    /* closing: a seat card that fills in with the name they type */
+    if ((SK.closing || {}).style === 'seatcard') {
+      var cc = q('#closing .ccard');
+      if (cc && !q('.skseat', cc)) {
+        cc.insertAdjacentHTML('afterbegin', '<div class="skseat" aria-hidden="true"><div class="skmc"><span class="skstamp">seat held</span>' +
+          '<div><b class="skmt">' + esc(EV) + '</b><span class="skmp">Free seat</span></div>' +
+          '<div class="skmn"><span class="skml"><i class="skname"></i><small>' + esc(dfmt(START) + ' to ' + dfmt(END)) + ', live online</small></span>' +
+          '<span class="skmi"><img src="favicon.png" alt=""></span></div></div></div>');
+        var inp = q('input[name="first"]', cc), nm = q('.skname', cc);
+        if (inp && nm) inp.addEventListener('input', function () { nm.textContent = inp.value.slice(0, 24); });
+      }
+    }
+    /* hand notes: only the lines the skin gives, placed on fixed anchors */
+    var an = SK.annotations || {};
+    if (an.on) {
+      var ARW = function (flip) {
+        return '<svg class="skarw' + (flip ? ' f' : '') + '" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path class="dr" pathLength="1" d="M36 6 C 20 4, 8 14, 8 34" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>' +
+          '<path class="dr" pathLength="1" d="M2 27 L 8 36 L 15 28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      };
+      var note = function (host, text, cls, tone) {
+        if (!host || !text || q('.sknote-h.' + cls, host)) return;
+        host.classList.add('skanch');
+        host.insertAdjacentHTML('beforeend', '<span class="sknote-h ' + cls + ' t' + (tone || 1) + '" aria-hidden="true">' + esc(text) + ARW(cls === 'nfit') + '</span>');
+      };
+      note($('regcard'), an.reg, 'nreg', 2);
+      note($('checks'), an.fit, 'nfit', 2);
+      (an.days || []).forEach(function (t, i) {
+        var c = qa('#days .dagenda')[i]; if (!c) return;
+        var a = q('.skart', c);                       /* the art clips its own overflow: the note goes on its holder */
+        note(a ? a.parentNode : (q('.dsess', c) || q('.macbook', c)), t, 'nday', i % 2 ? 2 : 1);
+      });
+      note(q('#closing .skseat') || q('#closing .ccard'), an.close, 'nclose', 1);
+    }
+    /* decor: rings behind the video and the close */
+    if ((SK.decor || {}).rings) {
+      var RINGS = '<svg class="skrings" viewBox="0 0 1000 1000" fill="none" stroke="currentColor" aria-hidden="true">' +
+        [300, 350, 408, 462].map(function (rr, k) { return '<circle cx="500" cy="500" r="' + rr + '" stroke-opacity="' + (.1 - k * .02).toFixed(2) + '"/>'; }).join('') +
+        '<circle cx="500" cy="500" r="496" stroke-opacity=".04" stroke-dasharray="1 5"/></svg>';
+      var hl = q('.hleft'); if (hl && !q('.skrings', hl)) hl.insertAdjacentHTML('afterbegin', RINGS);
+      var cl = $('closing'); if (cl && !q('.skrings', cl)) cl.insertAdjacentHTML('afterbegin', RINGS.replace('skrings', 'skrings c'));
+    }
+    skinHand();
+    skinHand2();
+  }
+
+  /* ---- the options taken from the hand-made pages (2026-09-29). Each one is off unless its field is set; all of
+     it is added by this script, so without JS the template page is simply there. */
+  var SKROUTE = null, SKTALLY = null, SKPASS = null;
+  function skinHand() {
+    var B = document.body.classList, hd = SK.heading || {}, c = SK.colors || {};
+    /* booking card as a ticket: a barcode edge (the stub and perforation are CSS on the existing parts) */
+    if ((SK.booking_card || {}).style === 'ticket') {
+      var bk = q('.hbook');
+      if (bk && !q('.skbcode', bk)) bk.insertAdjacentHTML('beforeend', '<span class="skbcode" aria-hidden="true"></span>');
+    }
+    /* the day band: big numerals in the node column, the date line above each title, one route through them */
+    var dy = SK.days || {}, cards = qa('#days .dagenda');
+    if (dy.numerals && cards.length) cards.forEach(function (card, i) {
+      var node = q('.dnode', card);
+      if (!node || q('.sknum', node)) return;
+      var n = pad2(i + 1);
+      node.insertAdjacentHTML('afterbegin', '<b class="sknum" aria-hidden="true">' +
+        (dy.numerals === 'outline-zero' ? '<span class="o">' + n.charAt(0) + '</span>' + n.slice(1) : n) + '</b>');
+      var ml = q('.dmetaline', card), o = dparts(new Date(START.getTime() + (WEBINAR ? 0 : i * 864e5)));
+      if (ml) ml.textContent = 'Day ' + (i + 1) + ' · ' + [o.weekday, o.month, o.day].filter(Boolean).join(' ') + ' · ' + (S.day_time || tfmt(START));
+    });
+    if (dy.route && cards.length > 1 && !q('#days .skroute')) {
+      $('days').insertAdjacentHTML('beforeend', '<span class="skroute" aria-hidden="true"><i></i><b><svg width="16" height="16" viewBox="0 0 16 16">' +
+        '<path d="M8 3.5v9M3.8 8.4 8 12.6l4.2-4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b></span>');
+      SKROUTE = q('#days .skroute');
+      var place = function () {
+        var box = $('days'), marks = qa('#days .sknum').length ? qa('#days .sknum') : qa('#days .dnode');
+        if (!box || !marks.length || getComputedStyle(SKROUTE).display === 'none') return;
+        var br = box.getBoundingClientRect(), a = marks[0].getBoundingClientRect(), last = cards[cards.length - 1].getBoundingClientRect();
+        SKROUTE.style.left = (a.left + a.width / 2 - br.left - 3).toFixed(1) + 'px';
+        SKROUTE.style.top = (a.bottom - br.top + 14).toFixed(1) + 'px';
+        SKROUTE.style.height = Math.max(0, last.bottom - a.bottom - 70).toFixed(1) + 'px';
+      };
+      SKROUTE._place = place;
+      place(); setTimeout(place, 400); setTimeout(place, 1500);
+      addEventListener('resize', debounce(place, 120));
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+      if (window.ResizeObserver) new ResizeObserver(function () { place(); }).observe($('days'));
+    }
+    /* scenes: the highlight behind the new line is as wide as the line itself */
+    var hl = function () {
+      qa('.sk-pagefix .skhl').forEach(function (r) {
+        var t = r.nextElementSibling;
+        try { var w = t && t.getComputedTextLength(); if (w > 20) r.setAttribute('width', Math.min(300, Math.ceil(w) + 8)); } catch (e) {}
+      });
+    };
+    hl(); setTimeout(hl, 800);                        /* again once the display face has loaded */
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(hl);
+    /* one underline under one word per section heading (and the headline's key phrase with heading.mark "band") */
+    if (hd.mark === 'band') qa('#headline .kw, #fith .perf').forEach(function (k) { k.classList.add('skuw', 'skband'); });
+    if (hd.underline_word) {
+      var picks = (Array.isArray(hd.underline_word) ? hd.underline_word : []).map(function (w) { return String(w).toLowerCase(); });
+      var STOP = /^(the|and|for|you|your|with|from|this|that|what|here|there|day|days|part|parts|are|into|who|how|why|when|they|them|their|have|will|just|each|every|one|two|three|session|people|doing|going|getting|making|being|having|where|which|about|over|more|most|than|then|only|also|like|need|want|ready|really|actually)$/i;
+      qa('#page .sh, #daysh, #page .skduoh').forEach(function (h) {
+        if (q('.skmk, .skuw', h) || h.closest('.gated')) return;
+        var nodes = [], w = document.createTreeWalker(h, NodeFilter.SHOW_TEXT, null), n;
+        while ((n = w.nextNode())) nodes.push(n);
+        var best = null;
+        nodes.forEach(function (tn) {
+          var re = /[A-Za-zÀ-ɏ'’]+/g, m;
+          while ((m = re.exec(tn.nodeValue))) {
+            var word = m[0], lw = word.toLowerCase().replace(/['’]s$/, ''), score;
+            if (picks.length) score = picks.indexOf(lw) > -1 ? 100 - picks.indexOf(lw) : -1;
+            else score = STOP.test(lw) || lw.length < 4 || /['’]/.test(lw) ? -1 : lw.length + (m.index / 1000);
+            if (score > 0 && (!best || score >= best.s)) best = { s: score, n: tn, i: m.index, l: word.length };
+          }
+        });
+        if (!best) return;
+        var mid = best.n.splitText(best.i); mid.splitText(best.l);
+        var sp = document.createElement('span');
+        sp.className = 'skuw' + ((B.contains('skin-days-band') && h.closest('#days')) || h.closest('#band') ? ' y' : '');
+        mid.parentNode.insertBefore(sp, mid); sp.appendChild(mid);
+      });
+    }
+    /* fit check: "N of 5 sound like you", counted as they tap */
+    if ((SK.fit || {}).counter) {
+      var ul = $('checks');
+      if (ul && !q('.sktally')) {
+        var tot = qa('#checks li').length, lines = (SK.fit || {}).counter_lines || [
+          WEBINAR ? 'The whole session is for you.' : 'All three days are for you.',
+          WEBINAR ? 'Most of the session speaks to you.' : 'Two or more days speak to you.',
+          'One is still worth a free seat.', 'Tap any that sound like you.'];
+        ul.insertAdjacentHTML('afterend', '<div class="sktally" aria-live="polite"><b class="sktn">' + tot + '</b><span><strong>of ' + tot +
+          ' sound like you.</strong> <span class="sktt">' + esc(lines[0]) + '</span></span></div>');
+        SKTALLY = function () {
+          var n = qa('#checks li:not(.off)').length;
+          q('.sktn').textContent = n;
+          q('.sktt').textContent = n >= tot - 1 ? lines[0] : n >= 2 ? lines[1] : n === 1 ? lines[2] : lines[3];
+        };
+      }
+    }
+    /* the numbers band with the lead's photo in a two-colour duotone */
+    var pb = SK.photo_band || {}, bandEl = $('band');
+    if (pb.style === 'duotone' && bandEl && !q('.skngrid', bandEl)) {
+      var stats = (LP.stats || []).slice(0, 4), host = function (u) { try { return String(u).replace(/^https?:\/\//, '').split('/')[0].replace(/^www\./, ''); } catch (e) { return ''; } };
+      var srcs = []; stats.forEach(function (s) { var h2 = host(s.source); if (h2 && srcs.indexOf(h2) < 0) srcs.push(h2); });
+      var ttl = pb.title || ('Live with ' + FIRST), bio = pb.bio === false ? '' : (pb.bio || S.bio || LP.bio || '');
+      var ttlHTML = esc(ttl);
+      if (FIRST && ttl.indexOf(FIRST) > -1 && (hd.underline_word || hd.mark === 'band')) ttlHTML = esc(ttl).replace(esc(FIRST), '<span class="skuw y">' + esc(FIRST) + '</span>');
+      bandEl.innerHTML = '<div class="skngrid"><div class="skduo"><img src="img/headshot.jpg" alt="' + esc(WHO || FIRST) + '" loading="lazy">' +
+        '<div class="skduotag"><b>' + esc(WHO) + '</b><span>' + esc(LP.role || BRAND) + '</span></div></div>' +
+        '<div class="skncopy"><span class="skduoe">' + esc(pb.eyebrow || 'Who is teaching') + '</span><h2 class="sh skduoh">' + ttlHTML + '</h2>' +
+        '<div class="skstats">' + stats.map(function (s) { return '<div class="skstat"><b>' + esc(s.num) + '</b><span>' + esc(s.label) + '</span></div>'; }).join('') + '</div>' +
+        (bio ? '<p class="skbio">' + esc(bio) + '</p>' : '') + (srcs.length ? '<p class="sksrc">Figures: ' + esc(srcs.join(', ')) + '</p>' : '') + '</div></div>';
+    }
+    /* closing: the guest pass. The name prints as it is typed; the button rides the route and punches the stub */
+    if ((SK.closing || {}).style === 'pass') {
+      var cc = q('#closing .ccard');
+      if (cc && !q('.skpass', cc)) {
+        B.add('skin-close-seatcard');                /* same two-column card as the seat card */
+        var nd = Math.max(1, Math.min(3, (LP.days || []).length || 3));
+        var stopX = [18, 150, 282], lab = [0, 1, 2].map(function (k) {
+          return WEBINAR ? ['Join', 'Live', 'Replay'][k] : dfmt(new Date(START.getTime() + k * 864e5));
+        });
+        cc.insertAdjacentHTML('afterbegin', '<div class="skseat skpassw" aria-hidden="true"><div class="skpass">' +
+          '<div class="skpm"><div class="skph"><span>' + esc((SK.closing || {}).label || 'Guest pass') + '</span><img src="favicon-32.png" alt=""></div>' +
+            '<div class="skpev">' + esc(EV) + '</div>' +
+            '<div class="skpgn"><small>Guest</small><i class="skpname ph0">Your name</i></div>' +
+            '<svg class="skrt3" viewBox="0 0 300 44"><path class="skrl" d="M18 14H282"/>' +
+              stopX.map(function (x) { return '<circle class="skrs" cx="' + x + '" cy="14" r="6"/>'; }).join('') +
+              lab.map(function (t, k) { return '<text x="' + stopX[k] + '" y="39" text-anchor="' + ['start', 'middle', 'end'][k] + '">' + esc(t) + '</text>'; }).join('') +
+              '<g class="skrm"><circle cx="18" cy="14" r="11"/><path d="M12.5 14h10M18.5 9.8 22.7 14l-4.2 4.2"/></g></svg>' +
+            '<div class="skpfl"><div><small>Time</small><b>' + esc(tfmt(START)) + '</b></div><div><small>Where</small><b>Online</b></div><div><small>Price</small><b>Free</b></div></div>' +
+          '</div>' +
+          '<div class="skps"><div class="skpseat"><small>Seat</small>' + nd + (nd > 1 ? ' days' : ' day') + '</div><span class="skbars"></span><small>Admit one</small></div>' +
+          '<span class="skpunch"></span><span class="skpstamp">' + esc((SK.closing || {}).stamp || 'Seat held') + '</span></div></div>');
+        SKPASS = q('.skpass', cc);
+        var inp = q('input[name="first"]', cc), nm = q('.skpname', cc), shown = '';
+        if (inp && nm) inp.addEventListener('input', function () {
+          var v = inp.value.replace(/\s+/g, ' ').trim().slice(0, 22);
+          if (!v) { nm.textContent = 'Your name'; nm.classList.add('ph0'); shown = ''; return; }
+          nm.classList.remove('ph0');
+          if (!shown || v.indexOf(shown) !== 0) { nm.textContent = ''; shown = ''; }
+          for (var k = shown.length; k < v.length; k++) { var s = document.createElement('span'); s.className = 'c new'; s.textContent = v.charAt(k); nm.appendChild(s); }
+          shown = v;
+        });
+        var go = q('.form .btn', cc);
+        if (go) go.addEventListener('click', function (e) {
+          if (SKPASS.classList.contains('done') || !inp || !inp.value.trim()) return;   /* nothing typed: the form opens as usual */
+          e.preventDefault(); e.stopPropagation();
+          var still = !document.documentElement.classList.contains('skm'), stops = qa('.skrs', SKPASS), rm = q('.skrm', SKPASS);
+          SKPASS.classList.add('done'); stops[0].classList.add('lit');
+          if (still) { stops.forEach(function (s) { s.classList.add('lit'); }); rm.style.transform = 'translateX(264px)'; if (REG) REG.open(); return; }
+          rm.style.transform = 'translateX(132px)';
+          setTimeout(function () { stops[1].classList.add('lit'); rm.style.transform = 'translateX(264px)'; }, 700);
+          setTimeout(function () { stops[2].classList.add('lit'); }, 1400);
+          setTimeout(function () { if (REG) REG.open(); }, 2300);
+        }, true);
+      }
+    }
+  }
+
+  /* ---- hand-page options, second pass: the elements (tokens and classes are set in skinTokens2) */
+  var SKSEC = { hero: 'hero', facts: 'facts', fit: 'fitc', fitc: 'fitc', band: 'band', numbers: 'band', photo: 'band',
+    days: 'days', takeaway: 'takeaway', keep: 'takeaway', host: 'host', faq: 'faq', testimonial: 'tst', tst: 'tst',
+    closing: 'closing', join: 'closing' };
+  function skinFitTitle() {                    /* before the marks are placed: they look for #fith .perf */
+    var fit = SK.fit || {}, t = fit.title, l1 = $('fitL1'), l2 = $('fitL2');
+    if (!Array.isArray(t) || t.length < 2 || !l1 || !l2) return;
+    l1.textContent = t[0];
+    var mk = String(fit.mark || '').trim();
+    [[l1, String(t[0])], [l2, String(t[1])]].forEach(function (p, n) {
+      var i = mk ? p[1].indexOf(mk) : -1;
+      if (n === 0 && i < 0) return;
+      p[0].innerHTML = i < 0 ? esc(p[1]) : esc(p[1].slice(0, i)) + '<span class="perf">' + esc(mk) + '</span>' + esc(p[1].slice(i + mk.length));
+      if (i > -1) mk = '';                          /* one mark only */
+    });
+  }
+  function skinHand2() {
+    var B = document.body.classList, c = SK.colors || {};
+    /* trust strip as a stat block: eyebrow, big line, sub line, faces, one uppercase line */
+    var tb = SK.trust_badge || {}, ht = q('.htrust');
+    if (tb.art === 'block' && ht && !q('.skblk', ht)) {
+      var st = LP.stats || [], s0 = st[0] || {}, s1 = st[1] || {};
+      var big = tb.big || [s0.num, s0.label].filter(Boolean).join(' ');
+      var sub = tb.sub != null ? tb.sub : [s1.num, s1.label].filter(Boolean).join(' ');
+      var tm2 = q('.tm2', ht), line = tb.text || (tm2 ? tm2.textContent : '');
+      var av = q('.avstack', ht);
+      ht.innerHTML = '<span class="skblk">' + (tb.eyebrow ? '<small>' + esc(tb.eyebrow) + '</small>' : '') + '<b>' + esc(big) + '</b>' +
+        (sub ? '<span>' + esc(sub) + '</span>' : '') + '</span>';
+      if (av) ht.appendChild(av);
+      if (line) ht.insertAdjacentHTML('beforeend', '<p class="sktr">' + esc(line) + '</p>');
+      ht.classList.add('skblock');
+    }
+    /* the registration card: who it is for beside the faces, one note in place of "just registered" */
+    var rc = SK.regcard || {}, reg = $('regcard');
+    if (reg && rc.who && !q('.skwho', reg)) {
+      var rp = q('.rproof', reg);
+      if (rp) rp.insertAdjacentHTML('beforeend', '<span class="skwho"><b>' + esc(rc.who) + '</b> ' + esc(rc.who_tail || 'like you') + '</span>');
+      B.add('skin-reg-who');
+    }
+    if (reg && Array.isArray(rc.note) && !q('.sknote2', reg)) {
+      var rl = q('.rlive', reg);
+      if (rl) { rl.classList.add('sknote2'); rl.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="var(--sk-mark)"/>' +
+        '<path d="M6.5 12h10M12.5 7.5 17 12l-4.5 4.5" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        '<span><b>' + esc(rc.note[0] || '') + '</b> ' + esc(rc.note[1] || '') + '</span>'; }
+    }
+    /* a slim row of section links above the floating header */
+    var nl = (SK.header || {}).nav_links || [], hdr = q('#page > .hdr');
+    if (nl.length && hdr && !q('.sknavl')) {
+      var links = nl.map(function (l) {
+        var id = SKSEC[l.anchor] || String(l.anchor || '').replace(/^#/, '');
+        return $(id) ? '<a href="#' + esc(id) + '">' + esc(l.label) + '</a>' : '';
+      }).join('');
+      if (links) {
+        hdr.insertAdjacentHTML('beforebegin', '<nav class="sknavl" aria-label="Sections">' + links + '</nav>');
+        document.documentElement.style.scrollPaddingTop = '100px';
+      }
+    }
+    /* section order and the sections left out */
+    var se = SK.sections || {};
+    (se.hide || []).forEach(function (k) { var n = $(SKSEC[k] || k); if (n) n.classList.add('skhide'); });
+    if (Array.isArray(se.order) && se.order.length > 1) {
+      var nodes = [], seen = {};
+      se.order.forEach(function (k) { var id = SKSEC[k] || k, n = $(id); if (n && n.parentNode === P && !seen[id]) { seen[id] = 1; nodes.push(n); } });
+      if (nodes.length > 1) {
+        var first = nodes.reduce(function (a, n) { return (a.compareDocumentPosition(n) & 2) ? n : a; }, nodes[0]);
+        var mark = document.createComment('skorder');
+        P.insertBefore(mark, first);
+        nodes.forEach(function (n) { P.insertBefore(n, mark); });
+        P.removeChild(mark);
+      }
+    }
+    /* fit check split: the head, a sub line and the tally in the left column, the cards on the right */
+    var fit = SK.fit || {}, fitc = $('fitc'), grid = fitc && q('.fitgrid', fitc);
+    if (fit.layout === 'split' && grid && !q('.skfhead', grid)) {
+      var head = el('div', 'skfhead'), eye = q(':scope > .eyebrow', fitc), h2 = $('fith');
+      if (eye) head.appendChild(eye);
+      if (h2) head.appendChild(h2);
+      if (fit.sub) head.insertAdjacentHTML('beforeend', '<p class="skfsub">' + esc(fit.sub) + '</p>');
+      var tally = q('.sktally', grid); if (tally) head.appendChild(tally);
+      grid.insertBefore(head, grid.firstChild);
+      if (fit.portrait !== true) B.add('skin-fit-noportrait');
+    }
+    /* boxed fit cards: the title reads as a title (no closing full stop); the tick can be a round arrow */
+    if (fit.cards === 'boxed') qa('#checks li > div > p:first-child > b:first-child').forEach(function (b) { b.textContent = b.textContent.replace(/[.:]\s*$/, ''); });
+    if (fit.tick === 'arrow') qa('#checks .ck').forEach(function (ck) {
+      ck.innerHTML = '<svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><circle class="skr" cx="20" cy="20" r="17"/>' +
+        '<path class="ska" d="M12 20h15M21.5 13.5 28 20l-6.5 6.5"/></svg>';
+      ck.classList.add('skarrow');
+    });
+    /* takeaway: an eyebrow over the head, the lede left out */
+    var tk = SK.takeaway || {}, tks = q('#takeaway .tkside');
+    if (tk.eyebrow && tks && !q('.skeye', tks)) tks.insertAdjacentHTML('afterbegin', '<p class="eyebrow skeye">' + esc(tk.eyebrow) + '</p>');
+    if (tk.lede === false && tks) { var tl = q('.slede', tks); if (tl) tl.classList.add('skhide'); }
+    /* the closing card: a sub line under the head */
+    var csub = (SK.closing || {}).sub, chd = q('#closing .chead .ctext') || q('#closing .chead');
+    if (csub && chd && !q('.skcsub', chd)) chd.insertAdjacentHTML('beforeend', '<p class="skcsub">' + esc(csub) + '</p>');
+    /* the photo band's bio: the first clause in bold */
+    if ((SK.photo_band || {}).bio_lead) {
+      var bio = q('#band .skbio');
+      if (bio && !q('b', bio)) {
+        var t = bio.textContent, k = t.indexOf(','), k2 = t.indexOf('. ');
+        var cut = k > 12 && (k2 < 0 || k < k2) ? k + 1 : k2 > 12 ? k2 + 1 : -1;
+        if (cut > 0) bio.innerHTML = '<b>' + esc(t.slice(0, cut)) + '</b>' + esc(t.slice(cut));
+      }
+    }
+  }
+
+  /* ---- the motion pack: reveals, line draw-on, count-up, hairlines, hover lift, ring drift, play pulse,
+     tap-to-tick. html.skm is only set when the visitor allows motion; nothing is hidden before this code runs,
+     and a timer shows everything if a reveal never fires. */
+  function skinMotion() {
+    if (!SK) return;
+    var lvl = (SK.motion || {}).level || 'none', H = document.documentElement, B = document.body.classList;
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* tap-to-tick works with or without motion: it is a widget, not an animation */
+    if ((SK.widgets || {}).tick_cards || (SK.fit || {}).counter) {
+      B.add('skin-tick');
+      qa('#checks li').forEach(function (li) {
+        li.setAttribute('role', 'button'); li.tabIndex = 0; li.setAttribute('aria-pressed', 'true');
+        var t = function () { li.classList.toggle('off'); li.setAttribute('aria-pressed', li.classList.contains('off') ? 'false' : 'true'); if (SKTALLY) SKTALLY(); };
+        li.addEventListener('click', t);
+        li.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
+      });
+    }
+    if (lvl === 'none' || still || !('IntersectionObserver' in window)) return;
+    H.classList.add('skm', 'skm-' + lvl);
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('skin-in'); io.unobserve(e.target);
+        if (e.target._on) e.target._on();
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    var watch = function (n, d) { if (d != null) n.style.setProperty('--skd', d + 'ms'); io.observe(n); };
+    var below = function (n) { return n.getBoundingClientRect().top > innerHeight * 0.9; };
+    /* fade-up, staggered inside each group; anything already on screen is left alone */
+    ['#fitc .fith', '#fitc .fitgrid .me', '#checks li', '#fitc .fitnote', '#band .blead', '#band .bst', '#days .daysh', '#days .intro',
+     '#days .dagenda', '#takeaway .tkart', '#takeaway .tkrows li', '#faq .faqi', '#tst .tstin', '#closing .ccard', '#band .skncopy', '#fitc .sktally']
+      .forEach(function (sel) {
+        qa(sel).forEach(function (n, i) { if (!below(n)) return; n.classList.add('skrv'); watch(n, Math.min(i, 6) * 90); });
+      });
+    /* line art draws itself */
+    qa('.skart, .sknote-h').forEach(function (a) { if (below(a)) { a.classList.add('skdraw'); watch(a); } else a.classList.add('skin-in'); });
+    qa('.skmk, .skuw').forEach(function (k) { k.classList.add('skdraw'); if (below(k)) watch(k); else setTimeout(function () { k.classList.add('skin-in'); }, 350); });
+    /* the route through the days fills as the page scrolls, the marker rides its end */
+    if (SKROUTE) {
+      var fill = function () {
+        if (getComputedStyle(SKROUTE).display === 'none') return;
+        var r = SKROUTE.getBoundingClientRect(), p = r.height ? (innerHeight * 0.55 - r.top) / r.height : 1;
+        SKROUTE.style.setProperty('--sktl', clamp(p, 0, 1).toFixed(3));
+      };
+      fill(); addEventListener('scroll', fill, { passive: true }); addEventListener('resize', fill);
+    }
+    /* the thread scene: the open draft types itself once it is on screen */
+    qa('.sk-thread .skty').forEach(function (ty) {
+      var full = ty.textContent, art = ty.closest('.skart');
+      if (!below(art)) return;
+      ty.textContent = '';
+      var prev = art._on;
+      art._on = function () {
+        if (prev) prev();
+        var i = 0;
+        (function step() { if (i > full.length) return; ty.textContent = full.slice(0, i); i += 1; setTimeout(step, full.charAt(i - 1) === '.' ? 260 : 26); })();
+      };
+    });
+    /* numbers count up and end exactly as written */
+    qa('#band .blead b, #band .bst b, #band .skstat b').forEach(function (n) {
+      var txt = n.textContent, m = txt.match(/^([^0-9]*)([0-9]+(?:\.[0-9]+)?)(.*)$/);
+      if (!m || !below(n)) return;
+      var to = parseFloat(m[2]), dec = (m[2].split('.')[1] || '').length;
+      n._on = function () {
+        var t0 = performance.now();
+        (function step(t) {
+          var k = Math.min(1, (t - t0) / 1400), v = to * (1 - Math.pow(1 - k, 3));
+          n.textContent = k < 1 ? m[1] + v.toFixed(dec) + m[3] : txt;
+          if (k < 1) requestAnimationFrame(step);
+        })(t0);
+      };
+      watch(n);
+    });
+    /* the tiles' focus timer runs while it is on screen */
+    qa('.sktm').forEach(function (tm) {
+      var left = 1500, bar = q('.skprog b', tm.closest('.skui')), on = false;
+      tm.closest('.skart')._on = function () { on = true; };
+      setInterval(function () { if (!on || left <= 0) return; left--; tm.textContent = pad2(Math.floor(left / 60)) + ':' + pad2(left % 60); if (bar) bar.style.width = ((1500 - left) / 1500 * 100).toFixed(1) + '%'; }, 1000);
+    });
+    /* safety: whatever has not revealed after 5 s shows anyway */
+    setTimeout(function () { qa('.skrv:not(.skin-in)').forEach(function (n) { if (!below(n)) n.classList.add('skin-in'); }); }, 5000);
   }
 
   /* --------------------------------------------------------------- 9. boot */
@@ -1371,6 +2324,7 @@
     if (st.brd) r.setProperty('--brd', st.brd);
     if (st.lift) r.setProperty('--lift', st.lift);
     if (st.face) P.setAttribute('data-finish', st.face);
+    if (st.night) r.setProperty('--night', st.night);
   }
 
   /* the day blocks: a real date and time on each, and a line on what happens in the room */
@@ -1412,12 +2366,10 @@
   function agendaDays(box, slot) {
     var n = qa('.d23 > *', box).length + 1;
     function node(i) {
-      var d = new Date(START.getTime() + i * 864e5);
-      var parts = String(dfmt(d)).split(' ');
-      var wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d.getDay()];
-      return '<div class="dnode"><span class="dnwd">' + esc(wd) + '</span>' +
-        '<b class="dnday">' + esc(parts[1] || '') + '</b>' +
-        '<span class="dnmon">' + esc(parts[0] || '') + '</span>' +
+      var o = dparts(new Date(START.getTime() + i * 864e5));
+      return '<div class="dnode"><span class="dnwd">' + esc(o.weekday || '') + '</span>' +
+        '<b class="dnday">' + esc(o.day || '') + '</b>' +
+        '<span class="dnmon">' + esc(o.month || '') + '</span>' +
         '<span class="dntime">' + esc(slot) + '</span>' +
         '<span class="dnlive"><i></i>Live</span></div>';
     }
@@ -1443,7 +2395,7 @@
       /* the action, in the words of the day you just read about */
       var host = q('.d1body', body) || body, keepEl = q('.dkeep', host) || q('.dkeep', body);
       (keepEl || host).insertAdjacentHTML(keepEl ? 'afterend' : 'beforeend',
-        ctaBlock(ctaFor((LP.days || [])[i] && (LP.days || [])[i].title), 'Free \u00B7 Live with ' + FIRST));
+        ctaBlock(ctaFor((LP.days || [])[i] && (LP.days || [])[i].title, i), 'Free \u00B7 Live with ' + FIRST));
       /* Day 1's object column carries the document that comes off it (2026-09-23): the laptop is the screen
          you watch that day and the takeaway box is what it produces, so they stack in one column and the row
          stops leaving 255px of empty ground under a 281px laptop. The CTA moves up to be a grid child so it
@@ -1536,20 +2488,32 @@
     return v ? v.charAt(0).toLowerCase() + v.slice(1) : '';
   }
   function prepAnswer() {
-    var b = dayLine(0, 'bullet') || dayLine(0, 'outcome');
-    return b ? 'Nothing to prepare. Day 1 starts on ' + b + ', and you work with whatever you already have.'
-             : 'Nothing to prepare. Everything you need is handed to you on Day 1.';
+    if (S.prep_answer) return S.prep_answer;
+    var b = dayLine(0, 'bullet') || dayLine(0, 'outcome'), k = phraseKind(b);
+    if (k === 'verb') return 'Nothing to prepare. On Day 1 you ' + b + ', working with whatever you already have.';
+    if (k === 'noun') return 'Nothing to prepare. Day 1 starts with ' + b + ', and you work with whatever you already have.';
+    return 'Nothing to prepare. Bring whatever you already have; everything else is handed to you on Day 1.';
+  }
+  /* "On Day 1 you list what you read ... by Day 3 you set up the review", built only from phrases whose kind is known
+     (phraseKind), else the safe line. lp.json site.fit_paragraph replaces the whole sentence. */
+  function fitArc() {
+    if (S.fit_paragraph) return ' ' + S.fit_paragraph;
+    var d1 = dayLine(0, 'bullet') || dayLine(0, 'outcome'), d3 = dayLine(2, 'outcome');
+    var k1 = phraseKind(d1), k3 = phraseKind(d3);
+    var a = k1 === 'verb' ? 'On Day 1 you ' + d1 : k1 === 'noun' ? 'Day 1 starts with ' + d1 : '';
+    var b = k3 === 'verb' ? 'by Day 3 you ' + d3 : k3 === 'noun' ? 'by Day 3 you leave with ' + d3 : '';
+    if (a && b) return ' ' + a + ', so bring what you already have; ' + b + '.';
+    if (b) return ' Bring what you already have; ' + b + '.';
+    return ' You bring the work you already have, and you leave with the next three moves made.';
   }
 
   /* the fit check needs more than a list: who this is for, and who it is not for */
   function fitCopy() {
     var fitc = $('fitc');
     if (!fitc || q('.fitnote', fitc)) return;
-    var d1 = dayLine(0, 'bullet') || dayLine(0, 'outcome'), d3 = dayLine(2, 'outcome');
     /* S.audience is a channel label ("newsletter subscribers"), never a who-it-is-for phrase: never put it here */
     var fitFor = S.fit_note || 'It is built for anyone who recognised themselves up there.';
-    var arc = d1 && d3 ? ' Day 1 starts on ' + d1 + ', so bring what you already have; by Day 3 you ' + d3 + '.'
-      : ' You bring the work you already have, and you leave with the next three moves made.';
+    var arc = fitArc();
     var note = el('div', 'fitnote',
       '<p><b>' + esc(fitFor) + '</b>' + esc(arc) + '</p>' +
       '<p>' + esc(S.fit_not || ('If you have not started yet, come back for the next one. Three days can sharpen ' +
@@ -1924,6 +2888,7 @@
 
   function start() {
     styleTokens();
+    skinTokens();
     /* the base layer's compact passes are measured against the 800px canvas:
        they mean nothing here and fight the hosted padding */
     P.classList.remove('compact', 'compact2');
@@ -1960,6 +2925,7 @@
     hostMark();
     stickyVideo();
     setTimeout(ctaIcons, 0);
+    skinDecor();
     lockBar(wrap);
     clocks();
     seatTicker();
@@ -1969,11 +2935,13 @@
     window.addEventListener('load', function () { setTimeout(layout, 50); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(layout, 30); });
     setTimeout(layout, 400);
+    if (WEBINAR && window.LP_webinarize) { window.LP_webinarize(document.body); setTimeout(layout, 20); }
     setTimeout(function () { background(); window.SITE_READY = { w: P.clientWidth, h: P.offsetHeight }; }, 900);
     var shown = false;
     function reveal() {
       if (shown) return;
       shown = true; layout();
+      skinMotion();
       requestAnimationFrame(function () { document.documentElement.classList.add('sready'); });
     }
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(reveal);
