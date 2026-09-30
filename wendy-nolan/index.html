@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Passion to Profits | Wendy Nolan</title>
-<!-- build_page.py generated from leads/wendy-nolan/page.spec.json (tier standard) + lp.json. Edit the spec, not this file. -->
+<!-- build_page.py generated from leads/wendy-nolan/page.spec.json (tier dream) + lp.json. Edit the spec, not this file. -->
 <script>(function(d){d.classList.add("js");try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("m")}catch(e){}setTimeout(function(){if(!window.__pg)d.classList.remove("m")},4000)})(document.documentElement)</script>
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=75d380a6">
 <link rel="stylesheet" href="fonts/gambetta_300-400-500-600-700.css">
@@ -292,6 +292,33 @@ body.regc-top .regc{border-top:5px solid var(--accent)}
   .regc{padding:18px 16px 20px}
 }
 
+/* booking card: titles break on their own lines (a "|" in copy.booking_title), no lone last word, and the tight display tracking never glues "12:00 PM EST" together */
+.book h3{text-wrap:balance}
+.book .k,.book .d,.book .t{word-spacing:.1em}
+
+/* opt-in: star row on the trust badge (hero.trust.stars) and the live-activity card (hero.regcard.live) */
+.tstrip .award .stars{display:flex;gap:2px;margin:0 0 5px}
+.tstrip .award .stars svg{fill:var(--star,#f5a623)}
+.xlive{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:14px 0 0;font:var(--bw) 14.5px/1.35 var(--fb);color:var(--ink-soft,var(--ink))}
+.xlive .xsep{color:var(--mute)}
+.xlive b{color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums}
+.xpulse{position:relative;flex:none;width:10px;height:10px;border-radius:50%;background:#1f9d55;margin-right:2px}
+.xpulse:after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #1f9d55;opacity:0}
+html.js.m .xpulse:after{animation:xpl 2s ease-out infinite}
+@keyframes xpl{0%{transform:scale(.5);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+.xjust{display:flex;align-items:center;gap:10px;margin:10px 0 0;padding:10px 12px;background:var(--ground);border:1px solid var(--line);border-radius:10px;font:var(--bw) 14px/1.35 var(--fb);color:var(--ink-soft,var(--ink))}
+.xjust b{color:var(--ink)}
+.xjust .xav{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font:800 11px/1 var(--fd)}
+#xtoast{position:fixed;left:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:12px;width:326px;max-width:calc(100vw - 32px);padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 38px -18px rgba(0,0,0,.35);opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .35s,transform .45s cubic-bezier(.2,1.2,.4,1)}
+#xtoast.on{opacity:1;transform:none}
+#xtoast .tav{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font:800 14px/1 var(--fd)}
+#xtoast .tbd{min-width:0;display:grid;gap:1px}
+#xtoast b{font:700 14px/1.3 var(--fb);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#xtoast .tact{font:var(--bw) 13.5px/1.3 var(--fb);color:var(--ink-soft,var(--ink))}
+#xtoast small{display:flex;align-items:center;gap:6px;font:600 12px/1.3 var(--fb);color:var(--mute)}
+#xtoast small i{width:7px;height:7px;border-radius:50%;background:#1f9d55}
+@media (prefers-reduced-motion:reduce){#xtoast{transition:opacity .2s;transform:none}}
+
 /* ==== sections below the hero. Variants are body classes written by build_page.py from page.spec.json. ==== */
 /* trust row: one hairline row of the lead's own sourced numbers */
 .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -529,6 +556,9 @@ body.m-hand-titles .tkart h4{font:400 27px/1.1 var(--fh);letter-spacing:0;margin
 .ktab .ktr span:nth-child(2),.ktab .kth span:nth-child(2){text-align:left}
 .ktr span{min-width:0;overflow-wrap:anywhere}
 
+/* motif "sparkle": one outline four-point star in the accent above each section title (follows the heading's alignment) */
+body.m-sparkle .head::before{content:"";display:inline-block;width:26px;height:26px;margin:0 0 14px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f38100' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M12 2.5c.9 5.2 3.8 8.1 9 9.5-5.2 1.4-8.1 4.3-9 9.5-.9-5.2-3.8-8.1-9-9.5 5.2-1.4 8.1-4.3 9-9.5z'/%3E%3C/svg%3E")}
+
 /* ==== scene library (templates/pages/scenes.py): tokens only. The static SVG is the finished picture; motion only
    under html.js.m, started when page.js adds .in. ==== */
 .scene{display:block;width:100%;height:auto;overflow:visible;--sc-p:var(--ink);--sc-on:var(--ground);--sc-mark-on:var(--mark-ink)}
@@ -730,27 +760,395 @@ body.stick-mono #stick .sv img{filter:grayscale(1) contrast(1.05)}
 }
 @media (max-width:400px){#gate .btn.sm svg{display:none}}
 
-:root{--ground:#fbe6e2;--ink:#15314c;--panel:#ffffff;--paper:#f7ddd8;--body:#3b4e62;--mute:#5e646f;--grey:#94959e;--line:rgba(21,49,76,0.11);--line2:rgba(21,49,76,0.26);--tk:rgba(21,49,76,0.36);--accent:#ef5a68;--accent-ink:#1a1a1a;--accent-text:#b3444e;--accent2:#ef5a68;--mark:#ffd180;--mark-ink:#111111;--btn:#15314c;--btn-ink:#ffffff;--btn-hover:#ef5a68;--btn-hover-ink:#1a1a1a;--bar:#15314c;--bar-ink:#ffffff;--bar-mute:#b9c1c9;--focus:#b3444e;--band:#15314c;--band-ink:#ffffff;--band-mute:#c4ccd2;--band-num:#ffd180;--pb-ground:#15314c;--pb-tint:#ef5a68;--pb-ink:#ffffff;--pb-mute:#c4ccd2;--button:#15314c;--button-ink:#ffffff;--button-hover:#ef5a68;--button-hover-ink:#1a1a1a;--num-color:#ef5a68;--tick:#ef5a68;--tick-ink:#15314c}:root{--fd:"Gambetta",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--fb:"Switzer",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--fl:"Switzer",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--fs:"Instrument Serif",Georgia,serif;--fh:"Gochi Hand",cursive;--fn:"Gambetta",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--hw:600;--hw1:600;--bw:400;--bbw:600;--lw:600;--lsize:13px;--ltrack:0;--lcase:none;--htrack:-.02em;--r:24px;--r2:19px;--r3:13px;--btn-r:999px;--h1max:56px;--h2max:50px;--fsb:17px;--lh:1.62;--brush:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='%23ffd180' d='M4 14C40 6 120 4 196 8c3 8 2 18-2 26C130 38 60 38 6 34 1 27 1 20 4 14z'/%3E%3C/svg%3E");--hdr-r:22px}
+:root{--ground:#fbe6e2;--ink:#15314c;--panel:#ffffff;--paper:#fdf5ee;--body:#233a52;--mute:#3a4d63;--grey:#94959e;--line:rgba(21,49,76,0.11);--line2:rgba(21,49,76,0.26);--tk:rgba(21,49,76,0.36);--accent:#ef5a68;--accent-ink:#1a1a1a;--accent-text:#a82c3b;--accent2:#ef5a68;--mark:#ffd180;--mark-ink:#15314c;--btn:#15314c;--btn-ink:#ffffff;--btn-hover:#ef5a68;--btn-hover-ink:#1a1a1a;--bar:#15314c;--bar-ink:#ffffff;--bar-mute:#b9c1c9;--focus:#a82c3b;--band:#15314c;--band-ink:#ffffff;--band-mute:#c4ccd2;--band-num:#ffd180;--pb-ground:#15314c;--pb-tint:#ef5a68;--pb-ink:#ffffff;--pb-mute:#c4ccd2;--button:#15314c;--button-ink:#ffffff;--button-hover:#ef5a68;--button-hover-ink:#1a1a1a;--num-color:#ef5a68;--tick:#ef5a68;--tick-ink:#15314c;--note-ink:#a82c3b;--honey:#f2b544;--cream:#fdf5ee;--blush2:#f9d6d0}:root{--fd:"Gambetta",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--fb:"Switzer",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--fl:"Switzer",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--fs:"Instrument Serif",Georgia,serif;--fh:"Gochi Hand",cursive;--fn:"Gambetta",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--hw:600;--hw1:600;--bw:400;--bbw:600;--lw:600;--lsize:15px;--ltrack:0;--lcase:none;--htrack:-.02em;--r:24px;--r2:19px;--r3:13px;--btn-r:999px;--h1max:56px;--h2max:48px;--fsb:18px;--lh:1.6;--brush:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='%23ffd180' d='M4 14C40 6 120 4 196 8c3 8 2 18-2 26C130 38 60 38 6 34 1 27 1 20 4 14z'/%3E%3C/svg%3E");--hdr-r:22px}
 
+/* ==== Wendy Nolan, dream layer (leads/wendy-nolan/reg-extra/src/extra.css, assembled by assemble.py) ====
+   Her brand one step up: blush ground, her cream for alternate sections, navy ink, coral for fills and doodles,
+   deep coral for coral text, honey as the second warm accent. Drawn icons = navy line over an offset blob.
+   50+ layer: nothing a reader needs is under 14px, body 18 (17 on phones), buttons 56px, chips and pills 48px. */
+:root{--hand-ink:#a82c3b;--sticky:#ffe6a6;--shadow:0 1px 0 rgba(21,49,76,.05),0 18px 40px -26px rgba(21,49,76,.42)}
+
+/* ---------- 50+ legibility layer */
+body{font-size:18px;line-height:1.6}
+.cap{font-size:15px;color:var(--mute);letter-spacing:0}
+.btn{font-size:18px;min-height:56px;padding:17px 30px}
+.btn.sm{font-size:16px;min-height:48px;padding:12px 20px}
+.head p,.fhead p{font-size:19px;line-height:1.6;color:var(--body)}
+.hd{text-wrap:balance}
+/* header */
+.fb-t small,.fb-l{font-size:12.5px;color:var(--ink)}
+.fb-tile small{font-size:11px;color:var(--ink)}
+.fb-jn small{font-size:13px}
+/* hero */
+.tstrip .award small{font-size:13px;color:var(--ink)}
+.tstrip .tr p{font-size:16px}
+.hpill{font-size:14px}
+.book .k{font-size:14px}
+.book .t{font-size:15.5px;color:var(--body)}
+.book .go .btn{font-size:17px}
+.book .go small{font-size:14px;color:var(--body)}
+.stuck p{font-size:16px;color:var(--ink)}
+.chips button{font-size:17px;min-height:48px;padding:10px 18px;border-width:1.5px}
+.chips button:hover{border-color:var(--accent)}
+.regc .rt{font-size:15px}
+.regc .num{font-size:16px;color:var(--body)}
+.regc .just{font-size:16px;color:var(--body)}
+.xlive{font-size:16px}
+.xjust{font-size:16px}
+#xtoast b{font-size:16px}
+#xtoast .tact{font-size:15px}
+#xtoast small{font-size:14px}
+/* trust bar */
+.trust span{font-size:15px;color:var(--body)}
+/* days */
+.dwhen{font-size:15px}
+.dtext .out{font-size:19.5px;line-height:1.5}
+.dtext p.det{font-size:18px}
+.ui .uh{font-size:15px;margin-bottom:16px}
+.ui .uh span{color:var(--mute)}
+/* who teaches */
+.stat span{font-size:16px;color:var(--body)}
+.duo .tag span{font-size:15px;color:var(--body)}
+.bio{font-size:18px}
+/* questions, testimonial, closing, sheet, gate, stick, footer */
+.faqs summary{font-size:22px;padding:24px 0;min-height:48px}
+.faqs summary .qn{font-size:15px}
+.faqs details p{font-size:18px}
+.tslab cite{font-size:15px}
+.cslide li{font-size:17px}
+.cslide li b{font-size:14px}
+.cr .fine{font-size:14.5px;color:var(--body)}
+input{font-size:18px;min-height:56px}
+#sheet .mw{font-size:17px;color:var(--body)}
+#sheet ul.ticks{font-size:15px;color:var(--body)}
+#gate .gtx small{font-size:14px}
+#gate .gpd{font-size:17px}
+#stick .cap2{font-size:14px}
+#stick .go{font-size:14px}
+.foot{font-size:14px}
+
+/* ---------- signature device 1: the coral doodle underline under one phrase of a heading (motif serif-italic hook) */
+.hd .it,.xdood{font:inherit;font-style:normal;letter-spacing:inherit;line-height:inherit;position:relative;z-index:0;display:inline-block;white-space:nowrap}
+.hd .it:after,.xdood:after{content:"";position:absolute;left:-1%;right:-1%;bottom:-.16em;height:.3em;z-index:-1;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 240 18%22%3E%3Cg fill=%22none%22 stroke=%22%23ef5a68%22 stroke-linecap=%22round%22%3E%3Cpath stroke-width=%225%22 d=%22M4 10.5C58 5 132 3.6 236 6.4%22/%3E%3Cpath stroke-width=%222.6%22 d=%22M30 14.6c52-3.2 110-4 172-2.6%22/%3E%3C/g%3E%3C/svg%3E") no-repeat 0 0/100% 100%}
+html.js.m .hd .it:after,html.js.m .xdood:after{clip-path:inset(0 100% 0 0);transition:clip-path 1s cubic-bezier(.6,0,.2,1) .35s}
+html.js.m .in .it:after,html.js.m .in .xdood:after{clip-path:inset(0 0 0 0)}
+
+/* ---------- signature device 2: hand notes with a curly arrow */
+.xhand,.xtap,.xpn,.xsn{font-family:var(--fh);font-weight:400;color:var(--hand-ink);line-height:1.05;white-space:nowrap}
+
+/* ---------- days: three readable HTML cards */
+.xsc{padding:24px 24px 22px;border-radius:24px;position:relative}
+.xsq{display:flex;align-items:center;gap:12px;background:var(--ground);border-radius:999px;padding:13px 18px;font-size:17px;color:var(--ink);font-weight:600}
+.xsq i{flex:none;width:22px;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cg fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.4%22 stroke-linecap=%22round%22%3E%3Ccircle cx=%2210.5%22 cy=%2210.5%22 r=%226.5%22/%3E%3Cpath d=%22M15.5 15.5l5 5%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain}
+.xsl{list-style:none;margin-top:14px;display:grid;gap:8px}
+.xsl li{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:10px 16px;border-radius:16px;border:1.5px solid var(--line);font-size:17px;color:var(--body)}
+.xsl li em{font:400 20px/1 var(--fh);color:var(--mute);white-space:nowrap}
+.xsl li.on{border:2px solid var(--accent);background:#fff7f5;color:var(--ink);font-weight:600}
+.xsl li.on i{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22none%22 stroke=%22%231a1a1a%22 stroke-width=%223.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M5 12.6l4.6 4.6L19 7.6%22/%3E%3C/svg%3E") no-repeat center/16px}
+.xsn{position:relative;margin:14px 8px 0 auto;width:max-content;font-size:24px;transform:rotate(-3deg);padding-left:46px}
+.xsn:before{content:"";position:absolute;left:0;top:-22px;width:40px;height:42px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 46 50%22%3E%3Cg fill=%22none%22 stroke=%22%23a82c3b%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M36 46C18 42 8 30 12 8%22/%3E%3Cpath d=%22M4 16l8-11 9 10%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain}
+.xso{list-style:none;counter-reset:xs;display:grid;gap:0;position:relative}
+.xso:before{content:"";position:absolute;left:19px;top:24px;bottom:24px;border-left:2px dashed var(--blush2)}
+.xso li{counter-increment:xs;position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:16px;padding:12px 0}
+.xso li:before{content:counter(xs);grid-row:span 2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font:600 18px/1 var(--fd);position:relative;z-index:1}
+.xso li:first-child:before{background:var(--accent);color:#1a1a1a}
+.xso b{font:600 20px/1.25 var(--fd);color:var(--ink)}
+.xso span{font-size:17px;line-height:1.45;color:var(--body)}
+.xs1 .xsn{margin-top:8px}
+.xs1 .xsn:before{display:none}
+.xs1 .xsn{padding-left:0}
+.xst{list-style:none;display:grid;gap:10px}
+.xst li{display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:14px;min-height:72px;padding:10px 16px 10px 10px;border-radius:18px;border:1.5px solid var(--line)}
+.xst .xi{width:52px;height:52px;border-radius:16px;background:var(--cream);display:grid;place-items:center}
+.xst .xi svg{width:38px;height:38px}
+.xst b{font:600 19px/1.25 var(--fd);color:var(--ink)}
+.xst em{font:600 15px/1 var(--fb);font-style:normal;color:var(--ink);background:var(--cream);border-radius:999px;padding:8px 12px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.xst li.done em{background:#e9f2ec;color:#1d5a36}
+.xst li.now{border:2px solid var(--accent);background:#fff7f5}
+.xst li.now em{background:var(--accent);color:#1a1a1a}
+.xst li.now em i{width:9px;height:9px;border-radius:50%;background:#1a1a1a}
+@media (prefers-reduced-motion:no-preference){html.js.m .in .xst li.now em i{animation:xblink 1.8s ease-in-out 4}}
+@keyframes xblink{50%{opacity:.2}}
+
+/* ---------- who teaches: her photo on a coral block, like her own site, with two hand notes */
+.nums{background:var(--cream)}
+.nums .duo{border-radius:40px;transform:rotate(-2deg);margin:40px 30px 70px 14px}
+.nums .duo img{position:relative;z-index:1;border-radius:40px;box-shadow:0 20px 40px -24px rgba(21,49,76,.5)}
+.nums .duo:after{inset:22px -22px -22px 22px;border:0;border-radius:40px;background:var(--accent);z-index:0}
+.nums .duo:before{content:"";position:absolute;z-index:0;left:-26px;top:-26px;width:120px;height:120px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cpath fill=%22none%22 stroke=%22%23f2b544%22 stroke-width=%224.4%22 stroke-linecap=%22round%22 d=%22M58 8C30 4 8 22 9 50c1 26 22 42 46 40 24-2 38-22 36-44C89 24 72 10 48 12%22/%3E%3C/svg%3E") no-repeat center/contain}
+.nums .duo .tag{z-index:3;transform:rotate(2deg);right:-10%;bottom:-6%;border:0}
+.nums .duo .tag b{font-size:20px}
+.xpn{position:absolute;z-index:3;font-size:27px}
+.xpn i{position:absolute;background:no-repeat center/contain}
+.xpn.n1{top:-44px;right:6%;transform:rotate(4deg)}
+.xpn.n1 i{left:-46px;top:12px;width:40px;height:36px;background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 56 46%22%3E%3Cg fill=%22none%22 stroke=%22%23a82c3b%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M52 5C38 6 22 12 12 34%22/%3E%3Cpath d=%22M6 24l5 12 11-6%22/%3E%3C/g%3E%3C/svg%3E")}
+.xpn.n2{left:4%;bottom:-62px;transform:rotate(-4deg);padding-left:44px}
+.xpn.n2 i{left:0;top:-30px;width:38px;height:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 46 50%22%3E%3Cg fill=%22none%22 stroke=%22%23a82c3b%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M36 46C18 42 8 30 12 8%22/%3E%3Cpath d=%22M4 16l8-11 9 10%22/%3E%3C/g%3E%3C/svg%3E")}
+
+/* ---------- fit check: tap cards that answer back */
+#fit .fgrid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px}
+#fit .fhead h2{margin:14px 0 20px}
+.xtap{position:relative;display:inline-block;margin-top:18px;font-size:25px;transform:rotate(-2deg);padding-right:78px}
+.xtap i{position:absolute;right:0;top:-4px;width:70px;height:40px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 46%22%3E%3Cg fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M4 30c10-18 26-24 38-14 7 6 3 14-3 11-6-3-2-13 8-15 9-2 18 2 28 8%22/%3E%3Cpath d=%22M64 13l11 7-12 5%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain}
+.tally{max-width:400px;margin-top:26px;padding:20px 22px 18px;border:0;border-radius:24px;background:#fff;box-shadow:var(--shadow);display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:center}
+.tally b{position:relative;z-index:0;width:74px;height:74px;display:grid;place-items:center;font:600 46px/1 var(--fd);color:var(--ink)}
+.tally b:before{content:"";position:absolute;inset:0;z-index:-1;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cpath fill=%22none%22 stroke=%22%23f2b544%22 stroke-width=%224.4%22 stroke-linecap=%22round%22 d=%22M58 8C30 4 8 22 9 50c1 26 22 42 46 40 24-2 38-22 36-44C89 24 72 10 48 12%22/%3E%3C/svg%3E") no-repeat center/contain;opacity:.25;transition:opacity .3s}
+.tally.xany b:before{opacity:1}
+.tally span{font-size:17px;color:var(--body);line-height:1.4}
+.tally span strong{font-size:18px}
+#tallyT{display:block;margin-top:4px;font:400 23px/1.15 var(--fh);color:var(--hand-ink)}
+.xpips{grid-column:1/-1;display:flex;gap:8px;margin-top:12px}
+.xpips i{flex:1;height:8px;border-radius:99px;background:var(--blush2);transition:background .3s}
+.xpips i.on{background:var(--accent)}
+.checks{gap:16px}
+.checks li{grid-template-columns:64px minmax(0,1fr) auto;grid-template-areas:"tk ct side";gap:0 20px;align-items:start;padding:22px;border:2px solid transparent;border-radius:24px;background:#fff;box-shadow:var(--shadow);min-height:132px;transition:background .25s,border-color .25s,transform .25s}
+.checks li:hover{border-color:var(--blush2);transform:translateY(-2px)}
+.checks li:not(.off){border-color:var(--accent);background:#fff8f6}
+.checks .tk{grid-area:tk;width:64px;height:64px;border-radius:20px;background:var(--cream) no-repeat center/48px;position:relative}
+.checks .tk svg{display:none}
+.checks li:nth-child(1) .tk{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2227%22 r=%2215%22 fill=%22%23f2b544%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M9.5 11.5c7.5-.8 17.5-.9 25.2.2 2.6.4 3.9 2 3.9 4.6l-.3 11.8c-.1 2.5-1.6 3.8-4 3.9-4.1.2-7.8.1-11.6.1l-7.4 6.2.6-6.3c-2.2-.1-4-.2-6-.4-2.4-.3-3.5-1.8-3.5-4.2l.1-11.6c0-2.5 1.3-4 3-4.3z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M18.6 19.2c.5-2.6 2.6-4 5-3.9 2.6.1 4.4 1.8 4.3 4-.1 2.9-3.8 3.2-4 6.1%22/%3E%3Ccircle cx=%2223.8%22 cy=%2229.6%22 r=%221.6%22 fill=%22%2315314c%22/%3E%3C/svg%3E")}
+.checks li:nth-child(2) .tk{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%2215%22 fill=%22%23f9d6d0%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M17.4 5.6c4.8-.4 9.6-.4 14.2 0 1.8.2 2.9 1.4 3 3.3.3 9.8.3 19.8 0 29.8-.1 2-1.2 3.1-3 3.3-4.6.4-9.4.4-14.2 0-1.8-.2-2.9-1.4-3-3.3-.3-10-.3-20 0-29.8.1-1.9 1.2-3.1 3-3.3z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M21.8 10h5%22/%3E%3Ccircle cx=%2224.4%22 cy=%2234.4%22 r=%223%22 fill=%22%23ef5a68%22/%3E%3C/svg%3E")}
+.checks li:nth-child(3) .tk{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2227%22 cy=%2228%22 r=%2215%22 fill=%22%23f2b544%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M8.8 15.2c6.2-.5 12.6-.5 19 0 2 .2 3.2 1.5 3.3 3.5.2 4.2.2 8.4 0 12.6-.1 2-1.3 3.3-3.3 3.5-6.4.5-12.8.5-19 0-2-.2-3.2-1.5-3.3-3.5-.2-4.2-.2-8.4 0-12.6.1-2 1.3-3.3 3.3-3.5z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M31.4 21.8l9.4-5.2c.8-.4 1.6.1 1.6 1v14.8c0 .9-.8 1.4-1.6 1l-9.4-5.2%22/%3E%3Ccircle cx=%2212.6%22 cy=%2220.6%22 r=%222.4%22 fill=%22%23ef5a68%22/%3E%3C/svg%3E")}
+.checks li:nth-child(4) .tk{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2227%22 cy=%2228%22 r=%2215%22 fill=%22%23f9d6d0%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M7.5 10.6l10.2-3.4 12.4 3.8 10.4-3.6v30.4l-10.4 3.6-12.4-3.8-10.2 3.4z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-dasharray=%221 4.6%22 d=%22M12.8 33.6c3-3.4 5.2-6.8 9.6-7.4 4.2-.6 5.6-4.2 8.4-7.6%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M33.6 19.8v-9.4l5.4 2.6-5.4 2.8%22/%3E%3C/svg%3E")}
+.checks li:nth-child(5) .tk{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%2215%22 fill=%22%23f2b544%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M23.6 7.4c9.4-.3 16.4 7 16.3 16.6-.1 9.6-7.2 16.6-16.4 16.5-9.2-.1-16.2-7.4-16-16.9.2-9.2 7.1-15.9 16.1-16.2z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M23.8 14.2v10.4l6.6 4.2%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M23.8 9.8v1.4M37.2 24h-1.4M23.8 38.4V37M10.4 24h1.4%22/%3E%3C/svg%3E")}
+.checks .tk:after{content:"";position:absolute;right:-9px;bottom:-9px;width:30px;height:30px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22none%22 stroke=%22%231a1a1a%22 stroke-width=%223.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M5 12.6l4.6 4.6L19 7.6%22/%3E%3C/svg%3E") no-repeat center/16px;box-shadow:0 0 0 3px #fff;transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.checks li:not(.off) .tk:after{transform:scale(1)}
+.checks .ct{grid-area:ct;min-width:0}
+.checks .ct b{font:600 22px/1.3 var(--fd);letter-spacing:-.01em;color:var(--ink)}
+.checks .ct p{margin-top:6px;font-size:18px;line-height:1.55;color:var(--body)}
+.checks .ct .why{margin-top:10px;font-size:17px;line-height:1.55;color:var(--mute)}
+.checks .note{grid-area:side;position:relative;top:auto;right:auto;align-self:end;justify-self:end;margin:0 4px 2px 0;font:400 26px/1 var(--fh);color:var(--hand-ink);transform:rotate(-4deg);white-space:nowrap;transition:opacity .35s,transform .35s}
+.checks .note:before{content:none}
+html.js .checks li.off .note{opacity:0;transform:rotate(-4deg) translateY(8px)}
+.xme{grid-area:side;align-self:start;justify-self:end;display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 16px 0 12px;border-radius:999px;border:2px solid var(--line2);background:#fff;font:600 16px/1 var(--fb);color:var(--ink);white-space:nowrap;transition:background .25s,border-color .25s}
+.xme i{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);background:no-repeat center/13px}
+.xme .b{display:none}
+li:not(.off) .xme{border-color:var(--accent);background:var(--accent);color:#1a1a1a}
+li:not(.off) .xme i{border-color:#1a1a1a;background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22none%22 stroke=%22%231a1a1a%22 stroke-width=%223.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M5 12.6l4.6 4.6L19 7.6%22/%3E%3C/svg%3E")}
+li:not(.off) .xme .a{display:none}
+li:not(.off) .xme .b{display:inline}
+.fit .fcta{margin-top:28px}
+.fit .fcta .btn{width:100%;max-width:420px}
+html.js.m .checks.in li.redo{opacity:1;animation:xpop .45s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes xpop{0%,100%{opacity:1;transform:none}40%{opacity:1;transform:scale(1.015)}}
+
+/* ---------- what you keep: three drawn objects, one per day */
+.xkeep{background:var(--cream)}
+.xkeep .head{margin-bottom:60px}
+.xobjs{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:52px}
+.xobj{position:relative;display:flex;flex-direction:column;min-width:0}
+#takeaway .xobj.tkart{background:none;border:0;padding:0;box-shadow:none;border-radius:0}
+.xstage{position:relative;height:360px;border-radius:28px;background:var(--ground);display:grid;place-items:center;isolation:isolate;transition:transform .3s}
+.xobj:hover .xstage{transform:translateY(-3px)}
+.xobj:not(:last-child) .xstage:after{content:"";position:absolute;left:calc(100% + 2px);top:44%;width:50px;height:30px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 46%22%3E%3Cg fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M4 30c10-18 26-24 38-14 7 6 3 14-3 11-6-3-2-13 8-15 9-2 18 2 28 8%22/%3E%3Cpath d=%22M64 13l11 7-12 5%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;z-index:4}
+.xex{position:absolute;top:14px;left:14px;z-index:3;font:600 14px/1 var(--fb);color:var(--ink);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:8px 12px}
+.xcap{padding:24px 4px 0}
+.xday{display:inline-block;font:600 15px/1 var(--fb);color:#1a1a1a;background:var(--honey);border-radius:999px;padding:9px 15px}
+.xcap h3{font:600 27px/1.2 var(--fd);letter-spacing:-.015em;color:var(--ink);margin:14px 0 8px}
+.xcap p{font-size:18px;line-height:1.55;color:var(--body)}
+.xhand{position:absolute;z-index:3;font-size:27px}
+/* Day 1: the sticky note */
+.xsticky{position:relative;width:min(290px,84%);background:var(--sticky);padding:22px 22px 20px;border-radius:4px 4px 22px 4px;transform:rotate(-3deg);box-shadow:0 20px 30px -20px rgba(21,49,76,.5),0 1px 0 rgba(21,49,76,.08)}
+.xnh{font:400 23px/1.1 var(--fh);color:var(--ink);margin-bottom:14px}
+.xsticky ul{list-style:none;display:grid;gap:10px}
+.xsticky li{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:17px;line-height:1.3;color:var(--ink)}
+.xpark s{text-decoration-color:var(--hand-ink);text-decoration-thickness:2px;color:var(--body)}
+.xpark em{font:400 20px/1 var(--fh);font-style:normal;color:var(--body)}
+.xpick{position:relative;margin-top:6px;padding:12px 8px}
+.xpick span{font:600 19px/1.3 var(--fd);color:var(--ink)}
+.xring{position:absolute;inset:-4px -14px -6px -12px;width:calc(100% + 26px);height:calc(100% + 10px);overflow:visible}
+.xring path{fill:none;stroke:var(--accent);stroke-width:3.4;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.xh1{right:6%;bottom:22px;transform:rotate(-5deg)}
+.xh1:before{content:"";position:absolute;left:-44px;top:-34px;width:40px;height:40px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 46 50%22%3E%3Cg fill=%22none%22 stroke=%22%23a82c3b%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M36 46C18 42 8 30 12 8%22/%3E%3Cpath d=%22M4 16l8-11 9 10%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;transform:scaleX(-1) rotate(-10deg)}
+/* Day 2: the one-page brief */
+.xpaper{position:relative;width:min(300px,86%);background:#fff;border-radius:6px;padding:22px 22px 16px;transform:rotate(2deg);box-shadow:0 20px 30px -20px rgba(21,49,76,.5),0 1px 0 rgba(21,49,76,.08)}
+.xpaper:after{content:"";position:absolute;top:0;right:0;width:26px;height:26px;background:linear-gradient(225deg,var(--ground) 50%,#eed3cd 50%);border-bottom-left-radius:6px}
+.xph{border-bottom:2px solid var(--ink);padding:0 20px 8px 0;margin-bottom:4px}
+.xph b{font:600 20px/1.2 var(--fd);color:var(--ink)}
+.xph span{font-size:14px;font-weight:600;color:var(--body);white-space:nowrap}
+.xrow{padding:9px 0;border-bottom:1px dashed var(--line2)}
+.xrow:last-child{border-bottom:0}
+.xrow dt{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:15px;line-height:1.3}
+.xrow dt b{color:var(--hand-ink)}
+.xrow dt span{color:var(--body);white-space:nowrap}
+.xrow dd{font-size:17px;line-height:1.35;color:var(--ink);margin-top:2px}
+.xrow mark{background:linear-gradient(transparent 56%,var(--mark) 56%);color:inherit;padding:0 2px}
+.xmn{font:400 21px/1 var(--fh);color:var(--hand-ink);white-space:nowrap;transform:rotate(-3deg)}
+.xpf{margin-top:8px;text-align:right;font:400 20px/1 var(--fh);color:var(--ink)}
+/* Day 3: the phone and its set-up card */
+.xphone{position:absolute;left:12%;top:58px;width:136px;height:250px;border-radius:30px;background:var(--ink);padding:9px;transform:rotate(-4deg);box-shadow:0 22px 34px -20px rgba(21,49,76,.6)}
+.xscr{position:relative;height:100%;border-radius:22px;background:linear-gradient(180deg,#fdeeea,#f9d6d0);overflow:hidden}
+.xrec{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:6px 10px;font:600 13px/1 var(--fb);color:var(--ink);white-space:nowrap}
+.xrec i{width:9px;height:9px;border-radius:50%;background:#d6384a}
+.xman{position:absolute;left:0;right:0;bottom:0;height:78%}
+.xman svg{position:absolute;left:50%;bottom:0;width:112%;height:auto;transform:translateX(-50%)}
+.xbtn{position:absolute;left:50%;bottom:12px;width:36px;height:36px;margin-left:-18px;border-radius:50%;border:3px solid #fff;background:#d6384a;box-shadow:inset 0 0 0 3px var(--ink)}
+@media (prefers-reduced-motion:no-preference){html.js.m .xobj.in .xrec i{animation:xblink 1.8s ease-in-out 4}}
+.xsetup{position:absolute;right:5%;bottom:26px;z-index:2;width:158px;background:#fff;border-radius:16px;padding:14px 14px 12px;transform:rotate(3deg);box-shadow:0 18px 28px -18px rgba(21,49,76,.5)}
+.xsetup p{font:600 17px/1.2 var(--fd);color:var(--ink);margin-bottom:6px}
+.xsetup ul{list-style:none;display:grid;gap:4px}
+.xsetup li{position:relative;padding-left:24px;font-size:15px;line-height:1.35;color:var(--ink)}
+.xsetup li:before{content:"";position:absolute;left:0;top:3px;width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%223%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M5 12.6l4.6 4.6L19 7.6%22/%3E%3C/svg%3E") no-repeat center/contain}
+.xh3{right:6%;top:26px;transform:rotate(5deg)}
+/* the ring around the chosen question draws itself once, when the card comes in */
+html.js.m .xring path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s cubic-bezier(.6,0,.2,1) .5s}
+html.js.m .xobj.in .xring path{stroke-dashoffset:0}
+.xkcta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:56px}
+.xfree{font-size:16px;color:var(--body)}
+
+/* ---------- widths */
+@media (max-width:1180px){
+  .xobjs{gap:44px}
+  .xobj:not(:last-child) .xstage:after{width:42px;left:calc(100% + 1px)}
+}
+@media (max-width:1020px){
+  #fit .fgrid{grid-template-columns:minmax(0,1fr)}
+  .xtap{display:none}
+  .xobjs{grid-template-columns:minmax(0,1fr);max-width:560px;margin:0 auto;gap:56px}
+  .xobj:not(:last-child) .xstage:after{display:none}
+  .nums .duo{margin:50px auto 80px}
+}
+@media (max-width:720px){
+  body{font-size:17px}
+  .dtext p.det,.bio,.xcap p,.checks .ct p{font-size:17px}
+  .head p,.fhead p{font-size:18px}
+  .checks li{grid-template-columns:52px minmax(0,1fr);grid-template-areas:"tk ct" "side side";padding:18px 16px 16px;gap:0 16px}
+  .checks .tk{width:52px;height:52px;border-radius:16px;background-size:40px}
+  .checks .ct b{font-size:20px}
+  .checks .ct .why{font-size:16.5px}
+  .checks .note{display:block;align-self:center;justify-self:end;margin:16px 6px 0 0;font-size:24px}
+  .checks .note:before{display:none}
+  .xme{align-self:center;justify-self:start;margin-top:16px;min-height:44px}
+  .xstage{height:340px}
+  .xcap h3{font-size:24px}
+  .xpn{font-size:23px}
+  .xpn.n1{right:2%}
+  .nums .duo{margin:50px 34px 84px 10px;width:auto}
+  .nums .duo .tag{right:-6%}
+  .xsc{padding:18px 16px 16px}
+  .xst li{grid-template-columns:44px minmax(0,1fr);row-gap:8px}
+  .xst .xi{width:44px;height:44px}
+  .xst em{grid-column:2;justify-self:start}
+}
+@media (max-width:420px){
+  .checks .note{display:block}
+  .xphone{left:9%}
+  .xsetup{right:4%}
+  .xh1{right:4%}
+}
 
 </style>
 </head>
 <body class="hdr-soft mark-swipe shadow-soft border-hairline days-numerals fit-counter keep-row gate-bar motion-calm">
 <header class="fb" id="top"><div class="fb-bar"><a class="fb-id" href="#hero" aria-label="Wendy Nolan, Passion to Profits"><img class="fb-ic" src="favicon.png" alt="" width="44" height="44"><span class="fb-t"><small>Free 3-day live event</small><b>Passion to Profits</b></span></a><div class="fb-cd" role="timer" aria-label="Day 1 starts in"><span class="fb-l"><i></i>Starts in</span><span class="fb-tiles"><span class="fb-tile"><b data-cd="d">09</b><small>days</small></span><span class="fb-tile"><b data-cd="h">00</b><small>hrs</small></span><span class="fb-tile"><b data-cd="m">00</b><small>min</small></span><span class="fb-tile s"><b data-cd="s">00</b><small>sec</small></span></span></div><div class="fb-jn"><span class="fb-faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""></span><span><span class="n">1,204+</span><small>joined</small></span></div><a class="btn ac sm" href="#join">Hold my seat</a></div></header>
-<section class="hero" id="hero"><div class="hwrap hgrid"><div class="hleft"><div class="tstrip"><div class="award"><small>Subscribers</small><b>66.6K</b></div><span class="faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""><img src="img/faces/f4.jpg" alt=""><img src="img/faces/f5.jpg" alt=""></span><div class="tr"><p>302 videos published</p></div></div><div class="iph"><span class="sb" style="left:18%;width:9%"></span><span class="sb" style="left:30%;width:5%"></span><span class="sb" style="left:37%;width:5%"></span><span class="sb b" style="left:60%;width:14%"></span><div class="bz"><div class="scr"><span class="isl"></span><img src="img/video.jpg" alt="Wendy Nolan talking to camera" style="object-position:50% 28%"><button class="vplay" type="button" aria-label="Play"><i><svg width="30" height="30" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z"/></svg></i>Tap for sound</button><div class="scrub"><svg width="16" height="16" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg><span>0:09</span><span class="ln"><i></i></span><span>-1:23</span></div></div></div></div><div class="book tick lift"><div class="mini"><img src="img/slide.jpg" alt="Day 1 slide"></div><div class="bt"><p class="k">Your free seat <span aria-hidden="true">·</span> <b id="bkSoon">Day 1 is soon</b></p><h3>The free 3-day Passion to Profits</h3><p class="d" id="bkWhen">Day 1 to Day 3</p><p class="t" id="bkTime">Live online</p></div><div class="go"><a class="btn" href="#join">Hold my seat <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a><small>Free online event</small></div><span class="bcode" aria-hidden="true"></span></div></div><div class="hright"><span class="hpill"><span class="dot"></span>Free 3-day event <i>·</i> <span class="dchip" id="pillWhen">Live</span><span class="po"> <i>·</i> Online</span></span><h1 class="hd"><span class="l nw">Plan and record</span><span class="l nw">your <span class="mk draw">first video</span></span><span class="l nw">in three days.</span></h1><p class="lede"><b>You do not have to figure out your whole channel before you start.</b> Start with one useful question you can answer, and I will take you from there to a recorded take.</p><div class="stuck"><p>Where are you stuck right now?</p><div class="chips"><button type="button" aria-pressed="false">I have no idea what to talk about</button><button type="button" aria-pressed="false">I am not techy enough</button><button type="button" aria-pressed="false">I hate being on camera</button></div></div><div class="regc tick" id="regcard"><div class="row1"><span class="faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""><img src="img/faces/f4.jpg" alt=""><img src="img/faces/f5.jpg" alt=""><img src="img/faces/f6.jpg" alt=""></span><span class="rt"><b>Midlifers</b> like you</span></div><p class="num"><b>3</b> live days <span aria-hidden="true">·</span> free <span aria-hidden="true">·</span> <span id="rcWhen">online</span></p><p class="just"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="var(--ink)"/><path d="M6.5 12h10M12.5 7.5 17 12l-4.5 4.5" fill="none" stroke="var(--ground)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Bring your phone and one idea.</b> Leave Day 1 with one question.</span></p><a class="btn" href="#join">Hold my seat <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></div></section>
+<section class="hero" id="hero"><div class="hwrap hgrid"><div class="hleft"><div class="tstrip"><div class="award"><span class="stars" role="img" aria-label="5 stars"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg></span><small>Subscribers</small><b>66.6K</b></div><span class="faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""><img src="img/faces/f4.jpg" alt=""><img src="img/faces/f5.jpg" alt=""></span><div class="tr"><p>302 videos published</p></div></div><div class="iph"><span class="sb" style="left:18%;width:9%"></span><span class="sb" style="left:30%;width:5%"></span><span class="sb" style="left:37%;width:5%"></span><span class="sb b" style="left:60%;width:14%"></span><div class="bz"><div class="scr"><span class="isl"></span><img src="img/video.jpg" alt="Wendy Nolan talking to camera" style="object-position:50% 28%"><button class="vplay" type="button" aria-label="Play"><i><svg width="30" height="30" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z"/></svg></i>Tap for sound</button><div class="scrub"><svg width="16" height="16" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg><span>0:09</span><span class="ln"><i></i></span><span>-1:23</span></div></div></div></div><div class="book tick lift"><div class="mini"><img src="img/slide.jpg" alt="Day 1 slide"></div><div class="bt"><p class="k">Your free seat <span aria-hidden="true">·</span> <b id="bkSoon">Day 1 is soon</b></p><h3><span style="white-space:nowrap">The free 3-day Passion to Profits</span></h3><p class="d" id="bkWhen">Day 1 to Day 3</p><p class="t" id="bkTime">Live online</p></div><div class="go"><a class="btn" href="#join">Hold my seat <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a><small>Free online event</small></div><span class="bcode" aria-hidden="true"></span></div></div><div class="hright"><span class="hpill"><span class="dot"></span>Free 3-day event <i>·</i> <span class="dchip" id="pillWhen">Live</span><span class="po"> <i>·</i> Online</span></span><h1 class="hd"><span class="l nw">Plan and record</span><span class="l nw">your <span class="mk draw">first video</span></span><span class="l nw">in three days.</span></h1><p class="lede"><b>You do not have to figure out your whole channel before you start.</b> Start with one useful question you can answer, and I will take you from there to a recorded take.</p><div class="stuck"><p>Where are you stuck right now? Tap one.</p><div class="chips"><button type="button" aria-pressed="false">I have no idea what to talk about</button><button type="button" aria-pressed="false">I am not techy enough</button><button type="button" aria-pressed="false">I hate being on camera</button></div></div><div class="regc tick" id="regcard"><div class="row1"><span class="faces"><img src="img/faces/f1.jpg" alt=""><img src="img/faces/f2.jpg" alt=""><img src="img/faces/f3.jpg" alt=""><img src="img/faces/f4.jpg" alt=""><img src="img/faces/f5.jpg" alt=""><img src="img/faces/f6.jpg" alt=""></span><span class="rt"><b>Midlifers</b> like you</span></div><p class="xlive"><i class="xpulse" aria-hidden="true"></i><span><b class="xregn">1,204</b> registered</span><span class="xsep" aria-hidden="true">·</span><span><b class="xl24">18</b> joined in the last 24 hours</span></p><p class="xjust" aria-hidden="true"><span class="xav">MD</span><span><b class="xjn">Maya</b> just took a free seat</span></p><p class="num"><b>3</b> live days <span aria-hidden="true">·</span> free <span aria-hidden="true">·</span> <span id="rcWhen">online</span></p><p class="just"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="var(--ink)"/><path d="M6.5 12h10M12.5 7.5 17 12l-4.5 4.5" fill="none" stroke="var(--ground)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Bring your phone and one idea.</b> Leave Day 1 with one question.</span></p><a class="btn" href="#join">Hold my seat <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></div></section>
 <div class="trust"><div class="wrap"><span data-src="youtube.com"><b>66.6K</b>subscribers on YouTube</span><span data-src="youtube.com"><b>302</b>videos published</span><span data-src="skool.com"><b>828</b>members in Pathway to Profits</span><span data-src="wendynolanonline.com">Digital income made simple</span></div></div>
-<section class="s days" id="days"><div class="wrap"><div class="head rv"><span class="cap">The three days</span><h2 class="hd"><span class="brk">Here&#x27;s what we&#x27;re doing,</span> <span class="brk">day by day.</span></h2><p>Day 1 picks the topic, Day 2 turns it into a brief, and Day 3 is the one where you actually press record.</p></div><div class="tl" id="tl"><article class="day rv"><div class="dnum" aria-hidden="true"><span class="ix">01</span></div><div class="dtext"><span class="dwhen" data-day="0">Day 1</span><h3><span class="nw">Pick the one</span><span class="nw">question they</span><span class="nw">already ask.</span></h3><p class="out">One viewer question and one focused first-video topic.</p><p class="det">We find a question the people you want to reach already ask, then decide what your first video will help them understand. You finish with a topic you can actually record this week.</p></div><div class="ui tick lift"><div class="uh">Pick one <span>Day 1</span></div><svg class="scene sc-search pal-accent" viewBox="0 0 440 262" role="img" aria-label="Pick one: Find the question your viewer already asks; Decide who the video is for; Write a one-sentence channel direction"><rect class="sc-card sc-sh" x="6" y="6" width="428" height="250" rx="12"/><rect class="sc-soft" x="22" y="20" width="396" height="38" rx="19"/><circle cx="42" cy="38" r="7" fill="none" class="sc-st"/><path class="sc-st" d="M47 43l6 6"/><text class="sc-t" x="60" y="43.5" style="font-size:14px">What does my viewer already ask?</text><g class="a" style="--d:300ms"><text class="sc-tm" x="50" y="88" style="font-size:13.5px">Yarn haul</text><path class="sc-st dr" pathLength="1" style="--d:800ms" d="M48 83h72"/><text class="sc-ts" x="418" y="88" style="font-size:11px" text-anchor="end">parked</text></g><rect class="sc-soft" x="24" y="74" width="14" height="14" rx="3"/><path class="sc-hr" d="M22 102h396"/><g class="a" style="--d:460ms"><text class="sc-tm" x="50" y="130" style="font-size:13.5px">Shop review</text><path class="sc-st dr" pathLength="1" style="--d:960ms" d="M48 125h87"/><text class="sc-ts" x="418" y="130" style="font-size:11px" text-anchor="end">parked</text></g><rect class="sc-soft" x="24" y="116" width="14" height="14" rx="3"/><path class="sc-hr" d="M22 144h396"/><rect class="sc-mark gr" style="--d:1100ms" x="44" y="156" width="231" height="22" rx="4"/><text class="sc-th" x="50" y="172" style="font-size:13.5px">How do I crochet left-handed?</text><g class="pp" style="--d:1300ms"><circle class="sc-p" cx="400" cy="167" r="11"/><path d="M395.05 167.22l3.6300000000000003 3.6300000000000003 6.82 -7.260000000000001" fill="none" stroke="var(--sc-on)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="sc-soft" x="24" y="158" width="14" height="14" rx="3"/><path class="sc-hr" d="M22 186h396"/><text class="sc-ts a" x="22" y="244" style="--d:1500ms;font-size:11.5px;font-size:11.5px">2 parked, 1 picked</text></svg></div></article><article class="day rv"><div class="dnum" aria-hidden="true"><span class="ix">02</span></div><div class="dtext"><span class="dwhen" data-day="1">Day 2</span><h3><span class="nw">Turn it into</span><span class="nw">a one-page</span><span class="nw">video brief.</span></h3><p class="out">A one-page first-video brief you can record from.</p><p class="det">We build a working title, an opening, a short outline and a simple thumbnail idea. By the end you know what you are saying and in what order.</p></div><div class="ui tick lift"><div class="uh">One-page brief <span>Day 2</span></div><svg class="scene sc-checklist pal-ink" viewBox="0 0 440 262" role="img" aria-label="Checklist: Draft a working title and opening; Lay out a short outline; Pick the next step for your viewer"><g class="a" style="--d:150ms"><rect class="sc-card sc-sh" x="14" y="18" width="412" height="62" rx="10"/><circle class="sc-o0" cx="44" cy="49" r="12"/><g class="pp" style="--d:700ms"><circle class="sc-p" cx="44" cy="49" r="12"/><path d="M38.6 49.24l3.96 3.96 7.4399999999999995 -7.92" fill="none" stroke="var(--sc-on)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><text class="sc-t" x="72" y="53.9" style="font-size:14px">Opening: say the question in the first line</text></g><g class="a" style="--d:350ms"><rect class="sc-card sc-sh" x="14" y="92" width="412" height="62" rx="10"/><circle class="sc-o0" cx="44" cy="123" r="12"/><g class="pp" style="--d:1050ms"><circle class="sc-p" cx="44" cy="123" r="12"/><path d="M38.6 123.24l3.96 3.96 7.4399999999999995 -7.92" fill="none" stroke="var(--sc-on)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><text class="sc-t" x="72" y="127.9" style="font-size:14px">Demo: slow chain, mirrored</text></g><g class="a" style="--d:550ms"><rect class="sc-card sc-sh" x="14" y="166" width="412" height="62" rx="10"/><circle class="sc-o0" cx="44" cy="197" r="12"/><g class="pp" style="--d:1400ms"><circle class="sc-p" cx="44" cy="197" r="12"/><path d="M38.6 197.24l3.96 3.96 7.4399999999999995 -7.92" fill="none" stroke="var(--sc-on)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="sc-mark gr" style="--d:1700ms" x="68" y="191.4" width="243" height="13.7" rx="3"/><text class="sc-th" x="72" y="201.9" style="font-size:14px">Close: point to the next video</text></g><text class="sc-ts" x="426" y="250" style="font-size:11px" text-anchor="end">3 of 3</text></svg></div></article><article class="day rv"><div class="dnum" aria-hidden="true"><span class="ix">03</span></div><div class="dtext"><span class="dwhen" data-day="2">Day 3</span><h3><span class="nw">Press record</span><span class="nw">and finish</span><span class="nw">with a take.</span></h3><p class="out">A rough take on your phone plus three next-video topics.</p><p class="det">I show you my phone setup, then you record. A rough take is the point. We close by mapping three related topics so you know what comes after the first one.</p></div><div class="ui tick lift"><div class="uh">First take <span>Day 3</span></div><svg class="scene sc-wave pal-accent" viewBox="0 0 440 262" role="img" aria-label="Recording: Set up the phone in four steps; Record a rough first take; Map the next three videos"><rect class="sc-card sc-sh" x="6" y="6" width="428" height="250" rx="12"/><circle class="sc-a pulse" cx="30" cy="30" r="6"/><text class="sc-ts" x="44" y="34.5" style="font-size:11px">Rec</text><text class="sc-ts" x="418" y="34.5" style="font-size:11px" text-anchor="end">00:42</text><text class="sc-th" x="22" y="64" style="font-size:15px">Take 1</text><rect class="sc-i gr" style="--d:200ms" x="24.0" y="115.0" width="4" height="34" rx="2"/><rect class="sc-i gr" style="--d:218ms" x="31.1" y="111.0" width="4" height="42" rx="2"/><rect class="sc-i gr" style="--d:236ms" x="38.2" y="107.0" width="4" height="50" rx="2"/><rect class="sc-i gr" style="--d:254ms" x="45.3" y="103.0" width="4" height="58" rx="2"/><rect class="sc-i gr" style="--d:272ms" x="52.4" y="125.5" width="4" height="13" rx="2"/><rect class="sc-i gr" style="--d:290ms" x="59.5" y="121.5" width="4" height="21" rx="2"/><rect class="sc-i gr" style="--d:308ms" x="66.6" y="117.5" width="4" height="29" rx="2"/><rect class="sc-i gr" style="--d:326ms" x="73.7" y="113.5" width="4" height="37" rx="2"/><rect class="sc-i gr" style="--d:344ms" x="80.8" y="109.5" width="4" height="45" rx="2"/><rect class="sc-i gr" style="--d:362ms" x="87.9" y="105.5" width="4" height="53" rx="2"/><rect class="sc-i gr" style="--d:380ms" x="95.0" y="101.5" width="4" height="61" rx="2"/><rect class="sc-i gr" style="--d:398ms" x="102.1" y="124.0" width="4" height="16" rx="2"/><rect class="sc-i gr" style="--d:416ms" x="109.2" y="120.0" width="4" height="24" rx="2"/><rect class="sc-i gr" style="--d:434ms" x="116.3" y="116.0" width="4" height="32" rx="2"/><rect class="sc-i gr" style="--d:452ms" x="123.4" y="112.0" width="4" height="40" rx="2"/><rect class="sc-i gr" style="--d:470ms" x="130.5" y="108.0" width="4" height="48" rx="2"/><rect class="sc-i gr" style="--d:488ms" x="137.6" y="104.0" width="4" height="56" rx="2"/><rect class="sc-i gr" style="--d:506ms" x="144.7" y="126.5" width="4" height="11" rx="2"/><rect class="sc-i gr" style="--d:524ms" x="151.8" y="122.5" width="4" height="19" rx="2"/><rect class="sc-i gr" style="--d:542ms" x="158.9" y="118.5" width="4" height="27" rx="2"/><rect class="sc-i gr" style="--d:560ms" x="166.0" y="114.5" width="4" height="35" rx="2"/><rect class="sc-i gr" style="--d:578ms" x="173.1" y="110.5" width="4" height="43" rx="2"/><rect class="sc-i gr" style="--d:596ms" x="180.2" y="106.5" width="4" height="51" rx="2"/><rect class="sc-i gr" style="--d:614ms" x="187.3" y="102.5" width="4" height="59" rx="2"/><rect class="sc-i gr" style="--d:632ms" x="194.4" y="125.0" width="4" height="14" rx="2"/><rect class="sc-i gr" style="--d:650ms" x="201.5" y="121.0" width="4" height="22" rx="2"/><rect class="sc-i gr" style="--d:668ms" x="208.6" y="117.0" width="4" height="30" rx="2"/><rect class="sc-i gr" style="--d:686ms" x="215.7" y="113.0" width="4" height="38" rx="2"/><rect class="sc-i gr" style="--d:704ms" x="222.8" y="109.0" width="4" height="46" rx="2"/><rect class="sc-i gr" style="--d:722ms" x="229.9" y="105.0" width="4" height="54" rx="2"/><rect class="sc-i gr" style="--d:740ms" x="237.0" y="101.0" width="4" height="62" rx="2"/><rect class="sc-i gr" style="--d:758ms" x="244.1" y="123.5" width="4" height="17" rx="2"/><rect class="sc-i gr" style="--d:776ms" x="251.2" y="119.5" width="4" height="25" rx="2"/><rect class="sc-i gr" style="--d:794ms" x="258.3" y="115.5" width="4" height="33" rx="2"/><rect class="sc-i gr" style="--d:812ms" x="265.4" y="111.5" width="4" height="41" rx="2"/><rect class="sc-soft gr" style="--d:830ms" x="272.5" y="107.5" width="4" height="49" rx="2"/><rect class="sc-soft gr" style="--d:848ms" x="279.6" y="103.5" width="4" height="57" rx="2"/><rect class="sc-soft gr" style="--d:866ms" x="286.7" y="126.0" width="4" height="12" rx="2"/><rect class="sc-soft gr" style="--d:884ms" x="293.8" y="122.0" width="4" height="20" rx="2"/><rect class="sc-soft gr" style="--d:902ms" x="300.9" y="118.0" width="4" height="28" rx="2"/><rect class="sc-soft gr" style="--d:920ms" x="308.0" y="114.0" width="4" height="36" rx="2"/><rect class="sc-soft gr" style="--d:938ms" x="315.1" y="110.0" width="4" height="44" rx="2"/><rect class="sc-soft gr" style="--d:956ms" x="322.2" y="106.0" width="4" height="52" rx="2"/><rect class="sc-soft gr" style="--d:974ms" x="329.3" y="102.0" width="4" height="60" rx="2"/><rect class="sc-soft gr" style="--d:992ms" x="336.4" y="124.5" width="4" height="15" rx="2"/><rect class="sc-soft gr" style="--d:1010ms" x="343.5" y="120.5" width="4" height="23" rx="2"/><rect class="sc-soft gr" style="--d:1028ms" x="350.6" y="116.5" width="4" height="31" rx="2"/><rect class="sc-soft gr" style="--d:1046ms" x="357.7" y="112.5" width="4" height="39" rx="2"/><rect class="sc-soft gr" style="--d:1064ms" x="364.8" y="108.5" width="4" height="47" rx="2"/><rect class="sc-soft gr" style="--d:1082ms" x="371.9" y="104.5" width="4" height="55" rx="2"/><rect class="sc-soft gr" style="--d:1100ms" x="379.0" y="127.0" width="4" height="10" rx="2"/><rect class="sc-soft gr" style="--d:1118ms" x="386.1" y="123.0" width="4" height="18" rx="2"/><rect class="sc-soft gr" style="--d:1136ms" x="393.2" y="119.0" width="4" height="26" rx="2"/><rect class="sc-soft gr" style="--d:1154ms" x="400.3" y="115.0" width="4" height="34" rx="2"/><rect class="sc-soft gr" style="--d:1172ms" x="407.4" y="111.0" width="4" height="42" rx="2"/><rect class="sc-soft gr" style="--d:1190ms" x="414.5" y="107.0" width="4" height="50" rx="2"/><path class="sc-mv" d="M270.5 92v80"/><g class="a" style="--d:900ms"><path class="sc-st" d="M26.0 176v12"/><text class="sc-t" x="24.0" y="206.0" style="font-size:11.5px">Phone set up</text></g><g class="a" style="--d:1150ms"><path class="sc-st" d="M158.5 176v12"/><text class="sc-t" x="156.53333333333333" y="206.0" style="font-size:11.5px">Rough first take</text></g><g class="a" style="--d:1400ms"><path class="sc-st" d="M291.1 176v12"/><text class="sc-t" x="289.06666666666666" y="206.0" style="font-size:11.5px">Next three mapped</text></g></svg></div></article></div></div></section>
+<section class="s days" id="days"><div class="wrap"><div class="head rv"><span class="cap">The three days</span><h2 class="hd"><span class="brk">Here&#x27;s what we&#x27;re doing,</span> <span class="brk"><em class="it">day by day.</em></span></h2><p>Day 1 picks the topic, Day 2 turns it into a brief, and Day 3 is the one where you actually press record.</p></div><div class="tl" id="tl"><article class="day rv"><div class="dnum" aria-hidden="true"><span class="ix">01</span></div><div class="dtext"><span class="dwhen" data-day="0">Day 1</span><h3><span class="nw">Pick the one</span><span class="nw">question they</span><span class="nw">already ask.</span></h3><p class="out">One viewer question and one focused first-video topic.</p><p class="det">We find a question the people you want to reach already ask, then decide what your first video will help them understand. You finish with a topic you can actually record this week.</p></div><div class="ui xsc xs0"><div class="uh">Pick one <span>Day 1</span></div>
+ <p class="xsq"><i aria-hidden="true"></i>What does my viewer already ask?</p>
+ <ul class="xsl">
+  <li><span>Yarn haul</span><em>for later</em></li>
+  <li><span>Shop review</span><em>for later</em></li>
+  <li class="on"><span>How do I crochet left-handed?</span><i aria-hidden="true"></i></li>
+ </ul>
+ <p class="xsn" aria-hidden="true">your first video</p>
+</div></article><article class="day rv"><div class="dnum" aria-hidden="true"><span class="ix">02</span></div><div class="dtext"><span class="dwhen" data-day="1">Day 2</span><h3><span class="nw">Turn it into</span><span class="nw">a one-page</span><span class="nw">video brief.</span></h3><p class="out">A one-page first-video brief you can record from.</p><p class="det">We build a working title, an opening, a short outline and a simple thumbnail idea. By the end you know what you are saying and in what order.</p></div><div class="ui xsc xs1"><div class="uh">One-page brief <span>Day 2</span></div>
+ <ol class="xso">
+  <li><b>Opening</b><span>Say the question in the first line</span></li>
+  <li><b>Demo</b><span>Slow chain, mirrored</span></li>
+  <li><b>Close</b><span>Point to the next video</span></li>
+ </ol>
+ <p class="xsn" aria-hidden="true">one page, that's all</p>
+</div></article><article class="day rv"><div class="dnum" aria-hidden="true"><span class="ix">03</span></div><div class="dtext"><span class="dwhen" data-day="2">Day 3</span><h3><span class="nw">Press record</span><span class="nw">and finish</span><span class="nw">with a take.</span></h3><p class="out">A rough take on your phone plus three next-video topics.</p><p class="det">I show you my phone setup, then you record. A rough take is the point. We close by mapping three related topics so you know what comes after the first one.</p></div><div class="ui xsc xs2"><div class="uh">First take <span>Day 3</span></div>
+ <ol class="xst">
+  <li class="done"><i class="xi" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 48 48"><circle cx="28" cy="28" r="15" fill="#f9d6d0"/><path fill="none" stroke="#15314c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" d="M17.4 5.6c4.8-.4 9.6-.4 14.2 0 1.8.2 2.9 1.4 3 3.3.3 9.8.3 19.8 0 29.8-.1 2-1.2 3.1-3 3.3-4.6.4-9.4.4-14.2 0-1.8-.2-2.9-1.4-3-3.3-.3-10-.3-20 0-29.8.1-1.9 1.2-3.1 3-3.3z"/><path fill="none" stroke="#15314c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" d="M21.8 10h5"/><circle cx="24.4" cy="34.4" r="3" fill="#ef5a68"/></svg></i><b>Phone set up</b><em>Done</em></li>
+  <li class="now"><i class="xi" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 48 48"><circle cx="27" cy="28" r="15" fill="#f2b544"/><path fill="none" stroke="#15314c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" d="M8.8 15.2c6.2-.5 12.6-.5 19 0 2 .2 3.2 1.5 3.3 3.5.2 4.2.2 8.4 0 12.6-.1 2-1.3 3.3-3.3 3.5-6.4.5-12.8.5-19 0-2-.2-3.2-1.5-3.3-3.5-.2-4.2-.2-8.4 0-12.6.1-2 1.3-3.3 3.3-3.5z"/><path fill="none" stroke="#15314c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" d="M31.4 21.8l9.4-5.2c.8-.4 1.6.1 1.6 1v14.8c0 .9-.8 1.4-1.6 1l-9.4-5.2"/><circle cx="12.6" cy="20.6" r="2.4" fill="#ef5a68"/></svg></i><b>Rough first take</b><em><i></i>Recording</em></li>
+  <li><i class="xi" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 48 48"><circle cx="27" cy="28" r="15" fill="#f9d6d0"/><path fill="none" stroke="#15314c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" d="M7.5 10.6l10.2-3.4 12.4 3.8 10.4-3.6v30.4l-10.4 3.6-12.4-3.8-10.2 3.4z"/><path fill="none" stroke="#15314c" stroke-width="2.3" stroke-linecap="round" stroke-dasharray="1 4.6" d="M12.8 33.6c3-3.4 5.2-6.8 9.6-7.4 4.2-.6 5.6-4.2 8.4-7.6"/><path fill="none" stroke="#15314c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" d="M33.6 19.8v-9.4l5.4 2.6-5.4 2.8"/></svg></i><b>Next three mapped</b><em>Next</em></li>
+ </ol>
+</div></article></div></div></section>
 <section class="nums" id="numbers"><div class="wrap ngrid"><div class="duo"><img src="img/headshot.jpg" alt="Wendy Nolan" style="object-position:50% 14%"><div class="tag"><b>Wendy Nolan</b><span>YouTube coach for midlifers</span></div></div><div class="ncopy rv"><span class="cap">Who&#x27;s teaching</span><h2 class="hd">Live with <span class="mk draw">Wendy</span></h2><div class="stats"><div class="stat"><b>66.6K</b><span>Subscribers</span></div><div class="stat"><b data-count="302" data-suf="">302</b><span>Videos published</span></div><div class="stat"><b data-count="828" data-suf="">828</b><span>Free members</span></div><div class="stat"><b data-count="50" data-suf="+">50+</b><span>Made for 50+</span></div></div><p class="bio"><b>Wendy Nolan,</b> also known as Glammie, teaches midlifers how to use YouTube as part of an online business. She built her own channel past 66,000 subscribers after 50, and her work is aimed at people who are starting from scratch without a tech background.</p></div></div></section>
-<section class="s fit" id="fit"><div class="wrap fgrid"><div class="fhead rv"><span class="cap">Honest fit check</span><h2 class="hd"><span class="nw">Is this right</span> <span class="nw">for you?</span></h2><p>Tap the ones that sound like you. Each one is something we fix together over the three days.</p><div class="tally tick" aria-live="polite"><b id="tallyN">5</b><span><strong>of 5 sound like you.</strong> <span id="tallyT">All three days are for you.</span></span></div></div><div><ul class="checks" id="checks"><li class="tick lift" style="--i:0" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">one question</span><span class="ct"><b>I have no idea what to talk about</b><p>Day 1 ends with <span class="hl">one topic</span>, chosen.</p></span></li><li class="tick lift" style="--i:1" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">phone only</span><span class="ct"><b>I am not techy enough</b><p>A <span class="hl">phone</span> is the only equipment.</p></span></li><li class="tick lift" style="--i:2" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">rough is fine</span><span class="ct"><b>I hate being on camera</b><p>A <span class="hl">rough first take</span> is the goal.</p></span></li><li class="tick lift" style="--i:3" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">one plan</span><span class="ct"><b>I tried before and nobody watched</b><p>You leave with <span class="hl">a plan</span> for the whole channel.</p></span></li><li class="tick lift" style="--i:4" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">right on time</span><span class="ct"><b>I am too late to start</b><p>Fifty is <span class="hl">exactly who</span> this is for.</p></span></li></ul></div></div></section>
-<section class="s" id="takeaway"><div class="wrap"><div class="head rv"><span class="cap">What you keep</span><h2 class="hd"><span class="brk">Three days in, you have</span> <span class="brk">a video that exists.</span></h2></div><div class="keep rv"><div class="tkart tick lift k-brief"><div class="kh"><span class="cap">The question</span><span class="st">Down to one</span></div><div class="kr pull"><span class="k">Question</span><span class="v">How do I crochet left-handed?</span></div><div class="kr"><span class="k">For</span><span class="v">Left-handers who quit in week one</span></div><div class="kr"><span class="k">Channel</span><span class="v">One beginner skill per video</span></div><div class="kr"><span class="k">Not yet</span><span class="v">Yarn hauls, shop reviews</span></div><div class="kf"><span>One question you can answer today</span><em>2 parked</em></div></div><div class="tkart tick lift k-table"><div class="kh"><span class="cap">One-page brief</span><span class="st">Ready to record</span></div><div class="ktab" style="--kc:2"><div class="kth"><span>Part</span><span>On screen</span><span>Secs</span></div><div class="ktr"><span>Opening</span><span>How do I crochet left-handed?</span><span>15</span></div><div class="ktr"><span>Demo</span><span>Slow chain, mirrored</span><span>240</span></div><div class="ktr"><span>Close</span><span>Next video, the first row</span><span>30</span></div></div><div class="kf"><span>Say the question in the first line</span><em>5 min total</em></div></div><div class="tkart tick lift k-tracker"><div class="kh"><span class="cap">Next three</span><span class="st">Week 1 of 4</span></div><div style="--kc:4"><div class="trk h"><span>Video</span><span>Film</span><span>Edit</span><span>Post</span><span>Live</span></div><div class="trk"><span>Left-handed chain</span><i class="r"></i><i class="r"></i><i class=""></i><i class=""></i><small>Next: post Sunday</small></div><div class="trk"><span>First row, slowly</span><i class="r"></i><i class="n"></i><i class=""></i><i class=""></i><small>Next: film Tuesday</small></div><div class="trk"><span>Fixing a twist</span><i class="n"></i><i class=""></i><i class=""></i><i class=""></i><small>Next: write the ask</small></div></div><div class="kf"><span>One a week, phone only</span><em>3 planned</em></div></div></div><div class="kcta"><a class="btn" href="#join">Hold my seat for the three days</a></div></div></section>
-<section class="s" id="faq"><div class="wrap"><div class="head rv"><span class="cap">Questions</span><h2 class="hd">Questions people ask.</h2></div><div class="faqs"><details><summary><span class="qn">01</span><span>Do I need anything before Day 1?</span><span class="qx" aria-hidden="true"></span></summary><p>Bring what you already have. Everything else is set up live on the day.</p></details><details><summary><span class="qn">02</span><span>What if I cannot make it live?</span><span class="qx" aria-hidden="true"></span></summary><p>Every session is recorded and the replay lands in your inbox the same evening.</p></details><details><summary><span class="qn">03</span><span>Is this really free?</span><span class="qx" aria-hidden="true"></span></summary><p>Yes. Three days, live with Wendy, no card and no catch.</p></details><details><summary><span class="qn">04</span><span>Who is this for?</span><span class="qx" aria-hidden="true"></span></summary><p>Anyone who recognised themselves in the fit check. Bring what you have and leave with the next step done.</p></details></div></div></section>
-<section class="tst" id="tst"><div class="wrap"><figure class="tslab rv"><img src="img/testimonial.jpg" alt=""><div><blockquote>I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.</blockquote><cite>Hannah R. <span aria-hidden="true">·</span> Digital income made simple member</cite></div></figure></div></section>
+<section class="s fit" id="fit"><div class="wrap fgrid"><div class="fhead rv"><span class="cap">Honest fit check</span><h2 class="hd"><span class="nw">Does this</span> <span class="nw"><em class="it">sound like you?</em></span></h2><p>Tap each card that sounds like you. Every one of these is something we sort out together over the three days.</p><div class="tally tick" aria-live="polite"><b id="tallyN">5</b><span><strong>of 5 sound like you.</strong> <span id="tallyT">All three days are for you.</span></span></div></div><div><ul class="checks" id="checks"><li class="tick lift" style="--i:0" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">one question</span><span class="ct"><b>I have no idea what to talk about</b><p>Day 1 ends with <span class="hl">one topic</span>, chosen.<span class="why">The people you want to help already ask the same few questions. We pick one together.</span></p></span></li><li class="tick lift" style="--i:1" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">phone only</span><span class="ct"><b>I am not techy enough</b><p>A <span class="hl">phone</span> is the only equipment.<span class="why">No channel setup, no editing software and no gear.</span></p></span></li><li class="tick lift" style="--i:2" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">rough is fine</span><span class="ct"><b>I hate being on camera</b><p>A <span class="hl">rough first take</span> is the goal.<span class="why">Camera nerves come up in almost every comment thread. You are in good company.</span></p></span></li><li class="tick lift" style="--i:3" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">one plan</span><span class="ct"><b>I tried before and nobody watched</b><p>You leave with <span class="hl">a plan</span> for the whole channel.<span class="why">Most first videos miss because nobody decided who they were for. We decide that first.</span></p></span></li><li class="tick lift" style="--i:4" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle class="ring" cx="17" cy="17" r="14.5"/><path class="arr" d="M9.5 17h14M18 11.5 23.5 17 18 22.5"/></svg></span><span class="note" aria-hidden="true">right on time</span><span class="ct"><b>I am too late to start</b><p>Fifty is <span class="hl">exactly who</span> this is for.<span class="why">Everything in the three days is written for adults over 50 with years of experience worth sharing.</span></p></span></li></ul><div class="fcta"><a class="btn" href="#join">That&#x27;s me, hold my seat</a></div></div></div></section>
+<section class="s xkeep" id="takeaway" aria-labelledby="xkh">
+ <div class="wrap">
+  <div class="head rv">
+   <span class="cap">What you keep</span>
+   <h2 class="hd" id="xkh"><span class="brk">Three days in, you have</span> <span class="brk"><span class="xdood">a video</span> that exists.</span></h2>
+   <p>Three small things, made one day at a time. Your phone is the only equipment.</p>
+  </div>
+  <ol class="xobjs">
+   <li class="xobj tkart rv" data-i="0">
+    <div class="xstage" aria-hidden="true">
+     <span class="xex">Example</span>
+     <div class="xsticky">
+      <p class="xnh">Ideas for my first video</p>
+      <ul>
+       <li class="xpark"><s>Yarn haul</s><em>later</em></li>
+       <li class="xpark"><s>Shop review</s><em>later</em></li>
+       <li class="xpick"><span>How do I crochet left-handed?</span><svg class="xring" viewBox="0 0 300 80" preserveAspectRatio="none"><path pathLength="1" d="M168 6C96 2 18 10 8 36c-9 26 58 40 140 38 84-2 146-16 144-40C290 12 222 4 132 8"/></svg></li>
+      </ul>
+     </div>
+     <span class="xhand xh1">this one!</span>
+    </div>
+    <div class="xcap">
+     <span class="xday">Day 1</span>
+     <h3>You pick this on Day 1</h3>
+     <p>One question the people you want to help already ask. The other ideas wait for later.</p>
+    </div>
+   </li>
+   <li class="xobj tkart rv" data-i="1">
+    <div class="xstage" aria-hidden="true">
+     <span class="xex">Example</span>
+     <div class="xpaper">
+      <p class="xph"><b>My first video</b></p>
+      <dl>
+       <div class="xrow"><dt><b>Opening</b><span class="xmn">say it first!</span></dt><dd><mark>How do I crochet left-handed?</mark></dd></div>
+       <div class="xrow"><dt><b>Demo</b></dt><dd>Slow chain, mirrored</dd></div>
+       <div class="xrow"><dt><b>Close</b></dt><dd>Next video, the first row</dd></div>
+      </dl>
+      <p class="xpf">about 5 minutes</p>
+     </div>
+    </div>
+    <div class="xcap">
+     <span class="xday">Day 2</span>
+     <h3>You write this on Day 2</h3>
+     <p>A one-page brief to read from while you record. About five minutes of video.</p>
+    </div>
+   </li>
+   <li class="xobj tkart rv" data-i="2">
+    <div class="xstage" aria-hidden="true">
+     <span class="xex">Example</span>
+     <div class="xphone">
+      <div class="xscr">
+       <span class="xrec"><i></i>Rec 00:42</span>
+       <span class="xman"><svg aria-hidden="true" focusable="false" viewBox="0 0 120 150"><path fill="#f2b544" d="M16 150c2-30 20-46 44-46s42 16 44 46z"/><circle cx="60" cy="66" r="26" fill="#fdf5ee"/><g fill="none" stroke="#15314c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 150c2-30 20-46 44-46s42 16 44 46"/><path d="M34.4 64c.4-15 11.4-25.6 25.8-25.4 14.6.2 25.6 11.4 25.4 26-.2 14.4-11.6 25.6-26 25.4-14.4-.2-25.6-11.6-25.2-26z"/><path d="M50 70c3.6 4.4 16.4 4.4 20 0"/><path d="M47.6 58.6h.4M72 58.6h.4"/><path d="M34.6 60c8-2 18-9 22-18 6 8 16 13 28 14"/></g></svg></span>
+       <span class="xbtn"></span>
+      </div>
+     </div>
+     <div class="xsetup">
+      <p>Phone set up</p>
+      <ul>
+       <li>Propped at eye level</li>
+       <li>Facing the light</li>
+       <li>Sound on</li>
+      </ul>
+     </div>
+     <span class="xhand xh3">rough is fine</span>
+    </div>
+    <div class="xcap">
+     <span class="xday">Day 3</span>
+     <h3>You record this on Day 3</h3>
+     <p>A rough first take on your own phone, plus your next three video ideas. A rough take is the point.</p>
+    </div>
+   </li>
+  </ol>
+  <div class="kcta xkcta"><a class="btn" href="#join">Hold my seat for the three days</a><span class="xfree">Free, live online</span></div>
+ </div>
+</section><section class="s" id="faq"><div class="wrap"><div class="head rv"><span class="cap">Questions</span><h2 class="hd">Questions people ask.</h2></div><div class="faqs"><details><summary><span class="qn">01</span><span>Do I need anything before Day 1?</span><span class="qx" aria-hidden="true"></span></summary><p>Bring what you already have. Everything else is set up live on the day.</p></details><details><summary><span class="qn">02</span><span>What if I cannot make it live?</span><span class="qx" aria-hidden="true"></span></summary><p>Every session is recorded and the replay lands in your inbox the same evening.</p></details><details><summary><span class="qn">03</span><span>Is this really free?</span><span class="qx" aria-hidden="true"></span></summary><p>Yes. Three days, live with Wendy, no card and no catch.</p></details><details><summary><span class="qn">04</span><span>Who is this for?</span><span class="qx" aria-hidden="true"></span></summary><p>Anyone who recognised themselves in the fit check. Bring what you have and leave with the next step done.</p></details></div></div></section>
 <section class="s close" id="join"><div class="wrap"><div class="cbox tick rv" id="cbox"><div class="cl"><div class="cslide"><img src="img/slide.jpg" alt="Day 1 slide"><ol><li><b>Day 1</b><span>Pick the one question they already ask.</span></li><li><b>Day 2</b><span>Turn it into a one-page video brief.</span></li><li><b>Day 3</b><span>Press record and finish with a take.</span></li></ol></div></div><div class="cr"><div class="form"><span class="pill">Free <span aria-hidden="true">·</span> Three days <span aria-hidden="true">·</span> Live online</span><h2 class="hd"><span class="brk">Join the free 3-day</span> <span class="brk">Passion to Profits.</span></h2><p class="s2">A practical workshop for adults over 50 who know they have something to share but get stuck on what to say and how to press record. Bring your phone and one idea.</p><div class="fields"><label><input id="fName" type="text" placeholder="First name" autocomplete="off" aria-label="First name" maxlength="22"></label><label><input type="email" placeholder="Email address" autocomplete="off" aria-label="Email address"></label></div><button class="btn" id="go" type="button" data-submit="cbox">Hold my seat</button><p class="fine" id="cFine">Free, live online</p></div><div class="thanks" aria-live="polite"><span class="pill">Seat held</span><h3 class="hd">Seat <span class="seatn">1,205</span> is yours.</h3><p id="thWhen">Day 1 starts soon, live online.</p><p>Day 1 picks the topic, Day 2 turns it into a brief, and Day 3 is the one where you actually press record.</p><div class="cal"><a class="btn sm ics" href="#">Add to calendar</a><a class="tlink gcal" href="#" target="_blank" rel="noopener">Google Calendar</a></div><a class="tlink" href="vip/">Next: step 2 of 3 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></div></div></section>
 <div id="gatewrap"><div class="wrap"><div class="gated" aria-hidden="true" inert><div class="gsec"><span class="cap">What you get</span><h2 class="hd">Three days, and the pieces you keep.</h2><p class="gsub">Every session is live and recorded, and each day ends with a finished piece you keep.</p><div class="gcards"><div class="gcard"><span class="gn">Day 1</span><h4>Pick the one question they already ask.</h4><p>One viewer question and one focused first-video topic.</p></div><div class="gcard"><span class="gn">Day 2</span><h4>Turn it into a one-page video brief.</h4><p>A one-page first-video brief you can record from.</p></div><div class="gcard"><span class="gn">Day 3</span><h4>Press record and finish with a take.</h4><p>A rough take on your phone plus three next-video topics.</p></div></div></div><div class="gsec"><span class="cap">What it fixes</span><h2 class="hd">The workbook you fill in live.</h2><ul class="glist"><li><i class="gtick"></i><span><b>I have no idea what to talk about.</b> Day 1 ends with one topic, chosen.</span></li><li><i class="gtick"></i><span><b>I am not techy enough.</b> A phone is the only equipment.</span></li><li><i class="gtick"></i><span><b>I hate being on camera.</b> A rough first take is the goal.</span></li><li><i class="gtick"></i><span><b>I tried before and nobody watched.</b> You leave with a plan for the whole channel.</span></li></ul></div><div class="gsec"><h2 class="hd">Questions people ask.</h2><div class="gfaq"><div><b>Do I need anything before Day 1?</b><p>Bring what you already have. Everything else is set up live on the day.</p></div><div><b>What if I cannot make it live?</b><p>Every session is recorded and the replay lands in your inbox the same evening.</p></div><div><b>Is this really free?</b><p>Yes. Three days, live with Wendy, no card and no catch.</p></div><div><b>Who is this for?</b><p>Anyone who recognised themselves in the fit check. Bring what you have and leave with the next step done.</p></div></div></div></div></div></div><div id="gate"><div class="gbar"><svg class="glock" viewBox="0 0 32 32" aria-hidden="true"><rect class="lk" x="6.5" y="14" width="19" height="13.5" rx="3" stroke-width="1.6"/><path class="sh" d="M11 14v-3.4a5 5 0 0 1 10 0V14" fill="none" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="20" r="1.9" fill="var(--accent-ink)"/></svg><span class="gtx"><b>The rest of this page is ready</b><small>Reply to my email and I will open it</small></span><button class="btn ac sm" id="gopen" type="button">Open the full page <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><div class="gpanel" id="gpanel" hidden><p class="gpt">Reply to the email I sent you</p><p class="gpd">One line back is all it takes and I will open the rest of this page for you.</p><div class="gprow"><code>sean@theafterharvest.com</code><button class="gpcopy" type="button">Copy</button></div><a class="gpmail" href="mailto:sean%40theafterharvest.com?subject=Unlock%20the%20full%20page%20for%20Wendy%20Nolan&amp;body=Yes%2C%20send%20me%20the%20full%20page.%0A%0A">Or open it in your mail app</a><button class="gpx" type="button" aria-label="Close">&#10005;</button></div></div>
 <footer class="foot"><div class="wrap"><span>Free event <span aria-hidden="true">·</span> Passion to Profits with Wendy Nolan</span><span>Figures: youtube.com, skool.com, wendynolanonline.com</span></div></footer>
 <aside id="stick" aria-label="A 60 second look at the three days"><div class="sv"><img src="img/sticky.jpg" alt="Wendy Nolan"><button class="x" aria-label="Close" type="button">&times;</button><span class="cap2"></span><span class="bar"><i></i></span><a class="go" href="#join">Hold my seat</a></div></aside>
 <div id="sheet" role="dialog" aria-modal="true" aria-label="Hold my seat" aria-hidden="true"><div class="bd" data-close></div><div class="sheetc" id="sheetbox"><button class="x" type="button" data-close aria-label="Close">&#10005;</button><div class="form"><p class="cap">Free seat <span aria-hidden="true">·</span> Step 1 of 3</p><h3 class="sh">Passion to Profits</h3><p class="mw" id="sheetWhen">Live online</p><div class="fields"><label><input type="text" placeholder="First name" autocomplete="off" aria-label="First name"></label><label><input type="email" placeholder="Email address" autocomplete="off" aria-label="Email address"></label></div><button class="btn go" type="button" data-submit="sheetbox">Save my free seat</button><ul class="ticks"><li>Free to join</li><li>Replays for every session</li><li>Leave any time</li></ul></div><div class="thanks" aria-live="polite"><span class="pill">Seat held</span><h3 class="hd">Seat <span class="seatn">1,205</span> is yours.</h3><p id="thWhen">Day 1 starts soon, live online.</p><p>Day 1 picks the topic, Day 2 turns it into a brief, and Day 3 is the one where you actually press record.</p><div class="cal"><a class="btn sm ics" href="#">Add to calendar</a><a class="tlink gcal" href="#" target="_blank" rel="noopener">Google Calendar</a></div><a class="tlink" href="vip/">Next: step 2 of 3 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></div>
-<script>window.PAGE={"slug": "wendy-nolan", "event": "Passion to Profits", "format": "3-day", "tz": "America/Edmonton", "start_in": 9, "hour": 12, "reply": "sean@theafterharvest.com", "seat": 1205, "caps": ["The <b>60 second version</b> of the three days.", "Day 1: <b>Pick the one question they already ask</b>", "Day 2: <b>Turn it into a one-page video brief</b>", "Day 3: <b>Press record and finish with a take</b>", "It is free, and it is live with <b>Wendy</b>."], "fine": "Free, live online", "tally": null};window.__pg=1;</script>
+<script>window.PAGE={"slug": "wendy-nolan", "event": "Passion to Profits", "format": "3-day", "tz": "America/Edmonton", "live": true, "registered": 1204, "last24": 18, "start_in": 9, "hour": 12, "start_date": "", "reply": "sean@theafterharvest.com", "seat": 1205, "caps": ["The <b>60 second version</b> of the three days.", "Day 1: <b>Pick the one question they already ask</b>", "Day 2: <b>Turn it into a one-page video brief</b>", "Day 3: <b>Press record and finish with a take</b>", "It is free, and it is live with <b>Wendy</b>."], "fine": "Free, live online", "tally": ["All three days are for you.", "You will feel right at home.", "One is plenty. Come as you are.", "Tap any card that sounds like you."]};window.__pg=1;</script>
 <script>
 /* page builder runtime (templates/pages/page.js). Reads window.PAGE (written by build_page.py). No network, ever:
    the sign-up only prints on this screen. Everything it animates is finished without it (no JS, reduced motion). */
@@ -764,6 +1162,8 @@ body.stick-mono #stick .sv img{filter:grayscale(1) contrast(1.05)}
   var now=Date.now(),wall=new Date(now+off(TZ,now)*6e4);
   var g=Date.UTC(wall.getUTCFullYear(),wall.getUTCMonth(),wall.getUTCDate()+(P.start_in||9),P.hour||12,0,0);
   var START=new Date(g-off(TZ,g)*6e4);
+  /* a real date (lp.json site.start_date "YYYY-MM-DD") beats the rolling default while it is still ahead */
+  if(P.start_date){var sm=/^(\d{4})-(\d\d)-(\d\d)$/.exec(P.start_date);if(sm){var sg=Date.UTC(+sm[1],+sm[2]-1,+sm[3],P.hour||12,0,0),ss=new Date(sg-off(TZ,sg)*6e4);if(ss.getTime()>now)START=ss}}
   function day(i){return new Date(START.getTime()+(WEB?0:i)*864e5)}
   function df(d,wd){var o={month:'short',day:'numeric',timeZone:TZ};if(wd)o.weekday='short';try{return d.toLocaleDateString('en-US',o).replace(',','')}catch(e){return''}}
   var ZONE='ET';try{ZONE=new Intl.DateTimeFormat('en-US',{timeZone:TZ,timeZoneName:'short'}).formatToParts(START).filter(function(x){return x.type==='timeZoneName'})[0].value}catch(e){}
@@ -881,6 +1281,59 @@ body.stick-mono #stick .sv img{filter:grayscale(1) contrast(1.05)}
   document.getElementById('gopen').addEventListener('click',function(){panel.hidden=false;requestAnimationFrame(function(){panel.classList.add('on')});copy(panel.querySelector('.gpcopy'))});
   panel.querySelector('.gpcopy').addEventListener('click',function(){copy(this)});
   panel.querySelector('.gpx').addEventListener('click',function(){panel.classList.remove('on');setTimeout(function(){panel.hidden=true},220)});
+})();
+(function(){
+  var P=window.PAGE||{},D=document,$=function(s,r){return(r||D).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||D).querySelectorAll(s))};
+  /* ---- live activity (hero.regcard.live): counts tick up, who just took a seat, a bottom-left toast. Illustrative approved
+     defaults (site.json registered / last24, build_site NAMES). No network, ever. */
+  if(P.live){
+    var NM=['Maya','Devon','Priya','Sam','Alix','Jordan','Noor','Rae'],SR=['D.','M.','R.','K.','B.','S.','T.','L.'],
+      CT=['Austin, TX','Leeds, UK','Toronto, CA','Portland, OR','Dublin, IE','Brisbane, AU','Nashville, TN','Denver, CO'];
+    var reg=P.registered||1204,l24=P.last24||18,ti=0;
+    var cm=function(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',')};
+    var paint=function(){$$('.xregn').forEach(function(n){n.textContent=cm(reg)});$$('.xl24').forEach(function(n){n.textContent=l24});$$('.fb-jn .n').forEach(function(n){n.textContent=cm(reg)+'+'})};
+    paint();
+    (function bump(){setTimeout(function(){reg++;l24++;paint();bump()},9000+Math.random()*8000)})();
+    var tt=D.createElement('div');tt.id='xtoast';tt.setAttribute('aria-hidden','true');
+    tt.innerHTML='<span class="tav"></span><span class="tbd"><b></b><span class="tact">just took a free seat</span><small><i></i><span class="tago"></span></small></span>';
+    D.body.appendChild(tt);
+    var show=function(){var h=$('#hero');if(h&&h.getBoundingClientRect().bottom<140)return;
+      var n=NM[ti%NM.length],s=SR[ti%SR.length],ini=(n.charAt(0)+s.charAt(0)).toUpperCase();
+      $('.tav',tt).textContent=ini;$('b',tt).textContent=n+' '+s+' \u00B7 '+CT[(ti*3)%CT.length];
+      $('.tago',tt).textContent=(2+(ti*3)%11)+' minutes ago';
+      var jx=$('.xjust');if(jx){$('.xav',jx).textContent=ini;$('.xjn',jx).textContent=n}
+      ti++;tt.classList.add('on');setTimeout(function(){tt.classList.remove('on')},6200)};
+    setTimeout(function(){show();setInterval(show,13000)},4200);
+  }
+})();
+
+/* Wendy Nolan, dream layer (leads/wendy-nolan/reg-extra/src/extra.js). Runs after page.js. Adds only decoration and
+   affordances; the page is complete without it (no JS: every fit card shows ticked with its hand note). */
+(function(){
+  var D=document,$=function(s,r){return(r||D).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||D).querySelectorAll(s))};
+
+  /* fit check: a clear "Is this you? / That's me" pill on every card, five pips under the tally */
+  var lis=$$('#checks li');
+  lis.forEach(function(li){
+    if($('.xme',li))return;
+    li.insertAdjacentHTML('beforeend','<span class="xme" aria-hidden="true"><i></i><span class="a">Is this you?</span><span class="b">That’s me</span></span>');
+  });
+  var tally=$('#fit .tally');
+  if(tally&&!$('.xpips',tally)){
+    tally.insertAdjacentHTML('beforeend','<span class="xpips" aria-hidden="true">'+lis.map(function(){return'<i></i>'}).join('')+'</span>');
+    var pips=$$('.xpips i',tally);
+    var paint=function(){var n=$$('#checks li:not(.off)').length;pips.forEach(function(p,k){p.classList.toggle('on',k<n)});tally.classList.toggle('xany',n>0)};
+    paint();
+    if(window.MutationObserver)new MutationObserver(paint).observe($('#checks'),{attributes:true,subtree:true,attributeFilter:['class']});
+  }
+  var fp=$('#fit .fhead p');
+  if(fp&&!$('.xtap'))fp.insertAdjacentHTML('afterend','<p class="xtap" aria-hidden="true">tap as many as you like<i></i></p>');
+
+  /* her photo, the way her own site shows it: two hand notes beside it (both from her bio) */
+  var duo=$('#numbers .duo');
+  if(duo&&!$('.xpn',duo)){
+    duo.insertAdjacentHTML('beforeend','<span class="xpn n1" aria-hidden="true">aka Glammie<i></i></span><span class="xpn n2" aria-hidden="true"><i></i>built it after 50</span>');
+  }
 })();
 
 </script>
