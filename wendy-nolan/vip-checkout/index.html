@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Enroll | Digital income made simple | Wendy Nolan</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../fonts/gambetta_300-400-500-600-700.css">
+<link rel="stylesheet" href="../fonts/switzer_300-400-500-600-700-800.css">
+<style>:root{ --ground:#fbe6e2; --ink:#15314c; --accent:#ef5a68; --accent-ink:#1a1a1a; --accent2:#ffffff; --accent-text:#a82c3b; --head-acc:#a82c3b; --ink-soft:#233a52; --muted:#3a4d63; --hair:rgba(21,49,76,.10); --hair-2:rgba(21,49,76,.17); --accent-10:rgba(239,90,104,.13); --accent-sh:rgba(239,90,104,.55); --accent-sh2:rgba(239,90,104,.28); --pat:#ffd180; --pat-op:.2; --ghost:#ffd180; --ghost-op:.2; --grain-img:none; --grain-op:0; --grain-blend:normal; --wall:linear-gradient(160deg,#15314c,#15314c); --glass:rgba(255,255,255,.62); --glass-brd:rgba(255,255,255,.8); --glass-hi:rgba(255,255,255,.95); --glass-solid:rgba(255,255,255,.96); --card:rgba(255,255,255,.7); --card-brd:rgba(21,49,76,.08); --strip:rgba(255,255,255,.4); --well:#ffffff; --field:#ffffff; --av-ring:#ffffff; --cap-bg:rgba(255,255,255,.8); --cap-ink:#15314c; --cap-muted:#3a4d63; --sh1:0 1px 1px rgba(21,49,76,.05),0 3px 8px -2px rgba(21,49,76,.07),0 22px 40px -22px rgba(21,49,76,.22),0 50px 90px -50px rgba(21,49,76,.22); --sh2:0 1px 1px rgba(21,49,76,.04),0 2px 6px -2px rgba(21,49,76,.06),0 14px 30px -18px rgba(21,49,76,.2); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(21,49,76,.22),0 26px 44px -18px rgba(21,49,76,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(21,49,76,.32); --contact:rgba(21,49,76,.3); --plate:radial-gradient(90% 70% at 50% 100%, rgba(239,90,104,.2), transparent 70%), linear-gradient(180deg, #ffffff, #ffffff); --band:#15314c; --band-ink:#ffffff; --band-ink-70:rgba(255,255,255,.7); --band-ink-50:rgba(255,255,255,.5); --band-hair:rgba(255,255,255,.14); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(239,90,104,.28), transparent 72%); --ground-paint:radial-gradient(900px 640px at 100% 0%, #ffffff, transparent 70%),radial-gradient(760px 560px at 0% 46%, #ffffff, transparent 70%),radial-gradient(800px 560px at 100% 100%, #ffffff, transparent 70%), #fbe6e2; --display:"Gambetta",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif; --body:"Switzer",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif; --label:"Switzer",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif; --lw:600; --ltr:.04em; --dw:600; --dw2:500; }</style><style>@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url(../fonts/instrument-serif-latin-400-italic.woff2) format("woff2")}@font-face{font-family:"Gochi Hand";font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/gochi-hand-400.woff2) format("woff2")}</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="vip.css?v=c8417065">
+<link rel="stylesheet" href="offer.css?v=c13be214">
+
+</head>
+<body class="offer">
+<!-- Offer / checkout short page (reference: docs/offer-short-page-reference.md). Section 1: order card + what is included.
+     Section 2: what you actually walk away with. Built by scripts/build_offer.py from templates/lp/offer.{html,css,js} +
+     lp.json site.offer. Never hand-edit. -->
+<div id="vpage" class="opage">
+  <div class="vbg vground"></div>
+  <div class="vbg vgrain"></div>
+
+  <header class="obar" id="oBar">
+    <div class="obar-in">
+      <span class="obrand"><img id="oLogo" alt="" hidden><b id="oBrand"></b></span>
+      <span class="oclose"><span class="olabel" id="oCloseLbl"></span>
+        <span class="ocd" id="oCd" aria-live="off"><span><b id="cdD">--</b><small>days</small></span><span><b id="cdH">--</b><small>hrs</small></span><span><b id="cdM">--</b><small>min</small></span></span></span>
+      <a class="obtn obtn-s" href="#order" id="oBarBtn"></a>
+    </div>
+  </header>
+
+  <main class="owrap">
+    <section class="osec o1">
+      <aside class="oorder" id="order">
+        <p class="ok">Enroll today</p>
+        <h1 class="oh1" id="oTitle"></h1>
+        <p class="oterms" id="oTerms"></p>
+        <div class="oline">
+          <div class="oline-h"><b id="oProd"></b><span id="oPrice"></span></div>
+          <p class="oline-m" id="oMeta"></p>
+          <ul class="oticks" id="oTicks"></ul>
+        </div>
+        <div class="ototal"><span>Total due today</span><b id="oTotal"></b></div>
+        <p class="ohand" id="oHand" aria-hidden="true"></p>
+        <a class="obtn" href="#" onclick="return false" id="oCta"></a>
+        <p class="osecure" id="oSecure"></p>
+        <p class="ofine" id="oFine"></p>
+      </aside>
+
+      <article class="oinc">
+        <p class="ok">What's included</p>
+        <h2 class="oh2" id="oHead"></h2>
+        <p class="olede" id="oLede"></p>
+        <figure class="ohost" id="oHost"><img id="oPhoto" alt=""><figcaption id="oHostCap"></figcaption></figure>
+        <p class="oband" id="oBand"></p>
+        <ol class="olist" id="oList"></ol>
+        <div class="oweeks" id="oWeeks"></div>
+      </article>
+    </section>
+
+    <section class="osec o2" id="walk">
+      <div class="owhead">
+        <span class="vspark" aria-hidden="true"></span>
+        <p class="vcap" id="wCap"></p>
+        <h2 class="vh2" id="wTitle"></h2>
+        <p class="wintro" id="wIntro"></p>
+      </div>
+      <div class="orows" id="wRows"></div>
+    </section>
+  </main>
+</div>
+<script>window.OFFER = {
+ "title": "You're one step from **VIP.**",
+ "terms": "Optional upgrade \u00b7 one payment",
+ "product": "VIP upgrade",
+ "price": 47,
+ "meta": "Added to your free seat for Passion to Profits",
+ "bullets": [
+  "Day 4, take review with me",
+  "Private VIP thread",
+  "Replays to keep",
+  "My phone setup list"
+ ],
+ "cta": "Yes, add VIP",
+ "secure": "Secure checkout",
+ "fine": "You can skip this and keep your free seat.",
+ "headline": "Want me to **watch your take** on a fourth day together?",
+ "lede": "Your seat is saved for all three days. Before you go, there is one optional upgrade, one payment. A fourth live day where I watch the takes you recorded on Day 3, a private VIP thread for the week, and replays of all four days to keep.",
+ "band": "Here's what VIP includes",
+ "included": [
+  {
+   "title": "Day 4, take review with me",
+   "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring the take you recorded on Day 3."
+  },
+  {
+   "title": "Private VIP thread",
+   "text": "Opens {day1_date} and stays open until {close}. Ask me anything between sessions."
+  },
+  {
+   "title": "Replays to keep",
+   "text": "All three days plus Day 4, so the phone setup is there whenever you need it."
+  },
+  {
+   "title": "My phone setup list",
+   "text": "The exact settings I use on Day 3, on one printable page."
+  }
+ ],
+ "slug": "wendy-nolan",
+ "name": "Wendy Nolan",
+ "brand": "Digital income made simple",
+ "time_zone": "America/Edmonton",
+ "photo": "../img/headshot.jpg",
+ "starts_in_days": 9,
+ "start_hour": 12,
+ "start_date": "",
+ "event": "Passion to Profits",
+ "first_name": "Wendy",
+ "format": "3-day"
+};</script>
+<script src="offer.js?v=b4f048d6"></script>
+
+</body>
+</html>
