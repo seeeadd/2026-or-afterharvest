@@ -54,7 +54,7 @@ body{font-size:18px;line-height:1.6}
 
 /* ---------- VIP page (site/<slug>/vip/) */
 /* hero: honey sticky-note eyebrow, doodle under the marked phrase */
-#vpage .vtape{background:var(--sticky);color:var(--ink);font:400 24px/1.1 var(--fh);letter-spacing:0;text-transform:none;padding:10px 20px 12px;border-radius:3px 3px 14px 3px;transform:rotate(-2deg);box-shadow:0 12px 20px -14px rgba(21,49,76,.5)}
+#vpage .vtape{background:var(--sticky);color:var(--ink);font:600 16px/1.2 var(--label);letter-spacing:.02em;text-transform:none;padding:12px 20px 13px;border-radius:3px 3px 14px 3px;transform:rotate(-2deg);box-shadow:0 12px 20px -14px rgba(21,49,76,.5)}
 #vpage .vtape:before,#vpage .vtape:after{display:none}
 #vpage .vh1 .mk{padding-bottom:.06em;background:url("data:image/svg+xml,%3Csvg preserveAspectRatio=%22none%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 240 18%22%3E%3Cg fill=%22none%22 stroke=%22%23ef5a68%22 stroke-linecap=%22round%22%3E%3Cpath stroke-width=%225%22 d=%22M4 10.5C58 5 132 3.6 236 6.4%22/%3E%3Cpath stroke-width=%222.6%22 d=%22M30 14.6c52-3.2 110-4 172-2.6%22/%3E%3C/g%3E%3C/svg%3E") no-repeat 0 100%/100% .3em}
 #vpage .vh1 .mk:before,#vpage .vh1 .mk:after{display:none!important}
@@ -72,7 +72,7 @@ body{font-size:18px;line-height:1.6}
 #vpage .vchip b{font-size:16px}
 #vpage .vchip small{font-size:14px;opacity:1}
 #vpage .vt{font-size:14px}
-#vpage .vsound{font:400 22px/1 var(--fh);letter-spacing:0;text-transform:none}
+#vpage .vsound{font-size:14px;letter-spacing:.06em}
 /* hand note from the video to the pass card */
 .xvn{position:relative;display:block;width:max-content;margin:44px 20px 0 auto;font-size:29px;transform:rotate(-3deg);padding-right:84px}
 .xvn i{position:absolute;right:0;top:-30px;width:74px;height:44px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 46%22%3E%3Cg fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M4 30c10-18 26-24 38-14 7 6 3 14-3 11-6-3-2-13 8-15 9-2 18 2 28 8%22/%3E%3Cpath d=%22M64 13l11 7-12 5%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;transform:rotate(-28deg)}
@@ -105,7 +105,7 @@ body{font-size:18px;line-height:1.6}
 .vtoast b{font-size:16px}
 .vtoast small{font-size:14px}
 
-/* optional sections (drawn only when site.vip has them): review cards, friendly compare, day line, questions */
+/* optional sections (drawn only when site.vip has them): review cards, friendly compare, day cards, questions, closing */
 .vvoices{background:#fff;border-radius:24px;box-shadow:var(--wshadow);padding:26px 26px 22px;margin-top:40px;position:relative}
 .vvoices h3{font:600 22px/1.3 var(--display);color:var(--ink);margin-bottom:12px}
 .vvoices blockquote{position:relative;background:var(--cream);border-radius:18px;padding:18px 20px 18px 62px;margin-top:12px}
@@ -113,27 +113,64 @@ body{font-size:18px;line-height:1.6}
 .vvoices blockquote p{font-size:17px;line-height:1.55;color:var(--ink)}
 .vvoices mark{background:linear-gradient(transparent 56%,var(--mark) 56%);color:inherit}
 .vvoices .vsrc{font-size:14px}
-.vsec .vh2{text-wrap:balance}
-.vcmp .vtbl{background:#fff;border-radius:24px;box-shadow:var(--wshadow);overflow:hidden;border:0}
-.vcmp .vrow{padding:18px 26px;font-size:17px;border-top:1.5px dashed var(--wline)}
-.vcmp .vrow.vrh{font:600 17px/1.2 var(--display);background:var(--cream);color:var(--ink)}
-.vcmp .vrow .vc span{font-size:15px}
-.vcmp .vipc{background:#fff8ec}
-.vcmp .vrh .vipc{background:var(--honey);color:#1a1a1a;border-radius:14px;padding:10px 12px;text-align:center}
-.vcmp .vtk{color:var(--hand-ink);width:24px;height:24px}
-.vtl .vdays li{background:#fff;border-radius:24px;box-shadow:var(--wshadow)}
-.vtl .vdn{font-family:var(--display);color:var(--hand-ink)}
-.vtl .vdays small{font-size:14px;letter-spacing:.06em;color:var(--muted)}
-.vtl .vdays p{font-size:17px}
-.vfaq details{background:#fff;border-radius:20px;box-shadow:var(--wshadow);margin-top:12px;padding:0 22px;border:0}
-.vfaq summary{font:600 20px/1.35 var(--display);color:var(--ink);min-height:56px;padding:18px 0;cursor:pointer}
-.vfaq details p{font-size:18px;line-height:1.6;padding-bottom:20px}
+#vpage .vsec{padding-top:88px}
+#vpage .vsec .vh2{text-wrap:balance;margin-bottom:34px}
+#vpage .vsec .vcap{font-size:15px}
+/* compare: a friendly table, a drawn icon tile on every row, VIP column in honey */
+.vcmp .vtbl{background:#fff;border-radius:28px;box-shadow:var(--wshadow);overflow:hidden;border:0;max-width:880px;margin:0 auto}
+.vcmp .vrow{padding:14px 26px;font-size:18px;border-top:1.5px dashed var(--wline);grid-template-columns:minmax(0,1.7fr) minmax(0,.65fr) minmax(0,.65fr)}
+.vcmp .vrow.vrh{font:600 19px/1.2 var(--display);background:var(--cream);color:var(--ink);border-top:0;padding-top:16px;padding-bottom:16px}
+.vcmp .vrl{display:flex;align-items:center;gap:14px;text-align:left;color:var(--ink);font-size:18px;line-height:1.4}
+.xri{flex:none;width:48px;height:48px;border-radius:15px;background:var(--cream) no-repeat center/38px}
+.vcmp .vc{display:flex;justify-content:center;align-items:center;min-height:48px}
+.vcmp .vrow .vc span{font:600 16px/1.3 var(--label);color:var(--ink)}
+.vcmp .vc.vipc{background:#fff5e1;border-radius:14px}
+.vcmp .vrh .vipc{background:var(--honey);color:#1a1a1a;border-radius:999px;padding:10px 12px;text-align:center}
+.vcmp .vtk{width:32px;height:32px;padding:6px;border-radius:50%;background:var(--accent);color:#1a1a1a}
+.vcmp .vdash{font-size:22px;color:var(--muted)}
+/* day by day: three warm cards on cream, a stitched line joining them, one drawn icon each */
+#vpage .vtl{background:var(--cream);color:var(--ink)}
+#vpage .vtl:before{display:none}
+#vpage .vtl .vh2{color:var(--ink)}
+#vpage .vtl .vcap{color:var(--hand-ink)}
+#vpage .vdays{position:relative;border:0;gap:36px;text-align:left}
+#vpage .vdays:before{content:"";position:absolute;left:12%;right:12%;top:62px;border-top:3px dashed var(--accent);opacity:.7}
+#vpage .vdays li{position:relative;background:#fff;border:0;border-radius:26px;box-shadow:var(--wshadow);padding:28px 26px 30px}
+#vpage .vdays li:nth-child(1){transform:rotate(-1deg)}
+#vpage .vdays li:nth-child(3){transform:rotate(1deg)}
+#vpage .vdays li:before{content:"";display:block;width:64px;height:64px;margin-bottom:16px;border-radius:20px;background:var(--cream) no-repeat center/50px}
+#vpage .vdays li:nth-child(1):before{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2229%22 r=%2215%22 fill=%22%23f9d6d0%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M7 10.6c6.4-.6 13.6-.6 19.6 0 2 .2 3.2 1.5 3.2 3.4v8.4c0 2-1.2 3.2-3.2 3.4-3 .3-6 .3-9 .2l-6.2 5 .6-5.2c-1.8-.1-3.2-.4-4.6-.6-1.8-.3-2.9-1.5-2.9-3.4V14c0-1.9 1.1-3.2 2.5-3.4z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M33.6 21.6c2.2 0 5.2.2 6.6.5 1.4.3 2.2 1.3 2.2 2.8v7.4c0 1.6-.9 2.6-2.3 2.8l-1.6.2.4 4.6-5.4-4.4c-2.4 0-4.8-.1-7-.3-1.6-.2-2.6-1.2-2.7-2.8%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M12.6 16.4h11.6M12.6 20.6h7%22/%3E%3C/svg%3E")}
+#vpage .vdays li:nth-child(2):before{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%2215%22 fill=%22%23f9d6d0%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M17.4 5.6c4.8-.4 9.6-.4 14.2 0 1.8.2 2.9 1.4 3 3.3.3 9.8.3 19.8 0 29.8-.1 2-1.2 3.1-3 3.3-4.6.4-9.4.4-14.2 0-1.8-.2-2.9-1.4-3-3.3-.3-10-.3-20 0-29.8.1-1.9 1.2-3.1 3-3.3z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M21.8 10h5%22/%3E%3Ccircle cx=%2224.4%22 cy=%2234.4%22 r=%223%22 fill=%22%23ef5a68%22/%3E%3C/svg%3E")}
+#vpage .vdays li:nth-child(3):before{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%2215%22 fill=%22%23f2b544%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M13 9.6c7.4-.5 14.8-.5 22 0 1.8.1 2.9 1.3 3 3.2.3 8.6.3 17.6 0 26.2-.1 1.9-1.2 3-3 3.2-7.2.5-14.6.5-22 0-1.8-.2-2.9-1.3-3-3.2-.3-8.6-.3-17.6 0-26.2.1-1.9 1.2-3 3-3.2z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M18.4 7.2h11.2v5H18.4z%22/%3E%3Cpath fill=%22%23ef5a68%22 d=%22M20.4 20.6v11.4l9.6-5.7z%22/%3E%3C/svg%3E")}
+#vpage .vdn{position:absolute;right:24px;top:24px;font-size:40px;color:var(--accent);margin:0}
+#vpage .vdays small{font:600 15px/1.2 var(--label);letter-spacing:.02em;text-transform:none;color:#1a1a1a;background:var(--honey);display:inline-block;border-radius:999px;padding:8px 13px;margin-bottom:14px}
+#vpage .vdays b{font:600 23px/1.25 var(--display);color:var(--ink)}
+#vpage .vdays p{font-size:18px;line-height:1.6;color:var(--ink-soft)}
+#vpage .vdays p b{font:inherit;font-weight:700;color:var(--ink)}
+/* questions: soft cards, her doodle under the heading */
+#vpage .vqs details{background:#fff;border:0;border-radius:22px;box-shadow:var(--wshadow);padding:0 26px}
+#vpage .vqs summary{font:600 21px/1.35 var(--display);color:var(--ink);min-height:56px;padding:20px 44px 20px 0}
+#vpage .vqs summary:after{width:34px;height:34px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--ink);font-size:22px}
+#vpage .vqs details p{font-size:18px;line-height:1.6;padding-bottom:22px}
+/* closing ask: her photo on the coral block, one sticky note, the button */
+#vpage .vend .vnarrow{max-width:980px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:64px;align-items:center;text-align:left}
+.xcl{position:relative;width:250px;height:310px;margin:10px 0 30px 10px}
+.xcl:before{content:"";position:absolute;inset:22px -22px -22px 22px;border-radius:36px;background:var(--accent);transform:rotate(-2deg)}
+.xcl img{position:relative;width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:36px;transform:rotate(-2deg);box-shadow:0 20px 40px -24px rgba(21,49,76,.5)}
+.xsn2{position:absolute;right:-60px;bottom:-26px;z-index:2;width:170px;background:var(--sticky);padding:14px 16px;border-radius:3px 3px 18px 3px;transform:rotate(4deg);box-shadow:0 14px 24px -16px rgba(21,49,76,.5);font:600 16px/1.35 var(--label);color:var(--ink)}
+#vpage .vend p{margin:0 0 26px;font-size:19px;line-height:1.6;max-width:none}
+#vpage .vend .vcta{max-width:420px}
+#vpage .vend .vno{margin:14px 0 0}
+#vpage .vleave{font-size:16px;line-height:1.5}
 
 @media (max-width:1020px){
+  #vpage .vdays:before{left:50%;right:auto;top:40px;bottom:40px;border-top:0;border-left:3px dashed var(--accent)}
+  #vpage .vdays li{transform:none!important}
+  #vpage .vend .vnarrow{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+  #vpage .vend .vno{margin:14px auto 0}
   .xvn{display:none}
 }
 @media (max-width:720px){
-  #vpage .vtape{font-size:21px}
   #vpage .vlede{font-size:17px}
   #vpage .vpass{transform:rotate(-1deg)}
   #vpage .vpcells{flex-wrap:wrap;gap:6px}
@@ -141,8 +178,13 @@ body{font-size:18px;line-height:1.6}
   #vpage .vmon:before{left:12px;right:-10px;top:14px;bottom:-10px}
   #vpage .vlist li{grid-template-columns:44px minmax(0,1fr);font-size:17px}
   #vpage .vlist .vck{width:44px;height:44px;background-size:34px}
-  .vcmp .vrow{padding:14px;font-size:16px}
+  .vcmp .vrow{padding:12px 10px;grid-template-columns:minmax(0,1.5fr) 70px 70px;gap:6px}
+  .vcmp .vrl{font-size:16px;gap:10px}
+  .xri{width:38px;height:38px;background-size:30px;border-radius:12px}
   .vcmp .vrow .vc span,.vcmp .vrow.vrh{font-size:14px}
+  .vcmp .vrh .vipc{padding:8px 6px}
+  #vpage .vdays li{padding:24px 20px}
+  .xsn2{right:-30px;width:150px}
 }
 
 </style>
@@ -291,6 +333,83 @@ body{font-size:18px;line-height:1.6}
  "decline": "No thanks, take me to my join details",
  "proof": "**{vip_count} people** added VIP to their seat",
  "vip_count": "146",
+ "leave": "**Next step: choose your VIP upgrade.** Please keep this page open. If you leave, you will not see this offer again.",
+ "compare": {
+  "cap": "Free seat or VIP",
+  "title": "What VIP adds to your seat",
+  "free_label": "Free seat",
+  "vip_label": "VIP",
+  "rows": [
+   {
+    "t": "All 3 live days with me",
+    "free": true,
+    "vip": true
+   },
+   {
+    "t": "Day 4: I watch your take with you",
+    "free": false,
+    "vip": true
+   },
+   {
+    "t": "Private VIP thread",
+    "free": false,
+    "vip": true
+   },
+   {
+    "t": "Recordings of every day",
+    "free": "Replay link",
+    "vip": "Yours to keep"
+   },
+   {
+    "t": "My phone setup list, printable",
+    "free": false,
+    "vip": true
+   }
+  ]
+ },
+ "timeline_cap": "Your VIP days",
+ "timeline_title": "How VIP works, step by step",
+ "timeline": [
+  {
+   "day": "{day1}",
+   "title": "Your VIP thread opens",
+   "text": "Ask me anything between sessions. I read every message."
+  },
+  {
+   "day": "{day3}",
+   "title": "You record your first take",
+   "text": "Your phone setup list is ready, and **rough is fine**."
+  },
+  {
+   "day": "{day4}",
+   "title": "We watch your take together",
+   "text": "90 minutes live, VIPs only. Bring the take you recorded on Day 3."
+  }
+ ],
+ "faq_cap": "Before you decide",
+ "faq_title": "Questions about VIP",
+ "faq": [
+  {
+   "q": "Do I need VIP to come?",
+   "a": "No. Your free seat covers all three live days with me. VIP adds Day 4, the private thread, the recordings and the phone setup list."
+  },
+  {
+   "q": "What happens on Day 4?",
+   "a": "I watch the take you recorded on Day 3 and we talk about what to keep and what to fix. It is 90 minutes live, for VIPs only."
+  },
+  {
+   "q": "Do I need fancy equipment?",
+   "a": "No. Your phone is enough. The setup list shows you exactly where to put it."
+  },
+  {
+   "q": "What if I cannot be there live?",
+   "a": "Every day is recorded and VIPs keep all the recordings."
+  }
+ ],
+ "closing": {
+  "title": "Add VIP to your seat",
+  "text": "Day 4 with me, the private thread, every recording and the phone setup list, for {price} once."
+ },
  "pattern": "grid",
  "name": "Wendy Nolan",
  "first_name": "Wendy",
@@ -321,9 +440,30 @@ body{font-size:18px;line-height:1.6}
 <script>
 /* Wendy Nolan, VIP hand layer (leads/wendy-nolan/hand-src/vip.js). Decoration only; the page is complete without it. */
 (function(){
-  var D=document,q=function(s){return D.querySelector(s)};
+  var D=document,q=function(s){return D.querySelector(s)},qa=function(s){return Array.prototype.slice.call(D.querySelectorAll(s))};
   var left=q('#vpage .vleft');
   if(left&&!q('.xvn'))left.insertAdjacentHTML('beforeend','<p class="xvn xhand" aria-hidden="true">this is what VIP adds<i><\/i><\/p>');
+  /* compare rows: one drawn icon tile each (in row order: live days, Day 4, thread, recordings, setup list) */
+  var ic=['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2229%22 r=%2215%22 fill=%22%23f2b544%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M9.6 11.4c9.6-.6 19.4-.6 28.8 0 1.8.1 2.9 1.3 3 3.2.3 7.8.3 15.8 0 23.4-.1 1.9-1.2 3.1-3 3.2-9.4.6-19.2.6-28.8 0-1.8-.1-2.9-1.3-3-3.2-.3-7.6-.3-15.6 0-23.4.1-1.9 1.2-3.1 3-3.2z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M6.8 19.4h34.6M16.4 7.4v7.4M31.6 7.4v7.4%22/%3E%3Cpath fill=%22%23ef5a68%22 d=%22M15 25h6v5.4h-6z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M26.4 27.6h7M15.4 34h18%22/%3E%3C/svg%3E','data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%2215%22 fill=%22%23f2b544%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M13 9.6c7.4-.5 14.8-.5 22 0 1.8.1 2.9 1.3 3 3.2.3 8.6.3 17.6 0 26.2-.1 1.9-1.2 3-3 3.2-7.2.5-14.6.5-22 0-1.8-.2-2.9-1.3-3-3.2-.3-8.6-.3-17.6 0-26.2.1-1.9 1.2-3 3-3.2z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M18.4 7.2h11.2v5H18.4z%22/%3E%3Cpath fill=%22%23ef5a68%22 d=%22M20.4 20.6v11.4l9.6-5.7z%22/%3E%3C/svg%3E','data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2229%22 r=%2215%22 fill=%22%23f9d6d0%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M7 10.6c6.4-.6 13.6-.6 19.6 0 2 .2 3.2 1.5 3.2 3.4v8.4c0 2-1.2 3.2-3.2 3.4-3 .3-6 .3-9 .2l-6.2 5 .6-5.2c-1.8-.1-3.2-.4-4.6-.6-1.8-.3-2.9-1.5-2.9-3.4V14c0-1.9 1.1-3.2 2.5-3.4z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M33.6 21.6c2.2 0 5.2.2 6.6.5 1.4.3 2.2 1.3 2.2 2.8v7.4c0 1.6-.9 2.6-2.3 2.8l-1.6.2.4 4.6-5.4-4.4c-2.4 0-4.8-.1-7-.3-1.6-.2-2.6-1.2-2.7-2.8%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M12.6 16.4h11.6M12.6 20.6h7%22/%3E%3C/svg%3E','data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%2215%22 fill=%22%23f2b544%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M9.4 11.4c9.6-.7 19.6-.7 29.4 0 2 .2 3.2 1.5 3.3 3.5.3 6.2.3 12.4 0 18.4-.1 2-1.3 3.3-3.3 3.5-9.8.7-19.8.7-29.4 0-2-.2-3.2-1.5-3.3-3.5-.3-6-.3-12.2 0-18.4.1-2 1.3-3.3 3.3-3.5z%22/%3E%3Cpath fill=%22%23ef5a68%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linejoin=%22round%22 d=%22M20 17.6v13l11-6.5z%22/%3E%3C/svg%3E','data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%2215%22 fill=%22%23f9d6d0%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M10.6 6.4h19.2l8 8v27.4H10.6z%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M29.4 6.8v8h8%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M16 21.6h4.6M16 27.4h4.6M16 33.2h4.6%22/%3E%3Cpath fill=%22none%22 stroke=%22%2315314c%22 stroke-width=%222.3%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22M24.6 19.6h6.2v15.6h-6.2z%22/%3E%3Ccircle cx=%2227.7%22 cy=%2232.4%22 r=%221.2%22 fill=%22%2315314c%22/%3E%3C/svg%3E'];
+  qa('.vcmp .vrow:not(.vrh) .vrl').forEach(function(r,k){
+    if(r.querySelector('.xri')||!ic[k])return;
+    r.insertAdjacentHTML('afterbegin','<i class="xri" aria-hidden="true" style="background-image:url(&quot;'+ic[k]+'&quot;)"><\/i>');
+  });
+  /* doodle under the last words of each section heading */
+  qa('#vMore .vh2').forEach(function(h){
+    if(h.querySelector('.xdood'))return;
+    var m=h.textContent.match(/^(.*\s)(\S+\s\S{1,3}|\S{4,}?)([.?!]?)$/);
+    if(m){h.textContent='';h.appendChild(D.createTextNode(m[1]));var s=D.createElement('span');s.className='xdood';s.textContent=m[2];h.appendChild(s);h.appendChild(D.createTextNode(m[3]));}
+  });
+  /* closing ask: her photo on the coral block with one sticky note */
+  var end=q('.vend .vnarrow');
+  if(end&&!q('.xcl')){
+    var av=(window.VIP&&VIP.avatar)||'../img/headshot.jpg';
+    var body=D.createElement('div');while(end.firstChild)body.appendChild(end.firstChild);
+    end.appendChild(D.createElement('div')).className='xclw';
+    end.firstChild.innerHTML='<div class="xcl"><img src="'+av+'" alt=""><p class="xsn2" aria-hidden="true">Pay once. Replays are yours to keep.<\/p><\/div>';
+    end.appendChild(body);
+  }
 })();
 
 </script>

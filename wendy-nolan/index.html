@@ -1051,6 +1051,11 @@ html.js.m .xobj.in .xring path{stroke-dashoffset:0}
   .xh1{right:4%}
 }
 
+/* ---------- one hand note per page (Sean 2026-09-30: "too many annotations"): only "aka Glammie" by her photo stays */
+.checks .note,.xsn,.xh1,.xh3,.xmn{display:none!important}
+.xsn:before{display:none}
+#tallyT{font:600 17px/1.35 var(--fb);color:var(--ink)}
+
 </style>
 </head>
 <body class="hdr-soft mark-swipe shadow-soft border-hairline days-numerals fit-counter keep-row gate-bar motion-calm">
@@ -1340,13 +1345,11 @@ html.js.m .xobj.in .xring path{stroke-dashoffset:0}
     paint();
     if(window.MutationObserver)new MutationObserver(paint).observe($('#checks'),{attributes:true,subtree:true,attributeFilter:['class']});
   }
-  var fp=$('#fit .fhead p');
-  if(fp&&!$('.xtap'))fp.insertAdjacentHTML('afterend','<p class="xtap" aria-hidden="true">tap as many as you like<i></i></p>');
 
-  /* her photo, the way her own site shows it: two hand notes beside it (both from her bio) */
+  /* her photo, the way her own site shows it: one hand note beside it (from her bio; Sean 2026-09-30: at most one hand note per page) */
   var duo=$('#numbers .duo');
   if(duo&&!$('.xpn',duo)){
-    duo.insertAdjacentHTML('beforeend','<span class="xpn n1" aria-hidden="true">aka Glammie<i></i></span><span class="xpn n2" aria-hidden="true"><i></i>built it after 50</span>');
+    duo.insertAdjacentHTML('beforeend','<span class="xpn n1" aria-hidden="true">aka Glammie<i></i></span>');
   }
 })();
 

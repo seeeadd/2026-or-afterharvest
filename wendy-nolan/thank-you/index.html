@@ -71,14 +71,14 @@ body{font-size:18px;line-height:1.6}
 .tvid .tlen{font-size:14px}
 .tvid .tsoon{font-size:15px}
 .tvid .tcap{padding:18px 8px 16px}
-.tvid small{font:400 24px/1 var(--fh);letter-spacing:0;text-transform:none;color:var(--hand-ink)}
+.tvid small{font:700 15px/1 var(--label);letter-spacing:.06em;color:var(--hand-ink)}
 .tvid h3{font-size:24px}
 .tvid p{font-size:17px;line-height:1.55;color:var(--ink-soft)}
 
 /* prep: the stitched hearts fill up as she ticks steps off */
 .tmeter{height:0;background:none;max-width:none;margin-top:0}
 .tmeter i{display:none}
-.tmeter span{position:static;display:block;margin-top:10px;font:400 25px/1.1 var(--fh);color:var(--hand-ink);letter-spacing:0}
+.tmeter span{position:static;display:block;margin-top:12px;font:600 17px/1.2 var(--label);color:var(--ink);letter-spacing:0}
 .xhearts{display:flex;justify-content:center;gap:16px;margin:20px auto 0}
 .xhearts svg{width:46px;height:42px;overflow:visible}
 .xhearts path{fill:#fff;stroke:var(--ink);stroke-width:2;stroke-linejoin:round;transition:fill .45s}
@@ -272,7 +272,6 @@ body{font-size:18px;line-height:1.6}
   var D=document,q=function(s){return D.querySelector(s)},qa=function(s){return Array.prototype.slice.call(D.querySelectorAll(s))};
   /* her welcome note under the headline */
   var sub=q('#tSub');
-  if(sub&&!q('.xwel'))sub.insertAdjacentHTML('afterend','<p class="xwel xhand" aria-hidden="true"><i><\/i>so glad you are here<\/p>');
   /* doodle under the last word of each plain heading */
   qa('#tProof .vh2,#tPrepH').forEach(function(h){
     if(h.querySelector('.xdood'))return;
@@ -294,8 +293,6 @@ body{font-size:18px;line-height:1.6}
     if(window.MutationObserver)new MutationObserver(paint).observe(meter,{attributes:true,attributeFilter:['aria-valuenow']});
   }
   /* a note that answers "I'm locked in" */
-  var lock=q('#tLock');
-  if(lock&&!q('.xlocked'))lock.insertAdjacentHTML('afterend','<span class="xlocked xhand" aria-hidden="true">yay, see you there!<\/span>');
 })();
 
 </script>

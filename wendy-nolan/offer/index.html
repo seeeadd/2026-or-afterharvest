@@ -59,7 +59,7 @@ body{font-size:18px;line-height:1.6}
 .olabel{font-size:14px;letter-spacing:.04em;text-transform:none}
 .ocd small{font-size:12px;opacity:1}
 .obtn-s{min-height:52px;font-size:16px;padding:0 24px}
-.ok{font:400 25px/1 var(--fh);letter-spacing:0;text-transform:none;color:var(--hand-ink)}
+.ok{font:700 15px/1.2 var(--label);letter-spacing:.06em;color:var(--hand-ink)}
 .oh1 em,.oh2 em,.owhead .vh2 em{color:var(--ink);padding-bottom:.06em;background:url("data:image/svg+xml,%3Csvg preserveAspectRatio=%22none%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 240 18%22%3E%3Cg fill=%22none%22 stroke=%22%23ef5a68%22 stroke-linecap=%22round%22%3E%3Cpath stroke-width=%225%22 d=%22M4 10.5C58 5 132 3.6 236 6.4%22/%3E%3Cpath stroke-width=%222.6%22 d=%22M30 14.6c52-3.2 110-4 172-2.6%22/%3E%3C/g%3E%3C/svg%3E") no-repeat 0 100%/100% .28em}
 
 /* the order card */
@@ -83,7 +83,7 @@ body{font-size:18px;line-height:1.6}
 .ohost:before{content:"";position:absolute;left:50%;top:78px;width:230px;height:290px;margin-left:-97px;border-radius:36px;background:var(--accent);transform:rotate(-2deg)}
 .ohost:after{content:"";position:absolute;left:50%;top:26px;width:110px;height:110px;margin-left:-170px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cpath fill=%22none%22 stroke=%22%23f2b544%22 stroke-width=%224.4%22 stroke-linecap=%22round%22 d=%22M58 8C30 4 8 22 9 50c1 26 22 42 46 40 24-2 38-22 36-44C89 24 72 10 48 12%22/%3E%3C/svg%3E") no-repeat center/contain}
 .ohost img{position:relative;z-index:1;left:auto;bottom:auto;transform:rotate(-2deg);width:230px;height:290px;object-fit:cover;object-position:50% 20%;border-radius:36px;box-shadow:0 20px 40px -24px rgba(21,49,76,.5)}
-.ohost figcaption{left:auto;right:4%;bottom:22px;z-index:2;font:400 27px/1.05 var(--fh);color:var(--hand-ink);transform:rotate(-4deg);padding-left:46px}
+.ohost figcaption{display:none;left:auto;right:4%;bottom:22px;z-index:2;font:400 27px/1.05 var(--fh);color:var(--hand-ink);transform:rotate(-4deg);padding-left:46px}
 .ohost figcaption:before{content:"";position:absolute;left:0;top:-32px;width:40px;height:42px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 46 50%22%3E%3Cg fill=%22none%22 stroke=%22%23a82c3b%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M36 46C18 42 8 30 12 8%22/%3E%3Cpath d=%22M4 16l8-11 9 10%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;transform:scaleX(-1) rotate(-20deg)}
 .xgl{position:absolute;z-index:2;left:5%;top:44px;font-size:27px;transform:rotate(-5deg)}
 .xgl i{position:absolute;right:-50px;top:14px;width:44px;height:38px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 56 46%22%3E%3Cg fill=%22none%22 stroke=%22%23a82c3b%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M52 5C38 6 22 12 12 34%22/%3E%3Cpath d=%22M6 24l5 12 11-6%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;transform:scaleX(-1) rotate(8deg)}
@@ -339,24 +339,21 @@ body{font-size:18px;line-height:1.6}
 (function(){
   var D=document,q=function(s){return D.querySelector(s)};
   var host=q('#oHost');
-  if(host&&!q('.xgl'))host.insertAdjacentHTML('beforeend','<span class="xgl xhand" aria-hidden="true">aka Glammie<i><\/i><\/span>');
   var ex='<span class="xex">Example<\/span>';
   var art={
     setup:ex+'<div class="xcc"><div class="xban"><\/div><div class="xwho"><span class="xav">Y<\/span><b>Your channel<\/b><\/div>'+
-      '<ul><li class="y"><i><\/i>Channel name<\/li><li class="y"><i><\/i>Banner<\/li><li class="y"><i><\/i>Settings<\/li><li><i><\/i>First playlist<\/li><\/ul><\/div>'+
-      '<span class="xhand xa1">done once<\/span>',
+      '<ul><li class="y"><i><\/i>Channel name<\/li><li class="y"><i><\/i>Banner<\/li><li class="y"><i><\/i>Settings<\/li><li><i><\/i>First playlist<\/li><\/ul><\/div>',
     plan:ex+'<div class="xwk"><p class="xnh">This week<\/p><ul>'+
       '<li class="now"><b>Mon<\/b><span>Pick the question<\/span><\/li><li><b>Wed<\/b><span>Plan it on one page<\/span><\/li>'+
-      '<li><b>Fri<\/b><span>Record on my phone<\/span><\/li><li><b>Sun<\/b><span>Publish<\/span><\/li><\/ul><\/div>'+
-      '<span class="xhand xa2">then repeat<\/span>',
+      '<li><b>Fri<\/b><span>Record on my phone<\/span><\/li><li><b>Sun<\/b><span>Publish<\/span><\/li><\/ul><\/div>',
     record:ex+'<div class="xph2"><div class="xscr"><span class="xrec"><i><\/i>REC<\/span><span class="xman"><\/span><span class="xbtn"><\/span><\/div><\/div>'+
-      '<div class="xtk">Take 1<small>A bit rough<\/small><\/div><span class="xhand xa3">rough is fine<\/span>',
+      '<div class="xtk">Take 1<small>A bit rough<\/small><\/div>',
     earn:ex+'<div class="xan"><div class="xat">Analytics<span>Last 28 days<\/span><\/div>'+
       '<div class="xtabs"><span class="on">Views<\/span><span>Watch time<\/span><\/div>'+
       '<svg viewBox="0 0 300 96" aria-hidden="true" preserveAspectRatio="none"><path d="M0 95h300" stroke="#15314c" stroke-opacity=".2" stroke-width="2"/>'+
       '<path d="M4 84C40 82 60 78 90 74s50-4 74-14 48-8 70-20 44-16 58-26" fill="none" stroke="#15314c" stroke-width="3" stroke-linecap="round"/>'+
       '<circle cx="292" cy="14" r="6" fill="#ef5a68"/><\/svg>'+
-      '<div class="xe"><i><\/i>First way to earn: chosen<\/div><\/div><span class="xhand xa4">in plain words<\/span>'
+      '<div class="xe"><i><\/i>First way to earn: chosen<\/div><\/div>'
   };
   Array.prototype.forEach.call(D.querySelectorAll('.oart[data-art]'),function(el){
     var h=art[el.getAttribute('data-art')];
