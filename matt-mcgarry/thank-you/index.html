@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="../favicon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="vip.css?v=c8417065">
-<link rel="stylesheet" href="typ.css?v=2079c554">
+<link rel="stylesheet" href="typ.css?v=447d4019">
 <style>
 /* Matt McGarry thank-you page, hand-made layer in his brand (same system as vip-extra/extra.css).
    navy #1d3557, orange #f38100, peach #fbd9b2, mint #f1faee, pale teal #a8dadc, hairline #dcf0f1, script steel blue #3e7ba0. */
@@ -122,6 +122,16 @@
   .xtxt .xb2{right:-10px;bottom:4px}
 }
 
+/* Sean: the sticky header on the thank-you page is a light shade now, not navy */
+.tpage .vbar{--band:#f1faee;--band-ink:#1d3557;--band-ink-70:rgba(29,53,87,.72);--band-ink-50:rgba(29,53,87,.5);--band-hair:rgba(29,53,87,.14);--band-paint:none;
+  background:#f1faee;color:#1d3557;box-shadow:0 1px 0 rgba(29,53,87,.08),0 14px 30px -26px rgba(29,53,87,.45)}
+.tpage .vbar::before{display:none}
+.tpage .vsteps{background:rgba(29,53,87,.05);box-shadow:none}
+.tpage .vsteps .now .vn{background:#1d3557;color:#fff}
+.tpage .vsteps .next .vn{border-color:rgba(29,53,87,.3)}
+.tpage .vtrack{background:rgba(29,53,87,.1)}
+.tpage .vlock b{color:#1d3557}
+
 </style>
 </head>
 <body class="typ">
@@ -160,6 +170,7 @@
         <h1 class="th1" id="tH1"></h1>
         <p class="tsub" id="tSub"></p>
       </div>
+      <div class="tperks" id="tPerks" hidden></div>
       <div class="tvids" id="tVids"></div>
     </section>
 
@@ -264,7 +275,7 @@
   }
  ]
 };</script>
-<script src="typ.js?v=2faf9695"></script>
+<script src="typ.js?v=90a4b544"></script>
 <script>
 /* Matt McGarry thank-you page, hand-made layer in his brand. Same drawings as his VIP page (vip-extra/src):
    two-tone orange + peach icons, the steel-blue script note, pale-teal numerals and bursts, review card with highlighter,

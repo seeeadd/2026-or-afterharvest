@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>You're in | Craft Your Cohort Live | Matt McGarry</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans_300-400-500-600-700-800.css">
+<style>:root{ --ground:#ffffff; --ink:#1d3557; --accent:#f38100; --accent-ink:#1d3557; --accent2:#f1faee; --accent-text:#a85400; --head-acc:#a85400; --ink-soft:#2b466b; --muted:#5a6f8b; --hair:rgba(29,53,87,.10); --hair-2:rgba(29,53,87,.17); --accent-10:rgba(243,129,0,.13); --accent-sh:rgba(243,129,0,.55); --accent-sh2:rgba(243,129,0,.28); --pat:#3e7ba0; --pat-op:.2; --ghost:#3e7ba0; --ghost-op:.2; --grain-img:none; --grain-op:0; --grain-blend:normal; --wall:linear-gradient(160deg,#1d3557,#1d3557); --glass:rgba(255,255,255,.62); --glass-brd:rgba(255,255,255,.8); --glass-hi:rgba(255,255,255,.95); --glass-solid:rgba(255,255,255,.96); --card:rgba(255,255,255,.7); --card-brd:rgba(29,53,87,.08); --strip:rgba(255,255,255,.4); --well:#f1faee; --field:#ffffff; --av-ring:#ffffff; --cap-bg:rgba(255,255,255,.8); --cap-ink:#1d3557; --cap-muted:#5a6f8b; --sh1:0 1px 1px rgba(29,53,87,.05),0 3px 8px -2px rgba(29,53,87,.07),0 22px 40px -22px rgba(29,53,87,.22),0 50px 90px -50px rgba(29,53,87,.22); --sh2:0 1px 1px rgba(29,53,87,.04),0 2px 6px -2px rgba(29,53,87,.06),0 14px 30px -18px rgba(29,53,87,.2); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(29,53,87,.22),0 26px 44px -18px rgba(29,53,87,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(29,53,87,.32); --contact:rgba(29,53,87,.3); --plate:radial-gradient(90% 70% at 50% 100%, rgba(243,129,0,.2), transparent 70%), linear-gradient(180deg, #ffffff, #f1faee); --band:#1d3557; --band-ink:#ffffff; --band-ink-70:rgba(255,255,255,.7); --band-ink-50:rgba(255,255,255,.5); --band-hair:rgba(255,255,255,.14); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(243,129,0,.28), transparent 72%); --ground-paint:radial-gradient(900px 640px at 100% 0%, #f1faee, transparent 70%),radial-gradient(760px 560px at 0% 46%, #f1faee, transparent 70%),radial-gradient(800px 560px at 100% 100%, #f1faee, transparent 70%), #ffffff; --display:"Plus Jakarta Sans",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif; --body:"Plus Jakarta Sans",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif; --label:"Plus Jakarta Sans",system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif; --lw:700; --ltr:.04em; --dw:700; --dw2:500; }</style><style>@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url(../fonts/instrument-serif-latin-400-italic.woff2) format("woff2")}@font-face{font-family:"Gochi Hand";font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/gochi-hand-400.woff2) format("woff2")}</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="vip.css?v=c8417065">
+<link rel="stylesheet" href="typ.css?v=447d4019">
+
+</head>
+<body class="typ">
+<!-- Thank-you page, the page after the VIP step (regular success page): welcome, HOW video, WHY video, then the
+     stacked micro-commitments (add to calendar, confirm, goal, time zone) and social proof. Built by
+     scripts/build_typ.py from templates/lp/typ.{html,css,js} + lp.json site.typ. Never hand-edit. -->
+<div id="vpage" class="tpage">
+  <div class="vbg vground"></div>
+  <div class="vbg vgrid"></div>
+  <div class="vbg vgrain"></div>
+
+  <header class="vbar">
+    <div class="vbar-in">
+      <span class="vlock">
+        <span class="vcal"><svg width="34" height="34" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <b id="vEvent"></b>
+      </span>
+      <ol class="vsteps" aria-label="Your progress">
+        <li class="done"><span class="vn"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M3.2 8.4 6.4 11.4 12.8 4.6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="vl">Seat held</span></li>
+        <li class="vwire done"></li>
+        <li class="done"><span class="vn"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M3.2 8.4 6.4 11.4 12.8 4.6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="vl">Upgrade step</span></li>
+        <li class="vwire done"></li>
+        <li class="now"><span class="vn">3</span><span class="vl">Join details</span></li>
+      </ol>
+      <span class="vstepof">Step <b>3</b> of 3</span>
+    </div>
+    <div class="vtrack"><i></i></div>
+  </header>
+
+  <main class="twrap">
+    <!-- SECTION 1: welcome and the two videos -->
+    <section class="tsec tfirst">
+      <div class="tcong">
+        <span class="vspark" aria-hidden="true"></span>
+        <p class="vcap" id="tKick"></p>
+        <h1 class="th1" id="tH1"></h1>
+        <p class="tsub" id="tSub"></p>
+      </div>
+      <div class="tperks" id="tPerks" hidden></div>
+      <div class="tvids" id="tVids"></div>
+    </section>
+
+    <!-- SECTION 2: prep steps and proof -->
+    <section class="tsec tprep" id="prep">
+      <div class="thead">
+        <span class="vspark" aria-hidden="true"></span>
+        <p class="vcap">Your prep</p>
+        <h2 class="vh2" id="tPrepH"></h2>
+        <div class="tmeter" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0" id="tMeter"><i></i><span id="tMeterTxt"></span></div>
+      </div>
+      <ol class="tsteps">
+        <li class="tstep" id="sCal">
+          <span class="tnum">01</span>
+          <div class="tbody">
+            <h3>Add all 3 days to your calendar</h3>
+            <p id="tCalTxt"></p>
+            <div class="tcals" id="tCals"></div>
+          </div>
+        </li>
+        <li class="tstep" id="sConfirm">
+          <span class="tnum">02</span>
+          <div class="tbody">
+            <h3>Confirm your spot</h3>
+            <p id="tConfirmTxt"></p>
+            <button type="button" class="tlock" id="tLock" aria-pressed="false"><span class="tbox" aria-hidden="true"></span><span id="tLockTxt"></span></button>
+          </div>
+        </li>
+        <li class="tstep" id="sGoal">
+          <span class="tnum">03</span>
+          <div class="tbody">
+            <h3>Write down your biggest goal <em>(optional)</em></h3>
+            <p id="tGoalTxt"></p>
+            <form id="tForm" novalidate>
+              <label class="vsr" for="tGoal">Your biggest goal</label>
+              <textarea id="tGoal" rows="3" maxlength="400"></textarea>
+              <div class="trow">
+                <div class="tf"><label for="tZone">Your time zone <em>(optional)</em></label><select id="tZone"></select></div>
+                <button type="submit" class="vcta tsave"><span>Save my answers</span></button>
+              </div>
+              <p class="tnote" id="tSaved" role="status" aria-live="polite" hidden></p>
+            </form>
+          </div>
+        </li>
+      </ol>
+
+      <div class="tproof" id="tProof"></div>
+
+      <div class="tnext" id="tNext"></div>
+    </section>
+  </main>
+  <div class="tfoot" id="tFoot"></div>
+</div>
+<script>window.TYP = {
+ "kick": "Welcome to VIP",
+ "headline": "You are in as a VIP for Craft Your Cohort Live.",
+ "mark": "VIP",
+ "sub": "Your VIP upgrade is confirmed and your seat is held for **{day1} at {time}**. Here is what you just added, then two short videos and three quick steps.",
+ "how": {
+  "title": "How to get the most from VIP",
+  "len": "1:00",
+  "sub": "Where your VIP perks live, when they open and what to bring."
+ },
+ "why": {
+  "title": "Why to show up live with Matt",
+  "len": "2:30",
+  "sub": "What happens live that a replay cannot give you: the hot seat, the Q&A and the cohort built on air."
+ },
+ "prep_title": "Three small steps before Day 1",
+ "goal_placeholder": "Example: I want to pick one outcome for my cohort and have a 30-day plan to fill it.",
+ "proof_quote": {
+  "q": "Matt is a rare breed of thought leader and operator.",
+  "hl": "rare breed",
+  "name": "Tim Huelskamp",
+  "role": "co-founder and CEO of 1440 Media"
+ },
+ "proof_title": "Why people show up for Matt",
+ "next": "Your join link is in your confirmation email. **Matt** goes live on **{day1} at {time}**. See you there.",
+ "perks": [
+  {
+   "t": "Private Q&A each day",
+   "x": "After every session, VIPs only. Bring the outcome you picked and ask Matt what to change."
+  },
+  {
+   "t": "First pick for hot seats",
+   "x": "VIPs are chosen first when Matt builds an attendee's cohort live on Day 2."
+  },
+  {
+   "t": "All 3 recordings",
+   "x": "Yours to keep, so the 30-day plan is there when you start your waitlist."
+  }
+ ],
+ "slug": "matt-mcgarry",
+ "name": "Matt McGarry",
+ "first_name": "Matt",
+ "event": "Craft Your Cohort Live",
+ "time_zone": "America/New_York",
+ "starts_in_days": 9,
+ "start_hour": 12,
+ "start_date": "2027-01-19",
+ "format": "3-day",
+ "still_how": "../img/sticky.jpg",
+ "still_why": "../img/vip-video.jpg",
+ "stats": [
+  {
+   "num": "7",
+   "label": "Cohort launches"
+  },
+  {
+   "num": "1,500+",
+   "label": "Paying customers"
+  },
+  {
+   "num": "400+",
+   "label": "5-star reviews"
+  }
+ ]
+};</script>
+<script src="typ.js?v=90a4b544"></script>
+
+</body>
+</html>
