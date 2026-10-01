@@ -1,0 +1,19 @@
+{
+  "name": "Book Your Next Senior Clients",
+  "short_name": "Hope",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#bf4f49",
+  "background_color": "#fdf3f1",
+  "display": "standalone"
+}

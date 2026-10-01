@@ -1,0 +1,19 @@
+{
+  "name": "Build Your Monetizable Expert Brand",
+  "short_name": "Juliana",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#a57e49",
+  "background_color": "#ebdbc2",
+  "display": "standalone"
+}
