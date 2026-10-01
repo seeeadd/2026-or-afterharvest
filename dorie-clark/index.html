@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Build Your Recognized Expert Plan | Recognized Expert</title>
+<link rel="stylesheet" href="fonts/boska_400-500-600-700.css">
+<link rel="stylesheet" href="fonts/switzer_400-500-600-700.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#F8F8F7; --ink:#0B0B0B; --accent:#0C6FD6; --accent-ink:#FFFFFF; --accent2:#0b6fd6; --accent-text:#0C6FD6; --head-acc:#0C6FD6; --ink-soft:#3A3A3A; --muted:#6F6F6E; --hair:rgba(11,11,11,0.100); --hair-2:rgba(11,11,11,0.170); --accent-10:rgba(12,111,214,0.130); --accent-sh:rgba(12,111,214,0.550); --accent-sh2:rgba(12,111,214,0.280); --pat:#008FFF; --pat-op:0.308; --ghost:#0A0A0A; --ghost-op:0.36; --grain-img:url(grain-light.png); --grain-op:.10; --grain-blend:multiply; --wall:radial-gradient(120% 90% at 18% 0%, rgba(9,83,160,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(8,78,150,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.56); --glass-brd:rgba(255,255,255,.72); --glass-hi:rgba(255,255,255,.92); --glass-solid:rgba(253,253,253,0.940); --card:rgba(255,255,255,.62); --card-brd:rgba(11,11,11,0.060); --strip:rgba(255,255,255,.34); --well:rgba(11,11,11,0.050); --field:rgba(255,255,255,.72); --av-ring:#FEFEFE; --cap-bg:rgba(255,255,255,.74); --cap-ink:#0B0B0B; --cap-muted:#717171; --sh1:0 1px 1px rgba(7,7,7,.05),0 3px 8px -2px rgba(7,7,7,.07),0 22px 40px -22px rgba(7,7,7,.28),0 50px 90px -50px rgba(7,7,7,.30); --sh2:0 1px 1px rgba(7,7,7,.04),0 2px 6px -2px rgba(7,7,7,.06),0 14px 30px -18px rgba(7,7,7,.24); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(7,7,7,.22),0 26px 44px -18px rgba(7,7,7,.38),0 60px 90px -44px rgba(7,7,7,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(7,7,7,.36); --contact:rgba(7,7,7,.36); --plate:radial-gradient(90% 70% at 50% 100%, rgba(12,111,214,0.240), transparent 70%), linear-gradient(180deg, #FCFCFB, #E0EAF4); --band:#0B0B0C; --band-ink:#FCFCFB; --band-ink-70:rgba(252,252,251,0.700); --band-ink-50:rgba(252,252,251,0.500); --band-hair:rgba(252,252,251,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(12,111,214,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(11,111,214,0.100), transparent 70%); --ground-paint:radial-gradient(660px 540px at 96% 1%, rgba(11,111,214,0.220), transparent 70%),radial-gradient(560px 460px at 0% 14%, rgba(12,111,214,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(12,111,214,0.070), transparent 70%),radial-gradient(620px 520px at 0% 71%, rgba(11,111,214,0.100), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(12,111,214,0.080), transparent 70%),radial-gradient(460px 380px at 0% 0%, rgba(59,34,14,.08), transparent 70%),radial-gradient(520px 420px at 100% 100%, rgba(59,34,14,.09), transparent 70%), #F8F8F7; --display:"Boska", Georgia, serif; --body:"Switzer", system-ui, sans-serif; --label:"Switzer", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:700; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=b37cb128">
+<link rel="icon" href="favicon.ico?v=24fc71c9" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=840a93cc">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=6bb4d502">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3d32bc01">
+<link rel="manifest" href="site.webmanifest?v=3ab308da">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "dorie-clark", "name": "Dorie Clark", "brand": "Recognized Expert", "role": "Founder, Recognized Expert", "event": "Build Your Recognized Expert Plan", "headline": {"lines": ["Get recognized", "for one big idea", "that is yours."], "accent_line": 1, "mark_word": "one big idea"}, "stats": [{"num": "71K+", "label": "Newsletter readers", "source": "https://dorieclark.com/subscribe/"}, {"num": "800+", "label": "Professionals trained", "source": "https://learn.dorieclark.com/courses/expert"}, {"num": "4", "label": "Times on Thinkers50 list", "source": "https://dorieclark.com/about/"}, {"num": "29.1K", "label": "YouTube subscribers", "source": "https://www.youtube.com/@DorieClark"}], "days": [{"title": "Pick your big|idea and then|write it down", "outcome": "Choose the one idea you will be known for and say it in one clear sentence.", "detail": "We list the ideas you could own, test each one against who needs it, and narrow it to the one you want your name on.", "bullets": ["List every idea you could own", "Test each one against who needs it", "Say the winner in one sentence"]}, {"title": "Get|seen|first", "outcome": "Map the content, media and speaking spots that put that idea in front of the right people.", "detail": "We pick the outlets your clients already read, the stages they sit in front of, and draft the first pitch built on your one sentence.", "bullets": ["List the outlets your clients read", "Pick one podcast and one stage", "Draft your first pitch to an editor"]}, {"title": "Build|your|plan", "outcome": "Leave with a 90-day visibility plan and the network moves that make you the go-to name.", "detail": "We lay the pitches, posts and talks across 90 days and name the people worth reconnecting with, so the work keeps going after the session.", "bullets": ["Lay out 90 days, week by week", "Name the people to reconnect with", "Protect one weekly hour for it"]}], "sources_line": "Figures: dorieclark.com, learn.dorieclark.com, youtube.com", "style": {"pattern": "dots", "mark": "underline", "video_focus": "50% 30%", "headshot_focus": "50% 18%"}, "pattern": "ruled", "mark": {"kind": "swipe", "color": "#008FFF", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-68.2 789.9 739.7 464.0\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"83\" y=\"314\" width=\"898\" height=\"491.953125\" fill=\"#444\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(-8 300 1010)\"><path d=\"M-40 860 Q120 820 300 880 Q480 820 640 860 V1200 H-40 Z\" stroke-width=\"8\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><path d=\"M300 880 V1200\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><path d=\"M20 920 Q150 890 270 930 M20 970 Q150 940 270 980 M330 930 Q450 890 590 920 M330 980 Q450 940 590 970\" stroke-width=\"6\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><\/g><\/g><\/svg>", "w": 739.7, "h": 464.0, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1510.2 -204.7 542.8 558.2\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"83\" y=\"314\" width=\"898\" height=\"491.953125\" fill=\"#444\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(12 1760 80)\"><path d=\"M1560 -160 H2000 V300 H1560 Z\" stroke-width=\"8\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><path d=\"M1600 -160 V300\" stroke-width=\"7\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><path d=\"M1650 60 H1900 M1650 110 H1840\" stroke-width=\"7\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><\/g><\/g><\/svg>", "w": 542.8, "h": 558.2, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-203.8 53.6 757.4 229.0\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"83\" y=\"314\" width=\"898\" height=\"491.953125\" fill=\"#444\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"rotate(-12 260 150)\"><path d=\"M-200 120 H420 Q450 120 466 132 L540 146 Q552 150 540 154 L466 168 Q450 180 420 180 H-200 Z\" stroke-width=\"7\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><path d=\"M320 120 V180\" stroke-width=\"6\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><\/g><\/g><\/svg>", "w": 757.4, "h": 229.0, "sw": 7}], "pat_op": 0.169, "ghost_op": 0.227, "ghost_stroke": 4.5, "fonts": {"display": "Boska", "display_weight": 700, "body": "Switzer", "label": "Switzer"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Dorie", "event_core": "Build Your Recognized Expert Plan", "lede": "**Learn what's actually working for getting your ideas known in 2026.** I'll walk through why being great at what you do isn't the same as being known for it, the five things that decide who gets recognized, and we'll build your Recognized Expert plan together. It's the same system I teach inside Recognized Expert, and it's yours for free.", "proof": [{"num": "#1", "label": "communication coach in the world", "source": "https://dorieclark.com/about/"}], "ticker": ["71,000+ smart professionals on the newsletter", "Named four times to the Thinkers50 list", "Teaches executive education at Columbia Business School", "800+ professionals through Recognized Expert", "29.1K subscribers on YouTube"], "checks": [{"bold": "Too many ideas", "text": "Leave with one breakthrough idea, said in a sentence.", "hand": "breakthrough idea", "why": "Recognized Expert opens with finding your message and breakthrough idea (learn.dorieclark.com/courses/expert)."}, {"bold": "Great but not known", "text": "Turn good work into a name people can find.", "hand": "well known", "why": "Her course page: being great at what you do is very different than being well known for what you do."}, {"bold": "I'm an introvert", "text": "Network in a genuine way, at your own pace.", "hand": "like I am", "why": "Her course page teaches networking in a genuine way even if you're an introvert, like she is."}, {"bold": "Imposter syndrome", "text": "Start from what you already know well.", "hand": "past the self-doubt", "why": "Overcoming self-doubt and imposter syndrome is a named lesson in Recognized Expert."}, {"bold": "Chasing every client", "text": "Let your reputation bring the right work to you.", "hand": "come to you", "why": "Her course page: attract clients to you rather than constantly having to fight for them."}], "days_intro": "Day 1 picks the idea you want to be known for, Day 2 maps where people will see it, and Day 3 turns it into a 90-day plan.", "fit_count": 4, "format": "webinar"};</script>
+<script src="lp.js?v=113601bc"></script>
+<script>window.SITE = {
+ "event": "Build Your Recognized Expert Plan",
+ "name": "Dorie Clark",
+ "brand": "Recognized Expert",
+ "trusted_count": "71K+",
+ "audience": "newsletter readers",
+ "monogram": "RE",
+ "logo": "img/logo.png",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for Recognized Expert",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Build Your Recognized Expert Plan for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Dorie Clark has been named four times to the Thinkers50 list of top business thinkers and teaches executive education at Columbia Business School. She wrote The Long Game, Entrepreneurial You, Reinventing You and Stand Out, and runs the Recognized Expert course for professionals who want to be known for their ideas.",
+ "role": "Founder, Recognized Expert",
+ "days_intro": "Day 1 picks the idea you want to be known for, Day 2 maps where people will see it, and Day 3 turns it into a 90-day plan.",
+ "check_why": [
+  "Recognized Expert opens with finding your message and breakthrough idea (learn.dorieclark.com/courses/expert).",
+  "Her course page: being great at what you do is very different than being well known for what you do.",
+  "Her course page teaches networking in a genuine way even if you're an introvert, like she is.",
+  "Overcoming self-doubt and imposter syndrome is a named lesson in Recognized Expert.",
+  "Her course page: attract clients to you rather than constantly having to fight for them."
+ ],
+ "day_detail": [
+  "We list the ideas you could own, test each one against who needs it, and narrow it to the one you want your name on.",
+  "We pick the outlets your clients already read, the stages they sit in front of, and draft the first pitch built on your one sentence.",
+  "We lay the pitches, posts and talks across 90 days and name the people worth reconnecting with, so the work keeps going after the session."
+ ],
+ "day_bullets": [
+  [
+   "List every idea you could own",
+   "Test each one against who needs it",
+   "Say the winner in one sentence"
+  ],
+  [
+   "List the outlets your clients read",
+   "Pick one podcast and one stage",
+   "Draft your first pitch to an editor"
+  ],
+  [
+   "Lay out 90 days, week by week",
+   "Name the people to reconnect with",
+   "Protect one weekly hour for it"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Hannah R.",
+  "role": "Recognized Expert member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#0B0B0B"
+ },
+ "keep_title": "You leave with one idea and the plan to get known for it.",
+ "keep": [
+  {
+   "kind": "brief",
+   "name": "My one sentence",
+   "status": "Down to one",
+   "rows": [
+    {
+     "label": "Idea",
+     "text": "Reorgs stall in month two, and managers fix it",
+     "pull": true
+    },
+    {
+     "label": "For",
+     "text": "COOs at 200 to 2,000 person firms"
+    },
+    {
+     "label": "Proof",
+     "text": "Ran 14 reorgs at a freight company"
+    },
+    {
+     "label": "Not yet",
+     "text": "A podcast, a second book idea"
+    }
+   ],
+   "foot": "Known for one thing first",
+   "foot_tag": "2 parked"
+  },
+  {
+   "kind": "brief",
+   "name": "First pitch",
+   "status": "Ready to send",
+   "rows": [
+    {
+     "label": "To",
+     "text": "Harvard Business Review, editors"
+    },
+    {
+     "label": "Subject",
+     "text": "Why reorgs stall in month two",
+     "pull": true
+    },
+    {
+     "label": "Hook",
+     "text": "14 reorgs, the same stall in week six"
+    },
+    {
+     "label": "Ask",
+     "text": "An 800-word piece for managers"
+    }
+   ],
+   "foot": "Lead with the idea itself",
+   "foot_tag": "1 to send"
+  },
+  {
+   "kind": "tracker",
+   "name": "Visibility plan",
+   "status": "Week 1 of 12",
+   "who": "Move",
+   "cols": [
+    "Pitch",
+    "Nudge",
+    "Reply",
+    "Live"
+   ],
+   "rows": [
+    {
+     "name": "HBR, month two piece",
+     "marks": "sn",
+     "next": "Nudge Friday"
+    },
+    {
+     "name": "Ops leaders podcast",
+     "marks": "n",
+     "next": "Pitch week 3"
+    },
+    {
+     "name": "Coffee, former COO",
+     "marks": "-",
+     "next": "Ask week 5"
+    }
+   ],
+   "foot": "One idea, said everywhere",
+   "foot_tag": "2 waiting"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/kTSPMqVnwuo_maxres2.jpg",
+  "still_source": "https://www.youtube.com/watch?v=kTSPMqVnwuo (YouTube automatic still maxres2), Dorie alone on stage mid-talk",
+  "headline": [
+   "Want me to test your idea",
+   "before an editor sees it?"
+  ],
+  "mark": "test your idea",
+  "lede": "Your seat is saved for the webinar. Before you go, there is one optional upgrade, **{price} once**. A private VIP session right after the webinar where I read your breakthrough idea and first pitch, a VIP thread for the week, the replay and my pitch checklist.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before the webinar",
+  "video_len": "1:40",
+  "pass_kick": "Recognized Expert",
+  "pass_cells": [
+   "VIP call",
+   "VIP thread",
+   "Replay"
+  ],
+  "items": [
+   {
+    "bold": "VIP session, pitch review.",
+    "text": "Right after the webinar on {day1_date}. 45 minutes live, VIPs only. Bring your one-sentence idea and your first pitch."
+   },
+   {
+    "bold": "Private VIP thread.",
+    "text": "Opens {day1_date} and stays open until {close}. Post your pitch drafts and I read them with you."
+   },
+   {
+    "bold": "The replay, yours to keep.",
+    "text": "The full webinar replay, so the 90-day visibility plan is there when you plan your next quarter."
+   },
+   {
+    "bold": "My editor pitch checklist.",
+    "text": "What I check before a pitch goes to an editor, from the webinar, on one printable page."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "138",
+  "why": "Webinar version (event_format webinar): the fourth live day becomes a private VIP session right after the webinar and the replays become the webinar replay. Artifact: the one-sentence breakthrough idea and the first pitch to an editor drafted in the session. Gap: nobody reads that pitch before it goes out, and great but not known is the loudest objection. Her people gather in the Recognized Expert community (800+ professionals, learn.dorieclark.com/courses/expert), so the thread is a plain private VIP thread. Voice: breakthrough idea, recognized expert, well known for what you do. Extension asset: her editor pitch checklist, from the pitch drafted mid-session (she also sells Writing for High Profile Publications). Still: a different video (kTSPMqVnwuo) from the VSL (jrX3VzQTNhs) and the sticky (RQiF-1Nql-c); no other candidate video had her alone facing the lens."
+ }
+};</script>
+<script src="site.js?v=a6b96522"></script>
+</body>
+</html>
