@@ -1,0 +1,24 @@
+/* Bespoke Slab */
+@font-face {
+  font-family: 'Bespoke Slab';
+  src: url('files/e4f356e6a667ea4c.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bespoke Slab';
+  src: url('files/58c3884822cf2485.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bespoke Slab';
+  src: url('files/18de08356fd4217e.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
