@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Build Your Course Launch Plan | Lazy Millionaire</title>
+<link rel="stylesheet" href="fonts/boska_400-500-600-700.css">
+<link rel="stylesheet" href="fonts/general-sans_400-500-600-700.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#FBF4EE; --ink:#323232; --accent:#FF88C7; --accent-ink:#111111; --accent2:#ffd0ef; --accent-text:#C26E9A; --head-acc:#C26E9A; --ink-soft:#5A5958; --muted:#6E6C6A; --hair:rgba(50,50,50,0.100); --hair-2:rgba(50,50,50,0.170); --accent-10:rgba(255,136,199,0.130); --accent-sh:rgba(255,136,199,0.550); --accent-sh2:rgba(255,136,199,0.280); --pat:#8A526F; --pat-op:0.36; --ghost:#58404C; --ghost-op:0.36; --grain-img:url(grain-light.png); --grain-op:.10; --grain-blend:multiply; --wall:radial-gradient(120% 90% at 18% 0%, rgba(191,102,149,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(178,146,167,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.56); --glass-brd:rgba(255,255,255,.72); --glass-hi:rgba(255,255,255,.92); --glass-solid:rgba(254,253,251,0.940); --card:rgba(255,255,255,.62); --card-brd:rgba(50,50,50,0.060); --strip:rgba(255,255,255,.34); --well:rgba(50,50,50,0.050); --field:rgba(255,255,255,.72); --av-ring:#FEFDFC; --cap-bg:rgba(255,255,255,.74); --cap-ink:#323232; --cap-muted:#707070; --sh1:0 1px 1px rgba(32,32,32,.05),0 3px 8px -2px rgba(32,32,32,.07),0 22px 40px -22px rgba(32,32,32,.28),0 50px 90px -50px rgba(32,32,32,.30); --sh2:0 1px 1px rgba(32,32,32,.04),0 2px 6px -2px rgba(32,32,32,.06),0 14px 30px -18px rgba(32,32,32,.24); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(32,32,32,.22),0 26px 44px -18px rgba(32,32,32,.38),0 60px 90px -44px rgba(32,32,32,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(32,32,32,.36); --contact:rgba(32,32,32,.36); --plate:radial-gradient(90% 70% at 50% 100%, rgba(255,136,199,0.240), transparent 70%), linear-gradient(180deg, #FDFAF7, #FBE9EA); --band:#1D1D1D; --band-ink:#FDFAF7; --band-ink-70:rgba(253,250,247,0.700); --band-ink-50:rgba(253,250,247,0.500); --band-hair:rgba(253,250,247,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(255,136,199,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(255,208,239,0.100), transparent 70%); --ground-paint:radial-gradient(660px 540px at 96% 1%, rgba(255,208,239,0.220), transparent 70%),radial-gradient(560px 460px at 0% 14%, rgba(255,136,199,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(255,136,199,0.070), transparent 70%),radial-gradient(620px 520px at 0% 71%, rgba(255,208,239,0.100), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(255,136,199,0.080), transparent 70%),radial-gradient(460px 380px at 0% 0%, rgba(78,54,34,.08), transparent 70%),radial-gradient(520px 420px at 100% 100%, rgba(78,54,34,.09), transparent 70%), #FBF4EE; --display:"Boska", Georgia, serif; --body:"General Sans", system-ui, sans-serif; --label:"General Sans", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:700; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=b37cb128">
+<link rel="icon" href="favicon.ico?v=7b70eef3" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1de540bd">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=b167170c">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=7cd4a5b0">
+<link rel="manifest" href="site.webmanifest?v=8269a6bd">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "amie-tollefsrud-lazy-millionaire", "name": "Amie Tollefsrud", "brand": "Lazy Millionaire", "role": "Founder, Lazy Millionaire", "event": "Build Your Course Launch Plan", "headline": {"lines": ["Your course", "launch plan,", "in three days."], "accent_line": 1, "mark_word": "launch plan"}, "stats": [{"num": "173K+", "label": "Substack subscribers", "source": "https://substack.com/@lazymillionaireofficial"}, {"num": "#13", "label": "In Business on Substack", "source": "https://substack.com/@lazymillionaireofficial"}, {"num": "270K+", "label": "Followers on her socials", "source": "https://www.lazymillionaire.co/"}], "days": [{"title": "Pick a course|topic buyers|actually want", "outcome": "One course topic and a before-and-after promise in your buyer's own words.", "detail": "We go through the questions your people already ask you, pick the one topic they would pay for, and write the promise the way they would say it. You leave with one topic, chosen.", "bullets": ["List the questions your people already ask", "Pick the one topic they would pay for", "Write the before-and-after promise"]}, {"title": "Shape the offer|and set a price", "outcome": "A course outline and a price specific enough to pre-sell.", "detail": "We work back from the promise to a short outline, add one bonus that fixes the first problem fast, and set a price with a payment plan. By the end the offer can be pre-sold before you record.", "bullets": ["Outline the modules from the promise back", "Add one quick-win bonus", "Set the price and a payment plan"]}, {"title": "Map the launch|path to the cart", "outcome": "A first sales path, from free training to emails to cart, ready to run.", "detail": "We lay out the free training that leads to the course, draft the email sequence that follows it, and set the cart dates. You finish with a path that can sell while you sleep.", "bullets": ["Plan the free training that leads to the course", "Draft the email sequence after it", "Set the cart open and close dates"]}], "sources_line": "Figures: substack.com, lazymillionaire.co", "style": {"pattern": "dots", "mark": "underline", "video_focus": "50% 32%", "headshot_focus": "60% 26%"}, "pattern": "ruled", "mark": {"kind": "swipe", "color": "#FF7BC2", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1460.5 -165.8 476.8 476.7\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"84\" y=\"312.6875\" width=\"898\" height=\"491.484375\" fill=\"#3d3d3d\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M1928.9 70 L1927.9 85.9 L1925.8 101.7 L1922.7 117.3 L1918.6 132.7 L1913.6 147.7 L1907.6 162.4 L1900.7 176.7 L1893 190.6 L1884.4 204 L1874.9 216.8 L1864.6 229 L1853.5 240.5 L1841.6 251.2 L1828.9 261.1 L1815.5 270.1 L1801.5 278.1 L1786.9 285.1 L1771.8 291 L1756.3 295.7 L1740.4 299.2 L1724.3 301.5 L1708.1 302.5 L1691.9 302.3 L1675.8 300.8 L1659.8 298.2 L1644.1 294.3 L1628.7 289.3 L1613.8 283.3 L1599.4 276.3 L1585.5 268.3 L1572.3 259.4 L1559.6 249.7 L1547.7 239.2 L1536.4 228 L1525.9 216.1 L1516.2 203.6 L1507.2 190.5 L1499.1 176.9 L1491.8 162.7 L1485.4 148.1 L1480 133.1 L1475.6 117.7 L1472.3 102 L1470 86.1 L1468.9 70 L1469 53.9 L1470.2 37.7 L1472.7 21.7 L1476.4 5.9 L1481.3 -9.6 L1487.4 -24.6 L1494.6 -39.2 L1502.9 -53.1 L1512.2 -66.4 L1522.5 -78.9 L1533.7 -90.6 L1545.7 -101.4 L1558.3 -111.3 L1571.7 -120.2 L1585.5 -128.2 L1599.8 -135.3 L1614.6 -141.4 L1629.6 -146.5 L1645 -150.6 L1660.5 -153.8 L1676.2 -156 L1692 -157.2 L1707.9 -157.4 L1723.8 -156.7 L1739.6 -154.9 L1755.3 -152 L1770.8 -148.2 L1786.1 -143.2 L1801 -137.2 L1815.5 -130.1 L1829.5 -122 L1842.8 -112.9 L1855.5 -102.7 L1867.3 -91.6 L1878.3 -79.6 L1888.3 -66.8 L1897.3 -53.3 L1905.2 -39.1 L1912 -24.4 L1917.7 -9.3 L1922.2 6.2 L1925.6 22 L1927.8 37.9 L1928.9 54 L1928.9 70 Z\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"miter\"><\/path><\/g><\/svg>", "w": 476.8, "h": 476.7, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1499.9 -127.1 398.4 398.4\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"84\" y=\"312.6875\" width=\"898\" height=\"491.484375\" fill=\"#3d3d3d\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M1892.3 70 L1891.4 83.4 L1889.6 96.7 L1887 109.8 L1883.6 122.6 L1879.4 135.3 L1874.4 147.6 L1868.6 159.7 L1862.1 171.3 L1854.9 182.5 L1846.9 193.3 L1838.3 203.5 L1828.9 213.2 L1818.9 222.2 L1808.3 230.5 L1797.1 238.1 L1785.3 244.8 L1773 250.7 L1760.3 255.6 L1747.3 259.6 L1734 262.5 L1720.4 264.4 L1706.8 265.3 L1693.2 265.1 L1679.6 263.9 L1666.2 261.6 L1653 258.4 L1640.1 254.3 L1627.6 249.2 L1615.5 243.3 L1603.9 236.5 L1592.7 229.1 L1582.1 220.9 L1572.1 212.1 L1562.6 202.7 L1553.8 192.7 L1545.6 182.2 L1538 171.2 L1531.2 159.8 L1525.1 147.9 L1519.8 135.6 L1515.2 123 L1511.5 110.1 L1508.7 96.9 L1506.8 83.5 L1505.9 70 L1505.9 56.4 L1507 42.9 L1509.1 29.4 L1512.2 16.2 L1516.3 3.2 L1521.4 -9.5 L1527.4 -21.7 L1534.4 -33.4 L1542.3 -44.6 L1550.9 -55.1 L1560.3 -64.9 L1570.4 -74 L1581 -82.3 L1592.2 -89.8 L1603.8 -96.5 L1615.9 -102.4 L1628.2 -107.6 L1640.9 -111.9 L1653.8 -115.3 L1666.8 -118 L1680 -119.8 L1693.3 -120.9 L1706.6 -121.1 L1720 -120.4 L1733.3 -118.9 L1746.5 -116.5 L1759.5 -113.2 L1772.3 -109.1 L1784.9 -104.1 L1797 -98.1 L1808.8 -91.3 L1820 -83.6 L1830.6 -75.1 L1840.5 -65.8 L1849.7 -55.7 L1858.2 -44.9 L1865.7 -33.6 L1872.4 -21.7 L1878.1 -9.3 L1882.9 3.4 L1886.7 16.4 L1889.5 29.7 L1891.4 43.1 L1892.3 56.5 L1892.3 70 Z\" stroke-width=\"5\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"miter\"><\/path><\/g><\/svg>", "w": 398.4, "h": 398.4, "sw": 5}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1515.2 -112.1 368.0 368.0\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"84\" y=\"312.6875\" width=\"898\" height=\"491.484375\" fill=\"#3d3d3d\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><path d=\"M1874 70 L1873.2 82.1 L1871.6 94.1 L1869.2 106 L1866.1 117.6 L1862.3 129.1 L1857.8 140.2 L1852.6 151.1 L1846.7 161.7 L1840.1 171.8 L1832.9 181.5 L1825.1 190.8 L1816.6 199.5 L1807.6 207.7 L1798 215.2 L1787.8 222.1 L1777.2 228.2 L1766.1 233.5 L1754.6 237.9 L1742.8 241.5 L1730.7 244.2 L1718.5 245.9 L1706.2 246.7 L1693.8 246.5 L1681.6 245.4 L1669.4 243.4 L1657.5 240.5 L1645.8 236.7 L1634.5 232.1 L1623.6 226.8 L1613 220.7 L1602.9 213.9 L1593.3 206.5 L1584.2 198.6 L1575.7 190.1 L1567.7 181 L1560.3 171.5 L1553.5 161.6 L1547.3 151.2 L1541.8 140.5 L1536.9 129.4 L1532.8 117.9 L1529.5 106.3 L1526.9 94.3 L1525.2 82.2 L1524.4 70 L1524.4 57.7 L1525.4 45.5 L1527.3 33.3 L1530.1 21.3 L1533.8 9.5 L1538.4 -1.9 L1543.9 -13 L1550.2 -23.6 L1557.3 -33.7 L1565.1 -43.2 L1573.6 -52 L1582.7 -60.2 L1592.3 -67.8 L1602.5 -74.6 L1613 -80.7 L1623.9 -86 L1635.1 -90.6 L1646.5 -94.5 L1658.2 -97.7 L1670 -100.1 L1681.9 -101.8 L1693.9 -102.7 L1706 -102.9 L1718.1 -102.3 L1730.1 -100.9 L1742 -98.7 L1753.8 -95.8 L1765.4 -92 L1776.8 -87.5 L1787.8 -82.1 L1798.4 -75.9 L1808.5 -69 L1818.1 -61.3 L1827.1 -52.8 L1835.5 -43.7 L1843.1 -34 L1849.9 -23.7 L1855.9 -13 L1861.1 -1.8 L1865.4 9.8 L1868.9 21.5 L1871.4 33.5 L1873.1 45.6 L1874 57.8 L1874 70 Z\" stroke-width=\"9\" stroke-dasharray=\"2, 22\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><\/g><\/svg>", "w": 368.0, "h": 368.0, "sw": 9}], "pat_op": 0.259, "ghost_op": 0.3, "ghost_stroke": 4.5, "fonts": {"display": "Boska", "display_weight": 700, "body": "General Sans", "label": "General Sans"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Amie", "event_core": "Build Your Course Launch Plan", "lede": "**Learn what's actually working for online courses in 2026.** I'll walk through why most courses get built before anyone asked for them, the five things that decide whether yours sells, and we'll build your Course Launch Plan together. It's the same system I run inside the Lazy Millionaire Method, and it's yours for free.", "proof": [{"num": "4,000+", "label": "students through the Method", "source": "https://www.lazymillionaire.co/lazy-millionaire-method"}], "ticker": ["173K+ subscribers on Substack", "#13 in Business on Substack", "Over 4,000 students through the Lazy Millionaire Method", "270K+ followers"], "checks": [{"bold": "No idea what to teach", "text": "Day 1 picks the topic your people already ask about.", "hand": "they asked first", "why": "Amie's own first course came from questions her audience was already asking (Teachable case study)."}, {"bold": "Nobody will buy it", "text": "Write the promise in your buyer's own words.", "hand": "their words", "why": "A promise in the buyer's words is the validation step she teaches."}, {"bold": "Pricing feels like guessing", "text": "Day 2 sets a price specific enough to pre-sell.", "hand": "pre-sell it", "why": "The offer is shaped and priced before a single lesson is recorded."}, {"bold": "I am not techy", "text": "Day 3 maps the sales path before any tech setup.", "hand": "no tech yet", "why": "She sold her first course with no tech skills, by her own account."}, {"bold": "No time to hustle", "text": "The plan is built for two-hour workdays.", "hand": "lazy on purpose", "why": "Her method page pictures 2-hour work days as the goal."}], "days_intro": "Day 1 picks the topic, Day 2 shapes the offer and its price, and Day 3 maps the path from free training to the cart.", "fit_count": 4, "format": "3-day"};</script>
+<script src="lp.js?v=113601bc"></script>
+<script>window.SITE = {
+ "event": "Build Your Course Launch Plan",
+ "name": "Amie Tollefsrud",
+ "brand": "Lazy Millionaire",
+ "trusted_count": "270K+",
+ "audience": "followers on her socials",
+ "monogram": "LM",
+ "logo": "img/logo.png",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for Lazy Millionaire",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Build Your Course Launch Plan for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Amie Tollefsrud runs Lazy Millionaire and teaches women to turn their skills and lived experience into online courses. She built her first course from a tiny hut in Maui, and the Lazy Millionaire Method has helped more than 4,000 students build courses of their own.",
+ "role": "Founder, Lazy Millionaire",
+ "days_intro": "Day 1 picks the topic, Day 2 shapes the offer and its price, and Day 3 maps the path from free training to the cart.",
+ "check_why": [
+  "Amie's own first course came from questions her audience was already asking (Teachable case study).",
+  "A promise in the buyer's words is the validation step she teaches.",
+  "The offer is shaped and priced before a single lesson is recorded.",
+  "She sold her first course with no tech skills, by her own account.",
+  "Her method page pictures 2-hour work days as the goal."
+ ],
+ "day_detail": [
+  "We go through the questions your people already ask you, pick the one topic they would pay for, and write the promise the way they would say it. You leave with one topic, chosen.",
+  "We work back from the promise to a short outline, add one bonus that fixes the first problem fast, and set a price with a payment plan. By the end the offer can be pre-sold before you record.",
+  "We lay out the free training that leads to the course, draft the email sequence that follows it, and set the cart dates. You finish with a path that can sell while you sleep."
+ ],
+ "day_bullets": [
+  [
+   "List the questions your people already ask",
+   "Pick the one topic they would pay for",
+   "Write the before-and-after promise"
+  ],
+  [
+   "Outline the modules from the promise back",
+   "Add one quick-win bonus",
+   "Set the price and a payment plan"
+  ],
+  [
+   "Plan the free training that leads to the course",
+   "Draft the email sequence after it",
+   "Set the cart open and close dates"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Hannah R.",
+  "role": "Lazy Millionaire member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#323232"
+ },
+ "keep_title": "Three days in, your course has a buyer, a price and a cart date.",
+ "keep": [
+  {
+   "kind": "brief",
+   "name": "Course promise",
+   "status": "Down to one",
+   "rows": [
+    {
+     "label": "Topic",
+     "text": "Gut reset for busy moms",
+     "pull": true
+    },
+    {
+     "label": "Before",
+     "text": "Bloated by 3pm, snacking after 8pm"
+    },
+    {
+     "label": "After",
+     "text": "Steady energy by week 4"
+    },
+    {
+     "label": "Not yet",
+     "text": "1:1 meal plans, supplement reviews"
+    }
+   ],
+   "foot": "Teach what they already ask you",
+   "foot_tag": "2 parked"
+  },
+  {
+   "kind": "sheet",
+   "name": "Pre-sell offer",
+   "status": "Priced at $297",
+   "head": "The 4-week gut reset",
+   "items": [
+    {
+     "art": "notebook",
+     "name": "4-week gut reset",
+     "sku": "Course, 4 modules",
+     "price": "$297"
+    },
+    {
+     "art": "print",
+     "name": "3pm snack swaps",
+     "sku": "Bonus, printable",
+     "price": "Included"
+    },
+    {
+     "art": "card",
+     "name": "Payment plan",
+     "sku": "3 payments",
+     "price": "3 x $109"
+    }
+   ],
+   "foot": "Pre-sell it before you record it",
+   "foot_tag": "0 lessons filmed"
+  },
+  {
+   "kind": "tracker",
+   "name": "Launch emails",
+   "status": "Cart opens Mon",
+   "who": "Email",
+   "cols": [
+    "Draft",
+    "Edit",
+    "Sched",
+    "Sent"
+   ],
+   "rows": [
+    {
+     "name": "Free training invite",
+     "marks": "rrrr",
+     "next": "Sent"
+    },
+    {
+     "name": "Replay, the 3pm fix",
+     "marks": "rrn",
+     "next": "Send Sunday"
+    },
+    {
+     "name": "Cart open, $297",
+     "marks": "rn",
+     "next": "Edit Friday"
+    },
+    {
+     "name": "Last call",
+     "marks": "n",
+     "next": "Draft today"
+    }
+   ],
+   "foot": "Write it once, let it sell while you sleep",
+   "foot_tag": "3 to go"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/HmhIq_re2_s_maxres1.jpg",
+  "still_source": "https://www.youtube.com/watch?v=HmhIq_re2_s (YouTube automatic still maxres1)",
+  "still_focus": "50% 30%",
+  "headline": [
+   "Want me to read your launch",
+   "emails before cart opens?"
+  ],
+  "mark": "read your launch",
+  "lede": "Your seat is saved for all three days. Before you go, there is one optional upgrade, **{price} once**. A fourth live day where I read your launch emails before the cart opens, a private VIP thread, replays of all four days and my email swipes, so it sells while you sleep.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before you head to Day 1",
+  "video_len": "1:48",
+  "pass_kick": "Course Launch Plan",
+  "pass_cells": [
+   "Day 4",
+   "VIP thread",
+   "Replays"
+  ],
+  "items": [
+   {
+    "bold": "Day 4, launch email review.",
+    "text": "{day4}, {time}. 90 minutes live, VIPs only. Bring the email sequence and cart dates you mapped on Day 3."
+   },
+   {
+    "bold": "Private VIP thread.",
+    "text": "Opens {day1_date} and stays open until {close}. Ask me about your topic, price or emails between sessions."
+   },
+   {
+    "bold": "Replays to keep.",
+    "text": "All three days plus Day 4, so the Day 2 pricing session is there the next time you raise your price."
+   },
+   {
+    "bold": "My launch email swipes.",
+    "text": "The cart-open and last-call emails I use, from Day 3, on one printable page."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "152",
+  "why": "Day 3 ends with a drafted launch email sequence and a cart date in the attendee's hands, and nobody reads those emails before the cart opens. The loudest objection is 'nobody will buy it', so Day 4 is Amie reading the emails and the offer before launch. Her people gather in Lazy Social Club (weekly live coaching) and her Substack's members-only community; no member count is published, so it stays a private VIP thread. Her voice: lazy, pre-sell, sell while you sleep. The email swipes extend Day 3's 'Draft the email sequence after it'. Still from video HmhIq_re2_s, a different video from the VSL frame (tLIwJE6RIg4) and the sticky still (lgXo8uGme8c)."
+ }
+};</script>
+<script src="site.js?v=a6b96522"></script>
+</body>
+</html>
