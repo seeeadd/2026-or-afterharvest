@@ -1,0 +1,31 @@
+/* Rowan */
+@font-face {
+  font-family: 'Rowan';
+  src: url('files/438471adfc2be009.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rowan';
+  src: url('files/f6798f464ff004dc.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rowan';
+  src: url('files/5b7cc69f1b4fbdd3.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rowan';
+  src: url('files/d2285c66e3b3bade.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
