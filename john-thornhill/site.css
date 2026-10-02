@@ -3213,8 +3213,3 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
   html body #page .scta .btn.lg{height:auto;min-height:50px;padding:10px 20px;white-space:normal;text-align:center;
     line-height:1.2;max-width:100%;box-sizing:border-box}
 }
-
-/* sticky header icon = the lead's photo favicon */
-#page .nav .cal .bmark.favimg{background:none!important;box-shadow:none!important;border-radius:0!important;overflow:visible}
-#page .nav .cal .bmark.favimg:after{display:none!important}
-#page .nav .cal .bmark.favimg img{display:block;width:100%;height:100%;object-fit:contain;border-radius:0}
