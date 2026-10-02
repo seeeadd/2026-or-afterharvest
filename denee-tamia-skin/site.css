@@ -3326,6 +3326,11 @@ html body.skin #page .glass,html body.skin #page .regcard,html body.skin #page .
 html body.skin #page .dkeep,html body.skin #page .fitnote,html body.skin #page .tkart,html body.skin #modal .mcard,html body.skin #page .hq .hqb{
   background:var(--sk-panel)!important;border-radius:var(--r-lg)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html body.skin #page .hq .hqb{border-radius:999px!important}
+/* the third keep card is a DARK card in the template (cream text); the skin paints every keep card with its panel,
+   so its text must follow the skin's ink or it vanishes on a light panel (Denee, 2026-10-02) */
+html body.skin #page #takeaway .tkart.a3{--kc-bg:var(--sk-panel);--kc-ink:var(--ink);--kc-body:var(--ink);--kc-soft:var(--muted);--kc-faint:var(--muted);
+  --kc-line:var(--hair-2);--kc-dash:var(--hair-2);--kc-rim:transparent;--kc-acc:var(--accent-text,var(--accent));--kc-acc-ink:#fff;--kc-dot:var(--muted);
+  --kc-well:var(--sk-panel);--kc-art:var(--ink);--tint2:rgba(0,0,0,.04)}
 html body.skin-border-hairline #page .glass,html body.skin-border-hairline #page .regcard,html body.skin-border-hairline #page .hbook,
 html body.skin-border-hairline #page .ccard,html body.skin-border-hairline #page .htrust,html body.skin-border-hairline #page .dkeep,
 html body.skin-border-hairline #page .tkart,html body.skin-border-hairline #page .hq .hqb{border:1px solid var(--hair-2)!important}
