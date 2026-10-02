@@ -1,0 +1,19 @@
+{
+  "name": "Entreprenista 3-day event",
+  "short_name": "Stephanie",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#F75A44",
+  "background_color": "#002C39",
+  "display": "standalone"
+}
