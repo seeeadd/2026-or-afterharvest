@@ -262,6 +262,13 @@ section.s{padding:116px 0}
 .essay .ln{height:7px;border-radius:4px;background:#E5E8EA;margin:9px 0}
 .essay .ecta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:10px 12px;border:1.5px dashed var(--amber);border-radius:8px;font-size:14px;color:var(--navy)}
 .essay .ecta b{flex:none;font:700 13px/1 var(--sans);background:var(--amber);color:var(--navy-dd);border-radius:5px;padding:8px 10px 6px}
+.plan .wks{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.plan .wks li{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:7px;background:var(--paper)}
+.plan .wks .wk{flex:none;width:46px;font:700 12px/1 var(--sans);letter-spacing:.06em;color:var(--slate)}
+.plan .wks b{display:block;font:700 15px/1.2 var(--display);color:var(--navy)}
+.plan .wks small{display:block;font-size:13px;color:var(--slate);margin-top:2px}
+.plan .wks li.off{background:rgba(215,150,69,.16);box-shadow:inset 3px 0 0 var(--amber)}
+.plan .wks li.off .wk{color:var(--amber-t)}
 .essay .efoot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:14px;color:var(--slate)}
 .essay .efoot b{font:700 20px/1 var(--display);color:var(--navy);font-variant-numeric:tabular-nums}
 .days .mn{color:var(--hi);font-size:21px}
@@ -638,7 +645,7 @@ section.s{padding:116px 0}
     <div class="head rv">
       <p class="lbl">The three days, live online</p>
       <h2 class="disp">Grab a cup of tea. <span class="nw">Here's the plan.</span></h2>
-      <p>Day 1 you find the one true fan who'd happily pay you. Day 2 you turn what you know into ideas that sell. Day 3 you write and publish the essay that sells for you.</p>
+      <p>Day 1 you find the one true fan who'd happily pay you. Day 2 you turn what you know into ideas that sell. Day 3 you grow an audience of raving fans who buy.</p>
     </div>
 
     <div class="tl">
@@ -671,7 +678,7 @@ section.s{padding:116px 0}
           <span class="dwhen"><span class="dd" data-day="1">Wed Jan 13</span><i></i><span class="dt" data-day="1">12:00 PM ET</span></span>
           <h3 class="disp"><span class="nw">Turn what you</span><span class="nw">know into ideas</span><span class="nw">that sell.</span></h3>
           <p class="out">You know more than you think. We turn it into Pillar Ideas that lead to what you sell.</p>
-          <p class="det">We pull ideas out of your own work and life. Each one goes through the four pillars (practical, polarising, personal, proof). The keepers get matched to what you sell, and the weak ones get parked.</p>
+          <p class="det">We pull ideas out of your own work and life. Each one goes through the four pillars (practical, polarising, personal, proof), the keepers get matched to what you sell, and you draft your first essay from the strongest one.</p>
         </div>
         <div class="well">
           <div class="ui">
@@ -693,19 +700,15 @@ section.s{padding:116px 0}
         <div class="node"><div><small>Day</small><b>3</b></div></div>
         <div class="dtext">
           <span class="dwhen"><span class="dd" data-day="2">Thu Jan 14</span><i></i><span class="dt" data-day="2">12:00 PM ET</span></span>
-          <h3 class="disp"><span class="nw">Write the essay</span><span class="nw">that sells</span><span class="nw">for you.</span></h3>
-          <p class="out">One essay from your best Pillar Idea, with a clear next step to your offer, published before we hang up.</p>
-          <p class="det">We write it together, hook first, so your true fan stops scrolling, and end it on an invitation to your newsletter, waitlist or offer. Then you hit publish while we're still live.</p>
+          <h3 class="disp"><span class="nw">Grow an audience</span><span class="nw">of raving fans</span><span class="nw">who buy.</span></h3>
+          <p class="out">Your first essay becomes a 6-week plan: what you publish, what you send, and where your offer fits.</p>
+          <p class="det">We lay out the next 6 weeks, post by post and email by email, so every piece moves your true fan one step closer to buying. Then I show you how I run that plan with my Masterclass students.</p>
         </div>
         <div class="well">
-          <div class="ui essay" id="essay">
-            <div class="bar"><span class="cb on"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b style="font-size:14.5px">Essay</b><span class="st"><i></i><span id="est">Draft</span></span></div>
-            <h4>Stop stretching first</h4>
-            <p class="by">For physios two years in <span aria-hidden="true">/</span> Polarising</p>
-            <p class="hook">Most knee patients don't need another stretch. They need you to say no to it on the first visit.</p>
-            <div class="ln" style="width:96%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:92%"></div><div class="ln" style="width:58%"></div>
-            <div class="ecta"><span>P.S. Want my 3-step knee rehab checklist?</span><b>Get it free &rarr;</b></div>
-            <div class="efoot"><span>Readers so far</span><b id="erd">0</b></div>
+          <div class="ui essay plan" id="essay">
+            <div class="bar"><span class="cb on"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b style="font-size:14.5px">Your 6-week plan</b><span class="st"><i></i><span id="est">Draft</span></span></div>
+            <ol class="wks"><li><span class="wk">Wk 1</span><div><b>Publish your first essay</b><small>Stop stretching first</small></div></li><li><span class="wk">Wk 2</span><div><b>Turn it into 3 posts</b><small>LinkedIn, on the train home</small></div></li><li><span class="wk">Wk 3</span><div><b>Send the story email</b><small>The Monday I nearly quit clinic</small></div></li><li><span class="wk">Wk 4</span><div><b>Share one proof post</b><small>A patient back on the pitch</small></div></li><li><span class="wk">Wk 5</span><div><b>Open the waitlist</b><small>Knee rehab course</small></div></li><li class="off"><span class="wk">Wk 6</span><div><b>Make the offer</b><small>Readers who already trust you</small></div></li></ol>
+            <div class="efoot"><span>On your waitlist</span><b id="erd">0</b></div>
           </div>
         </div>
       </article>
@@ -736,7 +739,7 @@ section.s{padding:116px 0}
           <li role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="20" height="20" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#FECA1D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Readers who never buy</b><p>Write so your offer feels like the obvious next step.</p></div></li>
         </ul>
         <div class="fitfoot">
-          <p><b>Nodded at one of those? Good. You'll fit right in.</b> Bring what you already know from your work. By Day 3 you've got a reader, a list of ideas and one essay out in the world. And if none of it sounds like you, all good.</p>
+          <p><b>Nodded at one of those? Good. You'll fit right in.</b> Bring what you already know from your work. By Day 3 you've got a reader, a list of ideas, your first essay and a 6-week plan that gets readers buying. And if none of it sounds like you, all good.</p>
           <a class="btn" href="#join"><svg class="mag" viewBox="0 0 30 26" width="30" height="26" aria-hidden="true"><g transform="rotate(90 13 13)"><path d="M7 4.5v8.5a6 6 0 0 0 12 0V4.5" fill="none" stroke="currentColor" stroke-width="5.2"/><rect x="4.2" y="2.5" width="5.6" height="4.2" rx="1" fill="var(--paper)" stroke="currentColor" stroke-width="1.4"/><rect x="16.2" y="2.5" width="5.6" height="4.2" rx="1" fill="var(--paper)" stroke="currentColor" stroke-width="1.4"/></g><path class="pull" d="M25 8.5q2.4 4.5 0 9M27.8 6.2q3.6 6.8 0 13.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Sounds like me, hold my seat</a>
         </div>
       </div>
@@ -792,7 +795,7 @@ section.s{padding:116px 0}
   <div class="wrap">
     <div class="head rv">
       <p class="lbl">What you keep</p>
-      <h2 class="disp"><span class="nw">Three days from now,</span> <span class="nw">your essay is <span class="hlt draw">already live.</span></span></h2>
+      <h2 class="disp"><span class="nw">Three days from now,</span> <span class="nw">your writing <span class="hlt draw">has a job.</span></span></h2>
       <p>Everything crossed out below? I've done all of it (and it didn't go well).</p>
     </div>
     <div class="kdoc rv" aria-label="Your writing, before and after the three days">
@@ -800,7 +803,7 @@ section.s{padding:116px 0}
       <div class="dbody">
         <div class="drow"><div class="dtxt"><p class="dday">Day 1 <span>Tue Jan 12</span></p><p class="dline"><del>Writing for everyone while your posts sink into the abyss</del><br><ins>Writing to your One True Fan, the one person who'd happily pay you</ins></p></div><div class="dcom"><div class="dch"><img src="img/headshot.jpg" alt=""><b>Kieran</b><span>Day 1</span></div><p>Write to one person and the right people feel seen. Everyone else just reads over their shoulder.</p></div></div>
         <div class="drow"><div class="dtxt"><p class="dday">Day 2 <span>Wed Jan 13</span></p><p class="dline"><del>Pulled in 10 directions by every guru's strategy</del><br><ins>Working from a short list of Pillar Ideas that lead to what you sell</ins></p></div><div class="dcom"><div class="dch"><img src="img/headshot.jpg" alt=""><b>Kieran</b><span>Day 2</span></div><p>The ideas you'd argue for down the pub are the ones people remember. We find yours.</p></div></div>
-        <div class="drow"><div class="dtxt"><p class="dday">Day 3 <span>Thu Jan 14</span></p><p class="dline"><del>Chasing impressions with the same templates as everyone else</del><br><ins>Publishing the magnetic essay that sells for you</ins></p></div><div class="dcom"><div class="dch"><img src="img/headshot.jpg" alt=""><b>Kieran</b><span>Day 3</span></div><p>We hit publish together on the call, so nobody chickens out.</p></div></div>
+        <div class="drow"><div class="dtxt"><p class="dday">Day 3 <span>Thu Jan 14</span></p><p class="dline"><del>Chasing impressions with the same templates as everyone else</del><br><ins>A 6-week plan that gets readers buying</ins></p></div><div class="dcom"><div class="dch"><img src="img/headshot.jpg" alt=""><b>Kieran</b><span>Day 3</span></div><p>One good essay is luck. Six weeks of them is a business.</p></div></div>
       </div>
       <div class="dfoot"><span>3 suggestions</span><b>Accept all</b></div>
     </div>
@@ -825,7 +828,7 @@ section.s{padding:116px 0}
         <div class="from"><img src="img/headshot.jpg" alt=""><div><b>Kieran Drew</b><span>Ex-dentist, current writer</span></div><span class="sat">Saturday email</span></div>
         <p>I used to be a dentist (sorry). Then I quit to build a business driven by writing.</p>
         <p>Now I send a Saturday email to over 34,000 subscribers, run the Magnetic Writing Masterclass and High Impact Writing, and my first book is on its way.</p>
-        <p>So for three days in January, I'll teach the groundwork live. The one reader, the ideas and the essay. Bring a cup of tea.</p>
+        <p>So for three days in January, I'll teach the groundwork live. The one reader, the ideas and the plan that sells. Bring a cup of tea.</p>
         <p class="sig">Kieran</p>
       </div>
     </div>
@@ -849,7 +852,7 @@ section.s{padding:116px 0}
       <div class="cr">
         <span class="cpill"><i></i>Free / Three days / Live online</span>
         <h2 class="disp">Join the free 3-day <span class="nw">Magnetic Writing</span> <span class="nw">Challenge.</span></h2>
-        <p class="s2">If you like the way I write and build, I'd love to have you in the room. Three days live: your one true fan, your Pillar Ideas and the essay that sells for you. But if not, then all good.</p>
+        <p class="s2">If you like the way I write and build, I'd love to have you in the room. Three days live: your one true fan, your Pillar Ideas and a 6-week plan that gets readers buying. But if not, then all good.</p>
         <form class="fields" id="form" action="vip/" method="get" autocomplete="off">
           <label><input id="fName" type="text" placeholder="First name" aria-label="First name"></label>
           <label><input type="email" placeholder="Email address" aria-label="Email address"></label>
@@ -895,7 +898,7 @@ section.s{padding:116px 0}
 
   /* Day 3: the draft turns Published and readers come in (a drawing, nothing is measured) */
   var es=document.getElementById('essay'),done3=false;
-  function publish(){if(done3)return;done3=true;setTimeout(function(){es.classList.add('pub');set('est','Published');var n=0,end=38;if(!motion){set('erd',end);return}var t=setInterval(function(){n++;set('erd',n);if(n>=end)clearInterval(t)},70)},900)}
+  function publish(){if(done3)return;done3=true;setTimeout(function(){es.classList.add('pub');set('est','Live');var n=0,end=38;if(!motion){set('erd',end);return}var t=setInterval(function(){n++;set('erd',n);if(n>=end)clearInterval(t)},70)},900)}
 
   var io='IntersectionObserver' in window?new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');if(e.target.contains(es))publish()}})},{threshold:.12}):null;
   document.querySelectorAll('.rv').forEach(function(n){io?io.observe(n):(n.classList.add('in'),publish())});
@@ -908,7 +911,7 @@ section.s{padding:116px 0}
 
   /* floating vertical video: after the hero, never over the sign-up */
   var st=document.getElementById('stick'),scap=st.querySelector('.cap'),hero=document.getElementById('hero'),join=document.getElementById('join'),si=0;
-  var caps=['The <b>60 second version</b> of the three days.','Day 1: <b>find the one true fan who\'d happily pay you</b>','Day 2: <b>turn what you know into ideas that sell</b>','Day 3: <b>write the essay that sells for you</b>','It is free (and awesome), live with <b>Kieran</b>.'];
+  var caps=['The <b>60 second version</b> of the three days.','Day 1: <b>find the one true fan who\'d happily pay you</b>','Day 2: <b>turn what you know into ideas that sell</b>','Day 3: <b>grow an audience of raving fans who buy</b>','It is free (and awesome), live with <b>Kieran</b>.'];
   function snext(){scap.style.opacity=0;setTimeout(function(){scap.innerHTML=caps[si%caps.length];si++;scap.style.opacity=1},300)}
   snext();setInterval(snext,3800);
   function stick(){var hb=hero.getBoundingClientRect(),j=join.getBoundingClientRect();st.classList.toggle('on',hb.bottom<90&&!(j.top<innerHeight&&j.bottom>0))}
