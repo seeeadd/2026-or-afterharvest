@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Magnetic Writing Challenge VIP | Kieran Drew</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<!-- Hand-built VIP page for Kieran Drew, v2 (2026-10-08), in the skin of the v2 registration page: ruled paper, navy bar,
+     Poppins 800 headline with the yellow highlighter, amber button. Copy from leads/kieran-drew/lp.json site.vip; price from the approved row. -->
+<style>
+:root{--paper:#F7F6F2;--paper-2:#EFEDE6;--sheet:#fff;--navy:#2F4454;--navy-dd:#1E2C36;--navy-3:#3A5366;--slate:#4F6270;--mist:#C5D0D7;--amber:#D79645;--amber-d:#B97A2E;--amber-t:#8A5617;--hi:#FECA1D;--teal:#A9D8DD;--green:#3FA36B;--line:rgba(47,68,84,.12);--rule:rgba(47,68,84,.075);
+  --display:"Josefin Sans",system-ui,sans-serif;--body:"Literata",Georgia,serif;--sans:"Josefin Sans",system-ui,sans-serif;
+  --sh:0 1px 2px rgba(30,44,54,.06),0 14px 34px -16px rgba(30,44,54,.28),0 40px 80px -50px rgba(30,44,54,.4)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:repeating-linear-gradient(180deg,transparent 0 35px,var(--rule) 35px 36px) 0 14px,var(--paper);color:var(--navy);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+.nw{white-space:nowrap}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.hlt{position:relative;display:inline-block;z-index:0}
+.hlt:before{content:"";position:absolute;left:-.1em;right:-.1em;bottom:.04em;height:.46em;background:var(--hi);z-index:-1;transform:skewX(-8deg) rotate(-.8deg);border-radius:2px}
+/* top bar: the registration page's navy bar, with the step tracker */
+.fb{position:sticky;top:0;z-index:50;padding:10px 14px 0}
+.fb-bar{margin:0 auto;width:min(1060px,100%);display:flex;align-items:center;gap:18px;padding:8px 18px 8px 10px;border-radius:12px;background:rgba(47,68,84,.97);color:var(--paper);box-shadow:0 14px 34px -18px rgba(30,44,54,.7);position:relative;overflow:hidden}
+.fb-id{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 auto}
+.fb-ic{width:44px;height:44px;border-radius:9px;flex:none;background:var(--paper)}
+.fb-t{display:flex;flex-direction:column;gap:5px;min-width:0}
+.fb-t small{font:700 12px/1 var(--sans);letter-spacing:.16em;color:var(--teal);white-space:nowrap}
+.fb-t b{font:700 16px/1.1 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.steps{display:flex;align-items:center;gap:10px;list-style:none;font-size:15px;color:var(--mist);flex:none}
+.steps li{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.steps .n{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font:700 12px/1 var(--display);box-shadow:inset 0 0 0 1.5px rgba(247,246,242,.35);padding-top:1px}
+.steps .done .n{background:var(--green);box-shadow:none;color:#fff}
+.steps .now{color:var(--paper);font-weight:700}
+.steps .now .n{background:var(--amber);box-shadow:none;color:var(--navy-dd)}
+.steps .wire{width:26px;height:2px;background:rgba(247,246,242,.2)}
+.steps .wire.done{background:var(--green)}
+.fb-bar .track{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(247,246,242,.08)}.fb-bar .track i{display:block;height:100%;width:66.6%;background:var(--hi)}
+.held{display:flex;justify-content:center;margin:26px 16px 0}
+.held > span{display:inline-flex;align-items:center;gap:10px;background:var(--sheet);border:1px solid var(--line);border-radius:999px;padding:9px 16px 7px;font-size:15.5px;color:var(--slate)}
+.held i{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;margin-top:-2px}
+.held b{color:var(--navy)}
+main{padding:30px 0 100px}
+.kick{text-align:center;font-style:normal;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-t);margin:0 0 12px;font-size:13px}
+h1{font:700 clamp(38px,4.8vw,64px)/1.04 var(--display);letter-spacing:-.015em;text-align:center;margin:0 auto 22px}
+h1 .l{display:block}
+.lede{max-width:740px;margin:0 auto 50px;text-align:center;color:var(--slate);font-size:19px}
+.lede b{color:var(--navy);font-weight:700}
+.grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:start}
+/* the landscape iPhone from the registration page */
+.iph{position:relative;border-radius:56px;padding:5px;background:linear-gradient(145deg,#56707f,#2F4454 42%,#1E2C36);box-shadow:0 0 0 1px rgba(255,255,255,.22) inset,var(--sh)}
+.iph .bz{background:#0d1418;border-radius:51px;padding:16px}
+.iph .scr{position:relative;border-radius:36px;overflow:hidden;aspect-ratio:1.62}
+.iph .scr > img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.iph .scr:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,44,54,.15),rgba(30,44,54,0) 30%,rgba(30,44,54,0) 55%,rgba(30,44,54,.6))}
+.iph .isl{position:absolute;left:12px;top:50%;width:24px;height:84px;margin-top:-42px;border-radius:14px;background:#000;z-index:3}
+.chipv{position:absolute;right:auto;max-width:calc(100% - 60px);left:48px;top:20px;z-index:2;display:flex;gap:10px;align-items:center;background:rgba(30,44,54,.86);color:#fff;border-radius:8px;padding:8px 14px 6px 8px;font-size:15px;line-height:1.25}
+.chipv img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 18%}
+.chipv small{display:block;color:var(--mist);font-size:13px}
+.play{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);z-index:2;width:80px;height:80px;border-radius:50%;background:var(--amber);border:0;display:grid;place-items:center;box-shadow:0 0 0 8px rgba(215,150,69,.25),0 14px 30px -10px rgba(0,0,0,.55);cursor:pointer}
+.scrub{position:absolute;left:44px;right:18px;bottom:16px;z-index:2;display:flex;align-items:center;gap:14px;background:rgba(30,44,54,.6);border-radius:999px;padding:11px 20px 9px;color:#fff;font:600 14px/1 var(--sans)}
+.scrub .ln{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.3)}
+.scrub .ln i{display:block;width:4%;height:100%;background:var(--hi);border-radius:4px}
+.vnote{margin:22px 6px 0;font-style:italic;font-weight:600;color:var(--amber-t);font-size:19px;display:flex;gap:10px;align-items:flex-start}
+.vnote svg{flex:none;margin-top:-4px}
+.card{background:var(--sheet);border-radius:12px;overflow:hidden;box-shadow:var(--sh);border-top:4px solid var(--navy)}
+.pass{background:var(--navy);color:var(--paper);margin:14px;border-radius:8px;padding:16px 18px 14px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;position:relative;overflow:hidden}
+.pass:after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;border:2px dashed rgba(169,216,221,.35)}
+.pass .mono{width:56px;height:56px;border-radius:50%;border:2.5px solid var(--teal);display:grid;place-items:center;font:700 19px/1 var(--sans);letter-spacing:.04em;padding-top:3px}
+.pass small{display:block;color:var(--teal);font:700 12.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.pass b{display:block;font:700 22px/1.2 var(--display);letter-spacing:-.02em;margin-top:4px}
+.pass .cells{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.pass .cells span{font-size:12.5px;font-weight:600;border:1px solid rgba(247,246,242,.28);border-radius:5px;padding:4px 8px 2px}
+.body{padding:6px 24px 24px}
+.price{display:flex;align-items:center;gap:16px;padding-bottom:14px;border-bottom:2px solid var(--navy)}
+.price .amt{font:700 58px/1 var(--display);letter-spacing:-.04em;position:relative;z-index:0}
+.price .amt sup{font-size:26px;vertical-align:top;position:relative;top:8px;margin-right:2px}
+.price .t b{display:block;font-weight:700;font-size:17px}
+.price .t span{font-size:15px;color:var(--slate)}
+.list{list-style:none;margin:6px 0 18px}
+.list li{position:relative;padding:12px 0 10px 32px;border-bottom:1px solid var(--line);font-size:16px;line-height:1.45}
+.list li:before{content:"";position:absolute;left:4px;top:16px;width:13px;height:7px;border-left:2.5px solid var(--amber);border-bottom:2.5px solid var(--amber);transform:rotate(-45deg)}
+.list b{font-weight:700}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--amber);color:var(--navy-dd);font:700 18px/1 var(--sans);text-decoration:none;border-radius:6px;padding:20px 20px 17px;box-shadow:0 2px 0 var(--amber-d),0 14px 26px -14px rgba(185,122,46,.8)}
+.cta:hover{background:#E0A253}
+.cta svg{margin-top:-3px}
+.secure{display:flex;justify-content:center;gap:18px;font-size:13.5px;color:var(--slate);margin-top:10px}
+.proof{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:16px;font-size:15px;color:var(--slate)}
+.proof b{color:var(--navy)}
+.proof .faces{display:flex}.proof .faces img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--sheet);margin-left:-8px}.proof .faces img:first-child{margin-left:0}
+.decline{display:block;text-align:center;margin-top:16px;font-size:15px;color:var(--slate)}
+@media (max-width:980px){.grid{grid-template-columns:minmax(0,1fr)}.steps .vl{display:none}.steps .now .vl{display:inline}}
+@media (max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 16px}
+  .fb{padding:8px 10px 0}
+  .fb-bar{gap:10px;padding:6px 10px 8px 8px}
+  .fb-ic{width:36px;height:36px}
+  .fb-t{display:none}
+  .steps{gap:5px;font-size:14px}.steps .wire{width:10px}.steps .n{width:22px;height:22px}
+  .held > span{font-size:14px;border-radius:12px;text-align:left}
+  main{padding-top:24px}
+  h1{font-size:clamp(30px,9vw,42px)}
+  .lede{font-size:17px;margin-bottom:32px}
+  .iph{border-radius:30px;padding:3px}.iph .bz{border-radius:27px;padding:8px}.iph .scr{border-radius:20px}.iph .isl{display:none}
+  .chipv{left:8px;top:8px;font-size:12.5px;padding:6px 10px 4px 6px}.chipv img{width:26px;height:26px}.chipv small{font-size:11px}
+  .play{width:54px;height:54px}
+  .scrub{left:8px;right:8px;bottom:8px;padding:6px 10px 4px;font-size:11.5px;gap:8px}
+  .vnote{font-size:17px}
+  .body{padding:6px 16px 20px}
+  .pass{margin:10px;padding:14px}
+  .price .amt{font-size:48px}
+}
+</style>
+</head>
+<body>
+<header class="fb">
+  <div class="fb-bar">
+    <span class="fb-id"><img class="fb-ic" src="../favicon.png" alt=""><span class="fb-t"><small>KIERAN DREW</small><b>The Magnetic Writing Challenge</b></span></span>
+    <ol class="steps" aria-label="Step 2 of 3">
+      <li class="done"><span class="n">&#10003;</span><span class="vl">Seat held</span></li>
+      <li class="wire done" aria-hidden="true"></li>
+      <li class="now"><span class="n">2</span><span class="vl">VIP upgrade</span></li>
+      <li class="wire" aria-hidden="true"></li>
+      <li><span class="n">3</span><span class="vl">Join details</span></li>
+    </ol>
+    <span class="track"><i></i></span>
+  </div>
+</header>
+<p class="held"><span><i></i><span>Your seat is held for <b>Tue Jan 12 at 12:00 PM ET</b>. The join link is on its way to your inbox.</span></span></p>
+<main>
+  <div class="wrap">
+    <p class="kick">Before you close this tab</p>
+    <h1><span class="l">Want me to <span class="hlt nw">edit your first</span></span><span class="l"><span class="nw">magnetic essay</span> <span class="nw">with you?</span></span></h1>
+    <p class="lede">Your seat is saved for the Magnetic Writing Challenge (nice one). Before you go, there's one optional upgrade, <b>$47 once</b>: a Day 4 essay edit with me, a private VIP thread, all four replays and my Pillar Ideas sheet. No pressure. The free days are the main event.</p>
+    <div class="grid">
+      <div>
+        <div class="iph">
+          <div class="bz"><div class="scr">
+            <span class="isl"></span>
+            <img src="../img/vip-still.jpg" alt="Kieran Drew talking to camera">
+            <span class="chipv"><img src="../img/headshot.jpg" alt=""><span><b>A quick note from Kieran</b><small>Before you head to Day 1</small></span></span>
+            <button class="play" type="button" aria-label="Play"><svg width="28" height="28" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#1E2C36"/></svg></button>
+            <div class="scrub"><span>0:00</span><span class="ln"><i></i></span><span>1:48</span><span>Tap for sound</span></div>
+          </div></div>
+        </div>
+      </div>
+      <aside class="card">
+        <div class="pass">
+          <span class="mono">KD</span>
+          <span><small>Essay Edit</small><b>VIP pass</b><span class="cells"><span>Day 4 edit</span><span>VIP thread</span><span>Replays</span></span></span>
+        </div>
+        <div class="body">
+          <div class="price"><span class="amt"><sup>$</sup>47</span><span class="t"><b>Pay once</b><span>Replays are yours to keep</span></span></div>
+          <ul class="list">
+            <li><b>Day 4, essay edit with me.</b> Fri Jan 15, 12:00 PM ET. 90 minutes live, VIPs only. Bring the essay you wrote on Day 3 and the Pillar Idea behind it. I'll tell you honestly what works (and what doesn't).</li>
+            <li><b>Private VIP thread.</b> Opens Jan 12 and stays open until Jan 22. Send me a hook or a draft between sessions and I will reply personally.</li>
+            <li><b>Replays to keep.</b> All three days plus Day 4, so the Day 2 pillar walkthrough is there whenever you run dry (we all do).</li>
+            <li><b>My Pillar Ideas sheet.</b> The pillars from Day 2 on one dead-simple printable page, with your one true fan prompt from Day 1 at the top.</li>
+          </ul>
+          <a class="cta" href="#" onclick="return false">I'm in, add VIP for $47 <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <p class="secure"><span>Secure checkout</span><span>One payment</span></p>
+          <p class="proof"><span class="faces"><img src="../img/faces/f3.jpg" alt=""><img src="../img/faces/f5.jpg" alt=""><img src="../img/faces/f1.jpg" alt=""></span><span><b>142 people</b> added VIP to their seat</span></p>
+          <a class="decline" href="#" onclick="return false">No thanks, all good. Take me to my join details</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+</body>
+</html>

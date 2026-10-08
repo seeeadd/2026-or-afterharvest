@@ -16,7 +16,7 @@
 <link rel="manifest" href="site.webmanifest?v=97a5ecdc">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#F7F6F2;      /* page ground */
@@ -36,19 +36,19 @@
   --green:#3FA36B;
   --line:rgba(47,68,84,.12);
   --rule:rgba(47,68,84,.075);
-  --display:"Poppins", system-ui, sans-serif;
-  --sans:"Josefin Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display:"Josefin Sans", system-ui, sans-serif;
+  --body:"Literata",Georgia,serif;--sans:"Josefin Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --sh:0 1px 2px rgba(30,44,54,.06), 0 14px 34px -16px rgba(30,44,54,.28), 0 40px 80px -50px rgba(30,44,54,.4);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{background:var(--paper);color:var(--navy);font-family:var(--sans);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--paper);color:var(--navy);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
 .nw{white-space:nowrap}
-.disp{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:1.04}
+.disp{font-family:var(--display);font-weight:700;letter-spacing:-.015em;line-height:1.04}
 .note{font-family:var(--sans);font-style:italic;font-weight:600;line-height:1.15}
 /* the highlighter: one flat yellow swipe, slightly skewed, like a pen marker over printed words */
 .hlt{position:relative;display:inline-block;z-index:0}
@@ -167,7 +167,7 @@ a{color:inherit}
 .regc .rt{font-size:15px;color:var(--slate);display:inline-flex;align-items:center;gap:6px}
 .regc .rt b{color:var(--navy);font:700 15px var(--display)}
 .regc .num{font-size:15px;color:var(--slate);margin-top:12px}
-.regc .num b{color:var(--navy);font:800 21px/1 var(--display);margin-right:3px}
+.regc .num b{color:var(--navy);font:700 21px/1 var(--display);margin-right:3px}
 .regc .just{display:flex;align-items:center;gap:9px;background:var(--paper);border-radius:7px;padding:10px 14px 8px;margin-top:12px;font-size:15px;color:var(--slate)}
 .regc .just i{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;margin-top:-2px}
 .regc .just b{color:var(--navy)}
@@ -202,7 +202,7 @@ section.s{padding:116px 0}
 .day{display:grid;grid-template-columns:64px 1fr 1.06fr;gap:28px 44px;align-items:start;position:relative}
 .node{width:64px;height:64px;border-radius:10px;background:var(--amber);color:var(--navy-dd);display:grid;place-items:center;text-align:center;position:relative;z-index:1;box-shadow:0 0 0 6px var(--navy)}
 .node small{display:block;font:700 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
-.node b{display:block;font:800 27px/1 var(--display);margin-top:2px}
+.node b{display:block;font:700 27px/1 var(--display);margin-top:2px}
 .dtext{padding-top:4px}
 .dwhen{display:inline-flex;gap:9px;align-items:center;font-size:15px;font-weight:600;color:var(--teal);margin-bottom:12px}
 .dwhen i{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.6}
@@ -254,25 +254,25 @@ section.s{padding:116px 0}
 .essay .st i{width:7px;height:7px;border-radius:50%;background:var(--slate);margin-top:-2px;transition:background .4s}
 .essay.pub .st{background:#E3F3EA;color:#1f6b42}
 .essay.pub .st i{background:var(--green)}
-.essay h4{font:800 22px/1.15 var(--display);letter-spacing:-.025em}
+.essay h4{font:700 22px/1.15 var(--display);letter-spacing:-.025em}
 .essay .by{font-size:13.5px;color:var(--slate);margin:6px 0 12px}
 .essay .hook{font-size:15.5px;line-height:1.45;padding:10px 12px 8px;border-left:3px solid var(--hi);background:var(--paper);border-radius:0 6px 6px 0;margin-bottom:12px}
 .essay .ln{height:7px;border-radius:4px;background:#E5E8EA;margin:9px 0}
 .essay .efoot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:14px;color:var(--slate)}
-.essay .efoot b{font:800 20px/1 var(--display);color:var(--navy);font-variant-numeric:tabular-nums}
+.essay .efoot b{font:700 20px/1 var(--display);color:var(--navy);font-variant-numeric:tabular-nums}
 .days .mn{color:var(--hi);font-size:21px}
 
 /* ---------- fit check ---------- */
 .fit{background:var(--paper);position:relative;overflow-x:clip}
 .fgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center}
-.pwrap{position:relative;max-width:410px;justify-self:center;width:100%;padding:10px 0 30px}
+.pwrap{position:relative;max-width:410px;justify-self:center;width:100%;padding:10px 0 30px;margin-top:110px}
 .pback{position:absolute;inset:26px -22px -4px 22px;background:var(--navy);border-radius:14px;transform:rotate(-3deg)}
 .pcard{position:relative;z-index:1;border-radius:10px;overflow:hidden;border:8px solid var(--sheet);box-shadow:var(--sh);aspect-ratio:4/5;transform:rotate(2deg)}
 .pcard img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .pname{position:absolute;left:6%;bottom:-14px;z-index:2;background:var(--sheet);border-radius:8px;padding:12px 18px 10px;box-shadow:var(--sh);transform:rotate(-2deg)}
 .pname b{display:block;font:700 16px/1.2 var(--display)}
 .pname span{font-size:14px;color:var(--slate)}
-.says{position:absolute;right:-46px;top:-40px;z-index:3;max-width:270px;background:var(--navy);color:var(--paper);border-radius:12px 12px 12px 3px;padding:16px 18px 14px;box-shadow:var(--sh);transform:rotate(2.5deg);font-size:16px;line-height:1.4}
+.says{position:absolute;right:-64px;top:-118px;z-index:3;max-width:250px;background:var(--navy);color:var(--paper);border-radius:12px 12px 12px 3px;padding:16px 18px 14px;box-shadow:var(--sh);transform:rotate(2deg);font-size:15px;line-height:1.45}
 .says small{display:block;font-style:normal;font-weight:600;font-size:16px;color:var(--hi);margin-bottom:6px}
 .says:after{content:"";position:absolute;left:18px;bottom:-12px;border:12px solid transparent;border-top-color:var(--navy);border-bottom:0;border-left:0}
 .checks{list-style:none;display:grid;gap:12px;position:relative}
@@ -299,7 +299,7 @@ section.s{padding:116px 0}
 .nrow > div:first-child{border-left:0;padding-left:0}
 .nrow h2{font-size:30px;line-height:1.1}
 .nrow .intro p{color:var(--slate);font-size:16px;margin-top:12px}
-.nrow b{display:block;font:800 clamp(30px,2.8vw,42px)/1 var(--display);letter-spacing:-.04em}
+.nrow b{display:block;font:700 clamp(30px,2.8vw,42px)/1 var(--display);letter-spacing:-.04em}
 .nrow .k{display:block;margin-top:12px;font-weight:600;font-size:16px}
 .nrow a{display:inline-block;margin-top:10px;font-size:13px;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
 .nrow a:hover{color:var(--navy);border-color:var(--navy)}
@@ -317,7 +317,7 @@ section.s{padding:116px 0}
 .cover .strip{width:100%;background:var(--teal);color:#0f3a4e;font:700 10.5px/1.3 var(--sans);padding:6px 6px 4px}
 .cover .au{width:100%;margin-top:10px;border-top:1.5px solid var(--teal);border-bottom:1.5px solid var(--teal);padding:7px 0 4px;font:700 12px/1 var(--sans);letter-spacing:.14em}
 .cover:after{content:"";position:absolute;left:0;top:0;bottom:0;width:14px;background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(255,255,255,.08),transparent)}
-.bdate{position:absolute;right:4%;top:6%;z-index:2;background:var(--hi);color:var(--navy-dd);border-radius:6px;padding:10px 14px 8px;font:800 15px/1.2 var(--display);transform:rotate(6deg);box-shadow:0 12px 24px -12px rgba(0,0,0,.6);text-align:center}
+.bdate{position:absolute;right:4%;top:6%;z-index:2;background:var(--hi);color:var(--navy-dd);border-radius:6px;padding:10px 14px 8px;font:700 15px/1.2 var(--display);transform:rotate(6deg);box-shadow:0 12px 24px -12px rgba(0,0,0,.6);text-align:center}
 .bdate small{display:block;font:600 11px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase}
 .bookx h2{font-size:clamp(32px,3.5vw,50px);margin:16px 0 20px}
 .bookx .lbl{color:var(--teal)}
@@ -363,7 +363,7 @@ section.s{padding:116px 0}
 .host h2{font-size:clamp(34px,4vw,54px);margin:14px 0 26px}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .fact{background:var(--sheet);border-radius:10px;padding:22px 22px 18px;border:1px solid var(--line)}
-.fact b{display:block;font:800 30px/1.05 var(--display);letter-spacing:-.03em}
+.fact b{display:block;font:700 30px/1.05 var(--display);letter-spacing:-.03em}
 .fact span{display:block;margin-top:8px;color:var(--slate);font-size:15.5px;line-height:1.4}
 .fact.wide{grid-column:1/-1;display:flex;align-items:center;gap:18px;background:var(--navy);color:var(--paper);border:0}
 .fact.wide span{color:var(--mist);margin:0}
@@ -383,12 +383,12 @@ section.s{padding:116px 0}
 .cl{background:var(--paper);padding:56px 40px;display:grid;place-items:center;position:relative;min-height:460px;background-image:repeating-linear-gradient(180deg,transparent 0 31px,var(--rule) 31px 32px)}
 .page{width:100%;max-width:360px;background:var(--sheet);border-radius:3px;padding:26px 26px 22px;box-shadow:var(--sh);transform:rotate(-3deg);position:relative}
 .page .tag{display:inline-block;font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;background:var(--navy);color:var(--paper);border-radius:4px;padding:6px 8px 4px}
-.page h4{font:800 23px/1.12 var(--display);letter-spacing:-.025em;margin:14px 0 8px}
+.page h4{font:700 23px/1.12 var(--display);letter-spacing:-.025em;margin:14px 0 8px}
 .page .by{font-size:15px;color:var(--slate);display:flex;gap:6px;align-items:baseline}
 .page .by i{flex:1;min-width:0;font-style:italic;font-weight:600;font-size:21px;color:var(--navy);border-bottom:1.5px dashed rgba(47,68,84,.35);min-height:28px;white-space:nowrap;overflow:hidden}
 .page .ln{height:7px;border-radius:4px;background:#E5E8EA;margin:11px 0}
 .page .meta{display:flex;justify-content:space-between;margin-top:14px;font-size:13px;color:var(--slate)}
-.stamp{position:absolute;right:-14px;top:-16px;font:800 15px/1 var(--display);color:var(--navy-dd);background:var(--hi);border-radius:6px;padding:10px 12px 8px;transform:rotate(9deg) scale(0);opacity:0;transition:transform .5s cubic-bezier(.2,1.6,.4,1),opacity .3s}
+.stamp{position:absolute;right:-14px;top:-16px;font:700 15px/1 var(--display);color:var(--navy-dd);background:var(--hi);border-radius:6px;padding:10px 12px 8px;transform:rotate(9deg) scale(0);opacity:0;transition:transform .5s cubic-bezier(.2,1.6,.4,1),opacity .3s}
 .done .stamp{transform:rotate(9deg) scale(1);opacity:1}
 .cl .mn{left:18%;bottom:36px;transform:rotate(-3deg)}
 .cl .mn svg{left:-40px;top:-44px}
@@ -439,7 +439,7 @@ section.s{padding:116px 0}
   .day{grid-template-columns:64px 1fr}
   .day .well{grid-column:2}
   .fgrid{gap:70px}
-  .says{right:-6px}
+  .says{right:-6px;top:-124px}
   .bgrid{gap:40px}
 }
 @media (max-width:720px){
@@ -497,8 +497,10 @@ section.s{padding:116px 0}
   .trust span{white-space:normal;flex-wrap:wrap;justify-content:center;text-align:center}
   .pt th{font-size:9.5px;letter-spacing:.04em;padding:0 2px 8px}
   .tick,.dash{width:19px;height:19px}
-  .pback{inset:20px -8px -4px 8px}
+  .pback{inset:20px -8px auto 8px;aspect-ratio:4/5}
   .says{position:relative;right:auto;top:auto;margin:22px 0 0 auto;max-width:290px}
+  .pwrap{margin-top:0}
+  .says:after{bottom:auto;top:-12px;border:12px solid transparent;border-bottom-color:var(--navy);border-top:0;border-left:0}
   .pname{position:relative;left:auto;bottom:auto;display:inline-block;margin:-26px 0 0 14px}
   .checks li{grid-template-columns:40px 1fr;padding:14px}
   .checks .tk{width:40px;height:40px}
@@ -587,7 +589,7 @@ section.s{padding:116px 0}
         <span class="l nw">the sea of</span>
         <span class="l nw"><span class="hlt">AI slop.</span></span>
       </h1>
-      <p class="lede"><b>If you want readers who actually care what you write... And you're tired of posting into the void... Then you're in the right place.</b> For three days, live and free, I'll show you how to find the one reader worth writing for, pull your best ideas out of what you already know, and publish one essay that sounds unmistakably like you.</p>
+      <p class="lede"><b>If you want readers who actually care what you write... And you're tired of posting into the void (hello? anyone?)... Then you're in the right place.</b> Give me three days (live, and free). I'll show you how to find the one reader worth writing for, pull your best ideas out of what you already know, and publish one essay that sounds UNDENIABLY you.</p>
       <div class="stuck">
         <p class="lbl">Be honest. Where are you stuck?</p>
         <div class="chips">
@@ -631,7 +633,7 @@ section.s{padding:116px 0}
           <span class="dwhen"><span class="dd" data-day="0">Tue Jan 12</span><i></i><span class="dt" data-day="0">12:00 PM ET</span></span>
           <h3 class="disp"><span class="nw">Find the one</span><span class="nw">true fan who</span><span class="nw">reads it all.</span></h3>
           <p class="out">Name the one reader you write for, and the problem they would pay to fix.</p>
-          <p class="det">Most writing gets ignored because it is written for everyone. So we pick one reader, their problem and where they already read. Every piece after this has an address.</p>
+          <p class="det">Why does most writing get ignored? Because it's written for everyone. So we pick one reader, their problem and where they already read. Every piece after this has an address.</p>
         </div>
         <div class="well">
           <div class="ui">
@@ -653,8 +655,8 @@ section.s{padding:116px 0}
         <div class="dtext">
           <span class="dwhen"><span class="dd" data-day="1">Wed Jan 13</span><i></i><span class="dt" data-day="1">12:00 PM ET</span></span>
           <h3 class="disp"><span class="nw">Turn what you</span><span class="nw">know into ideas.</span></h3>
-          <p class="out">You know more than you think. We turn it into Pillar Ideas.</p>
-          <p class="det">We pull ideas out of your own work and life. Then each one goes through the four pillars (practical, polarising, personal, proof), and the weak ones get parked.</p>
+          <p class="out">You know more than you think (really). We turn it into Pillar Ideas.</p>
+          <p class="det">We pull ideas out of your own work and life. Then each one goes through the four pillars (practical, polarising, personal, proof), and the weak ones get parked (no hard feelings).</p>
         </div>
         <div class="well">
           <div class="ui">
@@ -677,7 +679,7 @@ section.s{padding:116px 0}
         <div class="dtext">
           <span class="dwhen"><span class="dd" data-day="2">Thu Jan 14</span><i></i><span class="dt" data-day="2">12:00 PM ET</span></span>
           <h3 class="disp"><span class="nw">Write one</span><span class="nw">magnetic essay.</span></h3>
-          <p class="out">One essay. Your best Pillar Idea. Published before we hang up.</p>
+          <p class="out">One essay from your best Pillar Idea, published before we hang up.</p>
           <p class="det">We write it together, hook first, so your true fan stops scrolling. And you hit publish before the session ends (no more drafts rotting in a folder).</p>
         </div>
         <div class="well">
@@ -718,7 +720,7 @@ section.s{padding:116px 0}
           <li role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="20" height="20" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#FECA1D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Readers who never buy</b><p>Write so your offer feels like the obvious next step.</p></div></li>
         </ul>
         <div class="fitfoot">
-          <p><b>Nodded at one of those? You will fit right in.</b> Bring what you already know from your work. By Day 3 you have a reader, a list of ideas and one essay out in the world. And if none of it sounds like you, all good.</p>
+          <p><b>Nodded at one of those? Good. You'll fit right in.</b> Bring what you already know from your work. By Day 3 you've got a reader, a list of ideas and one essay out in the world. And if none of it sounds like you, all good.</p>
           <a class="btn" href="#join">Sounds like me, hold my seat</a>
         </div>
       </div>
@@ -730,7 +732,7 @@ section.s{padding:116px 0}
 <section class="nums" id="numbers">
   <div class="wrap">
     <div class="nrow rv">
-      <div class="intro"><h2 class="disp">The actual numbers.</h2><p>I share my numbers in public every month. These are the ones that matter here.</p></div>
+      <div class="intro"><h2 class="disp">The actual numbers.</h2><p>I share my numbers in public every month (the good months and the bad ones). These are the ones that matter here.</p></div>
       <div><b>34,000+</b><span class="k">Newsletter subscribers</span><a href="https://www.kierandrew.com/" target="_blank" rel="noopener">kierandrew.com</a></div>
       <div><b>280,000+</b><span class="k">Readers across 5 platforms</span><a href="https://mwm.kierandrew.com/" target="_blank" rel="noopener">mwm.kierandrew.com</a></div>
       <div><b>1,418</b><span class="k">On the book waitlist</span><a href="https://www.kierandrew.com/book-plan/" target="_blank" rel="noopener">kierandrew.com/book-plan</a></div>
@@ -775,7 +777,7 @@ section.s{padding:116px 0}
     <div class="head rv">
       <p class="lbl">What you keep</p>
       <h2 class="disp"><span class="nw">Three days from now,</span> <span class="nw">your essay is <span class="hlt draw">already live.</span></span></h2>
-      <p>Here's what changes between Day 1 and Day 3. The crossed-out bits are habits I was stuck in for years too.</p>
+      <p>Here's what changes between Day 1 and Day 3. The crossed-out bits? I was stuck in every one of them for years.</p>
     </div>
     <div class="kstrip rv">
       <div class="tkart"><span class="kdot"></span><p class="kday">Day 1</p><p class="kbefore">Writing for everyone while your posts sink into the abyss</p><p class="kafter">One true fan every piece goes to</p></div>
@@ -802,8 +804,9 @@ section.s{padding:116px 0}
     <div class="rv">
       <div class="letter">
         <div class="from"><img src="img/headshot.jpg" alt=""><div><b>Kieran Drew</b><span>Ex-dentist, current writer</span></div><span class="sat">Saturday email</span></div>
-        <p>I used to be a dentist (sorry). I quit to build a business driven by writing, and now I send a Saturday email to over 34,000 subscribers, run the Magnetic Writing Masterclass and High Impact Writing, and my first book, Magnetic Writing, is on its way.</p>
-        <p>For three days in January, I will teach the groundwork live: the one reader, the ideas and the essay. Bring a cup of tea.</p>
+        <p>I used to be a dentist (sorry). Then I quit to build a business driven by writing.</p>
+        <p>Now I send a Saturday email to over 34,000 subscribers, run the Magnetic Writing Masterclass and High Impact Writing, and my first book is on its way. The older I get, the more I accept I'm not that impressive. But the system works.</p>
+        <p>So for three days in January, I'll teach the groundwork live. The one reader, the ideas and the essay. Bring a cup of tea (I'll have mine).</p>
         <p class="sig">Kieran</p>
       </div>
     </div>
@@ -827,7 +830,7 @@ section.s{padding:116px 0}
       <div class="cr">
         <span class="cpill"><i></i>Free / Three days / Live online</span>
         <h2 class="disp">Join the free 3-day <span class="nw">Magnetic Writing</span> <span class="nw">Challenge.</span></h2>
-        <p class="s2">If you like the way I write, I would love to have you in the room. Three days live: your one true fan, your Pillar Ideas and one magnetic essay out in the world. If not, all good.</p>
+        <p class="s2">If you like the way I write and build, I'd love to have you in the room. Three days live: your one true fan, your Pillar Ideas and one magnetic essay out in the world. But if not, then all good.</p>
         <form class="fields" id="form" action="vip/" method="get" autocomplete="off">
           <label><input id="fName" type="text" placeholder="First name" aria-label="First name"></label>
           <label><input type="email" placeholder="Email address" aria-label="Email address"></label>
