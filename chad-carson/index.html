@@ -680,6 +680,28 @@ h1,h2,h3,.serif{font-family:var(--serif)}
 .mk svg{display:block}
 @media (max-width:1180px){.hpill{white-space:normal;flex-wrap:wrap;row-gap:6px}}
 
+/* second calming pass (Sean 2026-10-08: "a bit more mature"): no doodles, no script notes, quieter ground, navy leads, orange only on actions and rules */
+.hero:before,.days:before{display:none}
+.hn,.hn-card,.hn-reg{display:none}
+.says small{font:700 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:8px}
+body{background:linear-gradient(180deg,#dde9f2 0,#eaf1f7 560px,#f3f7fa 1000px) no-repeat,#f3f7fa}
+:root{--ground:#eef3f8;--warm:#f6f9fc;--sky:#dde9f2}
+.hpill{background:#dde9f2}
+.hright h1 .mk{color:var(--navy-d)}
+.mk svg{height:.16em}
+.well:before{display:none}
+.well{padding:40px 28px 28px}
+.tl:before{background:radial-gradient(circle,#e87942 0 2px,transparent 2.4px) 0 0/12px 12px repeat-y;opacity:.8}
+.node{box-shadow:0 0 0 4px #fff,0 0 0 5.5px var(--orange)}
+.ui{background-image:none;background:#fff}
+.nums{background:#e8f0f6}
+.fit{background:#f6f9fc}
+.pdisc{background:#dde9f2}
+.close{background:linear-gradient(180deg,#f6f9fc,#e3edf4)}
+.cl{background:#e8f0f6}
+.chips button.on{background:#e4eef5;border-color:#9fbbd0}
+.chip.o{background:#fdeadf}
+
 @media (min-width:721px){.book{grid-template-columns:auto minmax(0,1fr)}.book .go{grid-column:1/-1;display:flex;align-items:center;gap:18px;text-align:left;padding-top:4px}.book .go .btn{flex:none}.book .go small{margin-top:0;max-width:none}}
 /* calmer: no tilts, no stickers, no floating, fewer notes, plainer rules */
 .hsun{display:none}
@@ -829,9 +851,9 @@ h1,h2,h3,.serif{font-family:var(--serif)}
         <div class="node"><div><small>Day</small><b>2</b></div></div>
         <div class="dtext">
           <span class="dwhen"><span class="dd" data-day="1">Day 2</span><i></i><span class="dt" data-day="1">Live</span></span>
-          <h3 class="serif"><span class="nw">Find deals</span><span class="nw">outside the MLS</span></h3>
+          <h3 class="serif"><span class="nw">Find deals</span><span class="nw">outside the listings</span></h3>
           <p class="out">Pick where your next deal comes from and set the weekly hour that keeps it coming</p>
-          <p class="det">We map the places deals come from besides the MLS, brief an agent and a wholesaler on your buy box and set the one lead-gen hour you can keep every week.</p>
+          <p class="det">We map the places deals come from besides the listings, brief an agent and a wholesaler on your buy box and set the one lead-gen hour you can keep every week.</p>
         </div>
         <div class="well">
           <div class="ui">
@@ -850,7 +872,7 @@ h1,h2,h3,.serif{font-family:var(--serif)}
             <div class="row"><span class="cb"></span>Add 3 wholesalers to your list<span class="chip">Wed</span></div>
             <div class="row"><span class="cb"></span>Mail 40 owner letters<span class="chip o">Fri</span></div>
           </div>
-          <span class="hn hand" style="left:10px;top:-38px;transform:rotate(0deg)">beyond the MLS</span>
+          <span class="hn hand" style="left:10px;top:-38px;transform:rotate(0deg)">beyond the listings</span>
         </div>
       </article>
 
@@ -920,7 +942,7 @@ h1,h2,h3,.serif{font-family:var(--serif)}
       </div>
       <ul class="checks rv" id="checks">
         <li style="--i:0" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Not sure what's enough</b><p>Work out <span class="hl">how few rentals</span> cover the life you want.</p></div></li>
-        <li style="--i:1" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Stuck at one deal</b><p>Know where your next deal comes from, <span class="hl">beyond the MLS</span>.</p></div></li>
+        <li style="--i:1" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Stuck at one deal</b><p>Know where your next deal comes from, <span class="hl">beyond the listings</span>.</p></div></li>
         <li style="--i:2" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Offers feel awkward</b><p>Write a <span class="hl">low first offer</span> you can say out loud.</p></div></li>
         <li style="--i:3" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>No weekly habit</b><p>Set <span class="hl">one lead-gen hour</span> a week that you will keep.</p></div></li>
         <li style="--i:4" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Hype and pressure</b><p>Follow a <span class="hl">plain plan</span> with no 10x and no big talk.</p></div></li>
@@ -1038,7 +1060,7 @@ h1,h2,h3,.serif{font-family:var(--serif)}
   tilt(document.getElementById('pwrap'),document.getElementById('pcard'),10);
   tilt(document.querySelector('.cl'),document.getElementById('mcard'),14);
   var st=document.getElementById('stick'),scap=st.querySelector('.cap'),hero=document.getElementById('hero'),join=document.getElementById('join'),si=0;
-  var caps=['The <b>60 second version</b> of the three days.','Day 1: <b>Know the few rentals that are enough</b>','Day 2: <b>Find deals outside the MLS</b>','Day 3: <b>Make the offer and your plan</b>'];
+  var caps=['The <b>60 second version</b> of the three days.','Day 1: <b>Know the few rentals that are enough</b>','Day 2: <b>Find deals outside the listings</b>','Day 3: <b>Make the offer and your plan</b>'];
   function snext(){scap.style.opacity=0;setTimeout(function(){scap.innerHTML=caps[si%caps.length];si++;scap.style.opacity=1},300)}
   snext();setInterval(snext,3800);
   function stick(){var h=hero.getBoundingClientRect(),j=join.getBoundingClientRect();st.classList.toggle('on',h.bottom<90&&!(j.top<innerHeight&&j.bottom>0))}
