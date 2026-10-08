@@ -537,6 +537,19 @@ body.gateon #stick{transform:translateY(-70px)}
 @media (max-width:900px){.gcards,.gfaq{grid-template-columns:1fr}}
 @media (max-width:760px){#gate{bottom:14px;padding:0 10px}#gate .gbar{padding:8px 8px 8px 14px;gap:10px;width:100%}#gate .gtx b{font-size:15px;white-space:normal}#gate .gtx small{display:none}#gate .btn.sm{padding:11px 14px;font-size:14px}#gate .glock{width:24px;height:24px}.gsec{padding-bottom:44px}}
 @media (max-width:400px){#gate .btn.sm svg{display:none}}
+/* gate bar motion: springs in, lock rattles, button shines, arrow nudges. Off for reduced motion. */
+@keyframes gin{0%{opacity:0;transform:translateY(26px) scale(.94)}60%{opacity:1;transform:translateY(-4px) scale(1.01)}100%{opacity:1;transform:none}}
+@keyframes glockwig{0%,70%,100%{transform:rotate(0)}76%{transform:rotate(-14deg)}82%{transform:rotate(11deg)}88%{transform:rotate(-7deg)}94%{transform:rotate(3deg)}}
+@keyframes gshine{0%{transform:translateX(-140%) skewX(-18deg)}38%,100%{transform:translateX(420%) skewX(-18deg)}}
+@keyframes gnudge{0%,60%,100%{transform:translateX(0)}75%{transform:translateX(4px)}88%{transform:translateX(0)}}
+#gate .btn.sm{position:relative;overflow:hidden}
+#gate .btn.sm:after{content:"";position:absolute;top:-30%;bottom:-30%;left:0;width:34%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-140%) skewX(-18deg);pointer-events:none;opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  #gate.on .gbar{animation:gin .7s cubic-bezier(.2,.9,.3,1.2) both}
+  #gate.on .glock{transform-origin:50% 90%;animation:glockwig 5s ease-in-out 1.2s infinite}
+  #gate.on .btn.sm:after{opacity:1;animation:gshine 4.5s ease-in-out 1.6s infinite}
+  #gate.on .btn.sm svg{animation:gnudge 4.5s ease-in-out 1.6s infinite}
+}
 </style>
 </head>
 <body>
