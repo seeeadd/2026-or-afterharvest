@@ -1,5 +1,5 @@
 {
-  "name": "Part-Time YouTuber Webinar",
+  "name": "The First Dollar Challenge",
   "short_name": "Ali",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#FD976D",
-  "background_color": "#F9F6F3",
+  "theme_color": "#3A5273",
+  "background_color": "#FBFBF8",
   "display": "standalone"
 }
