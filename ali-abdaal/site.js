@@ -113,10 +113,14 @@
     } catch (e) { return ''; }
   })();
   function zoned(t) { return ZONE ? t + ' ' + ZONE : t; }
-  var WHEN = S.when || (dfmt(START, true) + ' to ' + dfmt(END, true));
+  /* a webinar is one session on one day: "Wed Oct 7", never "Wed Oct 7 to Wed Oct 7" (w2, 2026-09-29) */
+  function span(long) { return WEBINAR ? dfmt(START, long) : dfmt(START, long) + ' to ' + dfmt(END, long); }
+  var WHEN = S.when || span(true);
+  /* when each day (or, on a webinar, each part of the one session: 20 minutes apart, same day) starts (Clay flags, 2026-09-29) */
+  function partDate(i) { return new Date(START.getTime() + i * (WEBINAR ? 20 * 6e4 : 864e5)); }
   var WHEN_FULL = WHEN + ' · ' + tfmt(START) + ' · Live online';
   /* the line under every call to action (asked for 2026-09-22) */
-  var CTA_NOTE = S.cta_note || zoned('Free online challenge: ' + dfmt(START) + ' to ' + dfmt(END));
+  var CTA_NOTE = S.cta_note || zoned((WEBINAR ? 'Free live webinar: ' : 'Free online challenge: ') + span());
 
   var REG = null;                         /* the sign-up modal, once built */
   var state = {
@@ -285,7 +289,7 @@
     return '<svg class="bglyph" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
       'stroke-width="' + (stroke || 1.7) + '" stroke-linecap="round" stroke-linejoin="round">' +
       ICONS[brandIconKey()] + '</svg>' +
-      '<span class="b3"><b>3</b></span>';
+      '<span class="b3"><b>' + (WEBINAR ? '1' : '3') + '</b></span>';
   }
   function ctaIcons() {
     BICON = '<i class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
@@ -410,7 +414,7 @@
     /* hero eyebrow becomes the coloured date pill */
     eye.innerHTML = '<i class="dot"></i>Free 3-day live event<i></i>' +
       '<b class="eyd"><span class="eyfull">' + esc(zoned(WHEN)) + '</span><span class="eyshort">' +
-      esc(zoned(S.when || (dfmt(START) + ' to ' + dfmt(END)))) + '</span></b><i></i><span class="eyl">Live online</span>';
+      esc(zoned(S.when || span())) + '</span></b><i></i><span class="eyl">Live online</span>';
 
     /* registration card: social proof above the button */
     var proof = el('div', '',
@@ -756,7 +760,7 @@
       '<button type="button" class="xcx" data-xc="1" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" ' +
       'stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>' +
       '<p class="xck">Before you go</p><h3 class="xch">Save your free seat. It takes ten seconds.</h3>' +
-      '<p class="xcp">Three live days with ' + esc(FIRST) + ', ' + esc(dfmt(START) + ' to ' + dfmt(END)) + ' at ' + esc(tfmt(START)) +
+      '<p class="xcp">Three live days with ' + esc(FIRST) + ', ' + esc(span()) + ' at ' + esc(tfmt(START)) +
         '. Bring your questions: the live sessions are where they get answered.</p>' +
       '<form class="xcf" novalidate><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-label="Email address">' +
       '<button type="submit" class="btn lg">Save my free seat' + ARROW + '</button></form>' +
@@ -790,7 +794,7 @@
   function dock() {
     if ($('dock')) return;
     var d = el('div', ''); d.id = 'dock';
-    d.innerHTML = '<span class="dkw"><b>Free online challenge</b>' + esc(dfmt(START) + ' to ' + dfmt(END)) + ' \u00B7 ' + esc(tfmt(START)) + '</span>' +
+    d.innerHTML = '<span class="dkw"><b>' + (WEBINAR ? 'Free live webinar' : 'Free online challenge') + '</b>' + esc(span()) + ' \u00B7 ' + esc(tfmt(START)) + '</span>' +
       '<span class="btn" data-reg="1" role="button" tabindex="0">Hold my seat' + ARROW + '</span>';
     document.body.appendChild(d);
     var reg = $('regcard'), cl = $('closing'), queued = false;
@@ -1381,8 +1385,8 @@
     if (!box || !days.length) return;
     var slot = S.day_time || tfmt(START);
     var meta = function (i) {
-      var d = new Date(START.getTime() + i * 864e5);
-      return dfmt(d) + ' \u00B7 ' + slot + ' \u00B7 live, replay the same day';
+      var d = partDate(i);
+      return dfmt(d) + ' \u00B7 ' + (WEBINAR ? tfmt(d) : slot) + ' \u00B7 live, replay the same day';
     };
     var when1 = q('.when .dmeta', box);
     if (when1) when1.innerHTML = 'Live session<br>' + esc(meta(0));
@@ -1413,7 +1417,8 @@
   function agendaDays(box, slot) {
     var n = qa('.d23 > *', box).length + 1;
     function node(i) {
-      var d = new Date(START.getTime() + i * 864e5);
+      var d = partDate(i);
+      if (WEBINAR) slot = tfmt(d);
       var parts = String(dfmt(d)).split(' ');
       var wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d.getDay()];
       return '<div class="dnode"><span class="dnwd">' + esc(wd) + '</span>' +
