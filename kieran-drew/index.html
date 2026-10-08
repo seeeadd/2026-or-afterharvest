@@ -338,23 +338,33 @@ section.s{padding:116px 0}
 .keep .head{text-align:center;max-width:820px;margin:0 auto}
 .keep h2{font-size:clamp(34px,4.4vw,60px);margin-top:16px}
 .keep .head p{text-wrap:balance;max-width:600px;margin:22px auto 0;line-height:1.5}
-.kstrip{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px;margin:100px 0 90px;text-align:left}
-.kstrip:before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--navy)}
-.kstrip .tkart{position:relative;padding-top:58px}
-.kdot{position:absolute;top:0;left:0;width:20px;height:20px;border-radius:50%;background:var(--paper);border:2px solid var(--navy)}
-.kstrip .tkart:last-child .kdot{background:var(--amber);border-color:var(--amber)}
-.kday{font:700 16px/1.2 var(--sans);color:var(--amber-t);margin-bottom:22px}
-.kbefore{font-size:19px;color:var(--slate);line-height:1.5;text-decoration:line-through;text-decoration-color:rgba(47,68,84,.4);text-wrap:pretty}
-.kafter{font:700 28px/1.22 var(--display);letter-spacing:-.015em;color:var(--navy);margin-top:14px;text-wrap:pretty}
-.kpage{position:absolute;right:-6px;top:-44px;width:62px}
+.kdoc{max-width:1040px;margin:64px auto 60px;background:var(--sheet);border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 60px -40px rgba(30,44,54,.55);overflow:hidden;text-align:left}
+.dbar{display:flex;align-items:center;gap:16px;padding:14px 22px;border-bottom:1px solid var(--line);background:#fbfaf7}
+.ddots{display:flex;gap:6px}.ddots i{width:10px;height:10px;border-radius:50%;background:#d9dcde}
+.dname{font:600 14px/1 var(--sans);color:var(--slate);letter-spacing:.02em;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dmode{display:inline-flex;align-items:center;gap:7px;font:600 13px/1 var(--sans);color:var(--navy-dd);background:rgba(215,150,69,.18);border:1px solid rgba(215,150,69,.5);border-radius:999px;padding:7px 12px 5px}
+.dbody{padding:10px 0}
+.drow{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:34px;padding:26px 30px 26px 44px;position:relative}
+.drow+.drow{border-top:1px dashed var(--line)}
+.dday{font:600 12.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--amber-t);margin-bottom:12px}
+.dday span{color:var(--slate);margin-left:8px;letter-spacing:.08em}
+.dline{font-size:21px;line-height:1.55;color:var(--navy)}
+.dline del{color:#a2504a;text-decoration-thickness:1.5px;background:rgba(162,80,74,.07);border-radius:3px;padding:0 2px}
+.dline ins{text-decoration:none;font:700 22px/1.45 var(--display);color:var(--navy);background:linear-gradient(transparent 62%,rgba(254,202,29,.55) 62%);padding:0 2px}
+.dcom{position:relative;background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:14px 16px 15px;box-shadow:0 12px 26px -20px rgba(30,44,54,.5);align-self:center}
+.dcom:before{content:"";position:absolute;left:-36px;top:50%;width:33px;border-top:1.5px dashed rgba(215,150,69,.7)}
+.dch{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.dch img{width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:50% 20%}
+.dch b{font:700 14px/1 var(--sans);color:var(--navy)}.dch span{font:500 12px/1 var(--sans);color:var(--slate);margin-left:auto}
+.dcom p{font-size:15px;line-height:1.5;color:var(--navy)}
+.dfoot{display:flex;justify-content:flex-end;align-items:center;gap:14px;padding:14px 22px;border-top:1px solid var(--line);background:#fbfaf7;font:600 13px/1 var(--sans);color:var(--slate)}
+.dfoot b{background:var(--navy);color:var(--paper);border-radius:6px;padding:9px 14px 7px;letter-spacing:.02em}
 .kfoot{display:flex;flex-direction:column;align-items:center;gap:18px}
 .kfoot small{font:600 12px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
 @media (max-width:720px){
   .keep .head{text-align:left}.keep .head p{margin-left:0}.keep h2 .nw{white-space:normal}
-  .kstrip{grid-template-columns:minmax(0,1fr);gap:44px;margin:56px 0;padding-left:40px}
-  .kstrip:before{top:0;bottom:0;left:9px;right:auto;width:2px;height:auto}
-  .kstrip .tkart{padding-top:0}.kdot{left:-40px;top:2px}
-  .kafter{font-size:23px}.kpage{display:none}
+  .kdoc{margin:40px 0}.drow{grid-template-columns:minmax(0,1fr);gap:16px;padding:22px 18px}.dcom:before{display:none}
+  .dline{font-size:18px}.dline ins{font-size:19px}.dname{font-size:12.5px}
   .kfoot{align-items:stretch}.kfoot .btn{width:100%}.kfoot small{text-align:center}
 }
 
@@ -780,11 +790,14 @@ section.s{padding:116px 0}
       <h2 class="disp"><span class="nw">Three days from now,</span> <span class="nw">your essay is <span class="hlt draw">already live.</span></span></h2>
       <p>Everything crossed out below? I've done all of it (and it didn't go well).</p>
     </div>
-    <div class="kstrip rv">
-      <div class="tkart"><span class="kdot"></span><p class="kday">Day 1</p><p class="kbefore">Writing for everyone while your posts sink into the abyss</p><p class="kafter">One true fan every piece goes to</p></div>
-      <div class="tkart"><span class="kdot"></span><p class="kday">Day 2</p><p class="kbefore">Pulled in 10 directions by every guru's strategy</p><p class="kafter">A short list of Pillar Ideas you actually believe in</p></div>
-      <div class="tkart"><span class="kdot"></span><p class="kday">Day 3</p><p class="kbefore">Chasing impressions with the same templates as everyone else</p><p class="kafter">One magnetic essay, published with your name on it</p>
-        <svg class="kpage" viewBox="0 0 62 76" aria-hidden="true"><rect x="1" y="1" width="52" height="66" rx="3" fill="#fff" stroke="#2F4454" stroke-width="2"/><rect x="9" y="12" width="30" height="5" rx="1" fill="#2F4454"/><rect x="9" y="24" width="36" height="2.5" fill="#c9ced1"/><rect x="9" y="31" width="32" height="2.5" fill="#c9ced1"/><rect x="9" y="38" width="35" height="2.5" fill="#c9ced1"/><circle cx="50" cy="62" r="11" fill="#D79645"/><path d="M45 62l3.5 3.5L56 58" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="kdoc rv" aria-label="Your writing, before and after the three days">
+      <div class="dbar"><span class="ddots"><i></i><i></i><i></i></span><span class="dname">how-i-write-online (final FINAL).doc</span><span class="dmode"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 10.5 9.6 2.9l1.5 1.5-7.6 7.6H2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Suggesting</span></div>
+      <div class="dbody">
+        <div class="drow"><div class="dtxt"><p class="dday">Day 1 <span>Tue Jan 12</span></p><p class="dline"><del>Writing for everyone while your posts sink into the abyss</del><br><ins>Writing to your One True Fan, the one person who reads every word</ins></p></div><div class="dcom"><div class="dch"><img src="img/headshot.jpg" alt=""><b>Kieran</b><span>Day 1</span></div><p>Write to one person and the right people feel seen. Everyone else just reads over their shoulder.</p></div></div>
+        <div class="drow"><div class="dtxt"><p class="dday">Day 2 <span>Wed Jan 13</span></p><p class="dline"><del>Pulled in 10 directions by every guru's strategy</del><br><ins>Working from a short list of Pillar Ideas you'd happily defend in public</ins></p></div><div class="dcom"><div class="dch"><img src="img/headshot.jpg" alt=""><b>Kieran</b><span>Day 2</span></div><p>The ideas you'd argue for down the pub are the ones people remember. We find yours.</p></div></div>
+        <div class="drow"><div class="dtxt"><p class="dday">Day 3 <span>Thu Jan 14</span></p><p class="dline"><del>Chasing impressions with the same templates as everyone else</del><br><ins>Publishing one magnetic essay that could only have come from you</ins></p></div><div class="dcom"><div class="dch"><img src="img/headshot.jpg" alt=""><b>Kieran</b><span>Day 3</span></div><p>We hit publish together on the call, so nobody chickens out (me included).</p></div></div>
+      </div>
+      <div class="dfoot"><span>3 suggestions</span><b>Accept all</b></div>
     </div>
     <div class="kfoot rv"><a class="btn" href="#join"><svg class="mag" viewBox="0 0 30 26" width="30" height="26" aria-hidden="true"><g transform="rotate(90 13 13)"><path d="M7 4.5v8.5a6 6 0 0 0 12 0V4.5" fill="none" stroke="currentColor" stroke-width="5.2"/><rect x="4.2" y="2.5" width="5.6" height="4.2" rx="1" fill="var(--paper)" stroke="currentColor" stroke-width="1.4"/><rect x="16.2" y="2.5" width="5.6" height="4.2" rx="1" fill="var(--paper)" stroke="currentColor" stroke-width="1.4"/></g><path class="pull" d="M25 8.5q2.4 4.5 0 9M27.8 6.2q3.6 6.8 0 13.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>I'm in, hold my seat</a><small id="kFine">Free and live, Jan 12 to 14, 12:00 PM ET</small></div>
   </div>
