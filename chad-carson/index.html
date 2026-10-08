@@ -680,29 +680,6 @@ h1,h2,h3,.serif{font-family:var(--serif)}
 .mk svg{display:block}
 @media (max-width:1180px){.hpill{white-space:normal;flex-wrap:wrap;row-gap:6px}}
 
-/* second calming pass (Sean 2026-10-08: "a bit more mature"): no doodles, no script notes, quieter ground, navy leads, orange only on actions and rules */
-.hero:before,.days:before{display:none}
-.hn,.hn-card,.hn-reg{display:none}
-.says small{font:700 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:8px}
-body{background:linear-gradient(180deg,#dde9f2 0,#eaf1f7 560px,#f3f7fa 1000px) no-repeat,#f3f7fa}
-:root{--ground:#eef3f8;--warm:#f6f9fc;--sky:#dde9f2}
-.hpill{background:#dde9f2}
-.hright h1 .mk{color:var(--navy-d)}
-.mk svg{height:.16em}
-.well:before{display:none}
-.well{padding:40px 28px 28px}
-.tl:before{background:radial-gradient(circle,#e87942 0 2px,transparent 2.4px) 0 0/12px 12px repeat-y;opacity:.8}
-.node{box-shadow:0 0 0 4px #fff,0 0 0 5.5px var(--orange)}
-.ui{background-image:none;background:#fff}
-.nums{background:#e8f0f6}
-.fit{background:#f6f9fc}
-.pdisc{background:#dde9f2}
-.close{background:linear-gradient(180deg,#f6f9fc,#e3edf4)}
-.cl{background:#e8f0f6}
-.chips button.on{background:#e4eef5;border-color:#9fbbd0}
-.chip.o{background:#fdeadf}
-
-@media (min-width:721px){.book{grid-template-columns:auto minmax(0,1fr)}.book .go{grid-column:1/-1;display:flex;align-items:center;gap:18px;text-align:left;padding-top:4px}.book .go .btn{flex:none}.book .go small{margin-top:0;max-width:none}}
 /* calmer: no tilts, no stickers, no floating, fewer notes, plainer rules */
 .hsun{display:none}
 .pdisc{background:#c7eafb}
@@ -722,6 +699,73 @@ body{background:linear-gradient(180deg,#dde9f2 0,#eaf1f7 560px,#f3f7fa 1000px) n
 .checks li{box-shadow:0 1px 2px rgba(11,42,74,.05)}
 .logo-row{display:flex;align-items:center;gap:10px}
 @media (max-width:720px){.doors svg{width:22px;height:22px}.doors .chip{margin-left:0}.ladder .mk2 small{font-size:9px;letter-spacing:.06em}.well{padding:38px 16px 18px}.hero:before{background-size:900px auto}.days:before{background-size:900px auto}.tl:before{left:21px}.node{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--orange)}.ladder .mk2 b{font-size:13px}}
+
+/* ===== depth and precision (Sean 2026-10-08: "less round corners, more realistic depth, graphics") ===== */
+:root{--sh-s:0 1px 1px rgba(11,42,74,.10),0 2px 4px -1px rgba(11,42,74,.08);--sh-m:0 1px 1px rgba(11,42,74,.08),0 4px 8px -2px rgba(11,42,74,.12),0 18px 32px -14px rgba(11,42,74,.30);--sh-l:0 1px 1px rgba(11,42,74,.10),0 8px 14px -4px rgba(11,42,74,.16),0 30px 52px -22px rgba(11,42,74,.50)}
+.btn{border-radius:5px;background:#d95f27;box-shadow:0 1px 0 #a8470f,0 8px 14px -8px rgba(168,71,15,.6)}
+.btn:hover{transform:translateY(-1px);background:#cf5822;box-shadow:0 1px 0 #a8470f,0 12px 18px -8px rgba(168,71,15,.65)}
+.btn:active{transform:translateY(1px);box-shadow:0 0 0 #a8470f}
+.btn .av{border-radius:50%}
+.pill,.hpill,.chips button,.fb-tile,.starpill,.tstrip .award,.chip,.chip.o,.cb,.checks .tk,.sticker,.stamp{border-radius:4px}
+.hpill .dchip{border-radius:3px}
+.fb-bar{border-radius:8px;box-shadow:var(--sh-m)}
+.fb-ic{border-radius:7px}
+.tstrip,.book,.regc{border-radius:8px;box-shadow:var(--sh-m);background:#fff;border:1px solid rgba(17,82,144,.14)}
+.tstrip{background:rgba(255,255,255,.9)}
+.regc{box-shadow:var(--sh-l)}
+.book .mini{border-radius:3px;box-shadow:0 1px 1px rgba(0,0,0,.3),0 10px 16px -8px rgba(11,42,74,.55)}
+.iph{border-radius:30px;box-shadow:0 2px 3px rgba(11,42,74,.35),0 30px 48px -26px rgba(11,42,74,.7)}
+.iph .bz{border-radius:26px}.iph .scr{border-radius:14px}.iph .isl{border-radius:9px}
+.fields input{border-radius:6px;box-shadow:inset 0 1px 2px rgba(11,42,74,.14)}
+.stat,.bcard,.gcard,.gfaq div,.checks li{border-radius:6px;box-shadow:var(--sh-s)}
+.checks li{border:1px solid rgba(17,82,144,.12);background:#fff}
+.bcard{border-top-width:6px;box-shadow:var(--sh-m)}
+.bcard .who img{border-radius:6px}
+.pcard{border-radius:4px;border-width:8px;box-shadow:var(--sh-l)}
+.pname,.says{border-radius:6px;box-shadow:var(--sh-m)}
+.says{border-radius:6px 6px 6px 2px}
+.cbox{border-radius:8px;box-shadow:var(--sh-l)}
+.mcard{border-radius:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 2px 3px rgba(0,0,0,.35),0 28px 40px -20px rgba(11,42,74,.8)}
+.mcard .ico{border-radius:6px}
+.gcard .gn{border-radius:4px}
+#gate .gbar{border-radius:8px}#gate .gpcopy,#gate .gpx{border-radius:5px}
+#stick .sv{border-radius:8px;box-shadow:var(--sh-l)}#stick .go{border-radius:5px}
+/* a real clipboard: a lit navy board, a ruled paper sheet with a shadow, a hinged orange clip with a steel bar */
+.node{border-radius:8px;background:#124f8a;box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--orange),0 5px 8px -4px rgba(11,42,74,.45)}
+.well{border-radius:6px;border:1px solid #0b3c6c;background:url(img/tex-board.png),#124f8a;
+  box-shadow:0 1px 2px rgba(11,42,74,.35),0 24px 34px -24px rgba(11,42,74,.6)}
+.well:before{inset:8px;border:1px solid rgba(255,255,255,.07);border-radius:3px;box-shadow:none}
+.ui{border-radius:1px;background:url(img/tex-paper.png),#fffdf8;
+  box-shadow:0 1px 1px rgba(0,0,0,.16),0 10px 14px -10px rgba(0,0,0,.5)}
+.ui:before{width:98px;height:30px;top:-24px;border-radius:4px 4px 2px 2px;background:#dc6428;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 2px 0 #9b4010,0 7px 9px -4px rgba(0,0,0,.5)}
+.ui:after{width:66px;height:9px;top:-9px;border-radius:4px;background:url(img/tex-metal.png),linear-gradient(180deg,#e7ebee 0,#aab4bd 100%);
+  box-shadow:0 1px 1px rgba(0,0,0,.45)}
+.ui .uh{border-bottom:1px solid rgba(11,42,74,.14);padding-bottom:10px}
+.doors svg{width:26px;height:26px;filter:drop-shadow(0 1px 1px rgba(11,42,74,.3))}
+.doors{border-top:1px solid rgba(11,42,74,.25)}
+.ladder .tr{height:6px;border-radius:2px;box-shadow:inset 0 1px 1px rgba(0,0,0,.18)}
+.ladder .mk2 i{border-radius:2px;box-shadow:0 0 0 3px #fffefa,0 2px 3px rgba(0,0,0,.35)}
+.week .c{border-radius:3px;box-shadow:inset 0 1px 2px rgba(11,42,74,.12)}
+.week .c em{border-radius:2px;box-shadow:0 1px 1px rgba(11,42,74,.2)}
+/* blueprint grid instead of doodles */
+.hero:before,.days:before{background:linear-gradient(rgba(17,82,144,.07) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,rgba(17,82,144,.07) 1px,transparent 1px) 0 0/32px 32px;opacity:1;
+  -webkit-mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.35) 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.35) 70%,transparent 100%)}
+.days:before{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.hsun{display:none}
+.pdisc{border-radius:50%}
+.nums{background:linear-gradient(180deg,#e1f0f9,#e9f3fa)}
+@media (max-width:720px){.hn{display:none}.ui:before{width:84px}.well{padding:36px 14px 16px}}
+
+/* buttons: powder-coated orange with a fine stipple and a slight sheen (not glossy); the booking card text wraps, never runs under its button */
+.btn{background-color:#d95f27;background-image:url(img/tex-btn.png),linear-gradient(180deg,rgba(255,255,255,.09) 0,rgba(255,255,255,0) 45%,rgba(0,0,0,.09) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.12),0 1px 0 #a8470f,0 8px 14px -8px rgba(168,71,15,.6)}
+.btn:hover{background-color:#cf5822;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.12),0 1px 0 #a8470f,0 12px 18px -8px rgba(168,71,15,.65)}
+.btn:active{box-shadow:inset 0 2px 3px rgba(0,0,0,.28)}
+#gate .gpcopy,#stick .go,.gcard .gn,.stamp{background-color:#d95f27;background-image:url(img/tex-btn.png)}
+@media (min-width:721px){.book{gap:18px}.book .mini{width:150px}.book h3{font-size:19px;line-height:1.22}.book h3 .nw{white-space:normal}
+  .book .go .btn{padding:14px 18px;font-size:13.5px}.book .go small{max-width:170px}}
+
 </style>
 <link rel="icon" href="favicon.ico?v=c430376d" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=311b9c74">
@@ -841,9 +885,9 @@ body{background:linear-gradient(180deg,#dde9f2 0,#eaf1f7 560px,#f3f7fa 1000px) n
               <tr><td>Bills + health</td><td>$3,400</td><td>$3,400</td><td>$0</td></tr>
               <tr><td>Travel + fun</td><td>$900</td><td>$500</td><td>$400</td></tr>
               <tr class="gap"><td>Cushion</td><td>$600</td><td>$150</td><td><b>$450</b></td></tr></tbody></table>
-            <div class="doors"><span class="l">Doors</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="#e87942" stroke="#b84a14" stroke-width="1.6" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="#e87942" stroke="#b84a14" stroke-width="1.6" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="#e87942" stroke="#b84a14" stroke-width="1.6" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="#e87942" stroke="#b84a14" stroke-width="1.6" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="#e87942" stroke="#b84a14" stroke-width="1.6" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="#e87942" stroke="#b84a14" stroke-width="1.6" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="#115290" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="3 2.4"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="#115290" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="3 2.4"/></svg><span class="chip o">2 doors to go</span></div>
+            <div class="doors"><span class="l">Doors</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 11.6 12 3.4l9.4 8.2z" fill="#b84a14"/><path d="M5 11.6h14V20.4H5z" fill="#e87942"/><path d="M5 11.6h14v1.6H5z" fill="#000" opacity=".12"/><path d="M10.4 14.2h3.2v6.2h-3.2z" fill="#0b2a4a"/><path d="M15.2 13.8h2.4v2.4h-2.4z" fill="#c7eafb"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 11.6 12 3.4l9.4 8.2z" fill="#b84a14"/><path d="M5 11.6h14V20.4H5z" fill="#e87942"/><path d="M5 11.6h14v1.6H5z" fill="#000" opacity=".12"/><path d="M10.4 14.2h3.2v6.2h-3.2z" fill="#0b2a4a"/><path d="M15.2 13.8h2.4v2.4h-2.4z" fill="#c7eafb"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 11.6 12 3.4l9.4 8.2z" fill="#b84a14"/><path d="M5 11.6h14V20.4H5z" fill="#e87942"/><path d="M5 11.6h14v1.6H5z" fill="#000" opacity=".12"/><path d="M10.4 14.2h3.2v6.2h-3.2z" fill="#0b2a4a"/><path d="M15.2 13.8h2.4v2.4h-2.4z" fill="#c7eafb"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 11.6 12 3.4l9.4 8.2z" fill="#b84a14"/><path d="M5 11.6h14V20.4H5z" fill="#e87942"/><path d="M5 11.6h14v1.6H5z" fill="#000" opacity=".12"/><path d="M10.4 14.2h3.2v6.2h-3.2z" fill="#0b2a4a"/><path d="M15.2 13.8h2.4v2.4h-2.4z" fill="#c7eafb"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 11.6 12 3.4l9.4 8.2z" fill="#b84a14"/><path d="M5 11.6h14V20.4H5z" fill="#e87942"/><path d="M5 11.6h14v1.6H5z" fill="#000" opacity=".12"/><path d="M10.4 14.2h3.2v6.2h-3.2z" fill="#0b2a4a"/><path d="M15.2 13.8h2.4v2.4h-2.4z" fill="#c7eafb"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 11.6 12 3.4l9.4 8.2z" fill="#b84a14"/><path d="M5 11.6h14V20.4H5z" fill="#e87942"/><path d="M5 11.6h14v1.6H5z" fill="#000" opacity=".12"/><path d="M10.4 14.2h3.2v6.2h-3.2z" fill="#0b2a4a"/><path d="M15.2 13.8h2.4v2.4h-2.4z" fill="#c7eafb"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 11.6 12 3.4l9.4 8.2M5 11.6V20.4h14V11.6" fill="none" stroke="#115290" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="3 2.4"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 11.6 12 3.4l9.4 8.2M5 11.6V20.4h14V11.6" fill="none" stroke="#115290" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="3 2.4"/></svg><span class="chip o">2 doors to go</span></div>
           </div>
-          <span class="hn hand" style="right:6px;top:-38px;transform:rotate(0deg)">small and mighty</span>
+          <span class="hn hand" style="right:20px;top:9px;font-size:20px;color:#cfe8f7;transform:rotate(0deg)">small and mighty</span>
         </div>
       </article>
 
@@ -851,9 +895,9 @@ body{background:linear-gradient(180deg,#dde9f2 0,#eaf1f7 560px,#f3f7fa 1000px) n
         <div class="node"><div><small>Day</small><b>2</b></div></div>
         <div class="dtext">
           <span class="dwhen"><span class="dd" data-day="1">Day 2</span><i></i><span class="dt" data-day="1">Live</span></span>
-          <h3 class="serif"><span class="nw">Find deals</span><span class="nw">outside the listings</span></h3>
+          <h3 class="serif"><span class="nw">Find deals</span><span class="nw">outside the MLS</span></h3>
           <p class="out">Pick where your next deal comes from and set the weekly hour that keeps it coming</p>
-          <p class="det">We map the places deals come from besides the listings, brief an agent and a wholesaler on your buy box and set the one lead-gen hour you can keep every week.</p>
+          <p class="det">We map the places deals come from besides the MLS, brief an agent and a wholesaler on your buy box and set the one lead-gen hour you can keep every week.</p>
         </div>
         <div class="well">
           <div class="ui">
@@ -872,7 +916,7 @@ body{background:linear-gradient(180deg,#dde9f2 0,#eaf1f7 560px,#f3f7fa 1000px) n
             <div class="row"><span class="cb"></span>Add 3 wholesalers to your list<span class="chip">Wed</span></div>
             <div class="row"><span class="cb"></span>Mail 40 owner letters<span class="chip o">Fri</span></div>
           </div>
-          <span class="hn hand" style="left:10px;top:-38px;transform:rotate(0deg)">beyond the listings</span>
+          <span class="hn hand" style="right:20px;top:9px;font-size:20px;color:#cfe8f7;transform:rotate(0deg)">beyond the MLS</span>
         </div>
       </article>
 
@@ -898,7 +942,7 @@ body{background:linear-gradient(180deg,#dde9f2 0,#eaf1f7 560px,#f3f7fa 1000px) n
             <div class="row"><span class="cb"></span>Write your low first offer<span class="chip o">Send Mon</span></div>
             <div class="row"><span class="cb"></span>Map your next 90 days<span class="chip">90 days</span></div>
           </div>
-          <span class="hn hand" style="right:4px;bottom:-34px;transform:rotate(0deg)">a little embarrassing is fine</span>
+          <span class="hn hand" style="right:20px;top:9px;font-size:20px;color:#cfe8f7;transform:rotate(0deg)">a little embarrassing is fine</span>
         </div>
       </article>
     </div>
@@ -942,7 +986,7 @@ body{background:linear-gradient(180deg,#dde9f2 0,#eaf1f7 560px,#f3f7fa 1000px) n
       </div>
       <ul class="checks rv" id="checks">
         <li style="--i:0" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Not sure what's enough</b><p>Work out <span class="hl">how few rentals</span> cover the life you want.</p></div></li>
-        <li style="--i:1" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Stuck at one deal</b><p>Know where your next deal comes from, <span class="hl">beyond the listings</span>.</p></div></li>
+        <li style="--i:1" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Stuck at one deal</b><p>Know where your next deal comes from, <span class="hl">beyond the MLS</span>.</p></div></li>
         <li style="--i:2" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Offers feel awkward</b><p>Write a <span class="hl">low first offer</span> you can say out loud.</p></div></li>
         <li style="--i:3" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>No weekly habit</b><p>Set <span class="hl">one lead-gen hour</span> a week that you will keep.</p></div></li>
         <li style="--i:4" role="button" tabindex="0" aria-pressed="true"><span class="tk"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#115290" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Hype and pressure</b><p>Follow a <span class="hl">plain plan</span> with no 10x and no big talk.</p></div></li>
@@ -1060,7 +1104,7 @@ body{background:linear-gradient(180deg,#dde9f2 0,#eaf1f7 560px,#f3f7fa 1000px) n
   tilt(document.getElementById('pwrap'),document.getElementById('pcard'),10);
   tilt(document.querySelector('.cl'),document.getElementById('mcard'),14);
   var st=document.getElementById('stick'),scap=st.querySelector('.cap'),hero=document.getElementById('hero'),join=document.getElementById('join'),si=0;
-  var caps=['The <b>60 second version</b> of the three days.','Day 1: <b>Know the few rentals that are enough</b>','Day 2: <b>Find deals outside the listings</b>','Day 3: <b>Make the offer and your plan</b>'];
+  var caps=['The <b>60 second version</b> of the three days.','Day 1: <b>Know the few rentals that are enough</b>','Day 2: <b>Find deals outside the MLS</b>','Day 3: <b>Make the offer and your plan</b>'];
   function snext(){scap.style.opacity=0;setTimeout(function(){scap.innerHTML=caps[si%caps.length];si++;scap.style.opacity=1},300)}
   snext();setInterval(snext,3800);
   function stick(){var h=hero.getBoundingClientRect(),j=join.getBoundingClientRect();st.classList.toggle('on',h.bottom<90&&!(j.top<innerHeight&&j.bottom>0))}
