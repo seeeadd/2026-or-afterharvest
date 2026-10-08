@@ -513,7 +513,7 @@ section.s{padding:110px 0}
 .gfaq b{font:400 19px/1.2 var(--serif)}
 .gfaq p{margin-top:8px}
 .foot{padding-bottom:110px}
-#gate{position:fixed;left:0;right:0;bottom:22px;z-index:75;display:flex;justify-content:center;padding:0 16px;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
+#gate{position:fixed;left:0;right:0;bottom:var(--gy,8vh);z-index:75;display:flex;justify-content:center;padding:0 16px;pointer-events:none;opacity:0;visibility:hidden;transform:scale(var(--gs,1));transform-origin:50% 100%;transition:opacity .45s ease,visibility .45s,bottom .5s cubic-bezier(.2,.8,.3,1),transform .5s cubic-bezier(.2,.8,.3,1)}
 #gate.on{opacity:1;visibility:visible}
 #gate .gbar{pointer-events:auto;display:flex;align-items:center;gap:14px;max-width:100%;padding:9px 10px 9px 18px;border-radius:999px;background:rgba(255,255,255,.94);
   -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 0 0 1.5px rgba(27,23,36,.08),0 24px 50px -22px rgba(27,23,36,.5)}
@@ -535,7 +535,7 @@ section.s{padding:110px 0}
 #gate .gpx{position:absolute;top:12px;right:12px;width:30px;height:30px;border:0;border-radius:50%;background:var(--ground);color:var(--ink);cursor:pointer;font-size:13px}
 body.gateon #stick{transform:translateY(-70px)}
 @media (max-width:900px){.gcards,.gfaq{grid-template-columns:1fr}}
-@media (max-width:760px){#gate{bottom:14px;padding:0 10px}#gate .gbar{padding:8px 8px 8px 14px;gap:10px;width:100%}#gate .gtx b{font-size:15px;white-space:normal}#gate .gtx small{display:none}#gate .btn.sm{padding:11px 14px;font-size:14px}#gate .glock{width:24px;height:24px}.gsec{padding-bottom:44px}}
+@media (max-width:760px){#gate{padding:0 10px;transform:none}#gate .gbar{padding:8px 8px 8px 14px;gap:10px;width:100%}#gate .gtx b{font-size:15px;white-space:normal}#gate .gtx small{display:none}#gate .btn.sm{padding:11px 14px;font-size:14px}#gate .glock{width:24px;height:24px}.gsec{padding-bottom:44px}}
 @media (max-width:400px){#gate .btn.sm svg{display:none}}
 /* gate bar motion: springs in, lock rattles, button shines, arrow nudges. Off for reduced motion. */
 @keyframes gin{0%{opacity:0;transform:translateY(26px) scale(.94)}60%{opacity:1;transform:translateY(-4px) scale(1.01)}100%{opacity:1;transform:none}}
@@ -943,7 +943,7 @@ body.gateon #stick{transform:translateY(-70px)}
   var wrap=document.getElementById('gatewrap'),gate=document.getElementById('gate');if(!wrap||!gate)return;
   var panel=document.getElementById('gpanel'),addr='sean@theafterharvest.com';
   function tick(){var r=wrap.getBoundingClientRect(),vh=innerHeight,on=r.top<vh-60&&r.bottom>120;
-    gate.classList.toggle('on',on);document.body.classList.toggle('gateon',on);
+    gate.classList.toggle('on',on);document.body.classList.toggle('gateon',on);var vh=innerHeight,pp=Math.max(0,Math.min(1,(vh-r.top)/(r.height+vh*.6)));gate.style.setProperty('--gy',(8+pp*30).toFixed(1)+'vh');gate.style.setProperty('--gs',(1+pp*.16).toFixed(3));
     if(!on&&!panel.hidden){panel.classList.remove('on');panel.hidden=true}}
   addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
   function copy(b){try{navigator.clipboard&&navigator.clipboard.writeText(addr)}catch(e){}if(b){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},2200)}}
