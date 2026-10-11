@@ -3213,3 +3213,8 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
   html body #page .scta .btn.lg{height:auto;min-height:50px;padding:10px 20px;white-space:normal;text-align:center;
     line-height:1.2;max-width:100%;box-sizing:border-box}
 }
+
+/* sticky bar icon: the lead's own favicon, not the drawn ticket */
+#page .nav .cal .favmark{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 8px rgba(15,25,70,.28))}
+#page .nav .cal,#page .nav .cal .favmark{width:40px !important;height:40px !important}
+@media (max-width:760px){#page .nav .cal,#page .nav .cal .favmark{width:34px !important;height:34px !important}}
