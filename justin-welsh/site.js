@@ -205,7 +205,7 @@
   function brandMark() {
     var cal = q('.nav .cal'), m = S.monogram || initials(LP.brand || BRAND);
     if (!cal || !m) return;
-    cal.innerHTML = '<span class="bmark">' + emblemSVG(1.8) + '</span>';
+    cal.innerHTML = '<img class="favmark" src="favicon.png" alt="">';   /* his own favicon, the same picture as the tab and the Notion icon */
   }
 
   /* a call to action in the reader's own words: the day's promise turned into the button. Built from the
