@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>The Deal Room | New Media Summit</title>
 <link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preload" as="image" href="img/room.jpg">
 <link rel="stylesheet" href="../fonts/plus-jakarta-sans_300-400-500-600-700-800.css">
 <style>
 :root{
@@ -13,139 +14,262 @@
   --ink:#010100; --slate:#3c434b; --surface:#f2f5f6; --bg:#ffffff;
   --grad:linear-gradient(to top right,#f38100,#f02d30);
   --line:rgba(1,1,0,.08);
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-weight:500;-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
-img{display:block;max-width:100%}
-.wrap{width:min(1080px,100% - 48px);margin:0 auto}
-.narrow{width:min(820px,100% - 48px);margin:0 auto}
+img{display:block;max-width:100%;height:auto}
+.wrap{width:min(1120px,100% - 48px);margin:0 auto}
 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* top strip */
-.strip{background:#000;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
-.strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
-.strip .when{font-size:14px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.86);display:flex;align-items:center;gap:10px}
-.strip .when i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(242,79,30,.18)}
-.cd{display:flex;align-items:center;gap:6px}
-.cd span{display:flex;flex-direction:column;align-items:center;min-width:44px}
-.cd b{font-size:18px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
-.cd small{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
-.cd em{font-style:normal;color:var(--accent);font-weight:700;transform:translateY(-6px)}
+/* shine across gradient words: a highlight layer sweeps over the gradient, both clipped to the text */
+.shine{background:linear-gradient(100deg,transparent 42%,rgba(255,236,224,.95) 50%,transparent 58%),linear-gradient(to right,#f38100,#f24f1e 55%,#f02d30);background-size:250% 100%,100% 100%;background-repeat:no-repeat;background-position:100% 0,0 0;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 9s var(--ease) 1.4s infinite}
+@keyframes shine{0%{background-position:100% 0,0 0}18%,100%{background-position:0% 0,0 0}}
 
-/* hero */
-.hero{position:relative;background:#000;color:#fff;overflow:hidden;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:0;background:url(img/crowd.jpg) center 35%/cover no-repeat;opacity:.17;z-index:-2;filter:saturate(.9)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;
-  background:radial-gradient(60% 55% at 50% 0%,rgba(242,79,30,.20),transparent 70%),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.35) 40%,#000 96%)}
-.hero{min-height:calc(100vh - 58px);display:flex;align-items:center}
-.hero .inner{text-align:center;padding:44px 0 72px}
-.logo{width:210px;height:auto;margin:0 auto 30px}
-.tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);font-size:14px;font-weight:600;letter-spacing:.02em;backdrop-filter:blur(6px)}
-.tag svg{width:16px;height:16px}
-h1{font-weight:700;font-size:clamp(36px,4.5vw,60px);line-height:1.1;letter-spacing:-.025em;margin:22px auto 0;max-width:960px;text-wrap:balance}
-.sub{font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:rgba(255,255,255,.82);max-width:640px;margin:18px auto 0;text-wrap:balance}
+/* reveal on scroll */
+[data-r]{opacity:0;transform:translateY(18px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+[data-r].in{opacity:1;transform:none}
+
+/* ---------- top strip ---------- */
+.strip{position:relative;z-index:6;background:#030303;color:#fff;border-bottom:1px solid rgba(255,255,255,.07)}
+.strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.when{font-size:13.5px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.82);display:flex;align-items:center;gap:10px}
+.dot{position:relative;width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(242,79,30,.7);animation:ping 2.4s var(--ease) infinite}
+@keyframes ping{0%{transform:scale(.4);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.cd{display:flex;align-items:center;gap:4px}
+.cd span{display:flex;flex-direction:column;align-items:center;min-width:42px}
+.cd b{font-size:17px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.cd small{font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:5px}
+.cd em{font-style:normal;color:rgba(242,79,30,.9);font-weight:700;transform:translateY(-6px)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:calc(100vh - 56px);display:flex;align-items:center;background:#030303;color:#fff;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:-3%;background:url(img/room.jpg) center 62%/cover no-repeat;opacity:.5;z-index:-5;animation:kb 38s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07) translateY(-1%)}}
+.hero .shade{position:absolute;inset:0;z-index:-4;background:linear-gradient(180deg,rgba(3,3,3,.9) 0%,rgba(3,3,3,.55) 32%,rgba(3,3,3,.62) 62%,#030303 100%)}
+.aura{position:absolute;z-index:-3;border-radius:50%;filter:blur(70px);pointer-events:none}
+.a1{width:720px;height:440px;left:50%;top:-6%;margin-left:-520px;background:radial-gradient(closest-side,rgba(242,79,30,.55),transparent);animation:d1 20s ease-in-out infinite alternate}
+.a2{width:640px;height:420px;left:50%;top:4%;margin-left:-60px;background:radial-gradient(closest-side,rgba(243,129,0,.38),transparent);animation:d2 24s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(90px,40px) scale(1.12)}}
+@keyframes d2{to{transform:translate(-110px,30px) scale(.92)}}
+.spot{position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(520px circle at var(--mx,50%) var(--my,35%),rgba(255,255,255,.07),transparent 62%)}
+.grain{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.hero .inner{text-align:center;padding:40px 0 132px;width:min(1120px,100% - 48px)}
+.logo{width:214px;margin:0 auto 34px}
+.tag{position:relative;display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 13px;border-radius:999px;background:rgba(255,255,255,.04);font-size:13.5px;font-weight:600;letter-spacing:.03em;backdrop-filter:blur(8px)}
+.tag::before,.form::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(255,255,255,.3),rgba(255,255,255,.06) 45%,rgba(242,79,30,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.tag svg{width:14px;height:14px;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+h1{font-weight:700;font-size:clamp(36px,4.6vw,62px);line-height:1.08;letter-spacing:-.03em;margin:22px auto 0;max-width:980px;text-wrap:balance}
+.sub{font-size:clamp(16.5px,1.5vw,19.5px);line-height:1.62;color:rgba(255,255,255,.74);max-width:600px;margin:18px auto 0;text-wrap:balance}
 .sub b{color:#fff;font-weight:700}
 
-.faces{display:flex;justify-content:center;gap:12px;margin:32px auto 0;flex-wrap:wrap}
-.face{width:96px;text-align:center}
-.face .ph{width:96px;height:118px;border-radius:16px;overflow:hidden;position:relative;background:#141414;box-shadow:0 18px 40px -18px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.08)}
+/* faces */
+.faces{display:flex;justify-content:center;gap:12px;margin:34px auto 0;perspective:900px}
+.face{width:98px;text-align:center}
+.face .ph{position:relative;width:98px;height:122px;border-radius:16px;overflow:hidden;transform-style:preserve-3d;transition:transform .5s var(--ease),box-shadow .5s var(--ease);box-shadow:0 20px 40px -20px rgba(0,0,0,.9);will-change:transform}
+.face .ph::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:3;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
 .face .ph img{width:100%;height:100%;object-fit:cover}
-.face .ph svg{position:absolute;inset:0;width:100%;height:100%}
-.face p{font-size:12.5px;font-weight:600;margin-top:8px;color:rgba(255,255,255,.92)}
-.face.f p{color:rgba(255,255,255,.55)}
-.face.f .ph{box-shadow:0 18px 40px -18px rgba(0,0,0,.8),inset 0 0 0 1px rgba(242,79,30,.28)}
+.face.m .ph::before{box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),inset 0 -40px 40px -30px rgba(0,0,0,.5)}
+.face.f .ph{background:radial-gradient(120% 80% at 50% 115%,rgba(242,79,30,.55),transparent 62%),linear-gradient(180deg,#1c1c1c,#0b0b0b)}
+.face.f .ph svg{position:absolute;inset:0;width:100%;height:100%;filter:blur(3.5px);opacity:.9}
+.face.f .ph::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.16) 50%,transparent 62%);background-size:260% 100%;background-position:120% 0;animation:sweep 5.4s var(--ease) infinite}
+.face.f:nth-child(3) .ph::after{animation-delay:.35s}.face.f:nth-child(4) .ph::after{animation-delay:.7s}
+@keyframes sweep{0%{background-position:120% 0}30%,100%{background-position:-20% 0}}
+.face p{font-size:12.5px;font-weight:600;margin-top:9px;color:rgba(255,255,255,.92)}
+.face.f p{color:rgba(255,255,255,.5)}
 
-.join{margin:30px auto 0;max-width:640px}
-.form{display:flex;gap:8px;padding:8px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px)}
-.form input{flex:1;min-width:0;height:56px;border:0;border-radius:999px;background:#fff;color:var(--ink);font:500 16px 'Plus Jakarta Sans',sans-serif;padding:0 22px;outline:none}
+/* form */
+.join{margin:32px auto 0;max-width:660px}
+.form{position:relative;display:flex;gap:8px;padding:8px;border-radius:999px;background:rgba(255,255,255,.05);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.form input{flex:1;min-width:0;height:58px;border:0;border-radius:999px;background:#fff;color:var(--ink);font:500 16px 'Plus Jakarta Sans',sans-serif;padding:0 22px;outline:none;transition:box-shadow .3s var(--ease)}
 .form input::placeholder{color:#8a9097}
-.form input:focus{box-shadow:0 0 0 3px rgba(242,79,30,.35)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 30px;border:0;border-radius:999px;background:var(--grad);color:#fff;font:700 17px 'Plus Jakarta Sans',sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;box-shadow:0 14px 30px -12px rgba(240,45,48,.6);transition:transform .2s ease,box-shadow .2s ease}
-.btn:hover{transform:translateY(-1px);box-shadow:0 18px 36px -12px rgba(240,45,48,.7)}
-.btn svg{width:18px;height:18px}
+.form input:focus{box-shadow:0 0 0 3px rgba(242,79,30,.45)}
 
-/* sections */
-section.s{padding:104px 0}
-.mark{width:56px;height:56px;margin:0 auto 22px;display:block}
-h2{font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spacing:-.02em;text-align:center}
+/* the button + the envelope ticket */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;height:58px;padding:0 28px 0 8px;border:0;border-radius:999px;background:var(--grad);color:#fff;font:700 17px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em;cursor:pointer;white-space:nowrap;text-decoration:none;isolation:isolate;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(0,0,0,.12),0 18px 40px -16px rgba(240,45,48,.75);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.btn::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;width:55%;left:-75%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);transform:skewX(-18deg);transition:left .9s var(--ease)}
+.btn:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -1px 0 rgba(0,0,0,.12),0 24px 48px -16px rgba(240,45,48,.85)}
+.btn:hover::after{left:125%}
+.btn:active{transform:translateY(0) scale(.985)}
+.env{width:42px;height:42px;border-radius:50%;background:rgba(1,1,0,.2);display:grid;place-items:center;flex:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.env svg{width:34px;height:30px;overflow:visible}
+.env svg *{transform-box:fill-box}
+.e-back{fill:rgba(255,255,255,.55)}
+.e-flap-o{fill:rgba(255,255,255,.82);transform-origin:50% 100%;transform:scaleY(0);transition:transform .17s cubic-bezier(.25,1,.5,1) .16s}
+.e-tk{transition:transform .26s cubic-bezier(.4,0,.2,1) 0s}
+.e-front{fill:#fff;stroke:rgba(242,79,30,.18);stroke-width:.6}
+.e-flap-c{fill:#fff;stroke:rgba(242,79,30,.28);stroke-width:.6;transform-origin:50% 0;transition:transform .17s cubic-bezier(.5,0,.75,0) .33s}
+.e-stamp{fill:none;stroke:#f24f1e;stroke-width:.9;opacity:.4;transform-origin:center}
+.e-sp{fill:#f38100;opacity:0;transform-origin:center}
+.btn:hover .e-flap-c,.btn.go .e-flap-c,.btn.kept .e-flap-c{transform:scaleY(0);transition-delay:0s}
+.btn:hover .e-flap-o,.btn.go .e-flap-o,.btn.kept .e-flap-o{transform:scaleY(1);transition-delay:.15s}
+.btn:hover .e-tk{transform:translateY(-8px);transition:transform .5s cubic-bezier(.34,1.56,.64,1) .24s}
+.btn.go .e-tk,.btn.kept .e-tk{transform:translateY(-11px) rotate(-7deg);transition:transform .5s cubic-bezier(.34,1.56,.64,1) .12s}
+.btn.go .e-stamp,.btn.kept .e-stamp{animation:stamp .55s cubic-bezier(.2,1.3,.4,1) .42s both}
+@keyframes stamp{0%{transform:scale(2.4);opacity:0;fill:rgba(242,79,30,0)}55%{transform:scale(.86);opacity:1;fill:#f24f1e}100%{transform:scale(1);opacity:1;fill:#f24f1e}}
+.btn.go .s1{animation:sp1 .7s ease-out .62s both}.btn.go .s2{animation:sp2 .7s ease-out .62s both}.btn.go .s3{animation:sp3 .7s ease-out .62s both}.btn.go .s4{animation:sp4 .7s ease-out .62s both}
+@keyframes sp1{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-7px,-7px) scale(.2)}}
+@keyframes sp2{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(7px,-7px) scale(.2)}}
+@keyframes sp3{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(7px,7px) scale(.2)}}
+@keyframes sp4{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-7px,7px) scale(.2)}}
 
-.points{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.pt{border-radius:24px;padding:34px 30px 32px;background:radial-gradient(100% 100% at 0% 100%,rgba(63,207,171,.13) 0%,#f8fbfb 62%);border:1px solid var(--line)}
-.pt:nth-child(2){background:radial-gradient(100% 100% at 100% 0%,rgba(234,92,29,.12) 0%,#f8fbfb 62%)}
-.pt:nth-child(3){background:#0b0b0b;color:#fff;border-color:#0b0b0b}
-.pt svg{width:30px;height:30px;margin-bottom:22px}
-.pt p{font-size:19px;line-height:1.5;font-weight:600;letter-spacing:-.005em;text-wrap:pretty}
-.pt:nth-child(3) p{color:rgba(255,255,255,.88)}
-.pt .lo{color:var(--accent)}
+/* ---------- the three points: one sheet that overlaps the hero ---------- */
+.pts{position:relative;z-index:4;margin-top:-84px}
+.sheet{display:grid;grid-template-columns:repeat(3,1fr);border-radius:28px;background:#fff;overflow:hidden;box-shadow:0 0 0 1px var(--line),0 40px 80px -48px rgba(1,1,0,.45)}
+.pt{position:relative;padding:40px 36px 42px;transition:background .5s var(--ease)}
+.pt+.pt{border-left:1px solid var(--line)}
+.pt:hover{background:linear-gradient(180deg,#fff 0%,#fff8f4 100%)}
+.pt .ic{width:68px;height:68px;margin-bottom:26px}
+.pt p{font-size:18.5px;line-height:1.5;font-weight:600;letter-spacing:-.01em;text-wrap:pretty}
+.pt.lv{background:#0b0b0b;color:#fff}
+.pt.lv:hover{background:#111}
+.pt.lv p{color:rgba(255,255,255,.88)}
+/* radar */
+.rd-sweep{transform-origin:34px 34px;animation:spin 4.5s linear infinite}
+.pt:hover .rd-sweep{animation-duration:2.2s}
+.rd-blip{transform-origin:47px 22px;animation:blip 4.5s linear infinite}
+@keyframes blip{0%,8%{transform:scale(.6);opacity:.35}12%{transform:scale(1.35);opacity:1}40%,100%{transform:scale(.6);opacity:.35}}
+/* emails */
+.em{transform-origin:34px 60px;transition:transform .6s var(--ease)}
+.pt:hover .em1{transform:rotate(-13deg) translateX(-3px)}
+.pt:hover .em2{transform:rotate(11deg) translateX(3px)}
+.pt:hover .em3{transform:translateY(-4px)}
+/* calendar checks */
+.ck path{stroke-dasharray:14;stroke-dashoffset:14;transition:stroke-dashoffset .45s var(--ease)}
+.pt.in .ck path,.pt:hover .ck path{stroke-dashoffset:0}
+.ck:nth-child(2) path{transition-delay:.15s}.ck:nth-child(3) path{transition-delay:.3s}
 
-.live{margin-top:56px;border-top:1px solid var(--line)}
-.row{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--line)}
-.row .n{font-size:15px;font-weight:700;letter-spacing:.06em}
-.row .n span{display:inline-block}
-.row h3{font-size:clamp(20px,2.1vw,25px);font-weight:700;line-height:1.35;letter-spacing:-.01em}
+/* ---------- what happens live ---------- */
+section.s{padding:120px 0}
+.mark{width:52px;height:52px;display:block}
+.mark path{transform-box:fill-box;transform-origin:center;animation:wave 3.2s var(--ease) infinite}
+.mark path:nth-child(2),.mark path:nth-child(4){animation-delay:.12s}
+.mark path:nth-child(3),.mark path:nth-child(5),.mark path:nth-child(7){animation-delay:.24s}
+.mark path:nth-child(6),.mark path:nth-child(8){animation-delay:.36s}
+.mark path:nth-child(9){animation-delay:.48s}
+@keyframes wave{0%,60%,100%{transform:scale(1);opacity:1}30%{transform:scale(.72);opacity:.55}}
+h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spacing:-.03em}
+.ros{display:grid;grid-template-columns:330px 1fr;gap:56px;align-items:start}
+.ros .hd{position:sticky;top:48px}
+.ros .hd h2{margin-top:22px}
+.rows{position:relative;border-top:1px solid var(--line);isolation:isolate}
+.row{position:relative;display:grid;grid-template-columns:72px 1fr auto;gap:20px;align-items:center;padding:30px 12px 30px 0;border-bottom:1px solid var(--line);transition:padding .5s var(--ease)}
+.row::before{content:"";position:absolute;left:-12px;right:-12px;top:6px;bottom:6px;border-radius:18px;background:linear-gradient(90deg,#fff6f1,rgba(255,246,241,0));opacity:0;transition:opacity .5s var(--ease);z-index:-1}
+.row:hover::before{opacity:1}
+.row:hover{padding-left:10px}
+.row .n{font-size:14px;font-weight:700;letter-spacing:.08em;color:#9aa1a8;transition:color .4s}
+.row:hover .n{color:var(--accent)}
+.row h3{font-size:clamp(19px,1.9vw,23px);font-weight:700;line-height:1.38;letter-spacing:-.015em}
 .row h3 span{color:var(--slate);font-weight:500}
+.row .th{width:132px;height:84px;border-radius:14px;object-fit:cover;box-shadow:0 14px 30px -18px rgba(1,1,0,.6);transition:transform .6s var(--ease)}
+.row:hover .th{transform:scale(1.05) rotate(-1.5deg)}
 
-/* live-only callout */
-.callout{position:relative;border-radius:32px;overflow:hidden;color:#fff;background:#0a0a0a;isolation:isolate;box-shadow:0 40px 80px -40px rgba(0,0,0,.55)}
-.callout::before{content:"";position:absolute;inset:0;background:url(img/crowd.jpg) center 60%/cover;opacity:.3;z-index:-2}
-.callout::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(10,10,10,.96) 30%,rgba(10,10,10,.55) 100%),radial-gradient(60% 80% at 100% 100%,rgba(242,79,30,.35),transparent 70%)}
-.callout .in{display:grid;grid-template-columns:1.5fr .7fr;gap:40px;align-items:center;padding:64px 64px}
-.callout .k{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2)}
-.callout .k svg{width:18px;height:18px}
-.callout h3{text-wrap:balance;font-size:clamp(26px,2.8vw,36px);line-height:1.22;font-weight:700;letter-spacing:-.02em;margin-top:18px}
-.callout h3 .grad-text{font-weight:800}
-.callout .also{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font-size:17px;color:rgba(255,255,255,.78);max-width:520px}
+/* ---------- live-only callout ---------- */
+.callout{position:relative;border-radius:34px;overflow:hidden;color:#fff;background:#070707;isolation:isolate;box-shadow:0 50px 100px -50px rgba(1,1,0,.7)}
+.callout .cbg{position:absolute;inset:0;z-index:-3;background:url(img/lobby.jpg) right 40%/cover;opacity:.32}
+.callout::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,#070707 30%,rgba(7,7,7,.82) 58%,rgba(7,7,7,.55) 100%)}
+.callout::after{content:"";position:absolute;width:640px;height:640px;right:-200px;bottom:-320px;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(242,79,30,.45),transparent);filter:blur(30px)}
+.callout .in{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;padding:72px 68px}
+.callout .k{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2)}
+.callout .k svg{width:18px;height:18px;animation:spin 10s linear infinite}
+.callout h3{font-size:clamp(26px,2.6vw,36px);line-height:1.2;font-weight:700;letter-spacing:-.025em;margin-top:18px;text-wrap:balance}
+.callout .also{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:16.5px;color:rgba(255,255,255,.72);max-width:520px;text-wrap:balance}
 .callout .also b{color:#fff;font-weight:700}
-.cal{width:100%;max-width:280px;justify-self:center}
+.viz{position:relative;padding:26px;border-radius:24px;background:rgba(255,255,255,.04);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.seats{width:100%;height:auto;display:block}
+.seats .st{fill:rgba(255,255,255,.1);transform-box:fill-box;transform-origin:center;transition:fill .5s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
+.seats .st.on{transform:scale(1.08)}
+.meets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.mt{position:relative;border-radius:14px;background:rgba(255,255,255,.06);padding:12px 12px 14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:box-shadow .5s,background .5s}
+.mt .bar{height:6px;border-radius:3px;background:rgba(255,255,255,.12);transition:background .5s}
+.mt .ln{height:6px;border-radius:3px;background:rgba(255,255,255,.1);margin-top:10px;width:70%}
+.mt .ln+.ln{width:46%;margin-top:6px}
+.mt svg{position:absolute;right:10px;bottom:10px;width:22px;height:22px}
+.mt svg circle{fill:rgba(255,255,255,.08);transition:fill .4s}
+.mt svg path{stroke-dasharray:16;stroke-dashoffset:16;transition:stroke-dashoffset .5s var(--ease)}
+.mt.on{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(242,79,30,.55)}
+.mt.on .bar{background:var(--grad)}
+.mt.on svg circle{fill:#f24f1e}
+.mt.on svg path{stroke-dashoffset:0}
 
-/* host */
-.host{display:grid;grid-template-columns:380px 1fr;gap:72px;align-items:center;max-width:1000px;margin:0 auto}
+/* ---------- host ---------- */
+.host{display:grid;grid-template-columns:400px 1fr;gap:80px;align-items:center;max-width:1040px;margin:0 auto}
 .host .pic{position:relative}
-.host .pic img{border-radius:28px;aspect-ratio:1/1.08;object-fit:cover;object-position:50% 20%;width:100%;height:auto;box-shadow:0 30px 60px -30px rgba(0,0,0,.35)}
-.host h2{text-align:left;font-size:clamp(28px,3.2vw,40px)}
-.host h2 .nm{color:var(--accent)}
+.host .pic .fr{border-radius:30px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(1,1,0,.5)}
+.host .pic img{width:100%;aspect-ratio:1/1.1;object-fit:cover;object-position:50% 18%;transition:transform 1.2s var(--ease)}
+.host .pic:hover img{transform:scale(1.04)}
+.host .sq{position:absolute;left:30%;bottom:-46px;width:190px;overflow:visible}
+.host .sq path{stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 1.8s cubic-bezier(.6,0,.2,1) .4s}
+.host .pic.in .sq path{stroke-dashoffset:0}
+.host h2{margin-top:24px;font-size:clamp(30px,3.3vw,44px);text-wrap:balance}
+.host .nm{white-space:nowrap}
 
-/* end */
-.end{background:#000;color:#fff;text-align:center;padding:96px 0 88px;position:relative;overflow:hidden;isolation:isolate}
-.end::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(50% 70% at 50% 120%,rgba(242,79,30,.28),transparent 70%)}
-.end .fine{font-size:16px;color:rgba(255,255,255,.7);margin:20px auto 30px;max-width:640px;text-wrap:balance}
-.end .lg{width:150px;height:auto;margin:56px auto 0;opacity:.9}
+/* ---------- end ---------- */
+.end{position:relative;background:#030303;color:#fff;text-align:center;padding:120px 0 72px;overflow:hidden;isolation:isolate}
+.end .aura{left:50%;top:auto;bottom:-260px;width:900px;height:520px;margin-left:-450px;background:radial-gradient(closest-side,rgba(242,79,30,.5),transparent);animation:d1 20s ease-in-out infinite alternate}
+.end .mark{width:64px;height:64px;margin:0 auto}
+.end .fine{font-size:17px;color:rgba(255,255,255,.72);margin:28px auto 34px;max-width:640px;text-wrap:balance}
+.end .lg{width:150px;margin:80px auto 0;opacity:.85}
 
-@media (max-width:900px){
-  .points{grid-template-columns:1fr}
-  .callout .in{grid-template-columns:1fr;padding:44px 28px}
-  .cal{max-width:220px;justify-self:start}
-  .host{grid-template-columns:1fr;gap:56px}
-  .host .pic{max-width:360px}
+@media (max-width:980px){
+  .ros{grid-template-columns:1fr;gap:36px}
+  .ros .hd{position:static}
+  .callout .in{grid-template-columns:1fr;padding:48px 32px;gap:36px}
+  .host{grid-template-columns:1fr;gap:72px}
+  .host .pic{max-width:380px}
+}
+@media (max-width:760px){
+  .sheet{grid-template-columns:1fr}
+  .pt+.pt{border-left:0;border-top:1px solid var(--line)}
+  .pt{padding:32px 26px 34px}
 }
 @media (max-width:600px){
-  .wrap,.narrow{width:calc(100% - 32px)}
+  .wrap{width:calc(100% - 32px)}
   .strip .wrap{height:auto;padding:10px 0;flex-direction:column;gap:8px}
   .cd span{min-width:38px}
   .hero{min-height:0;display:block}
-  .hero .inner{padding:30px 0 56px}
-  .logo{width:180px;margin-bottom:22px}
+  .hero .inner{padding:30px 0 112px;width:calc(100% - 32px)}
+  .logo{width:178px;margin-bottom:22px}
   h1{margin-top:18px}
-  .faces{gap:8px;flex-wrap:nowrap;margin-top:28px}
-  .face{width:calc(25% - 6px);max-width:84px}
+  .faces{gap:8px;margin-top:28px}
+  .face{width:calc(25% - 6px);max-width:86px}
   .face .ph{width:100%;height:auto;aspect-ratio:4/5;border-radius:12px}
   .face p{font-size:11px}
-  .form{flex-direction:column;border-radius:24px;padding:8px}
-  .form input{flex:none;height:54px;width:100%}
-  .form .btn{height:56px;width:100%}
-  .cal{max-width:180px}
-  section.s{padding:72px 0}
-  .row{grid-template-columns:1fr;gap:6px;padding:24px 0}
-  .pt{padding:28px 24px}
-  .pt p{font-size:18px}
+  .form{flex-direction:column;border-radius:26px;padding:8px}
+  .form input{flex:none;height:56px;width:100%}
+  .form .btn{width:100%}
+  section.s{padding:80px 0}
+  .row{grid-template-columns:44px 1fr;padding:24px 0}
+  .row .th{grid-column:2;width:100%;height:150px}
+  .row:hover{padding-left:0}
+  .callout{border-radius:26px}
+  .callout .in{padding:40px 22px}
+  .viz{padding:18px}
+  .end{padding:96px 0 64px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  [data-r]{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient>
+    <linearGradient id="gv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient>
+    <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f24f1e" stop-opacity="0"/><stop offset="1" stop-color="#f24f1e" stop-opacity=".55"/></linearGradient>
+    <linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3a33"/><stop offset="1" stop-color="#1a1513"/></linearGradient>
+  </defs>
+</svg>
+
 <div class="strip"><div class="wrap">
-  <div class="when"><i></i>Tue Nov 24, 12 pm ET</div>
+  <div class="when"><span class="dot"></span>Tue Nov 24, 12 pm ET</div>
   <div class="cd" role="timer" aria-label="Starts in">
     <span><b data-cd="d">00</b><small>Days</small></span><em>:</em>
     <span><b data-cd="h">00</b><small>Hrs</small></span><em>:</em>
@@ -154,91 +278,181 @@ h2{font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spac
   </div>
 </div></div>
 
-<header class="hero" id="top"><div class="wrap inner">
-  <img class="logo" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188">
-  <span class="tag"><svg viewBox="0 0 16 16" aria-hidden="true"><defs><linearGradient id="tg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs><path d="M8 1 15 8 8 15 1 8Z" fill="url(#tg)"/></svg>The Deal Room</span>
-  <h1>Land your <span class="grad-text">biggest deal of 2027</span>, even if your list is under 50K</h1>
-  <p class="sub">A free live event with Matt McGarry and 3 New Media Summit founders. Real deals, real numbers. <b>Tue Nov 24, 12 pm ET.</b></p>
+<header class="hero" id="top">
+  <div class="bg"></div><div class="shade"></div>
+  <div class="aura a1"></div><div class="aura a2"></div>
+  <div class="spot"></div><div class="grain"></div>
+  <div class="wrap inner">
+    <img class="logo" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188">
+    <div><span class="tag"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .5 13.5 7 7 13.5 .5 7Z" fill="url(#g)"/><path d="M7 4.2 9.8 7 7 9.8 4.2 7Z" fill="#030303"/></svg>The Deal Room</span></div>
+    <h1>Land your <span class="shine">biggest deal of 2027</span>, even if your list is under 50K</h1>
+    <p class="sub">A free live event with Matt McGarry and 3 New Media Summit founders. Real deals, real numbers. <b>Tue Nov 24, 12 pm ET.</b></p>
 
-  <div class="faces" aria-label="Your hosts">
-    <div class="face"><div class="ph"><img src="img/matt-card.jpg" alt="Matt McGarry" width="480" height="600"></div><p>Matt McGarry</p></div>
-    <div class="face f"><div class="ph"><svg viewBox="0 0 118 146" aria-hidden="true"><defs><linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#121212"/></linearGradient><linearGradient id="fo" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs><rect width="118" height="146" fill="#161616"/><circle cx="59" cy="58" r="22" fill="url(#fg)"/><path d="M17 146c2-30 20-46 42-46s40 16 42 46Z" fill="url(#fg)"/><path d="M59 8 64 13 59 18 54 13Z" fill="url(#fo)"/></svg></div><p>Founder</p></div>
-    <div class="face f"><div class="ph"><svg viewBox="0 0 118 146" aria-hidden="true"><rect width="118" height="146" fill="#161616"/><circle cx="59" cy="58" r="22" fill="url(#fg)"/><path d="M17 146c2-30 20-46 42-46s40 16 42 46Z" fill="url(#fg)"/><path d="M59 8 64 13 59 18 54 13Z" fill="url(#fo)"/></svg></div><p>Founder</p></div>
-    <div class="face f"><div class="ph"><svg viewBox="0 0 118 146" aria-hidden="true"><rect width="118" height="146" fill="#161616"/><circle cx="59" cy="58" r="22" fill="url(#fg)"/><path d="M17 146c2-30 20-46 42-46s40 16 42 46Z" fill="url(#fg)"/><path d="M59 8 64 13 59 18 54 13Z" fill="url(#fo)"/></svg></div><p>Founder</p></div>
-  </div>
+    <div class="faces" aria-label="Your hosts">
+      <div class="face m"><div class="ph"><img src="img/matt-card.jpg" alt="Matt McGarry" width="480" height="600"></div><p>Matt McGarry</p></div>
+      <div class="face f"><div class="ph"><svg viewBox="0 0 98 122" aria-hidden="true"><circle cx="49" cy="50" r="19" fill="url(#fg)"/><path d="M12 124c2-26 17-40 37-40s35 14 37 40Z" fill="url(#fg)"/></svg></div><p>Founder</p></div>
+      <div class="face f"><div class="ph"><svg viewBox="0 0 98 122" aria-hidden="true"><circle cx="49" cy="50" r="19" fill="url(#fg)"/><path d="M12 124c2-26 17-40 37-40s35 14 37 40Z" fill="url(#fg)"/></svg></div><p>Founder</p></div>
+      <div class="face f"><div class="ph"><svg viewBox="0 0 98 122" aria-hidden="true"><circle cx="49" cy="50" r="19" fill="url(#fg)"/><path d="M12 124c2-26 17-40 37-40s35 14 37 40Z" fill="url(#fg)"/></svg></div><p>Founder</p></div>
+    </div>
 
-  <div class="join" id="join">
-    <form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Spot saved';">
-      <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" aria-label="First name" required>
-      <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
-      <button class="btn" type="submit">Save my spot <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </form>
+    <div class="join" id="join">
+      <form class="form" id="form">
+        <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" aria-label="First name" required>
+        <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+        <button class="btn" type="submit"><span class="env" aria-hidden="true"></span>Save my spot</button>
+      </form>
+    </div>
   </div>
-</div></header>
+</header>
 
 <main>
-<section class="s"><div class="wrap">
-  <div class="points">
-    <div class="pt"><svg viewBox="0 0 30 30" aria-hidden="true"><defs><linearGradient id="pg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs><path d="M15 2 28 15 15 28 2 15Z" fill="url(#pg)"/><path d="M15 9 21 15 15 21 9 15Z" fill="#fff" opacity=".9"/></svg><p>Find out where your next $10K+ deal comes from, from founders who've closed them</p></div>
-    <div class="pt"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M8 2 14 8 8 14 2 8Z M22 2 28 8 22 14 16 8Z M8 16 14 22 8 28 2 22Z M22 16 28 22 22 28 16 22Z" fill="url(#pg)"/></svg><p>See the real pitch, numbers and first email behind 3 deals</p></div>
-    <div class="pt"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="url(#pg)" stroke-width="2"/><circle cx="15" cy="15" r="5" fill="url(#pg)"/></svg><p><span class="lo">Live only:</span> the first 50 people to get their ticket during the event get 3 booked meetings before Austin</p></div>
+<section class="pts"><div class="wrap">
+  <div class="sheet">
+    <article class="pt" data-r>
+      <svg class="ic" viewBox="0 0 68 68" aria-hidden="true">
+        <circle cx="34" cy="34" r="30" fill="none" stroke="#e8ebed"/><circle cx="34" cy="34" r="20" fill="none" stroke="#e8ebed"/><circle cx="34" cy="34" r="10" fill="none" stroke="#e8ebed"/>
+        <path class="rd-sweep" d="M34 34 L34 4 A30 30 0 0 1 59.98 19Z" fill="url(#sw)"/>
+        <path class="rd-blip" d="M47 17 52 22 47 27 42 22Z" fill="url(#g)"/>
+        <circle cx="34" cy="34" r="2.6" fill="#010100"/>
+      </svg>
+      <p>Find out where your next $10K+ deal comes from, from founders who've closed them</p>
+    </article>
+    <article class="pt" data-r style="transition-delay:.08s">
+      <svg class="ic" viewBox="0 0 68 68" aria-hidden="true">
+        <g class="em em1"><rect x="14" y="14" width="40" height="44" rx="6" fill="#f2f5f6" stroke="#e1e5e8"/></g>
+        <g class="em em2"><rect x="14" y="14" width="40" height="44" rx="6" fill="#f7f8f9" stroke="#e1e5e8"/></g>
+        <g class="em em3"><rect x="14" y="12" width="40" height="44" rx="6" fill="#fff" stroke="#dfe3e6"/><path d="M14 18a6 6 0 0 1 6-6h28a6 6 0 0 1 6 6v2L34 33 14 20Z" fill="url(#gv)"/><rect x="21" y="38" width="26" height="3.4" rx="1.7" fill="#e3e7e9"/><rect x="21" y="45" width="17" height="3.4" rx="1.7" fill="#eceff1"/></g>
+      </svg>
+      <p>See the real pitch, numbers and first email behind 3 deals</p>
+    </article>
+    <article class="pt lv" data-r style="transition-delay:.16s">
+      <svg class="ic" viewBox="0 0 68 68" aria-hidden="true">
+        <g class="ck"><rect x="3" y="16" width="19" height="22" rx="5" fill="#1c1c1c" stroke="#2c2c2c"/><rect x="3" y="16" width="19" height="6" rx="3" fill="url(#g)"/><path d="M8 29.5l3 3 6-6" fill="none" stroke="#f24f1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <g class="ck"><rect x="24.5" y="16" width="19" height="22" rx="5" fill="#1c1c1c" stroke="#2c2c2c"/><rect x="24.5" y="16" width="19" height="6" rx="3" fill="url(#g)"/><path d="M29.5 29.5l3 3 6-6" fill="none" stroke="#f24f1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <g class="ck"><rect x="46" y="16" width="19" height="22" rx="5" fill="#1c1c1c" stroke="#2c2c2c"/><rect x="46" y="16" width="19" height="6" rx="3" fill="url(#g)"/><path d="M51 29.5l3 3 6-6" fill="none" stroke="#f24f1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <rect x="3" y="44" width="62" height="3" rx="1.5" fill="#262626"/><rect x="3" y="44" width="40" height="3" rx="1.5" fill="url(#g)"/>
+      </svg>
+      <p><span class="grad-text">Live only:</span> the first 50 people to get their ticket during the event get 3 booked meetings before Austin</p>
+    </article>
   </div>
 </div></section>
 
-<section class="s" style="padding-top:24px"><div class="narrow">
-  <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs><g fill="url(#mg)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
-  <h2>What happens live</h2>
-  <div class="live">
-    <div class="row"><div class="n grad-text"><span>01</span></div><h3>Founders break down real deals: <span>the numbers, the pitch, the first email</span></h3></div>
-    <div class="row"><div class="n grad-text"><span>02</span></div><h3>Live deal reviews: <span>3 New Media Summit ticket holders get their deal reviewed by the founders</span></h3></div>
-    <div class="row"><div class="n grad-text"><span>03</span></div><h3>An inside look at New Media Summit 2027 in Austin</h3></div>
-    <div class="row"><div class="n grad-text"><span>04</span></div><h3>Live Q&amp;A</h3></div>
+<section class="s"><div class="wrap ros">
+  <div class="hd" data-r>
+    <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><g fill="url(#g)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
+    <h2>What happens live</h2>
+  </div>
+  <div class="rows">
+    <div class="row" data-r><div class="n">01</div><h3>Founders break down real deals: <span>the numbers, the pitch, the first email</span></h3></div>
+    <div class="row" data-r><div class="n">02</div><h3>Live deal reviews: <span>3 New Media Summit ticket holders get their deal reviewed by the founders</span></h3></div>
+    <div class="row" data-r><div class="n">03</div><h3>An inside look at New Media Summit 2027 in Austin</h3><img class="th" src="img/stage.jpg" alt="" width="1200" height="801" loading="lazy"></div>
+    <div class="row" data-r><div class="n">04</div><h3>Live Q&amp;A</h3></div>
   </div>
 </div></section>
 
-<section class="s" style="padding-top:8px"><div class="wrap">
-  <div class="callout"><div class="in">
-    <div>
-      <span class="k"><svg viewBox="0 0 18 18" aria-hidden="true"><g fill="url(#mg)"><rect x="7.6" y="0" width="2.8" height="18" rx="1.4"/><rect x="7.6" y="0" width="2.8" height="18" rx="1.4" transform="rotate(60 9 9)"/><rect x="7.6" y="0" width="2.8" height="18" rx="1.4" transform="rotate(120 9 9)"/></g></svg>Live only</span>
-      <h3>Show up live. The first 50 people to get their New Media Summit ticket during the event get <span class="grad-text">3 booked meetings before Austin.</span></h3>
-      <p class="also"><b>Already have your ticket?</b> Stay live to the end and you get them too.</p>
+<section class="s" style="padding-top:0"><div class="wrap">
+  <div class="callout" id="callout" data-r>
+    <div class="cbg"></div>
+    <div class="in">
+      <div>
+        <span class="k"><svg viewBox="0 0 18 18" aria-hidden="true"><g fill="url(#g)"><rect x="7.6" y="0" width="2.8" height="18" rx="1.4"/><rect x="7.6" y="0" width="2.8" height="18" rx="1.4" transform="rotate(60 9 9)"/><rect x="7.6" y="0" width="2.8" height="18" rx="1.4" transform="rotate(120 9 9)"/></g></svg>Live only</span>
+        <h3>Show up live. The first 50 people to get their New Media Summit ticket during the event get <span class="shine">3 booked meetings before Austin.</span></h3>
+        <p class="also"><b>Already have your ticket?</b> Stay live to the end and you get them too.</p>
+      </div>
+      <div class="viz" aria-hidden="true">
+        <svg class="seats" id="seats" viewBox="0 0 300 150"></svg>
+        <div class="meets">
+          <div class="mt"><div class="bar"></div><div class="ln"></div><div class="ln"></div><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="11"/><path d="M6.5 11.2l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="mt"><div class="bar"></div><div class="ln"></div><div class="ln"></div><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="11"/><path d="M6.5 11.2l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="mt"><div class="bar"></div><div class="ln"></div><div class="ln"></div><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="11"/><path d="M6.5 11.2l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
     </div>
-    <svg class="cal" viewBox="0 0 280 250" aria-hidden="true">
-      <defs><linearGradient id="cg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs>
-      <g transform="rotate(-8 140 125)"><rect x="58" y="22" width="170" height="150" rx="18" fill="#1d1d1d" stroke="rgba(255,255,255,.10)"/><rect x="58" y="22" width="170" height="34" rx="18" fill="#262626"/><rect x="80" y="76" width="90" height="9" rx="4.5" fill="rgba(255,255,255,.14)"/><rect x="80" y="96" width="60" height="9" rx="4.5" fill="rgba(255,255,255,.08)"/></g>
-      <g transform="rotate(5 140 125)"><rect x="48" y="44" width="170" height="150" rx="18" fill="#232323" stroke="rgba(255,255,255,.12)"/><rect x="48" y="44" width="170" height="34" rx="18" fill="#2c2c2c"/><rect x="70" y="98" width="100" height="9" rx="4.5" fill="rgba(255,255,255,.16)"/><rect x="70" y="118" width="64" height="9" rx="4.5" fill="rgba(255,255,255,.09)"/></g>
-      <g><rect x="40" y="70" width="190" height="160" rx="20" fill="#fff"/><rect x="40" y="70" width="190" height="40" rx="20" fill="url(#cg)"/><rect x="40" y="96" width="190" height="14" fill="url(#cg)"/><circle cx="72" cy="90" r="5" fill="#fff" opacity=".9"/><circle cx="198" cy="90" r="5" fill="#fff" opacity=".9"/><rect x="64" y="132" width="110" height="10" rx="5" fill="#e3e7e9"/><rect x="64" y="154" width="74" height="10" rx="5" fill="#eef1f2"/><circle cx="190" cy="192" r="20" fill="url(#cg)"/><path d="M181 192l6 6 12-12" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
-    </svg>
-  </div></div>
+  </div>
 </div></section>
 
-<section class="s" style="padding-top:40px"><div class="wrap">
-  <div class="host">
-    <div class="pic"><img src="img/matt-host.jpg" alt="Matt McGarry" width="900" height="652">
-    </div>
-    <div>
-      <svg class="mark" viewBox="0 0 48 48" style="margin:0 0 22px" aria-hidden="true"><g fill="url(#mg)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
-      <h2>Hosted by <span class="nm">Matt McGarry</span>, founder of GrowLetter and New Media Summit.</h2>
-    </div>
+<section class="s" style="padding-top:20px"><div class="wrap host">
+  <div class="pic" data-r>
+    <div class="fr"><img src="img/matt-host.jpg" alt="Matt McGarry" width="900" height="652" loading="lazy"></div>
+    <svg class="sq" viewBox="0 0 183 96" fill="none" aria-hidden="true"><path d="M180.837 77.7906C166.863 74.377 152.383 64.5712 138.454 55.3198C129.689 49.4986 119.959 41.9976 111.944 29.0826C110.773 27.1972 102.563 13.3672 105.255 8.80662C109.374 1.83133 117.627 8.17081 122.421 11.7529C130.352 17.6782 138.206 25.9827 145.446 37.5318C147.927 41.4881 155.572 51.4831 155.468 60.7645C155.293 76.4859 141.728 72.7145 137.467 72.2964C118.397 70.4249 98.9834 62.3068 79.7637 52.0704C79.0184 51.6734 73.8415 49.4335 74.0203 49.7422C76.6227 54.2339 79.5651 57.1627 82.2922 60.9516C83.2076 62.2235 88.7171 69.9908 86.1501 72.7093C84.725 74.2184 82.7586 74.2439 81.1831 74.5688C76.507 75.5331 71.7602 75.8898 67.0181 76.1244C55.1816 76.7098 43.222 74.8916 31.1946 72.0451C22.4787 69.9823 13.8924 67.6375 5.30048 67.8698" stroke="url(#g)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div data-r style="transition-delay:.1s">
+    <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><g fill="url(#g)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
+    <h2>Hosted by <span class="nm grad-text">Matt McGarry</span>, founder of GrowLetter and New Media Summit.</h2>
   </div>
 </div></section>
 </main>
 
-<footer class="end"><div class="wrap">
-  <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><g fill="url(#mg)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
-  <p class="fine">Free. Live on Tue Nov 24 at 12 pm ET. Replay available until Fri Nov 27.</p>
-  <a class="btn" href="#join" onclick="setTimeout(function(){document.querySelector('#join input').focus({preventScroll:true})},500)">Save my spot <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  <img class="lg" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188">
-</div></footer>
+<footer class="end">
+  <div class="aura"></div><div class="grain" style="z-index:-1"></div>
+  <div class="wrap" data-r>
+    <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><g fill="url(#g)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
+    <p class="fine">Free. Live on Tue Nov 24 at 12 pm ET. Replay available until Fri Nov 27.</p>
+    <a class="btn" href="#join" id="cta2"><span class="env" aria-hidden="true"></span>Save my spot</a>
+    <img class="lg" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188" loading="lazy">
+  </div>
+</footer>
 
 <script>
 (function(){
-  var t=Date.parse('2026-11-24T12:00:00-05:00');
-  var el={d:document.querySelector('[data-cd=d]'),h:document.querySelector('[data-cd=h]'),m:document.querySelector('[data-cd=m]'),s:document.querySelector('[data-cd=s]')};
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* countdown to Tue Nov 24, 12 pm ET */
+  var t=Date.parse('2026-11-24T12:00:00-05:00'),q=function(k){return document.querySelector('[data-cd='+k+']')};
+  var el={d:q('d'),h:q('h'),m:q('m'),s:q('s')};
   function p(n){return (n<10?'0':'')+n}
   function tick(){var r=Math.max(0,t-Date.now())/1000;el.d.textContent=p(Math.floor(r/86400));el.h.textContent=p(Math.floor(r%86400/3600));el.m.textContent=p(Math.floor(r%3600/60));el.s.textContent=p(Math.floor(r%60))}
   tick();setInterval(tick,1000);
-  document.documentElement.style.scrollBehavior='smooth';
+
+  /* the envelope + NMS ticket inside every "Save my spot" button:
+     hover = the flap folds open and the ticket rises; click = the ticket lifts free and gets the NMS diamond stamp */
+  var env='<svg viewBox="0 0 40 34">'+
+    '<rect class="e-back" x="4" y="12" width="32" height="19" rx="2.5"/>'+
+    '<path class="e-flap-o" d="M4 12.2 20 2.6 36 12.2Z"/>'+
+    '<g class="e-tk">'+
+      '<rect x="9" y="12.5" width="22" height="15" rx="2" fill="#fff" stroke="rgba(242,79,30,.25)" stroke-width=".5"/>'+
+      '<path d="M11 12.5h3.6v15H11a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2Z" fill="url(#g)"/>'+
+      '<path d="M16.4 14v12" stroke="#f24f1e" stroke-width=".8" stroke-dasharray="1 1.5" opacity=".55"/>'+
+      '<rect x="19" y="16" width="5" height="1.4" rx=".7" fill="#e3e7e9"/><rect x="19" y="19" width="3.4" height="1.4" rx=".7" fill="#eceff1"/>'+
+      '<path class="e-stamp" d="M26.6 18.2 29 20.6 26.6 23 24.2 20.6Z"/>'+
+      '<path class="e-sp s1" d="M26.6 19.4 27.8 20.6 26.6 21.8 25.4 20.6Z"/><path class="e-sp s2" d="M26.6 19.4 27.8 20.6 26.6 21.8 25.4 20.6Z"/>'+
+      '<path class="e-sp s3" d="M26.6 19.4 27.8 20.6 26.6 21.8 25.4 20.6Z"/><path class="e-sp s4" d="M26.6 19.4 27.8 20.6 26.6 21.8 25.4 20.6Z"/>'+
+    '</g>'+
+    '<path class="e-front" d="M4 14.6 20 24.4 36 14.6V28.5a2.5 2.5 0 0 1-2.5 2.5h-27A2.5 2.5 0 0 1 4 28.5Z"/>'+
+    '<path class="e-flap-c" d="M4 12 20 25.4 36 12Z"/>'+
+  '</svg>';
+  document.querySelectorAll('.env').forEach(function(e){e.innerHTML=env});
+  function play(b){b.classList.remove('go');void b.offsetWidth;b.classList.add('go');clearTimeout(b._t);b._t=setTimeout(function(){b.classList.remove('go')},1500)}
+  var form=document.getElementById('form'),b1=form.querySelector('.btn');
+  b1.addEventListener('click',function(){play(b1)});
+  form.addEventListener('submit',function(e){e.preventDefault();b1.classList.add('kept');form.querySelectorAll('input').forEach(function(i){i.blur()})});
+  var b2=document.getElementById('cta2');
+  b2.addEventListener('click',function(e){e.preventDefault();play(b2);setTimeout(function(){document.getElementById('top').scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(function(){form.querySelector('input').focus({preventScroll:true})},700)},reduce?0:650)});
+
+  /* soft spotlight that follows the cursor in the hero */
+  var hero=document.querySelector('.hero');
+  hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--mx',(e.clientX-r.left)+'px');hero.style.setProperty('--my',(e.clientY-r.top)+'px')});
+
+  /* host cards lean toward the cursor */
+  if(!reduce){document.querySelectorAll('.face .ph').forEach(function(c){
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='translateY(-4px) rotateY('+(x*14)+'deg) rotateX('+(-y*14)+'deg)'});
+    c.addEventListener('pointerleave',function(){c.style.transform=''});
+  })}
+
+  /* 50 seats, lit in order when the callout comes into view, then the 3 meetings get booked */
+  var sv=document.getElementById('seats'),ns='http://www.w3.org/2000/svg',seats=[];
+  for(var i=0;i<50;i++){var cx=15+(i%10)*30,cy=15+Math.floor(i/10)*30,d=document.createElementNS(ns,'path');
+    d.setAttribute('d','M'+cx+' '+(cy-9)+' L'+(cx+9)+' '+cy+' L'+cx+' '+(cy+9)+' L'+(cx-9)+' '+cy+'Z');d.setAttribute('class','st');sv.appendChild(d);seats.push(d)}
+  function mix(a,b,f){return Math.round(a+(b-a)*f)}
+  function lightSeats(){seats.forEach(function(s,k){var f=k/49;setTimeout(function(){s.style.fill='rgb('+mix(243,240,f)+','+mix(129,45,f)+','+mix(0,48,f)+')';s.classList.add('on')},reduce?0:k*28)});
+    document.querySelectorAll('.mt').forEach(function(m,k){setTimeout(function(){m.classList.add('on')},reduce?0:1500+k*380)})}
+
+  /* reveal on scroll */
+  var callout=document.getElementById('callout'),lit=false;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');if(en.target===callout&&!lit){lit=true;lightSeats()}io.unobserve(en.target)}})},{threshold:.18});
+    document.querySelectorAll('[data-r]').forEach(function(x){io.observe(x)});
+  }else{document.querySelectorAll('[data-r]').forEach(function(x){x.classList.add('in')});lightSeats()}
 })();
 </script>
 </body>
