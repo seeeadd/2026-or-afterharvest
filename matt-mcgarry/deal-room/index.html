@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>The Deal Room | New Media Summit</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans_300-400-500-600-700-800.css">
+<style>
+:root{
+  --accent:#f24f1e; --accent2:#f38100; --red:#f02d30;
+  --ink:#010100; --slate:#3c434b; --surface:#f2f5f6; --bg:#ffffff;
+  --grad:linear-gradient(to top right,#f38100,#f02d30);
+  --line:rgba(1,1,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-weight:500;-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+.wrap{width:min(1080px,100% - 48px);margin:0 auto}
+.narrow{width:min(820px,100% - 48px);margin:0 auto}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* top strip */
+.strip{background:#000;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+.strip .when{font-size:14px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.86);display:flex;align-items:center;gap:10px}
+.strip .when i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(242,79,30,.18)}
+.cd{display:flex;align-items:center;gap:6px}
+.cd span{display:flex;flex-direction:column;align-items:center;min-width:44px}
+.cd b{font-size:18px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.cd small{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
+.cd em{font-style:normal;color:var(--accent);font-weight:700;transform:translateY(-6px)}
+
+/* hero */
+.hero{position:relative;background:#000;color:#fff;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;background:url(img/crowd.jpg) center 35%/cover no-repeat;opacity:.17;z-index:-2;filter:saturate(.9)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(60% 55% at 50% 0%,rgba(242,79,30,.20),transparent 70%),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.35) 40%,#000 96%)}
+.hero .inner{text-align:center;padding:44px 0 80px}
+.logo{width:210px;height:auto;margin:0 auto 30px}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);font-size:14px;font-weight:600;letter-spacing:.02em;backdrop-filter:blur(6px)}
+.tag svg{width:16px;height:16px}
+h1{font-weight:700;font-size:clamp(36px,4.5vw,60px);line-height:1.1;letter-spacing:-.025em;margin:22px auto 0;max-width:960px;text-wrap:balance}
+.sub{font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:rgba(255,255,255,.82);max-width:640px;margin:18px auto 0;text-wrap:balance}
+.sub b{color:#fff;font-weight:700}
+
+.faces{display:flex;justify-content:center;gap:12px;margin:32px auto 0;flex-wrap:wrap}
+.face{width:96px;text-align:center}
+.face .ph{width:96px;height:118px;border-radius:16px;overflow:hidden;position:relative;background:#141414;box-shadow:0 18px 40px -18px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.08)}
+.face .ph img{width:100%;height:100%;object-fit:cover}
+.face .ph svg{position:absolute;inset:0;width:100%;height:100%}
+.face p{font-size:12.5px;font-weight:600;margin-top:8px;color:rgba(255,255,255,.92)}
+.face.f p{color:rgba(255,255,255,.55)}
+.face.f .ph{box-shadow:0 18px 40px -18px rgba(0,0,0,.8),inset 0 0 0 1px rgba(242,79,30,.28)}
+
+.join{margin:30px auto 0;max-width:640px}
+.form{display:flex;gap:8px;padding:8px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px)}
+.form input{flex:1;min-width:0;height:56px;border:0;border-radius:999px;background:#fff;color:var(--ink);font:500 16px 'Plus Jakarta Sans',sans-serif;padding:0 22px;outline:none}
+.form input::placeholder{color:#8a9097}
+.form input:focus{box-shadow:0 0 0 3px rgba(242,79,30,.35)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 30px;border:0;border-radius:999px;background:var(--grad);color:#fff;font:700 17px 'Plus Jakarta Sans',sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none;box-shadow:0 14px 30px -12px rgba(240,45,48,.6);transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 18px 36px -12px rgba(240,45,48,.7)}
+.btn svg{width:18px;height:18px}
+
+/* sections */
+section.s{padding:104px 0}
+.mark{width:56px;height:56px;margin:0 auto 22px;display:block}
+h2{font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spacing:-.02em;text-align:center}
+
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pt{border-radius:24px;padding:34px 30px 32px;background:radial-gradient(100% 100% at 0% 100%,rgba(63,207,171,.13) 0%,#f8fbfb 62%);border:1px solid var(--line)}
+.pt:nth-child(2){background:radial-gradient(100% 100% at 100% 0%,rgba(234,92,29,.12) 0%,#f8fbfb 62%)}
+.pt:nth-child(3){background:#0b0b0b;color:#fff;border-color:#0b0b0b}
+.pt svg{width:30px;height:30px;margin-bottom:22px}
+.pt p{font-size:19px;line-height:1.5;font-weight:600;letter-spacing:-.005em;text-wrap:pretty}
+.pt:nth-child(3) p{color:rgba(255,255,255,.88)}
+.pt .lo{color:var(--accent)}
+
+.live{margin-top:56px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--line)}
+.row .n{font-size:15px;font-weight:700;letter-spacing:.06em}
+.row .n span{display:inline-block}
+.row h3{font-size:clamp(20px,2.1vw,25px);font-weight:700;line-height:1.35;letter-spacing:-.01em}
+.row h3 span{color:var(--slate);font-weight:500}
+
+/* live-only callout */
+.callout{position:relative;border-radius:32px;overflow:hidden;color:#fff;background:#0a0a0a;isolation:isolate;box-shadow:0 40px 80px -40px rgba(0,0,0,.55)}
+.callout::before{content:"";position:absolute;inset:0;background:url(img/crowd.jpg) center 60%/cover;opacity:.3;z-index:-2}
+.callout::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(10,10,10,.96) 30%,rgba(10,10,10,.55) 100%),radial-gradient(60% 80% at 100% 100%,rgba(242,79,30,.35),transparent 70%)}
+.callout .in{display:grid;grid-template-columns:1.5fr .7fr;gap:40px;align-items:center;padding:64px 64px}
+.callout .k{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2)}
+.callout .k svg{width:18px;height:18px}
+.callout h3{text-wrap:balance;font-size:clamp(26px,2.8vw,36px);line-height:1.22;font-weight:700;letter-spacing:-.02em;margin-top:18px}
+.callout h3 .grad-text{font-weight:800}
+.callout .also{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font-size:17px;color:rgba(255,255,255,.78);max-width:520px}
+.callout .also b{color:#fff;font-weight:700}
+.cal{width:100%;max-width:280px;justify-self:center}
+
+/* host */
+.host{display:grid;grid-template-columns:380px 1fr;gap:72px;align-items:center;max-width:1000px;margin:0 auto}
+.host .pic{position:relative}
+.host .pic img{border-radius:28px;aspect-ratio:1/1.08;object-fit:cover;object-position:50% 20%;width:100%;height:auto;box-shadow:0 30px 60px -30px rgba(0,0,0,.35)}
+.host h2{text-align:left;font-size:clamp(28px,3.2vw,40px)}
+.host h2 .nm{color:var(--accent)}
+
+/* end */
+.end{background:#000;color:#fff;text-align:center;padding:96px 0 88px;position:relative;overflow:hidden;isolation:isolate}
+.end::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(50% 70% at 50% 120%,rgba(242,79,30,.28),transparent 70%)}
+.end .fine{font-size:16px;color:rgba(255,255,255,.7);margin:20px auto 30px;max-width:640px;text-wrap:balance}
+.end .lg{width:150px;height:auto;margin:56px auto 0;opacity:.9}
+
+@media (max-width:900px){
+  .points{grid-template-columns:1fr}
+  .callout .in{grid-template-columns:1fr;padding:44px 28px}
+  .cal{max-width:220px;justify-self:start}
+  .host{grid-template-columns:1fr;gap:56px}
+  .host .pic{max-width:360px}
+}
+@media (max-width:600px){
+  .wrap,.narrow{width:calc(100% - 32px)}
+  .strip .wrap{height:auto;padding:10px 0;flex-direction:column;gap:8px}
+  .cd span{min-width:38px}
+  .hero .inner{padding:30px 0 56px}
+  .logo{width:180px;margin-bottom:22px}
+  h1{margin-top:18px}
+  .faces{gap:8px;flex-wrap:nowrap;margin-top:28px}
+  .face{width:calc(25% - 6px);max-width:84px}
+  .face .ph{width:100%;height:auto;aspect-ratio:4/5;border-radius:12px}
+  .face p{font-size:11px}
+  .form{flex-direction:column;border-radius:24px;padding:8px}
+  .form input{flex:none;height:54px;width:100%}
+  .form .btn{height:56px;width:100%}
+  .cal{max-width:180px}
+  section.s{padding:72px 0}
+  .row{grid-template-columns:1fr;gap:6px;padding:24px 0}
+  .pt{padding:28px 24px}
+  .pt p{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="strip"><div class="wrap">
+  <div class="when"><i></i>Tue Nov 24, 12 pm ET</div>
+  <div class="cd" role="timer" aria-label="Starts in">
+    <span><b data-cd="d">00</b><small>Days</small></span><em>:</em>
+    <span><b data-cd="h">00</b><small>Hrs</small></span><em>:</em>
+    <span><b data-cd="m">00</b><small>Mins</small></span><em>:</em>
+    <span><b data-cd="s">00</b><small>Secs</small></span>
+  </div>
+</div></div>
+
+<header class="hero" id="top"><div class="wrap inner">
+  <img class="logo" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188">
+  <span class="tag"><svg viewBox="0 0 16 16" aria-hidden="true"><defs><linearGradient id="tg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs><path d="M8 1 15 8 8 15 1 8Z" fill="url(#tg)"/></svg>The Deal Room</span>
+  <h1>Land your <span class="grad-text">biggest deal of 2027</span>, even if your list is under 50K</h1>
+  <p class="sub">A free live event with Matt McGarry and 3 New Media Summit founders. Real deals, real numbers. <b>Tue Nov 24, 12 pm ET.</b></p>
+
+  <div class="faces" aria-label="Your hosts">
+    <div class="face"><div class="ph"><img src="img/matt-card.jpg" alt="Matt McGarry" width="480" height="600"></div><p>Matt McGarry</p></div>
+    <div class="face f"><div class="ph"><svg viewBox="0 0 118 146" aria-hidden="true"><defs><linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#121212"/></linearGradient><linearGradient id="fo" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs><rect width="118" height="146" fill="#161616"/><circle cx="59" cy="58" r="22" fill="url(#fg)"/><path d="M17 146c2-30 20-46 42-46s40 16 42 46Z" fill="url(#fg)"/><path d="M59 8 64 13 59 18 54 13Z" fill="url(#fo)"/></svg></div><p>Founder</p></div>
+    <div class="face f"><div class="ph"><svg viewBox="0 0 118 146" aria-hidden="true"><rect width="118" height="146" fill="#161616"/><circle cx="59" cy="58" r="22" fill="url(#fg)"/><path d="M17 146c2-30 20-46 42-46s40 16 42 46Z" fill="url(#fg)"/><path d="M59 8 64 13 59 18 54 13Z" fill="url(#fo)"/></svg></div><p>Founder</p></div>
+    <div class="face f"><div class="ph"><svg viewBox="0 0 118 146" aria-hidden="true"><rect width="118" height="146" fill="#161616"/><circle cx="59" cy="58" r="22" fill="url(#fg)"/><path d="M17 146c2-30 20-46 42-46s40 16 42 46Z" fill="url(#fg)"/><path d="M59 8 64 13 59 18 54 13Z" fill="url(#fo)"/></svg></div><p>Founder</p></div>
+  </div>
+
+  <div class="join" id="join">
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Spot saved';">
+      <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" aria-label="First name" required>
+      <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+      <button class="btn" type="submit">Save my spot <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </form>
+  </div>
+</div></header>
+
+<main>
+<section class="s"><div class="wrap">
+  <div class="points">
+    <div class="pt"><svg viewBox="0 0 30 30" aria-hidden="true"><defs><linearGradient id="pg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs><path d="M15 2 28 15 15 28 2 15Z" fill="url(#pg)"/><path d="M15 9 21 15 15 21 9 15Z" fill="#fff" opacity=".9"/></svg><p>Find out where your next $10K+ deal comes from, from founders who've closed them</p></div>
+    <div class="pt"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M8 2 14 8 8 14 2 8Z M22 2 28 8 22 14 16 8Z M8 16 14 22 8 28 2 22Z M22 16 28 22 22 28 16 22Z" fill="url(#pg)"/></svg><p>See the real pitch, numbers and first email behind 3 deals</p></div>
+    <div class="pt"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="url(#pg)" stroke-width="2"/><circle cx="15" cy="15" r="5" fill="url(#pg)"/></svg><p><span class="lo">Live only:</span> the first 50 people to get their ticket during the event get 3 booked meetings before Austin</p></div>
+  </div>
+</div></section>
+
+<section class="s" style="padding-top:24px"><div class="narrow">
+  <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs><g fill="url(#mg)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
+  <h2>What happens live</h2>
+  <div class="live">
+    <div class="row"><div class="n grad-text"><span>01</span></div><h3>Founders break down real deals: <span>the numbers, the pitch, the first email</span></h3></div>
+    <div class="row"><div class="n grad-text"><span>02</span></div><h3>Live deal reviews: <span>3 New Media Summit ticket holders get their deal reviewed by the founders</span></h3></div>
+    <div class="row"><div class="n grad-text"><span>03</span></div><h3>An inside look at New Media Summit 2027 in Austin</h3></div>
+    <div class="row"><div class="n grad-text"><span>04</span></div><h3>Live Q&amp;A</h3></div>
+  </div>
+</div></section>
+
+<section class="s" style="padding-top:8px"><div class="wrap">
+  <div class="callout"><div class="in">
+    <div>
+      <span class="k"><svg viewBox="0 0 18 18" aria-hidden="true"><g fill="url(#mg)"><rect x="7.6" y="0" width="2.8" height="18" rx="1.4"/><rect x="7.6" y="0" width="2.8" height="18" rx="1.4" transform="rotate(60 9 9)"/><rect x="7.6" y="0" width="2.8" height="18" rx="1.4" transform="rotate(120 9 9)"/></g></svg>Live only</span>
+      <h3>Show up live. The first 50 people to get their New Media Summit ticket during the event get <span class="grad-text">3 booked meetings before Austin.</span></h3>
+      <p class="also"><b>Already have your ticket?</b> Stay live to the end and you get them too.</p>
+    </div>
+    <svg class="cal" viewBox="0 0 280 250" aria-hidden="true">
+      <defs><linearGradient id="cg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f38100"/><stop offset="1" stop-color="#f02d30"/></linearGradient></defs>
+      <g transform="rotate(-8 140 125)"><rect x="58" y="22" width="170" height="150" rx="18" fill="#1d1d1d" stroke="rgba(255,255,255,.10)"/><rect x="58" y="22" width="170" height="34" rx="18" fill="#262626"/><rect x="80" y="76" width="90" height="9" rx="4.5" fill="rgba(255,255,255,.14)"/><rect x="80" y="96" width="60" height="9" rx="4.5" fill="rgba(255,255,255,.08)"/></g>
+      <g transform="rotate(5 140 125)"><rect x="48" y="44" width="170" height="150" rx="18" fill="#232323" stroke="rgba(255,255,255,.12)"/><rect x="48" y="44" width="170" height="34" rx="18" fill="#2c2c2c"/><rect x="70" y="98" width="100" height="9" rx="4.5" fill="rgba(255,255,255,.16)"/><rect x="70" y="118" width="64" height="9" rx="4.5" fill="rgba(255,255,255,.09)"/></g>
+      <g><rect x="40" y="70" width="190" height="160" rx="20" fill="#fff"/><rect x="40" y="70" width="190" height="40" rx="20" fill="url(#cg)"/><rect x="40" y="96" width="190" height="14" fill="url(#cg)"/><circle cx="72" cy="90" r="5" fill="#fff" opacity=".9"/><circle cx="198" cy="90" r="5" fill="#fff" opacity=".9"/><rect x="64" y="132" width="110" height="10" rx="5" fill="#e3e7e9"/><rect x="64" y="154" width="74" height="10" rx="5" fill="#eef1f2"/><circle cx="190" cy="192" r="20" fill="url(#cg)"/><path d="M181 192l6 6 12-12" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    </svg>
+  </div></div>
+</div></section>
+
+<section class="s" style="padding-top:40px"><div class="wrap">
+  <div class="host">
+    <div class="pic"><img src="img/matt-host.jpg" alt="Matt McGarry" width="900" height="652">
+    </div>
+    <div>
+      <svg class="mark" viewBox="0 0 48 48" style="margin:0 0 22px" aria-hidden="true"><g fill="url(#mg)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
+      <h2>Hosted by <span class="nm">Matt McGarry</span>, founder of GrowLetter and New Media Summit.</h2>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="end"><div class="wrap">
+  <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><g fill="url(#mg)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
+  <p class="fine">Free. Live on Tue Nov 24 at 12 pm ET. Replay available until Fri Nov 27.</p>
+  <a class="btn" href="#join" onclick="setTimeout(function(){document.querySelector('#join input').focus({preventScroll:true})},500)">Save my spot <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <img class="lg" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188">
+</div></footer>
+
+<script>
+(function(){
+  var t=Date.parse('2026-11-24T12:00:00-05:00');
+  var el={d:document.querySelector('[data-cd=d]'),h:document.querySelector('[data-cd=h]'),m:document.querySelector('[data-cd=m]'),s:document.querySelector('[data-cd=s]')};
+  function p(n){return (n<10?'0':'')+n}
+  function tick(){var r=Math.max(0,t-Date.now())/1000;el.d.textContent=p(Math.floor(r/86400));el.h.textContent=p(Math.floor(r%86400/3600));el.m.textContent=p(Math.floor(r%3600/60));el.s.textContent=p(Math.floor(r%60))}
+  tick();setInterval(tick,1000);
+  document.documentElement.style.scrollBehavior='smooth';
+})();
+</script>
+</body>
+</html>
