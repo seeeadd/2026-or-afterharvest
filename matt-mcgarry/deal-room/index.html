@@ -50,8 +50,6 @@ img{display:block;max-width:100%;height:auto}
 .cd span.sec.tk{animation:tk .6s var(--ease)}
 @keyframes tk{0%{box-shadow:inset 0 0 0 1px rgba(242,79,30,.5),0 0 0 0 rgba(242,79,30,.45)}100%{box-shadow:inset 0 0 0 1px rgba(242,79,30,.5),0 0 0 9px rgba(242,79,30,0)}}
 .mini{display:none;align-items:center;gap:8px;height:40px;padding:0 16px 0 5px;border-radius:999px;background:var(--grad);color:#fff;font-size:14px;font-weight:700;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.3);opacity:0;transform:translateY(-4px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
-.mini img{width:30px;height:30px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px rgba(255,255,255,.85)}
-.mini i{position:relative;margin-left:-14px;margin-top:20px;width:9px;height:9px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 2px #f24f1e}
 .scrolled .mini{opacity:1;transform:none}
 
 /* ---------- hero ---------- */
@@ -119,6 +117,9 @@ h1{text-shadow:0 2px 30px rgba(0,0,0,.35);font-weight:700;font-size:clamp(36px,4
 .btn:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -1px 0 rgba(0,0,0,.12),0 24px 48px -16px rgba(240,45,48,.85)}
 .btn:hover::after{left:125%}
 .btn:active{transform:translateY(0) scale(.985)}
+.mini.btn{height:42px;padding:0 18px 0 4px;gap:8px;font-size:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 24px -12px rgba(240,45,48,.7);transition:opacity .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
+.mini .env{width:34px;height:34px}
+.mini .env svg{width:27px;height:24px}
 .env{width:42px;height:42px;border-radius:50%;background:rgba(1,1,0,.2);display:grid;place-items:center;flex:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
 .env svg{width:34px;height:30px;overflow:visible}
 .env svg *{transform-box:fill-box}
@@ -345,7 +346,7 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
       <span><b data-cd="m">00</b><small>Min</small></span>
       <span class="sec"><b data-cd="s">00</b><small>Sec</small></span>
     </div>
-    <a class="mini" href="#join"><img src="img/matt-card.jpg" alt=""><i></i>Save my spot</a>
+    <a class="mini btn" href="#join" id="cta0"><span class="env" aria-hidden="true"></span>Save my spot</a>
   </div>
 </div></div>
 
@@ -538,7 +539,8 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
   var form=document.getElementById('form'),b1=form.querySelector('.btn');
   b1.addEventListener('click',function(){play(b1)});
   form.addEventListener('submit',function(e){e.preventDefault();b1.classList.add('kept');form.querySelectorAll('input').forEach(function(i){i.blur()})});
-  var b2=document.getElementById('cta2');
+  var b2=document.getElementById('cta2'),b0=document.getElementById('cta0');
+  b0.addEventListener('click',function(e){e.preventDefault();play(b0);setTimeout(function(){document.getElementById('top').scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(function(){form.querySelector('input').focus({preventScroll:true})},700)},reduce?0:650)});
   b2.addEventListener('click',function(e){e.preventDefault();play(b2);setTimeout(function(){document.getElementById('top').scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(function(){form.querySelector('input').focus({preventScroll:true})},700)},reduce?0:650)});
 
   /* soft spotlight that follows the cursor in the hero */
