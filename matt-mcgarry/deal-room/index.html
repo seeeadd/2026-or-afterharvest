@@ -38,7 +38,8 @@ img{display:block;max-width:100%}
 .hero::before{content:"";position:absolute;inset:0;background:url(img/crowd.jpg) center 35%/cover no-repeat;opacity:.17;z-index:-2;filter:saturate(.9)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(60% 55% at 50% 0%,rgba(242,79,30,.20),transparent 70%),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.35) 40%,#000 96%)}
-.hero .inner{text-align:center;padding:44px 0 80px}
+.hero{min-height:calc(100vh - 58px);display:flex;align-items:center}
+.hero .inner{text-align:center;padding:44px 0 72px}
 .logo{width:210px;height:auto;margin:0 auto 30px}
 .tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);font-size:14px;font-weight:600;letter-spacing:.02em;backdrop-filter:blur(6px)}
 .tag svg{width:16px;height:16px}
@@ -122,6 +123,7 @@ h2{font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spac
   .wrap,.narrow{width:calc(100% - 32px)}
   .strip .wrap{height:auto;padding:10px 0;flex-direction:column;gap:8px}
   .cd span{min-width:38px}
+  .hero{min-height:0;display:block}
   .hero .inner{padding:30px 0 56px}
   .logo{width:180px;margin-bottom:22px}
   h1{margin-top:18px}
