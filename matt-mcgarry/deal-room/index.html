@@ -8,6 +8,7 @@
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="preload" as="image" href="img/room.jpg">
 <link rel="stylesheet" href="../fonts/plus-jakarta-sans_300-400-500-600-700-800.css">
+<link rel="preload" as="video" href="video/room.mp4">
 <style>
 :root{
   --accent:#f24f1e; --accent2:#f38100; --red:#f02d30;
@@ -32,23 +33,32 @@ img{display:block;max-width:100%;height:auto}
 [data-r].in{opacity:1;transform:none}
 
 /* ---------- top strip ---------- */
-.strip{position:relative;z-index:6;background:#030303;color:#fff;border-bottom:1px solid rgba(255,255,255,.07)}
-.strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.strip{position:sticky;top:0;z-index:30;background:rgba(3,3,3,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;border-bottom:1px solid rgba(255,255,255,.07)}
+.strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
 .when{font-size:13.5px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.82);display:flex;align-items:center;gap:10px}
 .dot{position:relative;width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
 .dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(242,79,30,.7);animation:ping 2.4s var(--ease) infinite}
 @keyframes ping{0%{transform:scale(.4);opacity:1}100%{transform:scale(1.6);opacity:0}}
-.cd{display:flex;align-items:center;gap:4px}
-.cd span{display:flex;flex-direction:column;align-items:center;min-width:42px}
-.cd b{font-size:17px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
-.cd small{font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:5px}
-.cd em{font-style:normal;color:rgba(242,79,30,.9);font-weight:700;transform:translateY(-6px)}
+.cdw{display:flex;align-items:center;gap:14px}
+.cdl{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.cd{display:flex;align-items:center;gap:6px}
+.cd span{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:46px;height:44px;border-radius:11px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.cd b{font-size:16px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.cd small{font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px}
+.cd span.sec{background:rgba(242,79,30,.16);box-shadow:inset 0 0 0 1px rgba(242,79,30,.5)}
+.cd span.sec b{color:#ffb08f}
+.cd span.sec.tk{animation:tk .6s var(--ease)}
+@keyframes tk{0%{box-shadow:inset 0 0 0 1px rgba(242,79,30,.5),0 0 0 0 rgba(242,79,30,.45)}100%{box-shadow:inset 0 0 0 1px rgba(242,79,30,.5),0 0 0 9px rgba(242,79,30,0)}}
+.mini{display:none;align-items:center;gap:8px;height:40px;padding:0 16px 0 5px;border-radius:999px;background:var(--grad);color:#fff;font-size:14px;font-weight:700;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.3);opacity:0;transform:translateY(-4px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.mini img{width:30px;height:30px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px rgba(255,255,255,.85)}
+.mini i{position:relative;margin-left:-14px;margin-top:20px;width:9px;height:9px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 2px #f24f1e}
+.scrolled .mini{opacity:1;transform:none}
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:calc(100vh - 56px);display:flex;align-items:center;background:#030303;color:#fff;overflow:hidden;isolation:isolate}
-.hero .bg{position:absolute;inset:-3%;background:url(img/room.jpg) center 62%/cover no-repeat;opacity:.5;z-index:-5;animation:kb 38s ease-in-out infinite alternate}
+.hero{position:relative;min-height:calc(100vh - 64px);display:flex;align-items:center;background:#030303;color:#fff;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;opacity:.42;z-index:-5;animation:kb 38s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.07) translateY(-1%)}}
-.hero .shade{position:absolute;inset:0;z-index:-4;background:linear-gradient(180deg,rgba(3,3,3,.9) 0%,rgba(3,3,3,.55) 32%,rgba(3,3,3,.62) 62%,#030303 100%)}
+.hero .shade{position:absolute;inset:0;z-index:-4;background:radial-gradient(60% 55% at 50% 48%,rgba(3,3,3,.55),rgba(3,3,3,.15) 100%),linear-gradient(180deg,rgba(3,3,3,.8) 0%,rgba(3,3,3,.35) 30%,rgba(3,3,3,.45) 66%,#030303 100%)}
 .aura{position:absolute;z-index:-3;border-radius:50%;filter:blur(70px);pointer-events:none}
 .a1{width:720px;height:440px;left:50%;top:-6%;margin-left:-520px;background:radial-gradient(closest-side,rgba(242,79,30,.55),transparent);animation:d1 20s ease-in-out infinite alternate}
 .a2{width:640px;height:420px;left:50%;top:4%;margin-left:-60px;background:radial-gradient(closest-side,rgba(243,129,0,.38),transparent);animation:d2 24s ease-in-out infinite alternate}
@@ -62,7 +72,7 @@ img{display:block;max-width:100%;height:auto}
 .tag::before,.form::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(255,255,255,.3),rgba(255,255,255,.06) 45%,rgba(242,79,30,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 .tag svg{width:14px;height:14px;animation:spin 14s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-h1{font-weight:700;font-size:clamp(36px,4.6vw,62px);line-height:1.08;letter-spacing:-.03em;margin:22px auto 0;max-width:980px;text-wrap:balance}
+h1{text-shadow:0 2px 30px rgba(0,0,0,.35);font-weight:700;font-size:clamp(36px,4.6vw,62px);line-height:1.08;letter-spacing:-.03em;margin:22px auto 0;max-width:980px;text-wrap:balance}
 .sub{font-size:clamp(16.5px,1.5vw,19.5px);line-height:1.62;color:rgba(255,255,255,.74);max-width:600px;margin:18px auto 0;text-wrap:balance}
 .sub b{color:#fff;font-weight:700}
 
@@ -87,6 +97,20 @@ h1{font-weight:700;font-size:clamp(36px,4.6vw,62px);line-height:1.08;letter-spac
 .form input{flex:1;min-width:0;height:58px;border:0;border-radius:999px;background:#fff;color:var(--ink);font:500 16px 'Plus Jakarta Sans',sans-serif;padding:0 22px;outline:none;transition:box-shadow .3s var(--ease)}
 .form input::placeholder{color:#8a9097}
 .form input:focus{box-shadow:0 0 0 3px rgba(242,79,30,.45)}
+.proof{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;font-size:13.5px;color:rgba(255,255,255,.6)}
+.proof .sep{width:1px;height:14px;background:rgba(255,255,255,.18)}
+.proof .jl{display:inline-flex;align-items:center;gap:8px;min-width:150px}
+.stack{display:flex}
+.stack img{width:24px;height:24px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #0b0b0b;margin-left:-7px;opacity:.9}
+.stack img:first-child{margin-left:0}
+.proof b{color:#fff;font-weight:700;font-variant-numeric:tabular-nums;display:inline-block}
+.proof b.bump{animation:bump .7s var(--ease)}
+@keyframes bump{0%{transform:translateY(0)}35%{transform:translateY(-5px);color:#ffb08f}100%{transform:none}}
+.proof .jl b{color:rgba(255,255,255,.88);font-weight:600}
+.proof .nm{display:inline-block;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.proof .nm.out{opacity:0;transform:translateY(5px)}
+.gdot{position:relative;width:7px;height:7px;border-radius:50%;background:#3ddc84;flex:none}
+.gdot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(61,220,132,.8);animation:ping 2s var(--ease) infinite}
 
 /* the button + the envelope ticket */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;height:58px;padding:0 28px 0 8px;border:0;border-radius:999px;background:var(--grad);color:#fff;font:700 17px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em;cursor:pointer;white-space:nowrap;text-decoration:none;isolation:isolate;
@@ -116,6 +140,30 @@ h1{font-weight:700;font-size:clamp(36px,4.6vw,62px);line-height:1.08;letter-spac
 @keyframes sp2{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(7px,-7px) scale(.2)}}
 @keyframes sp3{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(7px,7px) scale(.2)}}
 @keyframes sp4{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(-7px,7px) scale(.2)}}
+
+/* ---------- floating video (NMS reel) ---------- */
+.fv{position:fixed;right:22px;bottom:22px;z-index:40;width:206px;border-radius:20px;padding:0;background:#111;box-shadow:0 30px 60px -20px rgba(1,1,0,.6),0 0 0 1px rgba(255,255,255,.16);opacity:0;transform:translateY(16px) scale(.96);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.fv.show{opacity:1;transform:none}
+.fv.gone{opacity:0;transform:translateY(16px) scale(.96);pointer-events:none}
+.fv .scr{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:9/16;background:#111;cursor:pointer}
+.fv video{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s var(--ease)}
+.fv:hover video{transform:scale(1.03)}
+.fv .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,transparent 22%,transparent 36%,rgba(0,0,0,.88) 74%,rgba(0,0,0,.95) 100%);pointer-events:none}
+.fv .live{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;gap:7px;padding:5px 10px 5px 8px;border-radius:999px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.fv .live .dot{width:6px;height:6px}
+.fv .x{position:absolute;right:10px;top:10px;width:30px;height:30px;border-radius:50%;border:0;background:rgba(0,0,0,.5);color:#fff;font:600 17px/30px 'Plus Jakarta Sans',sans-serif;cursor:pointer;z-index:3;transition:background .3s}
+.fv .x:hover{background:rgba(0,0,0,.75)}
+.fv .cap{position:absolute;left:14px;right:14px;bottom:72px;color:#fff;pointer-events:none}
+.fv .cap p{font-size:14px;line-height:1.35;font-weight:500}
+.fv .cap p b{font-weight:800}
+.fv .cap .tap{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#ffb08f;margin-top:8px;transition:opacity .4s}
+.fv.sound .cap .tap{opacity:0}
+.fv .prog{position:absolute;left:14px;right:14px;bottom:60px;height:3px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden;pointer-events:none}
+.fv .prog i{display:block;height:100%;width:0;background:var(--grad)}
+.fv .fbtn{position:absolute;left:10px;right:10px;bottom:10px;height:42px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:var(--grad);color:#fff;font-size:14.5px;font-weight:700;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.fv .snd{position:absolute;right:12px;bottom:72px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.45);display:grid;place-items:center;pointer-events:none}
+.fv .snd svg{width:15px;height:15px}
+.fv .snd .on{display:none}.fv.sound .snd .on{display:block}.fv.sound .snd .off{display:none}
 
 /* ---------- the three points: one sheet that overlaps the hero ---------- */
 .pts{position:relative;z-index:4;margin-top:-84px}
@@ -170,8 +218,8 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
 
 /* ---------- live-only callout ---------- */
 .callout{position:relative;border-radius:34px;overflow:hidden;color:#fff;background:#070707;isolation:isolate;box-shadow:0 50px 100px -50px rgba(1,1,0,.7)}
-.callout .cbg{position:absolute;inset:0;z-index:-3;background:url(img/lobby.jpg) right 40%/cover;opacity:.32}
-.callout::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,#070707 30%,rgba(7,7,7,.82) 58%,rgba(7,7,7,.55) 100%)}
+.callout .cbg{position:absolute;inset:0;z-index:-3;background:url(img/lobby.jpg) right 40%/cover;opacity:.62}
+.callout::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(7,7,7,.94) 24%,rgba(7,7,7,.62) 56%,rgba(7,7,7,.22) 100%)}
 .callout::after{content:"";position:absolute;width:640px;height:640px;right:-200px;bottom:-320px;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(242,79,30,.45),transparent);filter:blur(30px)}
 .callout .in{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;padding:72px 68px}
 .callout .k{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2)}
@@ -210,11 +258,14 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
 
 /* ---------- end ---------- */
 .end{position:relative;background:#030303;color:#fff;text-align:center;padding:120px 0 72px;overflow:hidden;isolation:isolate}
+.end .ebg{position:absolute;inset:0;z-index:-3;background:url(img/stage.jpg) center 40%/cover;opacity:.38}
+.end .eshade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#030303 0%,rgba(3,3,3,.55) 45%,rgba(3,3,3,.75) 100%)}
 .end .aura{left:50%;top:auto;bottom:-260px;width:900px;height:520px;margin-left:-450px;background:radial-gradient(closest-side,rgba(242,79,30,.5),transparent);animation:d1 20s ease-in-out infinite alternate}
 .end .mark{width:64px;height:64px;margin:0 auto}
 .end .fine{font-size:17px;color:rgba(255,255,255,.72);margin:28px auto 34px;max-width:640px;text-wrap:balance}
 .end .lg{width:150px;margin:80px auto 0;opacity:.85}
 
+@media (min-width:601px){.mini{display:inline-flex}}
 @media (max-width:980px){
   .ros{grid-template-columns:1fr;gap:36px}
   .ros .hd{position:static}
@@ -229,8 +280,24 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
 }
 @media (max-width:600px){
   .wrap{width:calc(100% - 32px)}
-  .strip .wrap{height:auto;padding:10px 0;flex-direction:column;gap:8px}
-  .cd span{min-width:38px}
+  .strip .wrap{height:58px;justify-content:center}
+  .strip .when{display:none}
+  .cdl{font-size:10px;letter-spacing:.12em}
+  .cd span{min-width:40px;height:40px;border-radius:10px}
+  .cd b{font-size:14.5px}
+  .mini{display:none!important}
+  .proof{font-size:12.5px;gap:9px;flex-wrap:wrap}
+  .proof .sep{display:none}
+  .proof .jl{min-width:0}
+  .fv{width:118px;right:12px;bottom:12px;border-radius:16px}
+  .fv .scr{border-radius:16px}
+  .fv .fbtn,.fv .prog,.fv .live{display:none}
+  .fv .cap{bottom:12px;left:10px;right:10px}
+  .fv .cap p:first-child{display:none}
+  .fv .cap{display:none}
+  .fv.near{opacity:0;transform:translateY(16px) scale(.96);pointer-events:none}
+  .fv .snd{bottom:10px;right:8px;width:24px;height:24px}
+  .fv .x{width:24px;height:24px;font-size:14px;line-height:24px;right:6px;top:6px}
   .hero{min-height:0;display:block}
   .hero .inner{padding:30px 0 112px;width:calc(100% - 32px)}
   .logo{width:178px;margin-bottom:22px}
@@ -268,18 +335,22 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
   </defs>
 </svg>
 
-<div class="strip"><div class="wrap">
-  <div class="when"><span class="dot"></span>Tue Nov 24, 12 pm ET</div>
-  <div class="cd" role="timer" aria-label="Starts in">
-    <span><b data-cd="d">00</b><small>Days</small></span><em>:</em>
-    <span><b data-cd="h">00</b><small>Hrs</small></span><em>:</em>
-    <span><b data-cd="m">00</b><small>Mins</small></span><em>:</em>
-    <span><b data-cd="s">00</b><small>Secs</small></span>
+<div class="strip" id="strip"><div class="wrap">
+  <div class="when"><img src="img/favicon.png" alt="" width="22" height="22" style="width:22px;height:22px;border-radius:6px">Tue Nov 24, 12 pm ET</div>
+  <div class="cdw">
+    <span class="cdl"><span class="dot"></span>Starts in</span>
+    <div class="cd" role="timer" aria-label="Starts in">
+      <span><b data-cd="d">00</b><small>Days</small></span>
+      <span><b data-cd="h">00</b><small>Hrs</small></span>
+      <span><b data-cd="m">00</b><small>Min</small></span>
+      <span class="sec"><b data-cd="s">00</b><small>Sec</small></span>
+    </div>
+    <a class="mini" href="#join"><img src="img/matt-card.jpg" alt=""><i></i>Save my spot</a>
   </div>
 </div></div>
 
 <header class="hero" id="top">
-  <div class="bg"></div><div class="shade"></div>
+  <video class="bg" autoplay muted loop playsinline preload="auto" poster="video/room.jpg" aria-hidden="true"><source src="video/room.mp4" type="video/mp4"></video><div class="shade"></div>
   <div class="aura a1"></div><div class="aura a2"></div>
   <div class="spot"></div><div class="grain"></div>
   <div class="wrap inner">
@@ -301,6 +372,7 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
         <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
         <button class="btn" type="submit"><span class="env" aria-hidden="true"></span>Save my spot</button>
       </form>
+      <div class="proof"><span class="stack"><img src="../img/faces/f1.jpg" alt=""><img src="../img/faces/f2.jpg" alt=""><img src="../img/faces/f3.jpg" alt=""></span><span><b id="cnt">1,284</b> have their seat</span><span class="sep" aria-hidden="true"></span><span class="jl" aria-live="polite"><span class="gdot"></span><span class="nm" id="jn"><b>Maya</b> just registered</span></span></div>
     </div>
   </div>
 </header>
@@ -384,7 +456,7 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
 </main>
 
 <footer class="end">
-  <div class="aura"></div><div class="grain" style="z-index:-1"></div>
+  <div class="ebg"></div><div class="eshade"></div><div class="aura"></div><div class="grain" style="z-index:-1"></div>
   <div class="wrap" data-r>
     <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><g fill="url(#g)"><path d="M8 0 16 8 8 16 0 8Z"/><path d="M24 0 32 8 24 16 16 8Z"/><path d="M8 16 16 24 8 32 0 24Z"/><path d="M40 0 48 8 40 16 32 8Z"/><path d="M24 16 32 24 24 32 16 24Z"/><path d="M8 32 16 40 8 48 0 40Z"/><path d="M40 16 48 24 40 32 32 24Z"/><path d="M24 32 32 40 24 48 16 40Z"/><path d="M40 32 48 40 40 48 32 40Z"/></g></svg>
     <p class="fine">Free. Live on Tue Nov 24 at 12 pm ET. Replay available until Fri Nov 27.</p>
@@ -392,6 +464,19 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
     <img class="lg" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188" loading="lazy">
   </div>
 </footer>
+
+<aside class="fv" id="fv" aria-label="An inside look at New Media Summit">
+  <div class="scr" id="fvs">
+    <video id="fvv" muted loop playsinline preload="metadata" poster="video/inside.jpg"><source src="video/inside.mp4" type="video/mp4"></video>
+    <div class="ov"></div>
+    <span class="live"><span class="dot"></span>Live Nov 24</span>
+    <button class="x" id="fvx" aria-label="Close video">&times;</button>
+    <div class="cap"><p>An inside look at <b>New Media Summit</b></p><p class="tap">tap for sound</p></div>
+    <span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M2 6h2.5L8 3v10L4.5 10H2Z" fill="#fff"/><path d="M11 6l4 4M15 6l-4 4"/></svg><svg class="on" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M2 6h2.5L8 3v10L4.5 10H2Z" fill="#fff"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.6a6 6 0 0 1 0 8.8"/></svg></span>
+    <div class="prog"><i id="fvp"></i></div>
+    <a class="fbtn" href="#join" id="fvb">Save my spot</a>
+  </div>
+</aside>
 
 <script>
 (function(){
@@ -402,7 +487,34 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
   var el={d:q('d'),h:q('h'),m:q('m'),s:q('s')};
   function p(n){return (n<10?'0':'')+n}
   function tick(){var r=Math.max(0,t-Date.now())/1000;el.d.textContent=p(Math.floor(r/86400));el.h.textContent=p(Math.floor(r%86400/3600));el.m.textContent=p(Math.floor(r%3600/60));el.s.textContent=p(Math.floor(r%60))}
-  tick();setInterval(tick,1000);
+  var secT=document.querySelector('.cd .sec');
+  tick();setInterval(function(){tick();if(!reduce){secT.classList.remove('tk');void secT.offsetWidth;secT.classList.add('tk')}},1000);
+
+  /* sticky bar: the mini button appears once the hero form is out of view */
+  var strip=document.getElementById('strip'),joinEl=document.getElementById('join');
+  function onScroll(){var r=joinEl.getBoundingClientRect();strip.classList.toggle('scrolled',r.bottom<64);if(window.fvEl)fvEl.classList.toggle('near',innerWidth<=600&&r.bottom>0)}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* live signals: a new name every few seconds, and the count ticks up now and then */
+  var names=['Maya','Devon','Priya','Sam','Alix','Jordan','Noor','Rae','Theo','Lena'],ni=0,count=1284;
+  var jn=document.getElementById('jn'),cnt=document.getElementById('cnt');
+  setInterval(function(){
+    ni=(ni+1)%names.length;jn.classList.add('out');
+    setTimeout(function(){jn.innerHTML='<b>'+names[ni]+'</b> just registered';jn.classList.remove('out')},360);
+    if(ni%2===0){count+=1;cnt.textContent=count.toLocaleString('en-US');cnt.classList.remove('bump');void cnt.offsetWidth;cnt.classList.add('bump')}
+  },4200);
+
+  /* floating NMS reel: muted loop, tap for sound (restarts from the top), progress bar, close */
+  var fv=document.getElementById('fv'),fvv=document.getElementById('fvv'),fvp=document.getElementById('fvp');window.fvEl=fv;onScroll();
+  var closed=false;try{closed=sessionStorage.getItem('dr-fv')==='x'}catch(e){}
+  if(!closed){setTimeout(function(){fv.classList.add('show');var pr=fvv.play();if(pr&&pr.catch)pr.catch(function(){})},1400)}else{fv.style.display='none'}
+  document.getElementById('fvs').addEventListener('click',function(e){
+    if(e.target.closest('#fvx')||e.target.closest('#fvb'))return;
+    if(fvv.muted){fvv.muted=false;fvv.currentTime=0;fv.classList.add('sound');fvv.play()}else{fvv.muted=true;fv.classList.remove('sound')}
+  });
+  document.getElementById('fvx').addEventListener('click',function(e){e.stopPropagation();fvv.pause();fv.classList.add('gone');try{sessionStorage.setItem('dr-fv','x')}catch(err){}});
+  fvv.addEventListener('timeupdate',function(){if(fvv.duration)fvp.style.width=(fvv.currentTime/fvv.duration*100)+'%'});
+  document.getElementById('fvb').addEventListener('click',function(e){e.preventDefault();fvv.muted=true;fv.classList.remove('sound');document.getElementById('top').scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(function(){form.querySelector('input').focus({preventScroll:true})},700)});
 
   /* the envelope + NMS ticket inside every "Save my spot" button:
      hover = the flap folds open and the ticket rises; click = the ticket lifts free and gets the NMS diamond stamp */
