@@ -250,8 +250,8 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
 
 /* ---------- live-only callout ---------- */
 .callout{position:relative;border-radius:34px;overflow:hidden;color:#fff;background:#070707;isolation:isolate;box-shadow:0 50px 100px -50px rgba(1,1,0,.7)}
-.callout .cbg{position:absolute;inset:0;z-index:-3;background:url(img/lobby.jpg) right 40%/cover;opacity:.62}
-.callout::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(7,7,7,.94) 24%,rgba(7,7,7,.62) 56%,rgba(7,7,7,.22) 100%)}
+.callout .cbg{position:absolute;inset:0;z-index:-3;background:url(img/lobby.jpg) 100% 48%/180% auto;opacity:.6}
+.callout::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(7,7,7,.96) 30%,rgba(7,7,7,.84) 46%,rgba(7,7,7,.5) 68%,rgba(7,7,7,.32) 100%)}
 .callout::after{content:"";position:absolute;width:640px;height:640px;right:-200px;bottom:-320px;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(242,79,30,.45),transparent);filter:blur(30px)}
 .callout .in{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;padding:72px 68px}
 .callout .k{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2)}
@@ -259,22 +259,56 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
 .callout h3{font-size:clamp(26px,2.6vw,36px);line-height:1.2;font-weight:700;letter-spacing:-.025em;margin-top:18px;text-wrap:balance}
 .callout .also{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:16.5px;color:rgba(255,255,255,.72);max-width:520px;text-wrap:balance}
 .callout .also b{color:#fff;font-weight:700}
-.viz{position:relative;padding:26px;border-radius:24px;background:rgba(255,255,255,.04);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.seats{width:100%;height:auto;display:block}
-.seats .st{fill:rgba(255,255,255,.1);transform-box:fill-box;transform-origin:center;transition:fill .5s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
-.seats .st.on{transform:scale(1.08)}
-.meets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
-.mt{position:relative;border-radius:14px;background:rgba(255,255,255,.06);padding:12px 12px 14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:box-shadow .5s,background .5s}
-.mt .bar{height:6px;border-radius:3px;background:rgba(255,255,255,.12);transition:background .5s}
-.mt .ln{height:6px;border-radius:3px;background:rgba(255,255,255,.1);margin-top:10px;width:70%}
-.mt .ln+.ln{width:46%;margin-top:6px}
-.mt svg{position:absolute;right:10px;bottom:10px;width:22px;height:22px}
-.mt svg circle{fill:rgba(255,255,255,.08);transition:fill .4s}
-.mt svg path{stroke-dasharray:16;stroke-dashoffset:16;transition:stroke-dashoffset .5s var(--ease)}
-.mt.on{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(242,79,30,.55)}
-.mt.on .bar{background:var(--grad)}
-.mt.on svg circle{fill:#f24f1e}
-.mt.on svg path{stroke-dashoffset:0}
+/* an Austin badge on a lanyard: drops in, settles, the 3 meetings get booked */
+.viz{position:relative;align-self:stretch;margin:-72px 0;min-height:500px}
+.viz::before{content:"";position:absolute;left:50%;top:52%;width:440px;height:440px;margin:-220px 0 0 -220px;border-radius:50%;background:radial-gradient(closest-side,rgba(242,79,30,.26),transparent);pointer-events:none}
+.hang{position:absolute;inset:0}
+.callout.in .hang{animation:hang 1.1s cubic-bezier(.34,1.4,.6,1) .15s both}
+@keyframes hang{0%{opacity:0;transform:translateY(-120px)}35%{opacity:1}100%{opacity:1;transform:none}}
+.lan{position:absolute;left:50%;top:64px}
+.sp{position:absolute;bottom:0;left:-10px;width:20px;height:900px;transform-origin:50% 100%;overflow:hidden;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.08) 0 1px,transparent 1px 3px),linear-gradient(90deg,#c4351a,#f24f1e 45%,#f36a12);
+  box-shadow:inset 1px 0 0 rgba(255,255,255,.22),inset -1px 0 0 rgba(0,0,0,.25),0 12px 30px rgba(0,0,0,.45)}
+.sp.l{transform:rotate(-11deg)}.sp.r{transform:rotate(11deg)}
+.sp::before{content:"NEW MEDIA SUMMIT \00B7 NEW MEDIA SUMMIT \00B7 NEW MEDIA SUMMIT \00B7 NEW MEDIA SUMMIT \00B7 NEW MEDIA SUMMIT \00B7 NEW MEDIA SUMMIT";position:absolute;inset:0;writing-mode:vertical-rl;font-size:7.5px;font-weight:800;letter-spacing:.34em;line-height:20px;white-space:nowrap;color:rgba(255,255,255,.8);text-align:center}
+.sp.r::before{padding-top:60px}
+.hook{position:absolute;left:-15px;top:-8px;width:30px;height:48px;z-index:3;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45))}
+.bdg{position:absolute;left:50%;top:84px;width:272px;margin-left:-136px;transform-origin:50% 0;z-index:2}
+.callout.in .bdg{animation:settle 2.2s ease-out .15s both,sway 7s ease-in-out 2.35s infinite}
+@keyframes settle{0%{transform:rotate(-8deg)}30%{transform:rotate(5deg)}55%{transform:rotate(-2.4deg)}78%{transform:rotate(.9deg)}100%{transform:none}}
+@keyframes sway{0%,100%{transform:none}30%{transform:rotate(1.2deg)}70%{transform:rotate(-1.2deg)}}
+.card{position:relative;overflow:hidden;border-radius:22px;background:#fff;color:var(--ink);padding:32px 22px 0;
+  transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s var(--ease);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 50px 90px -30px rgba(0,0,0,.9),0 16px 30px -14px rgba(0,0,0,.6)}
+.slot{position:absolute;left:50%;top:12px;width:42px;height:9px;margin-left:-21px;border-radius:5px;background:#1b1d1f;box-shadow:inset 0 2px 3px rgba(0,0,0,.7),0 1px 0 rgba(255,255,255,.9)}
+.bh{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid #eceff1}
+.bh img{height:22px;width:auto;margin-left:-3px}
+.bh span,.mh{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8a9298}
+.who{padding:16px 0 15px}
+.who b{display:block;font-size:34px;line-height:1;font-weight:800;letter-spacing:-.035em}
+.who b i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.who small{display:block;margin-top:8px;font-size:12.5px;font-weight:600;color:#7b848b}
+.mtg{border-radius:14px;background:var(--surface);padding:12px 12px 3px}
+.mh{display:flex;justify-content:space-between;margin-bottom:3px}
+.mh em{font-style:normal;color:var(--accent);font-variant-numeric:tabular-nums}
+.mr{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #e3e7ea}
+.mh+.mr{border-top:0}
+.mr .av{flex:none;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#c2c8cc 0 24%,transparent 25%),radial-gradient(ellipse 62% 44% at 50% 100%,#c2c8cc 0 98%,transparent 100%),#dfe4e7}
+.mr .ls{flex:1}
+.mr .ls i{display:block;height:6px;border-radius:3px;width:70%;background:#d6dbdf;transition:background .5s var(--ease);transition-delay:calc(1.75s + var(--k) * .45s)}
+.mr .ls i+i{width:42%;margin-top:6px;background:#e4e8eb}
+.mr .ck{flex:none;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #cfd5d9;transition:box-shadow .4s,background .4s,transform .5s cubic-bezier(.34,1.8,.64,1);transition-delay:calc(1.75s + var(--k) * .45s)}
+.mr .ck svg{display:block;width:22px;height:22px}
+.mr .ck path{fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:16;stroke-dashoffset:16;transition:stroke-dashoffset .45s var(--ease);transition-delay:calc(1.9s + var(--k) * .45s)}
+.callout.in .mr .ck{background:var(--grad);box-shadow:0 4px 10px -3px rgba(240,45,48,.6);transform:scale(1.08)}
+.callout.in .mr .ck path{stroke-dashoffset:0}
+.callout.in .mr .ls i:first-child{background:#9aa3a9}
+.band{display:flex;align-items:center;justify-content:space-between;margin:16px -22px 0;padding:13px 22px;background:var(--grad);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.band .bc{width:58px;height:15px;opacity:.85;background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 4px,#fff 4px 5px,transparent 5px 7px,#fff 7px 10px,transparent 10px 12px,#fff 12px 13px,transparent 13px 16px)}
+.holo{position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(112deg,transparent 34%,rgba(255,214,190,.42) 45%,rgba(190,225,255,.34) 52%,transparent 63%);background-size:260% 100%;background-position:var(--hx,130%) 0;opacity:0;transition:opacity .5s var(--ease)}
+.callout.in .holo{animation:sheen 1.4s var(--ease) 2.9s}
+@keyframes sheen{0%{opacity:1;background-position:130% 0}100%{opacity:1;background-position:-30% 0}}
+.viz:hover .holo{opacity:1;animation:none}
 
 /* ---------- host ---------- */
 .host{display:grid;grid-template-columns:400px 1fr;gap:80px;align-items:center;max-width:1040px;margin:0 auto}
@@ -301,7 +335,9 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
 @media (max-width:980px){
   .ros{grid-template-columns:1fr;gap:36px}
   .ros .hd{position:static}
-  .callout .in{grid-template-columns:1fr;padding:48px 32px;gap:36px}
+  .callout .in{grid-template-columns:1fr;padding:48px 32px;gap:28px}
+  .viz{order:-1;margin:-48px 0 0;min-height:500px}
+  .callout .cbg{background-size:cover;background-position:78% 46%}
   .host{grid-template-columns:1fr;gap:72px}
   .host .pic{max-width:380px}
 }
@@ -347,7 +383,9 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
   .row:hover{padding-left:0}
   .callout{border-radius:26px}
   .callout .in{padding:40px 22px}
-  .viz{padding:18px}
+  .viz{margin-top:-40px;min-height:470px}
+  .lan{top:44px}
+  .bdg{top:64px;width:252px;margin-left:-126px}
   .end{padding:96px 0 64px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -442,7 +480,7 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
         <g class="pin"><path d="M272 84c-6.5-7.4-10.5-12-10.5-16.6a10.5 10.5 0 0 1 21 0c0 4.6-4 9.2-10.5 16.6Z" fill="url(#g)"/><circle cx="272" cy="67.6" r="3.6" fill="#0b0b0b"/></g>
         <text x="272" y="104" class="lbl pinl">Austin</text>
       </svg></div>
-      <p><span class="grad-text">Live only:</span> the first 50 people to get their ticket during the event get 3 booked meetings before Austin</p>
+      <p><span class="grad-text">Live only:</span> the first 50 people to get their ticket during the event get 3&nbsp;booked meetings before Austin</p>
     </article>
   </div>
 </div></section>
@@ -466,17 +504,23 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
     <div class="in">
       <div>
         <span class="k"><svg viewBox="0 0 18 18" aria-hidden="true"><g fill="url(#g)"><rect x="7.6" y="0" width="2.8" height="18" rx="1.4"/><rect x="7.6" y="0" width="2.8" height="18" rx="1.4" transform="rotate(60 9 9)"/><rect x="7.6" y="0" width="2.8" height="18" rx="1.4" transform="rotate(120 9 9)"/></g></svg>Live only</span>
-        <h3>Show up live. The first 50 people to get their New Media Summit ticket during the event get <span class="shine">3 booked meetings before Austin.</span></h3>
+        <h3>Show up live. The first 50 people to get their New Media Summit ticket during the event get <span class="shine">3&nbsp;booked meetings before Austin.</span></h3>
         <p class="also"><b>Already have your ticket?</b> Stay live to the end and you get them too.</p>
       </div>
-      <div class="viz" aria-hidden="true">
-        <svg class="seats" id="seats" viewBox="0 0 300 150"></svg>
-        <div class="meets">
-          <div class="mt"><div class="bar"></div><div class="ln"></div><div class="ln"></div><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="11"/><path d="M6.5 11.2l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="mt"><div class="bar"></div><div class="ln"></div><div class="ln"></div><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="11"/><path d="M6.5 11.2l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="mt"><div class="bar"></div><div class="ln"></div><div class="ln"></div><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="11"/><path d="M6.5 11.2l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </div>
+      <div class="viz" aria-hidden="true"><div class="hang">
+        <div class="lan"><span class="sp l"></span><span class="sp r"></span><svg class="hook" viewBox="0 0 30 48"><defs><linearGradient id="mtl" x1="0" x2="1"><stop offset="0" stop-color="#7f868c"/><stop offset=".45" stop-color="#f5f6f7"/><stop offset="1" stop-color="#737a80"/></linearGradient></defs><rect x="4" y="0" width="22" height="13" rx="3.5" fill="url(#mtl)"/><circle cx="15" cy="21" r="6" fill="none" stroke="url(#mtl)" stroke-width="2.6"/><path d="M15 27v3.5c-3.6 0-6 2.5-6 6s2.5 6.2 6 6.2 6-2.7 6-6.2" fill="none" stroke="url(#mtl)" stroke-width="2.6" stroke-linecap="round"/></svg></div>
+        <div class="bdg"><div class="card" id="card"><span class="slot"></span>
+          <div class="bh"><img src="img/nms-logo.png" alt="" width="750" height="188"><span>Austin 2027</span></div>
+          <div class="who"><b>First <i>50</i></b><small>Live attendee</small></div>
+          <div class="mtg"><p class="mh">Booked meetings<em id="mcount">0/3</em></p>
+          <div class="mr" style="--k:0"><span class="av"></span><span class="ls"><i></i><i></i></span><span class="ck"><svg viewBox="0 0 22 22"><path d="M6.6 11.3l3 3 5.9-5.9"/></svg></span></div>
+          <div class="mr" style="--k:1"><span class="av"></span><span class="ls"><i></i><i></i></span><span class="ck"><svg viewBox="0 0 22 22"><path d="M6.6 11.3l3 3 5.9-5.9"/></svg></span></div>
+          <div class="mr" style="--k:2"><span class="av"></span><span class="ls"><i></i><i></i></span><span class="ck"><svg viewBox="0 0 22 22"><path d="M6.6 11.3l3 3 5.9-5.9"/></svg></span></div>
+          </div>
+          <div class="band">Live only<span class="bc"></span></div>
+          <span class="holo"></span>
+        </div></div>
+      </div></div>
     </div>
   </div>
 </div></section>
@@ -590,13 +634,15 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
     c.addEventListener('pointerleave',function(){c.style.transform=''});
   })}
 
-  /* 50 seats, lit in order when the callout comes into view, then the 3 meetings get booked */
-  var sv=document.getElementById('seats'),ns='http://www.w3.org/2000/svg',seats=[];
-  for(var i=0;i<50;i++){var cx=15+(i%10)*30,cy=15+Math.floor(i/10)*30,d=document.createElementNS(ns,'path');
-    d.setAttribute('d','M'+cx+' '+(cy-9)+' L'+(cx+9)+' '+cy+' L'+cx+' '+(cy+9)+' L'+(cx-9)+' '+cy+'Z');d.setAttribute('class','st');sv.appendChild(d);seats.push(d)}
-  function mix(a,b,f){return Math.round(a+(b-a)*f)}
-  function lightSeats(){seats.forEach(function(s,k){var f=k/49;setTimeout(function(){s.style.fill='rgb('+mix(243,240,f)+','+mix(129,45,f)+','+mix(0,48,f)+')';s.classList.add('on')},reduce?0:k*28)});
-    document.querySelectorAll('.mt').forEach(function(m,k){setTimeout(function(){m.classList.add('on')},reduce?0:1500+k*380)})}
+  /* the Austin badge: meetings get booked one by one, and it tilts toward the pointer */
+  function lightSeats(){var c=document.getElementById('mcount');if(!c)return;
+    [0,1,2].forEach(function(k){setTimeout(function(){c.textContent=(k+1)+'/3'},reduce?0:2050+k*450)})}
+  var vz=document.querySelector('.viz'),card=document.getElementById('card');
+  if(vz&&card&&!reduce){
+    vz.addEventListener('pointermove',function(e){var r=card.getBoundingClientRect(),x=Math.max(-.6,Math.min(.6,(e.clientX-r.left)/r.width-.5)),y=Math.max(-.6,Math.min(.6,(e.clientY-r.top)/r.height-.5));
+      card.style.setProperty('--ry',(x*18)+'deg');card.style.setProperty('--rx',(-y*12)+'deg');card.style.setProperty('--hx',(110-(x+.5)*120)+'%')});
+    vz.addEventListener('pointerleave',function(){card.style.removeProperty('--ry');card.style.removeProperty('--rx')});
+  }
 
   /* reveal on scroll */
   var callout=document.getElementById('callout'),lit=false;
