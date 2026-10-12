@@ -68,7 +68,10 @@ img{display:block;max-width:100%;height:auto}
 .logo{width:214px;margin:0 auto 34px}
 .tag{position:relative;display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 13px;border-radius:999px;background:rgba(255,255,255,.04);font-size:13.5px;font-weight:600;letter-spacing:.03em;backdrop-filter:blur(8px)}
 .tag::before,.form::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(255,255,255,.3),rgba(255,255,255,.06) 45%,rgba(242,79,30,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-.tag svg{width:14px;height:14px;animation:spin 14s linear infinite}
+.tag .dm{width:14px;height:14px;animation:spin 14s linear infinite}
+.tsep{width:1px;height:14px;background:rgba(255,255,255,.22);margin:0 2px}
+.tdate{display:inline-flex;align-items:center;gap:7px;color:#fff;font-weight:700;letter-spacing:.02em}
+.tdate .cal{width:15px;height:15px}
 @keyframes spin{to{transform:rotate(360deg)}}
 h1{text-shadow:0 2px 30px rgba(0,0,0,.35);font-weight:700;font-size:clamp(36px,4.6vw,62px);line-height:1.08;letter-spacing:-.03em;margin:22px auto 0;max-width:980px;text-wrap:balance}
 .sub{font-size:clamp(16.5px,1.5vw,19.5px);line-height:1.62;color:rgba(255,255,255,.74);max-width:600px;margin:18px auto 0;text-wrap:balance}
@@ -172,25 +175,53 @@ h1{text-shadow:0 2px 30px rgba(0,0,0,.35);font-weight:700;font-size:clamp(36px,4
 .pt{position:relative;padding:40px 36px 42px;transition:background .5s var(--ease)}
 .pt+.pt{border-left:1px solid var(--line)}
 .pt:hover{background:linear-gradient(180deg,#fff 0%,#fff8f4 100%)}
-.pt .ic{width:68px;height:68px;margin-bottom:26px}
 .pt p{font-size:18.5px;line-height:1.5;font-weight:600;letter-spacing:-.01em;text-wrap:pretty}
 .pt.lv{background:#0b0b0b;color:#fff}
 .pt.lv:hover{background:#111}
 .pt.lv p{color:rgba(255,255,255,.88)}
-/* radar */
-.rd-sweep{transform-origin:34px 34px;animation:spin 4.5s linear infinite}
-.pt:hover .rd-sweep{animation-duration:2.2s}
-.rd-blip{transform-origin:47px 22px;animation:blip 4.5s linear infinite}
-@keyframes blip{0%,8%{transform:scale(.6);opacity:.35}12%{transform:scale(1.35);opacity:1}40%,100%{transform:scale(.6);opacity:.35}}
-/* emails */
-.em{transform-origin:34px 60px;transition:transform .6s var(--ease)}
-.pt:hover .em1{transform:rotate(-13deg) translateX(-3px)}
-.pt:hover .em2{transform:rotate(11deg) translateX(3px)}
-.pt:hover .em3{transform:translateY(-4px)}
-/* calendar checks */
-.ck path{stroke-dasharray:14;stroke-dashoffset:14;transition:stroke-dashoffset .45s var(--ease)}
-.pt.in .ck path,.pt:hover .ck path{stroke-dashoffset:0}
-.ck:nth-child(2) path{transition-delay:.15s}.ck:nth-child(3) path{transition-delay:.3s}
+.vz{position:relative;height:132px;border-radius:18px;margin-bottom:26px;overflow:hidden;background:linear-gradient(180deg,#f8fafb,#f3f5f6);box-shadow:inset 0 0 0 1px var(--line)}
+.pt.lv .vz{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.vz svg{width:100%;height:100%;display:block}
+/* 1: deal flow into a closed $10K+ deal */
+.g1 .ln{fill:none;stroke:#e1e5e8;stroke-width:1.5}
+.g1 .fl{fill:none;stroke:#f24f1e;stroke-width:2;stroke-linecap:round;stroke-dasharray:2.5 10;animation:flow 1.2s linear infinite}
+.pt:hover .g1 .fl{animation-duration:.55s}
+@keyframes flow{to{stroke-dashoffset:-25}}
+.g1 .nd circle:first-child{fill:#fff;stroke:#e1e5e8}
+.g1 .ico{fill:none;stroke:#3c434b;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.g1 .amt{font-size:18.5px;font-weight:800;fill:#fff;letter-spacing:-.02em}
+.g1 .ring{fill:none;stroke:#f24f1e;stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:ringp 2.4s var(--ease) infinite}
+@keyframes ringp{0%{transform:scale(1);opacity:.75}100%{transform:scale(1.18,1.42);opacity:0}}
+/* 2: three deals, each email cycling to the front */
+.g2{position:absolute;inset:0;display:grid;place-items:center}
+.dc{grid-area:1/1;position:relative;width:72%;max-width:218px;height:88px;border-radius:12px;background:#fff;box-shadow:0 0 0 1px #e1e5e8,0 14px 26px -18px rgba(1,1,0,.45);padding:11px 12px;animation:cyc 9s var(--ease) infinite;animation-delay:var(--d)}
+@keyframes cyc{0%,28%{transform:translate(0,7px) scale(1);opacity:1;z-index:3}33%,61%{transform:translate(18px,-12px) scale(.9);opacity:.4;z-index:1}66%,94%{transform:translate(9px,-3px) scale(.95);opacity:.72;z-index:2}100%{transform:translate(0,7px) scale(1);opacity:1;z-index:3}}
+.dh{display:flex;align-items:center;gap:8px}
+.dh .av{width:18px;height:18px;border-radius:50%;background:var(--grad);flex:none}
+.dh .sb{flex:1;height:6px;border-radius:3px;background:#2b2f33;max-width:84px}
+.dh .tg{margin-left:auto;font-size:9.5px;font-weight:700;letter-spacing:.04em;color:var(--accent);background:#fff1ea;border-radius:999px;padding:2px 8px}
+.db{margin-top:11px;display:grid;gap:5px;width:62%}
+.db i{display:block;height:4.5px;border-radius:3px;background:#e6e9eb}
+.db i:nth-child(2){width:82%}.db i:nth-child(3){width:58%}
+.dn{position:absolute;right:12px;bottom:11px;display:flex;align-items:flex-end;gap:3px;height:28px}
+.dn i{display:block;width:6px;border-radius:2px;background:var(--grad)}
+/* 3: live, three meetings booked, then Austin */
+.g3 .base{stroke:rgba(255,255,255,.12);stroke-width:2;stroke-linecap:round}
+.g3 .prog{stroke:#f24f1e;stroke-width:2;stroke-linecap:round;stroke-dasharray:228;stroke-dashoffset:228;transition:stroke-dashoffset 1.8s cubic-bezier(.6,0,.2,1) .2s}
+.pt.in .g3 .prog{stroke-dashoffset:0}
+.g3 .lvr{fill:none;stroke:#f24f1e;stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:ping 2s var(--ease) infinite}
+.g3 .lbl{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;fill:rgba(255,255,255,.62);text-anchor:middle}
+.g3 .pinl{fill:#fff;letter-spacing:.06em}
+.g3 .stem{stroke:rgba(255,255,255,.18);stroke-width:1.5}
+.g3 .mc{fill:#1c1c1c;stroke:rgba(255,255,255,.12)}
+.g3 .mlr{fill:rgba(255,255,255,.22)}.g3 .mlr2{fill:rgba(255,255,255,.12)}
+.g3 .md{fill:#f24f1e}
+.g3 .mm{opacity:0;transform:translateY(8px);transform-box:fill-box;transition:opacity .5s var(--ease),transform .6s cubic-bezier(.34,1.56,.64,1);transition-delay:calc(.55s + var(--k) * .35s)}
+.pt.in .g3 .mm{opacity:1;transform:none}
+.g3 .pin{opacity:0;transform:translateY(-12px);transform-box:fill-box;transition:opacity .4s,transform .7s cubic-bezier(.34,1.56,.64,1);transition-delay:1.75s}
+.pt.in .g3 .pin{opacity:1;transform:none}
+.g3 .pinl{opacity:0;transition:opacity .5s 1.95s}
+.pt.in .g3 .pinl{opacity:1}
 
 /* ---------- what happens live ---------- */
 section.s{padding:120px 0}
@@ -356,7 +387,7 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
   <div class="spot"></div><div class="grain"></div>
   <div class="wrap inner">
     <img class="logo" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188">
-    <div><span class="tag"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .5 13.5 7 7 13.5 .5 7Z" fill="url(#g)"/><path d="M7 4.2 9.8 7 7 9.8 4.2 7Z" fill="#030303"/></svg>The Deal Room</span></div>
+    <div><span class="tag"><svg class="dm" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 .5 13.5 7 7 13.5 .5 7Z" fill="url(#g)"/><path d="M7 4.2 9.8 7 7 9.8 4.2 7Z" fill="#030303"/></svg>The Deal Room<span class="tsep" aria-hidden="true"></span><span class="tdate"><svg class="cal" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="11.8" rx="3" fill="none" stroke="url(#g)" stroke-width="1.5"/><path d="M1.6 6.6h12.8" stroke="url(#g)" stroke-width="1.5"/><path d="M5.2 1v3.2M10.8 1v3.2" stroke="url(#g)" stroke-width="1.5" stroke-linecap="round"/><rect x="9.2" y="9" width="2.6" height="2.6" rx=".8" fill="#f24f1e"/></svg>November 24</span></span></div>
     <h1>Land your <span class="shine">biggest deal of 2027</span>, even if your list is under 50K</h1>
     <p class="sub">A free live event with Matt McGarry and 3 New Media Summit founders. Real deals, real numbers. <b>Tue Nov 24, 12 pm ET.</b></p>
 
@@ -382,29 +413,35 @@ h2{font-weight:700;font-size:clamp(32px,3.5vw,46px);line-height:1.1;letter-spaci
 <section class="pts"><div class="wrap">
   <div class="sheet">
     <article class="pt" data-r>
-      <svg class="ic" viewBox="0 0 68 68" aria-hidden="true">
-        <circle cx="34" cy="34" r="30" fill="none" stroke="#e8ebed"/><circle cx="34" cy="34" r="20" fill="none" stroke="#e8ebed"/><circle cx="34" cy="34" r="10" fill="none" stroke="#e8ebed"/>
-        <path class="rd-sweep" d="M34 34 L34 4 A30 30 0 0 1 59.98 19Z" fill="url(#sw)"/>
-        <path class="rd-blip" d="M47 17 52 22 47 27 42 22Z" fill="url(#g)"/>
-        <circle cx="34" cy="34" r="2.6" fill="#010100"/>
-      </svg>
+      <div class="vz"><svg class="g1" viewBox="0 0 300 132" aria-hidden="true">
+        <path class="ln" d="M61 30C120 30 128 66 184 66"/><path class="ln" d="M61 66H184"/><path class="ln" d="M61 102C120 102 128 66 184 66"/>
+        <path class="fl" d="M61 30C120 30 128 66 184 66"/><path class="fl" d="M61 66H184" style="animation-delay:-.4s"/><path class="fl" d="M61 102C120 102 128 66 184 66" style="animation-delay:-.8s"/>
+        <g class="nd"><circle cx="44" cy="30" r="17"/><rect x="35" y="24" width="18" height="12" rx="2.5" class="ico"/><path d="M35.8 25.2 44 31l8.2-5.8" class="ico"/></g>
+        <g class="nd"><circle cx="44" cy="66" r="17"/><rect x="40.5" y="56.5" width="7" height="12" rx="3.5" class="ico"/><path d="M37.5 65a6.5 6.5 0 0 0 13 0M44 71.5v3.5" class="ico"/></g>
+        <g class="nd"><circle cx="44" cy="102" r="17"/><circle cx="40" cy="99" r="3" class="ico"/><circle cx="48.5" cy="99" r="3" class="ico"/><path d="M34.6 109c.8-3.2 2.8-4.8 5.4-4.8s4.6 1.6 5.4 4.8M43.1 109c.8-3.2 2.8-4.8 5.4-4.8s4.6 1.6 5.4 4.8" class="ico"/></g>
+        <rect class="ring" x="184" y="42" width="100" height="48" rx="14"/>
+        <rect x="184" y="42" width="100" height="48" rx="14" fill="#010100"/>
+        <text x="198" y="72.5" class="amt">$10K+</text>
+        <circle cx="268" cy="66" r="8.5" fill="url(#g)"/><path d="M264.2 66.2l2.5 2.5 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></div>
       <p>Find out where your next $10K+ deal comes from, from founders who've closed them</p>
     </article>
     <article class="pt" data-r style="transition-delay:.08s">
-      <svg class="ic" viewBox="0 0 68 68" aria-hidden="true">
-        <g class="em em1"><rect x="14" y="14" width="40" height="44" rx="6" fill="#f2f5f6" stroke="#e1e5e8"/></g>
-        <g class="em em2"><rect x="14" y="14" width="40" height="44" rx="6" fill="#f7f8f9" stroke="#e1e5e8"/></g>
-        <g class="em em3"><rect x="14" y="12" width="40" height="44" rx="6" fill="#fff" stroke="#dfe3e6"/><path d="M14 18a6 6 0 0 1 6-6h28a6 6 0 0 1 6 6v2L34 33 14 20Z" fill="url(#gv)"/><rect x="21" y="38" width="26" height="3.4" rx="1.7" fill="#e3e7e9"/><rect x="21" y="45" width="17" height="3.4" rx="1.7" fill="#eceff1"/></g>
-      </svg>
+      <div class="vz"><div class="g2" aria-hidden="true">
+        <div class="dc" style="--d:-3s"><div class="dh"><span class="av"></span><span class="sb"></span><span class="tg">Deal 03</span></div><div class="db"><i></i><i></i><i></i></div><div class="dn"><i style="height:45%"></i><i style="height:70%"></i><i style="height:100%"></i></div></div>
+        <div class="dc" style="--d:-6s"><div class="dh"><span class="av"></span><span class="sb"></span><span class="tg">Deal 02</span></div><div class="db"><i></i><i></i><i></i></div><div class="dn"><i style="height:60%"></i><i style="height:40%"></i><i style="height:90%"></i></div></div>
+        <div class="dc" style="--d:0s"><div class="dh"><span class="av"></span><span class="sb"></span><span class="tg">Deal 01</span></div><div class="db"><i></i><i></i><i></i></div><div class="dn"><i style="height:35%"></i><i style="height:75%"></i><i style="height:95%"></i></div></div>
+      </div></div>
       <p>See the real pitch, numbers and first email behind 3 deals</p>
     </article>
     <article class="pt lv" data-r style="transition-delay:.16s">
-      <svg class="ic" viewBox="0 0 68 68" aria-hidden="true">
-        <g class="ck"><rect x="3" y="16" width="19" height="22" rx="5" fill="#1c1c1c" stroke="#2c2c2c"/><rect x="3" y="16" width="19" height="6" rx="3" fill="url(#g)"/><path d="M8 29.5l3 3 6-6" fill="none" stroke="#f24f1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
-        <g class="ck"><rect x="24.5" y="16" width="19" height="22" rx="5" fill="#1c1c1c" stroke="#2c2c2c"/><rect x="24.5" y="16" width="19" height="6" rx="3" fill="url(#g)"/><path d="M29.5 29.5l3 3 6-6" fill="none" stroke="#f24f1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
-        <g class="ck"><rect x="46" y="16" width="19" height="22" rx="5" fill="#1c1c1c" stroke="#2c2c2c"/><rect x="46" y="16" width="19" height="6" rx="3" fill="url(#g)"/><path d="M51 29.5l3 3 6-6" fill="none" stroke="#f24f1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
-        <rect x="3" y="44" width="62" height="3" rx="1.5" fill="#262626"/><rect x="3" y="44" width="40" height="3" rx="1.5" fill="url(#g)"/>
-      </svg>
+      <div class="vz"><svg class="g3" viewBox="0 0 300 132" aria-hidden="true">
+        <line x1="34" y1="70" x2="262" y2="70" class="base"/><line x1="34" y1="70" x2="262" y2="70" class="prog"/>
+        <circle cx="24" cy="70" r="9" class="lvr"/><circle cx="24" cy="70" r="5.5" fill="#f24f1e"/><text x="24" y="98" class="lbl">Nov 24</text>
+        <g class="mm" style="--k:0"><path d="M88 70V54" class="stem"/><rect x="70" y="20" width="36" height="34" rx="9" class="mc"/><path d="M70 29V27a7 7 0 0 1 7-7h22a7 7 0 0 1 7 7v2Z" fill="url(#g)"/><rect x="77" y="35" width="16" height="3.4" rx="1.7" class="mlr"/><rect x="77" y="42" width="10" height="3.4" rx="1.7" class="mlr2"/><circle cx="104" cy="52" r="7.5" fill="#3ddc84"/><path d="M100.6 52.2l2.2 2.2 4.3-4.3" fill="none" stroke="#062b16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="88" cy="70" r="3.4" class="md"/></g><g class="mm" style="--k:1"><path d="M146 70V54" class="stem"/><rect x="128" y="20" width="36" height="34" rx="9" class="mc"/><path d="M128 29V27a7 7 0 0 1 7-7h22a7 7 0 0 1 7 7v2Z" fill="url(#g)"/><rect x="135" y="35" width="16" height="3.4" rx="1.7" class="mlr"/><rect x="135" y="42" width="10" height="3.4" rx="1.7" class="mlr2"/><circle cx="162" cy="52" r="7.5" fill="#3ddc84"/><path d="M158.6 52.2l2.2 2.2 4.3-4.3" fill="none" stroke="#062b16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="146" cy="70" r="3.4" class="md"/></g><g class="mm" style="--k:2"><path d="M204 70V54" class="stem"/><rect x="186" y="20" width="36" height="34" rx="9" class="mc"/><path d="M186 29V27a7 7 0 0 1 7-7h22a7 7 0 0 1 7 7v2Z" fill="url(#g)"/><rect x="193" y="35" width="16" height="3.4" rx="1.7" class="mlr"/><rect x="193" y="42" width="10" height="3.4" rx="1.7" class="mlr2"/><circle cx="220" cy="52" r="7.5" fill="#3ddc84"/><path d="M216.6 52.2l2.2 2.2 4.3-4.3" fill="none" stroke="#062b16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="204" cy="70" r="3.4" class="md"/></g>
+        <g class="pin"><path d="M272 84c-6.5-7.4-10.5-12-10.5-16.6a10.5 10.5 0 0 1 21 0c0 4.6-4 9.2-10.5 16.6Z" fill="url(#g)"/><circle cx="272" cy="67.6" r="3.6" fill="#0b0b0b"/></g>
+        <text x="272" y="104" class="lbl pinl">Austin</text>
+      </svg></div>
       <p><span class="grad-text">Live only:</span> the first 50 people to get their ticket during the event get 3 booked meetings before Austin</p>
     </article>
   </div>
