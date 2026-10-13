@@ -205,13 +205,16 @@
   function brandMark() {
     var cal = q('.nav .cal'), m = S.monogram || initials(LP.brand || BRAND);
     if (!cal || !m) return;
-    /* the lead's own photo favicon (favicon.png, the framed 512) is the sticky header's icon; the drawn emblem is the
-       fallback when the file is not there (Sean 2026-09-29: "use their custom favicons as icons on the sticky header") */
-    cal.innerHTML = '<span class="bmark favimg"><img src="favicon.png" alt="" width="44" height="44"></span>';
-    var im = cal.querySelector('img');
-    im.onerror = function () { cal.innerHTML = '<span class="bmark">' + emblemSVG(1.8) + '</span>'; };
+    /* the lead's own photo favicon, the same picture as the tab and the Notion icon (Sean 2026-10-13: "make sure
+       their favicons are used on the sticky header"); the drawn emblem only when the page has no photo favicon */
+    var fav = q('link[rel="apple-touch-icon"], link[rel="icon"][sizes="192x192"], link[rel="icon"][sizes="32x32"]');
+    if (fav) {
+      cal.innerHTML = '<img class="favmark" src="favicon.png" alt="">';
+      q('.favmark', cal).onerror = function () { cal.innerHTML = '<span class="bmark">' + emblemSVG(1.8) + '</span>'; };
+      return;
+    }
+    cal.innerHTML = '<span class="bmark">' + emblemSVG(1.8) + '</span>';
   }
-
 
   /* a call to action in the reader's own words: the day's promise turned into the button. Built from the
      lead's own day titles, so no lead needs copy written by hand. */
@@ -294,7 +297,7 @@
     return '<svg class="bglyph" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
       'stroke-width="' + (stroke || 1.7) + '" stroke-linecap="round" stroke-linejoin="round">' +
       ICONS[brandIconKey()] + '</svg>' +
-      '<span class="b3"><b>3</b></span>';
+      '<span class="b3"><b>' + (WEBINAR ? '1' : '3') + '</b></span>';
   }
   function ctaIcons() {
     BICON = '<i class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +

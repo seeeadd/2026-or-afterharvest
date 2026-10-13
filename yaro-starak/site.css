@@ -3214,7 +3214,6 @@ html body #page .hbook .hblap{width:100% !important;max-width:248px;min-width:0}
     line-height:1.2;max-width:100%;box-sizing:border-box}
 }
 
-/* sticky header icon = the lead's photo favicon */
-#page .nav .cal .bmark.favimg{background:none!important;box-shadow:none!important;border-radius:0!important;overflow:visible}
-#page .nav .cal .bmark.favimg:after{display:none!important}
-#page .nav .cal .bmark.favimg img{display:block;width:100%;height:100%;object-fit:contain;border-radius:0}
+/* the photo favicon in the sticky header (brandMark in site.js), the same picture as the tab and the Notion icon */
+#page .nav .cal .favmark{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 8px rgba(15,25,70,.28))}
+#page .nav .cal:has(.favmark){width:34px !important;height:34px !important;flex:none}
