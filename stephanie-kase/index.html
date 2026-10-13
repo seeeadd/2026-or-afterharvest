@@ -10,18 +10,19 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="fonts/gambetta_400-500-600-700.css">
-<link rel="stylesheet" href="fonts/jet-brains-mono_400-500-600-700.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@1&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:"SKArizona";src:url("https://static.showit.co/file/TpLvjR1sQiePCGNaf-mjfQ/62991/abcarizonaflare-light-webfont.woff") format("woff");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"SKPitch";src:url("https://static.showit.co/file/_RJVSONjTR-f1e4QXvnxfQ/62991/pitchsans-semibold-webfont.woff") format("woff");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"SKPitch";src:url("https://static.showit.co/file/reeif6cVTzquWorMh6rC_Q/62991/pitch-sans-medium-italic-webfont.woff") format("woff");font-weight:100 900;font-style:italic;font-display:swap}
 :root{
   --cream:#FDF9F0; --paper:#FFFDF8; --ink:#343333; --ink2:#5B5958; --mute:#7A7775;
   --pink:#F3B5B0; --pink2:#F8D3CE; --pink3:#FBE6E1; --coral:#C8645A;
   --butter:#F5EBC6; --butter2:#FAF3DC; --sage:#9CCBA0; --sage-d:#4F8A5B; --lime:#E6E58E; --salmon:#EFB0A8;
   --hair:rgba(52,51,51,.16); --hair2:rgba(52,51,51,.32);
-  --disp:"Gambetta",Georgia,serif; --ital:"Instrument Serif",Georgia,serif; --body:"DM Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace; --hand:"Caveat",cursive;
+  --disp:"SKArizona",Georgia,serif; --ital:"SKArizona",Georgia,serif; --body:"Raleway",system-ui,sans-serif; --mono:"SKPitch","Courier Prime",ui-monospace,monospace; --hand:"Caveat",cursive;
   --sh:0 1px 1px rgba(52,40,38,.05),0 10px 24px -14px rgba(52,40,38,.28),0 34px 60px -38px rgba(52,40,38,.32);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -31,7 +32,7 @@ img{display:block;max-width:100%}
 a{color:inherit}
 .wrap{width:min(1240px,100% - 48px);margin:0 auto}
 .disp{font-family:var(--disp);font-weight:500;letter-spacing:-.035em;line-height:1.02}
-.head h2 .it,.hostg h2 .it{white-space:nowrap}.it{font-family:var(--ital);font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.08em}
+.head h2 .it,.hostg h2 .it{white-space:nowrap}.it{font-family:var(--disp);font-style:italic;letter-spacing:-.02em}
 .lbl,.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:500}
 .nw{white-space:nowrap}
 .hl{background:linear-gradient(transparent 52%,var(--lime) 52% 92%,transparent 92%);padding:0 .08em;margin:0 -.08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
@@ -69,22 +70,23 @@ a{color:inherit}
 
 /* hero */
 .hero{position:relative;padding:70px 0 100px;overflow:hidden}
-.hgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:64px;align-items:start;position:relative;z-index:2}
+.hero .wrap{width:min(1420px,100% - 36px)}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:44px;align-items:start;position:relative;z-index:2}
 .hleft{position:relative;display:grid;gap:26px}
-.tstrip{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.tstrip{display:flex;align-items:center;gap:18px;flex-wrap:nowrap}.tstrip>*{flex:none}
 .award{display:flex;flex-direction:column;border:1px solid var(--ink);padding:7px 14px 8px;background:var(--butter);line-height:1.15}
 .award small{font:500 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
 .award b{font:700 13px/1.3 var(--body);text-transform:uppercase}
-.tr{display:flex;flex-direction:column;gap:3px}
-.tr p{font:500 11px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--ink2)}
+.tr{display:flex;flex-direction:column;gap:4px;flex:1 1 auto!important;min-width:0}
+.tr p{font:500 10.5px/1.35 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);max-width:230px}
 .stars{display:inline-flex;gap:2px}
 .stars svg{width:15px;height:15px}
-.stage{position:relative;padding:34px 0 0 28px}
-.badge{position:absolute;left:-50px;top:-26px;width:190px;height:190px;z-index:4}
+.stage{position:relative;padding:112px 0 0 0}
+.badge{position:absolute;left:10px;top:4px;width:136px;height:136px;z-index:4}
 .badge svg{width:100%;height:100%;animation:spin 38s linear infinite;overflow:visible}
 .badge text{font:500 14.5px var(--mono);fill:var(--ink)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.iph{position:relative;z-index:2;background:#2c2827;border-radius:30px;padding:11px;box-shadow:var(--sh);aspect-ratio:16/9.6}
+.iph{position:relative;z-index:2;background:#2c2827;border-radius:34px;padding:12px;box-shadow:var(--sh);aspect-ratio:16/9.6}
 .scr{position:relative;width:100%;height:100%;border-radius:21px;overflow:hidden;background:#000}
 .scr img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .isl{position:absolute;left:10px;top:50%;width:11px;height:62px;margin-top:-31px;border-radius:8px;background:#000;z-index:3}
@@ -94,7 +96,7 @@ a{color:inherit}
 .scrub{position:absolute;left:18px;right:18px;bottom:12px;display:flex;align-items:center;gap:10px;color:#fff;font:500 10px/1 var(--mono);z-index:3}
 .scrub .ln{flex:1;height:3px;background:rgba(255,255,255,.4);border-radius:3px;position:relative}
 .scrub .ln i{position:absolute;left:0;top:0;bottom:0;width:11%;background:#fff;border-radius:3px}
-.pola{position:absolute;right:-26px;top:-62px;width:132px;background:var(--paper);padding:8px 8px 26px;box-shadow:var(--sh);transform:rotate(5deg);z-index:5}
+.pola{position:absolute;right:-10px;top:26px;width:124px;background:var(--paper);padding:8px 8px 26px;box-shadow:var(--sh);transform:rotate(5deg);z-index:5}
 .pola img{width:100%;aspect-ratio:1/1.12;object-fit:cover;object-position:50% 18%}
 .pola span{position:absolute;left:0;right:0;bottom:4px;text-align:center;font:600 22px/1 var(--hand);color:var(--ink2)}
 .tape{position:absolute;width:70px;height:22px;background:rgba(245,235,198,.82);box-shadow:0 1px 2px rgba(0,0,0,.08);z-index:6}
@@ -338,7 +340,7 @@ h1 .it{font-size:1.1em;line-height:.9}
   .hbar{padding:10px 20px}.joined{display:none}
   .hgrid{grid-template-columns:1fr;gap:56px}
   .hright{order:-1}
-  .stage{padding-left:0}.badge{left:-14px;width:150px;height:150px;top:-40px}
+  .badge{left:4px;width:120px;height:120px;top:0}
   .day,.fgrid,.hostg,.cbox{grid-template-columns:1fr;gap:54px}
   .day.flip .dtext{order:0}
   .nrow{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nrow>div{border-top:1px solid var(--hair2);padding:26px 20px}.nrow>div:first-child{grid-column:1/-1;border-top:0}
@@ -355,13 +357,14 @@ h1 .it{font-size:1.1em;line-height:.9}
   .logo{justify-self:center}.logo img{height:30px}.tile:last-child{display:none}.tile{min-width:34px;padding:5px 4px}.cd .tiles{gap:4px}
   .hr .btn{padding:10px 12px;font-size:10.5px}
   .hero{padding:40px 0 70px}
+  .tstrip{flex-wrap:wrap;gap:12px 14px}.tstrip .tr{flex:1 1 100%!important}.tr p{max-width:none}
   h1.disp{font-size:clamp(34px,10.4vw,48px)}
   .ticket{grid-template-columns:1fr;box-shadow:5px 5px 0 var(--pink)}
   .ticket .mini{max-width:200px}
   .ticket .go{flex-direction:column;align-items:stretch}.ticket .go small{max-width:none;text-align:center!important}
   .pola{width:96px;right:-6px;top:-44px}
-  .stage{padding-top:46px}
-  .badge{left:-6px;top:-8px;width:112px;height:112px}.badge text{font-size:15.5px}
+  .stage{padding-top:104px}
+  .badge{left:2px;top:2px;width:96px;height:96px}.badge text{font-size:15.5px}
   .vplay{font-size:10px;padding:9px 13px 9px 9px}.vplay i{width:28px;height:28px}
   .regc{padding:18px 16px;box-shadow:6px 6px 0 var(--butter)}
   .regc .btn,.fields .btn{width:100%;justify-content:center;padding:19px 14px;font-size:12.5px}
@@ -391,7 +394,7 @@ h1 .it{font-size:1.1em;line-height:.9}
 </head>
 <body>
 <!-- Dream landing page for Stephanie Kase: hand-built in her own skin (cream paper, pink dry-brush paint, butter band, sage button,
-     Gambetta + mono labels, collage with tape and polaroids). Hero layout is the team's: sticky bar with countdown, verified chip,
+     ABC Arizona Flare + Pitch Sans + Raleway (her site's own fonts), collage with tape and polaroids). Hero layout is the team's: sticky bar with countdown, verified chip,
      landscape iPhone VSL, ticket with the Day 1 slide; right side pills, headline, lede, stuck chips, registration card. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
