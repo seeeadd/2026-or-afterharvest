@@ -1,0 +1,24 @@
+/* Sentient */
+@font-face {
+  font-family: 'Sentient';
+  src: url('files/887af8692c8d9b59.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Sentient';
+  src: url('files/b5a55639dc9e8bc5.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Sentient';
+  src: url('files/5cd3ec70f4aaec99.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
