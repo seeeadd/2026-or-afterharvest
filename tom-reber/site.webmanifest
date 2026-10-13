@@ -1,0 +1,19 @@
+{
+  "name": "The Business Has Six Fights To Win",
+  "short_name": "Tom",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#D02027",
+  "background_color": "#0A0B08",
+  "display": "standalone"
+}
