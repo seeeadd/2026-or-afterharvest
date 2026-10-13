@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Build Your Laundromat Growth Plan | Laundromat Millionaire</title>
+<link rel="stylesheet" href="fonts/cabinet-grotesk_400-500-600-700-800.css">
+<link rel="stylesheet" href="fonts/general-sans_400-500-600-700-800.css">
+<link rel="stylesheet" href="lp.css?v=9c13f38f">
+<style>:root{ --ground:#EAEDF2; --ink:#26292E; --accent:#192C4C; --accent-ink:#FFFFFF; --accent2:#a3aebf; --accent-text:#192C4C; --head-acc:#192C4C; --ink-soft:#4D5055; --muted:#616469; --hair:rgba(38,41,46,0.100); --hair-2:rgba(38,41,46,0.170); --accent-10:rgba(25,44,76,0.130); --accent-sh:rgba(25,44,76,0.550); --accent-sh2:rgba(25,44,76,0.280); --pat:#192C4C; --pat-op:0.36; --ghost:#343C89; --ghost-op:0.36; --grain-img:url(grain-light.png); --grain-op:.10; --grain-blend:multiply; --wall:radial-gradient(120% 90% at 18% 0%, rgba(19,33,57,0.850), transparent 62%),radial-gradient(90% 80% at 100% 100%, rgba(114,122,134,0.500), transparent 60%), linear-gradient(160deg,#1D1E23,#0B0B0D); --glass:rgba(255,255,255,.56); --glass-brd:rgba(255,255,255,.72); --glass-hi:rgba(255,255,255,.92); --glass-solid:rgba(250,251,252,0.940); --card:rgba(255,255,255,.62); --card-brd:rgba(38,41,46,0.060); --strip:rgba(255,255,255,.34); --well:rgba(38,41,46,0.050); --field:rgba(255,255,255,.72); --av-ring:#FCFCFD; --cap-bg:rgba(255,255,255,.74); --cap-ink:#26292E; --cap-muted:#707275; --sh1:0 1px 1px rgba(25,27,30,.05),0 3px 8px -2px rgba(25,27,30,.07),0 22px 40px -22px rgba(25,27,30,.28),0 50px 90px -50px rgba(25,27,30,.30); --sh2:0 1px 1px rgba(25,27,30,.04),0 2px 6px -2px rgba(25,27,30,.06),0 14px 30px -18px rgba(25,27,30,.24); --sh-dev:0 1px 1px rgba(0,0,0,.16),0 4px 10px -3px rgba(25,27,30,.22),0 26px 44px -18px rgba(25,27,30,.38),0 60px 90px -44px rgba(25,27,30,.34); --sh-dev-sm:0 1px 1px rgba(0,0,0,.12),0 16px 30px -18px rgba(25,27,30,.36); --contact:rgba(25,27,30,.36); --plate:radial-gradient(90% 70% at 50% 100%, rgba(25,44,76,0.240), transparent 70%), linear-gradient(180deg, #F6F7F9, #D5DAE1); --band:#17181B; --band-ink:#F6F7F9; --band-ink-70:rgba(246,247,249,0.700); --band-ink-50:rgba(246,247,249,0.500); --band-hair:rgba(246,247,249,0.140); --band-paint:radial-gradient(560px 260px at 50% -30px, rgba(25,44,76,0.300), transparent 72%), radial-gradient(420px 220px at 100% 100%, rgba(163,174,191,0.100), transparent 70%); --ground-paint:radial-gradient(660px 540px at 96% 1%, rgba(163,174,191,0.220), transparent 70%),radial-gradient(560px 460px at 0% 14%, rgba(25,44,76,0.080), transparent 70%),radial-gradient(700px 560px at 100% 46%, rgba(25,44,76,0.070), transparent 70%),radial-gradient(620px 520px at 0% 71%, rgba(163,174,191,0.100), transparent 70%),radial-gradient(760px 520px at 72% 100%, rgba(25,44,76,0.080), transparent 70%),radial-gradient(460px 380px at 0% 0%, rgba(72,50,32,.08), transparent 70%),radial-gradient(520px 420px at 100% 100%, rgba(72,50,32,.09), transparent 70%), #EAEDF2; --display:"Cabinet Grotesk", Georgia, serif; --body:"General Sans", system-ui, sans-serif; --label:"General Sans", system-ui, sans-serif; --lw:600; --ltr:.15em; --dw:800; --dw2:500; }</style>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="site.css?v=b37cb128">
+<link rel="icon" href="favicon.ico?v=e945d418" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=ba4d779f">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=c0aef5aa">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=8d47ed35">
+<link rel="manifest" href="site.webmanifest?v=609b1e5c">
+</head>
+<body>
+<!-- Registration page, v4. Same section order as v3 (nav, hero, facts strip, fit check, stats band,
+     day by day, closing card); premium surface: living brand ground, frosted glass, drawn devices.
+     Every region is filled by lp.js from window.LP (scripts/build_lp.py). -->
+<div id="page">
+  <!-- background layers, bottom to top: ground + blooms + falloff, brand pattern, ghost objects, grain -->
+  <div class="bgl" id="ground"></div>
+  <svg class="bgl" id="pattern" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="bgl" id="ghosts"></div>
+  <div class="bgl" id="grain"></div>
+
+  <!-- floating frosted nav (re-drawn at the top of the bottom half, like a sticky nav) -->
+  <header class="navwrap" id="navwrap">
+    <nav class="nav" id="nav">
+      <span class="lock">
+        <span class="cal"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="10" fill="var(--accent)"/><path d="M1 11a10 10 0 0 1 10-10h18a10 10 0 0 1 10 10v2H1z" fill="#000" opacity=".16"/><text x="20" y="32" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="17" fill="var(--accent-ink)">3</text></svg></span>
+        <span class="lw"><small>Free <i></i> 3-day live event</small><b id="navEvent"></b></span>
+      </span>
+      <span class="cd"><span class="cdl">Starts in</span>
+        <span class="cdn"><b>00</b><small>days</small></span><em></em>
+        <span class="cdn"><b>00</b><small>hrs</small></span><em></em>
+        <span class="cdn"><b>00</b><small>min</small></span></span>
+      <span class="btn sm">Hold my seat<svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero z" id="hero">
+    <p class="eyebrow" id="heroEye"></p>
+    <h1 id="headline" class="disp fit"></h1>
+    <p class="lede" id="lede"></p>
+    <div class="stagebox" id="stagebox">
+      <!-- landscape iPhone: titanium edge, even black bezel, Dynamic Island on the short side -->
+      <div class="iphone" id="iphone">
+        <span class="ib ib-pwr"></span><span class="ib ib-act"></span><span class="ib ib-vu"></span><span class="ib ib-vd"></span>
+        <div class="ip-edge"><div class="ip-bezel"><div class="ip-screen">
+          <img id="video" alt="">
+          <span class="ip-shade"></span>
+          <span class="ip-island"></span>
+          <span class="ip-chip"><svg width="13" height="13" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.9 3.6a6.2 6.2 0 0 1 0 8.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Tap for sound</span>
+          <span class="ip-play"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="currentColor"/></svg></span>
+          <span class="ip-scrub"><b></b></span>
+          <span class="ip-glare"></span>
+        </div></div></div>
+      </div>
+      <!-- frosted registration card -->
+      <div class="regcard glass" id="regcard">
+        <div class="rtop"><span class="av"><img id="pfAvatar" alt=""></span><div class="pfx" id="pfx"></div></div>
+        <div class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="fine" id="fine"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slim strip of sourced facts -->
+  <div class="facts z" id="facts"><div class="fk" id="fk"></div></div>
+
+  <!-- fit check -->
+  <section class="fitc z" id="fitc">
+    <p class="eyebrow c">Honest fit check</p>
+    <h2 class="fith disp" id="fith"><span id="fitL1"></span><span id="fitL2"><span class="perf">perfect</span> for you?</span></h2>
+    <div class="fitgrid">
+      <figure class="me">
+        <div class="photo" id="photo"><img id="portrait" alt=""></div>
+        <figcaption class="glass"><b id="meName"></b><span id="meRole"></span></figcaption>
+      </figure>
+      <ul class="checks" id="checks"></ul>
+    </div>
+  </section>
+
+  <!-- stats band: the cut for page 2 sits on its top edge -->
+  <section class="band z" id="band"><div class="bstats" id="bstats"></div><p class="bline" id="bline"></p></section>
+
+  <section class="days z" id="days">
+    <p class="eyebrow c">The three days <i></i> Live online</p>
+    <h2 class="daysh disp fit" id="daysh"><span>Here's what we're doing, day by day.</span></h2>
+    <p class="intro" id="intro"></p>
+    <div class="d1">
+      <!-- MacBook, straight on: thin bezel with notch, the Day 1 slide on screen, aluminium base with thumb scoop -->
+      <div class="macbook" id="macbook">
+        <div class="mb-lid"><div class="mb-screen">
+          <div class="mb-disp">
+            <div class="mb-bar"><i></i><i></i><i></i><i></i><span></span></div>
+            <img id="slide" alt="">
+            <div class="mb-dock"><span><i></i><i></i><i></i><i class="a"></i><i></i><i></i></span></div>
+          </div>
+          <span class="mb-notch"></span>
+          <span class="mb-glare"></span>
+        </div></div>
+        <div class="mb-base"><span class="mb-scoop"></span></div>
+      </div>
+      <div class="d1body">
+        <div class="when"><span class="dl">Day</span><b class="dn">01</b><span class="dmeta">Live session<br>Online</span></div>
+        <h3 class="dt disp fit" id="d1t"></h3>
+        <p class="do" id="d1o"></p>
+      </div>
+    </div>
+    <div class="d23" id="d23"></div>
+  </section>
+
+  <section class="closing z" id="closing">
+    <div class="ccard glass">
+      <div class="chead">
+        <span class="av lg"><img id="cAvatar" alt=""></span>
+        <div class="ctext">
+          <p class="eyebrow">Free <i></i> Three days <i></i> Live online</p>
+          <h3 class="disp" id="cH">Join the free 3-day <span id="cEvent"></span>.</h3>
+        </div>
+      </div>
+      <div class="form">
+        <span class="field">First name</span><span class="field">Email address</span>
+        <span class="btn lg">Hold my seat<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h9.5M8.6 3.8 12.8 8l-4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="fine" id="cFine"></p>
+    </div>
+  </section>
+
+  <footer class="foot z"><span class="cchip">Free event</span><span id="footL"></span><span class="fr" id="footR"></span></footer>
+</div>
+<div id="probe"></div>
+<script>window.LP = {"slug": "laundromat-millionaire", "name": "Dave & Carla Menz", "brand": "Laundromat Millionaire", "role": "Hosts, The Laundromat Millionaire Show", "event": "Build Your Laundromat Growth Plan", "headline": {"lines": ["Find the leak", "in each load", "then plug it."], "accent_line": 0, "mark_word": "the leak"}, "stats": [{"num": "60.6K", "label": "Subscribers", "source": "https://www.youtube.com/@LaundromatMillionaire"}, {"num": "853", "label": "Videos published", "source": "https://www.youtube.com/@LaundromatMillionaire"}, {"num": "67", "label": "Club members", "source": "https://www.skool.com/laundromat-millionaire-club"}, {"num": "2017", "label": "Began 1:1 owner coaching", "source": "https://laundromatmillionaire.com/one-on-one-coaching/"}], "days": [{"title": "Find the leak|in each load|then plug it.", "outcome": "Sort your loads, machines and services into the ones that pay and the ones that leak.", "detail": "We lay out a month of your store's numbers by machine and by service, then price a pound of wash-dry-fold against what it really costs you. You finish with the one leak that costs the most, named.", "bullets": ["Pull a month of numbers by machine", "Price a wash-dry-fold pound against its cost", "Name the one service leaking the most"]}, {"title": "Get more turns|from each machine", "outcome": "Set staffing, turns and pickup and delivery pricing to earn more from the same machines.", "detail": "We set the hours that need an attendant, the price per pound and the minimum for pickup and delivery, and one change that adds turns to the machines you already own.", "bullets": ["Map the hours that need an attendant", "Set a pickup and delivery price per pound", "Plan one change that adds turns"]}, {"title": "Your 90-day|growth plan", "outcome": "Leave with a 90-day growth plan for your store, and see if 1:1 coaching is the next step.", "detail": "We rank the fixes from the first two parts, put each one on a calendar and pick the numbers you check every week, so the plan still runs when the store gets busy.", "bullets": ["Rank the three fixes worth doing first", "Put each fix on a 90-day calendar", "Decide what you will measure weekly"]}], "sources_line": "Figures: youtube.com, skool.com, laundromatmillionaire.com", "style": {"pattern": "dots", "mark": "underline", "video_focus": "50% 30%", "headshot_focus": "50% 22%"}, "pattern": "hatch", "mark": {"kind": "underline", "color": "#FFC168", "from": "slide"}, "ghosts": [{"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1187.4 -81.4 694.5 432.4\" fill=\"none\"><defs>\n      <mask id=\"gh0-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh0-hbox\" x=\"84\" y=\"321.296875\" width=\"898\" height=\"470.15625\" fill=\"#3a3a3a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(1180 18) rotate(-8)\"><path d=\"M300 40 Q300 0 336 0 Q372 0 372 34 Q372 60 336 74 L336 98 L640 300 Q668 322 640 330 L30 330 Q2 322 30 300 L336 98\" stroke-width=\"8\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\"><\/path><\/g><\/g><\/svg>", "w": 694.5, "h": 432.4, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-68.6 681.3 436.2 437.5\" fill=\"none\"><defs>\n      <mask id=\"gh1-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh1-hbox\" x=\"84\" y=\"321.296875\" width=\"898\" height=\"470.15625\" fill=\"#3a3a3a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(150 900)\"><path d=\"M209.2 0.0 L209.1 20.6 L205.6 40.9 L201.3 61.1 L194.4 80.5 L184.1 98.4 L173.4 115.9 L163.1 133.9 L148.0 148.0 L132.7 161.7 L117.5 175.8 L99.0 185.1 L80.7 194.9 L60.9 200.9 L41.1 206.4 L20.5 207.9 L0.0 210.4 L-20.7 210.1 L-41.0 206.0 L-61.2 201.7 L-80.6 194.5 L-98.4 184.0 L-117.1 175.3 L-133.4 162.5 L-148.1 148.1 L-161.2 132.3 L-175.5 117.3 L-185.1 99.0 L-194.6 80.6 L-202.0 61.3 L-206.6 41.1 L-210.2 20.7 L-209.7 0.0 L-209.9 -20.7 L-205.8 -40.9 L-202.2 -61.3 L-195.1 -80.8 L-184.1 -98.4 L-173.7 -116.1 L-161.7 -132.7 L-149.5 -149.5 L-133.1 -162.2 L-116.9 -174.9 L-98.7 -184.7 L-80.4 -194.0 L-60.9 -200.6 L-40.9 -205.5 L-20.6 -209.2 L-0.0 -210.3 L20.7 -210.2 L41.1 -206.5 L61.3 -202.2 L80.8 -195.0 L99.7 -186.5 L117.0 -175.0 L132.6 -161.6 L149.3 -149.3 L163.4 -134.1 L175.6 -117.3 L185.4 -99.1 L194.6 -80.6 L200.1 -60.7 L206.9 -41.2 L209.2 -20.6 Z\" stroke-width=\"8\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><path d=\"M175.2 0.0 L174.0 17.1 L172.3 34.3 L167.4 50.8 L161.4 66.9 L155.0 82.8 L147.4 98.5 L136.7 112.2 L125.0 125.0 L111.1 135.4 L97.8 146.4 L82.7 154.6 L67.0 161.7 L50.7 167.3 L34.2 171.8 L17.4 176.4 L0.0 177.0 L-17.3 176.1 L-34.5 173.5 L-50.8 167.5 L-67.1 162.1 L-83.1 155.6 L-98.2 146.9 L-112.3 136.9 L-125.3 125.3 L-135.1 110.9 L-146.6 98.0 L-155.7 83.2 L-162.6 67.4 L-167.5 50.8 L-172.5 34.3 L-173.9 17.1 L-177.3 0.0 L-176.2 -17.4 L-172.8 -34.4 L-167.8 -50.9 L-163.7 -67.8 L-155.4 -83.1 L-147.3 -98.4 L-136.9 -112.3 L-124.5 -124.5 L-111.5 -135.9 L-97.9 -146.6 L-82.9 -155.0 L-67.0 -161.7 L-50.9 -167.9 L-34.5 -173.5 L-17.1 -173.8 L-0.0 -174.6 L17.3 -175.5 L34.2 -172.0 L51.1 -168.5 L67.3 -162.5 L82.7 -154.8 L98.6 -147.6 L111.1 -135.3 L124.3 -124.3 L135.4 -111.1 L146.7 -98.0 L154.6 -82.6 L162.2 -67.2 L169.1 -51.3 L172.1 -34.2 L175.3 -17.3 Z\" stroke-width=\"5\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><path d=\"M-70 -20 Q0 -70 70 -20 M-60 30 Q0 70 60 30\" stroke-width=\"5\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><\/g><\/g><\/svg>", "w": 436.2, "h": 437.5, "sw": 8}, {"svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"1218.8 892.9 648.1 381.1\" fill=\"none\"><defs>\n      <mask id=\"gh2-hmask\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1920\" height=\"1080\">\n        <rect x=\"0\" y=\"0\" width=\"1920\" height=\"1080\" fill=\"#fff\"><\/rect>\n        <rect id=\"gh2-hbox\" x=\"84\" y=\"321.296875\" width=\"898\" height=\"470.15625\" fill=\"#3a3a3a\"><\/rect>\n      <\/mask>\n    <\/defs><g transform=\"matrix(1 0 0 1 0 0)\"><g transform=\"translate(1280 905) rotate(6)\"><path d=\"M0 0 H560 L520 300 H40 Z\" stroke-width=\"8\" stroke-linejoin=\"round\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\"><\/path><path d=\"M-20 0 H580\" stroke-width=\"10\" stroke-linecap=\"round\" stroke=\"#000\" fill=\"none\" stroke-linejoin=\"miter\"><\/path><path d=\"M60 50 H500 M70 110 H490 M80 170 H480 M90 230 H470 M140 0 L150 300 M280 0 V300 M420 0 L410 300\" stroke-width=\"5\" stroke=\"#000\" fill=\"none\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\"><\/path><\/g><\/g><\/svg>", "w": 648.1, "h": 381.1, "sw": 10}], "pat_op": 0.201, "ghost_op": 0.297, "ghost_stroke": 4.5, "fonts": {"display": "Cabinet Grotesk", "display_weight": 800, "body": "General Sans", "label": "General Sans"}, "img": {"video": "img/video.jpg", "headshot": "img/headshot.jpg", "headshot_cutout": false, "slide": "img/slide.jpg"}, "first_name": "Dave", "event_core": "Build Your Laundromat Growth Plan", "lede": "**Learn what's actually working for growing a laundromat in 2026.** We'll walk through where the money quietly leaks out of a store, the five things that decide whether each load pays, and we'll build your Laundromat Growth Plan together. It's the same groundwork we share inside the Laundromat Millionaire Club, and it's yours for free.", "proof": [{"num": "60.6K", "label": "YouTube subscribers", "source": "https://www.youtube.com/@LaundromatMillionaire"}], "ticker": ["60.6K subscribers on YouTube", "853 videos published", "67 members in the Laundromat Millionaire Club", "Coaching owners one-on-one since 2017"], "checks": [{"bold": "Guessing which machines pay", "text": "Know the turns and margin on every machine.", "hand": "know your numbers"}, {"bold": "Underpriced wash-dry-fold", "text": "Price each pound against what it costs you.", "hand": "price the pound"}, {"bold": "Delivery that loses money", "text": "Set routes and minimums that cover the drive.", "hand": "routes that pay"}, {"bold": "Stuck behind the counter", "text": "Staff the hours that actually need someone.", "hand": "systems first"}, {"bold": "No plan past this month", "text": "Leave with 90 days of fixes, in order.", "hand": "right beats fast"}], "days_intro": "Day 1 finds the leaks, Day 2 builds the systems that close them, and Day 3 puts the fixes into a 90-day plan.", "fit_count": 4, "format": "webinar"};</script>
+<script src="lp.js?v=113601bc"></script>
+<script>window.SITE = {
+ "event": "Build Your Laundromat Growth Plan",
+ "name": "Dave & Carla Menz",
+ "brand": "Laundromat Millionaire",
+ "trusted_count": "60.6K",
+ "audience": "subscribers",
+ "monogram": "LM",
+ "logo": "img/logo.png",
+ "reply_to": "sean@theafterharvest.com",
+ "subject": "Unlock the full page for Laundromat Millionaire",
+ "body": "Yes, send me the full page.\n\n",
+ "gate_from": "band",
+ "gate_title": "The rest of this page is ready",
+ "gate_text": "Reply to my email and I will open the rest of Build Your Laundromat Growth Plan for you.",
+ "gate_cta": "Open the full page",
+ "gate_hint": "Reply to my email and I will open it",
+ "when": "",
+ "avatar": "img/headshot.jpg",
+ "bio": "Dave and Carla Menz built and run Queen City Laundry, and they bring what it taught them about hiring, pricing, service and growth to other owners through Laundromat Millionaire. Inside the Laundromat Millionaire Club they answer members' questions live every month, and the Laundromat Millionaire Show shares their lessons on YouTube.",
+ "role": "Hosts, The Laundromat Millionaire Show",
+ "days_intro": "Day 1 finds the leaks, Day 2 builds the systems that close them, and Day 3 puts the fixes into a 90-day plan.",
+ "check_why": [
+  "",
+  "",
+  "",
+  "",
+  ""
+ ],
+ "day_detail": [
+  "We lay out a month of your store's numbers by machine and by service, then price a pound of wash-dry-fold against what it really costs you. You finish with the one leak that costs the most, named.",
+  "We set the hours that need an attendant, the price per pound and the minimum for pickup and delivery, and one change that adds turns to the machines you already own.",
+  "We rank the fixes from the first two parts, put each one on a calendar and pick the numbers you check every week, so the plan still runs when the store gets busy."
+ ],
+ "day_bullets": [
+  [
+   "Pull a month of numbers by machine",
+   "Price a wash-dry-fold pound against its cost",
+   "Name the one service leaking the most"
+  ],
+  [
+   "Map the hours that need an attendant",
+   "Set a pickup and delivery price per pound",
+   "Plan one change that adds turns"
+  ],
+  [
+   "Rank the three fixes worth doing first",
+   "Put each fix on a 90-day calendar",
+   "Decide what you will measure weekly"
+  ]
+ ],
+ "registered": "1,204",
+ "rating": "4.9",
+ "last24": "18",
+ "starts_in_days": 9,
+ "names": [
+  "Maya",
+  "Devon",
+  "Priya",
+  "Sam",
+  "Alix",
+  "Jordan",
+  "Noor",
+  "Rae"
+ ],
+ "faces": [
+  "img/faces/f1.jpg",
+  "img/faces/f2.jpg",
+  "img/faces/f3.jpg",
+  "img/faces/f4.jpg",
+  "img/faces/f5.jpg",
+  "img/faces/f6.jpg"
+ ],
+ "sticky": {
+  "image": "img/sticky.jpg",
+  "title": "The 60 second version",
+  "sub": "Tap for sound"
+ },
+ "testimonial": {
+  "quote": "I stopped guessing what to send. Three days, one plan, and I knew exactly what to do next.",
+  "name": "Marcus R.",
+  "role": "Laundromat Millionaire member",
+  "length": "1 min 24 sec",
+  "image": "img/testimonial.jpg"
+ },
+ "style": {
+  "r_lg": "16px",
+  "r_md": "12px",
+  "r_sm": "9px",
+  "btn_r": "10px",
+  "btn_off": "0px",
+  "brd": "0.08",
+  "lift": "0 24px 52px -34px rgba(28,20,12,.45)",
+  "face": "digital",
+  "night": "#26292E"
+ },
+ "time_zone": "America/New_York",
+ "keep_title": "You leave knowing which loads pay and what to fix first.",
+ "keep": [
+  {
+   "kind": "table",
+   "name": "Load math",
+   "status": "One leak found",
+   "cols": [
+    "Load",
+    "Price",
+    "Cost",
+    "Net"
+   ],
+   "rows": [
+    [
+     "Self-serve 40 lb washer",
+     "$7.00",
+     "$2.10",
+     "$4.90"
+    ],
+    [
+     "Dryer, 30 minutes",
+     "$2.25",
+     "$0.80",
+     "$1.45"
+    ],
+    [
+     "Wash-dry-fold, per lb",
+     "$1.25",
+     "$1.38",
+     "-$0.13"
+    ]
+   ],
+   "flag": {
+    "row": 2
+   },
+   "foot": "Price the pound, not the bag",
+   "foot_tag": "1 below cost"
+  },
+  {
+   "kind": "brief",
+   "name": "Route sheet",
+   "status": "Priced to cover the drive",
+   "rows": [
+    {
+     "label": "New price",
+     "text": "$1.75 per lb, wash-dry-fold",
+     "pull": true
+    },
+    {
+     "label": "Minimum",
+     "text": "$30 per pickup, about 15 lb"
+    },
+    {
+     "label": "Route days",
+     "text": "Tuesday and Friday, east side first"
+    },
+    {
+     "label": "Attendant",
+     "text": "Folder on 9 to 3, weekdays"
+    }
+   ],
+   "foot": "Routes that pay, then grow them",
+   "foot_tag": "2 zones parked"
+  },
+  {
+   "kind": "tracker",
+   "name": "Next 90 days",
+   "status": "Week 1 of 12",
+   "who": "Fix",
+   "cols": [
+    "Wk 1",
+    "Wk 4",
+    "Wk 8",
+    "Wk 12"
+   ],
+   "rows": [
+    {
+     "name": "Post $1.75 per lb price",
+     "marks": "sn--",
+     "next": "Tell regulars"
+    },
+    {
+     "name": "Hire a weekday folder",
+     "marks": "n---",
+     "next": "Post the ad"
+    },
+    {
+     "name": "Add Tuesday route",
+     "marks": "-n--",
+     "next": "Map the stops"
+    }
+   ],
+   "foot": "Right beats fast",
+   "foot_tag": "3 fixes"
+  }
+ ],
+ "vip": {
+  "price": 47,
+  "still": "video-frame-candidates/_stills/88d8ubvcDTw_maxres1.jpg",
+  "still_source": "https://www.youtube.com/watch?v=88d8ubvcDTw (YouTube automatic still maxres1, Carla Menz alone, talking to camera)",
+  "still_focus": "50% 26%",
+  "headline": [
+   "Want us to check the price",
+   "on every pound you fold?"
+  ],
+  "mark": "check the price",
+  "lede": "Your seat is saved for the session. Before you go, there is one optional upgrade, **{price} once**. A VIP call right after where we price your wash-dry-fold pound against your real costs, a private VIP thread for the week, the replay, and our price-per-pound sheet.",
+  "video_title": "A quick note from {first}",
+  "video_sub": "Before the session",
+  "video_len": "1:48",
+  "pass_kick": "Price the Pound",
+  "pass_cells": [
+   "VIP",
+   "VIP thread",
+   "Replays"
+  ],
+  "items": [
+   {
+    "bold": "VIP call, your price sheet.",
+    "text": "Right after the session on {day1_date}. 60 minutes live, VIPs only. Bring last month's numbers, we price your pound."
+   },
+   {
+    "bold": "Private VIP thread.",
+    "text": "Opens {day1_date} and stays open until {close}. Post your store's numbers and we answer in the thread."
+   },
+   {
+    "bold": "The replay, yours to keep.",
+    "text": "The full session replay, so the leak check is there when next month's numbers come in."
+   },
+   {
+    "bold": "Our price-per-pound sheet.",
+    "text": "The wash-dry-fold cost check from the session, on one printable page."
+   }
+  ],
+  "cta": "Yes, add VIP for {price}",
+  "decline": "No thanks, take me to my join details",
+  "proof": "**{vip_count} people** added VIP to their seat",
+  "vip_count": "138",
+  "why": "The last part ends with a 90-day growth plan: three fixes in order, starting with repricing wash-dry-fold per pound. The gap is that nobody checks the owner's real costs before they post a new price, so they guess and the leak stays open. The loudest objection it answers is underpriced wash-dry-fold. Dave and Carla's people gather in the Laundromat Millionaire Club on Skool (67 members, live monthly Q&A per the club page), but the VIP is not club access, so the direct line is a private VIP thread. Their voice: right beats fast (their masterclass page), price the pound, routes that pay. The extension asset is the price-per-pound sheet, from the Day 1 bullet 'Price a wash-dry-fold pound against its cost'. Webinar version (event_format webinar): the fourth live day became a VIP call right after the session. The still is Carla alone from video 88d8ubvcDTw, a different video from the VSL frame (DAB7nd-Qq5o) and the sticky (T3TZ-cyZbTo)."
+ }
+};</script>
+<script src="site.js?v=9cd5100c"></script>
+</body>
+</html>
