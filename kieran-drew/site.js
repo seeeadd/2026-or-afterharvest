@@ -289,7 +289,7 @@
     return '<svg class="bglyph" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
       'stroke-width="' + (stroke || 1.7) + '" stroke-linecap="round" stroke-linejoin="round">' +
       ICONS[brandIconKey()] + '</svg>' +
-      '<span class="b3"><b>3</b></span>';
+      '<span class="b3"><b>' + (WEBINAR ? '1' : '3') + '</b></span>';
   }
   function ctaIcons() {
     BICON = '<i class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +

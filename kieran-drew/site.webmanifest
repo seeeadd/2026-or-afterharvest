@@ -1,5 +1,5 @@
 {
-  "name": "Write Online, Build Your Business",
+  "name": "Kieran Drew 3-day writing event",
   "short_name": "Kieran",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#D79645",
+  "theme_color": "#2F4454",
   "background_color": "#F6F6F6",
   "display": "standalone"
 }
