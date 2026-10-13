@@ -1,0 +1,19 @@
+{
+  "name": "Etsy Traffic to Sales Plan",
+  "short_name": "Dylan",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#C87E57",
+  "background_color": "#FAE9DF",
+  "display": "standalone"
+}
