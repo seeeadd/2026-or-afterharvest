@@ -196,8 +196,10 @@
     var cap = q('.fitgrid .me figcaption'), nm = $('meName');
     if (!cap || !nm || q('.melogo', cap)) return;
     var m = S.monogram || initials(LP.brand || BRAND);
+    /* Sean 2026-10-14: "shouldnt u use favicon for these": the lead's own favicon (the photo favicon, also the Notion icon)
+       stands for them when no real logo was saved; the drawn emblem is only the fallback when the favicon file is missing */
     var html = S.logo ? '<span class="melogo real"><img src="' + esc(S.logo) + '" alt=""></span>'
-      : '<span class="melogo">' + emblemSVG(1.7) + '</span>';
+      : '<span class="melogo fav"><img src="favicon.png" alt="" onerror="var p=this.parentNode;p.classList.remove(\'fav\');p.innerHTML=window.__emb17||\'\'"></span>';
     if (!html) return;
     cap.insertAdjacentHTML('afterbegin', html);
     cap.classList.add('haslogo');
@@ -205,7 +207,9 @@
   function brandMark() {
     var cal = q('.nav .cal'), m = S.monogram || initials(LP.brand || BRAND);
     if (!cal || !m) return;
-    cal.innerHTML = '<span class="bmark">' + emblemSVG(1.8) + '</span>';
+    window.__emb17 = emblemSVG(1.7);
+    cal.innerHTML = '<span class="bmark fav"><img src="favicon.png" alt="" onerror="var p=this.parentNode;p.classList.remove(\'fav\');p.innerHTML=window.__emb18"></span>';
+    window.__emb18 = emblemSVG(1.8);
   }
 
   /* a call to action in the reader's own words: the day's promise turned into the button. Built from the
