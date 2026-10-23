@@ -18,7 +18,7 @@
   --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:84px}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:116px}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-weight:500;-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
 img{display:block;max-width:100%;height:auto}
 button{font:inherit;color:inherit}
@@ -52,7 +52,7 @@ section.s{padding:128px 0}
 .bf span{opacity:.85;font-weight:600}
 
 /* ---------- nav ---------- */
-.nav{position:sticky;top:0;z-index:30;background:rgba(3,3,3,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{position:relative;background:rgba(3,3,3,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;border-bottom:1px solid rgba(255,255,255,.07)}
 .nav .wrap{display:flex;align-items:center;gap:40px;height:68px}
 .nav .wm{width:150px}
 .nav nav{display:flex;gap:30px;margin-left:auto}
@@ -61,16 +61,20 @@ section.s{padding:128px 0}
 .nav nav a:hover{color:#fff}
 .nav nav a:hover::after{transform:none}
 
-/* nav countdown: Super Early Bird until Dec 1, then NMS 2027 itself */
-.ncd{display:flex;align-items:center;gap:12px;flex:none}
-.ncl{display:flex;align-items:center;gap:9px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.62);white-space:nowrap}
-.ncl .sh{display:none}
-.ncd .cd{display:flex;gap:5px}
-.ncd .cd span{min-width:40px;height:40px;border-radius:10px}
-.ncd .cd b{font-size:14.5px}
-.ncd .cd small{font-size:7.5px;margin-top:3px}
-.nav nav{margin-left:auto}
-.nav .wrap{gap:32px}
+/* top strip: the Super Early Bird deadline as one quiet line above the nav (the Black Friday bar takes this slot Nov 24 to 30) */
+.hdr{position:sticky;top:0;z-index:30}
+.topbar{position:relative;background:#080808;border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden}
+.topbar::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 10%,rgba(242,79,30,.16) 50%,transparent 90%);pointer-events:none}
+.tb{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;height:36px;padding:0 16px;font-size:13px;font-weight:600;color:rgba(255,255,255,.66);text-decoration:none;white-space:nowrap}
+.tb .dot{width:6px;height:6px}
+.tb .ct{color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums}
+.tb .ct b{color:#fff;font-weight:800;margin-left:3px}
+.tb .ct b:first-child{margin-left:0}
+.tb .pr b{color:#fff;font-weight:700}
+.tb i{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3)}
+.tb svg{width:13px;height:13px;color:#ffb08f;transition:transform .4s var(--ease)}
+.tb:hover svg{transform:translateX(3px)}
+.bf.on+.topbar{display:none}
 
 /* ---------- buttons: the envelope with the NMS ticket inside ---------- */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;height:58px;padding:0 28px 0 8px;border:0;border-radius:999px;background:var(--grad);color:#fff;font:700 17px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em;cursor:pointer;white-space:nowrap;text-decoration:none;isolation:isolate;
@@ -571,18 +575,13 @@ h1 .ln{display:block}
 .mbar .btn{width:100%;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 40px -10px rgba(1,1,0,.55)}
 .mbar.on{opacity:1;transform:none;pointer-events:auto}
 
-@media (max-width:1280px){
-  .ncl .lg{display:none}
-  .ncl .sh{display:inline}
-}
 @media (max-width:1100px){
   .who,.host{grid-template-columns:1fr 1fr;gap:56px}
   .spk{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:980px){
   .nav nav{display:none}
-  .nav .mini{margin-left:0}
-  .ncd{margin-left:auto}
+  .nav .mini{margin-left:auto}
   .why{grid-template-columns:1fr}
   .wc.big{grid-row:auto}
   .sp-hd{display:block}
@@ -613,8 +612,8 @@ h1 .ln{display:block}
   .wrap{width:calc(100% - 32px)}
   .nav .wrap{height:58px}
   .nav .wm{width:126px}
-  .ncd{display:none}
-  .nav .mini{margin-left:auto}
+  .tb{font-size:12px;gap:9px;height:32px}
+  .tb .pr,.tb .pi{display:none}
   .mbar{display:block}
   .hero .inner{padding:24px 0 150px}
   .tag{font-size:12px;gap:8px;padding:6px 13px 6px 7px}
@@ -702,9 +701,11 @@ h1 .ln{display:block}
 </svg>
 
 <!-- Black Friday week only (Nov 24 to Nov 30, 11:59pm ET); the offer line is locked at kickoff. Preview with ?bf=1 -->
+<div class="hdr">
 <a class="bf" id="bf" href="#tickets">Black Friday: [offer in one line] <span>until Mon Nov 30, 11:59pm ET.</span></a>
 
 <!-- nav -->
+<div class="topbar"><a class="tb" href="#tickets" role="timer" aria-label="Super Early Bird countdown"><span class="dot"></span><span data-cdl>Super Early Bird ends in</span><span class="ct"><b data-cd="d">00</b>d <b data-cd="h">00</b>h <b data-cd="m">00</b>m <b data-cd="s">00</b>s</span><i class="pi"></i><span class="pr">GA <b>$599</b> · VIP <b>$1,399</b></span><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
 <header class="nav" id="nav"><div class="wrap">
   <a href="#top" aria-label="New Media Summit"><img class="wm" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188"></a>
   <nav aria-label="Main">
@@ -712,12 +713,9 @@ h1 .ln{display:block}
     <a href="#venue">Attendee info</a>
     <a href="https://4tw5ua3z74c.typeform.com/to/AbsC818W">Sponsors</a>
   </nav>
-  <div class="ncd" role="timer" aria-label="Super Early Bird ends in">
-    <span class="ncl"><span class="dot"></span><span class="lg" data-cdl>Super Early Bird ends in</span><span class="sh" data-cds>Ends in</span></span>
-    <div class="cd"><span><b data-cd="d">00</b><small>Days</small></span><span><b data-cd="h">00</b><small>Hrs</small></span><span><b data-cd="m">00</b><small>Min</small></span><span class="sec"><b data-cd="s">00</b><small>Sec</small></span></div>
-  </div>
   <a class="mini btn tkt" href="https://tickets.newmediasummit.com/checkout/view-event/id/8957371/chk/875f34ca47dd67eb5ee8bf0711e3cf"><span class="env" aria-hidden="true"></span>Get tickets</a>
 </div></header>
+</div>
 
 <main>
 <!-- 1. hero -->
@@ -1110,7 +1108,7 @@ h1 .ln{display:block}
   /* countdowns (nav and tickets): Super Early Bird ends Dec 1; after that the nav counts down to NMS 2027 */
   var seb=Date.parse('2026-12-01T00:00:00-05:00'),ev=Date.parse('2027-02-25T00:00:00-06:00');
   var t=Date.now()<seb?seb:ev;
-  if(t===ev){document.querySelectorAll('[data-cdl]').forEach(function(x){x.textContent='NMS 2027 starts in'});document.querySelectorAll('[data-cds]').forEach(function(x){x.textContent='Starts in'});document.querySelector('.ncd').setAttribute('aria-label','NMS 2027 starts in')}
+  if(t===ev){document.querySelectorAll('[data-cdl]').forEach(function(x){x.textContent='NMS 2027 starts in'});document.querySelector('.tb').setAttribute('aria-label','NMS 2027 countdown')}
   function p(n){return (n<10?'0':'')+n}
   function tick(){var r=Math.max(0,t-Date.now())/1000,v={d:Math.floor(r/86400),h:Math.floor(r%86400/3600),m:Math.floor(r%3600/60),s:Math.floor(r%60)};
     document.querySelectorAll('[data-cd]').forEach(function(x){x.textContent=p(v[x.getAttribute('data-cd')])})}
