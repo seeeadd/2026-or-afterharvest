@@ -61,6 +61,17 @@ section.s{padding:128px 0}
 .nav nav a:hover{color:#fff}
 .nav nav a:hover::after{transform:none}
 
+/* nav countdown: Super Early Bird until Dec 1, then NMS 2027 itself */
+.ncd{display:flex;align-items:center;gap:12px;flex:none}
+.ncl{display:flex;align-items:center;gap:9px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.62);white-space:nowrap}
+.ncl .sh{display:none}
+.ncd .cd{display:flex;gap:5px}
+.ncd .cd span{min-width:40px;height:40px;border-radius:10px}
+.ncd .cd b{font-size:14.5px}
+.ncd .cd small{font-size:7.5px;margin-top:3px}
+.nav nav{margin-left:auto}
+.nav .wrap{gap:32px}
+
 /* ---------- buttons: the envelope with the NMS ticket inside ---------- */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;height:58px;padding:0 28px 0 8px;border:0;border-radius:999px;background:var(--grad);color:#fff;font:700 17px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.005em;cursor:pointer;white-space:nowrap;text-decoration:none;isolation:isolate;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(0,0,0,.12),0 18px 40px -16px rgba(240,45,48,.75);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
@@ -560,13 +571,18 @@ h1 .ln{display:block}
 .mbar .btn{width:100%;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 40px -10px rgba(1,1,0,.55)}
 .mbar.on{opacity:1;transform:none;pointer-events:auto}
 
+@media (max-width:1280px){
+  .ncl .lg{display:none}
+  .ncl .sh{display:inline}
+}
 @media (max-width:1100px){
   .who,.host{grid-template-columns:1fr 1fr;gap:56px}
   .spk{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:980px){
   .nav nav{display:none}
-  .nav .mini{margin-left:auto}
+  .nav .mini{margin-left:0}
+  .ncd{margin-left:auto}
   .why{grid-template-columns:1fr}
   .wc.big{grid-row:auto}
   .sp-hd{display:block}
@@ -597,6 +613,8 @@ h1 .ln{display:block}
   .wrap{width:calc(100% - 32px)}
   .nav .wrap{height:58px}
   .nav .wm{width:126px}
+  .ncd{display:none}
+  .nav .mini{margin-left:auto}
   .mbar{display:block}
   .hero .inner{padding:24px 0 150px}
   .tag{font-size:12px;gap:8px;padding:6px 13px 6px 7px}
@@ -694,6 +712,10 @@ h1 .ln{display:block}
     <a href="#venue">Attendee info</a>
     <a href="https://4tw5ua3z74c.typeform.com/to/AbsC818W">Sponsors</a>
   </nav>
+  <div class="ncd" role="timer" aria-label="Super Early Bird ends in">
+    <span class="ncl"><span class="dot"></span><span class="lg" data-cdl>Super Early Bird ends in</span><span class="sh" data-cds>Ends in</span></span>
+    <div class="cd"><span><b data-cd="d">00</b><small>Days</small></span><span><b data-cd="h">00</b><small>Hrs</small></span><span><b data-cd="m">00</b><small>Min</small></span><span class="sec"><b data-cd="s">00</b><small>Sec</small></span></div>
+  </div>
   <a class="mini btn tkt" href="https://tickets.newmediasummit.com/checkout/view-event/id/8957371/chk/875f34ca47dd67eb5ee8bf0711e3cf"><span class="env" aria-hidden="true"></span>Get tickets</a>
 </div></header>
 
@@ -1085,13 +1107,15 @@ h1 .ln{display:block}
   var now=Date.now(),bfOn=now>=Date.parse('2026-11-24T00:00:00-05:00')&&now<Date.parse('2026-12-01T00:00:00-05:00');
   if(bfOn||/[?&]bf=1/.test(location.search))document.getElementById('bf').classList.add('on');
 
-  /* Super Early Bird countdown to Dec 1 */
-  var t=Date.parse('2026-12-01T00:00:00-05:00'),q=function(k){return document.querySelector('[data-cd='+k+']')};
-  var el={d:q('d'),h:q('h'),m:q('m'),s:q('s')};
+  /* countdowns (nav and tickets): Super Early Bird ends Dec 1; after that the nav counts down to NMS 2027 */
+  var seb=Date.parse('2026-12-01T00:00:00-05:00'),ev=Date.parse('2027-02-25T00:00:00-06:00');
+  var t=Date.now()<seb?seb:ev;
+  if(t===ev){document.querySelectorAll('[data-cdl]').forEach(function(x){x.textContent='NMS 2027 starts in'});document.querySelectorAll('[data-cds]').forEach(function(x){x.textContent='Starts in'});document.querySelector('.ncd').setAttribute('aria-label','NMS 2027 starts in')}
   function p(n){return (n<10?'0':'')+n}
-  function tick(){var r=Math.max(0,t-Date.now())/1000;el.d.textContent=p(Math.floor(r/86400));el.h.textContent=p(Math.floor(r%86400/3600));el.m.textContent=p(Math.floor(r%3600/60));el.s.textContent=p(Math.floor(r%60))}
-  var secT=document.querySelector('.cd .sec');
-  tick();setInterval(function(){tick();if(!reduce){secT.classList.remove('tk');void secT.offsetWidth;secT.classList.add('tk')}},1000);
+  function tick(){var r=Math.max(0,t-Date.now())/1000,v={d:Math.floor(r/86400),h:Math.floor(r%86400/3600),m:Math.floor(r%3600/60),s:Math.floor(r%60)};
+    document.querySelectorAll('[data-cd]').forEach(function(x){x.textContent=p(v[x.getAttribute('data-cd')])})}
+  var secs=document.querySelectorAll('.cd .sec');
+  tick();setInterval(function(){tick();if(!reduce)secs.forEach(function(sc){sc.classList.remove('tk');void sc.offsetWidth;sc.classList.add('tk')})},1000);
 
   /* mobile: a sticky ticket button once the hero buttons scroll away; it steps aside for the final button */
   var hc=document.getElementById('heroCta'),mbar=document.getElementById('mbar'),cta2=document.getElementById('cta2');
