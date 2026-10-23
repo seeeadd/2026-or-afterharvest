@@ -477,6 +477,49 @@ h1 .ln{display:block}
 .wa p{margin-top:8px;font-size:15px;line-height:1.55;color:var(--slate)}
 .wa.sec{background:var(--mist);box-shadow:none}
 
+
+/* ---------- the Austin guide ---------- */
+.guide{display:grid;grid-template-columns:360px 1fr;gap:56px;align-items:start;margin-top:64px}
+.guide h3{margin-top:14px;font-size:clamp(26px,2.4vw,34px);font-weight:700;letter-spacing:-.025em;line-height:1.15;text-wrap:balance}
+.guide .lede{margin-top:14px;font-size:16.5px}
+.spots{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.spot2{display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;padding:22px 22px 24px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px var(--lines);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.spot2:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(242,79,30,.3),0 26px 50px -36px rgba(1,1,0,.5)}
+.spot2 .ic{width:48px;height:48px;border-radius:14px;background:var(--soft);display:grid;place-items:center}
+.spot2 .ic svg{width:24px;height:24px;fill:none;stroke:url(#g);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.spot2 b{display:block;font-size:17px;font-weight:700;letter-spacing:-.012em;line-height:1.3}
+.spot2 p{margin-top:5px;font-size:15px;line-height:1.5;color:var(--slate)}
+.spots .more2{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:18px 22px;border-radius:18px;background:var(--mist);font-size:15.5px;font-weight:600;color:var(--slate)}
+.spots .more2 svg{width:20px;height:20px;flex:none}
+
+/* ---------- FAQ: grouped accordion ---------- */
+.faqw{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start}
+.faqw .hd{position:sticky;top:110px}
+.faqw .cats{list-style:none;margin-top:28px;display:grid;gap:4px}
+.faqw .cats a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-radius:12px;font-size:15px;font-weight:600;color:var(--slate);text-decoration:none;transition:background .3s,color .3s}
+.faqw .cats a:hover{background:var(--mist);color:var(--ink)}
+.faqw .cats a span{font-size:12px;font-weight:800;color:var(--mute);font-variant-numeric:tabular-nums}
+.fg+.fg{margin-top:44px}
+.fg h3{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding-bottom:12px;scroll-margin-top:100px}
+.fg h3 svg{width:20px;height:20px;fill:none;stroke:url(#g);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ac{border-top:1px solid var(--lines)}
+.ac:last-child{border-bottom:1px solid var(--lines)}
+.ac button{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;padding:22px 2px;border:0;background:none;text-align:left;font-size:18.5px;font-weight:700;letter-spacing:-.012em;line-height:1.35;color:var(--ink);cursor:pointer}
+.ac button:hover{color:#c43a12}
+.ac .pm{position:relative;flex:none;width:32px;height:32px;border-radius:50%;background:var(--mist);transition:background .4s,transform .5s var(--ease)}
+.ac .pm::before,.ac .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:2px;background:var(--ink);transition:transform .5s var(--ease),background .4s}
+.ac .pm::after{transform:rotate(90deg)}
+.ac.open .pm{background:var(--grad);transform:rotate(180deg)}
+.ac.open .pm::before,.ac.open .pm::after{background:#fff}
+.ac.open .pm::after{transform:rotate(0)}
+.ac .aw{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.ac.open .aw{grid-template-rows:1fr}
+.ac .aw>div{overflow:hidden}
+.ac .aw p{padding:0 56px 22px 2px;font-size:16.5px;line-height:1.65;color:var(--slate)}
+.ac .aw p+p{margin-top:-10px}
+.ac .aw a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1.5px solid rgba(242,79,30,.45)}
+.ac .aw b{color:var(--ink)}
+
 /* mobile sticky ticket button */
 .mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:none;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
 .mbar .btn{width:100%;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 40px -10px rgba(1,1,0,.55)}
@@ -502,6 +545,11 @@ h1 .ln{display:block}
   .who,.host{grid-template-columns:1fr;gap:56px}
   .host .pic{max-width:380px}
   .faq{grid-template-columns:1fr}
+  .guide,.faqw{grid-template-columns:1fr;gap:28px}
+  .faqw .hd{position:static}
+  .faqw .cats{display:flex;flex-wrap:wrap;gap:6px}
+  .faqw .cats a{background:var(--mist);padding:8px 12px;font-size:13.5px}
+  .faqw .cats a span{display:none}
   .about{grid-template-columns:1fr;gap:28px}
   .nos{grid-template-columns:1fr;gap:18px}
   .att,.vt6{grid-template-columns:1fr 1fr}
@@ -555,6 +603,9 @@ h1 .ln{display:block}
   .venue .in3{padding:200px 22px 30px}
   .days{flex-direction:column}
   .qa p{padding-left:0}
+  .spots{grid-template-columns:1fr}
+  .ac button{font-size:16.5px;padding:18px 0}
+  .ac .aw p{padding-right:8px}
   .nos{padding:26px 22px}
   .nos h3{white-space:normal}
   .nos li{height:auto;min-height:40px;padding:8px 14px 8px 8px;line-height:1.35}
@@ -914,23 +965,42 @@ h1 .ln{display:block}
         <div class="day on"><small>Thu, Feb 25</small><b>Day 1</b></div>
         <div class="day on"><small>Fri, Feb 26</small><b>Day 2</b></div>
       </div>
-      <a class="tlink" href="#faq">Travel, parking and the full schedule are on the Attendee info page<svg aria-hidden="true"><use href="#arr"/></svg></a>
+      <a class="tlink" href="#faq">Travel, parking and the full schedule are in the FAQ below<svg aria-hidden="true"><use href="#arr"/></svg></a>
+    </div>
+  </div>
+
+  <div class="guide">
+    <div data-r>
+      <span class="kick"><svg style="color:#fff" aria-hidden="true"><use href="#dm"/></svg>Downtown Austin</span>
+      <h3>One of the nation's most vibrant hubs for media, tech, and creative innovation</h3>
+      <p class="lede">Before and after our programming, we encourage you to explore downtown Austin and enjoy the city's best food, live music, and local experiences just minutes from our venue.</p>
+    </div>
+    <div class="spots">
+      <div class="spot2" data-r><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span><div><b>6th Street and Rainey Street</b><p>Bustling nightlife, bars, and live music scene</p></div></div>
+      <div class="spot2" data-r style="transition-delay:.06s"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><div><b>2nd Street District</b><p>Shops, cafés, and local favorites for quick breaks</p></div></div>
+      <div class="spot2" data-r><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17c3-2 5-2 8 0s5 2 8 0M3 21c3-2 5-2 8 0s5 2 8 0"/><path d="M12 13V3M12 3 7.5 9h9Z"/></svg></span><div><b>Lady Bird Lake Hike and Bike Trail</b><p>Fresh air and easy strolls downtown</p></div></div>
+      <div class="spot2" data-r style="transition-delay:.06s"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21h16M5 21v-6h14v6M8 15v-3a4 4 0 0 1 8 0v3M12 8V3M10.5 4.5h3"/><path d="M9 21v-3M15 21v-3"/></svg></span><div><b>Texas State Capitol</b><p>Iconic Austin landmark and great photo ops</p></div></div>
+      <p class="more2" data-r><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3.5" y="2.5" width="13" height="15" rx="2.5" fill="none" stroke="url(#g)" stroke-width="1.6"/><path d="M7 7h6M7 10h6M7 13h4" stroke="url(#g)" stroke-width="1.6" stroke-linecap="round"/></svg>And much more in the attendee guide upon your purchase!</p>
     </div>
   </div>
 </div></section>
 
-<!-- 10. FAQ -->
-<section class="s" id="faq" style="padding-top:24px"><div class="wrap">
-  <span class="kick" data-r><svg style="color:#fff" aria-hidden="true"><use href="#dm"/></svg>FAQ</span>
-  <div class="faq">
-    <div class="qa" data-r><h4><span>01</span>Is NMS right for my stage of business?</h4><p>It's built for founders running newsletter, media and creator businesses doing $100K to $5M a year.</p></div>
-    <div class="qa" data-r style="transition-delay:.06s"><h4><span>02</span>What will I leave with?</h4><p>The one change worth making in 2027, and the people to make it with. Every session is an operator showing what's working now, with numbers.</p></div>
-    <div class="qa" data-r><h4><span>03</span>Can I bring my team?</h4><p>Yes. The team bundle gets you 2 VIP and 3 GA tickets and saves $1,500+. For more than 5 people, email us for a custom rate.</p></div>
-    <div class="qa" data-r style="transition-delay:.06s"><h4><span>04</span>What's the refund policy?</h4><p>Full refund if you cancel by Dec 28, 2026, 60 days before the event.</p></div>
-    <!-- "Can I expense it?" waits on Matt: what the receipt and invoice include -->
-    <div class="qa" data-r><h4><span>05</span>What if I can't make it?</h4><p>Cancel by Dec 28 for a full refund. There's no virtual ticket, but every session is recorded. VIP includes the recordings.</p></div>
+<!-- 10. FAQ: the buying questions from the spec plus every logistics question from the current site ("Can I expense it?" waits on Matt) -->
+<section class="s" id="faq" style="padding-top:24px"><div class="wrap faqw">
+  <div class="hd" data-r>
+    <span class="kick"><svg style="color:#fff" aria-hidden="true"><use href="#dm"/></svg>FAQ</span>
+    <h2>Frequently asked <span class="shine">questions</span></h2>
+    <p class="lede">Answering all event-related questions</p>
+    <ul class="cats"><li><a href="#fq-about">About the summit<span>02</span></a></li><li><a href="#fq-travel">Travel and accommodation<span>05</span></a></li><li><a href="#fq-schedule">Event schedule and registration<span>03</span></a></li><li><a href="#fq-sessions">Sessions and networking<span>03</span></a></li><li><a href="#fq-payments">Payments, refunds and cancellations<span>02</span></a></li><li><a href="#fq-other">Other general information<span>02</span></a></li></ul>
   </div>
-  <p class="faqlink" data-r>Travel, parking, dress code and more are on the <a class="tlink" href="#venue">Attendee info page<svg aria-hidden="true"><use href="#arr"/></svg></a></p>
+  <div>
+<div class="fg" data-r><h3 id="fq-about"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 21 12 12 21 3 12Z"/><path d="M12 8.5 15.5 12 12 15.5 8.5 12Z"/></svg>About the summit</h3><div class="ac open"><button type="button" aria-expanded="true">Is NMS right for my stage of business?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>It's built for founders running newsletter, media and creator businesses doing $100K to $5M a year.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">What will I leave with?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>The one change worth making in 2027, and the people to make it with. Every session is an operator showing what's working now, with numbers.</p></div></div></div></div>
+<div class="fg" data-r><h3 id="fq-travel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 16.5 21 9l-2-3-8 3.5L5 6 3 7l4 4.5-3.5 1.6L2 12l-1 1Z"/><path d="M3 21h18"/></svg>Travel and accommodation</h3><div class="ac"><button type="button" aria-expanded="false">Where is the event located?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>The event will take place in downtown Austin, TX at the Hilton Austin Hotel (500 East 4th Street).</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">What's the closest airport to the event venue?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Austin-Bergstrom International Airport (AUS). 15 minute drive to downtown Austin.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">Which hotel do you recommend?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>We recommend staying onsite at the Hilton Austin Hotel arriving Wednesday and departing Saturday. You can book your stay using <a href="https://book.passkey.com/go/NMS2027">this link</a> for our exclusive event rate.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">Is there a special room rate or discount for attendees?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Yes! We've partnered with Hilton Austin to provide our attendees with discounted hotel rates. Use this <a href="https://book.passkey.com/go/NMS2027">booking link</a> when reserving.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">Are there nearby parking facilities? Is parking included or at an additional cost?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Yes, we share parking information in the "Attendee Guide" after purchasing a ticket.</p></div></div></div></div>
+<div class="fg" data-r><h3 id="fq-schedule"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Event schedule and registration</h3><div class="ac"><button type="button" aria-expanded="false">What are the dates and times of the event?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>The dates are <b>Thursday and Friday, February 25th and 26th, 2027</b>. For those traveling to Austin, you should consider the following.</p><p><b>Arrival:</b> Wednesday, February 24th for pre-registration that evening and event programming starting Thursday morning.</p><p><b>Departure:</b> We have a full day of programming and the closing reception on Friday, February 26th. We recommend a Saturday, February 27th checkout date.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">Can I bring my team?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Yes. The team bundle gets you 2 VIP and 3 GA tickets and saves $1,500+. For more than 5 people, email us for a custom rate.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">Can I attend virtually? Will sessions be recorded, and can I access them after the conference?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>There is no virtual option for this event. The sessions will be recorded and available at a discounted rate for attendees and a regular rate for non-attendees.</p><p>Recordings are available free for VIP ticket holders and Vendors.</p></div></div></div></div>
+<div class="fg" data-r><h3 id="fq-sessions"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 19c.6-3.4 2.8-5.5 5.5-5.5s4.9 2.1 5.5 5.5M14 14.2c.9-.5 1.9-.7 3-.7 2.4 0 4.1 1.8 4.5 4.5"/></svg>Sessions and networking</h3><div class="ac"><button type="button" aria-expanded="false">Will there be networking sessions or opportunities to meet other attendees?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Yes, we are intentional about attendees starting and building connections throughout the event. There are multiple networking opportunities during lunch, dinner, breaks between sessions, and our receptions.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">Is there a dress code for the event or any specific sessions?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>There is no dress code. Please note there will be photo and video coverage of the events that we will share on social media for future marketing.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">Can I apply to become a speaker?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Yes, send us an email at <a href="mailto:support@growletter.co">support@growletter.co</a>.</p></div></div></div></div>
+<div class="fg" data-r><h3 id="fq-payments"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6.5 15h4"/></svg>Payments, refunds and cancellations</h3><div class="ac"><button type="button" aria-expanded="false">What's the refund policy?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Full refund if you cancel by Dec 28, 2026, 60 days before the event.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">Is there a deadline for registration, or can I buy tickets at the door?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Tickets will not be available at the door. The deadline for registration is currently one week before the event and is subject to change depending on ticket availability.</p></div></div></div></div>
+<div class="fg" data-r><h3 id="fq-other"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>Other general information</h3><div class="ac"><button type="button" aria-expanded="false">Do you have volunteer opportunities at New Media Summit?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Yes and thanks for your interest! Please fill out <a href="https://4tw5ua3z74c.typeform.com/to/M2FkeFTB">this form</a> to apply.</p></div></div></div><div class="ac"><button type="button" aria-expanded="false">Who can I contact for questions not covered in this FAQ?<span class="pm" aria-hidden="true"></span></button><div class="aw"><div><p>Contact our team at <a href="mailto:support@growletter.co">support@growletter.co</a>.</p></div></div></div></div>
+  </div>
 </div></section>
 </main>
 
@@ -1021,6 +1091,9 @@ h1 .ln{display:block}
     if(v.canPlayType('application/vnd.apple.mpegurl')){v.src=src;go()}
     else needHls().then(function(){if(window.Hls&&Hls.isSupported()){var h=new Hls();h.loadSource(src);h.attachMedia(v);h.on(Hls.Events.MANIFEST_PARSED,go)}else{v.src='https://stream.mux.com/'+pid+'/low.mp4';go()}},function(){v.src='https://stream.mux.com/'+pid+'/low.mp4';go()});
   })});
+
+  /* FAQ accordion */
+  document.querySelectorAll('.ac button').forEach(function(b){b.addEventListener('click',function(){var a=b.parentNode,o=!a.classList.contains('open');a.classList.toggle('open',o);b.setAttribute('aria-expanded',o)})});
 
   /* attendee video wall: collapsed by default, the wall loads on first open */
   var wb=document.getElementById('wallbtn'),wall=document.getElementById('wall'),loaded=false;
