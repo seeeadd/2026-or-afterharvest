@@ -114,7 +114,11 @@ section.s{padding:128px 0}
 .tag i{font-style:normal;color:rgba(255,255,255,.32)}
 .tag img{width:27px;height:18px;border-radius:4px}
 .tag::before,.price::before,.vcard::before,.vip::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(255,255,255,.3),rgba(255,255,255,.06) 45%,rgba(242,79,30,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-h1{text-shadow:0 2px 30px rgba(0,0,0,.35);font-weight:700;font-size:clamp(40px,5.4vw,78px);line-height:1.04;letter-spacing:-.036em;margin:26px auto 0}
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;margin:26px auto 0;font-size:clamp(15px,1.25vw,17.5px);font-weight:600;letter-spacing:.005em;color:rgba(255,255,255,.66);text-wrap:balance}
+.eyebrow b{color:#fff;font-weight:700}
+.eyebrow::before,.eyebrow::after{content:"";width:36px;height:1px;flex:none;background:linear-gradient(90deg,transparent,rgba(242,79,30,.8))}
+.eyebrow::after{transform:scaleX(-1)}
+h1{text-shadow:0 2px 30px rgba(0,0,0,.35);font-weight:700;font-size:clamp(40px,5.4vw,78px);line-height:1.04;letter-spacing:-.036em;margin:14px auto 0}
 h1 .ln{display:block}
 .hero .sub{font-size:clamp(16.5px,1.45vw,20px);line-height:1.6;color:rgba(255,255,255,.74);max-width:700px;margin:22px auto 0;text-wrap:balance}
 .price{position:relative;display:inline-flex;align-items:center;gap:18px;margin:32px auto 0;padding:10px 22px 10px 10px;border-radius:999px;background:rgba(255,255,255,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:15px;font-weight:600;color:rgba(255,255,255,.7);white-space:nowrap}
@@ -567,7 +571,9 @@ h1 .ln{display:block}
   .tag{font-size:12px;gap:8px;padding:6px 13px 6px 7px}
   .tag img{width:22px;height:15px}
   .tag .hil{display:none}
-  h1{font-size:38px;margin-top:16px;line-height:1.06}
+  .eyebrow{font-size:13px;line-height:1.45;margin-top:14px;gap:0;max-width:300px}
+  .eyebrow::before,.eyebrow::after{display:none}
+  h1{font-size:38px;margin-top:10px;line-height:1.06}
   h1 .ln{display:inline}
   .hero .sub{font-size:15px;line-height:1.5;margin-top:12px}
   .price{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 12px;margin-top:18px;padding:12px 14px;border-radius:22px;white-space:normal}
@@ -660,6 +666,7 @@ h1 .ln{display:block}
   <div class="aura a1"></div><div class="aura a2"></div><div class="spot"></div><div class="grain"></div>
   <div class="wrap inner">
     <span class="tag"><img src="img/texas.svg" alt="" width="72" height="48"><b>Austin, Texas</b><i>·</i>February 25-26, 2027<i class="hil">·</i><span class="hil">Hilton Austin</span></span>
+    <p class="eyebrow"><span>Where the best minds in the <b>new media and creator economy</b> come to learn and connect</span></p>
     <h1><span class="ln">Make more from the audience</span> <span class="ln">you <span class="shine">already have</span></span></h1>
     <p class="sub">2 days with 600+ founders running newsletter, media and creator businesses, showing the real numbers behind how they grow, sell and get sponsored.</p>
     <div class="price"><span class="eb"><span class="dot"></span>Super Early Bird until Dec 1</span><span>GA <b>$599</b> <small>(regular $999)</small></span><span class="sep" aria-hidden="true"></span><span>VIP <b>$1,399</b> <small>(regular $1,999)</small></span></div>
