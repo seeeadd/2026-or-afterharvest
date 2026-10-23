@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Free live: how 3 founders made more from the audience they already had | New Media Summit</title>
 <link rel="icon" type="image/png" href="img/favicon.png">
-<link rel="preload" as="image" href="img/room.jpg">
+<link rel="preload" as="image" href="video/room.jpg">
 <link rel="preload" as="image" href="video/cover.jpg">
 <link rel="stylesheet" href="../fonts/plus-jakarta-sans_300-400-500-600-700-800.css">
 <style>
@@ -62,9 +62,9 @@ h2{font-weight:700;font-size:clamp(32px,3.4vw,46px);line-height:1.1;letter-spaci
 
 /* ---------- 2. hero ---------- */
 .hero{position:relative;background:#030303;color:#fff;overflow:hidden;isolation:isolate}
-.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.3;z-index:-5;animation:kb 38s ease-in-out infinite alternate}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;opacity:.42;z-index:-5;animation:kb 38s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.07) translateY(-1%)}}
-.hero .shade{position:absolute;inset:0;z-index:-4;background:linear-gradient(90deg,rgba(3,3,3,.86) 0%,rgba(3,3,3,.62) 52%,rgba(3,3,3,.4) 100%),linear-gradient(180deg,rgba(3,3,3,.7) 0%,rgba(3,3,3,.2) 34%,rgba(3,3,3,.5) 72%,#030303 100%)}
+.hero .shade{position:absolute;inset:0;z-index:-4;background:linear-gradient(90deg,rgba(3,3,3,.7) 0%,rgba(3,3,3,.4) 55%,rgba(3,3,3,.25) 100%),linear-gradient(180deg,rgba(3,3,3,.75) 0%,rgba(3,3,3,.3) 30%,rgba(3,3,3,.45) 70%,#030303 100%)}
 .aura{position:absolute;z-index:-3;border-radius:50%;filter:blur(70px);pointer-events:none}
 .a1{width:760px;height:460px;left:-160px;top:-12%;background:radial-gradient(closest-side,rgba(242,79,30,.45),transparent);animation:d1 20s ease-in-out infinite alternate}
 .a2{width:620px;height:520px;right:-120px;top:18%;background:radial-gradient(closest-side,rgba(243,129,0,.34),transparent);animation:d2 24s ease-in-out infinite alternate}
@@ -76,6 +76,8 @@ h2{font-weight:700;font-size:clamp(32px,3.4vw,46px);line-height:1.1;letter-spaci
 .logo{width:168px;margin:0 0 30px -2px}
 .tag{position:relative;display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 14px;border-radius:999px;background:rgba(255,255,255,.04);font-size:13.5px;font-weight:600;letter-spacing:.02em;backdrop-filter:blur(8px);color:rgba(255,255,255,.8);white-space:nowrap}
 .tag b{color:#fff;font-weight:700}
+.tdate{display:inline-flex;align-items:center;gap:7px;color:#fff;font-weight:700}
+.tdate .cal{width:15px;height:15px}
 .tag i{font-style:normal;color:rgba(255,255,255,.32)}
 .tag::before,.form::before,.vid .fr::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(255,255,255,.3),rgba(255,255,255,.06) 45%,rgba(242,79,30,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 h1{text-shadow:0 2px 30px rgba(0,0,0,.35);font-weight:700;font-size:clamp(36px,4.2vw,60px);line-height:1.07;letter-spacing:-.032em;margin:22px 0 0}
@@ -146,8 +148,9 @@ h1 .ln{display:block}
 /* the video spot: a still with a play button; click plays the NMS 2025 clip, muted */
 .vid{position:relative}
 .vid::before{content:"";position:absolute;left:50%;top:50%;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(closest-side,rgba(242,79,30,.32),transparent);filter:blur(20px);z-index:-1;pointer-events:none}
-.vid .fr{position:relative;padding:7px;border-radius:30px;background:rgba(255,255,255,.05);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 50px 90px -40px rgba(0,0,0,.95)}
-.vid .scr{position:relative;aspect-ratio:9/16;border-radius:23px;overflow:hidden;background:#111;cursor:pointer}
+.vid .fr{position:relative;border-radius:24px;box-shadow:0 50px 90px -40px rgba(0,0,0,.95)}
+.vid .fr::before{z-index:2}
+.vid .scr{position:relative;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:#111;cursor:pointer}
 .vid .scr img,.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .vid video{opacity:0;transition:opacity .5s var(--ease)}
 .vid.on video{opacity:1}
@@ -291,7 +294,6 @@ section.s{padding:128px 0}
 
 /* ---------- 6. stay until the end + FAQ ---------- */
 .stay{position:relative;display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;padding:60px 64px 76px;border-radius:32px;background:var(--soft);overflow:hidden;isolation:isolate}
-.stay .bgm{position:absolute;right:-40px;top:-60px;width:300px;height:300px;opacity:.07;z-index:-1}
 .stay h3{display:flex;align-items:center;gap:14px;font-size:clamp(28px,2.7vw,36px);line-height:1.15;font-weight:700;letter-spacing:-.025em}
 .stay h3 svg{width:26px;height:26px;flex:none}
 .stay p{margin-top:14px;font-size:18px;line-height:1.6;color:var(--slate);max-width:680px;text-wrap:pretty}
@@ -445,13 +447,13 @@ section.s{padding:128px 0}
 
 <!-- 2. hero -->
 <header class="hero" id="top">
-  <img class="bg" src="img/room.jpg" alt="" width="1920" height="1443" aria-hidden="true"><div class="shade"></div>
+  <video class="bg" autoplay muted loop playsinline preload="auto" poster="video/room.jpg" aria-hidden="true"><source src="video/room.mp4" type="video/mp4"></video><div class="shade"></div>
   <div class="aura a1"></div><div class="aura a2"></div>
   <div class="spot"></div><div class="grain"></div>
   <div class="wrap inner">
     <div class="copy">
       <img class="logo" src="img/nms-logo.png" alt="New Media Summit" width="750" height="188">
-      <div><span class="tag"><span class="dot"></span><b>Free live</b><i>·</i>Tue Nov 24<i>·</i>12pm ET<i>·</i>90 min</span></div>
+      <div><span class="tag"><span class="dot"></span><b>Free live</b><i>·</i><span class="tdate"><svg class="cal" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="11.8" rx="3" fill="none" stroke="url(#g)" stroke-width="1.5"/><path d="M1.6 6.6h12.8" stroke="url(#g)" stroke-width="1.5"/><path d="M5.2 1v3.2M10.8 1v3.2" stroke="url(#g)" stroke-width="1.5" stroke-linecap="round"/><rect x="9.2" y="9" width="2.6" height="2.6" rx=".8" fill="#f24f1e"/></svg>Tue Nov 24</span><i>·</i>12pm ET<i>·</i>90 min</span></div>
       <!-- the topic is not locked yet: the headline and sub are the only places it is worded -->
       <h1><span class="ln">How 3 founders made more</span> <span class="ln">from the audience they</span> <span class="ln"><span class="shine">already had</span></span></h1>
       <p class="sub">Three newsletter and media founders show their real numbers: what they changed, what it made, and what they'd do at your size. Hosted by Matt McGarry.</p>
@@ -611,7 +613,6 @@ section.s{padding:128px 0}
 <!-- 6. stay until the end, then FAQ -->
 <section class="s" style="padding-top:0"><div class="wrap">
   <div class="stay" data-r>
-    <svg class="bgm" aria-hidden="true"><use href="#nms"/></svg>
     <div>
       <h3><svg aria-hidden="true"><use href="#nms"/></svg>Stay until the end</h3>
       <p>After the founders finish, Matt shares what's coming at New Media Summit 2027 in Austin, with Black Friday bonuses only for people on the live.</p>
