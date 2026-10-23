@@ -108,31 +108,32 @@ section.s{padding:128px 0}
 .hero .a1{width:760px;height:460px;left:50%;top:-8%;margin-left:-560px;background:radial-gradient(closest-side,rgba(242,79,30,.5),transparent);animation:d1 20s ease-in-out infinite alternate}
 .hero .a2{width:640px;height:420px;left:50%;top:6%;margin-left:-40px;background:radial-gradient(closest-side,rgba(243,129,0,.36),transparent);animation:d2 24s ease-in-out infinite alternate}
 .spot{position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(520px circle at var(--mx,50%) var(--my,35%),rgba(255,255,255,.06),transparent 62%)}
-.hero .inner{padding:64px 0 236px}
+.hero .inner{padding:76px 0 240px}
 .tag{position:relative;display:inline-flex;align-items:center;gap:11px;padding:8px 18px 8px 10px;border-radius:999px;background:rgba(255,255,255,.04);font-size:14px;font-weight:600;letter-spacing:.02em;backdrop-filter:blur(8px);color:rgba(255,255,255,.82);white-space:nowrap}
 .tag b{color:#fff;font-weight:700}
 .tag i{font-style:normal;color:rgba(255,255,255,.32)}
 .tag img{width:27px;height:18px;border-radius:4px}
-.tag::before,.price::before,.vcard::before,.vip::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(255,255,255,.3),rgba(255,255,255,.06) 45%,rgba(242,79,30,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-.eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;margin:26px auto 0;font-size:clamp(15px,1.25vw,17.5px);font-weight:600;letter-spacing:.005em;color:rgba(255,255,255,.66);text-wrap:balance}
+.tag::before,.vcard::before,.vip::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(255,255,255,.3),rgba(255,255,255,.06) 45%,rgba(242,79,30,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;margin:28px auto 0;font-size:clamp(14.5px,1.12vw,16px);font-weight:600;letter-spacing:.005em;color:rgba(255,255,255,.56);text-wrap:balance}
 .eyebrow b{color:#fff;font-weight:700}
 .eyebrow::before,.eyebrow::after{content:"";width:36px;height:1px;flex:none;background:linear-gradient(90deg,transparent,rgba(242,79,30,.8))}
 .eyebrow::after{transform:scaleX(-1)}
-h1{text-shadow:0 2px 30px rgba(0,0,0,.35);font-weight:700;font-size:clamp(40px,5.4vw,78px);line-height:1.04;letter-spacing:-.036em;margin:14px auto 0}
+h1{text-shadow:0 2px 30px rgba(0,0,0,.35);font-weight:700;font-size:clamp(40px,4.6vw,66px);line-height:1.05;letter-spacing:-.035em;margin:16px auto 0}
 h1 .ln{display:block}
-.hero .sub{font-size:clamp(16.5px,1.45vw,20px);line-height:1.6;color:rgba(255,255,255,.74);max-width:700px;margin:22px auto 0;text-wrap:balance}
-.price{position:relative;display:inline-flex;align-items:center;gap:18px;margin:32px auto 0;padding:10px 22px 10px 10px;border-radius:999px;background:rgba(255,255,255,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:15px;font-weight:600;color:rgba(255,255,255,.7);white-space:nowrap}
-.price .eb{display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 14px 0 12px;border-radius:999px;background:rgba(242,79,30,.16);box-shadow:inset 0 0 0 1px rgba(242,79,30,.45);color:#ffd2c2;font-weight:700;font-size:13.5px}
-.price b{color:#fff;font-weight:800;font-size:18px;letter-spacing:-.01em}
-.price small{font-size:13px;color:rgba(255,255,255,.5)}
-.price .sep{width:1px;height:20px;background:rgba(255,255,255,.18)}
-.cta{display:flex;justify-content:center;gap:12px;margin-top:26px}
-.also{display:flex;align-items:center;justify-content:center;gap:16px;margin:40px auto 0;padding-top:26px;max-width:880px;border-top:1px solid rgba(255,255,255,.12);font-size:14.5px;color:rgba(255,255,255,.62)}
+.hero .sub{font-size:clamp(16px,1.3vw,18.5px);line-height:1.6;color:rgba(255,255,255,.66);max-width:620px;margin:22px auto 0;text-wrap:balance}
+.price{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 14px;margin:20px auto 0;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.58)}
+.price .eb{display:inline-flex;align-items:center;gap:9px;color:#ffb08f;font-weight:700}
+.price .eb .dot{width:6px;height:6px}
+.price b{color:#fff;font-weight:800;font-size:15.5px;letter-spacing:-.01em}
+.price small{font-size:13px;color:rgba(255,255,255,.42)}
+.price .sep{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3)}
+.cta{display:flex;justify-content:center;gap:12px;margin-top:38px}
+.also{display:flex;align-items:center;justify-content:center;gap:14px;margin:60px auto 0;max-width:880px;font-size:14px;color:rgba(255,255,255,.54)}
 .also b{color:#fff;font-weight:700}
 .also .al{text-align:left;line-height:1.55}
 .also .al>span{display:block}
 .stack{display:flex;flex:none}
-.stack img{width:32px;height:32px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #0b0b0b;margin-left:-9px}
+.stack img{width:28px;height:28px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #0b0b0b;margin-left:-9px}
 .stack img:first-child{margin-left:0}
 
 /* ---------- 2. video ---------- */
@@ -576,13 +577,13 @@ h1 .ln{display:block}
   h1{font-size:38px;margin-top:10px;line-height:1.06}
   h1 .ln{display:inline}
   .hero .sub{font-size:15px;line-height:1.5;margin-top:12px}
-  .price{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 12px;margin-top:18px;padding:12px 14px;border-radius:22px;white-space:normal}
-  .price .eb{width:100%;justify-content:center;height:30px;font-size:12.5px}
+  .price{gap:4px 10px;margin-top:14px;font-size:13.5px}
+  .price .eb{width:100%;justify-content:center}
   .price .sep{display:none}
-  .price b{font-size:16px}
-  .cta{flex-direction:column;gap:10px;margin-top:16px}
+  .also .al{text-align:center}
+  .cta{flex-direction:column;gap:10px;margin-top:22px}
   .cta .btn,.cta .ghost{width:100%;justify-content:center;height:54px}
-  .also{flex-direction:column;gap:10px;font-size:13px;margin-top:26px;padding-top:20px}
+  .also{flex-direction:column;gap:10px;font-size:13px;margin-top:34px}
   .vsec{margin-top:-120px}
   .vcard{border-radius:22px;padding:5px}
   .vcard .scr{border-radius:18px}
@@ -669,11 +670,11 @@ h1 .ln{display:block}
     <p class="eyebrow"><span>Where the best minds in the <b>new media and creator economy</b> come to learn and connect</span></p>
     <h1><span class="ln">Make more in 2027 from</span> <span class="ln">the audience you <span class="shine">already have</span></span></h1>
     <p class="sub">2 days with 600+ founders running newsletter, media and creator businesses, showing the real numbers behind how they grow, sell and get sponsored.</p>
-    <div class="price"><span class="eb"><span class="dot"></span>Super Early Bird until Dec 1</span><span>GA <b>$599</b> <small>(regular $999)</small></span><span class="sep" aria-hidden="true"></span><span>VIP <b>$1,399</b> <small>(regular $1,999)</small></span></div>
     <div class="cta">
       <a class="btn tkt" href="https://tickets.newmediasummit.com/checkout/view-event/id/8957371/chk/875f34ca47dd67eb5ee8bf0711e3cf" id="heroCta"><span class="env" aria-hidden="true"></span>Get your ticket</a>
       <a class="ghost" href="#speakers">See the speakers<svg aria-hidden="true" viewBox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
+    <div class="price"><span class="eb"><span class="dot"></span>Super Early Bird until Dec 1</span><span class="sep" aria-hidden="true"></span><span>GA <b>$599</b> <small>(regular $999)</small></span><span class="sep" aria-hidden="true"></span><span>VIP <b>$1,399</b> <small>(regular $1,999)</small></span></div>
     <div class="also">
       <span class="stack" aria-hidden="true"><img src="img/speakers/jay-clouse.jpg" alt=""><img src="img/speakers/caleb-hammer.jpg" alt=""><img src="img/speakers/jodie-cook.jpg" alt=""><img src="img/past/codie-sanchez.jpg" alt=""><img src="img/past/sam-parr.jpg" alt=""><img src="img/past/alex-lieberman.jpg" alt=""></span>
       <span class="al"><span>2027 speakers include <b>Jay Clouse</b>, <b>Caleb Hammer</b> and <b>Jodie Cook</b>.</span> <span>Past stages: Codie Sanchez, Sam Parr, Alex Lieberman.</span></span>
