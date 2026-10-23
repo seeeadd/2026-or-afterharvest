@@ -82,11 +82,9 @@ section.s{padding:128px 0}
 .fh .in{position:relative;display:flex;align-items:center;gap:16px;padding:7px 7px 7px 9px;border-radius:999px;background:rgba(14,14,14,.86);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:0 24px 50px -20px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.2);white-space:nowrap}
 .fh .in::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(255,255,255,.28),rgba(255,255,255,.06) 45%,rgba(242,79,30,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 .fh .ev{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;padding-left:3px}
-.calt{position:relative;width:38px;height:40px;flex:none;border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 6px 14px -6px rgba(240,45,48,.7);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
-.calt::before{content:"";position:absolute;left:0;right:0;top:0;height:12px;background:var(--grad)}
-.calt::after{content:"";position:absolute;left:9px;right:9px;top:4px;height:4px;background:radial-gradient(circle,#fff 1.6px,transparent 2px) 0 0/50% 100% repeat-x}
-.calt b{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-size:17px;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1}
-.fh .ev:hover .calt{transform:rotate(-6deg) scale(1.06)}
+.lgt{position:relative;display:grid;place-items:center;width:40px;height:40px;flex:none;border-radius:12px;background:#fff;box-shadow:0 6px 14px -6px rgba(240,45,48,.6),inset 0 0 0 1px rgba(1,1,0,.06);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.lgt img{width:25px;height:auto}
+.fh .ev:hover .lgt{transform:rotate(-6deg) scale(1.06)}
 .fh .nm small{display:block;font-size:9.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ff8a5e;line-height:1.2}
 .fh .nm b{display:block;font-size:15px;font-weight:800;letter-spacing:-.02em;line-height:1.25}
 .fh .vl{width:1px;height:28px;background:rgba(255,255,255,.14);flex:none}
@@ -643,8 +641,8 @@ h1 .ln{display:block}
   .fh .lv,.fh .vl,.fh .mini{display:none}
   .fh .bx span{width:36px;height:36px;border-radius:9px}
   .fh .bx b{font-size:14px}
-  .calt{width:34px;height:36px}
-  .calt b{font-size:15px}
+  .lgt{width:36px;height:36px;border-radius:11px}
+  .lgt img{width:22px}
   .tb{font-size:12px;gap:9px;height:32px}
   .tb .pr,.tb .pi{display:none}
   .mbar{display:block}
@@ -752,7 +750,7 @@ h1 .ln{display:block}
 
 <!-- floating header: appears once you scroll past the top -->
 <div class="fh" id="fh"><div class="in">
-  <a class="ev" href="#top" aria-label="New Media Summit 2027, back to top"><span class="calt" aria-hidden="true"><b>25</b></span><span class="nm"><small>Austin · Feb 25-26</small><b>New Media Summit 2027</b></span></a>
+  <a class="ev" href="#top" aria-label="New Media Summit 2027, back to top"><span class="lgt" aria-hidden="true"><img src="img/nms-mark.png" alt="" width="74" height="68"></span><span class="nm"><small>Austin · Feb 25-26</small><b>New Media Summit 2027</b></span></a>
   <span class="vl" aria-hidden="true"></span>
   <span class="lv"><span class="dot"></span><span data-fhl>Ends in</span></span>
   <div class="bx" role="timer" aria-label="Super Early Bird ends in"><span><b data-cd="d">00</b><small>DAYS</small></span><i></i><span><b data-cd="h">00</b><small>HRS</small></span><i></i><span><b data-cd="m">00</b><small>MIN</small></span></div>
