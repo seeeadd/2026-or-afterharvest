@@ -13,7 +13,7 @@ text is sharp and right. The Day 2 sheet photo waits until the VIP deliverables 
    green with nothing on it and no reflections"* and regenerate.
 4. If it still looks staged, reply: *"Less polished. Messier, more ordinary, like a quick photo on a phone."*
 
-## Add this to the end of every prompt
+## Add this to the end of every prompt (photos 2 to 4 also add their own lines below)
 
 > Candid photo taken on an iPhone, first-person point of view. Only a woman's hands and forearms are in frame, no
 > face. Her hands are in their mid-40s, real skin texture, short natural nails, one simple gold ring, the cuff of a
@@ -34,27 +34,39 @@ text is sharp and right. The Day 2 sheet photo waits until the VIP deliverables 
 
 **Screen that goes in:** `channel.png` (free page) or `vipgroup.png` (VIP page).
 
-## Photo 2 · Tue Nov 17, Day 1 · live on the call (laptop)
+## Photo 2 · Tue Nov 17, Day 1 · live on the call (laptop) · v3, zoomed in
 
-> Her point of view sitting at a wooden kitchen table: an open laptop in front of her showing a video call, her right
-> hand in the foreground holding a pen over an open notebook with a few handwritten lines, a printed worksheet under
-> the notebook, a glass of water. The laptop screen faces her, seen slightly from the left, fully visible. Midday
-> light from a window to the side.
+> Close, slightly off-centre photo of an open laptop screen taken from her seat, about 50 cm away, the screen
+> filling most of the frame (about 70 percent of the width). Only the top of the keyboard is visible at the bottom
+> edge, and the side of her hand holding a pen comes into the bottom-right corner, a little out of focus. The screen
+> is seen slightly from the left, tilted back a bit, fully visible. Behind the laptop only a soft, out-of-focus
+> wall and part of a window. A faint reflection of the window on the bezel, a few fingerprints and specks of dust on
+> the bezel. Phone-camera look: slightly soft focus at the edges, a little noise, ordinary daylight, slightly cool
+> white balance. Not styled, no props arranged on the table.
 
 **Screen that goes in:** `call.png` (Ana sharing her Day 1 slide).
 
-## Photo 3 · Thu Nov 19, Day 3 · about to send the ask (laptop)
+## Photo 3 · Thu Nov 19, Day 3 · about to send the ask (laptop) · v3, zoomed in
 
-> Close shot from just above her shoulder: both hands at an open laptop on a desk, right index finger resting on the
-> trackpad as if about to click, left hand beside a notebook with one handwritten line underlined twice. A cup of tea
-> with the string hanging out, a phone face down. The laptop screen is seen at a slight angle and fully visible.
+> Close photo over her shoulder of a laptop screen, the screen filling most of the frame, seen slightly from the
+> right. Her right index finger rests on the trackpad at the bottom edge of the frame, about to click. Only a sliver
+> of the desk shows. A faint lamp reflection on the bezel, a few specks of dust. Phone-camera look, a little noise,
+> slightly soft at the edges, ordinary afternoon light. Not styled.
 
 **Screen that goes in:** `compose.png` (her ask as a Substack post, pointer on Continue).
 
-## Photo 4 · Fri Nov 20, VIP · Ana reviews her offer live (laptop)
+## Photo 4 · Fri Nov 20, VIP · Ana reviews her offer live (laptop) · v3, zoomed in
 
-> Her point of view at a desk: an open laptop showing a video call, her left hand holding a yellow sticky note, her
-> right hand writing on it, a couple of other sticky notes stuck to the desk, a yellow mug. Late-morning light. The
-> laptop screen faces her, seen slightly from the right, fully visible.
+> Close photo of a laptop screen from her seat, the screen filling most of the frame, seen slightly from the left.
+> In the bottom-left corner, out of focus, her hand holds a yellow sticky note with a word written on it. Only a
+> sliver of desk and a yellow mug's rim at the edge. Faint window reflection on the bezel, a few fingerprints.
+> Phone-camera look, a little noise, late-morning light. Not styled.
 
 **Screen that goes in:** `review.png` (Ana screen-sharing the Google Doc).
+
+---
+
+## Done
+
+- `assets/photos/today-channel.jpg`: photo 1, free page, the real channel screen put in.
+- `assets/photos/today-vip-group.jpg`: photo 1, VIP page, the real VIP group screen put in.
