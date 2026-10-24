@@ -3,7 +3,7 @@
   var C = window.CONF || {};
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var qs = new URLSearchParams(location.search), reg = {};
-  try { reg = JSON.parse(sessionStorage.getItem('ana_reg') || '{}') } catch (e) {}
+  try { reg = JSON.parse(sessionStorage.getItem('ana_reg') || localStorage.getItem('ana_reg') || '{}') } catch (e) {}
   var first = (qs.get('first') || qs.get('first_name') || reg.first_name || '').trim().split(/\s+/)[0];
   var email = (qs.get('email') || reg.email || '').trim();
   var ref = (qs.get('ref') || reg.ref || '').trim();

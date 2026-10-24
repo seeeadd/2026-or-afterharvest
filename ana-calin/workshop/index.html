@@ -1489,7 +1489,10 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
       if (VIP_URL) {location.href = VIP_URL + (VIP_URL.indexOf('?')<0?'?':'&') + 'first_name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(mail) + (ref ? '&ref=' + encodeURIComponent(ref) : ''); return}
       dlg.classList.add('done');
     }
-    try {sessionStorage.setItem('ana_reg', JSON.stringify({first_name:name,email:mail,ref:ref}))} catch (x) {}
+    /* remembered in this tab and in this browser, so the VIP and confirmation pages can greet them by name later too */
+    var regJ = JSON.stringify({first_name:name,email:mail,ref:ref});
+    try {sessionStorage.setItem('ana_reg', regJ)} catch (x) {}
+    try {localStorage.setItem('ana_reg', regJ)} catch (x) {}
     if (!KIT_FORM_ID) {next();return}
     fetch('https://app.kit.com/forms/'+KIT_FORM_ID+'/subscriptions',{method:'POST',body:new URLSearchParams(new FormData(form)),headers:{'Accept':'application/json'}}).then(next, next);
   });
