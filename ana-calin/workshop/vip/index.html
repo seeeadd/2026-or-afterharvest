@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>VIP · Free 3-day live workshop with Ana Calin</title>
-<!-- Ana Calin, VIP page. Built from "Ana: VIP page build guide" (Oct 24, 2026, after the coach's second review).
-     Shown straight after the registration form; also works as a standalone link. One button: add VIP ($67).
-     One decline link that keeps them registered. Same skin as ../index.html. No countdowns, no pop-ups,
-     no slashed prices, no em dashes, no exclamation marks. -->
+<!-- Ana Calin, VIP page (step 2 of 3). From "Ana: VIP page build guide" (Oct 24, 2026), reworked Oct 24 with Sean:
+     the page is built around her week (Tue Nov 17 to Thu Nov 19 free, Fri Nov 20 VIP), an honest fit check, and two
+     leave popups (the deadline is real: Tue Nov 17, 11:59 pm New York). No fake timers, no slashed prices,
+     no em dashes, no exclamation marks. -->
 <meta name="theme-color" content="#FFF8EE">
 <link rel="icon" type="image/png" href="../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
   --line:rgba(26,20,18,.12);
   --serif:'Instrument Serif',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,sans-serif;
   --sh:0 30px 60px -30px rgba(70,45,25,.38),0 2px 6px rgba(70,45,25,.06);
-  --ease:cubic-bezier(.2,.8,.2,1);
+  --ease:cubic-bezier(.2,.8,.2,1);--red:#E0263C;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
@@ -70,51 +70,22 @@ section{padding:110px 0}
 .steps .ln.on{background:var(--green)}
 .fb-n{flex:none;font-weight:800;font-size:11px;letter-spacing:.16em;color:rgba(255,248,238,.6);padding-left:18px;border-left:1px solid rgba(255,248,238,.16)}
 
-/* ---------- 1. headline + 2. video ---------- */
-.hero{position:relative;padding:40px 0 100px;overflow:clip}
-.hero{text-align:left}
-.hv{position:relative;display:grid;grid-template-columns:minmax(0,1.42fr) minmax(0,1fr);gap:52px;align-items:start;max-width:1240px}
-.hl .eyebrow{margin-top:22px}
-.hero .hl h1{margin:12px 0 16px;max-width:15ch;font-size:clamp(44px,4.8vw,68px)}
-.hero .hl .sub{margin:0;max-width:620px;font-size:18px}
-.hero .hl .small{margin-top:10px}
-.hvv{margin-top:36px}
-.hv .order{position:sticky;top:96px}
-.hv .order{max-width:none;margin:0;padding:24px 24px 20px}
-.hv .order h2{font-size:34px}
-.hv .oline{margin-top:16px;padding:14px 16px}
-.hv .total{margin:14px 0}
-.hv .total b{font-size:38px}
-.hv .order .sale{font-size:13.5px;margin:-2px 0 14px}
+/* ---------- 1. hero: headline across, then the video and the order card side by side ---------- */
+.hero{position:relative;padding:34px 0 96px;overflow:clip}
 .bgf{position:absolute;opacity:.11;pointer-events:none}
-.hero .bgf.a{width:440px;height:440px;left:-200px;top:40px}
-.hero .bgf.b{width:380px;height:380px;right:-170px;top:360px}
-.hero .in{position:relative;max-width:860px;margin:0 auto}
-.hero h1{font-size:clamp(46px,5.6vw,78px);line-height:1;margin:16px auto 20px;max-width:16ch}
+.hero .bgf.a{width:440px;height:440px;left:-210px;top:60px}
+.hero .bgf.b{width:380px;height:380px;right:-170px;bottom:-60px}
+.hwrap{position:relative;max-width:1240px}
+.toprow{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px}
 .saved{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.6px solid var(--ink);border-radius:999px;padding:6px 16px 6px 6px;font-weight:700;font-size:15px}
 .saved i{width:28px;height:28px;border-radius:50%;background:var(--green);display:grid;place-items:center}
-.saved{font-size:15px}
-.days4{display:flex;align-items:center;gap:10px;margin-top:30px}
-.dt{width:78px;border:1.8px solid var(--ink);border-radius:18px;background:#fff;text-align:center;padding:9px 0 8px;line-height:1;position:relative}
-.dt b{display:block;font-family:var(--serif);font-weight:400;font-size:38px}
-.dt small{display:block;font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
-.dt .ck{position:absolute;right:-7px;top:-7px;width:22px;height:22px;border-radius:50%;background:var(--green);border:1.6px solid var(--ink);display:grid;place-items:center}
-.plus{font-family:var(--serif);font-size:42px;line-height:1;color:var(--ink3);margin:0 2px}
-.dt.vip{width:96px;background:var(--pink);color:#fff;box-shadow:5px 5px 0 var(--ink);transform:rotate(-4deg)}
-.dt.vip small{color:var(--sun)}
-.dt.vip .tg{position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:var(--sun);color:var(--ink);border:1.6px solid var(--ink);border-radius:999px;font-weight:800;font-size:10px;letter-spacing:.14em;padding:3px 9px;white-space:nowrap}
-.d4note{margin-left:16px;font-size:15px;line-height:1.4;color:var(--ink2)}
-.d4note b{display:block;font-weight:800;color:var(--ink)}
-.anim .dt.vip{animation:pop .8s cubic-bezier(.3,1.6,.5,1) .5s both}
-@keyframes pop{from{opacity:0;transform:translateY(-30px) rotate(-20deg) scale(.6)}to{opacity:1;transform:rotate(-4deg)}}
-.row .days4{margin:0 0 20px;gap:8px}
-.row .dt{width:64px;border-radius:15px;padding:7px 0 6px}
-.row .dt b{font-size:30px}
-.row .dt.vip{width:78px}
-.row .plus{font-size:32px}
-.hero .sub{font-size:19px;line-height:1.55;color:var(--ink2);max-width:640px;margin:0 auto}
-.hero .small{font-size:15px;font-weight:600;color:var(--ink3);margin-top:12px}
 
+.saved b{font-weight:800}
+.toprow .eyebrow{color:var(--pink)}
+.hero h1{font-size:clamp(42px,4.3vw,62px);line-height:1.02;margin:20px 0 0;max-width:none;text-wrap:balance}
+.hv{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:48px;align-items:start;margin-top:26px}
+.hv .under{margin-top:8px;font-size:16.5px;line-height:1.5;color:var(--ink2);max-width:620px}
+.hv .under b{color:var(--ink)}
 /* the landscape video, in the same sand phone as the registration page */
 .iph{position:relative;margin:0 22px 22px 0;border-radius:52px;padding:5px;
   background:linear-gradient(150deg,#FDF6EA 0%,#EEE2CE 38%,#D9C6A8 100%);
@@ -138,62 +109,66 @@ section{padding:110px 0}
 .iph.playing .vplay,.iph.playing .vlen{opacity:0}
 .scr img.mk{inset:auto;right:16px;top:14px;left:auto;bottom:auto;z-index:2;width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
 
-/* the quick yes under the video */
 
-/* ---------- 3. free vs VIP: your ask, in Drafts or in Sent ---------- */
-.cmp{overflow:hidden}
-.cmp-g{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:center}
-.cmp .eyebrow{text-align:left}
-.cmp h2{font-size:clamp(46px,5.4vw,78px);line-height:.98;margin:16px 0 22px;text-align:left;max-width:9ch}
-.cmp .lead{font-family:var(--serif);font-size:clamp(24px,2.3vw,30px);line-height:1.25;color:var(--ink2);max-width:420px}
-.cmp .lead b{font-weight:400;color:var(--ink);background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%);padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* the order card */
+.order{background:#fff;border:1.8px solid var(--ink);border-radius:24px;padding:22px 22px 18px;box-shadow:9px 9px 0 var(--sun),9px 9px 0 1.8px var(--ink)}
+.order .ok{font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+.order h2{font-size:38px;line-height:1.02;margin:8px 0 4px}
+.order .terms{font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.oline{margin-top:20px;padding:18px;border-radius:18px;background:var(--cream);border:1.4px solid rgba(26,20,18,.12)}
+.oline-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-weight:800;font-size:18px}
+.oline-h span{font-size:20px}
+.oline-m{font-size:13.5px;color:var(--ink3);margin-top:2px}
+.ticks{list-style:none;margin-top:14px;display:grid;gap:9px}
+.ticks li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;font-weight:600;line-height:1.35}
+.ticks li i{width:22px;height:22px;border-radius:50%;background:var(--sun);border:1.5px solid var(--ink);display:grid;place-items:center;margin-top:-1px}
+.total{display:flex;align-items:center;justify-content:space-between;margin:16px 0 16px;padding:16px 18px;border-radius:16px;background:var(--ink);color:var(--cream)}
+.total span{font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,248,238,.7)}
+.total b{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1}
 
-/* the mail app */
-.mail{position:relative;background:var(--cream);border:2px solid var(--ink);border-radius:22px;box-shadow:0 40px 70px -36px rgba(70,45,25,.6);overflow:hidden;transform:rotate(1.2deg)}
-.mail .chrome{display:flex;align-items:center;gap:7px;height:40px;padding:0 14px;border-bottom:1.6px solid var(--ink);background:#fff}
-.mail .chrome i{width:11px;height:11px;border-radius:50%;border:1.4px solid var(--ink)}
-.mail .chrome i:nth-child(1){background:var(--pink)}.mail .chrome i:nth-child(2){background:var(--sun)}
-.mail .chrome span{margin-left:10px;font-weight:700;font-size:13px;color:var(--ink3)}
-.mail .body{display:grid;grid-template-columns:160px 1fr;min-height:380px}
-.mail .side{border-right:1.4px solid var(--line);padding:14px 10px;background:#FBF3E6}
-.mail .fold{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border-radius:10px;font-weight:700;font-size:14px;color:var(--ink2);transition:background .4s,color .4s}
-.mail .fold b{font-weight:800;font-size:11px;min-width:20px;height:20px;border-radius:999px;display:grid;place-items:center;padding:0 6px;transition:background .4s,color .4s}
-.mail .fold.d b{background:var(--ink3);color:#fff}
-.mail .fold.s b{background:transparent;color:transparent}
-.mail .side .who{display:flex;align-items:center;gap:8px;margin-top:26px;padding:0 10px;font-size:12px;font-weight:700;color:var(--ink3)}
-.mail .side .who svg{width:26px;height:26px}
-.mail .list{position:relative;padding:14px 16px}
-.mail .list small.h{display:block;font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--ink3);margin:2px 4px 10px}
-.mail .msg{position:relative;background:#fff;border:1.6px solid var(--ink);border-radius:16px;padding:16px 18px 18px;transition:transform .9s cubic-bezier(.6,0,.2,1),opacity .5s}
-.mail .msg .top2{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink3);font-weight:600}
-.mail .msg .tag{font-weight:800;font-size:10px;letter-spacing:.12em;border-radius:999px;padding:3px 8px;background:#efe6da;color:var(--ink3);transition:background .4s,color .4s}
-.mail .msg .when{margin-left:auto}
-.mail .msg h4{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;margin:10px 0 6px}
-.mail .msg p{font-size:15px;line-height:1.45;color:var(--ink2)}
-.mail .msg .stamp{position:absolute;right:12px;bottom:-22px;width:74px;height:74px;transform:rotate(-12deg) scale(0);transition:transform .6s cubic-bezier(.3,1.6,.5,1) .9s}
-.mail .ghost{margin-top:12px;height:56px;border-radius:12px;border:1.4px dashed rgba(26,20,18,.18)}
-.mail .ghost + .ghost{opacity:.6}
-.mail .dust{position:absolute;right:20px;top:58px;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink3);transition:opacity .4s}
-/* sent state, when the window scrolls into view */
-.mail.sent .fold.d b{background:transparent;color:transparent}
-.mail.sent .fold.s{background:var(--ink);color:var(--cream)}
-.mail.sent .fold.s b{background:var(--pink);color:#fff}
-.mail.sent .msg .tag{background:var(--pink);color:#fff}
-.mail.sent .msg .stamp{transform:rotate(-12deg) scale(1)}
-.mail.sent .dust{opacity:0}
-.mail .tag .t2,.mail.sent .tag .t1{display:none}
-.mail.sent .tag .t2{display:inline}
-.mail .lh .t2,.mail.sent .lh .t1{display:none}
-.mail.sent .lh .t2{display:inline}
-.mail.sent .msg{animation:fly 1s cubic-bezier(.6,0,.2,1)}
-@keyframes fly{0%{transform:none}35%{transform:translate(-30px,-8px) rotate(-2deg);opacity:.7}36%{transform:translate(40px,0);opacity:0}60%{transform:translate(12px,0);opacity:1}100%{transform:none}}
-.mail-cap{display:flex;justify-content:space-between;gap:12px;margin:22px 6px 0;font-size:14px;font-weight:700;color:var(--ink3)}
-.mail-cap span b{color:var(--ink)}
+.order h2{font-size:30px;line-height:1.02;margin:4px 0 0}
+.oline{margin-top:12px;padding:12px 14px}
+.ticks li{grid-template-columns:22px 1fr;font-weight:500;font-size:14.5px}
+.order .ticks{gap:7px;margin-top:10px}
+.ticks li b{font-weight:800}
+.total{margin:10px 0;padding:9px 16px}
+.total b{font-size:32px}
+.order .btn{width:100%;height:58px;font-size:17.5px}
+.order .meta2{display:flex;flex-direction:column;align-items:center;gap:3px;margin-top:10px;font-size:13px;font-weight:600;color:var(--ink3);text-align:center}
+.order .meta2 span{display:flex;align-items:center;gap:6px}
+.order .dl{text-align:center;margin-top:12px}
+.closed{display:none;font-family:var(--serif);font-size:30px;line-height:1.1;text-align:center;margin:10px 0 2px}
+.closed em{font-style:italic;color:var(--pink)}
 
-/* the guide's comparison, as a plain list */
-.cmp-l{max-width:1000px;margin:84px auto 0}
+/* ---------- 2. your week ---------- */
+.week .hd2{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end}
+.week h2,.inc h2,.fit h2{font-size:clamp(42px,4.8vw,68px);line-height:1;margin-top:14px}
+.week .hd2 p{font-family:var(--serif);font-size:clamp(22px,2.1vw,27px);line-height:1.32;color:var(--ink2)}
+.tl{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-top:84px}
+.tl:before{content:"";position:absolute;left:5%;right:5%;top:96px;border-top:2px dashed rgba(26,20,18,.28)}
+.brk{position:absolute;top:0;height:46px;border:2px solid var(--ink);border-bottom:0;border-radius:14px 14px 0 0}
+.brk span{position:absolute;left:50%;top:-14px;transform:translateX(-50%);white-space:nowrap;font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--sand);padding:0 10px}
+.brk.f{left:0;width:calc(60% - 9px)}
+.brk.v{left:calc(60% + 9px);right:0;border-color:var(--pink)}
+.brk.v span{color:var(--pink)}
+.stop{position:relative;padding-top:70px;text-align:center}
+.stop .dt{margin:0 auto;width:72px}
+.stop .dt b{font-size:34px}
+.tl .stop .dt.vip{width:76px;transform:rotate(-4deg)}
+.stop .lb{display:block;margin-top:16px;font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.stop p{font-family:var(--serif);font-size:23px;line-height:1.18;margin-top:6px}
+.stop.vip .lb{color:var(--pink)}
+.stop.next .dt{border-style:dashed;background:transparent}
+.stop.next .dt b{font-size:26px;padding-top:6px}
+.stop .warn{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--ink3);background:rgba(255,255,255,.6);border:1.4px dashed rgba(26,20,18,.3);border-radius:10px;padding:6px 10px;line-height:1.35}
+.anim .tl .stop{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s var(--ease)}
+.anim .tl.in .stop{opacity:1;transform:none}
+.anim .tl.in .stop:nth-child(4){transition-delay:.1s}.anim .tl.in .stop:nth-child(5){transition-delay:.2s}.anim .tl.in .stop:nth-child(6){transition-delay:.3s}.anim .tl.in .stop:nth-child(7){transition-delay:.55s}.anim .tl.in .stop:nth-child(8){transition-delay:.8s}
+/* the free vs VIP list */
+.cmp-l{max-width:960px;margin:96px auto 0}
+.cmp-l h3{font-size:clamp(30px,2.8vw,38px);margin-bottom:18px}
 .cmp-l table{width:100%;border-collapse:collapse}
-.cmp-l th,.cmp-l td{padding:16px 10px;text-align:left;vertical-align:middle;border-top:1.4px solid rgba(26,20,18,.14);font-size:17px;line-height:1.4}
+.cmp-l th,.cmp-l td{padding:15px 10px;text-align:left;vertical-align:middle;border-top:1.4px solid rgba(26,20,18,.14);font-size:17px;line-height:1.4}
 .cmp-l tbody tr:last-child td{border-bottom:1.4px solid rgba(26,20,18,.14)}
 .cmp-l thead th{border-top:0;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);padding-bottom:12px}
 .cmp-l th.c,.cmp-l td.c{text-align:center;width:150px}
@@ -205,12 +180,10 @@ section{padding:110px 0}
 .cmp-l .note{font-size:13.5px;color:var(--ink3);font-weight:600;line-height:1.3}
 .sr{position:absolute;left:-9999px}
 
-/* ---------- 4. what's in VIP: one focused row each, editorial ---------- */
+/* ---------- 3. what's in VIP ---------- */
 .inc .hd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:end}
-.inc .hd .eyebrow{text-align:left}
-.inc .hd h2{font-size:clamp(46px,5.4vw,78px);line-height:.98;margin:16px 0 0;text-align:left;max-width:14ch}
-.inc .hd p{font-family:var(--serif);font-size:clamp(22px,2.1vw,27px);line-height:1.3;color:var(--ink2);max-width:430px;justify-self:end}
-.rows{margin-top:80px;display:grid;gap:0}
+.inc .hd p{font-family:var(--serif);font-size:clamp(22px,2.1vw,27px);line-height:1.3;color:var(--ink2);max-width:440px;justify-self:end}
+.rows{margin-top:80px}
 .row{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:72px;align-items:center;padding:80px 0;border-top:1.6px solid var(--ink)}
 .row:first-child{border-top:0;padding-top:0}
 .row.flip .art{order:2}
@@ -218,17 +191,6 @@ section{padding:110px 0}
   background:var(--kraft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
 .stage{position:absolute;left:0;top:0;width:600px;height:500px;transform-origin:0 0;transform:scale(var(--k,1))}
 .stage .fl{position:absolute;opacity:.2}
-.num{display:block;font-family:var(--serif);font-size:120px;line-height:.8;color:transparent;-webkit-text-stroke:1.6px var(--pink);letter-spacing:-.02em}
-.row h3{font-size:clamp(40px,4vw,58px);line-height:1;margin:18px 0 12px}
-.meta{font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
-.meta b{color:var(--pink);font-weight:800}
-.row p{font-size:18.5px;line-height:1.6;color:var(--ink2);max-width:500px}
-.how{list-style:none;margin-top:24px;max-width:500px;counter-reset:h}
-.how li{counter-increment:h;display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:baseline;padding:12px 0;font-size:16.5px;line-height:1.45;color:var(--ink2);border-top:1.4px dashed rgba(26,20,18,.2)}
-.how li:before{content:counter(h);font-family:var(--serif);font-size:28px;line-height:1;color:var(--pink)}
-.how li b{color:var(--ink)}
-.row .soft{font-size:15.5px;color:var(--ink3);margin-top:14px;font-style:italic;font-family:var(--serif);font-size:20px}
-
 /* 01: the VIP call */
 .call{position:absolute;left:34px;top:40px;width:532px;height:396px;background:#fff;border:3px solid var(--ink);border-radius:22px;box-shadow:0 30px 50px -26px rgba(70,45,25,.55);overflow:hidden;transform:rotate(-1.5deg)}
 .call .bar{display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-bottom:2px solid var(--ink);background:var(--cream);font-weight:800;font-size:13px}
@@ -317,9 +279,54 @@ section{padding:110px 0}
 .anim [data-r]{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s var(--ease)}
 .anim [data-r].in{opacity:1;transform:none}
 
-/* ---------- 5. price and button + 6. decline: a note from Ana beside the order card ---------- */
-.buy{text-align:center}
-.buy-g{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:64px;align-items:center;max-width:1100px;margin:0 auto;text-align:left}
+
+.num{display:block;font-family:var(--serif);font-size:110px;line-height:.8;color:transparent;-webkit-text-stroke:1.6px var(--pink);letter-spacing:-.02em}
+.row h3{font-size:clamp(36px,3.6vw,52px);line-height:1.02;margin:18px 0 12px}
+.meta{font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
+.meta b{color:var(--pink);font-weight:800}
+.row p{font-size:18px;line-height:1.6;color:var(--ink2);max-width:500px}
+.row .lab{display:block;margin-top:24px;font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.how{list-style:none;margin-top:8px;max-width:500px;counter-reset:h}
+.how li{counter-increment:h;display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:baseline;padding:11px 0;font-size:16.5px;line-height:1.45;color:var(--ink2);border-top:1.4px dashed rgba(26,20,18,.2)}
+.how li:before{content:counter(h);font-family:var(--serif);font-size:26px;line-height:1;color:var(--pink)}
+.how li b{color:var(--ink)}
+.row .soft{color:var(--ink3);margin-top:14px;font-style:italic;font-family:var(--serif);font-size:20px}
+.dt{width:78px;border:1.8px solid var(--ink);border-radius:18px;background:#fff;text-align:center;padding:9px 0 8px;line-height:1;position:relative}
+.dt b{display:block;font-family:var(--serif);font-weight:400;font-size:38px}
+.dt small{display:block;font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
+.dt .ck{position:absolute;right:-7px;top:-7px;width:22px;height:22px;border-radius:50%;background:var(--green);border:1.6px solid var(--ink);display:grid;place-items:center}
+.plus{font-family:var(--serif);font-size:42px;line-height:1;color:var(--ink3);margin:0 2px}
+.dt.vip{width:96px;background:var(--pink);color:#fff;box-shadow:5px 5px 0 var(--ink);transform:rotate(-4deg)}
+.dt.vip small{color:var(--sun)}
+.dt.vip .tg{position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:var(--sun);color:var(--ink);border:1.6px solid var(--ink);border-radius:999px;font-weight:800;font-size:10px;letter-spacing:.14em;padding:3px 9px;white-space:nowrap}
+.d4note{margin-left:16px;font-size:15px;line-height:1.4;color:var(--ink2)}
+.d4note b{display:block;font-weight:800;color:var(--ink)}
+.days4{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.row .days4{margin:0 0 20px;gap:8px}
+.row .dt{width:64px;border-radius:15px;padding:7px 0 6px}
+.row .dt b{font-size:30px}
+.row .dt.vip{width:78px}
+.row .plus{font-size:32px}
+
+/* ---------- 4. honest fit check ---------- */
+.fit .wrap{max-width:1080px}
+.fit h2{max-width:18ch}
+.fitg{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
+.fitc{border-radius:24px;padding:28px 30px 26px;border:1.8px solid var(--ink)}
+.fitc.yes{background:#fff;box-shadow:8px 8px 0 var(--sun),8px 8px 0 1.8px var(--ink)}
+.fitc.no{background:transparent;border-style:dashed;border-color:rgba(26,20,18,.4)}
+.fitc h3{font-size:34px;line-height:1.05}
+.fitc h3 em{font-style:italic;color:var(--pink)}
+.fitc.no h3 em{color:var(--ink3)}
+.fitc ul{list-style:none;margin-top:16px}
+.fitc li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:12px 0;font-size:17px;line-height:1.45;border-top:1.4px dashed rgba(26,20,18,.16)}
+.fitc li i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;margin-top:1px}
+.fitc.yes li i{background:var(--sun);border:1.5px solid var(--ink)}
+.fitc.no li i{border:1.5px solid rgba(26,20,18,.35);color:var(--ink3)}
+.fit .after{margin-top:26px;font-family:var(--serif);font-size:24px;line-height:1.3;color:var(--ink2);max-width:640px}
+
+/* ---------- 5. a note from Ana + the price ---------- */
+.buy-g{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:64px;align-items:center;max-width:1100px;margin:0 auto}
 .letter{position:relative;background:#fff;border-radius:6px;padding:46px 46px 40px 74px;box-shadow:0 30px 60px -30px rgba(70,45,25,.45);transform:rotate(-1.5deg);
   background-image:linear-gradient(90deg,transparent 52px,rgba(247,37,133,.35) 52px,rgba(247,37,133,.35) 54px,transparent 54px)}
 .letter:before{content:"";position:absolute;left:50%;top:-14px;width:120px;height:30px;margin-left:-60px;background:rgba(255,212,0,.75);transform:rotate(-3deg)}
@@ -329,40 +336,21 @@ section{padding:110px 0}
 .letter p + p{margin-top:14px}
 .letter p em{color:var(--pink)}
 .letter .sig{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--pink);line-height:1;margin-top:14px}
-.order{max-width:500px;margin:0 auto;text-align:left;background:#fff;border:1.8px solid var(--ink);border-radius:26px;padding:28px 28px 22px;box-shadow:10px 10px 0 var(--sun),10px 10px 0 1.8px var(--ink)}
-.order .ok{font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
-.order h2{font-size:38px;line-height:1.02;margin:8px 0 4px}
-.order .terms{font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
-.oline{margin-top:20px;padding:18px;border-radius:18px;background:var(--cream);border:1.4px solid rgba(26,20,18,.12)}
-.oline-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-weight:800;font-size:18px}
-.oline-h span{font-size:20px}
-.oline-m{font-size:13.5px;color:var(--ink3);margin-top:2px}
-.ticks{list-style:none;margin-top:14px;display:grid;gap:9px}
-.ticks li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;font-weight:600;line-height:1.35}
-.ticks li i{width:22px;height:22px;border-radius:50%;background:var(--sun);border:1.5px solid var(--ink);display:grid;place-items:center;margin-top:-1px}
-.total{display:flex;align-items:center;justify-content:space-between;margin:16px 0 16px;padding:16px 18px;border-radius:16px;background:var(--ink);color:var(--cream)}
-.total span{font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,248,238,.7)}
-.total b{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1}
-.order h2{font-size:40px}
-.order .btn{width:100%;height:62px;font-size:18px}
-.order .sale{font-size:14.5px;line-height:1.45;color:var(--ink2);text-align:center;margin:-4px 0 16px}
-.order .secure{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:12px;font-size:13px;font-weight:600;color:var(--ink3)}
-.order .dl{text-align:center;margin-top:16px}
-.order .fine{margin-top:16px;padding-top:14px;border-top:1.5px dashed rgba(26,20,18,.18);font-size:13.5px;line-height:1.45;color:var(--ink3);text-align:center}
-.order .closed{display:none;font-family:var(--serif);font-size:34px;line-height:1.1;text-align:center;margin:8px 0 4px}
-.bb{text-align:center}
-.bb .lbl{font-weight:800;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
-.bb .price{font-weight:800;font-size:96px;letter-spacing:-.05em;line-height:1;margin:10px 0 12px}
-.bb .sale{font-size:16px;line-height:1.5;color:var(--ink2);max-width:340px;margin:0 auto 22px}
-.bb .btn{width:100%;height:64px;font-size:19px}
-.bb .secure{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:12px;font-size:13px;font-weight:600;color:var(--ink3)}
-.bb .dl{margin-top:20px}
-.bb .closed{display:none;font-family:var(--serif);font-size:38px;line-height:1.1;margin:8px 0}
-body.is-closed .btn,body.is-closed .order .sale,body.is-closed .order .secure,body.is-closed .total,body.is-closed .bb .sale,body.is-closed .bb .secure,body.is-closed .bb .price,body.is-closed .mbar{display:none!important}
-body.is-closed .order .closed,body.is-closed .bb .closed{display:block}
 
-/* ---------- 7. three quick questions ---------- */
-.faqs{max-width:820px;margin:100px auto 0;text-align:left}
+.bb{background:#fff;border:1.8px solid var(--ink);border-radius:26px;padding:28px 28px 24px;text-align:center;box-shadow:10px 10px 0 var(--sun),10px 10px 0 1.8px var(--ink)}
+.bb .lbl{font-weight:800;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+.bb .price{font-weight:800;font-size:84px;letter-spacing:-.05em;line-height:1;margin:6px 0 2px}
+.bb .when{font-size:14.5px;color:var(--ink2);font-weight:600}
+.bb .ticks{text-align:left;margin:18px 0 20px;padding:16px;border-radius:16px;background:var(--cream);border:1.4px solid rgba(26,20,18,.12)}
+.bb .btn{width:100%;height:62px;font-size:18px}
+.bb .meta2{display:flex;flex-direction:column;align-items:center;gap:3px;margin-top:10px;font-size:13px;font-weight:600;color:var(--ink3)}
+.bb .meta2 span{display:flex;align-items:center;gap:6px}
+.bb .dl{margin-top:14px}
+body.is-closed .add,body.is-closed .total,body.is-closed .meta2,body.is-closed .bb .price,body.is-closed .bb .when,body.is-closed .mbar{display:none!important}
+body.is-closed .closed{display:block}
+
+/* ---------- 6. questions ---------- */
+.faqs{max-width:820px;margin:110px auto 0}
 .faqs h2{font-size:clamp(38px,4vw,52px);margin-bottom:26px}
 .faq{border-top:1.5px solid var(--ink)}
 .faq:last-child{border-bottom:1.5px solid var(--ink)}
@@ -383,33 +371,106 @@ footer .links{display:flex;gap:22px;align-items:center;font-size:14px;font-weigh
 footer .links span{letter-spacing:.16em}
 footer .links a{text-decoration:underline;text-underline-offset:3px}
 
+
+/* ---------- the leave popups ---------- */
+.pop{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:24px;background:rgba(26,20,18,.72);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.pop.open{opacity:1;visibility:visible;transition:opacity .25s}
+.pbox{position:relative;width:100%;max-width:640px;margin:auto;background:var(--cream);border:2px solid var(--ink);border-radius:26px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);transform:translateY(18px) scale(.98);transition:transform .35s var(--ease)}
+.pop.open .pbox{transform:none}
+.pbar{display:flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:10px 60px;background:var(--ink);color:var(--cream);font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;text-align:center}
+.pbar .cd{display:inline-flex;gap:5px;letter-spacing:0}
+.pbar .cd span{display:flex;align-items:baseline;gap:2px;background:var(--pink);color:#fff;border-radius:8px;padding:5px 8px;font-size:16px;font-variant-numeric:tabular-nums}
+.pbar .cd small{font-size:10px;opacity:.85}
+.px{position:absolute;right:12px;top:10px;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,248,238,.5);background:transparent;color:var(--cream);cursor:pointer;display:grid;place-items:center}
+.px:hover{background:rgba(255,248,238,.12)}
+.pin{padding:22px 30px 24px}
+.pin h3{font-family:var(--serif);font-weight:400;font-size:42px;line-height:1}
+.pin h3 em{font-style:italic;color:var(--pink)}
+.pin .ps{margin-top:8px;font-size:16.5px;color:var(--ink2)}
+.unl{margin-top:16px;padding:12px 12px 12px;border:1.6px solid var(--ink);border-radius:18px;background:#fff}
+.unl .ttl{display:block;text-align:center;font-weight:800;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+.unl .its{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px;align-items:end;margin-top:12px}
+.unl .it{text-align:center}
+.unl .it .vz{height:84px;display:grid;place-items:end center}
+.unl .it b{display:block;margin-top:10px;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;line-height:1.25}
+.unl .it small{display:block;font-size:12px;font-weight:600;color:var(--pink);margin-top:2px}
+.mc{width:100%;max-width:190px;border:2px solid var(--ink);border-radius:12px;background:var(--cream);overflow:hidden;text-align:left}
+.mc .t{display:flex;align-items:center;gap:6px;padding:5px 8px;border-bottom:1.6px solid var(--ink);font-weight:800;font-size:9.5px;letter-spacing:.08em}
+.mc .t i{width:7px;height:7px;border-radius:50%;background:#e2483d;animation:live 1.6s infinite}
+.mc .t em{margin-left:auto;font-style:normal;color:var(--pink)}
+.mc .g{display:grid;grid-template-columns:44px 1fr;gap:6px;padding:6px}
+.mc .g img{width:44px;height:46px;object-fit:cover;object-position:50% 20%;border-radius:6px;border:1.5px solid var(--ink)}
+.mc .g span{display:block;height:6px;border-radius:4px;background:#eadfd1;margin:4px 0}
+.mc .g span.h{background:var(--sun);height:8px}
+.mbk{position:relative;width:62px;height:84px}
+.mbk:before{content:"";position:absolute;inset:0;background:#fff;border:2px solid var(--ink);border-radius:6px 9px 9px 6px;transform:rotate(-9deg) translate(-8px,4px)}
+.mbk span{position:absolute;inset:0;background:var(--sun);border:2px solid var(--ink);border-radius:6px 9px 9px 6px;box-shadow:4px 4px 0 var(--ink);font-family:var(--serif);font-size:13px;line-height:1;padding:8px 6px;text-align:left}
+.mpl{width:100%;max-width:120px;border:2px solid var(--ink);border-radius:10px;background:#fff;overflow:hidden}
+.mpl .s{position:relative;height:50px;background:#2b2320 url(../img/ana-paris.webp) center 25%/cover}
+.mpl .s i{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--pink);border:1.5px solid var(--ink)}
+.mpl .r{display:flex;gap:4px;padding:5px}
+.mpl .r span{flex:1;height:6px;border-radius:3px;background:var(--pink)}
+.pin .why{margin-top:14px;font-size:15.5px;line-height:1.55;color:var(--ink2)}
+.pin .why b{color:var(--ink)}
+.lose{margin-top:16px;border:1.6px solid var(--ink);border-radius:16px;padding:12px 14px;background:#fff;transition:background .25s,border-color .25s}
+.lose .lt{display:flex;align-items:center;gap:8px;font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:2px 2px 8px}
+.lose ul{list-style:none;display:grid;gap:6px}
+.lose li{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:10px;background:var(--cream);font-weight:700;font-size:15.5px;transition:background .25s,color .25s}
+.lose li i{flex:none;color:var(--pink);display:grid}
+.lose li s{position:relative;text-decoration:none}
+.lose li s:after{content:"";position:absolute;left:-2px;right:-2px;top:55%;height:2.5px;border-radius:2px;background:var(--red);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+.pbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:60px;margin-top:16px;border:0;border-radius:16px;cursor:pointer;background:var(--pink);color:#fff;font-weight:800;font-size:18px;box-shadow:0 5px 0 #b3105c;transition:transform .15s,box-shadow .15s}
+.pbtn svg{width:15px;height:15px;flex:none}
+.pbtn:hover{transform:translateY(-2px);box-shadow:0 7px 0 #b3105c}
+.pbtn:active{transform:translateY(3px);box-shadow:0 2px 0 #b3105c}
+.pno{display:block;width:100%;margin-top:12px;padding:14px 18px;border:1.6px solid rgba(26,20,18,.25);border-radius:14px;background:transparent;cursor:pointer;font-size:14.5px;line-height:1.5;font-weight:600;color:var(--ink3);transition:background .25s,color .25s,border-color .25s}
+/* hovering "no thanks": it turns red and the list crosses itself out */
+.pbox.leaving .pno{background:var(--red);border-color:var(--red);color:#fff}
+.pbox.leaving .lose{background:#fdecee;border-color:var(--red)}
+.pbox.leaving .lose li{background:#fff;color:#8a7a72}
+.pbox.leaving .lose li s:after{transform:scaleX(1)}
+.pbox.leaving .lose li:nth-child(2) s:after{transition-delay:.08s}.pbox.leaving .lose li:nth-child(3) s:after{transition-delay:.16s}
+/* are you sure */
+.pbox.sm{max-width:470px;text-align:center}
+.pbox.sm .pin{padding:34px 30px 26px}
+.pbox.sm h3{font-size:50px}
+.alert{display:flex;align-items:center;gap:12px;margin-top:18px;padding:14px 16px;border-radius:14px;background:#fdecee;border:1.6px solid var(--red);color:#a3162b;font-weight:700;font-size:15.5px;line-height:1.4;text-align:left}
+.alert svg{flex:none}
+.pbox.sm p.ps{margin-top:14px}
+.sure{display:inline-block;margin-top:16px;background:none;border:0;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--ink3);text-decoration:underline;text-underline-offset:4px}
+.sure:hover{color:var(--red)}
+.pbtn:focus-visible,.pno:focus-visible,.sure:focus-visible,.px:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+
 .mbar{display:none}
 
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
 @media (max-width:1060px){
   .fb-n{display:none}
-  .hv{grid-template-columns:minmax(0,1fr);max-width:680px;gap:36px}
-  .hv .order{position:relative;top:0}
+  .hv{grid-template-columns:minmax(0,1fr);max-width:700px;gap:34px}
+  .buy-g{grid-template-columns:1fr;max-width:560px;gap:56px}
+}
+@media (max-width:900px){
+  section{padding:84px 0}
+  .week .hd2,.inc .hd{grid-template-columns:1fr;gap:18px}
+  .inc .hd p{justify-self:start}
+  .tl{grid-template-columns:1fr;gap:0;margin-top:48px}
+  .tl:before{left:35px;right:auto;top:20px;bottom:20px;border-top:0;border-left:2px dashed rgba(26,20,18,.28)}
+  .brk{display:none}
+  .tl .stop .dt,.tl .stop .dt.vip{width:66px}
+  .stop{display:grid;grid-template-columns:72px 1fr;gap:4px 18px;padding:0 0 26px;text-align:left;align-items:start}
+  .stop .dt{grid-row:span 3;margin:0}
+  .stop .lb{margin-top:6px}
+  .stop p{margin-top:2px}
+  .stop .warn{grid-column:2;justify-self:start;margin-top:8px}
+  .row,.row.flip{grid-template-columns:1fr;gap:30px;padding:60px 0}
+  .row.flip .art{order:0}
+  .fitg{grid-template-columns:1fr}
 }
 @media (max-width:760px){
   .fb-id{display:none}
   .fb-bar{justify-content:center;padding:10px 14px}
   .steps{font-size:12px;gap:7px}
   .steps .ln{width:16px}
-}
-@media (max-width:1060px){
-  .buy-g{grid-template-columns:1fr;max-width:560px;gap:56px}
-}
-@media (max-width:900px){
-  .cmp-g{grid-template-columns:1fr;gap:44px}
-  .cmp h2{max-width:none}
-  .inc .hd{grid-template-columns:1fr;gap:18px}
-  .inc .hd p{justify-self:start}
-
-  section{padding:84px 0}
-  .row,.row.flip{grid-template-columns:1fr;gap:30px;padding:60px 0}
-  .row.flip .art{order:0}
-  .rows{gap:72px}
 }
 @media (max-width:640px){
   body{font-size:16px}
@@ -418,25 +479,13 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   .fb{padding:8px 10px 0}
   .st .t{display:none}
   .st.now .t{display:inline}
-  .saved{font-size:13.5px;padding-right:12px}
-  .row .days4{gap:6px}
-  .row .dt{width:58px}
-  .row .dt b{font-size:27px}
-  .row .dt.vip{width:70px}
-  .order{padding:22px 18px 18px;box-shadow:7px 7px 0 var(--sun),7px 7px 0 1.8px var(--ink);border-radius:22px;margin-right:7px}
-  .order h2{font-size:33px}
-  .total b{font-size:38px}
-  .how li{font-size:15px}
-  .hero{padding:28px 0 64px}
-  .hero h1{font-size:42px;margin:12px auto 14px}
-  .hero .sub{font-size:16.5px;line-height:1.5}
-  .hero .small{font-size:14px}
-  .hv{gap:30px}
-  .hvv{margin-top:26px}
+  .hero{padding:22px 0 64px}
+  .saved{font-size:13px;padding-right:12px}
+  .toprow .eyebrow{font-size:11px}
+  .hero h1{font-size:40px;margin-top:14px}
+  .hv{margin-top:22px;gap:26px}
+  .hv .under{font-size:15.5px}
   .iph{margin:0 10px 10px 0;border-radius:30px;padding:3px}
-  .hv .order{padding:20px 16px 16px}
-  .hv .order h2{font-size:30px}
-  .bb .price{font-size:78px}
   .iph:before{inset:10px -10px -10px 10px;border-radius:30px}
   .iph .sb{height:4px;top:-4px}
   .iph .bz{border-radius:27px;padding:7px}
@@ -445,46 +494,63 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   .vplay{left:22px;bottom:12px;height:38px;font-size:13px;gap:8px;padding:0 14px 0 4px}
   .vplay i{width:30px;height:30px}
   .vplay i svg{width:13px;height:13px}
-  .vlen{right:10px;bottom:14px;font-size:12px;padding:4px 9px}
   .scr img.mk{width:36px;height:36px;right:10px;top:9px}
-  .cmp h2,.inc .hd h2{font-size:44px}
-  .mail{transform:none;border-radius:18px}
-  .mail .body{grid-template-columns:96px 1fr;min-height:0}
-  .mail .side{padding:10px 6px}
-  .mail .fold{font-size:12px;padding:8px 6px}
-  .mail .side .who{display:none}
-  .mail .list{padding:12px 10px}
-  .mail .msg h4{font-size:20px}
-  .mail .dust{display:none}
-  .mail .ghost{display:none}
-  .mail .msg .top2{flex-wrap:wrap;gap:6px 8px}
-  .mail .msg .when{margin-left:0;width:100%}
-  .mail .msg h4{font-size:22px}
-  .mail .msg p{font-size:14px}
-  .mail .msg{padding:14px 14px 18px}
-  .mail-cap{flex-direction:column;gap:4px;font-size:13px}
-  .cmp-l{margin-top:56px}
+  .order{padding:20px 16px 16px;box-shadow:6px 6px 0 var(--sun),6px 6px 0 1.8px var(--ink);margin-right:6px}
+  .order h2{font-size:28px}
+  .week h2,.inc h2,.fit h2{font-size:40px}
+  .stop p{font-size:21px}
+  .cmp-l{margin-top:64px}
   .cmp-l th,.cmp-l td{padding:13px 6px;font-size:14.5px}
   .cmp-l th.c,.cmp-l td.c{width:66px}
   .cmp-l thead th{font-size:10px;letter-spacing:.08em}
   .cmp-l td:first-child small{display:block;margin:0;font-size:12.5px}
   .cmp-l .note{font-size:11.5px}
-  .num{font-size:84px}
-  .letter{padding:34px 22px 30px 50px;margin-right:4px;background-image:linear-gradient(90deg,transparent 34px,rgba(247,37,133,.35) 34px,rgba(247,37,133,.35) 36px,transparent 36px)}
-  .letter p{font-size:21px}
   .rows{margin-top:44px}
   .art{border-radius:20px}
-  .row h3{font-size:36px;margin:16px 0 12px}
+  .num{font-size:80px}
+  .row h3{font-size:34px}
   .row p{font-size:16.5px}
-  .faqs{margin-top:76px}
+  .how li{font-size:15px}
+  .row .days4{gap:6px}
+  .row .dt{width:58px}
+  .row .dt b{font-size:27px}
+  .row .dt.vip{width:70px}
+  .fitc{padding:22px 18px 18px}
+  .fitc.yes{box-shadow:6px 6px 0 var(--sun),6px 6px 0 1.8px var(--ink);margin-right:6px}
+  .fitc h3{font-size:29px}
+  .fitc li{font-size:15.5px}
+  .fit .after{font-size:21px}
+  .letter{padding:34px 22px 30px 50px;margin-right:4px;background-image:linear-gradient(90deg,transparent 34px,rgba(247,37,133,.35) 34px,rgba(247,37,133,.35) 36px,transparent 36px)}
+  .letter p{font-size:21px}
+  .bb{padding:24px 16px 20px;box-shadow:6px 6px 0 var(--sun),6px 6px 0 1.8px var(--ink);margin-right:6px}
+  .bb .price{font-size:72px}
+  .faqs{margin-top:80px}
   .faq summary{font-size:23px;padding:18px 2px}
   .faq .a{padding:0 8px 20px 2px;font-size:16px}
   footer{padding-bottom:110px}
+  .pop{padding:10px}
+  .pbar{padding:10px 48px 10px 14px;font-size:10.5px;gap:8px;flex-wrap:wrap}
+  .pbar .cd span{font-size:14px;padding:4px 6px}
+  .pin{padding:20px 16px 18px}
+  .pin h3{font-size:36px}
+  .unl .its{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .unl .it .vz{height:74px}
+  .mc .g{grid-template-columns:30px 1fr}
+  .mc .g img{width:30px;height:34px}
+  .mc .t{font-size:8px;padding:4px 5px}
+  .mbk{width:48px;height:64px}
+  .mbk span{font-size:10.5px}
+  .unl .it b{font-size:10.5px}
+  .unl .it small{font-size:11px}
+  .lose li{font-size:14px}
+  .pbtn{height:58px;font-size:16.5px}
+  .pno{font-size:13.5px}
+  .pbox.sm h3{font-size:40px}
   .mbar{display:flex;align-items:center;gap:12px;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,248,238,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
   .mbar.on{transform:none}
-  .mbar .pr{flex:none;font-weight:800;font-size:26px;letter-spacing:-.03em;line-height:1}
+  .mbar .pr{flex:none;font-weight:800;font-size:24px;letter-spacing:-.03em;line-height:1}
   .mbar .pr small{display:block;font-weight:600;font-size:11px;letter-spacing:0;color:var(--ink3);margin-top:3px}
-  .mbar .btn{flex:1;height:52px;font-size:16px;padding:0 16px}
+  .mbar .btn{flex:1;height:52px;font-size:15.5px;padding:0 14px}
 }
 </style>
 </head>
@@ -533,19 +599,19 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </header>
 
-<!-- 1. headline (A/B) + 2. video -->
+<!-- 1. hero: the headline across the top, then Ana's video and the order card side by side -->
 <section class="hero">
   <svg class="bgf a" aria-hidden="true"><use href="#sfo"/></svg>
   <svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="wrap hv">
-    <div class="hl">
-      <span class="saved"><i><svg width="14" height="14" style="color:#fff"><use href="#ck"/></svg></i><span><span id="hi">Your</span> seat is saved for all three days.</span></span>
-      <span class="eyebrow" id="eyebrow">You're in for Nov 17 to 19</span>
-      <h1 id="h1">You're in. <em>Want to go deeper?</em></h1>
-      <p class="sub">The three days get your offer, your price and your first ask written. VIP is how you finish: a 90-minute Q&amp;A where I work on what you wrote, my Offer Clarity Sprint, and the recordings to keep.</p>
-      <p class="small">Come live either way. That's where the work happens.</p>
+  <div class="wrap hwrap">
+    <div class="toprow">
+      <span class="saved"><i><svg width="14" height="14" style="color:#fff"><use href="#ck"/></svg></i><span><span id="hi">Your</span> seat is saved. <b>Day 1 is Tue, Nov 17.</b></span></span>
+      <span class="eyebrow" id="eyebrow">One optional upgrade, before you go</span>
+    </div>
+    <!-- headline A/B: ?h=A or ?h=B previews one -->
+    <h1 id="h1">You'll have an offer by Thursday. <em>On Friday, I'll tell you if it's ready.</em></h1>
+    <div class="hv">
       <div class="hvv">
-        <!-- Ana's VIP video, 60 to 90 seconds: set VSL_SRC when it's in. Click to play, her photo as the cover, no autoplay. -->
         <div class="iph" id="vsl">
           <span class="sb" style="left:16%;width:9%"></span><span class="sb" style="left:28%;width:5%"></span><span class="sb" style="left:35%;width:5%"></span>
           <div class="bz">
@@ -558,75 +624,57 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
             </button>
           </div>
         </div>
-
+        <p class="under">Watch this first, it's a minute. <b>It covers what Friday is, who it's for, and who should skip it.</b></p>
       </div>
+      <aside class="order" id="order">
+        <p class="ok">VIP · one payment</p>
+        <h2>Add Friday, <em>Nov 20,</em> to your week.</h2>
+        <div class="oline">
+          <div class="oline-h"><b>VIP upgrade</b><span>$67</span></div>
+          <p class="oline-m">Added to your free seat for Tue, Nov 17 to Thu, Nov 19</p>
+          <ul class="ticks">
+            <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Fri, Nov 20:</b> your ready check, 90 minutes live with me</span></li>
+            <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Offer Clarity Sprint,</b> to get your offer clear before Friday</span></li>
+            <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>The full recordings</b> of all three days, to keep</span></li>
+          </ul>
+        </div>
+        <div class="total"><span>Total today</span><b>$67.00</b></div>
+        <p class="closed">VIP is closed. <em>See you live.</em></p>
+        <button class="btn add" type="button" id="addBtn">yes, add VIP ($67)<svg><use href="#arr"/></svg></button>
+        <p class="meta2"><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span><span>On sale until Tue, Nov 17 at 11:59 pm New York.</span></p>
+        <p class="dl"><button class="decline" type="button">Free is perfect for me. See you Tuesday →</button></p>
+      </aside>
     </div>
-    <aside class="order" id="order">
-      <p class="ok">One optional upgrade</p>
-      <h2>You’re one step from <em>VIP.</em></h2>
-      <div class="oline">
-        <div class="oline-h"><b>VIP upgrade</b><span>$67</span></div>
-        <p class="oline-m">For the free 3-day live workshop, Nov 17 to 19</p>
-        <ul class="ticks">
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i>A 90-minute live Q&amp;A with me, Fri Nov 20</li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i>My Offer Clarity Sprint</li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i>The full recordings, to keep</li>
-        </ul>
-      </div>
-      <div class="total"><span>Total due today</span><b>$67.00</b></div>
-      <p class="sale">One payment. VIP is on sale until Tuesday, Nov 17 at 11:59 pm New York.</p>
-      <p class="closed">VIP is closed. <em>See you live.</em></p>
-      <button class="btn add" type="button" id="addBtn">add VIP ($67)<svg><use href="#arr"/></svg></button>
-      <p class="secure"><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</p>
-      <p class="dl"><button class="decline" type="button">Free is perfect for me. See you Tuesday →</button></p>
-    </aside>
   </div>
 </section>
 
-<!-- 3. free vs VIP: the same ask, in Drafts (free) or in Sent (VIP) -->
-<section class="sand cmp">
+<main>
+<!-- 2. your week: the free days get the ask written, Friday gets it sent -->
+<section class="sand week">
   <div class="wrap">
-    <div class="cmp-g">
-      <div data-r>
-        <span class="eyebrow">What happens if I don't?</span>
-        <h2>Free gets it written. <em>VIP gets it sent.</em></h2>
-        <p class="lead">The hard part isn't writing the ask. It's sending it. <b>VIP is the Friday where you bring it to me and leave ready to send it.</b></p>
-      </div>
-      <div data-r>
-        <div class="mail" id="mail" aria-hidden="true">
-          <div class="chrome"><i></i><i></i><i></i><span>your newsletter</span></div>
-          <div class="body">
-            <div class="side">
-              <div class="fold">Inbox<b></b></div>
-              <div class="fold d">Drafts<b>1</b></div>
-              <div class="fold s">Sent<b>1</b></div>
-              <div class="who"><svg viewBox="-60 -60 120 120"><use href="#sf"/></svg>how we grow</div>
-            </div>
-            <div class="list">
-              <small class="h lh"><span class="t1">DRAFTS</span><span class="t2">SENT</span></small>
-              <div class="msg">
-                <div class="top2"><span class="tag"><span class="t1">DRAFT</span><span class="t2">SENT</span></span><span>to: your readers</span><span class="when lh"><span class="t1">saved Thu, Nov 19</span><span class="t2">Fri, Nov 20</span></span></div>
-                <h4>It opens Monday. Here is who it's for.</h4>
-                <p>Your offer, your price and your ask, written on Day 3.</p>
-                <svg class="stamp" viewBox="-60 -60 120 120"><use href="#sf"/></svg>
-              </div>
-              <div class="ghost"></div><div class="ghost"></div>
-              <span class="dust">still here a week later</span>
-            </div>
-          </div>
-        </div>
-        <div class="mail-cap"><span><b>free:</b> it gets written</span><span><b>VIP:</b> it gets sent</span></div>
-      </div>
+    <div class="hd2" data-r>
+      <div><span class="eyebrow">Your week, Nov 17 to 20</span><h2>I charged $97 for three years, <em>waiting to feel ready.</em></h2></div>
+      <p>Ready for what? There was no exam. The week I changed the price, it made $797. Friday is the check I never had: you bring what you wrote this week, and I tell you, live, if it's ready.</p>
+    </div>
+    <div class="tl" data-r aria-label="Your week">
+      <span class="brk f" aria-hidden="true"><span>Free, for everyone</span></span>
+      <span class="brk v" aria-hidden="true"><span>VIP</span></span>
+      <div class="stop"><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what your readers would pay for.</p></div>
+      <div class="stop"><div class="dt"><b>18</b><small>Wed</small></div><span class="lb">Day 2</span><p>Turn it into an offer, with a price.</p></div>
+      <div class="stop"><div class="dt"><b>19</b><small>Thu</small></div><span class="lb">Day 3</span><p>Write the ask.</p><span class="warn">Most people stop here and wait to feel ready.</span></div>
+      <div class="stop vip"><div class="dt vip"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Your ready check</span><p>I tell you if it's ready, live, for 90 minutes.</p></div>
+      <div class="stop next"><div class="dt"><b>→</b><small>Next week</small></div><span class="lb">You</span><p>Send it to your readers.</p></div>
     </div>
 
     <div class="cmp-l" data-r>
+      <h3>Your free seat and <em>VIP,</em> side by side</h3>
       <table>
-        <thead><tr><th scope="col"><span class="sr">What you get</span></th><th class="c" scope="col">free</th><th class="c v" scope="col">VIP ($67)</th></tr></thead>
+        <thead><tr><th scope="col"><span class="sr">What you get</span></th><th class="c" scope="col">free seat</th><th class="c v" scope="col">VIP ($67)</th></tr></thead>
         <tbody>
-          <tr><td>All three sessions, live</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>All three sessions, live <small>Nov 17 to 19</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>The Day 3 prize draw <small>live attendees</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>Your offer, price and ask, written</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>90-minute live Q&amp;A where I work on what you wrote <small>Fri Nov 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>Your ready check: 90 minutes live with me on what you wrote <small>Fri Nov 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>My Offer Clarity Sprint</td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>The full recordings, to keep</td><td class="c"><span class="note">short highlights after the event</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
         </tbody>
@@ -635,12 +683,12 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </section>
 
-<!-- 4. what's in VIP: one focused row each -->
+<!-- 3. what's in VIP: one focused row each -->
 <section class="inc">
   <div class="wrap">
     <div class="hd" data-r>
-      <div><span class="eyebrow">What's in VIP</span><h2>Three things, <em>for the Friday you finish.</em></h2></div>
-      <p>Each one is about the same piece of work: the offer and the ask you wrote in the three days.</p>
+      <div><span class="eyebrow">What's in VIP</span><h2>What $67 <em>gets you.</em></h2></div>
+      <p>Three things, all built around the offer you'll have written by Thursday night.</p>
     </div>
     <div class="rows">
       <!-- 01: the live Q&A -->
@@ -664,26 +712,27 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         </div></div>
         <div class="tx">
           <span class="num">01</span>
-          <h3>A live Q&amp;A <em>with me.</em></h3>
-          <p class="meta"><b>Friday, Nov 20</b> · 90 minutes · VIPs only</p>
-          <div class="days4" aria-label="Your three free days, plus Friday for VIPs">
-            <div class="dt"><b>17</b><small>Tue</small><span class="ck"><svg width="11" height="11" style="color:#fff"><use href="#ck"/></svg></span></div>
-            <div class="dt"><b>18</b><small>Wed</small><span class="ck"><svg width="11" height="11" style="color:#fff"><use href="#ck"/></svg></span></div>
-            <div class="dt"><b>19</b><small>Thu</small><span class="ck"><svg width="11" height="11" style="color:#fff"><use href="#ck"/></svg></span></div>
+          <h3>Friday, Nov 20. <em>Your ready check, live.</em></h3>
+          <p class="meta"><b>Fri, Nov 20</b> · 90 minutes · VIPs only</p>
+          <div class="days4" aria-label="Tue Nov 17 to Thu Nov 19 free, Fri Nov 20 for VIPs">
+            <div class="dt"><b>17</b><small>Tue</small><span class="ck"><svg style="color:#fff" width="11" height="11"><use href="#ck"/></svg></span></div>
+            <div class="dt"><b>18</b><small>Wed</small><span class="ck"><svg style="color:#fff" width="11" height="11"><use href="#ck"/></svg></span></div>
+            <div class="dt"><b>19</b><small>Thu</small><span class="ck"><svg style="color:#fff" width="11" height="11"><use href="#ck"/></svg></span></div>
             <span class="plus" aria-hidden="true">+</span>
             <div class="dt vip"><span class="tg">VIP</span><b>20</b><small>Fri</small></div>
           </div>
-          <p>Bring your offer, your price or your ask, and I'll work on it with you live.</p>
+          <p>Send me your offer, your price or your ask before the call. I go through as many as fit in 90 minutes and tell you straight: it's ready, or here's the line to change. You'll hear why each change works, on yours and on everyone else's.</p>
+          <span class="lab">What to bring</span>
           <ol class="how">
-            <li><span><b>Bring what you wrote.</b> Your offer, your price or your ask from the three days.</span></li>
-            <li><span><b>I work on it with you, live.</b> 90 minutes on what you actually wrote.</span></li>
-            <li><span><b>Leave ready to send it.</b></span></li>
+            <li><span><b>Your offer,</b> in one sentence, from Day 2.</span></li>
+            <li><span><b>Your price,</b> and how you plan to say it.</span></li>
+            <li><span><b>Your first ask,</b> from Day 3.</span></li>
           </ol>
-          <p class="soft">Can't make it? Send it ahead and watch the recording.</p>
+          <p class="soft">Can't make it live? Send yours ahead and watch the recording.</p>
         </div>
       </div>
 
-      <!-- 02: the bonus -->
+      <!-- 02: the bonus. Ana writes the one line on what it helps you do; no price until it's confirmed on sale on its own -->
       <div class="row flip" data-r>
         <div class="art" aria-hidden="true"><div class="stage">
           <svg class="fl" style="left:-70px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
@@ -702,12 +751,12 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
           <span class="num">02</span>
           <h3>My Offer <em>Clarity Sprint.</em></h3>
           <p class="meta"><b>Bonus</b> · yours to keep</p>
-          <!-- [one line from Ana: what it helps you do]. No price shown: it isn't confirmed on sale on its own. -->
-          <p>So the offer you bring on Friday is clear before you ask anyone to buy it.</p>
+          <p>For the part most people get stuck on: saying what they sell in one plain sentence. Work through it before Friday, and we can spend the call on your ask.</p>
+          <span class="lab">When to use it</span>
           <ol class="how">
-            <li><span><b>Day 2</b> gets your offer into one sentence, with a price.</span></li>
-            <li><span><b>The Sprint</b> makes it clear before you say it out loud.</span></li>
-            <li><span><b>Friday,</b> you bring the clear version to the Q&amp;A.</span></li>
+            <li><span><b>After Day 2,</b> while your offer is fresh.</span></li>
+            <li><span><b>Before Friday,</b> so you bring a clear version.</span></li>
+            <li><span><b>Next time</b> you write a new offer.</span></li>
           </ol>
         </div>
       </div>
@@ -727,55 +776,87 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         </div></div>
         <div class="tx">
           <span class="num">03</span>
-          <h3>The recordings, <em>to keep.</em></h3>
-          <p class="meta"><b>All three sessions</b> · full length</p>
-          <p>All three sessions, so you can go back to them while you build.</p>
+          <h3>Every session, <em>to keep.</em></h3>
+          <p class="meta"><b>Nov 17, 18 and 19</b> · full length</p>
+          <p>Free seats get a short highlights video after the event. VIP keeps all three sessions in full, so you can go back to the exact part you need.</p>
+          <span class="lab">When you'll want them</span>
           <ol class="how">
-            <li><span><b>Before Friday.</b> Rewatch the part you're stuck on, then bring it to the Q&amp;A.</span></li>
-            <li><span><b>While you build.</b> Day 2 is there when you price your offer again.</span></li>
-            <li><span><b>Before you send.</b> Day 3 is there when you write your next ask.</span></li>
+            <li><span><b>Before Friday,</b> to rewatch the part you're stuck on.</span></li>
+            <li><span><b>When you price</b> your next offer, Day 2 is there.</span></li>
+            <li><span><b>Before you send,</b> Day 3 is there.</span></li>
           </ol>
-          <p class="soft">Free seats get a short highlights video after the event.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 5. price and button + 6. decline + 7. questions -->
-<section class="sand buy" id="buy">
+<!-- 4. honest fit check: who should get VIP, and who should keep the free seat -->
+<section class="sand fit">
+  <div class="wrap">
+    <div data-r><span class="eyebrow">Honest fit check</span><h2>VIP is worth it for some people. <em>Here's how to tell.</em></h2></div>
+    <div class="fitg" data-r>
+      <div class="fitc yes">
+        <h3>Get VIP <em>if</em></h3>
+        <ul>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You'll have an offer or an ask written by Thursday, Nov 19.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You've been waiting to feel ready to sell.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You can be there Friday, Nov 20, or you'll send yours in ahead.</span></li>
+        </ul>
+      </div>
+      <div class="fitc no">
+        <h3>Keep the free seat <em>if</em></h3>
+        <ul>
+          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You're coming to see what the workshop is like.</span></li>
+          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>This week is too full to write anything.</span></li>
+          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You already sell an offer that's working.</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="after" data-r>If you're in the second list, keep your free seat. I'll still see you Tuesday.</p>
+  </div>
+</section>
+
+<!-- 5. a note from Ana (from the guide's VIP video script) + the price, with what you get -->
+<section class="buy" id="buy">
   <div class="wrap">
     <div class="buy-g">
-    <!-- a note from Ana, from the VIP video script in the guide (we write it, she says it her way) -->
-    <div class="letter" data-r>
-      <div class="from"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy">A note from Ana</div>
-      <p>You're in. I'll see you Tuesday.</p>
-      <p>Here's what usually happens. People write the offer and the ask on Day 3, and then <em>they sit in a draft.</em></p>
-      <p>VIP is the Friday after. You bring what you wrote, and I work on it with you live, for 90 minutes.</p>
-      <p>And if free is enough, that's fine. Come live.</p>
-      <div class="sig">Ana</div>
-    </div>
-    <div class="bb" id="buyBlock" data-r>
-      <span class="lbl">VIP · one payment</span>
-      <div class="price">$67</div>
-      <p class="sale">VIP is on sale until Tuesday, Nov 17 at 11:59 pm New York.</p>
-      <p class="closed">VIP is closed. <em>See you live.</em></p>
-      <button class="btn add" type="button">add VIP ($67)<svg><use href="#arr"/></svg></button>
-      <p class="secure"><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</p>
-      <p class="dl"><button class="decline" type="button">Free is perfect for me. See you Tuesday →</button></p>
-    </div>
+      <div class="letter" data-r>
+        <div class="from"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy">A note from Ana</div>
+        <p>You're in. I'll see you Tuesday at noon, New York time.</p>
+        <p>I charged $97 for three years because I was waiting to feel ready. <em>Ready for what? There was no exam.</em></p>
+        <p>Friday is the check I wish I'd had. You bring what you wrote this week, and I tell you, live, whether it's ready and what to change if it isn't.</p>
+        <p>And if free is enough, that's fine. Come live. That's where the work happens.</p>
+        <div class="sig">Ana</div>
+      </div>
+      <div class="bb" id="buyBlock" data-r>
+        <span class="lbl">VIP · one payment</span>
+        <div class="price">$67</div>
+        <p class="when">Your ready check on Friday, Nov 20, plus the rest</p>
+        <ul class="ticks">
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Fri, Nov 20:</b> your ready check, 90 minutes live with me</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Offer Clarity Sprint,</b> to get your offer clear before Friday</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>The full recordings</b> of all three days, to keep</span></li>
+        </ul>
+        <p class="closed">VIP is closed. <em>See you live.</em></p>
+        <button class="btn add" type="button">yes, add VIP ($67)<svg><use href="#arr"/></svg></button>
+        <p class="meta2"><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span><span>On sale until Tue, Nov 17 at 11:59 pm New York.</span></p>
+        <p class="dl"><button class="decline" type="button">Free is perfect for me. See you Tuesday →</button></p>
+      </div>
     </div>
 
     <div class="faqs">
-      <h2 data-r>Three quick questions</h2>
+      <h2 data-r>Quick questions</h2>
       <div data-r>
         <details class="faq" open><summary>Do I need VIP to come live?<i aria-hidden="true"></i></summary><p class="a">No. All three sessions are free, and live is where the work happens.</p></details>
+        <details class="faq"><summary>When is the Friday call?<i aria-hidden="true"></i></summary><p class="a">Friday, Nov 20, for 90 minutes. The time and the link come by email with your join details.</p></details>
+        <details class="faq"><summary>What if I can't make it on Friday?<i aria-hidden="true"></i></summary><p class="a">Send your offer or your ask ahead. I'll answer it live, and you get the recording.</p></details>
         <details class="faq"><summary>Can I get a refund?<i aria-hidden="true"></i></summary><p class="a">No. I don't offer refunds, so only get it if you'll bring your offer on Friday.</p></details>
-        <details class="faq"><summary>What if I can't make the Q&amp;A?<i aria-hidden="true"></i></summary><p class="a">Send your offer or question ahead. I'll answer it live, and you get the recording.</p></details>
       </div>
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
@@ -785,13 +866,57 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </footer>
 
-<div class="mbar" id="mbar"><span class="pr">$67<small>one payment</small></span><button class="btn add" type="button">add VIP ($67)<svg><use href="#arr"/></svg></button></div>
+<div class="mbar" id="mbar"><span class="pr">$67<small>Fri, Nov 20</small></span><button class="btn add" type="button">yes, add VIP ($67)<svg><use href="#arr"/></svg></button></div>
+
+<!-- leave popup 1: opens on "Free is perfect for me" -->
+<div class="pop" id="pop1" aria-hidden="true">
+  <div class="pbox" role="dialog" aria-modal="true" aria-labelledby="p1h">
+    <div class="pbar"><span>VIP closes Tue, Nov 17 · 11:59 pm New York</span><span class="cd" aria-hidden="true"><span><b data-pc="d">00</b><small>d</small></span><span><b data-pc="h">00</b><small>h</small></span><span><b data-pc="m">00</b><small>m</small></span></span></div>
+    <button class="px" type="button" aria-label="Close"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
+    <div class="pin">
+      <h3 id="p1h">Wait, <em>before you go.</em></h3>
+      <p class="ps">Your VIP spot for Friday, Nov 20 is still open.</p>
+      <div class="unl">
+        <span class="ttl">What you'd unlock</span>
+        <div class="its">
+          <div class="it"><div class="vz"><div class="mc"><div class="t"><i></i>FRI NOV 20<em>LIVE</em></div><div class="g"><img src="../img/ana-hat.webp" alt=""><div><span class="h"></span><span></span><span style="width:70%"></span></div></div></div></div><b>Ready check</b><small>Fri, 90 min with Ana</small></div>
+          <div class="it"><div class="vz"><div class="mbk"><span>Offer Clarity Sprint</span></div></div><b>Clarity Sprint</b><small>bonus</small></div>
+          <div class="it"><div class="vz"><div class="mpl"><div class="s"><i></i></div><div class="r"><span></span><span></span><span></span></div></div></div><b>Full recordings</b><small>Days 1 to 3</small></div>
+        </div>
+      </div>
+      <p class="why">The three days are free either way, and you'll get the whole workshop. VIP is for what comes after: <b>the Friday where I tell you, live, whether your offer is ready to sell.</b></p>
+      <div class="lose">
+        <span class="lt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 2 21h20Z"/><path d="M12 10v5M12 18v.5" stroke-linecap="round"/></svg>If you skip it, you won't have</span>
+        <ul>
+          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><s>Friday, Nov 20: your ready check with me</s></li>
+          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><s>The Offer Clarity Sprint</s></li>
+          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><s>The full recordings of all three days</s></li>
+        </ul>
+      </div>
+      <button class="pbtn add" type="button">yes, add VIP for $67<svg><use href="#arr"/></svg></button>
+      <button class="pno" type="button" id="no1">No thanks, Ana. I'll do the three days on my own and decide when I'm ready. Take me to my join details.</button>
+    </div>
+  </div>
+</div>
+
+<!-- leave popup 2: are you sure -->
+<div class="pop" id="pop2" aria-hidden="true">
+  <div class="pbox sm" role="dialog" aria-modal="true" aria-labelledby="p2h">
+    <div class="pin">
+      <h3 id="p2h">Are you <em>sure?</em></h3>
+      <div class="alert"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 2 21h20Z"/><path d="M12 10v5M12 18v.5" stroke-linecap="round"/></svg>VIP closes Tuesday, Nov 17 at 11:59 pm New York. After that, Friday's call is only for the people already in.</div>
+      <p class="ps">Your free seat stays saved either way.</p>
+      <button class="pbtn add" type="button">no, add VIP for $67<svg><use href="#arr"/></svg></button>
+      <button class="sure" type="button" id="no2">Yes, I'm sure. Take me to the free version.</button>
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
   /* ---- settings Theia fills in ---- */
-  var CHECKOUT_URL = '';  // Stripe Payment Link for "VIP: <event name>", $67 one-time. Empty = demo (the button scrolls to the price card).
-  var CONFIRM_URL  = '';  // the registered confirmation page (decline link). Empty = back to the registration page.
+  var CHECKOUT_URL = '';  // Stripe Payment Link for "VIP: <event name>", $67 one-time. Empty = demo (the button scrolls to the price block).
+  var CONFIRM_URL  = '';  // the registered confirmation page (after the decline). Empty = back to the registration page.
   var VSL_SRC      = '';  // Ana's VIP video (mp4), 60 to 90 seconds. Required for launch.
   var CLOSES       = Date.UTC(2026, 10, 18, 4, 59); // Tue Nov 17, 11:59 pm New York
   /* ---------------------------------- */
@@ -811,33 +936,56 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
     v = cookie('ana_vip_h');
     if (v !== 'A' && v !== 'B') { v = Math.random() < .5 ? 'A' : 'B'; document.cookie = 'ana_vip_h=' + v + '; max-age=' + 60*60*24*90 + '; path=/; SameSite=Lax' }
   }
-  if (v === 'B') {
-    document.getElementById('eyebrow').textContent = 'Before you go';
-    document.getElementById('h1').innerHTML = 'Bring your real offer to me on Friday, <em>and leave ready to send it.</em>';
-  }
+  if (v === 'B') document.getElementById('h1').innerHTML = 'There\'s no exam for being ready to sell. <em>Friday, Nov 20 is the closest thing.</em>';
   document.documentElement.setAttribute('data-vip-headline', v);
 
   /* closed after the deadline (?now=2026-11-18T05:00:00Z tests it) */
-  var now = qs.get('now') ? Date.parse(qs.get('now')) : Date.now();
-  if (now >= CLOSES) document.body.classList.add('is-closed');
+  var now0 = qs.get('now') ? Date.parse(qs.get('now')) : Date.now(), skew = now0 - Date.now();
+  var closed = now0 >= CLOSES;
+  if (closed) document.body.classList.add('is-closed');
 
   /* add VIP: straight to Stripe, email prefilled, the ref for partner attribution, the headline variant */
-  document.querySelectorAll('.add').forEach(function(b){ b.addEventListener('click', function(){
-    if (!CHECKOUT_URL) { document.getElementById('buy').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'}); return }
+  function checkout(){
+    if (!CHECKOUT_URL) { closePops(); document.getElementById('buyBlock').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'}); return }
     var p = [];
     if (email) p.push('prefilled_email=' + encodeURIComponent(email));
     if (ref) p.push('client_reference_id=' + encodeURIComponent(ref.replace(/[^\w-]/g, '_').slice(0, 200)));
     p.push('utm_content=vip_headline_' + v);
     location.href = CHECKOUT_URL + (CHECKOUT_URL.indexOf('?') < 0 ? '?' : '&') + p.join('&');
-  })});
+  }
+  document.querySelectorAll('.add').forEach(function(b){ b.addEventListener('click', checkout) });
 
-  /* decline: they stay registered and go to the confirmation page */
-  document.querySelector('.decline').addEventListener('click', function(){
+  /* decline: popup 1, then "are you sure", then the confirmation page. They stay registered either way. */
+  function leave(){
     var u = CONFIRM_URL || '../', p = [];
     if (qs.get('first_name')) p.push('first_name=' + encodeURIComponent(qs.get('first_name')));
     if (email) p.push('email=' + encodeURIComponent(email));
     location.href = u + (p.length ? (u.indexOf('?') < 0 ? '?' : '&') + p.join('&') : '');
+  }
+  var pop1 = document.getElementById('pop1'), pop2 = document.getElementById('pop2'), lastFocus = null;
+  function openPop(el){ closePops(true); el.classList.add('open'); el.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll'); var b = el.querySelector('.pbtn'); setTimeout(function(){ b.focus({preventScroll:true}) }, 60) }
+  function closePops(keep){ [pop1, pop2].forEach(function(p){ p.classList.remove('open'); p.setAttribute('aria-hidden','true') }); if (!keep) { document.body.classList.remove('noscroll'); if (lastFocus) lastFocus.focus({preventScroll:true}) } }
+  document.querySelectorAll('.decline').forEach(function(b){ b.addEventListener('click', function(){ if (closed) { leave(); return } lastFocus = b; openPop(pop1) }) });
+  document.getElementById('no1').addEventListener('click', function(){ openPop(pop2) });
+  document.getElementById('no2').addEventListener('click', leave);
+  pop1.querySelector('.px').addEventListener('click', function(){ closePops() });
+  [pop1, pop2].forEach(function(p){ p.addEventListener('click', function(e){ if (e.target === p) closePops() }) });
+  document.addEventListener('keydown', function(e){
+    var open = pop1.classList.contains('open') ? pop1 : pop2.classList.contains('open') ? pop2 : null;
+    if (!open) return;
+    if (e.key === 'Escape') closePops();
+    if (e.key === 'Tab') { var f = open.querySelectorAll('button'), a = f[0], z = f[f.length-1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus() } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus() } }
   });
+  /* hovering "no thanks" turns it red and crosses out what they'd leave behind */
+  var box1 = pop1.querySelector('.pbox'), no1 = document.getElementById('no1');
+  ['mouseenter','focus'].forEach(function(t){ no1.addEventListener(t, function(){ box1.classList.add('leaving') }) });
+  ['mouseleave','blur'].forEach(function(t){ no1.addEventListener(t, function(){ box1.classList.remove('leaving') }) });
+
+  /* the real deadline, ticking in popup 1 */
+  var pc = {}; ['d','h','m'].forEach(function(k){ pc[k] = pop1.querySelector('[data-pc="'+k+'"]') });
+  function two(n){ return (n < 10 ? '0' : '') + n }
+  function tick(){ var s = Math.max(0, Math.floor((CLOSES - (Date.now() + skew))/1000)); pc.d.textContent = two(Math.floor(s/86400)); pc.h.textContent = two(Math.floor(s%86400/3600)); pc.m.textContent = two(Math.floor(s%3600/60)) }
+  tick(); setInterval(tick, 15000);
 
   /* the video: click to play, with sound; click again to pause */
   var vsl = document.getElementById('vsl'), vv = vsl.querySelector('video');
@@ -848,9 +996,9 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
     else vv.pause();
   });
 
-  /* phone: the buy bar once the first button scrolls away, out of the way of the price card */
-  var mbar = document.getElementById('mbar'), q = document.getElementById('addBtn'), pc = document.getElementById('buyBlock');
-  function onScroll(){ var a = q.getBoundingClientRect(), b = pc.getBoundingClientRect(); mbar.classList.toggle('on', a.bottom < 0 && !(b.top < innerHeight && b.bottom > 0) && !document.body.classList.contains('is-closed')) }
+  /* phone: the buy bar once the hero button scrolls away, out of the way of the price block */
+  var mbar = document.getElementById('mbar'), hb = document.getElementById('addBtn'), bb = document.getElementById('buyBlock');
+  function onScroll(){ var a = hb.getBoundingClientRect(), b = bb.getBoundingClientRect(); mbar.classList.toggle('on', a.bottom < 0 && !(b.top < innerHeight && b.bottom > 0) && !closed) }
   addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
   /* scale each 600 x 500 drawing stage to its panel */
@@ -858,15 +1006,10 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   function fit(){ arts.forEach(function(a){ var st = a.querySelector('.stage'); if (st) st.style.setProperty('--k', a.clientWidth/600) }) }
   fit(); if (window.ResizeObserver) new ResizeObserver(fit).observe(document.body); else addEventListener('resize', fit);
 
-  /* the mail window: the draft moves to Sent once it is in view */
-  var mail = document.getElementById('mail');
-  if (reduce || !('IntersectionObserver' in window)) mail.classList.add('sent');
-  else { var mo = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { setTimeout(function(){ mail.classList.add('sent') }, 900); mo.disconnect() } }, {threshold:.6}); mo.observe(mail) }
-
   /* reveal on scroll; the drawings play once */
   if (!reduce && 'IntersectionObserver' in window) {
     document.documentElement.classList.add('anim');
-    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target) } }) }, {threshold:.25});
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target) } }) }, {threshold:.2});
     document.querySelectorAll('[data-r]').forEach(function(x){ io.observe(x) });
   }
 })();
