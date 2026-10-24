@@ -635,28 +635,6 @@ body.vipc .inb .ic{background:var(--pk3)}
 .bmk b{color:var(--ink)}
 .bmk kbd{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:.85em;background:var(--ink);color:#fff;border-radius:6px;padding:1px 8px;margin:0 2px}
 .bmk kbd.win{display:none}
-.map{background:var(--ink);color:var(--cream);background-image:linear-gradient(rgba(255,248,238,.05) 1px,transparent 1px);background-size:100% 52px}
-.map h2{color:#fff}
-.map h2 em{color:var(--sun)}
-.map .eyebrow{color:var(--sun);display:inline-flex;align-items:center;gap:10px}
-.map .eyebrow i{width:9px;height:9px;border-radius:50%;background:var(--sun)}
-.map .sub{color:rgba(255,248,238,.72)}
-.mp{list-style:none;max-width:940px;margin:0 auto;display:grid;gap:26px;position:relative}
-.mp li{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr);gap:28px;align-items:start}
-.mp li:not(:last-child):after{content:"";position:absolute;left:31px;top:66px;bottom:-30px;width:3px;background:rgba(255,248,238,.25)}
-.mp .mk{display:grid;place-items:center;width:64px;height:64px;border:3px solid var(--cream);font-weight:800;font-size:22px;color:var(--ink);background:var(--cream)}
-.mp .m0{background:var(--pink);color:#fff}
-.mp .m0 svg{width:26px;height:26px}
-.mp .m1{background:var(--sun)}
-.mp .m3{background:var(--pk2)}
-.mp .m4{background:var(--pink);color:var(--sun)}
-.mp li>div{border:1.5px solid rgba(255,248,238,.22);background:rgba(255,248,238,.04);padding:22px 28px}
-.mp small{display:block;font-weight:800;font-size:12px;letter-spacing:.2em;color:var(--sun)}
-.mp li:first-child small{color:var(--pk2)}
-.mp li:last-child small{color:var(--pk2)}
-.mp h3{font-family:var(--sans);font-weight:800;font-size:clamp(22px,2.2vw,27px);letter-spacing:-.02em;color:#fff;margin-top:8px;line-height:1.2}
-.mp p{margin-top:8px;font-family:var(--serif);font-size:20px;line-height:1.45;color:rgba(255,248,238,.75)}
-.mp p b{font-family:var(--sans);color:#fff;font-size:.85em}
 @media (max-width:640px){
   .vstat{gap:8px;font-size:9.5px;letter-spacing:.1em;padding:6px 12px 6px 10px;justify-content:center}
   .vstat b{padding:3px 8px}
@@ -664,9 +642,59 @@ body.vipc .inb .ic{background:var(--pk3)}
   .seatg{grid-template-columns:1fr;gap:16px}
   .bmk{padding:14px 16px;align-items:flex-start}
   .bmk p{font-size:15px}
-  .mp li{grid-template-columns:44px minmax(0,1fr);gap:14px}
-  .mp .mk{width:44px;height:44px;font-size:16px}
-  .mp li:not(:last-child):after{left:21px;top:46px}
-  .mp li>div{padding:16px 18px}
-  .mp p{font-size:17px}
 }
+
+/* ---------- VIP: the week as her garden ---------- */
+.garden{background:linear-gradient(180deg,var(--ysoft) 0%,#FFF6D6 45%,var(--cream) 100%);overflow:hidden}
+.gm{position:relative;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));max-width:1120px;margin:0 auto}
+.gm:before{content:"";position:absolute;left:-60px;right:-60px;top:228px;height:30px;background:#E2CDAE radial-gradient(rgba(26,20,18,.28) 1.2px,transparent 1.6px) 0 0/14px 10px;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.gm li{position:relative;display:flex;flex-direction:column;align-items:center}
+.gm .pl{position:relative;z-index:1;width:100%;height:240px;display:flex;align-items:flex-end;justify-content:center}
+.gm .pl svg{height:240px;width:auto;overflow:visible}
+.gm .lab{position:relative;margin:48px 8px 0;background:#fff;border:2px solid var(--ink);border-radius:18px;padding:16px 16px 18px;box-shadow:5px 5px 0 var(--acc),5px 5px 0 2px var(--ink);align-self:stretch;flex:1}
+.gm .lab:before{content:"";position:absolute;left:50%;top:-30px;height:28px;border-left:2px dashed rgba(26,20,18,.45)}
+.gm small{display:block;font-weight:800;font-size:11px;letter-spacing:.16em;color:var(--pink)}
+.gm h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.08;margin-top:8px}
+.gm p{margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--ink2)}
+.gm p b{color:var(--ink)}
+.gm li.v .lab{background:var(--pink);color:#fff}
+.gm li.v small{color:var(--sun)}
+.gm li.v p{color:rgba(255,255,255,.9)}
+.gm li.v p b{color:#fff}
+.here{position:absolute;left:4px;top:62px;display:flex;flex-direction:column;align-items:flex-start;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1;color:var(--pink);transform:rotate(-6deg)}
+.here svg{width:54px;height:36px;margin:4px 0 0 34px}
+/* they grow in, one stage after another */
+.gm .st{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform 1s var(--ease) calc(var(--i)*.32s + .2s)}
+.gm .lf{transform-box:fill-box;transform:scale(0);transition:transform .6s var(--ease) calc(var(--i)*.32s + .8s)}
+.gm .lf.l{transform-origin:100% 100%}
+.gm .lf.r{transform-origin:0 100%}
+.gm .hd{transform-box:fill-box;transform-origin:50% 50%;transform:scale(0);transition:transform .75s cubic-bezier(.3,1.6,.5,1) calc(var(--i)*.32s + 1s)}
+.gm .tag,.gm .pk{transform-box:fill-box;transform-origin:50% 0;transform:translateY(16px);opacity:0;transition:transform .6s var(--ease) calc(var(--i)*.32s + 1.3s),opacity .6s calc(var(--i)*.32s + 1.3s)}
+.gm .pk{transition-delay:.25s}
+.gm .sw{transform-box:fill-box;transform-origin:50% 100%}
+.gm.in .st,.gm.in .lf,.gm.in .hd{transform:none}
+.gm.in .tag,.gm.in .pk{transform:none;opacity:1}
+.gm.in .sw{animation:sway 5s ease-in-out calc(var(--i)*.32s + 2.2s) infinite alternate}
+@keyframes sway{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}
+.gm .here{opacity:0;transition:opacity .6s 1.4s}
+.gm.in .here{opacity:1}
+@media (max-width:1060px){
+  .gm h3{font-size:21px}
+  .gm .lab{margin-left:5px;margin-right:5px;padding:14px 12px 16px}
+  .here{font-size:18px;left:0}
+}
+@media (max-width:860px){
+  .gm{grid-template-columns:1fr;gap:18px;max-width:560px}
+  .gm:before{display:none}
+  .gm li{flex-direction:row;align-items:center;gap:6px}
+  .gm .pl{flex:none;width:96px;height:150px;border-bottom:3px solid var(--ink);background:linear-gradient(transparent 132px,#E2CDAE 132px)}
+  .gm .pl svg{height:146px}
+  .gm .lab{margin:0 6px 0 4px}
+  .gm .lab:before{display:none}
+  .here{display:none}
+}
+.gm .pl .here svg{height:34px;width:52px;overflow:visible}
+.gm .here{left:2px;top:66px}
+@media (max-width:1060px){.gm .here{top:40px}}
+.gm .here{flex-direction:column-reverse;top:78px}
+.gm .pl .here svg{margin:2px 0 0 40px}
