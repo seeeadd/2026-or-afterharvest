@@ -711,3 +711,8 @@ body.did-group.did-cal .db .bcal{display:none}
 body.did-group.did-cal .db .brd{display:inline-flex}
 .db .btn .wa{width:18px;height:18px}
 @media (max-width:640px){.db .brd{height:40px;font-size:14px;padding:0 14px}}
+
+/* the timeline photos, at the top of their cards */
+.gm .lab .gph{display:block;width:calc(100% + 32px);max-width:none;margin:-16px -16px 14px;aspect-ratio:4/3;object-fit:cover;border-bottom:2px solid var(--ink);border-radius:16px 16px 0 0}
+@media (max-width:1060px){.gm .lab .gph{width:calc(100% + 24px);margin:-14px -12px 12px}}
+@media (max-width:860px){.gm .lab .gph{width:calc(100% + 24px)}}
