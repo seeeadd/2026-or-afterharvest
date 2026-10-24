@@ -51,12 +51,24 @@ section{padding:110px 0}
 .decline:hover{text-decoration-color:var(--ink)}
 .btn:focus-visible,.decline:focus-visible,.scr:focus-visible,summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 
-/* ---------- 0. top line ---------- */
-.top{background:var(--sand);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:center;gap:10px;min-height:46px;font-size:14.5px;font-weight:600;text-align:center;padding-top:8px;padding-bottom:8px}
-.top i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--green);display:grid;place-items:center}
-.top .sep{color:var(--ink3);margin:0 2px}
-.top .two{color:var(--ink2);font-weight:500}
+/* ---------- 0. progress: step 2 of 3 ---------- */
+.fb{position:sticky;top:0;z-index:50;padding:12px 16px 0}
+.fb-bar{margin:0 auto;width:min(1080px,100%);display:flex;align-items:center;gap:20px;padding:8px 18px 8px 10px;border-radius:16px;background:rgba(26,20,18,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--cream);box-shadow:0 18px 36px -18px rgba(26,20,18,.7)}
+.fb-id{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.fb-id img{width:44px;height:44px;flex:none}
+.fb-id small{display:block;font-weight:800;font-size:11.5px;line-height:1;letter-spacing:.18em;color:var(--sun)}
+.fb-id b{display:block;font-family:var(--serif);font-weight:400;font-size:21px;line-height:1;margin-top:6px;white-space:nowrap}
+.steps{display:flex;align-items:center;gap:10px;flex:none;font-weight:700;font-size:13.5px}
+.st{display:flex;align-items:center;gap:8px;color:rgba(255,248,238,.55);white-space:nowrap}
+.st i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:12px;border:1.5px solid rgba(255,248,238,.3)}
+.st.done{color:rgba(255,248,238,.85)}
+.st.done i{background:var(--green);border-color:var(--green)}
+.st.now{color:#fff}
+.st.now i{background:var(--pink);border-color:var(--pink);animation:dot 2.2s ease-out infinite}
+@keyframes dot{0%{box-shadow:0 0 0 0 rgba(247,37,133,.55)}70%,100%{box-shadow:0 0 0 9px rgba(247,37,133,0)}}
+.steps .ln{width:28px;height:2px;border-radius:2px;background:rgba(255,248,238,.22)}
+.steps .ln.on{background:var(--green)}
+.fb-n{flex:none;font-weight:800;font-size:11px;letter-spacing:.16em;color:rgba(255,248,238,.6);padding-left:18px;border-left:1px solid rgba(255,248,238,.16)}
 
 /* ---------- 1. headline + 2. video ---------- */
 .hero{position:relative;padding:64px 0 96px;text-align:center;overflow:hidden}
@@ -65,6 +77,24 @@ section{padding:110px 0}
 .hero .bgf.b{width:380px;height:380px;right:-170px;top:360px}
 .hero .in{position:relative;max-width:860px;margin:0 auto}
 .hero h1{font-size:clamp(46px,5.6vw,78px);line-height:1;margin:16px auto 20px;max-width:16ch}
+.saved{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.6px solid var(--ink);border-radius:999px;padding:6px 16px 6px 6px;font-weight:700;font-size:15px}
+.saved i{width:28px;height:28px;border-radius:50%;background:var(--green);display:grid;place-items:center}
+.saved{font-size:15px}
+.days4{display:flex;align-items:center;gap:10px;margin-top:30px}
+.dt{width:78px;border:1.8px solid var(--ink);border-radius:18px;background:#fff;text-align:center;padding:9px 0 8px;line-height:1;position:relative}
+.dt b{display:block;font-family:var(--serif);font-weight:400;font-size:38px}
+.dt small{display:block;font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
+.dt .ck{position:absolute;right:-7px;top:-7px;width:22px;height:22px;border-radius:50%;background:var(--green);border:1.6px solid var(--ink);display:grid;place-items:center}
+.plus{font-family:var(--serif);font-size:42px;line-height:1;color:var(--ink3);margin:0 2px}
+.dt.vip{width:96px;background:var(--pink);color:#fff;box-shadow:5px 5px 0 var(--ink);transform:rotate(-4deg)}
+.dt.vip small{color:var(--sun)}
+.dt.vip .tg{position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:var(--sun);color:var(--ink);border:1.6px solid var(--ink);border-radius:999px;font-weight:800;font-size:10px;letter-spacing:.14em;padding:3px 9px;white-space:nowrap}
+.d4note{margin-left:16px;font-size:15px;line-height:1.4;color:var(--ink2)}
+.d4note b{display:block;font-weight:800;color:var(--ink)}
+.anim .dt.vip{animation:pop .8s cubic-bezier(.3,1.6,.5,1) .5s both}
+@keyframes pop{from{opacity:0;transform:translateY(-30px) rotate(-20deg) scale(.6)}to{opacity:1;transform:rotate(-4deg)}}
+.hero .days4{justify-content:center;margin-top:56px}
+.hero .d4note{text-align:left}
 .hero .sub{font-size:19px;line-height:1.55;color:var(--ink2);max-width:640px;margin:0 auto}
 .hero .small{font-size:15px;font-weight:600;color:var(--ink3);margin-top:12px}
 
@@ -115,18 +145,97 @@ section{padding:110px 0}
 .under b{font-weight:400;background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%);padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* ---------- 4. what's in VIP: one focused row each ---------- */
-.rows{margin-top:70px;display:grid;gap:90px}
-.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.rows{margin-top:76px;display:grid;gap:110px}
+.row{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:64px;align-items:center}
 .row.flip .art{order:2}
 .art{position:relative;aspect-ratio:6/5;border-radius:28px;overflow:hidden;border:1.8px solid var(--ink);
   background:var(--kraft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
-.art > svg{position:absolute;inset:0;width:100%;height:100%}
+.stage{position:absolute;left:0;top:0;width:600px;height:500px;transform-origin:0 0;transform:scale(var(--k,1))}
+.stage .fl{position:absolute;opacity:.2}
 .num{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:var(--pink);color:#fff;font-family:var(--serif);font-size:28px;box-shadow:0 0 0 5px var(--cream),0 12px 22px -10px rgba(247,37,133,.7)}
-.row h3{font-size:clamp(38px,3.8vw,54px);line-height:1.02;margin:20px 0 16px}
-.row .when{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--sun);border-radius:999px;padding:7px 13px;margin-bottom:16px}
-.row p{font-size:18px;line-height:1.6;color:var(--ink2);max-width:480px}
-.row p + p{margin-top:12px}
-.row .soft{font-size:15.5px;color:var(--ink3)}
+.row h3{font-size:clamp(38px,3.8vw,54px);line-height:1.02;margin:20px 0 14px}
+.chips2{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chips2 span{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:7px 12px;border:1.5px solid var(--ink);background:#fff}
+.chips2 span:first-child{background:var(--ink);color:var(--sun);border-color:var(--ink)}
+.row p{font-size:18px;line-height:1.6;color:var(--ink2);max-width:500px}
+.how{list-style:none;margin-top:22px;background:#fff;border:1.6px solid var(--ink);border-radius:20px;padding:6px 20px;max-width:500px;box-shadow:6px 6px 0 var(--sun),6px 6px 0 1.6px var(--ink)}
+.how li{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;padding:13px 0;font-size:16px;line-height:1.45;color:var(--ink2)}
+.how li + li{border-top:1.4px dashed rgba(26,20,18,.16)}
+.how li b{color:var(--ink)}
+.how .k{width:30px;height:30px;border-radius:50%;background:var(--sun);border:1.5px solid var(--ink);display:grid;place-items:center;font-weight:800;font-size:13px;color:var(--ink)}
+.how .k.p{background:var(--pink);color:#fff}
+.row .soft{font-size:15.5px;color:var(--ink3);margin-top:16px}
+
+/* 01: the VIP call */
+.call{position:absolute;left:34px;top:40px;width:532px;height:396px;background:#fff;border:3px solid var(--ink);border-radius:22px;box-shadow:0 30px 50px -26px rgba(70,45,25,.55);overflow:hidden;transform:rotate(-1.5deg)}
+.call .bar{display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-bottom:2px solid var(--ink);background:var(--cream);font-weight:800;font-size:13px}
+.call .bar i{width:10px;height:10px;border-radius:50%;background:#e2483d;animation:live 1.6s ease-in-out infinite}
+@keyframes live{50%{opacity:.35}}
+.call .bar small{margin-left:auto;font-weight:700;font-size:11px;letter-spacing:.12em;color:var(--ink3)}
+.call .gridc{display:grid;grid-template-columns:186px 1fr;gap:12px;padding:12px;height:calc(100% - 42px)}
+.call .host{position:relative;border-radius:14px;overflow:hidden;border:2px solid var(--ink)}
+.call .host img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.call .host b{position:absolute;left:8px;bottom:8px;background:rgba(26,20,18,.75);color:#fff;font-size:12px;font-weight:700;border-radius:8px;padding:4px 8px}
+.call .host em{position:absolute;right:8px;top:8px;font-style:normal;background:var(--pink);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.12em;border-radius:999px;padding:3px 8px}
+.call .doc{border-radius:14px;border:2px solid var(--ink);padding:14px 16px;background:#fff;position:relative}
+.call .doc small{display:block;font-weight:800;font-size:10.5px;letter-spacing:.14em;color:var(--ink3);margin-bottom:10px}
+.call .doc .ln2{position:relative;font-family:var(--serif);font-size:21px;line-height:1.25;margin-bottom:10px}
+.call .doc .old{position:relative;color:var(--ink3)}
+.call .doc .old:after{content:"";position:absolute;left:0;right:0;top:52%;height:3px;background:var(--pink);border-radius:2px;transform-origin:0 50%;transition:transform .6s ease .8s}
+.anim .row:not(.in) .call .doc .old:after{transform:scaleX(0)}
+.call .doc .new{background:var(--sun);padding:0 .1em;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:opacity .5s 1.4s}
+.anim .row:not(.in) .call .doc .new{opacity:0}
+.call .doc .rest{height:8px;border-radius:5px;background:#eee4d8;margin:9px 0}
+.call .cm{position:absolute;right:-6px;bottom:18px;width:150px;background:var(--ysoft);border:2px solid var(--ink);border-radius:12px;padding:8px 10px;font-size:12px;line-height:1.35;font-weight:600;transform:rotate(3deg);transition:transform .6s cubic-bezier(.3,1.6,.5,1) 1.9s,opacity .4s 1.9s}
+.anim .row:not(.in) .call .cm{opacity:0;transform:translateY(14px) rotate(3deg)}
+.call .cm b{display:block;font-size:10px;letter-spacing:.12em;color:#c4105f;margin-bottom:2px}
+.fri{position:absolute;right:26px;bottom:20px;width:96px;border:2.5px solid var(--ink);border-radius:18px;background:var(--pink);color:#fff;text-align:center;padding:8px 0 7px;line-height:1;box-shadow:5px 5px 0 var(--ink);transform:rotate(6deg)}
+.fri b{display:block;font-family:var(--serif);font-weight:400;font-size:44px}
+.fri small{display:block;font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--sun);margin-top:2px}
+.fri span{position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:var(--sun);color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-weight:800;font-size:10px;letter-spacing:.12em;padding:2px 8px;white-space:nowrap}
+
+/* 02: the sprint */
+.book{position:absolute;left:58px;top:70px;width:250px;height:330px}
+.book .pg{position:absolute;inset:0;background:#fff;border:3px solid var(--ink);border-radius:12px 18px 18px 12px;transition:transform .7s var(--ease) .5s}
+.book .pg.p2{transform:rotate(-7deg) translate(-12px,6px)}.book .pg.p3{transform:rotate(-14deg) translate(-26px,14px)}
+.anim .row:not(.in) .book .pg.p2,.anim .row:not(.in) .book .pg.p3{transform:none}
+.book .cv{position:absolute;inset:0;background:var(--sun);border:3px solid var(--ink);border-radius:12px 18px 18px 12px;padding:22px 20px;box-shadow:8px 8px 0 var(--ink);display:flex;flex-direction:column}
+.book .cv:before{content:"";position:absolute;left:16px;top:0;bottom:0;border-left:2.5px solid rgba(26,20,18,.25)}
+.book .cv small{font-weight:800;font-size:11px;letter-spacing:.16em;margin-left:14px}
+.book .cv h4{font-family:var(--serif);font-weight:400;font-size:44px;line-height:.95;margin:14px 0 0 14px}
+.book .cv h4 em{color:var(--ink);font-style:italic}
+.book .cv .sfw{margin:auto 0 0 14px;width:84px;height:84px}
+.book .cv .br{position:absolute;right:16px;bottom:18px;font-weight:800;font-size:13px}
+.sheet2{position:absolute;right:30px;top:120px;width:250px;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:16px;transform:rotate(3deg);box-shadow:0 26px 40px -24px rgba(70,45,25,.55)}
+.sheet2 small{display:block;font-weight:800;font-size:10.5px;letter-spacing:.14em;color:var(--ink3);margin-bottom:10px}
+.sheet2 .fz{height:10px;border-radius:6px;background:#d9cdbf;margin:8px 0;filter:blur(1.5px)}
+.sheet2 .ok2{margin-top:12px;font-family:var(--serif);font-size:23px;line-height:1.15;transition:opacity .6s 1.1s,transform .6s var(--ease) 1.1s}
+.sheet2 .ok2 span{background:var(--sun);padding:0 .1em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.anim .row:not(.in) .sheet2 .ok2{opacity:0;transform:translateY(8px)}
+.arrow2{position:absolute;left:300px;top:270px;width:70px;height:40px}
+.arrow2 path{stroke-dasharray:110;stroke-dashoffset:0;transition:stroke-dashoffset .6s ease .9s}
+.anim .row:not(.in) .arrow2 path{stroke-dashoffset:110}
+
+/* 03: the recordings */
+.player{position:absolute;left:40px;top:40px;width:520px;background:#fff;border:3px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:0 30px 50px -26px rgba(70,45,25,.55);transform:rotate(-1deg)}
+.player .scr2{position:relative;height:208px;background:#2b2320}
+.player .scr2 img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.player .scr2:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,18,0) 40%,rgba(26,20,18,.7))}
+.player .pp{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);z-index:1;width:56px;height:56px;border-radius:50%;background:var(--pink);border:2.5px solid var(--ink);display:grid;place-items:center}
+.player .pp svg{margin-left:3px}
+.player .cap3{position:absolute;left:14px;bottom:28px;z-index:1;color:#fff;font-family:var(--serif);font-size:22px;line-height:1.1}
+.player .cap3 small{display:block;font-family:var(--sans);font-weight:800;font-size:10px;letter-spacing:.14em;color:var(--sun);margin-bottom:3px}
+.player .prog{position:absolute;left:14px;right:14px;bottom:12px;z-index:1;height:5px;border-radius:4px;background:rgba(255,255,255,.3)}
+.player .prog i{position:absolute;left:0;top:0;bottom:0;width:62%;border-radius:4px;background:var(--sun);transition:width 1.6s cubic-bezier(.4,0,.2,1) .6s}
+.anim .row:not(.in) .player .prog i{width:0}
+.player ol{list-style:none;padding:8px 10px 10px}
+.player li{display:grid;grid-template-columns:62px 1fr auto;gap:12px;align-items:center;padding:9px 6px;border-radius:12px;font-size:14px;font-weight:700;transition:opacity .4s,transform .4s var(--ease)}
+.player li + li{border-top:1.4px dashed rgba(26,20,18,.14)}
+.player li.on{background:var(--ysoft)}
+.player li .dp{font-weight:800;font-size:10.5px;letter-spacing:.12em;color:#fff;background:var(--pink);border-radius:999px;padding:4px 8px;text-align:center}
+.player li .sv{font-weight:800;font-size:10.5px;letter-spacing:.12em;color:var(--ink3)}
+.anim .row:not(.in) .player li{opacity:0;transform:translateX(16px)}
+.anim .row.in .player li:nth-child(2){transition-delay:.15s}.anim .row.in .player li:nth-child(3){transition-delay:.3s}
 
 /* drawings come alive once, in view */
 .anim .strike{stroke-dasharray:280;stroke-dashoffset:280;transition:stroke-dashoffset .6s ease .5s}
@@ -145,18 +254,31 @@ section{padding:110px 0}
 .anim [data-r]{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s var(--ease)}
 .anim [data-r].in{opacity:1;transform:none}
 
-/* ---------- 5. price and button + 6. decline ---------- */
+/* ---------- 5. price and button + 6. decline: the order card ---------- */
 .buy{text-align:center}
-.pcard{max-width:560px;margin:0 auto;background:#fff;border:1.8px solid var(--ink);border-radius:30px;padding:40px 38px 34px;box-shadow:10px 10px 0 var(--sun),10px 10px 0 1.8px var(--ink)}
-.pcard .lbl{font-weight:800;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
-.pcard .price{font-weight:800;font-size:96px;letter-spacing:-.05em;line-height:1;margin:14px 0 12px}
-.pcard .terms{font-size:16px;line-height:1.5;color:var(--ink2);max-width:380px;margin:0 auto}
-.pcard .btn{width:100%;margin-top:26px;height:64px;font-size:19px}
-.pcard .fine{font-size:13.5px;color:var(--ink3);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px}
-.pcard .closed{display:none;font-family:var(--serif);font-size:38px;line-height:1.1;margin-top:10px}
-.dl{margin-top:26px}
-body.is-closed .btn,body.is-closed .quick,body.is-closed .pcard .terms,body.is-closed .pcard .fine,body.is-closed .pcard .price,body.is-closed .mbar{display:none!important}
-body.is-closed .pcard .closed{display:block}
+.order{max-width:520px;margin:0 auto;text-align:left;background:#fff;border:1.8px solid var(--ink);border-radius:26px;padding:28px 28px 22px;box-shadow:10px 10px 0 var(--sun),10px 10px 0 1.8px var(--ink)}
+.order .ok{font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+.order h2{font-size:38px;line-height:1.02;margin:8px 0 4px}
+.order .terms{font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.oline{margin-top:20px;padding:18px;border-radius:18px;background:var(--cream);border:1.4px solid rgba(26,20,18,.12)}
+.oline-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-weight:800;font-size:18px}
+.oline-h span{font-size:20px}
+.oline-m{font-size:13.5px;color:var(--ink3);margin-top:2px}
+.ticks{list-style:none;margin-top:14px;display:grid;gap:9px}
+.ticks li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;font-weight:600;line-height:1.35}
+.ticks li i{width:22px;height:22px;border-radius:50%;background:var(--sun);border:1.5px solid var(--ink);display:grid;place-items:center;margin-top:-1px}
+.total{display:flex;align-items:center;justify-content:space-between;margin:16px 0 16px;padding:16px 18px;border-radius:16px;background:var(--ink);color:var(--cream)}
+.total span{font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,248,238,.7)}
+.total b{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1}
+.order h2{font-size:40px}
+.order .btn{width:100%;height:62px;font-size:18px}
+.order .sale{font-size:14.5px;line-height:1.45;color:var(--ink2);text-align:center;margin:-4px 0 16px}
+.order .secure{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:12px;font-size:13px;font-weight:600;color:var(--ink3)}
+.order .dl{text-align:center;margin-top:16px}
+.order .fine{margin-top:16px;padding-top:14px;border-top:1.5px dashed rgba(26,20,18,.18);font-size:13.5px;line-height:1.45;color:var(--ink3);text-align:center}
+.order .closed{display:none;font-family:var(--serif);font-size:34px;line-height:1.1;text-align:center;margin:8px 0 4px}
+body.is-closed .btn,body.is-closed .quick,body.is-closed .order .sale,body.is-closed .order .secure,body.is-closed .total,body.is-closed .mbar{display:none!important}
+body.is-closed .order .closed{display:block}
 
 /* ---------- 7. three quick questions ---------- */
 .faqs{max-width:820px;margin:100px auto 0;text-align:left}
@@ -183,6 +305,15 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 .mbar{display:none}
 
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+@media (max-width:1060px){
+  .fb-n{display:none}
+}
+@media (max-width:760px){
+  .fb-id{display:none}
+  .fb-bar{justify-content:center;padding:10px 14px}
+  .steps{font-size:12px;gap:7px}
+  .steps .ln{width:16px}
+}
 @media (max-width:900px){
   section{padding:84px 0}
   .row,.row.flip{grid-template-columns:1fr;gap:30px}
@@ -193,9 +324,22 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   body{font-size:16px}
   .wrap{padding:0 16px}
   section{padding:72px 0}
-  .top .wrap{font-size:13px;gap:10px;justify-content:flex-start;text-align:left;line-height:1.35}
-  .top .two{display:block}
-  .top .sep{display:none}
+  .fb{padding:8px 10px 0}
+  .st .t{display:none}
+  .st.now .t{display:inline}
+  .saved{font-size:13.5px;padding-right:12px}
+  .hero .days4{gap:7px;margin-top:40px;flex-wrap:wrap}
+  .dt{width:62px;border-radius:15px}
+  .dt b{font-size:30px}
+  .dt.vip{width:76px}
+  .plus{font-size:32px}
+  .hero .d4note{flex-basis:100%;margin:12px 0 0;text-align:center}
+  .order{padding:22px 18px 18px;box-shadow:7px 7px 0 var(--sun),7px 7px 0 1.8px var(--ink);border-radius:22px;margin-right:7px}
+  .order h2{font-size:33px}
+  .total b{font-size:38px}
+  .how{padding:4px 14px;box-shadow:5px 5px 0 var(--sun),5px 5px 0 1.6px var(--ink);margin-right:5px}
+  .how li{font-size:15px}
+  .chips2 span{font-size:11px}
   .hero{padding:28px 0 64px}
   .hero h1{font-size:42px;margin:12px auto 14px}
   .hero .sub{font-size:16.5px;line-height:1.5}
@@ -227,9 +371,6 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   .num{width:48px;height:48px;font-size:24px}
   .row h3{font-size:36px;margin:16px 0 12px}
   .row p{font-size:16.5px}
-  .pcard{padding:30px 20px 26px;box-shadow:7px 7px 0 var(--sun),7px 7px 0 1.8px var(--ink);margin-right:7px}
-  .pcard .price{font-size:78px}
-  .pcard .btn{height:58px;font-size:17px}
   .faqs{margin-top:76px}
   .faq summary{font-size:23px;padding:18px 2px}
   .faq .a{padding:0 8px 20px 2px;font-size:16px}
@@ -272,18 +413,28 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   </defs>
 </svg>
 
-<!-- 0. top line -->
-<div class="top"><div class="wrap">
-  <i><svg width="12" height="12" style="color:#fff"><use href="#ck"/></svg></i>
-  <span><span>you're registered for Nov 17 to 19</span> <span class="sep">·</span> <span class="two">one more thing before you go</span></span>
-</div></div>
+<!-- 0. progress: step 2 of 3 -->
+<header class="fb">
+  <div class="fb-bar">
+    <div class="fb-id"><img src="../img/mark.png" alt="" width="44" height="44"><span><small>ANA CALIN</small><b>Free 3-day live workshop</b></span></div>
+    <div class="steps" aria-label="Step 2 of 3">
+      <span class="st done"><i><svg width="12" height="12" style="color:#fff"><use href="#ck"/></svg></i><span class="t">Seat saved</span></span>
+      <span class="ln on"></span>
+      <span class="st now"><i>2</i><span class="t">VIP upgrade</span></span>
+      <span class="ln"></span>
+      <span class="st"><i>3</i><span class="t">Join details</span></span>
+    </div>
+    <span class="fb-n">STEP 2 OF 3</span>
+  </div>
+</header>
 
 <!-- 1. headline (A/B) + 2. video -->
 <section class="hero">
   <svg class="bgf a" aria-hidden="true"><use href="#sfo"/></svg>
   <svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
   <div class="wrap"><div class="in">
-    <span class="eyebrow" id="eyebrow">You're in for Nov 17 to 19</span>
+    <span class="saved"><i><svg width="14" height="14" style="color:#fff"><use href="#ck"/></svg></i><span><span id="hi">Your</span> seat is saved for all three days.</span></span>
+    <span class="eyebrow" id="eyebrow" style="margin-top:26px">You're in for Nov 17 to 19</span>
     <h1 id="h1">You're in. <em>Want to go deeper?</em></h1>
     <p class="sub">The three days get your offer, your price and your first ask written. VIP is how you finish: a 90-minute Q&amp;A where I work on what you wrote, my Offer Clarity Sprint, and the recordings to keep.</p>
     <p class="small">Come live either way. That's where the work happens.</p>
@@ -300,6 +451,15 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
           <span class="vplay"><i><svg width="18" height="18" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#F72585"/></svg></i>tap for sound</span>
         </button>
       </div>
+    </div>
+
+    <div class="days4" aria-label="Your three free days, plus Friday for VIPs">
+      <div class="dt"><b>17</b><small>Tue</small><span class="ck"><svg width="11" height="11" style="color:#fff"><use href="#ck"/></svg></span></div>
+      <div class="dt"><b>18</b><small>Wed</small><span class="ck"><svg width="11" height="11" style="color:#fff"><use href="#ck"/></svg></span></div>
+      <div class="dt"><b>19</b><small>Thu</small><span class="ck"><svg width="11" height="11" style="color:#fff"><use href="#ck"/></svg></span></div>
+      <span class="plus" aria-hidden="true">+</span>
+      <div class="dt vip"><span class="tg">VIP</span><b>20</b><small>Fri</small></div>
+      <p class="d4note"><b>Friday, a live Q&amp;A with me.</b>90 minutes, VIPs only.</p>
     </div>
 
     <div class="quick">
@@ -337,76 +497,92 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
     <span class="eyebrow" style="text-align:center" data-r>What's in VIP</span>
     <h2 data-r>Three things, <em>for the Friday you finish.</em></h2>
     <div class="rows">
-      <!-- 01 -->
+      <!-- 01: the live Q&A -->
       <div class="row" data-r>
-        <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 600 500" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <use href="#sfo" x="430" y="-70" width="240" height="240" opacity=".2"/>
-            <g transform="rotate(-3 300 250)">
-              <rect x="110" y="70" width="380" height="330" rx="22" fill="#fff" stroke="#1A1412" stroke-width="4"/>
-              <path d="M110 120h380" stroke="#1A1412" stroke-width="3"/>
-              <circle cx="138" cy="95" r="7" fill="#F72585"/><circle cx="162" cy="95" r="7" fill="#FFD400"/>
-              <text x="140" y="168" font-family="Manrope,sans-serif" font-weight="800" font-size="15" letter-spacing="2" fill="#7A6A60">YOUR ASK</text>
-              <path d="M140 205h250" stroke="#1A1412" stroke-width="8"/>
-              <path class="strike" d="M136 206h262" stroke="#F72585" stroke-width="6"/>
-              <g class="fix"><rect x="214" y="222" width="240" height="44" rx="22" fill="#FFD400" stroke="#1A1412" stroke-width="4"/><path d="M236 244h196" stroke="#1A1412" stroke-width="5"/></g>
-              <path d="M140 300h300M140 330h250M140 360h190" stroke="#1A1412" stroke-width="7" opacity=".18"/>
-            </g>
-            <g transform="rotate(6 470 380)">
-              <rect x="412" y="318" width="120" height="120" rx="20" fill="#F72585" stroke="#1A1412" stroke-width="4"/>
-              <text x="472" y="392" text-anchor="middle" font-family="Instrument Serif,serif" font-size="64" fill="#fff">20</text>
-              <text x="472" y="422" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="15" letter-spacing="2" fill="#FFD400">FRI</text>
-            </g>
-            <use class="sun" href="#sf" x="40" y="360" width="100" height="100"/>
-          </svg>
-        </div>
+        <div class="art" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:430px;top:-80px;width:240px;height:240px"><use href="#sfo"/></svg>
+          <div class="call">
+            <div class="bar"><i></i>VIP Q&amp;A · live<small>FRI NOV 20</small></div>
+            <div class="gridc">
+              <div class="host"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy"><em>HOST</em><b>Ana</b></div>
+              <div class="doc">
+                <small>YOUR ASK, SHARED</small>
+                <div class="ln2"><span class="old">I made a thing, if anyone wants it.</span></div>
+                <div class="ln2"><span class="new">It opens Monday. Here is who it's for.</span></div>
+                <div class="rest" style="width:92%"></div><div class="rest" style="width:70%"></div><div class="rest" style="width:82%"></div>
+                <div class="cm"><b>ANA</b>Say the price in the first line.</div>
+              </div>
+            </div>
+          </div>
+          <div class="fri"><span>VIP</span><b>20</b><small>FRI</small></div>
+        </div></div>
         <div class="tx">
           <span class="num">01</span>
           <h3>A live Q&amp;A <em>with me.</em></h3>
-          <span class="when">Friday, Nov 20 · 90 minutes</span>
+          <div class="chips2"><span>Friday, Nov 20</span><span>90 minutes</span><span>VIPs only</span></div>
           <p>Bring your offer, your price or your ask, and I'll work on it with you live.</p>
+          <ol class="how">
+            <li><span class="k">1</span><span><b>Bring what you wrote.</b> Your offer, your price or your ask from the three days.</span></li>
+            <li><span class="k">2</span><span><b>I work on it with you, live.</b> 90 minutes on what you actually wrote.</span></li>
+            <li><span class="k p">3</span><span><b>Leave ready to send it.</b></span></li>
+          </ol>
           <p class="soft">Can't make it? Send it ahead and watch the recording.</p>
         </div>
       </div>
-      <!-- 02 -->
+
+      <!-- 02: the bonus -->
       <div class="row flip" data-r>
-        <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 600 500" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <use href="#sfo" x="-70" y="330" width="230" height="230" opacity=".2"/>
-            <g transform="rotate(2 300 240)">
-              <rect x="100" y="60" width="400" height="340" rx="22" fill="#fff" stroke="#1A1412" stroke-width="4"/>
-              <text x="132" y="112" font-family="Manrope,sans-serif" font-weight="800" font-size="15" letter-spacing="2" fill="#7A6A60">YOUR OFFER</text>
-              <g class="blur" opacity=".5"><path d="M132 148c40-6 70 6 110 0s70-8 120 0 80 4 104 0" stroke="#1A1412" stroke-width="5"/><path d="M132 180c50 6 90-6 140 0s60 6 90 0" stroke="#1A1412" stroke-width="5"/><path d="M132 212c30-4 60 4 100 0" stroke="#1A1412" stroke-width="5"/></g>
-              <path d="M132 250h336" stroke="#1A1412" stroke-width="2.5" stroke-dasharray="6 8" opacity=".35"/>
-              <rect class="clear" x="128" y="278" width="344" height="52" rx="8" fill="#FFD400"/>
-              <text x="140" y="314" font-family="Instrument Serif,serif" font-size="30" fill="#1A1412">One offer. One sentence.</text>
-              <text x="140" y="368" font-family="Manrope,sans-serif" font-weight="700" font-size="17" fill="#F72585">clear before you ask</text>
-            </g>
-            <use class="sun" href="#sf" x="462" y="20" width="100" height="100"/>
-          </svg>
-        </div>
+        <div class="art" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:-70px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
+          <div class="book">
+            <div class="pg p3"></div><div class="pg p2"></div>
+            <div class="cv"><small>BONUS</small><h4>Offer <em>Clarity</em> Sprint</h4><svg class="sfw"><use href="#sf"/></svg><span class="br">how we grow</span></div>
+          </div>
+          <svg class="arrow2" viewBox="0 0 70 40" fill="none" stroke="#F72585" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 30c18-20 38-24 58-14M52 8l10 8-12 6"/></svg>
+          <div class="sheet2">
+            <small>YOUR OFFER</small>
+            <div class="fz" style="width:96%"></div><div class="fz" style="width:78%"></div><div class="fz" style="width:88%"></div>
+            <p class="ok2"><span>One offer. One sentence. One price.</span></p>
+          </div>
+        </div></div>
         <div class="tx">
           <span class="num">02</span>
           <h3>My Offer <em>Clarity Sprint.</em></h3>
+          <div class="chips2"><span>Bonus</span><span>Yours to keep</span></div>
           <!-- [one line from Ana: what it helps you do]. No price shown: it isn't confirmed on sale on its own. -->
           <p>So the offer you bring on Friday is clear before you ask anyone to buy it.</p>
+          <ol class="how">
+            <li><span class="k">1</span><span><b>Day 2</b> gets your offer into one sentence, with a price.</span></li>
+            <li><span class="k">2</span><span><b>The Sprint</b> makes it clear before you say it out loud.</span></li>
+            <li><span class="k p">3</span><span><b>Friday,</b> you bring the clear version to the Q&amp;A.</span></li>
+          </ol>
         </div>
       </div>
-      <!-- 03 -->
+
+      <!-- 03: the recordings -->
       <div class="row" data-r>
-        <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 600 500" fill="none" stroke-linejoin="round">
-            <use href="#sfo" x="440" y="320" width="230" height="230" opacity=".2"/>
-            <g class="tile"><rect x="70" y="90" width="210" height="150" rx="18" fill="#fff" stroke="#1A1412" stroke-width="4"/><path d="M160 140v50l42-25Z" fill="#1A1412"/><text x="92" y="226" font-family="Manrope,sans-serif" font-weight="800" font-size="15" letter-spacing="2" fill="#7A6A60">DAY 1</text></g>
-            <g class="tile t2"><rect x="320" y="90" width="210" height="150" rx="18" fill="#fff" stroke="#1A1412" stroke-width="4"/><path d="M410 140v50l42-25Z" fill="#1A1412"/><text x="342" y="226" font-family="Manrope,sans-serif" font-weight="800" font-size="15" letter-spacing="2" fill="#7A6A60">DAY 2</text></g>
-            <g class="tile t3"><rect x="195" y="270" width="210" height="150" rx="18" fill="#F72585" stroke="#1A1412" stroke-width="4"/><path d="M285 320v50l42-25Z" fill="#fff"/><text x="217" y="406" font-family="Manrope,sans-serif" font-weight="800" font-size="15" letter-spacing="2" fill="#FFD400">DAY 3</text></g>
-            <use class="sun" href="#sf" x="40" y="340" width="96" height="96"/>
-          </svg>
-        </div>
+        <div class="art" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:440px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
+          <div class="player">
+            <div class="scr2"><img src="../img/ana-paris.webp" alt="" width="1000" height="671" loading="lazy"><span class="pp"><svg width="20" height="20" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></span><span class="cap3"><small>RECORDING · DAY 1</small>Find what your readers would pay for.</span><span class="prog"><i></i></span></div>
+            <ol>
+              <li class="on"><span class="dp">DAY 1</span>Find what your readers would pay for.<span class="sv">SAVED</span></li>
+              <li><span class="dp">DAY 2</span>Turn it into an offer, with a price.<span class="sv">SAVED</span></li>
+              <li><span class="dp">DAY 3</span>Write the ask.<span class="sv">SAVED</span></li>
+            </ol>
+          </div>
+        </div></div>
         <div class="tx">
           <span class="num">03</span>
           <h3>The recordings, <em>to keep.</em></h3>
+          <div class="chips2"><span>All three sessions</span><span>Full length</span></div>
           <p>All three sessions, so you can go back to them while you build.</p>
+          <ol class="how">
+            <li><span class="k">1</span><span><b>Before Friday.</b> Rewatch the part you're stuck on, then bring it to the Q&amp;A.</span></li>
+            <li><span class="k">2</span><span><b>While you build.</b> Day 2 is there when you price your offer again.</span></li>
+            <li><span class="k p">3</span><span><b>Before you send.</b> Day 3 is there when you write your next ask.</span></li>
+          </ol>
+          <p class="soft">Free seats get a short highlights video after the event.</p>
         </div>
       </div>
     </div>
@@ -416,15 +592,27 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 <!-- 5. price and button + 6. decline + 7. questions -->
 <section class="sand buy" id="buy">
   <div class="wrap">
-    <div class="pcard" data-r>
-      <span class="lbl">VIP</span>
-      <div class="price">$67</div>
-      <p class="terms">One payment. VIP is on sale until Tuesday, Nov 17 at 11:59 pm New York.</p>
+    <aside class="order" id="order" data-r>
+      <p class="ok">One optional upgrade</p>
+      <h2>You’re one step from <em>VIP.</em></h2>
+      <p class="terms">One payment · added to your free seat</p>
+      <div class="oline">
+        <div class="oline-h"><b>VIP upgrade</b><span>$67</span></div>
+        <p class="oline-m">For the free 3-day live workshop, Nov 17 to 19</p>
+        <ul class="ticks">
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i>A 90-minute live Q&amp;A with me, Fri Nov 20</li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i>My Offer Clarity Sprint</li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i>The full recordings, to keep</li>
+        </ul>
+      </div>
+      <div class="total"><span>Total due today</span><b>$67.00</b></div>
+      <p class="sale">One payment. VIP is on sale until Tuesday, Nov 17 at 11:59 pm New York.</p>
       <p class="closed">VIP is closed. <em>See you live.</em></p>
       <button class="btn add" type="button" id="addBtn">add VIP ($67)<svg><use href="#arr"/></svg></button>
-      <p class="fine"><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</p>
-    </div>
-    <p class="dl"><button class="decline" type="button">Free is perfect for me. See you Tuesday →</button></p>
+      <p class="secure"><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</p>
+      <p class="dl"><button class="decline" type="button">Free is perfect for me. See you Tuesday →</button></p>
+      <p class="fine">You can skip this and keep your free seat for all three days.</p>
+    </aside>
 
     <div class="faqs">
       <h2 data-r>Three quick questions</h2>
@@ -461,6 +649,8 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   try { reg = JSON.parse(sessionStorage.getItem('ana_reg') || '{}') } catch (e) {}
   var email = (qs.get('email') || reg.email || '').trim();
   var ref = (qs.get('ref') || reg.ref || '').trim();
+  var first = (qs.get('first_name') || reg.first_name || '').trim().split(/\s+/)[0];
+  if (first && first.length < 30) document.getElementById('hi').textContent = first + ', your';
 
   /* headline A/B: 50/50 per visitor (cookie). ?h=A or ?h=B previews one. */
   function cookie(k){var m=document.cookie.match('(?:^|; )'+k+'=([^;]*)');return m?decodeURIComponent(m[1]):''}
@@ -507,9 +697,14 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   });
 
   /* phone: the buy bar once the first button scrolls away, out of the way of the price card */
-  var mbar = document.getElementById('mbar'), q = document.querySelector('.quick'), pc = document.querySelector('.pcard');
+  var mbar = document.getElementById('mbar'), q = document.querySelector('.quick'), pc = document.getElementById('order');
   function onScroll(){ var a = q.getBoundingClientRect(), b = pc.getBoundingClientRect(); mbar.classList.toggle('on', a.bottom < 0 && !(b.top < innerHeight && b.bottom > 0) && !document.body.classList.contains('is-closed')) }
   addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* scale each 600 x 500 drawing stage to its panel */
+  var arts = document.querySelectorAll('.art');
+  function fit(){ arts.forEach(function(a){ var st = a.querySelector('.stage'); if (st) st.style.setProperty('--k', a.clientWidth/600) }) }
+  fit(); if (window.ResizeObserver) new ResizeObserver(fit).observe(document.body); else addEventListener('resize', fit);
 
   /* reveal on scroll; the drawings play once */
   if (!reduce && 'IntersectionObserver' in window) {
