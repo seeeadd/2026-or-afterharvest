@@ -126,45 +126,94 @@ section{padding:110px 0}
 .quick .p{font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1;text-align:left}
 .quick .p small{display:block;font-weight:600;font-size:13px;letter-spacing:0;color:var(--ink3);margin-top:5px}
 
-/* ---------- 3. free vs VIP ---------- */
-.cmp h2,.inc h2{font-size:clamp(40px,4.6vw,62px);line-height:1.02;text-align:center;margin:14px auto 0;max-width:20ch}
-.tbl{max-width:880px;margin:52px auto 0;background:#fff;border:1.8px solid var(--ink);border-radius:26px;overflow:hidden;box-shadow:10px 10px 0 var(--ink)}
-.tbl table{width:100%;border-collapse:collapse}
-.tbl th,.tbl td{padding:17px 22px;text-align:left;vertical-align:middle;border-top:1.4px solid rgba(26,20,18,.1);font-size:16px;line-height:1.4}
-.tbl thead th{border-top:0;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);padding-top:20px;padding-bottom:16px}
-.tbl th.c,.tbl td.c{text-align:center;width:160px}
-.tbl .v{background:var(--ysoft)}
-.tbl thead .v{background:var(--sun);color:var(--ink)}
-.tbl td:first-child{font-weight:600}
-.tbl td:first-child small{display:block;font-weight:500;font-size:14px;color:var(--ink3)}
+/* ---------- 3. free vs VIP: your ask, in Drafts or in Sent ---------- */
+.cmp{overflow:hidden}
+.cmp-g{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:center}
+.cmp .eyebrow{text-align:left}
+.cmp h2{font-size:clamp(46px,5.4vw,78px);line-height:.98;margin:16px 0 22px;text-align:left;max-width:9ch}
+.cmp .lead{font-family:var(--serif);font-size:clamp(24px,2.3vw,30px);line-height:1.25;color:var(--ink2);max-width:420px}
+.cmp .lead b{font-weight:400;color:var(--ink);background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%);padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* the mail app */
+.mail{position:relative;background:var(--cream);border:2px solid var(--ink);border-radius:22px;box-shadow:0 40px 70px -36px rgba(70,45,25,.6);overflow:hidden;transform:rotate(1.2deg)}
+.mail .chrome{display:flex;align-items:center;gap:7px;height:40px;padding:0 14px;border-bottom:1.6px solid var(--ink);background:#fff}
+.mail .chrome i{width:11px;height:11px;border-radius:50%;border:1.4px solid var(--ink)}
+.mail .chrome i:nth-child(1){background:var(--pink)}.mail .chrome i:nth-child(2){background:var(--sun)}
+.mail .chrome span{margin-left:10px;font-weight:700;font-size:13px;color:var(--ink3)}
+.mail .body{display:grid;grid-template-columns:160px 1fr;min-height:380px}
+.mail .side{border-right:1.4px solid var(--line);padding:14px 10px;background:#FBF3E6}
+.mail .fold{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border-radius:10px;font-weight:700;font-size:14px;color:var(--ink2);transition:background .4s,color .4s}
+.mail .fold b{font-weight:800;font-size:11px;min-width:20px;height:20px;border-radius:999px;display:grid;place-items:center;padding:0 6px;transition:background .4s,color .4s}
+.mail .fold.d b{background:var(--ink3);color:#fff}
+.mail .fold.s b{background:transparent;color:transparent}
+.mail .side .who{display:flex;align-items:center;gap:8px;margin-top:26px;padding:0 10px;font-size:12px;font-weight:700;color:var(--ink3)}
+.mail .side .who svg{width:26px;height:26px}
+.mail .list{position:relative;padding:14px 16px}
+.mail .list small.h{display:block;font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--ink3);margin:2px 4px 10px}
+.mail .msg{position:relative;background:#fff;border:1.6px solid var(--ink);border-radius:16px;padding:16px 18px 18px;transition:transform .9s cubic-bezier(.6,0,.2,1),opacity .5s}
+.mail .msg .top2{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink3);font-weight:600}
+.mail .msg .tag{font-weight:800;font-size:10px;letter-spacing:.12em;border-radius:999px;padding:3px 8px;background:#efe6da;color:var(--ink3);transition:background .4s,color .4s}
+.mail .msg .when{margin-left:auto}
+.mail .msg h4{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;margin:10px 0 6px}
+.mail .msg p{font-size:15px;line-height:1.45;color:var(--ink2)}
+.mail .msg .stamp{position:absolute;right:12px;bottom:-22px;width:74px;height:74px;transform:rotate(-12deg) scale(0);transition:transform .6s cubic-bezier(.3,1.6,.5,1) .9s}
+.mail .ghost{margin-top:12px;height:56px;border-radius:12px;border:1.4px dashed rgba(26,20,18,.18)}
+.mail .ghost + .ghost{opacity:.6}
+.mail .dust{position:absolute;right:20px;top:58px;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink3);transition:opacity .4s}
+/* sent state, when the window scrolls into view */
+.mail.sent .fold.d b{background:transparent;color:transparent}
+.mail.sent .fold.s{background:var(--ink);color:var(--cream)}
+.mail.sent .fold.s b{background:var(--pink);color:#fff}
+.mail.sent .msg .tag{background:var(--pink);color:#fff}
+.mail.sent .msg .stamp{transform:rotate(-12deg) scale(1)}
+.mail.sent .dust{opacity:0}
+.mail .tag .t2,.mail.sent .tag .t1{display:none}
+.mail.sent .tag .t2{display:inline}
+.mail .lh .t2,.mail.sent .lh .t1{display:none}
+.mail.sent .lh .t2{display:inline}
+.mail.sent .msg{animation:fly 1s cubic-bezier(.6,0,.2,1)}
+@keyframes fly{0%{transform:none}35%{transform:translate(-30px,-8px) rotate(-2deg);opacity:.7}36%{transform:translate(40px,0);opacity:0}60%{transform:translate(12px,0);opacity:1}100%{transform:none}}
+.mail-cap{display:flex;justify-content:space-between;gap:12px;margin:22px 6px 0;font-size:14px;font-weight:700;color:var(--ink3)}
+.mail-cap span b{color:var(--ink)}
+
+/* the guide's comparison, as a plain list */
+.cmp-l{max-width:1000px;margin:84px auto 0}
+.cmp-l table{width:100%;border-collapse:collapse}
+.cmp-l th,.cmp-l td{padding:16px 10px;text-align:left;vertical-align:middle;border-top:1.4px solid rgba(26,20,18,.14);font-size:17px;line-height:1.4}
+.cmp-l tbody tr:last-child td{border-bottom:1.4px solid rgba(26,20,18,.14)}
+.cmp-l thead th{border-top:0;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);padding-bottom:12px}
+.cmp-l th.c,.cmp-l td.c{text-align:center;width:150px}
+.cmp-l .v{background:rgba(255,212,0,.32)}
+.cmp-l thead .v{background:var(--sun);color:var(--ink);border-radius:12px 12px 0 0}
+.cmp-l td:first-child small{display:inline;font-size:14.5px;color:var(--ink3);margin-left:6px}
 .y{font-weight:800;font-size:19px}
 .n{color:#a89b8f;font-weight:600}
-.tbl .note{font-size:13.5px;color:var(--ink3);font-weight:600;line-height:1.3}
+.cmp-l .note{font-size:13.5px;color:var(--ink3);font-weight:600;line-height:1.3}
 .sr{position:absolute;left:-9999px}
-.under{max-width:640px;margin:34px auto 0;text-align:center;font-family:var(--serif);font-size:clamp(24px,2.4vw,30px);line-height:1.25}
-.under b{font-weight:400;background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%);padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
-/* ---------- 4. what's in VIP: one focused row each ---------- */
-.rows{margin-top:76px;display:grid;gap:110px}
-.row{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:64px;align-items:center}
+/* ---------- 4. what's in VIP: one focused row each, editorial ---------- */
+.inc .hd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:end}
+.inc .hd .eyebrow{text-align:left}
+.inc .hd h2{font-size:clamp(46px,5.4vw,78px);line-height:.98;margin:16px 0 0;text-align:left;max-width:14ch}
+.inc .hd p{font-family:var(--serif);font-size:clamp(22px,2.1vw,27px);line-height:1.3;color:var(--ink2);max-width:430px;justify-self:end}
+.rows{margin-top:80px;display:grid;gap:0}
+.row{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:72px;align-items:center;padding:80px 0;border-top:1.6px solid var(--ink)}
+.row:first-child{border-top:0;padding-top:0}
 .row.flip .art{order:2}
-.art{position:relative;aspect-ratio:6/5;border-radius:28px;overflow:hidden;border:1.8px solid var(--ink);
+.art{position:relative;aspect-ratio:6/5;border-radius:30px;overflow:hidden;
   background:var(--kraft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
 .stage{position:absolute;left:0;top:0;width:600px;height:500px;transform-origin:0 0;transform:scale(var(--k,1))}
 .stage .fl{position:absolute;opacity:.2}
-.num{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:var(--pink);color:#fff;font-family:var(--serif);font-size:28px;box-shadow:0 0 0 5px var(--cream),0 12px 22px -10px rgba(247,37,133,.7)}
-.row h3{font-size:clamp(38px,3.8vw,54px);line-height:1.02;margin:20px 0 14px}
-.chips2{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.chips2 span{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:7px 12px;border:1.5px solid var(--ink);background:#fff}
-.chips2 span:first-child{background:var(--ink);color:var(--sun);border-color:var(--ink)}
-.row p{font-size:18px;line-height:1.6;color:var(--ink2);max-width:500px}
-.how{list-style:none;margin-top:22px;background:#fff;border:1.6px solid var(--ink);border-radius:20px;padding:6px 20px;max-width:500px;box-shadow:6px 6px 0 var(--sun),6px 6px 0 1.6px var(--ink)}
-.how li{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;padding:13px 0;font-size:16px;line-height:1.45;color:var(--ink2)}
-.how li + li{border-top:1.4px dashed rgba(26,20,18,.16)}
+.num{display:block;font-family:var(--serif);font-size:120px;line-height:.8;color:transparent;-webkit-text-stroke:1.6px var(--pink);letter-spacing:-.02em}
+.row h3{font-size:clamp(40px,4vw,58px);line-height:1;margin:18px 0 12px}
+.meta{font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
+.meta b{color:var(--pink);font-weight:800}
+.row p{font-size:18.5px;line-height:1.6;color:var(--ink2);max-width:500px}
+.how{list-style:none;margin-top:24px;max-width:500px;counter-reset:h}
+.how li{counter-increment:h;display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:baseline;padding:12px 0;font-size:16.5px;line-height:1.45;color:var(--ink2);border-top:1.4px dashed rgba(26,20,18,.2)}
+.how li:before{content:counter(h);font-family:var(--serif);font-size:28px;line-height:1;color:var(--pink)}
 .how li b{color:var(--ink)}
-.how .k{width:30px;height:30px;border-radius:50%;background:var(--sun);border:1.5px solid var(--ink);display:grid;place-items:center;font-weight:800;font-size:13px;color:var(--ink)}
-.how .k.p{background:var(--pink);color:#fff}
-.row .soft{font-size:15.5px;color:var(--ink3);margin-top:16px}
+.row .soft{font-size:15.5px;color:var(--ink3);margin-top:14px;font-style:italic;font-family:var(--serif);font-size:20px}
 
 /* 01: the VIP call */
 .call{position:absolute;left:34px;top:40px;width:532px;height:396px;background:#fff;border:3px solid var(--ink);border-radius:22px;box-shadow:0 30px 50px -26px rgba(70,45,25,.55);overflow:hidden;transform:rotate(-1.5deg)}
@@ -254,9 +303,19 @@ section{padding:110px 0}
 .anim [data-r]{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s var(--ease)}
 .anim [data-r].in{opacity:1;transform:none}
 
-/* ---------- 5. price and button + 6. decline: the order card ---------- */
+/* ---------- 5. price and button + 6. decline: a note from Ana beside the order card ---------- */
 .buy{text-align:center}
-.order{max-width:520px;margin:0 auto;text-align:left;background:#fff;border:1.8px solid var(--ink);border-radius:26px;padding:28px 28px 22px;box-shadow:10px 10px 0 var(--sun),10px 10px 0 1.8px var(--ink)}
+.buy-g{display:grid;grid-template-columns:minmax(0,1fr) 500px;gap:64px;align-items:center;max-width:1100px;margin:0 auto;text-align:left}
+.letter{position:relative;background:#fff;border-radius:6px;padding:46px 46px 40px 74px;box-shadow:0 30px 60px -30px rgba(70,45,25,.45);transform:rotate(-1.5deg);
+  background-image:linear-gradient(90deg,transparent 52px,rgba(247,37,133,.35) 52px,rgba(247,37,133,.35) 54px,transparent 54px)}
+.letter:before{content:"";position:absolute;left:50%;top:-14px;width:120px;height:30px;margin-left:-60px;background:rgba(255,212,0,.75);transform:rotate(-3deg)}
+.letter .from{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.letter .from img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--ink)}
+.letter p{font-family:var(--serif);font-size:25px;line-height:1.38;color:var(--ink)}
+.letter p + p{margin-top:14px}
+.letter p em{color:var(--pink)}
+.letter .sig{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--pink);line-height:1;margin-top:14px}
+.order{max-width:500px;margin:0 auto;text-align:left;background:#fff;border:1.8px solid var(--ink);border-radius:26px;padding:28px 28px 22px;box-shadow:10px 10px 0 var(--sun),10px 10px 0 1.8px var(--ink)}
 .order .ok{font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
 .order h2{font-size:38px;line-height:1.02;margin:8px 0 4px}
 .order .terms{font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
@@ -314,9 +373,17 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   .steps{font-size:12px;gap:7px}
   .steps .ln{width:16px}
 }
+@media (max-width:1060px){
+  .buy-g{grid-template-columns:1fr;max-width:560px;gap:56px}
+}
 @media (max-width:900px){
+  .cmp-g{grid-template-columns:1fr;gap:44px}
+  .cmp h2{max-width:none}
+  .inc .hd{grid-template-columns:1fr;gap:18px}
+  .inc .hd p{justify-self:start}
+
   section{padding:84px 0}
-  .row,.row.flip{grid-template-columns:1fr;gap:30px}
+  .row,.row.flip{grid-template-columns:1fr;gap:30px;padding:60px 0}
   .row.flip .art{order:0}
   .rows{gap:72px}
 }
@@ -337,9 +404,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   .order{padding:22px 18px 18px;box-shadow:7px 7px 0 var(--sun),7px 7px 0 1.8px var(--ink);border-radius:22px;margin-right:7px}
   .order h2{font-size:33px}
   .total b{font-size:38px}
-  .how{padding:4px 14px;box-shadow:5px 5px 0 var(--sun),5px 5px 0 1.6px var(--ink);margin-right:5px}
   .how li{font-size:15px}
-  .chips2 span{font-size:11px}
   .hero{padding:28px 0 64px}
   .hero h1{font-size:42px;margin:12px auto 14px}
   .hero .sub{font-size:16.5px;line-height:1.5}
@@ -358,17 +423,33 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   .quick{margin-top:40px;gap:14px;flex-wrap:nowrap}
   .quick .p{font-size:26px}
   .quick .btn{flex:1;padding:0 16px;height:56px;font-size:17px}
-  .cmp h2,.inc h2{font-size:38px}
-  .tbl{margin:36px 6px 0 0;border-radius:20px;box-shadow:6px 6px 0 var(--ink)}
-  .tbl th,.tbl td{padding:13px 12px;font-size:14.5px}
-  .tbl th.c,.tbl td.c{width:68px;padding-left:6px;padding-right:6px}
-  .tbl thead th{font-size:10.5px;letter-spacing:.08em}
-  .tbl .note{font-size:11.5px}
-  .tbl td:first-child small{font-size:12.5px}
-  .under{font-size:22px}
+  .cmp h2,.inc .hd h2{font-size:44px}
+  .mail{transform:none;border-radius:18px}
+  .mail .body{grid-template-columns:96px 1fr;min-height:0}
+  .mail .side{padding:10px 6px}
+  .mail .fold{font-size:12px;padding:8px 6px}
+  .mail .side .who{display:none}
+  .mail .list{padding:12px 10px}
+  .mail .msg h4{font-size:20px}
+  .mail .dust{display:none}
+  .mail .ghost{display:none}
+  .mail .msg .top2{flex-wrap:wrap;gap:6px 8px}
+  .mail .msg .when{margin-left:0;width:100%}
+  .mail .msg h4{font-size:22px}
+  .mail .msg p{font-size:14px}
+  .mail .msg{padding:14px 14px 18px}
+  .mail-cap{flex-direction:column;gap:4px;font-size:13px}
+  .cmp-l{margin-top:56px}
+  .cmp-l th,.cmp-l td{padding:13px 6px;font-size:14.5px}
+  .cmp-l th.c,.cmp-l td.c{width:66px}
+  .cmp-l thead th{font-size:10px;letter-spacing:.08em}
+  .cmp-l td:first-child small{display:block;margin:0;font-size:12.5px}
+  .cmp-l .note{font-size:11.5px}
+  .num{font-size:84px}
+  .letter{padding:34px 22px 30px 50px;margin-right:4px;background-image:linear-gradient(90deg,transparent 34px,rgba(247,37,133,.35) 34px,rgba(247,37,133,.35) 36px,transparent 36px)}
+  .letter p{font-size:21px}
   .rows{margin-top:44px}
   .art{border-radius:20px}
-  .num{width:48px;height:48px;font-size:24px}
   .row h3{font-size:36px;margin:16px 0 12px}
   .row p{font-size:16.5px}
   .faqs{margin-top:76px}
@@ -469,33 +550,65 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   </div></div>
 </section>
 
-<!-- 3. free vs VIP -->
+<!-- 3. free vs VIP: the same ask, in Drafts (free) or in Sent (VIP) -->
 <section class="sand cmp">
   <div class="wrap">
-    <span class="eyebrow" style="text-align:center" data-r>What happens if I don't?</span>
-    <h2 data-r>Free gets it written. <em>VIP gets it sent.</em></h2>
-    <div class="tbl" data-r>
+    <div class="cmp-g">
+      <div data-r>
+        <span class="eyebrow">What happens if I don't?</span>
+        <h2>Free gets it written. <em>VIP gets it sent.</em></h2>
+        <p class="lead">The hard part isn't writing the ask. It's sending it. <b>VIP is the Friday where you bring it to me and leave ready to send it.</b></p>
+      </div>
+      <div data-r>
+        <div class="mail" id="mail" aria-hidden="true">
+          <div class="chrome"><i></i><i></i><i></i><span>your newsletter</span></div>
+          <div class="body">
+            <div class="side">
+              <div class="fold">Inbox<b></b></div>
+              <div class="fold d">Drafts<b>1</b></div>
+              <div class="fold s">Sent<b>1</b></div>
+              <div class="who"><svg viewBox="-60 -60 120 120"><use href="#sf"/></svg>how we grow</div>
+            </div>
+            <div class="list">
+              <small class="h lh"><span class="t1">DRAFTS</span><span class="t2">SENT</span></small>
+              <div class="msg">
+                <div class="top2"><span class="tag"><span class="t1">DRAFT</span><span class="t2">SENT</span></span><span>to: your readers</span><span class="when lh"><span class="t1">saved Thu, Nov 19</span><span class="t2">Fri, Nov 20</span></span></div>
+                <h4>It opens Monday. Here is who it's for.</h4>
+                <p>Your offer, your price and your ask, written on Day 3.</p>
+                <svg class="stamp" viewBox="-60 -60 120 120"><use href="#sf"/></svg>
+              </div>
+              <div class="ghost"></div><div class="ghost"></div>
+              <span class="dust">still here a week later</span>
+            </div>
+          </div>
+        </div>
+        <div class="mail-cap"><span><b>free:</b> it gets written</span><span><b>VIP:</b> it gets sent</span></div>
+      </div>
+    </div>
+
+    <div class="cmp-l" data-r>
       <table>
         <thead><tr><th scope="col"><span class="sr">What you get</span></th><th class="c" scope="col">free</th><th class="c v" scope="col">VIP ($67)</th></tr></thead>
         <tbody>
           <tr><td>All three sessions, live</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>The Day 3 prize draw<small>live attendees</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>The Day 3 prize draw <small>live attendees</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>Your offer, price and ask, written</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>90-minute live Q&amp;A where I work on what you wrote<small>Fri Nov 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>90-minute live Q&amp;A where I work on what you wrote <small>Fri Nov 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>My Offer Clarity Sprint</td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>The full recordings, to keep</td><td class="c"><span class="note">short highlights after the event</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="under" data-r>The hard part isn't writing the ask. It's sending it. <b>VIP is the Friday where you bring it to me and leave ready to send it.</b></p>
   </div>
 </section>
 
 <!-- 4. what's in VIP: one focused row each -->
 <section class="inc">
   <div class="wrap">
-    <span class="eyebrow" style="text-align:center" data-r>What's in VIP</span>
-    <h2 data-r>Three things, <em>for the Friday you finish.</em></h2>
+    <div class="hd" data-r>
+      <div><span class="eyebrow">What's in VIP</span><h2>Three things, <em>for the Friday you finish.</em></h2></div>
+      <p>Each one is about the same piece of work: the offer and the ask you wrote in the three days.</p>
+    </div>
     <div class="rows">
       <!-- 01: the live Q&A -->
       <div class="row" data-r>
@@ -519,12 +632,12 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <div class="tx">
           <span class="num">01</span>
           <h3>A live Q&amp;A <em>with me.</em></h3>
-          <div class="chips2"><span>Friday, Nov 20</span><span>90 minutes</span><span>VIPs only</span></div>
+          <p class="meta"><b>Friday, Nov 20</b> · 90 minutes · VIPs only</p>
           <p>Bring your offer, your price or your ask, and I'll work on it with you live.</p>
           <ol class="how">
-            <li><span class="k">1</span><span><b>Bring what you wrote.</b> Your offer, your price or your ask from the three days.</span></li>
-            <li><span class="k">2</span><span><b>I work on it with you, live.</b> 90 minutes on what you actually wrote.</span></li>
-            <li><span class="k p">3</span><span><b>Leave ready to send it.</b></span></li>
+            <li><span><b>Bring what you wrote.</b> Your offer, your price or your ask from the three days.</span></li>
+            <li><span><b>I work on it with you, live.</b> 90 minutes on what you actually wrote.</span></li>
+            <li><span><b>Leave ready to send it.</b></span></li>
           </ol>
           <p class="soft">Can't make it? Send it ahead and watch the recording.</p>
         </div>
@@ -548,13 +661,13 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <div class="tx">
           <span class="num">02</span>
           <h3>My Offer <em>Clarity Sprint.</em></h3>
-          <div class="chips2"><span>Bonus</span><span>Yours to keep</span></div>
+          <p class="meta"><b>Bonus</b> · yours to keep</p>
           <!-- [one line from Ana: what it helps you do]. No price shown: it isn't confirmed on sale on its own. -->
           <p>So the offer you bring on Friday is clear before you ask anyone to buy it.</p>
           <ol class="how">
-            <li><span class="k">1</span><span><b>Day 2</b> gets your offer into one sentence, with a price.</span></li>
-            <li><span class="k">2</span><span><b>The Sprint</b> makes it clear before you say it out loud.</span></li>
-            <li><span class="k p">3</span><span><b>Friday,</b> you bring the clear version to the Q&amp;A.</span></li>
+            <li><span><b>Day 2</b> gets your offer into one sentence, with a price.</span></li>
+            <li><span><b>The Sprint</b> makes it clear before you say it out loud.</span></li>
+            <li><span><b>Friday,</b> you bring the clear version to the Q&amp;A.</span></li>
           </ol>
         </div>
       </div>
@@ -575,12 +688,12 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <div class="tx">
           <span class="num">03</span>
           <h3>The recordings, <em>to keep.</em></h3>
-          <div class="chips2"><span>All three sessions</span><span>Full length</span></div>
+          <p class="meta"><b>All three sessions</b> · full length</p>
           <p>All three sessions, so you can go back to them while you build.</p>
           <ol class="how">
-            <li><span class="k">1</span><span><b>Before Friday.</b> Rewatch the part you're stuck on, then bring it to the Q&amp;A.</span></li>
-            <li><span class="k">2</span><span><b>While you build.</b> Day 2 is there when you price your offer again.</span></li>
-            <li><span class="k p">3</span><span><b>Before you send.</b> Day 3 is there when you write your next ask.</span></li>
+            <li><span><b>Before Friday.</b> Rewatch the part you're stuck on, then bring it to the Q&amp;A.</span></li>
+            <li><span><b>While you build.</b> Day 2 is there when you price your offer again.</span></li>
+            <li><span><b>Before you send.</b> Day 3 is there when you write your next ask.</span></li>
           </ol>
           <p class="soft">Free seats get a short highlights video after the event.</p>
         </div>
@@ -592,6 +705,16 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 <!-- 5. price and button + 6. decline + 7. questions -->
 <section class="sand buy" id="buy">
   <div class="wrap">
+    <div class="buy-g">
+    <!-- a note from Ana, from the VIP video script in the guide (we write it, she says it her way) -->
+    <div class="letter" data-r>
+      <div class="from"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy">A note from Ana</div>
+      <p>You're in. I'll see you Tuesday.</p>
+      <p>Here's what usually happens. People write the offer and the ask on Day 3, and then <em>they sit in a draft.</em></p>
+      <p>VIP is the Friday after. You bring what you wrote, and I work on it with you live, for 90 minutes.</p>
+      <p>And if free is enough, that's fine. Come live.</p>
+      <div class="sig">Ana</div>
+    </div>
     <aside class="order" id="order" data-r>
       <p class="ok">One optional upgrade</p>
       <h2>You’re one step from <em>VIP.</em></h2>
@@ -613,6 +736,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
       <p class="dl"><button class="decline" type="button">Free is perfect for me. See you Tuesday →</button></p>
       <p class="fine">You can skip this and keep your free seat for all three days.</p>
     </aside>
+    </div>
 
     <div class="faqs">
       <h2 data-r>Three quick questions</h2>
@@ -705,6 +829,11 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   var arts = document.querySelectorAll('.art');
   function fit(){ arts.forEach(function(a){ var st = a.querySelector('.stage'); if (st) st.style.setProperty('--k', a.clientWidth/600) }) }
   fit(); if (window.ResizeObserver) new ResizeObserver(fit).observe(document.body); else addEventListener('resize', fit);
+
+  /* the mail window: the draft moves to Sent once it is in view */
+  var mail = document.getElementById('mail');
+  if (reduce || !('IntersectionObserver' in window)) mail.classList.add('sent');
+  else { var mo = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { setTimeout(function(){ mail.classList.add('sent') }, 900); mo.disconnect() } }, {threshold:.6}); mo.observe(mail) }
 
   /* reveal on scroll; the drawings play once */
   if (!reduce && 'IntersectionObserver' in window) {
