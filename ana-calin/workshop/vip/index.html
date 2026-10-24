@@ -72,7 +72,7 @@ section{padding:110px 0}
 .fb-n{flex:none;font-weight:800;font-size:11px;letter-spacing:.16em;color:rgba(255,248,238,.6);padding-left:18px;border-left:1px solid rgba(255,248,238,.16)}
 
 /* ---------- 1. hero: headline across, then the video and the order card side by side ---------- */
-.hero{position:relative;padding:34px 0 96px;overflow:clip}
+.hero{position:relative;padding:24px 0 96px;overflow:clip}
 .bgf{position:absolute;opacity:.11;pointer-events:none}
 .hero .bgf.a{width:440px;height:440px;left:-210px;top:60px}
 .hero .bgf.b{width:380px;height:380px;right:-170px;bottom:-60px}
@@ -83,8 +83,8 @@ section{padding:110px 0}
 
 .saved b{font-weight:800}
 .toprow .eyebrow{color:var(--pink)}
-.hero h1{font-size:clamp(42px,4.3vw,62px);line-height:1.02;margin:18px auto 0;max-width:none;text-align:center;text-wrap:balance}
-.hv{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:stretch;margin-top:30px}
+.hero h1{font-size:clamp(40px,3.9vw,58px);line-height:1.02;margin:12px auto 0;max-width:none;text-align:center;text-wrap:balance}
+.hv{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:stretch;margin-top:22px}
 .hv .order{display:flex;flex-direction:column;margin-bottom:22px}
 .hv .order .btn{margin-top:0}
 .tot2{margin-top:auto;margin-bottom:14px;padding:12px 14px;border-radius:14px;background:var(--cream);border:1.4px solid rgba(26,20,18,.12);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--ink3);font-weight:600}
@@ -93,7 +93,7 @@ section{padding:110px 0}
 body.is-closed .tot2{display:none}
 .oh{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 .oh .op{font-weight:800;font-size:22px;letter-spacing:-.02em}
-.hv .order .ticks{margin:12px 0 14px;padding:12px 0 0;border-top:1.5px dashed rgba(26,20,18,.18);gap:9px}
+.hv .order .ticks{margin:10px 0 12px;padding:10px 0 0;border-top:1.5px dashed rgba(26,20,18,.18);gap:7px}
 .hv .order .ticks li{font-size:15px;white-space:nowrap}
 .hv .under{margin-top:0;text-align:center;font-size:16.5px;line-height:1.5;color:var(--ink2);max-width:620px}
 .hv .under b{color:var(--ink)}
@@ -384,6 +384,36 @@ footer .links span{letter-spacing:.16em}
 footer .links a{text-decoration:underline;text-underline-offset:3px}
 
 
+/* WhatsApp: the VIP group drawing, the popup's mini chat */
+.hsub{max-width:860px;margin:10px auto 0;font-size:17px;line-height:1.5;color:var(--ink2);text-align:center;text-wrap:balance}
+.wai{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#25D366;color:#fff;flex:none}
+.wai .wa{width:20px;height:20px}
+.art.wag{background-color:var(--ysoft)}
+.wchat{position:absolute;left:96px;top:44px;width:408px;display:grid;gap:12px;transform:rotate(-1.2deg)}
+.wh{display:flex;align-items:center;gap:12px;padding:12px 14px;border:2px solid var(--ink);border-radius:18px;background:var(--ink);color:var(--cream);box-shadow:6px 6px 0 var(--ink)}
+.wh b{display:block;font-size:17px;line-height:1.2}
+.wh small{display:block;font-size:13px;font-weight:600;color:rgba(255,248,238,.65)}
+.wb{justify-self:start;max-width:84%;padding:10px 14px;border:2px solid var(--ink);border-radius:6px 18px 18px 18px;background:#fff;font-size:16px;line-height:1.35;font-weight:600}
+.wb small{display:block;font-size:12px;font-weight:800;color:#1e7d43;margin-bottom:3px}
+.wb.ana small{color:var(--pink)}
+.wb.me{justify-self:end;border-radius:18px 6px 18px 18px;background:#DCF8C6}
+.wb.me small{color:var(--ink3)}
+.wb .tk2{margin-left:8px;font-size:12px;font-weight:800;color:#34B7F1}
+.vn{display:flex;align-items:center;gap:10px;min-width:250px}
+.vn i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pink);flex:none}
+.vn i svg{width:13px;height:13px;margin-left:2px}
+.vn .wv{display:flex;align-items:center;gap:3px;flex:1;height:24px}
+.vn .wv b{display:block;width:3.5px;border-radius:2px;background:var(--ink3)}
+.vn em{font-style:normal;font-size:12px;font-weight:700;color:var(--ink3)}
+.wbadge{position:absolute;right:52px;bottom:40px;display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#25D366;color:#fff;border:2.5px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transform:rotate(8deg)}
+.wbadge .wa{width:46px;height:46px}
+.mwa{position:relative;width:108px;height:62px;border:2px solid var(--ink);border-radius:10px;background:#fff;box-shadow:3px 3px 0 var(--ink)}
+.mwa .wai{position:absolute;left:6px;top:6px;width:22px;height:22px}
+.mwa .wai .wa{width:13px;height:13px}
+.mwa .b1,.mwa .b2{position:absolute;height:12px;border-radius:6px;border:1.5px solid var(--ink)}
+.mwa .b1{left:34px;top:9px;width:58px;background:var(--cream)}
+.mwa .b2{right:7px;bottom:8px;width:62px;background:#DCF8C6}
+
 /* ---------- the leave popups ---------- */
 .pop{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:24px;background:rgba(26,20,18,.72);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
 .pop.open{opacity:1;visibility:visible;transition:opacity .25s}
@@ -465,7 +495,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 .pbox.leaving .lt2 small{color:#b9a9a0}
 .pbox.leaving .lt2 s:after{transform:scaleX(1)}
 .pbox.leaving .lose .x{opacity:1;transform:none}
-.pbox.leaving .lose li:nth-child(2) s:after,.pbox.leaving .lose li:nth-child(2) .x{transition-delay:.08s}.pbox.leaving .lose li:nth-child(3) s:after,.pbox.leaving .lose li:nth-child(3) .x{transition-delay:.16s}
+.pbox.leaving .lose li:nth-child(2) s:after,.pbox.leaving .lose li:nth-child(2) .x{transition-delay:.08s}.pbox.leaving .lose li:nth-child(3) s:after,.pbox.leaving .lose li:nth-child(3) .x{transition-delay:.16s}.pbox.leaving .lose li:nth-child(4) s:after,.pbox.leaving .lose li:nth-child(4) .x{transition-delay:.24s}
 .lose .vz{transition:filter .25s,opacity .25s}
 /* the iPhone "delete app" jiggle, kept small: each card wobbles a little out of step with the others */
 @keyframes jig{0%{transform:rotate(-.7deg) translateY(0)}50%{transform:rotate(.7deg) translateY(-.5px)}100%{transform:rotate(-.7deg) translateY(0)}}
@@ -473,6 +503,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 .pbox.leaving .lose li{animation:jig .26s ease-in-out infinite}
 .pbox.leaving .lose li:nth-child(2){animation:jig2 .3s ease-in-out infinite;animation-delay:-.07s}
 .pbox.leaving .lose li:nth-child(3){animation-duration:.28s;animation-delay:-.15s}
+.pbox.leaving .lose li:nth-child(4){animation:jig2 .27s ease-in-out infinite;animation-delay:-.2s}
 @keyframes jigf{0%,100%{transform:rotate(-13deg)}50%{transform:rotate(-11deg)}}
 .pbox.leaving .plf{animation:jigf .34s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.pbox.leaving .lose li,.pbox.leaving .plf{animation:none}}
@@ -530,6 +561,12 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   .steps .ln{width:16px}
 }
 @media (max-width:640px){
+  .hsub{font-size:15.5px;margin-top:10px}
+  .lose .mwa{width:72px;height:44px;border-radius:8px}
+  .lose .mwa .wai{width:17px;height:17px;left:4px;top:4px}
+  .lose .mwa .wai .wa{width:10px;height:10px}
+  .lose .mwa .b1{left:25px;top:6px;width:38px;height:9px}
+  .lose .mwa .b2{width:40px;height:9px;bottom:5px;right:5px}
   body{font-size:16px}
   .wrap{padding:0 16px}
   section{padding:72px 0}
@@ -668,6 +705,8 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
     </div>
     <!-- headline A/B: ?h=A or ?h=B previews one -->
     <h1 id="h1">Is my offer good enough to sell? <em>Bring it on Friday and I'll tell you.</em></h1>
+    <!-- [bonus name] in the guide: the Offer Clarity Sprint, as on the rest of this page -->
+    <p class="hsub">The three days get your offer, your price and your first ask written. VIP is how you finish: a private WhatsApp group where I answer your questions, a 90-minute Q&amp;A where I work on what you wrote, the Offer Clarity Sprint, and the recordings to keep.</p>
     <div class="hv">
       <div class="hvv">
         <div class="iph" id="vsl">
@@ -688,6 +727,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <div class="oh"><p class="ok">VIP · one payment</p><span class="op">$67</span></div>
         <h2>Add Friday, <em>Nov 20,</em> to your week.</h2>
         <ul class="ticks">
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Private WhatsApp group</b> with me, Nov 17 to 20</span></li>
           <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Fri, Nov 20:</b> your ready check, live</span></li>
           <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Offer Clarity Sprint</b>, before Friday</span></li>
           <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Full recordings</b> of all three days</span></li>
@@ -728,7 +768,9 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
           <tr><td>All three sessions, live <small>Nov 17 to 19</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>The Day 3 prize draw <small>live attendees</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>Your offer, price and ask, written</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>Reminders on WhatsApp <small>voice notes, short videos</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>Your ready check: 90 minutes live with me on what you wrote <small>Fri Nov 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>Private WhatsApp group where I answer your questions <small>Nov 17 to 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>My Offer Clarity Sprint</td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>The full recordings, to keep</td><td class="c"><span class="note">short highlights after the event</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
         </tbody>
@@ -741,8 +783,8 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 <section class="inc">
   <div class="wrap">
     <div class="hd" data-r>
-      <div><span class="eyebrow">What's in VIP</span><h2>What $67 <em>gets you.</em></h2></div>
-      <p>Three things, all built around the offer you'll have written by Thursday night.</p>
+      <div><span class="eyebrow">What's in VIP</span><h2>Four things, <em>in this order.</em></h2></div>
+      <p>All built around the offer you'll have written by Thursday night.</p>
     </div>
     <div class="rows">
       <!-- 01: the live Q&A -->
@@ -786,8 +828,29 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         </div>
       </div>
 
-      <!-- 02: the bonus. Ana writes the one line on what it helps you do; no price until it's confirmed on sale on its own -->
+      <!-- 02: the VIP WhatsApp group (open chat, VIPs only). [Nov 20 or Nov 30: Ana's last day in the chat, to confirm] -->
       <div class="row flip" data-r>
+        <div class="art wag" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:-80px;top:-70px;width:230px;height:230px"><use href="#sfo"/></svg>
+          <div class="wchat">
+            <div class="wh"><span class="wai"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span><span><b>VIP group · how we grow</b><small>Ana and the VIPs</small></span></div>
+            <div class="wb"><small>Rosa</small>Is $49 too low for a 4-week plan?</div>
+            <div class="wb ana"><small>Ana</small><span class="vn"><i><svg viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span class="wv"><b style="height:7px"></b><b style="height:12px"></b><b style="height:19px"></b><b style="height:10px"></b><b style="height:15px"></b><b style="height:22px"></b><b style="height:9px"></b><b style="height:14px"></b><b style="height:18px"></b><b style="height:8px"></b><b style="height:13px"></b><b style="height:20px"></b><b style="height:10px"></b><b style="height:7px"></b><b style="height:14px"></b><b style="height:17px"></b><b style="height:9px"></b><b style="height:12px"></b><b style="height:16px"></b><b style="height:8px"></b></span><em>0:42</em></span></div>
+            <div class="wb ana"><small>Ana</small>Say $79, and put the result in the first line.</div>
+            <div class="wb me"><small>You</small>Changing it now.<span class="tk2">✓✓</span></div>
+          </div>
+          <span class="wbadge"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span>
+        </div></div>
+        <div class="tx">
+          <span class="num">02</span>
+          <h3>A private WhatsApp group <em>with me.</em></h3>
+          <p class="meta"><b>Nov 17 to Nov 20</b> · Ana in the chat</p>
+          <p>An open chat, just for VIPs. I'm in there through the three days, answering your questions while you build. Ask about your offer, your price or your ask, and get an answer from me, not a help desk.</p>
+        </div>
+      </div>
+
+      <!-- 03: the bonus. Ana writes the one line on what it helps you do; no price until it's confirmed on sale on its own -->
+      <div class="row" data-r>
         <div class="art" aria-hidden="true"><div class="stage">
           <svg class="fl" style="left:-70px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
           <div class="book">
@@ -802,7 +865,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
           </div>
         </div></div>
         <div class="tx">
-          <span class="num">02</span>
+          <span class="num">03</span>
           <h3>My Offer <em>Clarity Sprint.</em></h3>
           <p class="meta"><b>Bonus</b> · yours to keep</p>
           <p>For the part most people get stuck on: saying what they sell in one plain sentence. Work through it before Friday, and we can spend the call on your ask.</p>
@@ -815,8 +878,8 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         </div>
       </div>
 
-      <!-- 03: the recordings -->
-      <div class="row" data-r>
+      <!-- 04: the recordings -->
+      <div class="row flip" data-r>
         <div class="art" aria-hidden="true"><div class="stage">
           <svg class="fl" style="left:440px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
           <div class="player">
@@ -829,7 +892,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
           </div>
         </div></div>
         <div class="tx">
-          <span class="num">03</span>
+          <span class="num">04</span>
           <h3>Every session, <em>to keep.</em></h3>
           <p class="meta"><b>Nov 17, 18 and 19</b> · full length</p>
           <p>Free seats get a short highlights video after the event. VIP keeps all three sessions in full, so you can go back to the exact part you need.</p>
@@ -884,10 +947,11 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <div class="sig">Ana</div>
       </div>
       <div class="bb" id="buyBlock" data-r>
-        <span class="lbl">VIP · one payment</span>
+        <span class="lbl">VIP</span>
         <div class="price">$67</div>
-        <p class="when">Your ready check on Friday, Nov 20, plus the rest</p>
+        <p class="when">One payment, for the private WhatsApp group with me, the Q&amp;A on Friday, Nov 20, the Offer Clarity Sprint, and the recordings.</p>
         <ul class="ticks">
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>A private WhatsApp group</b> with me, Nov 17 to 20</span></li>
           <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Fri, Nov 20:</b> your ready check, 90 minutes live with me</span></li>
           <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Offer Clarity Sprint,</b> to get your offer clear before Friday</span></li>
           <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>The full recordings</b> of all three days, to keep</span></li>
@@ -904,6 +968,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
       <div data-r>
         <details class="faq" open><summary>Do I need VIP to come live?<i aria-hidden="true"></i></summary><p class="a">No. All three sessions are free, and live is where the work happens.</p></details>
         <details class="faq"><summary>When is the Friday call?<i aria-hidden="true"></i></summary><p class="a">Friday, Nov 20, for 90 minutes. The time and the link come by email with your join details.</p></details>
+        <details class="faq"><summary>What happens in the VIP WhatsApp group?<i aria-hidden="true"></i></summary><p class="a">It's an open chat for VIPs only. I'm in there from Tue Nov 17 to Fri Nov 20, answering questions while you build. Other members can see your name and number, the way any WhatsApp group works.</p></details>
         <details class="faq"><summary>What if I can't make it on Friday?<i aria-hidden="true"></i></summary><p class="a">Send your offer or your ask ahead. I'll answer it live, and you get the recording.</p></details>
         <details class="faq"><summary>Can I get a refund?<i aria-hidden="true"></i></summary><p class="a">No. I don't offer refunds, so only get it if you'll bring your offer on Friday.</p></details>
       </div>
@@ -934,10 +999,10 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <p class="why">The three days are free either way, and you'll get the whole workshop. VIP is for what comes after: <b>the Friday where I tell you, live, whether your offer is ready to sell.</b></p>
       </div>
       <div class="pl">
-        <svg class="plf" aria-hidden="true"><use href="#sf"/></svg>
         <span class="ttl"><span class="on">What VIP adds to your week</span><span class="off">What you'd leave behind</span></span>
         <ul class="lose">
           <li><div class="vz"><div class="mc"><div class="t"><i></i>FRI NOV 20<em>LIVE</em></div><div class="g"><img src="../img/ana-hat.webp" alt=""><div><span class="h"></span><span></span><span style="width:70%"></span></div></div></div></div><div class="lt2"><s>Your ready check, live</s><small>Fri, Nov 20 · 90 min with me</small></div><i class="x"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i></li>
+          <li><div class="vz"><div class="mwa"><span class="wai"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span><span class="b1"></span><span class="b2"></span></div></div><div class="lt2"><s>Private WhatsApp group</s><small>Nov 17 to 20 · with me in the chat</small></div><i class="x"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i></li>
           <li><div class="vz"><div class="mbk"><span>Offer Clarity Sprint</span></div></div><div class="lt2"><s>The Offer Clarity Sprint</s><small>Bonus · use it before Friday</small></div><i class="x"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i></li>
           <li><div class="vz"><div class="mpl"><div class="s"><i></i></div><div class="r"><span></span><span></span><span></span></div></div></div><div class="lt2"><s>Full recordings</s><small>All three days, to rewatch</small></div><i class="x"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i></li>
         </ul>
@@ -968,7 +1033,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 (function(){
   /* ---- settings Theia fills in ---- */
   var CHECKOUT_URL = '';  // Stripe Payment Link for "VIP: <event name>", $67 one-time. Empty = demo (the button scrolls to the price block).
-  var CONFIRM_URL  = '';  // the registered confirmation page (after the decline). Empty = back to the registration page.
+  var CONFIRM_URL  = '../confirmed/';  // the registered confirmation page (after the decline). The checkout's success URL is ../vip-confirmed/?first={first}&email={email}
   var VSL_SRC      = '';  // Ana's VIP video (mp4), 60 to 90 seconds. Required for launch.
   var CLOSES       = Date.UTC(2026, 10, 18, 4, 59); // Tue Nov 17, 11:59 pm New York
   /* ---------------------------------- */
@@ -978,7 +1043,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   try { reg = JSON.parse(sessionStorage.getItem('ana_reg') || '{}') } catch (e) {}
   var email = (qs.get('email') || reg.email || '').trim();
   var ref = (qs.get('ref') || reg.ref || '').trim();
-  var first = (qs.get('first_name') || reg.first_name || '').trim().split(/\s+/)[0];
+  var first = (qs.get('first') || qs.get('first_name') || reg.first_name || '').trim().split(/\s+/)[0];
   if (first && first.length < 30) document.getElementById('hi').textContent = first + ', your';
 
   /* headline A/B: 50/50 per visitor (cookie). ?h=A or ?h=B previews one. */
@@ -1010,8 +1075,9 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   /* decline: popup 1, then "are you sure", then the confirmation page. They stay registered either way. */
   function leave(){
     var u = CONFIRM_URL || '../', p = [];
-    if (qs.get('first_name')) p.push('first_name=' + encodeURIComponent(qs.get('first_name')));
+    if (first) p.push('first=' + encodeURIComponent(first));
     if (email) p.push('email=' + encodeURIComponent(email));
+    if (ref) p.push('ref=' + encodeURIComponent(ref));
     location.href = u + (p.length ? (u.indexOf('?') < 0 ? '?' : '&') + p.join('&') : '');
   }
   var pop1 = document.getElementById('pop1'), pop2 = document.getElementById('pop2'), lastFocus = null;

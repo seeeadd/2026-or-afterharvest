@@ -1,0 +1,57 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//how we grow//Ana Calin workshop//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Ana Calin · free 3-day live workshop
+BEGIN:VEVENT
+UID:ana-calin-20261117@howwegrowtoday.com
+DTSTAMP:20261024T120000Z
+DTSTART:20261117T170000Z
+DTEND:20261117T183000Z
+SUMMARY:Free 3-day live workshop · Day 1 with Ana Calin
+DESCRIPTION:Day 1: find what your readers would pay for. You leave with yo
+ ur one reader\, and the problem she'd pay you to fix.\nPrint your sheet b
+ efore Day 1: https://2026-or-afterharvest.vercel.app/ana-calin/workshop/a
+ ssets/sheet.pdf
+LOCATION:Your Zoom link is in your email from Ana
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Free 3-day live workshop · Day 1 with Ana Calin
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ana-calin-20261118@howwegrowtoday.com
+DTSTAMP:20261024T120000Z
+DTSTART:20261118T170000Z
+DTEND:20261118T183000Z
+SUMMARY:Free 3-day live workshop · Day 2 with Ana Calin
+DESCRIPTION:Day 2: turn it into an offer\, with a price. You leave with yo
+ ur offer\, in one sentence\, priced.\nPrint your sheet before Day 1: http
+ s://2026-or-afterharvest.vercel.app/ana-calin/workshop/assets/sheet.pdf
+LOCATION:Your Zoom link is in your email from Ana
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Free 3-day live workshop · Day 2 with Ana Calin
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ana-calin-20261119@howwegrowtoday.com
+DTSTAMP:20261024T120000Z
+DTSTART:20261119T170000Z
+DTEND:20261119T183000Z
+SUMMARY:Free 3-day live workshop · Day 3 with Ana Calin
+DESCRIPTION:Day 3: write the ask. You leave with your first ask\, written\
+ , ready to send. Stay to the end: five people there live win a 1:1 with A
+ na.\nPrint your sheet before Day 1: https://2026-or-afterharvest.vercel.a
+ pp/ana-calin/workshop/assets/sheet.pdf
+LOCATION:Your Zoom link is in your email from Ana
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Free 3-day live workshop · Day 3 with Ana Calin
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
