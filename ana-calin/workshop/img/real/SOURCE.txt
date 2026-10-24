@@ -3,3 +3,4 @@ ana-live-a / ana-real-a: https://www.youtube.com/shorts/6AV65yCJNzU (the paintin
 ana-live-b / ana-real-b: https://www.youtube.com/shorts/vxGJ8TjtnC4 (the kitchen)
 ana-live-*: the 16:9 still as YouTube publishes it (her vertical video over a blurred fill), used as video covers.
 ana-real-*: the sharp vertical centre only.
+ana-real-c: https://www.youtube.com/shorts/vxGJ8TjtnC4, a second published still (maxres2.jpg), sharp vertical centre.
