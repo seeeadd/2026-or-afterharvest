@@ -34,7 +34,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body.lock{overflow:hidden}
+body.noscroll{overflow:hidden}
 img,svg{display:block;max-width:100%}
 img{height:auto}
 button,input{font:inherit;color:inherit}
@@ -311,10 +311,10 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .ph1 img{width:100%;border-radius:12px;aspect-ratio:1000/671;object-fit:cover}
 
 /* 2017: the 4 AM lock screen */
-.lock{position:relative;margin:0 auto;width:min(330px,100%);aspect-ratio:9/15;border-radius:44px;background:linear-gradient(170deg,#2c2420,#110d0b);border:2px solid var(--ink);box-shadow:0 0 0 8px #E4D4BB,0 0 0 10px var(--ink),0 40px 60px -30px rgba(26,20,18,.6);color:#fff;text-align:center;padding:64px 18px 0;transform:rotate(2deg);overflow:hidden}
+.am4{position:relative;margin:0 auto;width:min(330px,100%);aspect-ratio:9/15;border-radius:44px;background:linear-gradient(170deg,#2c2420,#110d0b);border:2px solid var(--ink);box-shadow:0 0 0 8px #E4D4BB,0 0 0 10px var(--ink),0 40px 60px -30px rgba(26,20,18,.6);color:#fff;text-align:center;padding:64px 18px 0;transform:rotate(2deg);overflow:hidden}
 .isl2{position:absolute;left:50%;top:14px;width:90px;height:26px;margin-left:-45px;border-radius:14px;background:#000}
-.lock .tm{display:block;font-family:var(--serif);font-size:92px;line-height:1;letter-spacing:-.02em}
-.lock .pl2{display:block;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}
+.am4 .tm{display:block;font-family:var(--serif);font-size:92px;line-height:1;letter-spacing:-.02em}
+.am4 .pl2{display:block;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}
 .nt{display:flex;gap:10px;text-align:left;margin-top:40px;background:rgba(255,248,238,.94);color:var(--ink);border-radius:18px;padding:12px 14px;box-shadow:0 10px 24px -10px rgba(0,0,0,.6);transform:translateY(0);transition:transform .7s var(--ease) .3s,opacity .7s .3s}
 .ch:not(.in) .nt{transform:translateY(30px);opacity:0}
 .nt .ap{flex:none;width:34px;height:34px;border-radius:9px;background:var(--sun);display:grid;place-items:center;border:1.5px solid var(--ink)}
@@ -757,8 +757,8 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   .pull{padding-left:46px}
   .pull .qm2{font-size:72px}
   .ch h3{font-size:34px}
-  .lock{width:min(270px,100%)}
-  .lock .tm{font-size:72px}
+  .am4{width:min(270px,100%)}
+  .am4 .tm{font-size:72px}
   .proofs{height:380px}
   .pc b{font-size:28px}
   .pc{width:52%;padding:14px 14px}
@@ -933,7 +933,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
       </div>
       <div class="ch flip" data-r>
         <div class="vis">
-          <div class="lock" aria-hidden="true">
+          <div class="am4" aria-hidden="true">
             <span class="isl2"></span>
             <span class="tm">4:00</span><span class="pl2">Singapore</span>
             <div class="nt"><span class="ap"><svg><use href="#sf"/></svg></span><span class="nb"><small>NOTES · now</small>I <s class="wish">wish</s><em class="want">want</em> I could do my own thing.</span></div>
@@ -1427,10 +1427,10 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
 
   /* Ana's videos: YouTube in a lightbox, loaded only on click */
   var vm = document.getElementById('vmodal'), vfr = vm.querySelector('.fr');
-  function closeV(){ vm.classList.remove('open'); vm.setAttribute('aria-hidden','true'); vfr.innerHTML = ''; document.body.classList.remove('lock') }
+  function closeV(){ vm.classList.remove('open'); vm.setAttribute('aria-hidden','true'); vfr.innerHTML = ''; document.body.classList.remove('noscroll') }
   document.querySelectorAll('[data-yt]').forEach(function(b){ b.addEventListener('click', function(){
     vfr.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0&modestbranding=1" title="' + b.getAttribute('aria-label') + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
-    vm.classList.add('open'); vm.setAttribute('aria-hidden','false'); document.body.classList.add('lock'); vm.querySelector('.x').focus();
+    vm.classList.add('open'); vm.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll'); vm.querySelector('.x').focus();
   })});
   vm.querySelector('.x').addEventListener('click', closeV);
   vm.addEventListener('click', function(e){ if (e.target === vm) closeV() });
@@ -1441,11 +1441,11 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   function openM(e){
     if (e) e.preventDefault();
     lastBtn = e && e.currentTarget;
-    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('lock');
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll');
     setTimeout(function(){ var f = form.querySelector('[name=first_name]'); if (f && !dlg.classList.contains('done')) f.focus({preventScroll:true}) }, reduce ? 0 : 260);
   }
   function closeM(){
-    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('lock');
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('noscroll');
     if (lastBtn) lastBtn.focus({preventScroll:true});
   }
   document.querySelectorAll('.open').forEach(function(b){b.addEventListener('click', openM)});
