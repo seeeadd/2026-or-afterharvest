@@ -79,6 +79,7 @@
     var n = 0;
     STEPS.forEach(function(s){
       var on = !!st[s]; if (on) n++;
+      document.body.classList.toggle('did-' + s, on);
       document.querySelectorAll('[data-card="' + s + '"],[data-ph="' + s + '"]').forEach(function(e){ e.classList.toggle('done', on) });
       document.querySelectorAll('button[data-step="' + s + '"]').forEach(function(b){ b.setAttribute('aria-pressed', on ? 'true' : 'false') });
     });
