@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Free 3-day live workshop with Ana Calin · Nov 17 to 19</title>
+<!-- Ana Calin, free 3-day live workshop registration page. Built from "Ana: registration page build guide" (Oct 24, 2026)
+     and her brand kit parts 1-3. Hero = the person's client hero (Kieran Drew / Chad Carson pages), component for component,
+     in Ana's skin: cream #FFF8EE, sand #EADFCF, ink #1A1412, sunflower #FFD400, hot pink #F72585, ink 3 #7A6A60.
+     Type: Instrument Serif + Manrope (Google Fonts). Drawings: thick ink outlines + flat sunflower fills, her logo's style.
+     Every "save my seat (free)" button opens the one registration popup: first name, email, available yes / no / maybe. -->
 <meta name="description" content="Three free live sessions with me. You leave with one offer, one price, and your first ask written to the readers you already have.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Free 3-day live workshop with Ana Calin · Nov 17 to 19">
@@ -16,184 +21,408 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="preload" as="image" href="img/ana-kitchen.webp">
+<link rel="preload" as="image" href="img/vsl.webp">
 <style>
 :root{
-  --cream:#FFF8EE;--sand:#EADFCF;--ink:#1A1412;--sun:#FFD400;--pink:#F72585;--ink3:#7A6A60;--ysoft:#FFF1B3;--white:#fff;
+  --cream:#FFF8EE;--sand:#EADFCF;--kraft:#E8DBC5;--ink:#1A1412;--ink2:#3D332E;--ink3:#7A6A60;
+  --sun:#FFD400;--pink:#F72585;--psoft:#FFB8D9;--ysoft:#FFF1B3;
   --line:rgba(26,20,18,.12);
   --serif:'Instrument Serif',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,sans-serif;
-  --wrap:1200px;--gut:24px;--sec:120px;
-  --r:28px;--shadow:0 30px 60px -28px rgba(70,45,25,.32),0 2px 6px rgba(70,45,25,.06);
+  --sh:0 30px 60px -30px rgba(70,45,25,.38),0 2px 6px rgba(70,45,25,.06);
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:90px}
-body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
 img,svg{display:block;max-width:100%}
 button,input{font:inherit;color:inherit}
 a{color:inherit}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
-.narrow{max-width:820px;margin:0 auto}
-section{padding:var(--sec) 0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.narrow{max-width:860px;margin:0 auto}
+.nw{white-space:nowrap}
+section{padding:120px 0}
 .sand{background:var(--sand)}
 .eyebrow{display:block;font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
-h1,h2,.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.012em}
-h1 em,h2 em{font-style:italic;color:var(--pink)}
-h2{font-size:clamp(38px,4.4vw,60px);line-height:1.02;margin-top:16px;text-wrap:balance}
-.after p,.final .line,.not,.stay p{text-wrap:balance}
-.who p,.day p,.result blockquote{text-wrap:pretty}
-.ln{white-space:nowrap}
+h1,h2,h3,.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.012em}
+h2{font-size:clamp(40px,4.6vw,64px);line-height:1.02;margin-top:16px;text-wrap:balance}
+h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
+.hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%);padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.head{text-align:center;max-width:780px;margin:0 auto}
 
-/* buttons */
+/* buttons: pink, lowercase, one label everywhere */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;text-decoration:none;
-  background:var(--pink);color:#fff;font-weight:700;font-size:17px;letter-spacing:-.005em;line-height:1;
-  height:56px;padding:0 26px 0 28px;border-radius:999px;white-space:nowrap;
-  box-shadow:0 12px 24px -12px rgba(247,37,133,.65),inset 0 -2px 0 rgba(0,0,0,.08);
-  transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s,background .2s}
-.btn svg{width:15px;height:15px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
-.btn:hover{transform:translateY(-2px);box-shadow:0 18px 30px -14px rgba(247,37,133,.75),inset 0 -2px 0 rgba(0,0,0,.08)}
+  background:var(--pink);color:#fff;font-weight:700;font-size:17px;line-height:1;height:56px;padding:0 26px 0 28px;border-radius:999px;white-space:nowrap;
+  box-shadow:0 12px 24px -12px rgba(247,37,133,.65),inset 0 -2px 0 rgba(0,0,0,.1);transition:transform .2s var(--ease),box-shadow .2s,background .2s}
+.btn svg{width:15px;height:15px;flex:none;transition:transform .25s var(--ease)}
+.btn:hover{transform:translateY(-2px);background:#ff2f8f;box-shadow:0 18px 30px -14px rgba(247,37,133,.8),inset 0 -2px 0 rgba(0,0,0,.1)}
 .btn:hover svg{transform:translate(2px,-2px)}
-.btn:active{transform:translateY(0)}
-.btn:focus-visible,input:focus-visible,.chip:focus-visible,.fit button:focus-visible,.faq summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.btn.sm{height:44px;font-size:15px;padding:0 20px 0 22px}
+.btn:active{transform:none}
+.btn.sm{height:46px;font-size:15px;padding:0 20px 0 22px}
+.btn.big{height:64px;font-size:19px;width:100%}
+.btn:focus-visible,input:focus-visible,.chip:focus-visible,.fit button:focus-visible,.faq summary:focus-visible,.vplay:focus-visible,.x:focus-visible,.avail label:focus-within{outline:3px solid var(--ink);outline-offset:3px}
 
-/* 0. sticky bar (desktop) */
-.bar{position:sticky;top:0;z-index:40;background:rgba(255,248,238,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
-.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
-.bar .info{display:flex;align-items:center;gap:14px;font-size:15px;font-weight:600}
-.bar .info img{width:36px;height:36px}
-.bar .info i{font-style:normal;color:var(--ink3);margin:0 2px}
-.bar .info .soft{color:var(--ink3);font-weight:500}
+/* ---------- 0. floating bar (desktop) ---------- */
+.fb{position:sticky;top:0;z-index:50;padding:12px 16px 0;pointer-events:none}
+.fb-bar{pointer-events:auto;margin:0 auto;width:min(1080px,100%);display:flex;align-items:center;gap:20px;padding:8px 8px 8px 10px;border-radius:16px;background:rgba(26,20,18,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--cream);box-shadow:0 18px 36px -18px rgba(26,20,18,.7)}
+.fb-id{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 auto;text-decoration:none;background:none;border:0;cursor:pointer;text-align:left}
+.fb-ic{width:44px;height:44px;flex:none}
+.fb-t{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fb-t small{font-weight:800;font-size:11.5px;line-height:1;letter-spacing:.18em;color:var(--sun)}
+.fb-t b{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb-cd{display:flex;align-items:center;gap:12px;flex:none;padding-left:20px;border-left:1px solid rgba(255,248,238,.16)}
+.fb-l{font-weight:800;font-size:11px;letter-spacing:.18em;color:rgba(255,248,238,.6)}
+.fb-tiles{display:flex;gap:5px}
+.fb-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;width:46px;height:46px;border-radius:9px;background:rgba(255,248,238,.07);box-shadow:inset 0 0 0 1px rgba(255,248,238,.14)}
+.fb-tile:first-child{background:rgba(255,212,0,.16);box-shadow:inset 0 0 0 1px rgba(255,212,0,.45)}
+.fb-tile b{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1}
+.fb-tile small{margin-top:3px;font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,248,238,.6)}
+.fb-tm{flex:none;font-weight:600;font-size:14px;color:rgba(255,248,238,.75);white-space:nowrap}
+.fb .btn{flex:none;box-shadow:none}
 
-/* 1. hero */
-.hero{padding:56px 0 104px;position:relative}
-.hero .grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:64px;align-items:center}
-.hero h1{font-size:clamp(46px,5.7vw,82px);line-height:.98;margin:18px 0 22px}
-.hero h1 .ln{display:block}
-.hero .sub{font-size:20px;line-height:1.5;max-width:560px;color:#3d332e}
-.situ{margin-top:30px}
-.situ .lbl{display:block;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+/* ---------- 1. hero: the client hero layout, 1:1 ---------- */
+.hero{position:relative;padding:22px 0 96px;overflow-x:clip}
+.hero .bgflower{position:absolute;width:520px;height:520px;left:-170px;top:120px;opacity:.13;pointer-events:none}
+.hero .bgflower.b{left:auto;right:-200px;top:auto;bottom:-140px;width:440px;height:440px;opacity:.1}
+.hwrap{max-width:1400px;margin:0 auto;padding:0 32px;position:relative}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.44fr) minmax(0,1fr);gap:40px;align-items:start}
+.hleft,.hright{position:relative;min-width:0}
+
+.tstrip{display:flex;align-items:center;gap:22px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 24px 12px 12px;margin-bottom:24px;box-shadow:0 1px 2px rgba(70,45,25,.05)}
+.award{flex:none;display:flex;align-items:center;gap:12px;background:var(--ink);color:var(--cream);border-radius:11px;padding:10px 18px 10px 10px}
+.award img{width:46px;height:46px}
+.award small{display:block;font-weight:800;font-size:10.5px;letter-spacing:.2em;color:var(--sun);line-height:1.3}
+.award b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.05}
+.stats{flex:1;display:flex;justify-content:space-around;gap:14px;min-width:0}
+.stat{text-align:center;line-height:1.15}
+.stat b{display:block;font-weight:800;font-size:22px;letter-spacing:-.02em}
+.stat small{display:block;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-top:4px}
+.stats i{width:1px;background:var(--line);align-self:stretch}
+
+/* the landscape iPhone */
+.iph{position:relative;z-index:1;border-radius:64px;padding:5px;background:linear-gradient(145deg,#4a3f3a,#1A1412 45%,#0c0908);box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 40px 70px -34px rgba(70,45,25,.55),0 4px 10px rgba(70,45,25,.1)}
+.iph .sb{position:absolute;height:5px;border-radius:3px;background:#2b2320;top:-4px}
+.iph .sb.b{top:auto;bottom:-4px}
+.iph .bz{background:#0c0908;border-radius:59px;padding:18px}
+.iph .scr{position:relative;border-radius:42px;overflow:hidden;aspect-ratio:1.62;background:#2b2320;cursor:pointer}
+.iph .scr img,.iph .scr video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.iph .scr video{opacity:0;transition:opacity .4s}
+.iph.playing .scr video{opacity:1}
+.iph .scr:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,18,0) 50%,rgba(26,20,18,.55));pointer-events:none;z-index:1}
+.iph .isl{position:absolute;left:14px;top:50%;width:26px;height:92px;margin-top:-46px;border-radius:16px;background:#000;z-index:3}
+.vplay{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:16px;color:#fff;font-weight:700;font-size:14px;letter-spacing:.26em;text-transform:uppercase;background:none;border:0;cursor:pointer;text-shadow:0 1px 10px rgba(0,0,0,.45);transition:opacity .3s}
+.vplay i{position:relative;width:88px;height:88px;border-radius:50%;background:var(--pink);display:grid;place-items:center;box-shadow:0 0 0 9px rgba(247,37,133,.24),0 16px 30px -10px rgba(0,0,0,.55);transition:transform .25s var(--ease)}
+.vplay i svg{margin-left:4px}
+.vplay:hover i{transform:scale(1.06)}
+.vplay i:before{content:"";position:absolute;inset:0;border-radius:50%;animation:ring 2.6s ease-out infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(247,37,133,.45)}70%,100%{box-shadow:0 0 0 26px rgba(247,37,133,0)}}
+.iph.playing .vplay{opacity:0;pointer-events:none}
+.scrub{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;display:flex;align-items:center;gap:16px;background:rgba(26,20,18,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:999px;padding:12px 22px;color:#fff;font-weight:600;font-size:15px;line-height:1;font-variant-numeric:tabular-nums}
+.scrub .ln{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.3);position:relative}
+.scrub .ln i{position:absolute;left:0;top:0;bottom:0;width:8%;background:#fff;border-radius:4px}
+.scrub .ln i:after{content:"";position:absolute;right:-7px;top:-5px;width:14px;height:14px;border-radius:50%;background:var(--sun)}
+
+/* the ticket card */
+.book{position:relative;z-index:1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 22px 16px 16px;margin-top:24px;box-shadow:0 1px 2px rgba(70,45,25,.05)}
+.book:before,.book:after{content:"";position:absolute;top:50%;width:20px;height:20px;margin-top:-10px;border-radius:50%;background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)}
+.book:before{left:-10px;clip-path:inset(0 0 0 50%)}
+.book:after{right:-10px;clip-path:inset(0 50% 0 0)}
+.book .mini{width:184px;border-radius:9px;overflow:hidden;border:4px solid var(--ink);border-bottom-width:9px;background:var(--ink);transform:rotate(-2deg);box-shadow:0 10px 20px -12px rgba(26,20,18,.5)}
+.book .mini img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:4px}
+.book .k{font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.book .k b{color:var(--pink)}
+.book h3{font-size:27px;line-height:1.05;margin:8px 0 7px}
+.book .d{font-weight:700;font-size:16px}
+.book .t{font-weight:600;font-size:13.5px;color:var(--ink3);margin-top:3px}
+.book .go{text-align:center;padding-left:20px;border-left:1.5px dashed rgba(26,20,18,.18)}
+.book .go .btn{height:50px;font-size:16px;padding:0 20px 0 22px}
+.book .go small{display:block;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-top:10px}
+
+/* right column */
+.hright{padding-top:6px;container-type:inline-size}
+.hpill{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 8px 6px 15px;font-weight:800;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;max-width:100%}
+.hpill .dot{width:8px;height:8px;border-radius:50%;background:var(--pink);flex:none;animation:dot 2.2s ease-out infinite}
+@keyframes dot{0%{box-shadow:0 0 0 0 rgba(247,37,133,.5)}70%,100%{box-shadow:0 0 0 8px rgba(247,37,133,0)}}
+.hpill .dchip{background:var(--ink);color:var(--cream);border-radius:999px;padding:7px 12px}
+.hpill i{font-style:normal;opacity:.35}
+.hright h1{font-size:min(13.6cqi,86px);line-height:.97;letter-spacing:-.018em;margin:18px 0 8px}
+.hright h1 .l{display:block}
+.hkick{font-family:var(--serif);font-style:italic;color:var(--pink);font-size:min(8.2cqi,46px);line-height:1.04;margin-bottom:16px;letter-spacing:-.01em}
+.hkick .l{display:block}
+.lede{color:var(--ink2);font-size:17.5px;line-height:1.52}
+.situ{margin-top:18px}
+.situ .lbl{display:block;font-weight:800;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{border:1.5px solid var(--ink);background:transparent;border-radius:999px;height:40px;padding:0 16px;font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .18s,color .18s,transform .18s}
+.chip{border:1.5px solid var(--ink);background:#fff;border-radius:999px;height:38px;padding:0 14px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .18s,color .18s,transform .18s}
 .chip:hover{transform:translateY(-1px)}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--cream)}
 
-.form{margin-top:22px}
-.form .row{display:flex;gap:10px;align-items:flex-start}
-.field{position:relative;flex:1 1 0;min-width:0}
-.field.fn{flex:0 0 190px}
-.field input{width:100%;height:56px;border-radius:999px;border:1.5px solid #d9cbb7;background:#fff;padding:0 22px;font-size:16px;font-weight:500;transition:border-color .18s,box-shadow .18s}
+/* the registration card: dates + the one button */
+.regc{position:relative;margin-top:18px;background:#fff;border-radius:20px;padding:20px 22px 18px;box-shadow:var(--sh);border-top:5px solid var(--ink)}
+.regc .row1{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.mt{display:flex;gap:6px}
+.mt span{width:52px;border:1.5px solid var(--ink);border-radius:12px;text-align:center;padding:6px 0 5px;line-height:1;background:#fff}
+.mt span:first-child{background:var(--sun)}
+.mt b{display:block;font-family:var(--serif);font-weight:400;font-size:26px}
+.mt small{display:block;font-weight:800;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:3px}
+.regc .when{font-size:15px;line-height:1.4;color:var(--ink3)}
+.regc .when b{display:block;color:var(--ink);font-weight:800;font-size:16px}
+.note{margin-top:12px;font-size:13.5px;color:var(--ink3);text-align:center;line-height:1.5}
+
+/* ---------- the registration popup ---------- */
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px;background:rgba(26,20,18,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s;overflow-y:auto}
+.modal.open{opacity:1;visibility:visible;transition:opacity .3s}
+.dlg{position:relative;width:100%;max-width:540px;background:var(--cream);border-radius:28px;padding:56px 40px 30px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);transform:translateY(24px) scale(.97);transition:transform .45s var(--ease);margin:auto}
+.modal.open .dlg{transform:none}
+.dlg .mk{position:absolute;left:50%;top:-38px;width:76px;height:76px;margin-left:-38px;filter:drop-shadow(0 8px 14px rgba(26,20,18,.3))}
+.dlg .x{position:absolute;right:16px;top:16px;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--ink);background:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s,transform .2s}
+.dlg .x:hover{background:var(--sun);transform:rotate(90deg)}
+.dlg .ey{display:block;text-align:center;font-weight:800;font-size:11.5px;letter-spacing:.16em;line-height:1.7;color:var(--pink)}
+.dlg h3{text-align:center;font-size:46px;line-height:1.02;margin:12px 0 26px;text-wrap:balance}
+.field{position:relative;min-width:0;margin-bottom:10px}
+.field input{width:100%;height:58px;border-radius:16px;border:1.5px solid #d9cab6;background:#fff;padding:0 20px;font-size:16.5px;font-weight:500;transition:border-color .18s,box-shadow .18s}
 .field input::placeholder{color:#9b8b80}
 .field input:hover{border-color:#bfae97}
-.field input:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.55)}
-.field .err{display:none;font-size:14px;font-weight:600;color:#c4105f;padding:7px 0 0 22px}
+.field input:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
+.err{display:none;font-size:13.5px;font-weight:700;color:#c4105f;padding:6px 0 0 4px}
 .field.bad input{border-color:#c4105f}
-.field.bad .err{display:block}
-.form .note{margin-top:14px;font-size:14px;color:var(--ink3)}
-.form .note b{font-weight:600}
-.form.done .row{display:none}
-.form .thanks{display:none;align-items:center;gap:12px;height:56px;padding:0 24px;border-radius:999px;background:var(--ink);color:var(--cream);font-weight:700;width:max-content;max-width:100%}
-.form.done .thanks{display:flex}
-.form .thanks span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--sun);color:var(--ink)}
+.field.bad .err,.avail.bad .err{display:block}
+.avail{border:0;margin:6px 0 18px}
+.avail legend{font-weight:700;font-size:15.5px;margin-bottom:10px}
+.avail .opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.avail label{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 0 12px;border:1.5px solid #d9cab6;border-radius:16px;background:#fff;cursor:pointer;font-weight:700;font-size:15.5px;transition:border-color .2s,background .2s,transform .2s}
+.avail label:hover{border-color:var(--ink);transform:translateY(-1px)}
+.avail input{position:absolute;opacity:0;pointer-events:none}
+.avail .rd{width:22px;height:22px;border-radius:50%;border:1.8px solid var(--ink);background:#fff;display:grid;place-items:center;transition:background .2s}
+.avail .rd:after{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);transform:scale(0);transition:transform .25s var(--ease)}
+.avail label:has(input:checked){border-color:var(--ink);background:var(--ysoft)}
+.avail label:has(input:checked) .rd{background:var(--sun)}
+.avail label:has(input:checked) .rd:after{transform:scale(1)}
+.dlg .note{margin-top:14px}
+.dlg .bye{display:flex;align-items:center;gap:14px;margin-top:22px;padding-top:18px;border-top:1.5px dashed rgba(26,20,18,.18)}
+.dlg .bye img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--cream),0 0 0 3.5px var(--ink)}
+.dlg .bye p{font-size:14px;color:var(--ink3);line-height:1.3}
+.dlg .bye b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:26px;color:var(--pink);line-height:1.1}
+.dlg .thanks{display:none;text-align:center;padding:10px 0 6px}
+.dlg .thanks span{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 18px;border-radius:50%;background:var(--sun);border:2px solid var(--ink)}
+.dlg .thanks h3{margin:0 0 10px}
+.dlg .thanks p{color:var(--ink2)}
+.dlg.done form{display:none}
+.dlg.done .thanks{display:block}
 
-.copy{min-width:0}
-.photo{position:relative;justify-self:end;width:100%;max-width:440px}
-.photo .pic{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;background:var(--sand)}
-.photo .pic img{width:100%;height:100%;object-fit:cover}
-.photo .pic::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(to top,rgba(26,20,18,.45),rgba(26,20,18,0))}
-.photo .handle{position:absolute;right:20px;bottom:22px;z-index:2;color:#fff;font-weight:800;font-size:12px;letter-spacing:.18em}
-.photo .mark{position:absolute;left:18px;bottom:16px;z-index:2;width:62px;height:62px}
-.cal{position:absolute;left:-58px;top:44px;z-index:3;background:#fff;border-radius:20px;padding:14px 14px 16px;box-shadow:0 24px 44px -20px rgba(70,45,25,.45),0 1px 3px rgba(70,45,25,.08);transform:rotate(-3deg);width:200px}
-.cal .mo{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:12px;letter-spacing:.16em;margin:0 2px 10px}
-.cal .mo span:last-child{color:var(--ink3);font-weight:700;letter-spacing:.06em}
-.cal .days{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.cal .d{border:1.5px solid var(--ink);border-radius:12px;text-align:center;padding:7px 0 6px;line-height:1}
-.cal .d b{display:block;font-family:var(--serif);font-weight:400;font-size:30px}
-.cal .d small{display:block;font-size:11px;font-weight:700;margin-top:4px;color:var(--ink3)}
-.cal .d:nth-child(1){background:var(--sun)}
-.cal .d:nth-child(1) small{color:var(--ink)}
-
-/* 2. who */
-.who .card{display:grid;grid-template-columns:132px 1fr;gap:40px;align-items:center}
-.who .av{width:132px;height:132px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 6px var(--cream),0 0 0 7.5px var(--ink)}
-.who .av img{width:100%;height:100%;object-fit:cover}
-.who p{font-family:var(--serif);font-size:clamp(25px,2.4vw,31px);line-height:1.3;letter-spacing:-.005em}
-.who .partner{display:none;font-family:var(--sans);font-weight:800;font-size:18px;line-height:1.4;margin-bottom:12px;letter-spacing:0}
+/* ---------- 2. who's Ana ---------- */
+.who .g{display:grid;grid-template-columns:360px 1fr;gap:72px;align-items:center}
+.who .ph{position:relative;background:#fff;padding:14px 14px 18px;border-radius:22px;box-shadow:var(--sh);transform:rotate(-2.5deg)}
+.who .ph img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px}
+.who .ph .mk{position:absolute;right:-24px;bottom:-22px;width:92px;height:92px;transform:rotate(8deg);filter:drop-shadow(0 8px 14px rgba(70,45,25,.25))}
+.who .partner{display:none;font-weight:800;font-size:18px;line-height:1.4;margin-bottom:16px}
 .who.has-partner .partner{display:block}
-.who .sig{font-family:var(--serif);font-style:italic;font-size:30px;margin-top:14px;color:var(--pink)}
+.who .bio{font-family:var(--serif);font-size:clamp(26px,2.5vw,33px);line-height:1.28;letter-spacing:-.005em;text-wrap:pretty}
+.who .sig{font-family:var(--serif);font-style:italic;font-size:38px;color:var(--pink);margin-top:18px;line-height:1}
 
-/* 3. the three days */
-.head{text-align:center;max-width:760px;margin:0 auto}
-.days3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px}
-.day{border:1.5px solid var(--ink);border-radius:var(--r);background:var(--cream);padding:14px 14px 30px;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
-.day:hover{transform:translateY(-4px);box-shadow:0 26px 40px -26px rgba(70,45,25,.4)}
-.day .art{background:var(--sand);border-radius:18px;height:178px;display:grid;place-items:center;margin-bottom:24px;overflow:hidden}
-.day .art svg{width:240px;height:160px}
-.day .meta{display:flex;align-items:center;gap:12px;padding:0 10px}
-.pill{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:12px;letter-spacing:.14em}
-.day .when{font-size:14px;font-weight:600;color:var(--ink3)}
-.day h3{font-family:var(--serif);font-weight:400;font-size:31px;line-height:1.08;margin:18px 10px 12px;letter-spacing:-.01em}
-.day p{font-size:16px;line-height:1.55;margin:0 10px;color:#3d332e}
-.day p b{font-weight:700;color:var(--ink)}
-.after{text-align:center;margin-top:52px}
-.after p{font-family:var(--serif);font-size:26px;margin-bottom:22px}
+.miles{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:34px;border-top:1.5px solid var(--ink)}
+.miles li{padding:16px 18px 0 0;font-size:15px;line-height:1.45;color:var(--ink2)}
+.miles li+li{padding-left:18px;border-left:1.5px dashed rgba(26,20,18,.2)}
+.miles b{display:block;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1;color:var(--ink);margin-bottom:6px}
+.miles li:last-child b{color:var(--pink)}
 
-/* 4. fit check */
-.fit .tip{margin-top:20px;font-size:16px;color:var(--ink3);font-weight:600}
-.fit ul{list-style:none;margin-top:36px;display:grid;gap:10px}
-.fit button{width:100%;display:grid;grid-template-columns:34px 1fr 1fr;gap:20px;align-items:center;text-align:left;background:var(--cream);border:1.5px solid transparent;border-radius:20px;padding:20px 26px 20px 20px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
-.fit button:hover{border-color:var(--ink);transform:translateX(2px)}
-.fit .tk{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;background:#fff;transition:background .2s}
-.fit .tk svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .3s ease}
-.fit button[aria-pressed=true]{background:#fff;border-color:var(--ink)}
-.fit button[aria-pressed=true] .tk{background:var(--sun)}
+/* ---------- 3. the three days: one row per day ---------- */
+.days .rows{position:relative;margin-top:76px}
+.drow{position:relative;display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.08fr);gap:0 44px;align-items:center;padding-bottom:104px}
+.drow:last-child{padding-bottom:0}
+.drow .rail{position:absolute;left:35px;top:72px;bottom:0;border-left:2px dashed rgba(26,20,18,.22)}
+.dbadge{align-self:start;width:72px;height:72px;border-radius:50%;background:var(--pink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;box-shadow:0 0 0 6px var(--cream),0 12px 22px -10px rgba(247,37,133,.7);position:relative;z-index:1}
+.dbadge small{font-weight:800;font-size:10px;letter-spacing:.18em}
+.dbadge b{font-family:var(--serif);font-weight:400;font-size:34px;margin-top:2px}
+.dtext{align-self:start}
+.dwhen{font-weight:700;font-size:15px}
+.dwhen span{color:var(--ink3);font-weight:600}
+.dtext h3{font-size:clamp(38px,3.6vw,52px);line-height:1.02;margin:14px 0 18px;text-wrap:balance}
+.dtext .out{font-weight:800;font-size:18px;line-height:1.45}
+.dtext .out span{color:var(--pink)}
+.dtext p.body{margin-top:14px;color:var(--ink2);font-size:17px;line-height:1.6}
+.dtext ul{list-style:none;margin-top:22px;display:grid;gap:10px}
+.dtext li{display:grid;grid-template-columns:26px 1fr;gap:10px;font-size:16px;line-height:1.45;color:var(--ink2)}
+.dtext li svg{width:26px;height:22px;margin-top:-1px}
+.drow.flip .dtext{order:3}
+.drow.flip .art{order:2}
+.days .after{text-align:center;margin-top:92px}
+.days .after p{font-family:var(--serif);font-size:30px;margin-bottom:24px;text-wrap:balance}
+
+/* art panels: a fixed 600 x 500 stage, scaled to the panel */
+.art{position:relative;width:100%;aspect-ratio:6/5;border-radius:28px;overflow:hidden;
+  background:var(--kraft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  box-shadow:inset 0 0 0 1px rgba(26,20,18,.06)}
+.stage{position:absolute;left:0;top:0;width:600px;height:500px;transform-origin:0 0;transform:scale(var(--k,1))}
+.stage .fl{position:absolute;opacity:.2}
+.sheet{position:absolute;background:#fff;border-radius:20px;box-shadow:0 30px 50px -26px rgba(70,45,25,.55),0 2px 5px rgba(70,45,25,.1);padding:20px 22px}
+.sheet .sh{display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:15px;padding-bottom:12px;border-bottom:1.5px solid rgba(26,20,18,.1);margin-bottom:14px}
+.sheet .sh span{font-weight:800;font-size:10.5px;letter-spacing:.16em;background:var(--pink);color:#fff;border-radius:999px;padding:5px 9px}
+
+/* day 1: the reader file */
+.crowd{display:flex;gap:4px;position:relative}
+.crowd svg{width:24px;height:28px;flex:none}
+.crowd .p{fill:none;stroke:#bcae9f;stroke-width:2}
+.crowd .me .p{stroke:var(--ink);stroke-width:2.4}
+.crowd .me .hd{fill:#fff}
+.crowd .me .bd{fill:var(--sun)}
+.crowd .ring{position:absolute;width:56px;height:56px;top:-14px;overflow:visible}
+.crowd .ring path{fill:none;stroke:var(--pink);stroke-width:3;stroke-linecap:round}
+.cap{font-size:12px;color:var(--ink3);margin-top:8px;font-weight:600}
+.pf{display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:start;background:var(--cream);border:1.5px solid rgba(26,20,18,.12);border-radius:16px;padding:14px;margin-top:14px}
+.pf dl{display:grid;grid-template-columns:96px 1fr;gap:7px 10px;font-size:14px;line-height:1.35}
+.pf dt{font-weight:800;font-size:10px;letter-spacing:.14em;color:var(--ink3);padding-top:3px}
+.pf dd{font-weight:600}
+.mk-anim{position:relative;z-index:0;white-space:nowrap}
+.mk-anim:before{content:"";position:absolute;left:-3px;right:-3px;top:8%;bottom:4%;background:var(--sun);z-index:-1;transform-origin:0 50%}
+.todo{display:grid;gap:8px;margin-top:14px}
+.todo div{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;font-size:14px;font-weight:600}
+.todo .bx{width:22px;height:22px;border-radius:6px;border:1.8px solid var(--ink);display:grid;place-items:center;background:#fff}
+.todo .bx svg{width:14px;height:14px}
+.todo .bx path{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.todo em{font-style:normal;font-weight:800;font-size:10px;letter-spacing:.12em;background:var(--ysoft);border-radius:999px;padding:4px 9px}
+
+/* day 2: the offer, one sentence, priced */
+.offer{font-family:var(--serif);font-size:35px;line-height:1.42;letter-spacing:-.01em}
+.blk{position:relative;z-index:0;white-space:nowrap;padding:0 .06em}
+.blk:before{content:"";position:absolute;left:0;right:0;top:12%;bottom:6%;z-index:-1;transform-origin:0 50%;background:var(--sun)}
+.blk.p:before{background:var(--psoft)}
+.prow{display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1.5px dashed rgba(26,20,18,.18);font-size:14px;font-weight:600;color:var(--ink3)}
+.prow b{font-weight:800;font-size:10.5px;letter-spacing:.16em;color:var(--ink)}
+.parts{display:flex;gap:8px;margin-top:6px}
+.parts span{font-weight:800;font-size:10px;letter-spacing:.12em;border:1.5px solid var(--ink);border-radius:999px;padding:4px 9px}
+
+/* day 3: the ask */
+.mail{padding:0;overflow:hidden}
+.mail .mh{background:#F7EDE0;padding:14px 18px;border-bottom:1.5px solid rgba(26,20,18,.1)}
+.mail .from{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink3)}
+.mail .from b{color:var(--ink);font-weight:800}
+.mail .from .sendb{margin-left:auto;display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:13px;transition:background .3s}
+.mail.sent .sendb{background:var(--pink)}
+.mail .subj{font-weight:800;font-size:19px;margin-top:10px;min-height:26px}
+.mail .subj .caret{display:inline-block;width:2px;height:19px;background:var(--pink);margin-left:2px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+.mail.typed .caret{display:none}
+@keyframes blink{50%{opacity:0}}
+.mail .prev{font-size:13.5px;color:var(--ink3);margin-top:2px}
+.mail .mb{padding:16px 18px 20px}
+.mail .bar{height:9px;border-radius:5px;background:#eadfd1;margin:8px 0}
+.mail .say{font-size:16px;line-height:1.5;margin:12px 0 14px;font-weight:600}
+.mail .cta{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 18px;border-radius:999px;background:var(--pink);color:#fff;font-weight:700;font-size:14px}
+.mail .cta svg{width:12px;height:12px}
+.mail .sign{font-family:var(--serif);font-style:italic;font-size:22px;margin-top:12px}
+.toast{position:absolute;display:flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:10px 18px 10px 10px;font-weight:700;font-size:15px;box-shadow:0 20px 34px -16px rgba(70,45,25,.55)}
+.toast i{width:28px;height:28px;border-radius:50%;background:var(--sun);display:grid;place-items:center;border:1.5px solid var(--ink)}
+
+/* ---------- 4. fit check ---------- */
+.fit ul{list-style:none;margin-top:44px;display:grid;gap:10px}
+.fit button{width:100%;display:grid;grid-template-columns:36px 1fr 1fr;gap:22px;align-items:center;text-align:left;background:var(--cream);border:1.5px solid transparent;border-radius:20px;padding:20px 28px 20px 20px;cursor:pointer;transition:border-color .2s,background .2s,transform .25s var(--ease),box-shadow .25s}
+.fit button:hover{border-color:var(--ink);transform:translateY(-2px)}
+.fit .tk{width:36px;height:36px;border-radius:50%;border:1.8px solid var(--ink);display:grid;place-items:center;background:#fff;transition:background .2s,transform .3s var(--ease)}
+.fit .tk svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .35s ease .05s}
+.fit button[aria-pressed=true]{background:#fff;border-color:var(--ink);box-shadow:0 16px 28px -20px rgba(70,45,25,.5)}
+.fit button[aria-pressed=true] .tk{background:var(--sun);transform:rotate(-8deg) scale(1.06)}
 .fit button[aria-pressed=true] .tk svg{stroke-dashoffset:0}
 .fit .pain{font-weight:800;font-size:17px;line-height:1.4}
-.fit .fix{font-family:var(--serif);font-size:23px;line-height:1.25;color:#3d332e}
-.fit .not{margin-top:28px;font-size:15px;color:var(--ink3);text-align:center}
+.fit .fix{font-family:var(--serif);font-size:24px;line-height:1.25;color:var(--ink2)}
+.fit .fix span{background:linear-gradient(var(--sun),var(--sun)) no-repeat 0 88%/0% 42%;transition:background-size .5s var(--ease);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.fit button[aria-pressed=true] .fix span{background-size:100% 42%}
+.fit .tip{margin-top:18px;font-size:16px;color:var(--ink3);font-weight:700}
+.fit .not{margin-top:30px;font-size:15px;color:var(--ink3);text-align:center;text-wrap:balance}
 
-/* 5. quote band */
-.band{background:var(--ink);color:var(--cream);text-align:center;padding:136px 0}
-.band q{display:block;quotes:none;font-family:var(--serif);font-size:clamp(42px,5.6vw,80px);line-height:1.12;letter-spacing:-.015em;max-width:1000px;margin:0 auto}
-.band mark{background:var(--sun);color:var(--ink);padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* ---------- 5. quote band ---------- */
+.band{background:var(--ink);color:var(--cream);text-align:center;padding:150px 0;position:relative;overflow:hidden}
+.band q{display:block;quotes:none;font-family:var(--serif);font-size:clamp(44px,6vw,88px);line-height:1.1;letter-spacing:-.016em;max-width:1040px;margin:0 auto;text-wrap:balance}
+.band mark{background:none;color:var(--ink);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+  background-image:linear-gradient(var(--sun),var(--sun));background-repeat:no-repeat;background-size:0% 100%;transition:background-size 1.1s cubic-bezier(.6,0,.2,1) .35s,color .3s .5s}
+.band:not(.in) mark{color:var(--cream)}
+.band.in mark{background-size:100% 100%}
+.band .fl{position:absolute;width:300px;height:300px;opacity:.07;right:-60px;bottom:-80px}
 
-/* 6. one reader's result */
-.result figure{max-width:880px;margin:0 auto;background:var(--cream);border-radius:var(--r);padding:56px 64px 48px;box-shadow:var(--shadow);transform:rotate(-1.2deg)}
-.result blockquote{font-family:var(--serif);font-size:clamp(25px,2.5vw,33px);line-height:1.3;letter-spacing:-.005em}
+/* ---------- 6. one reader's result ---------- */
+.result figure{max-width:900px;margin:0 auto;background:var(--cream);border-radius:28px;padding:60px 68px 50px;box-shadow:var(--sh);transform:rotate(-1.2deg);position:relative}
+.result .qm{position:absolute;left:52px;top:-34px;font-family:var(--serif);font-size:150px;line-height:1;color:var(--pink)}
+.result blockquote{font-family:var(--serif);font-size:clamp(25px,2.6vw,34px);line-height:1.3;text-wrap:pretty}
 .result figcaption{display:flex;align-items:center;gap:14px;margin-top:30px}
-.result .ini{width:48px;height:48px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-weight:800;font-size:16px;border:1.5px solid var(--ink)}
+.result .ini{width:50px;height:50px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-weight:800;font-size:16px;border:1.8px solid var(--ink)}
 .result figcaption b{display:block;font-weight:800;font-size:16px;line-height:1.3}
 .result figcaption small{font-size:15px;color:var(--ink3)}
 
-/* 7. stay + faq */
-.stay{background:var(--ysoft);border-radius:var(--r);padding:48px 56px;display:grid;grid-template-columns:1fr 150px;gap:40px;align-items:center;max-width:980px;margin:0 auto}
-.stay p{font-family:var(--serif);font-size:clamp(28px,3vw,38px);line-height:1.18;letter-spacing:-.01em}
-.stay p mark{background:var(--sun);padding:0 .12em}
+.wins-h{text-align:center;margin:96px 0 30px}
+.wins{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1080px;margin:0 auto}
+.win{background:#fff;border-radius:22px;padding:24px 24px 22px;box-shadow:0 22px 40px -26px rgba(70,45,25,.5),0 1px 3px rgba(70,45,25,.06);transition:transform .35s var(--ease)}
+.win:nth-child(1){transform:rotate(-1.6deg)}.win:nth-child(2){transform:rotate(1deg) translateY(10px)}.win:nth-child(3){transform:rotate(-.8deg)}
+.win:hover{transform:rotate(0) translateY(-4px)}
+.win small{display:block;font-weight:800;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.win .from{font-weight:700;font-size:15px;margin-top:14px;color:var(--ink3)}
+.win .to{display:inline-block;font-weight:800;font-size:25px;letter-spacing:-.02em;line-height:1.15;margin-top:2px}
+.win .to span{background:var(--sun);padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.win p{font-size:15px;line-height:1.5;color:var(--ink2);margin-top:14px;padding-top:14px;border-top:1.5px dashed rgba(26,20,18,.15)}
+
+/* ---------- 7. stay until the end + FAQ ---------- */
+.stay{background:var(--ysoft);border-radius:32px;padding:52px 56px;display:grid;grid-template-columns:1fr 330px;gap:40px;align-items:center;max-width:1040px;margin:0 auto;overflow:hidden}
+.stay p{font-family:var(--serif);font-size:clamp(30px,3.2vw,42px);line-height:1.16;letter-spacing:-.01em;text-wrap:balance}
 .stay small{display:block;margin-top:16px;font-size:14px;color:var(--ink3)}
-.stay svg{width:150px;height:130px}
-.faqs{max-width:820px;margin:104px auto 0}
+.tix{position:relative;height:210px}
+.tix .t{position:absolute;left:50%;top:50%;width:240px;height:110px;margin:-55px 0 0 -120px;transform-origin:50% 160%;transition:transform .9s var(--ease)}
+.tix .t:nth-child(2){transition-delay:.06s}.tix .t:nth-child(4){transition-delay:.06s}.tix .t:nth-child(1),.tix .t:nth-child(5){transition-delay:.12s}
+.tix .t svg{width:240px;height:110px;filter:drop-shadow(0 10px 14px rgba(70,45,25,.22))}
+.stay.in .t:nth-child(1){transform:rotate(-16deg) translateY(4px)}
+.stay.in .t:nth-child(2){transform:rotate(-8deg) translateY(1px)}
+.stay.in .t:nth-child(4){transform:rotate(8deg) translateY(1px)}
+.stay.in .t:nth-child(5){transform:rotate(16deg) translateY(4px)}
+.faqs{max-width:840px;margin:110px auto 0}
 .faqs h2{margin:0 0 30px}
 .faq{border-top:1.5px solid var(--ink)}
 .faq:last-child{border-bottom:1.5px solid var(--ink)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 4px;font-family:var(--serif);font-size:28px;line-height:1.2}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 4px;font-family:var(--serif);font-size:29px;line-height:1.2}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary i{flex:0 0 34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);position:relative;transition:background .2s,transform .3s}
-.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:1.8px;background:var(--ink);transform:translate(-50%,-50%)}
-.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
+.faq summary i{flex:0 0 36px;height:36px;border-radius:50%;border:1.6px solid var(--ink);position:relative;transition:background .2s}
+.faq summary i:before,.faq summary i:after{content:"";position:absolute;left:50%;top:50%;width:13px;height:1.8px;background:var(--ink);transform:translate(-50%,-50%)}
+.faq summary i:after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
 .faq[open] summary i{background:var(--sun)}
-.faq[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
-.faq .a{padding:0 60px 26px 4px;font-size:17px;color:#3d332e}
+.faq[open] summary i:after{transform:translate(-50%,-50%) rotate(0)}
+.faq .a{padding:0 64px 26px 4px;font-size:17px;color:var(--ink2)}
 
-/* 8. final */
-.final{text-align:center}
-.final h2{font-size:clamp(46px,6vw,84px);margin-top:0}
-.final .line{font-size:20px;margin:18px auto 0;max-width:560px;color:#3d332e}
-.final .form{max-width:680px;margin:36px auto 0}
-.final .form .note{text-align:center}
-.final .form .thanks{margin:0 auto}
-footer{background:var(--sun);padding:44px 0 40px}
+/* ---------- 8. quick recap ---------- */
+.recap{position:relative;border-radius:36px;padding:72px 56px 64px;background:var(--sand);overflow:hidden;
+  background-image:radial-gradient(rgba(26,20,18,.13) 1.2px,transparent 1.3px);background-size:22px 22px}
+.recap .fl{position:absolute;opacity:.18;pointer-events:none}
+.recap h2{text-align:center;margin:0 0 44px;position:relative}
+.rc{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rc > div{background:var(--cream);border:1.6px solid var(--ink);border-radius:26px;padding:28px 28px 30px;transition:transform .35s var(--ease),box-shadow .35s}
+.rc > div:hover{transform:translateY(-4px);box-shadow:0 22px 34px -22px rgba(70,45,25,.55)}
+.rc > div:nth-child(2){background:var(--sun)}
+.rc .ic{width:78px;height:78px;border-radius:50%;background:#fff;border:1.6px solid var(--ink);display:grid;place-items:center;margin-bottom:22px}
+.rc .ic svg{width:52px;height:52px}
+.rc h3{font-family:var(--sans);font-weight:800;font-size:28px;letter-spacing:-.02em;line-height:1;margin-bottom:12px}
+.rc p{font-size:16.5px;line-height:1.55;color:var(--ink2)}
+.rc > div:nth-child(2) p{color:var(--ink)}
+.recap .go{position:relative;text-align:center;margin-top:40px}
+.recap .go .btn{height:62px;font-size:18px;padding:0 34px}
+
+/* ---------- 9. final ---------- */
+.final{text-align:center;overflow:hidden}
+.claim{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:center;text-align:left;max-width:1080px;margin:0 auto}
+.claim .pic{position:relative;justify-self:center;width:100%;max-width:400px}
+.claim .pic .fr{background:#fff;padding:14px 14px 18px;border-radius:24px;box-shadow:var(--sh);transform:rotate(2.5deg)}
+.claim .pic img{width:100%;aspect-ratio:612/744;object-fit:cover;border-radius:14px}
+.claim .pic .mk{position:absolute;left:-26px;bottom:34px;width:96px;height:96px;transform:rotate(-8deg);filter:drop-shadow(0 8px 14px rgba(70,45,25,.25))}
+.claim .pic .sun{position:absolute;right:-60px;top:-50px;width:170px;height:170px;opacity:.5}
+.claim .tiles{margin-bottom:24px}
+.claim .line{margin:18px 0 32px;max-width:520px}
+.claim .note{text-align:left}
+.final .tiles{display:flex;gap:10px;margin-bottom:28px}
+.final .tiles div{text-align:center;width:84px;border:1.8px solid var(--ink);border-radius:18px;background:#fff;padding:10px 0 9px;line-height:1}
+.final .tiles div:first-child{background:var(--sun)}
+.final .tiles b{display:block;font-family:var(--serif);font-weight:400;font-size:44px}
+.final .tiles small{display:block;font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+.final h2{font-size:clamp(48px,6.2vw,88px);margin-top:0}
+.final .line{font-size:20px;margin:18px auto 34px;max-width:580px;color:var(--ink2);text-wrap:balance}
+.final .btn{height:64px;font-size:19px;padding:0 34px}
+footer{background:var(--sun);padding:46px 0 42px}
 footer .top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-footer .brand{display:flex;align-items:center;gap:14px;font-weight:800;font-size:24px;letter-spacing:-.02em;text-transform:lowercase}
-footer .brand img{width:48px;height:48px}
+footer .brand{display:flex;align-items:center;gap:14px;font-weight:800;font-size:25px;letter-spacing:-.02em}
+footer .brand img{width:50px;height:50px}
 footer .links{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:700}
 footer .links span{letter-spacing:.16em}
 footer .links a{text-decoration:underline;text-underline-offset:3px}
@@ -203,95 +432,241 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
 .mbar{display:none}
 
 /* reveal */
-[data-r]{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s var(--ease)}
 [data-r].in{opacity:1;transform:none}
-.days3 .day:nth-child(2){transition-delay:.08s}
-.days3 .day:nth-child(3){transition-delay:.16s}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}[data-r]{opacity:1;transform:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}[data-r]{opacity:1;transform:none}.band mark{background-size:100% 100%;color:var(--ink)}}
 
-/* hero draws the eye to the button once */
-@keyframes nudge{0%,100%{transform:none}50%{transform:translateY(-3px)}}
-
-@media (max-width:1100px){
-  .hero .grid{gap:40px}
-  .cal{left:-30px}
+@media (max-width:1180px){
+  .fb-tm{display:none}
+  .drow{grid-template-columns:64px minmax(0,1fr) minmax(0,1fr);gap:0 32px}
+  .dbadge{width:64px;height:64px}
+  .drow .rail{left:31px;top:64px}
+  .who .g{grid-template-columns:300px 1fr;gap:56px}
+}
+@media (max-width:1060px){
+  .fb-cd{display:none}
+  .hgrid{grid-template-columns:minmax(0,1fr);gap:40px;max-width:760px;margin:0 auto}
+  .hright{order:-1}
+  .hright h1{font-size:min(13cqi,84px)}
+  .drow,.drow.flip{grid-template-columns:56px minmax(0,1fr);gap:28px 24px}
+  .drow .art,.drow.flip .art{grid-column:2;order:3}
+  .drow.flip .dtext{order:2}
+  .dbadge{width:56px;height:56px}
+  .dbadge b{font-size:28px}
+  .drow .rail{left:27px;top:56px}
+  .stay{grid-template-columns:1fr}
+  .wins{grid-template-columns:1fr;max-width:520px}
+  .win:nth-child(n){transform:none}
+  .rc{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+  .claim{grid-template-columns:1fr;gap:48px;text-align:center}
+  .claim .pic{max-width:330px}
+  .claim .tiles{justify-content:center}
+  .claim .line{margin-left:auto;margin-right:auto}
+  .claim .note{text-align:center}
+  .tix{height:170px}
 }
 @media (max-width:900px){
-  :root{--sec:88px}
-  .bar{display:none}
-  .hero{padding:28px 0 72px}
-  .hero .grid{grid-template-columns:minmax(0,1fr);gap:44px}
-  .photo{justify-self:center;max-width:420px}
-  .cal{left:-14px;top:auto;bottom:70px;width:178px}
-  .days3{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
-  .fit button{grid-template-columns:34px 1fr;gap:6px 16px}
-  .fit .fix{grid-column:2}
-  .stay{grid-template-columns:1fr;padding:40px 32px}
-  .stay svg{display:none}
-  .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,248,238,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  section{padding:88px 0}
+  .fb{display:none}
+  .who .g{grid-template-columns:1fr;gap:48px;justify-items:center}
+  .who .ph{width:min(320px,80%)}
+  .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,248,238,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
   .mbar .btn{width:100%}
   .mbar.on{transform:none}
   html[data-sticky=off] .mbar{display:none}
 }
-@media (max-width:600px){
-  :root{--gut:16px;--sec:76px}
+@media (max-width:640px){
   body{font-size:16px}
-  .hero{padding-top:22px}
-  .eyebrow{font-size:11.5px;letter-spacing:.12em}
-  .hero h1{font-size:43px;line-height:1;margin:14px 0 14px}
-  .hero h1 .ln{display:inline;white-space:normal}
-  .hero .sub{font-size:17px;line-height:1.45}
+  section{padding:76px 0}
+  .wrap,.hwrap{padding:0 16px}
+  .hero{padding:20px 0 64px}
+  .hero .bgflower{width:300px;height:300px;left:auto;right:-120px;top:-60px}
+  .hpill{font-size:10px;letter-spacing:.08em;gap:6px;padding:5px 6px 5px 11px}
+  .hpill .dchip{padding:6px 9px}
+  .hright h1{font-size:48px;margin:16px 0 6px}
+  .hright h1 .l,.hkick .l{display:inline}
+  .hkick{font-size:31px;margin-bottom:12px}
+  .lede{font-size:16.5px;line-height:1.48}
   .situ{margin-top:18px}
-  .situ .lbl{font-size:11px;margin-bottom:8px}
-  .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 calc(var(--gut) * -1);padding:0 var(--gut) 2px;scrollbar-width:none}
+  .situ .lbl{font-size:10.5px;margin-bottom:8px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px;padding:0 16px 2px;scrollbar-width:none}
   .chips::-webkit-scrollbar{display:none}
   .chip{height:38px;font-size:14px;padding:0 14px}
-  .form{margin-top:16px}
-  .form .row{flex-wrap:wrap;gap:8px}
-  .field,.field.fn{flex:1 1 calc(50% - 4px)}
-  .field input{height:52px;padding:0 18px}
-  .form .btn{flex:1 1 100%;height:54px}
-  .form .note{font-size:13px;margin-top:10px;line-height:1.5}
-  h2{font-size:38px}
-  .who .card{grid-template-columns:1fr;gap:24px;justify-items:start}
-  .who .av{width:96px;height:96px}
-  .who p{font-size:23px}
-  .day h3{font-size:28px}
-  .fit button{padding:18px 18px 18px 16px}
-  .fit .fix{font-size:20px}
-  .band{padding:96px 0}
-  .band q{font-size:40px}
-  .result figure{padding:36px 26px 32px;transform:rotate(-.8deg)}
+  .regc{margin-top:18px;padding:14px 14px 12px;border-radius:18px}
+  .regc .row1{margin-bottom:12px;gap:12px}
+  .mt span{width:44px}
+  .mt b{font-size:22px}
+  .regc .when{font-size:13.5px}
+  .regc .when b{font-size:14.5px}
+  .regc .gr{display:none}
+  .btn.big{height:56px;font-size:17px}
+  .note{font-size:12.5px;margin-top:9px}
+  .tstrip{flex-wrap:wrap;justify-content:center;padding:12px;gap:14px}
+  .stats{flex-basis:100%}
+  .stat b{font-size:19px}
+  .stat small{font-size:9.5px}
+  .iph{border-radius:34px;padding:3px}
+  .iph .bz{border-radius:31px;padding:9px}
+  .iph .scr{border-radius:24px}
+  .iph .isl{width:14px;height:52px;margin-top:-26px;left:8px}
+  .vplay{font-size:11px;gap:10px}
+  .vplay i{width:62px;height:62px}
+  .scrub{left:10px;right:10px;bottom:10px;padding:8px 14px;font-size:12px;gap:10px}
+  .book{grid-template-columns:1fr;padding:18px}
+  .book .mini{width:100%;max-width:300px}
+  .book .go{border-left:0;padding-left:0;border-top:1.5px dashed rgba(26,20,18,.18);padding-top:16px}
+  .book .go .btn{width:100%}
+  .modal{padding:0;place-items:end center}
+  .dlg{border-radius:26px 26px 0 0;padding:50px 18px calc(22px + env(safe-area-inset-bottom));max-height:96vh;overflow-y:auto;transform:translateY(40px)}
+  .dlg .mk{top:-30px;width:62px;height:62px;margin-left:-31px}
+  .modal .dlg{overflow:visible}
+  .dlg h3{font-size:36px;margin-bottom:20px}
+  .field input{height:54px}
+  .avail label{padding:12px 0 10px}
+  h2{font-size:40px}
+  .who .bio{font-size:24px}
+  .drow,.drow.flip{grid-template-columns:44px minmax(0,1fr);gap:22px 14px;padding-bottom:76px}
+  .dbadge{width:44px;height:44px;box-shadow:0 0 0 4px var(--cream)}
+  .dbadge small{font-size:7.5px}
+  .dbadge b{font-size:22px}
+  .drow .rail{left:21px;top:44px}
+  .drow .art,.drow.flip .art{grid-column:1/-1}
+  .dtext h3{font-size:36px}
+  .art{border-radius:20px}
+  .fit button{grid-template-columns:32px 1fr;gap:6px 14px;padding:18px 16px}
+  .fit .tk{width:32px;height:32px}
+  .fit .fix{grid-column:2;font-size:21px}
+  .band{padding:100px 0}
+  .band q{font-size:42px}
+  .result figure{padding:44px 24px 30px;transform:rotate(-.8deg)}
+  .result .qm{left:20px;font-size:110px;top:-24px}
   .result blockquote{font-size:22px}
-  .stay{padding:34px 24px}
-  .stay p{font-size:26px}
-  .faqs{margin-top:76px}
+  .stay{padding:36px 24px 28px;border-radius:24px}
+  .stay p{font-size:27px}
+  .tix{height:150px;transform:scale(.85)}
+  .faqs{margin-top:80px}
   .faq summary{font-size:23px;padding:20px 2px}
   .faq .a{padding:0 8px 22px 2px;font-size:16px}
-  .final h2{font-size:46px}
+  .miles{grid-template-columns:1fr}
+  .miles li+li{padding-left:0;border-left:0;border-top:1.5px dashed rgba(26,20,18,.2);margin-top:14px}
+  .recap{padding:52px 18px 40px;border-radius:26px}
+  .recap h2{margin-bottom:28px}
+  .rc > div{padding:24px 22px 24px}
+  .rc h3{font-size:24px}
+  .recap .go .btn{width:100%;height:58px;font-size:17px}
+  .wins-h{margin-top:72px}
+  .final .tiles div{width:70px}
+  .final .tiles b{font-size:36px}
+  .final h2{font-size:48px}
   .final .line{font-size:17px}
+  .final .btn{width:100%;height:58px;font-size:17px}
   footer{padding-bottom:110px}
-  footer .links{gap:16px}
 }
 </style>
 </head>
 <body>
 
-<!-- 0. sticky bar (desktop only; phones get the bottom button) -->
-<div class="bar"><div class="wrap">
-  <div class="info"><img src="img/mark.png" alt="how we grow" width="36" height="36">free <i>·</i> 3 days live <i>·</i> Nov 17 to 19 <i>·</i> <span class="soft">12:00 pm New York</span></div>
-  <a class="btn sm jump" href="#join">save my seat (free)<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
-</div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- the sunflower from her logo: petals, an open grin, thick ink outline -->
+    <symbol id="sf" viewBox="-60 -60 120 120">
+      <g fill="#FFD400" stroke="#1A1412" stroke-width="4" stroke-linejoin="round">
+        <ellipse cx="0" cy="-38" rx="11" ry="18"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(30)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(90)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(120)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(150)"/>
+        <ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(180)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(210)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(270)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(300)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(330)"/>
+        <circle r="25"/>
+      </g>
+      <ellipse cx="-9" cy="-7" rx="3.4" ry="4.6" fill="#1A1412"/><ellipse cx="9" cy="-7" rx="3.4" ry="4.6" fill="#1A1412"/>
+      <path d="M-14 2c2 13 26 13 28 0Z" fill="#1A1412" stroke="#1A1412" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <!-- the same flower, faded, for backgrounds -->
+    <symbol id="sfo" viewBox="-60 -60 120 120">
+      <g fill="#F2C94C" stroke="#7A6A60" stroke-width="3">
+        <ellipse cx="0" cy="-38" rx="11" ry="18"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(30)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(90)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(120)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(150)"/>
+        <ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(180)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(210)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(270)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(300)"/><ellipse cx="0" cy="-38" rx="11" ry="18" transform="rotate(330)"/>
+        <circle r="25" fill="#E8DBC5"/>
+      </g>
+      <path d="M-14 2c2 13 26 13 28 0Z" fill="#7A6A60"/>
+    </symbol>
+    <symbol id="arr" viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="li" viewBox="0 0 26 22"><path d="M3 12.5c3-.6 5.6 1.2 7.4 4.6C13 9.8 17 5 23 3" fill="none" stroke="#F72585" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="tk" viewBox="0 0 240 110">
+      <path d="M14 4h212a10 10 0 0 1 10 10v24a17 17 0 0 0 0 34v24a10 10 0 0 1-10 10H14A10 10 0 0 1 4 96V72a17 17 0 0 0 0-34V14A10 10 0 0 1 14 4Z" fill="#fff" stroke="#1A1412" stroke-width="3.5"/>
+      <path d="M4 38a17 17 0 0 1 0 34V96a10 10 0 0 0 10 10h58V4H14A10 10 0 0 0 4 14Z" fill="#FFD400" stroke="#1A1412" stroke-width="3.5"/>
+      <path d="M72 10v90" stroke="#1A1412" stroke-width="2.5" stroke-dasharray="5 5"/>
+      <use href="#sf" x="14" y="31" width="48" height="48"/>
+      <text x="88" y="50" font-family="Instrument Serif,serif" font-size="30" fill="#1A1412">1:1 with Ana</text>
+      <text x="89" y="78" font-family="Manrope,sans-serif" font-weight="800" font-size="13" letter-spacing="2" fill="#F72585">WORTH $3,000</text>
+    </symbol>
+  </defs>
+</svg>
 
-<!-- 1. hero -->
-<header class="hero">
-  <div class="wrap grid">
-    <div class="copy">
-      <span class="eyebrow">Free · 3 days live · Tue Nov 17 to Thu Nov 19</span>
+<!-- 0. floating bar: desktop only; phones get the bottom button -->
+<header class="fb">
+  <div class="fb-bar">
+    <button class="fb-id open" type="button" aria-label="Free 3-day live workshop with Ana Calin: save my seat">
+      <img class="fb-ic" src="img/mark.png" alt="" width="44" height="44">
+      <span class="fb-t"><small>ANA CALIN</small><b>Free 3-day live workshop</b></span>
+    </button>
+    <div class="fb-cd" aria-label="Tuesday to Thursday, November 17 to 19">
+      <span class="fb-l">NOV</span>
+      <span class="fb-tiles"><span class="fb-tile"><b>17</b><small>Tue</small></span><span class="fb-tile"><b>18</b><small>Wed</small></span><span class="fb-tile"><b>19</b><small>Thu</small></span></span>
+    </div>
+    <span class="fb-tm">12:00 pm New York</span>
+    <button class="btn sm open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button>
+  </div>
+</header>
+
+<!-- 1. HERO: the client hero layout (Kieran Drew / Chad Carson), component for component, in Ana's skin -->
+<section class="hero" id="hero">
+  <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
+  <svg class="bgflower b" aria-hidden="true"><use href="#sfo"/></svg>
+  <div class="hwrap hgrid">
+    <div class="hleft">
+      <div class="tstrip">
+        <div class="award"><img src="img/mark.png" alt="" width="46" height="46"><span><small>HOW WE GROW</small><b>with Ana Calin</b></span></div>
+        <div class="stats">
+          <div class="stat"><b>$1.4M</b><small>from the newsletter</small></div><i></i>
+          <div class="stat"><b>about 80,000</b><small>readers</small></div><i></i>
+          <div class="stat"><b>0</b><small>sales calls</small></div>
+        </div>
+      </div>
+
+      <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover; no autoplay with sound. -->
+      <div class="iph" id="vsl">
+        <span class="sb" style="left:18%;width:9%"></span><span class="sb" style="left:30%;width:5%"></span><span class="sb" style="left:37%;width:5%"></span><span class="sb b" style="left:60%;width:14%"></span>
+        <div class="bz">
+          <div class="scr">
+            <span class="isl"></span>
+            <img src="img/vsl.webp" alt="Ana Calin talking to camera" width="1164" height="718" fetchpriority="high">
+            <video playsinline preload="none"></video>
+            <button class="vplay" type="button" aria-label="Play Ana's welcome video"><i><svg width="30" height="30" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i>Tap for sound</button>
+            <div class="scrub" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg><span class="cur">0:00</span><span class="ln"><i></i></span><span class="rem">-1:00</span><svg width="18" height="18" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="#fff"/><path d="M11 6l3.5 4M14.5 6 11 10" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="mini"><img src="img/day1-slide.webp" alt="Day 1: Find what your readers would pay for" width="800" height="450"></div>
+        <div>
+          <p class="k">Free <b>/</b> live on Zoom</p>
+          <h3>Join the free 3-day live workshop.</h3>
+          <p class="d">Tue Nov 17 to Thu Nov 19</p>
+          <p class="t">12:00 pm New York<span class="lt2"></span></p>
+        </div>
+        <div class="go"><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button><small>3 days live</small></div>
+      </div>
+    </div>
+
+    <div class="hright">
+      <span class="hpill"><span class="dot"></span>Free <i>/</i> 3 days live <i>/</i> <span class="dchip">Tue Nov 17 to Thu Nov 19</span></span>
       <!-- the headline Ana picks: ?h=2 and ?h=3 preview the two alternatives -->
-      <h1 id="h1"><span class="ln">Your readers like</span> <span class="ln">your writing. <em>Now give</em></span> <span class="ln"><em>them something to buy.</em></span></h1>
-      <p class="sub">Three free live sessions with me. You leave with one offer, one price, and your first ask written to the readers you already have.</p>
-
+      <h1 id="h1"><span class="l nw">Your readers</span> <span class="l nw">like <span class="hl">your writing.</span></span></h1>
+      <p class="hkick" id="hk"><span class="l nw">Now give them</span> <span class="l nw">something to buy.</span></p>
+      <p class="lede">Three free live sessions with me. You leave with one offer, one price, and your first ask written to the readers you already have.</p>
       <div class="situ" role="group" aria-labelledby="situ-l">
         <span class="lbl" id="situ-l">Where are you right now?</span>
         <div class="chips">
@@ -300,119 +675,187 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
           <button class="chip" type="button" data-v="both" aria-pressed="false">a bit of both</button>
         </div>
       </div>
-
-      <form class="form" id="join" novalidate>
-        <div class="row">
-          <div class="field fn"><input type="text" name="first_name" placeholder="first name" autocomplete="given-name" aria-label="First name" required><span class="err">add your first name</span></div>
-          <div class="field"><input type="email" name="email_address" placeholder="your best email" autocomplete="email" inputmode="email" aria-label="Email" required><span class="err">check your email address</span></div>
-          <button class="btn" type="submit">save my seat (free)<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></button>
+      <div class="regc" id="regcard">
+        <div class="row1">
+          <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
+          <p class="when"><b>Three live sessions<span class="gr">, Nov 17 to 19</span></b>12:00 pm New York<span class="gr"> / 7:00 pm Greece</span></p>
         </div>
-        <div class="thanks" role="status"><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span>your seat is saved</div>
-        <p class="note">free · live on Zoom · 12:00 pm New York / 7:00 pm Greece<span class="lt"></span></p>
-      </form>
-    </div>
-
-    <!-- photo spot: Ana's 60-second welcome video goes here when it's recorded (click to play, this photo as the cover, no autoplay with sound) -->
-    <div class="photo">
-      <div class="pic"><img src="img/ana-kitchen.webp" alt="Ana Calin" width="904" height="1130" fetchpriority="high"></div>
-      <img class="mark" src="img/mark.png" alt="" width="62" height="62">
-      <span class="handle">@ANACALIN</span>
-      <div class="cal" aria-label="Tuesday to Thursday, November 17 to 19">
-        <div class="mo"><span>NOV</span><span>2026</span></div>
-        <div class="days">
-          <div class="d"><b>17</b><small>Tue</small></div>
-          <div class="d"><b>18</b><small>Wed</small></div>
-          <div class="d"><b>19</b><small>Thu</small></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main>
-<!-- 2. who's Ana -->
-<section class="sand who" id="who">
-  <div class="wrap narrow">
-    <div class="card" data-r>
-      <div class="av"><img src="img/ana-sea.webp" alt="Ana Calin" width="480" height="480" loading="lazy"></div>
-      <div>
-        <p class="partner"><span id="pname"></span> sent you here. Here's who I am.</p>
-        <p>I'm Ana Calin. I write How We Grow, a newsletter read by about 80,000 people who want to get paid for their writing. It's made $1.4M, on about two hours a day, and I've never taken a sales call. These three days are for writers with readers and nothing to sell yet.</p>
-        <div class="sig">Ana</div>
+        <button class="btn big open" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
+        <p class="note">free · live on Zoom<span class="lt"></span></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 3. the three days -->
-<section id="days">
+<main>
+<!-- 2. who's Ana -->
+<section class="sand who" id="who">
+  <div class="wrap">
+    <div class="g">
+      <div class="ph" data-r><img src="img/ana-sea.webp" alt="Ana Calin" width="480" height="480" loading="lazy"><img class="mk" src="img/mark.png" alt="" width="92" height="92" loading="lazy"></div>
+      <div data-r>
+        <p class="partner"><span id="pname"></span> sent you here. Here's who I am.</p>
+        <p class="bio">I'm Ana Calin. I write How We Grow, a newsletter read by about 80,000 people who want to get paid for their writing. It's made $1.4M, on about two hours a day, and I've never taken a sales call. These three days are for writers with readers and nothing to sell yet.</p>
+        <div class="sig">Ana</div>
+        <ul class="miles">
+          <li><b>2023</b>First four-figure months.</li>
+          <li><b>2025</b>First six-figure year, baby on my hip, in my forties.</li>
+          <li><b>2026</b>The business passed a million.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. the three days, one row per day. The drawings follow one example writer (a balcony-gardening newsletter) through all three days. -->
+<section class="days" id="days">
   <div class="wrap">
     <div class="head" data-r>
       <span class="eyebrow">The three days, live</span>
       <h2>Three sessions. <em>Each one ends with something you made.</em></h2>
     </div>
-    <div class="days3">
-      <article class="day" data-r>
-        <div class="art">
-          <!-- one reader: the one she writes to, out of the crowd -->
-          <svg viewBox="0 0 240 160" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <g stroke="#7A6A60" stroke-width="2.4" stroke-dasharray="1 7" opacity=".7">
-              <circle cx="52" cy="72" r="17"/><path d="M24 132c2-20 13-32 28-32s26 12 28 32"/>
-              <circle cx="188" cy="72" r="17"/><path d="M160 132c2-20 13-32 28-32s26 12 28 32"/>
+
+    <div class="rows">
+      <!-- DAY 1 -->
+      <div class="drow" data-r>
+        <span class="rail"></span>
+        <div class="dbadge"><small>DAY</small><b>1</b></div>
+        <div class="dtext">
+          <div class="dwhen">Tue Nov 17 <span>· 12:00 pm New York</span></div>
+          <h3>Find what your readers would pay for.</h3>
+          <p class="out"><span>You leave with:</span> your one reader, and the problem she'd pay you to fix.</p>
+          <p class="body">You're writing for everyone, which is why nobody pays. So we pick one reader and name her. Then we find the problem she'd pay you to fix, in what you already know.</p>
+          <ul>
+            <li><svg><use href="#li"/></svg>Who your one reader is, and how to name her</li>
+            <li><svg><use href="#li"/></svg>Why likes are not buyers, and where the buyers are in your list</li>
+            <li><svg><use href="#li"/></svg>The problem she'd pay you to fix, written in her words</li>
+          </ul>
+        </div>
+        <div class="art" id="art1" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:420px;top:-70px;width:250px;height:250px"><use href="#sfo"/></svg>
+          <svg class="fl" style="left:-80px;top:330px;width:220px;height:220px"><use href="#sfo"/></svg>
+          <div class="sheet s1" style="left:78px;top:32px;width:448px;transform:rotate(-1.6deg)">
+            <div class="sh">Reader file<span>DAY 1</span></div>
+            <div class="crowd" id="crowd"></div>
+            <p class="cap">the one who opens every email</p>
+            <div class="pf">
+              <svg viewBox="-60 -60 120 120" width="62" height="62" class="av"><circle r="50" fill="#FFD400" stroke="#1A1412" stroke-width="5"/><path d="M-50 -6C-44-48 44-48 50-6C40-26 22-34 0-34S-40-26-50-6Z" fill="#6B4E3A" stroke="#1A1412" stroke-width="5" stroke-linejoin="round"/><ellipse cx="-16" cy="2" rx="5" ry="7" fill="#1A1412"/><ellipse cx="16" cy="2" rx="5" ry="7" fill="#1A1412"/><path d="M-20 18c4 16 36 16 40 0Z" fill="#1A1412"/></svg>
+              <dl>
+                <dt>READER</dt><dd>Rents. Gardens on a balcony.</dd>
+                <dt>STUCK ON</dt><dd>Everything she plants dies by July.</dd>
+                <dt>SHE'D PAY FOR</dt><dd><span class="mk-anim" id="mk1">Her first real harvest.</span></dd>
+              </dl>
+            </div>
+            <div class="todo">
+              <div class="t1"><span class="bx"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></span>Name your one reader<em>DONE</em></div>
+              <div class="t2"><span class="bx"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></span>The problem she'd pay you to fix<em>DONE</em></div>
+            </div>
+          </div>
+          <!-- the sunflower mug -->
+          <svg class="mug" style="position:absolute;left:8px;top:352px;width:140px;height:140px;overflow:visible" viewBox="0 0 140 140">
+            <g class="steam" fill="none" stroke="#7A6A60" stroke-width="3" stroke-linecap="round"><path d="M44 20c-6-8 6-12 0-20"/><path d="M60 18c-6-8 6-12 0-20"/><path d="M76 20c-6-8 6-12 0-20"/></g>
+            <path d="M104 58c22-2 26 38 0 38" fill="none" stroke="#1A1412" stroke-width="5"/>
+            <path d="M18 34h88v74c0 12-8 20-20 20H38c-12 0-20-8-20-20Z" fill="#fff" stroke="#1A1412" stroke-width="5" stroke-linejoin="round"/>
+            <ellipse cx="62" cy="34" rx="44" ry="9" fill="#6B4E3A" stroke="#1A1412" stroke-width="5"/>
+            <use href="#sf" x="38" y="58" width="48" height="48"/>
+          </svg>
+          <svg class="spark" style="position:absolute;left:520px;top:22px;width:56px;height:50px" viewBox="0 0 56 50" fill="none" stroke="#1A1412" stroke-width="4" stroke-linecap="round"><path d="M10 34 2 28M22 22 18 6M36 26l12-12"/></svg>
+        </div></div>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="drow flip" data-r>
+        <span class="rail"></span>
+        <div class="dbadge"><small>DAY</small><b>2</b></div>
+        <div class="dtext">
+          <div class="dwhen">Wed Nov 18 <span>· 12:00 pm New York</span></div>
+          <h3>Turn it into an offer, with a price.</h3>
+          <p class="out"><span>You leave with:</span> your offer, in one sentence, priced.</p>
+          <p class="body">Ten thousand readers and no offer is a hobby with analytics. Two hundred readers and one priced offer is a business. We turn her problem into one offer you can say in a sentence, and we put a price on it.</p>
+          <ul>
+            <li><svg><use href="#li"/></svg>The one sentence: who it's for, what changes, how long</li>
+            <li><svg><use href="#li"/></svg>How to price it, and how to say the price out loud</li>
+            <li><svg><use href="#li"/></svg>At the end, my program, for anyone who wants to keep going with me. You can leave before it.</li>
+          </ul>
+        </div>
+        <div class="art" id="art2" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:-70px;top:-60px;width:230px;height:230px"><use href="#sfo"/></svg>
+          <svg class="fl" style="left:440px;top:340px;width:240px;height:240px"><use href="#sfo"/></svg>
+          <div class="sheet s2" style="left:52px;top:58px;width:462px;transform:rotate(1.3deg)">
+            <div class="sh">Your offer<span>DAY 2</span></div>
+            <p class="offer">I help <span class="blk b1">balcony gardeners</span> get <span class="blk p b2">their first harvest</span> in <span class="blk b3">six weeks.</span></p>
+            <div class="parts"><span>WHO</span><span>WHAT CHANGES</span><span>HOW LONG</span></div>
+            <div class="prow"><b>PRICE</b></div>
+          </div>
+          <!-- the price tag, tied to the sheet -->
+          <svg class="tag" style="position:absolute;left:356px;top:290px;width:200px;height:160px;transform-origin:44px 10px;overflow:visible" viewBox="0 0 200 160">
+            <path d="M44 10c-4 16 4 30 16 36" fill="none" stroke="#1A1412" stroke-width="3.4" stroke-linecap="round"/>
+            <g transform="rotate(-10 110 90)">
+              <path d="M56 54h112a12 12 0 0 1 12 12v56a12 12 0 0 1-12 12H56L28 94Z" fill="#F72585" stroke="#1A1412" stroke-width="5" stroke-linejoin="round"/>
+              <circle cx="58" cy="94" r="8" fill="#E8DBC5" stroke="#1A1412" stroke-width="4"/>
+              <text x="124" y="110" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="40" fill="#fff" letter-spacing="-1">$149</text>
             </g>
-            <path d="M82 140c2-27 18-42 38-42s36 15 38 42Z" fill="#FFD400" stroke="#1A1412" stroke-width="4"/>
-            <circle cx="120" cy="66" r="24" fill="#fff" stroke="#1A1412" stroke-width="4"/>
-            <circle cx="112" cy="62" r="2.8" fill="#1A1412"/><circle cx="128" cy="62" r="2.8" fill="#1A1412"/>
-            <path d="M110 73c5 6 15 6 20 0" stroke="#1A1412" stroke-width="3.4"/>
-            <path d="M118 22c-38 2-60 30-56 66 4 38 36 58 68 52 34-6 52-40 44-74-6-26-28-40-54-42" stroke="#F72585" stroke-width="3.6"/>
           </svg>
-        </div>
-        <div class="meta"><span class="pill">DAY 1</span><span class="when">Tue Nov 17 · 12:00 pm New York</span></div>
-        <h3>Find what your readers would pay for.</h3>
-        <p><b>You leave with:</b> your one reader, and the problem she'd pay you to fix.</p>
-      </article>
-      <article class="day" data-r>
-        <div class="art">
-          <!-- the offer, one sentence, with a price tag tied on -->
-          <svg viewBox="0 0 240 160" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="26" y="44" width="136" height="92" rx="14" fill="#fff" stroke="#1A1412" stroke-width="4"/>
-            <rect x="42" y="66" width="92" height="16" fill="#FFD400"/>
-            <path d="M44 74h86" stroke="#1A1412" stroke-width="4"/>
-            <path d="M44 98h64M44 116h40" stroke="#1A1412" stroke-width="4" opacity=".25"/>
-            <path d="M150 50c10-16 22-22 34-18" stroke="#1A1412" stroke-width="3"/>
-            <g transform="rotate(14 194 70)">
-              <path d="M176 34h30l14 16v52a8 8 0 0 1-8 8h-36a8 8 0 0 1-8-8V42a8 8 0 0 1 8-8Z" fill="#F72585" stroke="#1A1412" stroke-width="4"/>
-              <circle cx="191" cy="46" r="5" fill="#EADFCF" stroke="#1A1412" stroke-width="3"/>
-              <text x="194" y="94" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="30" fill="#fff" stroke="none">$</text>
+          <!-- the highlighter, from her slide -->
+          <svg class="pen" style="position:absolute;left:0;top:0;width:150px;height:46px;transform:translate(70px,404px) rotate(-8deg)" viewBox="0 0 150 46">
+            <g transform="rotate(-24 75 23)">
+              <path d="M8 20l10-6v18l-10-6Z" fill="#FFD400" stroke="#1A1412" stroke-width="3.4" stroke-linejoin="round"/>
+              <path d="M18 12h20v22H18Z" fill="#1A1412"/>
+              <rect x="38" y="9" width="78" height="28" rx="5" fill="#FFD400" stroke="#1A1412" stroke-width="3.6"/>
+              <rect x="112" y="8" width="32" height="30" rx="6" fill="#1A1412"/>
             </g>
           </svg>
+        </div></div>
+      </div>
+
+      <!-- DAY 3 -->
+      <div class="drow" data-r>
+        <div class="dbadge"><small>DAY</small><b>3</b></div>
+        <div class="dtext">
+          <div class="dwhen">Thu Nov 19 <span>· 12:00 pm New York</span></div>
+          <h3>Write the ask.</h3>
+          <p class="out"><span>You leave with:</span> your first ask, written, ready to send.</p>
+          <p class="body">Likes are not buyers. Readers who know what you sell are. You write the email that tells your readers what you sell and where to get it, and you leave with it ready to send.</p>
+          <ul>
+            <li><svg><use href="#li"/></svg>The structure I use to turn a post into an offer</li>
+            <li><svg><use href="#li"/></svg>The one-in-four rule, and how to start it this week</li>
+            <li><svg><use href="#li"/></svg>Stay to the end: five people there live win a 1:1 with me</li>
+          </ul>
         </div>
-        <div class="meta"><span class="pill">DAY 2</span><span class="when">Wed Nov 18 · 12:00 pm New York</span></div>
-        <h3>Turn it into an offer, with a price.</h3>
-        <p><b>You leave with:</b> your offer, in one sentence, priced.</p>
-      </article>
-      <article class="day" data-r>
-        <div class="art">
-          <!-- the first ask: a letter on its way out -->
-          <svg viewBox="0 0 240 160" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M58 22h104a8 8 0 0 1 8 8v66H50V30a8 8 0 0 1 8-8Z" fill="#fff" stroke="#1A1412" stroke-width="4"/>
-            <path d="M66 42h56" stroke="#1A1412" stroke-width="4"/>
-            <path d="M66 58h80M66 72h64" stroke="#1A1412" stroke-width="4" opacity=".25"/>
-            <path d="M40 72v56a8 8 0 0 0 8 8h124a8 8 0 0 0 8-8V72l-70 40Z" fill="#FFD400" stroke="#1A1412" stroke-width="4"/>
-            <path d="M40 136l52-36M180 136l-52-36" stroke="#1A1412" stroke-width="4"/>
-            <rect x="150" y="112" width="70" height="30" rx="15" fill="#F72585" stroke="#1A1412" stroke-width="4" transform="rotate(-8 185 127)"/>
-            <path d="M178 133l14-12m-9 0h9v9" stroke="#fff" stroke-width="3.4" transform="rotate(-8 185 127)"/>
-            <path d="M200 76l8-12M210 92l14-4M190 66l1-14" stroke="#1A1412" stroke-width="3.6"/>
+        <div class="art" id="art3" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:430px;top:-60px;width:230px;height:230px"><use href="#sfo"/></svg>
+          <!-- the envelope with a sunflower stamp -->
+          <svg class="env" style="position:absolute;left:14px;top:318px;width:190px;height:150px" viewBox="0 0 190 150">
+            <g transform="rotate(-8 95 75)">
+              <rect x="12" y="30" width="166" height="104" rx="10" fill="#fff" stroke="#1A1412" stroke-width="5"/>
+              <path d="M14 36l81 56 81-56" fill="none" stroke="#1A1412" stroke-width="5" stroke-linejoin="round"/>
+              <rect x="132" y="44" width="34" height="38" rx="3" fill="#FFF1B3" stroke="#1A1412" stroke-width="3" stroke-dasharray="4 3"/>
+              <use href="#sf" x="136" y="50" width="26" height="26"/>
+            </g>
           </svg>
-        </div>
-        <div class="meta"><span class="pill">DAY 3</span><span class="when">Thu Nov 19 · 12:00 pm New York</span></div>
-        <h3>Write the ask.</h3>
-        <p><b>You leave with:</b> your first ask, written, ready to send.</p>
-      </article>
+          <div class="sheet mail" id="mail" style="left:88px;top:30px;width:444px;transform:rotate(-1.2deg)">
+            <div class="mh">
+              <div class="from"><svg width="30" height="30"><use href="#sf"/></svg><span><b>You</b> · your newsletter</span><span class="sendb">send</span></div>
+              <div class="subj"><span id="subj">Your first harvest, by August.</span><span class="caret"></span></div>
+              <div class="prev">Balcony Tomatoes opens Monday.</div>
+            </div>
+            <div class="mb">
+              <div class="bar" style="width:92%"></div>
+              <div class="bar" style="width:74%"></div>
+              <p class="say">So I built the thing I needed: <span class="mk-anim" id="mk3">a six-week course, $149.</span></p>
+              <span class="cta">see what's inside<svg><use href="#arr"/></svg></span>
+              <div class="sign">your name</div>
+            </div>
+          </div>
+          <div class="toast" id="toast" style="left:300px;top:418px"><i><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1A1412" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></i>Sent to 1,900 readers</div>
+          <svg class="cursor" style="position:absolute;left:0;top:0;width:30px;height:36px;opacity:0" viewBox="0 0 30 36"><path d="M3 2l22 16-10 2 6 12-5 2-6-12-7 7Z" fill="#fff" stroke="#1A1412" stroke-width="2.6" stroke-linejoin="round"/></svg>
+        </div></div>
+      </div>
     </div>
+
     <div class="after" data-r>
       <p>Come to all three. Each day builds on the one before.</p>
-      <a class="btn jump" href="#join">save my seat (free)<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+      <button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button>
     </div>
   </div>
 </section>
@@ -426,48 +869,56 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
       <p class="tip">Tap the ones that sound like you.</p>
     </div>
     <ul data-r>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You write every week and it pays nothing.</span><span class="fix">Leave with something to sell.</span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">Readers say lovely things and never buy.</span><span class="fix">Write the one ask that turns a reader into a buyer.</span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You think you need more subscribers first.</span><span class="fix">Two hundred readers and one priced offer is a business.</span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You don't know what you'd even sell.</span><span class="fix">Find it in what you already know.</span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You have a job, and no time.</span><span class="fix">Built for the evenings you actually have.</span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You write every week and it pays nothing.</span><span class="fix"><span>Leave with something to sell.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">Readers say lovely things and never buy.</span><span class="fix"><span>Write the one ask that turns a reader into a buyer.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You think you need more subscribers first.</span><span class="fix"><span>Two hundred readers and one priced offer is a business.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You don't know what you'd even sell.</span><span class="fix"><span>Find it in what you already know.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You have a job, and no time.</span><span class="fix"><span>Built for the evenings you actually have.</span></span></button></li>
     </ul>
     <p class="not" data-r>Not for you yet if you want more followers. This is about getting paid by the readers you already have.</p>
   </div>
 </section>
 
 <!-- 5. quote band: the one ink section -->
-<section class="band">
-  <div class="wrap"><q data-r>Likes are not buyers. <mark>An offer is how you get paid.</mark></q></div>
+<section class="band" id="band">
+  <svg class="fl" aria-hidden="true"><use href="#sfo"/></svg>
+  <div class="wrap"><q>Likes are not buyers. <mark>An offer is how you get paid.</mark></q></div>
 </section>
 
-<!-- 6. one reader's result (word for word; needs Ana's OK on the name, else Jill Hart's quote, else remove) -->
+<!-- 6. one reader's result: word for word. Needs Ana's OK on the name, else Jill Hart's quote, else remove the block. -->
 <section class="sand result">
   <div class="wrap">
     <figure data-r>
+      <span class="qm" aria-hidden="true">&ldquo;</span>
       <blockquote>"After building an 8k+ newsletter and not making more than a few hundred dollars with it in over a year, I am loving this Money Map Blueprint. It's gotten me out of my own way and I've done more in 3 days toward real revenue generation than in the previous 13 months."</blockquote>
       <figcaption><span class="ini" aria-hidden="true">AD</span><span><b>Amaya Dinesa</b><small>Creator, Self As Source</small></span></figcaption>
     </figure>
+    <!-- three wins, word for word from howwegrowtoday.com -->
+    <div class="head wins-h" data-r><span class="eyebrow">800+ wins came through the Lab</span></div>
+    <div class="wins" data-r>
+      <div class="win"><small>Lab student</small><div class="from">312 subscribers</div><div class="to"><span>$1,067 in a week</span></div><p>One offer, written to the one reader who would buy, sent to the 312. Eleven bought at $97.</p></div>
+      <div class="win"><small>Hit Your First $10K Month student</small><div class="from">14 months free</div><div class="to"><span>23 paid in month one</span></div><p>Same writing. Paid tier on, the offer in plain words. Nothing about his skill changed.</p></div>
+      <div class="win"><small>Me</small><div class="from">$97 for three years</div><div class="to"><span>$797 that week</span></div><p>Ready for what? There was no exam. I wrote the belief down, asked it that question, and changed the price.</p></div>
+    </div>
   </div>
 </section>
 
 <!-- 7. stay until the end + FAQ -->
 <section>
   <div class="wrap">
-    <div class="stay" data-r>
+    <div class="stay" id="stay">
       <div>
-        <p>Stay until the end of Day 3. Five people who are there live win a 1:1 with me, <mark>worth $3,000.</mark></p>
+        <p>Stay until the end of Day 3. Five people who are there live win a 1:1 with me, <span class="hl">worth $3,000.</span></p>
         <small>Free to enter. Live attendees only. Five names picked at random at the end of Day 3.</small>
       </div>
-      <!-- two cups: a 1:1 with Ana -->
-      <svg viewBox="0 0 150 130" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M14 58h50v34a20 20 0 0 1-20 20h-10a20 20 0 0 1-20-20Z" fill="#fff" stroke="#1A1412" stroke-width="4"/>
-        <path d="M64 66h6a10 10 0 0 1 0 20h-6" stroke="#1A1412" stroke-width="4"/>
-        <path d="M84 58h50v34a20 20 0 0 1-20 20h-10a20 20 0 0 1-20-20Z" fill="#FFD400" stroke="#1A1412" stroke-width="4"/>
-        <path d="M134 66h6a10 10 0 0 1 0 20" stroke="#1A1412" stroke-width="4"/>
-        <path d="M30 44c-4-8 4-12 0-20M46 44c-4-8 4-12 0-20M100 44c-4-8 4-12 0-20M116 44c-4-8 4-12 0-20" stroke="#F72585" stroke-width="3.4"/>
-        <path d="M6 120h138" stroke="#1A1412" stroke-width="4"/>
-      </svg>
+      <!-- five seats: five 1:1 tickets fanning out -->
+      <div class="tix" aria-hidden="true">
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+      </div>
     </div>
 
     <div class="faqs">
@@ -483,20 +934,54 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   </div>
 </section>
 
-<!-- 8. final CTA -->
+<!-- 8. quick recap -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="recap" data-r>
+      <svg class="fl" style="left:-70px;top:-60px;width:230px;height:230px" aria-hidden="true"><use href="#sfo"/></svg>
+      <svg class="fl" style="right:-80px;bottom:-90px;width:260px;height:260px" aria-hidden="true"><use href="#sfo"/></svg>
+      <h2>Quick <em>recap.</em></h2>
+      <div class="rc">
+        <div>
+          <span class="ic"><svg aria-hidden="true"><use href="#sf"/></svg></span>
+          <h3>WHAT</h3>
+          <p>A free 3-day live workshop with me. You leave with one offer, one price, and your first ask, written.</p>
+        </div>
+        <div>
+          <span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><rect x="7" y="10" width="38" height="34" rx="6" fill="#fff" stroke="#1A1412" stroke-width="3"/><path d="M7 16a6 6 0 0 1 6-6h26a6 6 0 0 1 6 6v5H7Z" fill="#F72585" stroke="#1A1412" stroke-width="3"/><path d="M17 6v8M35 6v8" stroke="#1A1412" stroke-width="3" stroke-linecap="round"/><text x="26" y="39.5" text-anchor="middle" font-family="Instrument Serif,serif" font-size="17" fill="#1A1412">17</text></svg></span>
+          <h3>WHEN</h3>
+          <p>Tue Nov 17 to Thu Nov 19. 12:00 pm New York / 7:00 pm Greece, all three days<span class="lt"></span>.</p>
+        </div>
+        <div>
+          <span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><rect x="8" y="11" width="36" height="24" rx="4" fill="#fff" stroke="#1A1412" stroke-width="3"/><circle cx="26" cy="21" r="4" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><path d="M19 31c1.5-4 4-5.5 7-5.5s5.5 1.5 7 5.5" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><path d="M4 40h44l-3 4H7Z" fill="#FFD400" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/></svg></span>
+          <h3>WHERE</h3>
+          <p>Live on Zoom, from anywhere. Come live if you can: that's where we do the work together.</p>
+        </div>
+      </div>
+      <div class="go"><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. final CTA: claim your seat -->
 <section class="sand final" id="final">
   <div class="wrap">
-    <h2 data-r>See you <em class="ln">Tuesday, Nov 17.</em></h2>
-    <p class="line" data-r>Free. Three evenings live with me. You leave with your offer, your price and your first ask.</p>
-    <form class="form" id="join2" novalidate data-r>
-      <div class="row">
-        <div class="field fn"><input type="text" name="first_name" placeholder="first name" autocomplete="given-name" aria-label="First name" required><span class="err">add your first name</span></div>
-        <div class="field"><input type="email" name="email_address" placeholder="your best email" autocomplete="email" inputmode="email" aria-label="Email" required><span class="err">check your email address</span></div>
-        <button class="btn" type="submit">save my seat (free)<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></button>
+    <div class="claim">
+      <div class="pic" data-r>
+        <svg class="sun" aria-hidden="true"><use href="#sfo"/></svg>
+        <div class="fr"><img src="img/ana-cabin.webp" alt="Ana Calin" width="612" height="744" loading="lazy"></div>
+        <img class="mk" src="img/mark.png" alt="" width="96" height="96" loading="lazy">
       </div>
-      <div class="thanks" role="status"><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span>your seat is saved</div>
-      <p class="note">free · live on Zoom · 12:00 pm New York / 7:00 pm Greece<span class="lt"></span></p>
-    </form>
+      <div data-r>
+        <div class="tiles" aria-label="Tuesday to Thursday, November 17 to 19">
+          <div><b>17</b><small>Tue</small></div><div><b>18</b><small>Wed</small></div><div><b>19</b><small>Thu</small></div>
+        </div>
+        <h2>See you <em class="nw">Tuesday, Nov 17.</em></h2>
+        <p class="line">Free. Three evenings live with me. You leave with your offer, your price and your first ask.</p>
+        <button class="btn open" type="button" id="finalBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
+        <p class="note">free · live on Zoom · 12:00 pm New York / 7:00 pm Greece<span class="lt"></span></p>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -504,20 +989,51 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
 <footer>
   <div class="wrap">
     <div class="top">
-      <div class="brand"><img src="img/mark.png" alt="" width="48" height="48">how we grow</div>
+      <div class="brand"><img src="img/mark.png" alt="" width="50" height="50" loading="lazy">how we grow</div>
       <div class="links"><span>@ANACALIN</span><a href="https://substack.com/privacy" rel="noopener">privacy</a></div>
     </div>
     <p class="src">$1.4M and reader count: Ana's own figures, published on <a href="https://howwegrowtoday.com/" rel="noopener">howwegrowtoday.com</a>.</p>
   </div>
 </footer>
 
-<div class="mbar" id="mbar"><a class="btn jump" href="#join">save my seat (free)<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a></div>
+<div class="mbar" id="mbar"><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button></div>
+
+<!-- the registration popup: every "save my seat (free)" button opens it -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-h">
+    <img class="mk" src="img/mark.png" alt="" width="76" height="76">
+    <button class="x" type="button" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
+    <form id="join" novalidate>
+      <span class="ey">FREE · 3 DAYS LIVE · NOV 17 TO 19<br>12:00 PM NEW YORK</span>
+      <h3 id="dlg-h">Save your seat for <em>all three days.</em></h3>
+      <div class="field"><input type="text" name="first_name" placeholder="first name" autocomplete="given-name" aria-label="First name" required><span class="err">add your first name</span></div>
+      <div class="field"><input type="email" name="email_address" placeholder="your best email" autocomplete="email" inputmode="email" aria-label="Email" required><span class="err">check your email address</span></div>
+      <fieldset class="avail">
+        <legend>I'm available Nov 17 to 19 to attend:</legend>
+        <div class="opts">
+          <label><input type="radio" name="fields[available]" value="yes"><span class="rd"></span>yes</label>
+          <label><input type="radio" name="fields[available]" value="no"><span class="rd"></span>no</label>
+          <label><input type="radio" name="fields[available]" value="maybe"><span class="rd"></span>maybe</label>
+        </div>
+      </fieldset>
+      <button class="btn big send" type="submit">save my seat (free)<svg><use href="#arr"/></svg></button>
+      <p class="note">free · live on Zoom<span class="lt"></span></p>
+      <div class="bye"><img src="img/ana-sea.webp" alt="" width="52" height="52" loading="lazy"><p>See you there,<b>Ana</b></p></div>
+    </form>
+    <div class="thanks" role="status">
+      <span><svg width="26" height="26" viewBox="0 0 16 16" fill="none" stroke="#1A1412" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span>
+      <h3>Your seat is <em>saved.</em></h3>
+      <p>See you Tuesday, Nov 17.</p>
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
   /* ---- settings Theia fills in ---- */
   var KIT_FORM_ID = '';   // Kit form "Workshop registration" (numeric id). Empty = demo mode, nothing is sent.
-  var VIP_URL     = '';   // the VIP page; first_name and email are passed on the query string for the checkout prefill
+  var VIP_URL     = '';   // the VIP page; first_name and email go on the query string for the checkout prefill
+  var VSL_SRC     = '';   // Ana's 60-second welcome video (mp4). Empty = the still with the play button.
   var PARTNERS    = 'partners.json'; // { "ref": "Partner newsletter name" }, from us by Wed Oct 28
   /* ---------------------------------- */
 
@@ -526,12 +1042,12 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
 
   /* headline options for Ana: ?h=2 or ?h=3 */
   var H = {
-    '2':'<span class="ln">Likes are not buyers.</span> <span class="ln"><em>Three evenings to change that.</em></span>',
-    '3':'<span class="ln">Turn the readers you</span> <span class="ln">already have <em>into your</em></span> <span class="ln"><em>first buyers.</em></span>'
+    '2':['<span class="l nw">Likes are not</span> <span class="l nw"><span class="hl">buyers.</span></span>','<span class="l nw">Three evenings</span> <span class="l nw">to change that.</span>'],
+    '3':['<span class="l nw">Turn the readers</span> <span class="l nw">you <span class="hl">already have</span></span>','<span class="l nw">into your</span> <span class="l nw">first buyers.</span>']
   };
-  if (H[qs.get('h')]) document.getElementById('h1').innerHTML = H[qs.get('h')];
+  if (H[qs.get('h')]) {document.getElementById('h1').innerHTML = H[qs.get('h')][0];document.getElementById('hk').innerHTML = H[qs.get('h')][1]}
 
-  /* hidden fields, the same on both forms */
+  /* hidden fields */
   var ref = (qs.get('ref') || '').trim().toLowerCase();
   function cookie(k){var m=document.cookie.match('(?:^|; )'+k+'=([^;]*)');return m?decodeURIComponent(m[1]):''}
   var variant = cookie('ana_sticky');
@@ -540,13 +1056,11 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
     document.cookie = 'ana_sticky='+variant+'; max-age='+60*60*24*90+'; path=/; SameSite=Lax';
   }
   document.documentElement.setAttribute('data-sticky', variant);
+  var form = document.getElementById('join');
   var hidden = {ref: ref || 'direct', situation: '', sticky_variant: variant,
     utm_source: qs.get('utm_source') || '', utm_medium: qs.get('utm_medium') || '', utm_campaign: qs.get('utm_campaign') || ''};
-  var forms = [document.getElementById('join'), document.getElementById('join2')];
-  forms.forEach(function(f){
-    Object.keys(hidden).forEach(function(k){var i=document.createElement('input');i.type='hidden';i.name='fields['+k+']';i.dataset.h=k;i.value=hidden[k];f.appendChild(i)});
-  });
-  function setHidden(k,v){hidden[k]=v;document.querySelectorAll('input[data-h="'+k+'"]').forEach(function(i){i.value=v})}
+  Object.keys(hidden).forEach(function(k){var i=document.createElement('input');i.type='hidden';i.name='fields['+k+']';i.dataset.h=k;i.value=hidden[k];form.appendChild(i)});
+  function setHidden(k,v){form.querySelector('input[data-h="'+k+'"]').value=v}
 
   /* situation chips: one at a time, tap again to clear */
   var chips = document.querySelectorAll('.chip');
@@ -565,66 +1079,188 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
     }).catch(function(){});
   }
 
-  /* the visitor's own time, from 2026-11-17 17:00 UTC (12:00 pm New York) */
+  /* the visitor's own time, from 2026-11-17 17:00 UTC (12:00 pm New York); hidden if it can't be worked out */
   try {
     var parts = new Intl.DateTimeFormat('en-US',{weekday:'short',hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(new Date(Date.UTC(2026,10,17,17,0)));
     var p = {}; parts.forEach(function(x){p[x.type]=x.value});
     if (p.weekday && p.hour && p.minute && p.dayPeriod) {
-      var t = ' · that’s ' + p.weekday + ' ' + p.hour + ':' + p.minute + ' ' + p.dayPeriod.toLowerCase() + ' for you';
-      document.querySelectorAll('.lt').forEach(function(s){s.textContent = t});
+      var lt = p.weekday + ' ' + p.hour + ':' + p.minute + ' ' + p.dayPeriod.toLowerCase();
+      document.querySelectorAll('.lt').forEach(function(s){s.textContent = ' · that’s ' + lt + ' for you'});
+      document.querySelectorAll('.lt2').forEach(function(s){s.textContent = ' / ' + lt + ' your time'});
     }
   } catch (e) {}
 
-  /* forms: inline errors, Kit, then the VIP page */
-  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  forms.forEach(function(f){
-    var fn = f.querySelector('[name=first_name]'), em = f.querySelector('[name=email_address]');
-    [fn,em].forEach(function(i){i.addEventListener('input',function(){i.parentNode.classList.remove('bad')})});
-    f.addEventListener('submit',function(e){
-      e.preventDefault();
-      var ok = true;
-      if (!fn.value.trim()) {fn.parentNode.classList.add('bad');ok=false}
-      if (!emailRe.test(em.value.trim())) {em.parentNode.classList.add('bad');ok=false}
-      if (!ok) {(f.querySelector('.bad input')).focus();return}
-      var btn = f.querySelector('button[type=submit]'); btn.disabled = true;
-      var name = fn.value.trim(), mail = em.value.trim();
-      function next(){
-        if (VIP_URL) {location.href = VIP_URL + (VIP_URL.indexOf('?')<0?'?':'&') + 'first_name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(mail); return}
-        f.classList.add('done');
-      }
-      try {sessionStorage.setItem('ana_reg', JSON.stringify({first_name:name,email:mail}))} catch (x) {}
-      if (!KIT_FORM_ID) {next();return}
-      var body = new URLSearchParams(new FormData(f));
-      fetch('https://app.kit.com/forms/'+KIT_FORM_ID+'/subscriptions',{method:'POST',body:body,headers:{'Accept':'application/json'}})
-        .then(next, next);
-    });
+  /* the popup */
+  var modal = document.getElementById('modal'), dlg = modal.querySelector('.dlg'), lastBtn = null;
+  function openM(e){
+    if (e) e.preventDefault();
+    lastBtn = e && e.currentTarget;
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('lock');
+    setTimeout(function(){ var f = form.querySelector('[name=first_name]'); if (f && !dlg.classList.contains('done')) f.focus({preventScroll:true}) }, reduce ? 0 : 260);
+  }
+  function closeM(){
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('lock');
+    if (lastBtn) lastBtn.focus({preventScroll:true});
+  }
+  document.querySelectorAll('.open').forEach(function(b){b.addEventListener('click', openM)});
+  modal.querySelector('.x').addEventListener('click', closeM);
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeM() });
+  document.addEventListener('keydown', function(e){
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') closeM();
+    if (e.key === 'Tab') { /* keep focus inside the popup */
+      var f = Array.prototype.filter.call(dlg.querySelectorAll('button,input'), function(x){return x.offsetParent !== null && x.type !== 'hidden'});
+      if (!f.length) return;
+      if (e.shiftKey && document.activeElement === f[0]) {e.preventDefault(); f[f.length-1].focus()}
+      else if (!e.shiftKey && document.activeElement === f[f.length-1]) {e.preventDefault(); f[0].focus()}
+    }
   });
 
-  /* every button above the final form glides to the hero form, then focuses first name */
-  var join = document.getElementById('join');
-  document.querySelectorAll('.jump').forEach(function(b){b.addEventListener('click',function(e){
+  /* submit: inline errors, Kit, then the VIP page */
+  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var fn = form.querySelector('[name=first_name]'), em = form.querySelector('[name=email_address]');
+  [fn,em].forEach(function(i){i.addEventListener('input',function(){i.parentNode.classList.remove('bad')})});
+  form.addEventListener('submit',function(e){
     e.preventDefault();
-    join.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'});
-    setTimeout(function(){join.querySelector('[name=first_name]').focus({preventScroll:true})}, reduce ? 0 : 650);
-  })});
+    var ok = true;
+    if (!fn.value.trim()) {fn.parentNode.classList.add('bad');ok=false}
+    if (!emailRe.test(em.value.trim())) {em.parentNode.classList.add('bad');ok=false}
+    if (!ok) {form.querySelector('.bad input').focus();return}
+    form.querySelector('.send').disabled = true;
+    var name = fn.value.trim(), mail = em.value.trim();
+    function next(){
+      if (VIP_URL) {location.href = VIP_URL + (VIP_URL.indexOf('?')<0?'?':'&') + 'first_name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(mail); return}
+      dlg.classList.add('done');
+    }
+    try {sessionStorage.setItem('ana_reg', JSON.stringify({first_name:name,email:mail}))} catch (x) {}
+    if (!KIT_FORM_ID) {next();return}
+    fetch('https://app.kit.com/forms/'+KIT_FORM_ID+'/subscriptions',{method:'POST',body:new URLSearchParams(new FormData(form)),headers:{'Accept':'application/json'}}).then(next, next);
+  });
 
-  /* phone, sticky "on" half only: the bottom button once the hero form is out of view, out of the way of the final form */
-  var mbar = document.getElementById('mbar'), fin = document.getElementById('join2');
+  /* phone, sticky "on" half only: the bottom button once the hero button scrolls away, out of the way of the final button */
+  var mbar = document.getElementById('mbar'), hb = document.getElementById('heroBtn'), fb2 = document.getElementById('finalBtn');
   function onScroll(){
-    var r = join.getBoundingClientRect(), f = fin.getBoundingClientRect();
+    var r = hb.getBoundingClientRect(), f = fb2.getBoundingClientRect();
     mbar.classList.toggle('on', r.bottom < 0 && !(f.top < innerHeight && f.bottom > 0));
   }
   addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* the VSL: click to play, with sound; click again to pause */
+  var vsl = document.getElementById('vsl'), vv = vsl.querySelector('video'), cur = vsl.querySelector('.cur'), rem = vsl.querySelector('.rem'), bar = vsl.querySelector('.scrub .ln i');
+  function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
+  vsl.querySelector('.scr').addEventListener('click',function(){
+    if (!VSL_SRC) return;
+    if (!vv.src) {vv.src = VSL_SRC}
+    if (vv.paused) {vv.muted = false; var pr = vv.play(); if (pr && pr.catch) pr.catch(function(){}); vsl.classList.add('playing')}
+    else vv.pause();
+  });
+  vv.addEventListener('timeupdate',function(){if(vv.duration){bar.style.width=(vv.currentTime/vv.duration*100)+'%';cur.textContent=fmt(vv.currentTime);rem.textContent='-'+fmt(vv.duration-vv.currentTime)}});
 
   /* fit check rows: tap to tick, nothing is saved */
   document.querySelectorAll('.fit button').forEach(function(b){b.addEventListener('click',function(){
     b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
   })});
 
-  /* reveal on scroll */
-  var rs = document.querySelectorAll('[data-r]');
+  /* ---------- the day drawings ---------- */
+  var arts = document.querySelectorAll('.art');
+  function fit(){arts.forEach(function(a){a.querySelector('.stage').style.setProperty('--k', a.clientWidth/600)})}
+  fit(); if (window.ResizeObserver) new ResizeObserver(fit).observe(document.body); else addEventListener('resize', fit);
+
+  /* day 1: fourteen readers, one of them is her */
+  var crowd = document.getElementById('crowd'), ME = 8, ch = '';
+  for (var i = 0; i < 14; i++) ch += '<svg viewBox="0 0 24 28" class="'+(i===ME?'me':'')+'"><circle class="p hd" cx="12" cy="8" r="5.5"/><path class="p bd" d="M3 27c0-7 4-11 9-11s9 4 9 11Z"/></svg>';
+  crowd.innerHTML = ch + '<svg class="ring" viewBox="0 0 56 56" style="left:'+(ME*28-16)+'px"><path d="M30 4C14 3 4 14 5 28s12 24 25 23 21-12 20-25C49 13 40 5 26 6"/></svg>';
+
+  /* every animation ends in the state the CSS already shows: no JS, or reduced motion, shows the finished drawing */
+  function A(el, frames, o){ if (!el || !el.animate) return; o.fill = o.fill || 'backwards'; o.easing = o.easing || 'cubic-bezier(.2,.8,.2,1)'; return el.animate(frames, o) }
+  function draw(path, delay, dur){ var L = path.getTotalLength ? Math.ceil(path.getTotalLength()) : 200; path.style.strokeDasharray = L; A(path,[{strokeDashoffset:L},{strokeDashoffset:0}],{duration:dur||600,delay:delay,easing:'cubic-bezier(.6,0,.3,1)'}) }
+  var swN = 0;
+  function sweep(el, delay, dur){ /* the highlight block runs left to right */
+    var id = 'sw' + (++swN), s = document.createElement('style'); el.classList.add(id);
+    s.textContent = '.'+id+':before{animation:'+id+' '+(dur||550)+'ms cubic-bezier(.6,0,.2,1) '+delay+'ms both}@keyframes '+id+'{from{transform:scaleX(0)}to{transform:scaleX(1)}}';
+    document.head.appendChild(s);
+  }
+  function kOf(a){ return parseFloat(a.querySelector('.stage').style.getPropertyValue('--k')) || 1 }
+
+  var plays = {
+    art1: function(a){
+      var ic = a.querySelectorAll('.crowd svg:not(.ring)');
+      ic.forEach(function(s,i){A(s,[{opacity:0,transform:'translateY(8px) scale(.6)'},{opacity:1,transform:'none'}],{duration:420,delay:120+i*35})});
+      A(ic[ME],[{transform:'none'},{transform:'translateY(-5px) scale(1.25)'},{transform:'none'}],{duration:700,delay:720,fill:'none'});
+      A(ic[ME].querySelector('.bd'),[{fill:'#fff',stroke:'#bcae9f'},{fill:'#FFD400',stroke:'#1A1412'}],{duration:300,delay:760});
+      A(ic[ME].querySelector('.hd'),[{stroke:'#bcae9f'},{stroke:'#1A1412'}],{duration:300,delay:760});
+      draw(a.querySelector('.ring path'), 950, 650);
+      A(a.querySelector('.cap'),[{opacity:0},{opacity:1}],{duration:400,delay:1250});
+      A(a.querySelector('.pf'),[{opacity:0,transform:'translateY(16px)'},{opacity:1,transform:'none'}],{duration:600,delay:1350});
+      A(a.querySelector('.pf .av'),[{transform:'scale(0) rotate(-30deg)'},{transform:'none'}],{duration:600,delay:1500,easing:'cubic-bezier(.3,1.6,.5,1)'});
+      sweep(document.getElementById('mk1'), 1950, 600);
+      [['.t1',2350],['.t2',2650]].forEach(function(t){
+        var row = a.querySelector(t[0]);
+        A(row,[{opacity:0,transform:'translateX(-8px)'},{opacity:1,transform:'none'}],{duration:400,delay:t[1]-150});
+        draw(row.querySelector('path'), t[1], 380);
+        A(row.querySelector('em'),[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'none'}],{duration:400,delay:t[1]+300,easing:'cubic-bezier(.3,1.6,.5,1)'});
+      });
+      A(a.querySelector('.mug'),[{opacity:0,transform:'translate(-40px,30px) rotate(-12deg)'},{opacity:1,transform:'none'}],{duration:800,delay:300});
+      a.querySelectorAll('.spark path').forEach(function(p,i){draw(p, 1100+i*90, 260)});
+      a.querySelectorAll('.steam path').forEach(function(p,i){ p.animate([{transform:'translateY(4px)',opacity:0},{opacity:.9,offset:.4},{transform:'translateY(-8px)',opacity:0}],{duration:2600,delay:i*500,iterations:Infinity}) });
+    },
+    art2: function(a){
+      var st = a.querySelector('.stage'), pen = a.querySelector('.pen'), k = kOf(a), sr = st.getBoundingClientRect(), t = 700;
+      A(a.querySelector('.s2'),[{opacity:0,transform:'translateY(24px) rotate(-2deg)'},{opacity:1,transform:'rotate(1.3deg)'}],{duration:700,delay:100});
+      /* the pen runs along each block while it highlights, then rests */
+      var blocks = [a.querySelector('.b1'), a.querySelector('.b2'), a.querySelector('.b3')], kf = [], step = 700, total = step*3 + 500;
+      blocks.forEach(function(b,i){
+        var r = b.getBoundingClientRect(), x0 = (r.left-sr.left)/k - 8, x1 = (r.right-sr.left)/k - 8, y = (r.bottom-sr.top)/k - 34;
+        kf.push({offset:(i*step)/total, transform:'translate('+(x0-30)+'px,'+(y-24)+'px) rotate(0deg)'});
+        kf.push({offset:(i*step+150)/total, transform:'translate('+x0+'px,'+y+'px) rotate(0deg)'});
+        kf.push({offset:(i*step+670)/total, transform:'translate('+x1+'px,'+y+'px) rotate(0deg)'});
+        sweep(b, t + i*step + 150, 520);
+      });
+      kf.push({offset:1, transform:'translate(70px,404px) rotate(-8deg)'});
+      A(pen, kf, {duration:total, delay:t, easing:'ease-in-out'});
+      a.querySelectorAll('.parts span').forEach(function(s,i){A(s,[{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:350,delay:t+i*step+500})});
+      A(a.querySelector('.prow'),[{opacity:0},{opacity:1}],{duration:400,delay:t+2200});
+      var tag = a.querySelector('.tag');
+      A(tag,[{opacity:0,transform:'translateY(-90px) rotate(-30deg)'},{opacity:1,transform:'rotate(14deg)',offset:.45},{transform:'rotate(-8deg)',offset:.7},{transform:'rotate(4deg)',offset:.86},{transform:'none'}],{duration:1500,delay:t+2500,easing:'ease-out'});
+      setTimeout(function(){ tag.animate([{transform:'rotate(0)'},{transform:'rotate(3deg)'},{transform:'rotate(0)'},{transform:'rotate(-2deg)'},{transform:'rotate(0)'}],{duration:5200,iterations:Infinity,easing:'ease-in-out'}) }, t+4000);
+    },
+    art3: function(a){
+      var mail = document.getElementById('mail'), subj = document.getElementById('subj'), text = subj.textContent, k = kOf(a);
+      var cursor = a.querySelector('.cursor'), toast = document.getElementById('toast'), sb = a.querySelector('.sendb');
+      A(a.querySelector('.env'),[{opacity:0,transform:'translate(-30px,30px) rotate(-10deg)'},{opacity:1,transform:'none'}],{duration:800,delay:200});
+      A(mail,[{opacity:0,transform:'translateY(24px) rotate(1deg)'},{opacity:1,transform:'rotate(-1.2deg)'}],{duration:700,delay:100});
+      A(a.querySelector('.prev'),[{opacity:0},{opacity:1}],{duration:400,delay:2200});
+      a.querySelectorAll('.mb > *').forEach(function(el,i){A(el,[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:450,delay:2300+i*160})});
+      sweep(document.getElementById('mk3'), 2900, 600);
+      /* the subject types itself */
+      subj.textContent = ''; mail.classList.remove('typed');
+      var n = 0; setTimeout(function tick(){ subj.textContent = text.slice(0, ++n); if (n < text.length) setTimeout(tick, 42 + Math.random()*36); else mail.classList.add('typed') }, 800);
+      /* then the cursor presses send */
+      var sbr = sb.getBoundingClientRect(), sr = a.querySelector('.stage').getBoundingClientRect();
+      var tx = (sbr.left - sr.left)/k + 20, ty = (sbr.top - sr.top)/k + 12;
+      sb.textContent = 'send'; mail.classList.remove('sent'); toast.style.opacity = 0;
+      cursor.animate([{opacity:0,transform:'translate(540px,480px)'},{opacity:1,transform:'translate(500px,430px)',offset:.2},{opacity:1,transform:'translate('+tx+'px,'+ty+'px)',offset:.75},{opacity:1,transform:'translate('+tx+'px,'+ty+'px) scale(.82)',offset:.86},{opacity:1,transform:'translate('+tx+'px,'+ty+'px)'}],{duration:1500,delay:3600,easing:'ease-in-out',fill:'forwards'});
+      setTimeout(function(){
+        mail.classList.add('sent'); sb.textContent = 'sent';
+        mail.animate([{transform:'rotate(-1.2deg)'},{transform:'translateY(-8px) rotate(-2deg)'},{transform:'rotate(-1.2deg)'}],{duration:600,easing:'ease-out'});
+        cursor.animate([{opacity:1,transform:'translate('+tx+'px,'+ty+'px)'},{opacity:0,transform:'translate('+(tx+30)+'px,'+(ty+40)+'px)'}],{duration:500,delay:300,fill:'forwards'});
+        toast.style.opacity = '';
+        toast.animate([{opacity:0,transform:'translateY(20px) scale(.9)'},{opacity:1,transform:'none'}],{duration:600,easing:'cubic-bezier(.3,1.5,.5,1)',fill:'backwards'});
+      }, 4950);
+    }
+  };
+
+  /* reveal on scroll; each drawing plays once, when it is in view */
+  var played = {}, canAnim = !reduce && !!document.body.animate;
+  if (!canAnim) { document.querySelector('#mail .sendb').textContent = 'sent'; document.getElementById('mail').classList.add('typed','sent') }
+  function seen(el){
+    el.classList.add('in');
+    var art = el.querySelector && el.querySelector('.art');
+    if (art && canAnim && !played[art.id]) {played[art.id] = 1; fit(); plays[art.id](art)}
+  }
+  var rs = document.querySelectorAll('[data-r], #band, #stay');
   if ('IntersectionObserver' in window && !reduce) {
-    var io = new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+    var io = new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){seen(en.target);io.unobserve(en.target)}})},{threshold:.28,rootMargin:'0px 0px -60px 0px'});
     rs.forEach(function(x){io.observe(x)});
   } else rs.forEach(function(x){x.classList.add('in')});
 })();
