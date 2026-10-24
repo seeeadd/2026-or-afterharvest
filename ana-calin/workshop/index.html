@@ -73,6 +73,10 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .fb-t b{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fb-cd{display:flex;align-items:center;gap:12px;flex:none;padding-left:20px;border-left:1px solid rgba(255,248,238,.16)}
 .fb-l{font-weight:800;font-size:11px;letter-spacing:.18em;color:rgba(255,248,238,.6)}
+.fb-dt{display:flex;flex-direction:column;gap:3px;line-height:1;white-space:nowrap}
+.fb-dt .fb-l{font-size:10px;color:var(--sun)}
+.fb-dt b{font-weight:800;font-size:18px;letter-spacing:-.01em;color:#fff}
+.fb-dt small{font-weight:600;font-size:12px;color:rgba(255,248,238,.7)}
 .fb-tiles{display:flex;gap:5px}
 .fb-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;width:46px;height:46px;border-radius:9px;background:rgba(255,248,238,.07);box-shadow:inset 0 0 0 1px rgba(255,248,238,.14)}
 .fb-tile:first-child{background:rgba(255,212,0,.16);box-shadow:inset 0 0 0 1px rgba(255,212,0,.45)}
@@ -359,8 +363,16 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .dbadge small{font-weight:800;font-size:10px;letter-spacing:.18em}
 .dbadge b{font-family:var(--serif);font-weight:400;font-size:34px;margin-top:2px}
 .dtext{align-self:start}
-.dwhen{font-weight:700;font-size:15px}
-.dwhen span{color:var(--ink3);font-weight:600}
+.dwhen{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.dcal{flex:none;width:58px;border:2px solid var(--ink);border-radius:12px;overflow:hidden;background:#fff;text-align:center;line-height:1;box-shadow:3px 3px 0 var(--ink)}
+.dcal small{display:block;background:var(--pink);color:#fff;font-weight:800;font-size:10px;letter-spacing:.16em;padding:4px 0 3px}
+.dcal b{display:block;font-family:var(--serif);font-weight:400;font-size:32px;padding:4px 0 5px}
+.dtx{display:flex;flex-direction:column;gap:6px;min-width:0}
+.dtx>b{font-weight:800;font-size:25px;line-height:1.1;letter-spacing:-.02em;color:var(--ink)}
+.dtm{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:15px;font-weight:600;color:var(--ink2)}
+.dtm .pill{background:var(--sun);color:var(--ink);font-weight:800;border-radius:999px;padding:3px 11px;border:1.5px solid var(--ink)}
+.dtm .dlt:empty{display:none}
+.dtm .dlt{color:var(--pink);font-weight:700}
 .dtext h3{font-size:clamp(38px,3.6vw,52px);line-height:1.02;margin:14px 0 18px;text-wrap:balance}
 .dtext .out{font-weight:800;font-size:18px;line-height:1.45}
 .dtext .out span{color:var(--pink)}
@@ -552,6 +564,7 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .rc h3{font-family:var(--sans);font-weight:800;font-size:28px;letter-spacing:-.02em;line-height:1;margin-bottom:12px}
 .rc p{font-size:16.5px;line-height:1.55;color:var(--ink2)}
 .rc > div:nth-child(2) p{color:var(--ink)}
+.rc p b.big{display:block;font-weight:800;font-size:22px;line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin-bottom:6px}
 .recap .go{position:relative;text-align:center;margin-top:40px}
 .recap .go .btn{height:62px;font-size:18px;padding:0 34px}
 
@@ -602,7 +615,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   .drow .rail{left:31px;top:64px}
 }
 @media (max-width:1060px){
-  .fb-cd{display:none}
+  .fb-tiles{display:none}
   /* one column, in reading order: the promise, Ana saying it, the detail, the button, the proof */
   .hgrid{display:flex;flex-direction:column;align-items:stretch;gap:0;max-width:680px;margin:0 auto}
   .hleft,.hright{display:contents}
@@ -653,9 +666,10 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,248,238,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
   .mbar{display:flex!important;align-items:center;gap:12px}
   html[data-sticky=off] .mbar{display:none!important}
-  .mbar .btn{flex:1;height:52px;font-size:16px}
+  .mbar .btn{flex:1;min-width:0;height:52px;font-size:15.5px;padding:0 14px;gap:8px}
   .mcd{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:700;color:var(--ink3);white-space:nowrap}
   .mcd b{font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .mcd b.md{font-size:12.5px;font-weight:800}
   .mbar.on{transform:none}
   html[data-sticky=off] .mbar{display:none}
 }
@@ -680,6 +694,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   .regc .row1{display:none}
   .tstrip{display:none}
   .hpill .hide-s{display:none}
+  .head .eyebrow .hide-s{display:none}
   .regc .row1{margin-bottom:12px;gap:12px}
   .mt span{width:44px}
   .mt b{font-size:22px}
@@ -721,6 +736,10 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   .dbadge{width:44px;height:44px;box-shadow:0 0 0 4px var(--cream)}
   .dbadge small{font-size:7.5px}
   .dbadge b{font-size:22px}
+  .dcal{display:none}
+  .dtx>b{font-size:21px}
+  .dtm{font-size:13.5px}
+  .dwhen{gap:11px}
   .drow .rail{left:21px;top:44px}
   .drow .art,.drow.flip .art{grid-column:1/-1}
   .dtext h3{font-size:36px}
@@ -807,7 +826,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
       <span class="fb-t"><small>ANA CALIN</small><b>Free 3-day live workshop</b></span>
     </button>
     <div class="fb-cd" role="timer" aria-label="Day 1 starts in">
-      <span class="fb-l"><i></i>DAY 1 IN</span>
+      <span class="fb-dt"><span class="fb-l"><i></i>DAY 1</span><b>Tue, Nov 17</b><small>12:00 pm New York</small></span>
       <span class="fb-tiles"><span class="fb-tile"><b data-cd="d">00</b><small>days</small></span><span class="fb-tile"><b data-cd="h">00</b><small>hrs</small></span><span class="fb-tile"><b data-cd="m">00</b><small>min</small></span><span class="fb-tile s"><b data-cd="s">00</b><small>sec</small></span></span>
     </div>
     <div class="fb-jn"><span class="faces"><img src="img/av/gustavo.webp" alt=""><img src="img/av/jeanette.webp" alt=""><img src="img/av/adora.webp" alt=""><img src="img/av/hilde.webp" alt=""><img src="img/av/stacie.webp" alt=""></span><span class="fb-jt"><b data-feed="n">800+</b><small data-feed="l">student wins</small></span></div>
@@ -966,7 +985,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
 <section class="days" id="days">
   <div class="wrap">
     <div class="head" data-r>
-      <span class="eyebrow">The three days, live</span>
+      <span class="eyebrow">Tue Nov 17 to Thu Nov 19<span class="hide-s"> · live, 12:00 pm New York</span></span>
       <h2>Three sessions. <em>Each one ends with something you made.</em></h2>
     </div>
 
@@ -976,7 +995,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
         <span class="rail"></span>
         <div class="dbadge"><small>DAY</small><b>1</b></div>
         <div class="dtext">
-          <div class="dwhen">Tue Nov 17 <span>· 12:00 pm New York</span></div>
+          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>17</b></span><span class="dtx"><b>Tuesday, Nov 17</b><span class="dtm"><span class="pill">12:00 pm New York</span><span class="gr">7:00 pm Greece</span><span class="dlt" data-t="2026-11-17T17:00:00Z"></span></span></span></div>
           <h3>Find what your readers would pay for.</h3>
           <p class="out"><span>You leave with:</span> your one reader, and the problem she'd pay you to fix.</p>
           <p class="body">You're writing for everyone, which is why nobody pays. So we pick one reader and name her. Then we find the problem she'd pay you to fix, in what you already know.</p>
@@ -1023,7 +1042,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
         <span class="rail"></span>
         <div class="dbadge"><small>DAY</small><b>2</b></div>
         <div class="dtext">
-          <div class="dwhen">Wed Nov 18 <span>· 12:00 pm New York</span></div>
+          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>18</b></span><span class="dtx"><b>Wednesday, Nov 18</b><span class="dtm"><span class="pill">12:00 pm New York</span><span class="gr">7:00 pm Greece</span><span class="dlt" data-t="2026-11-18T17:00:00Z"></span></span></span></div>
           <h3>Turn it into an offer, with a price.</h3>
           <p class="out"><span>You leave with:</span> your offer, in one sentence, priced.</p>
           <p class="body">Ten thousand readers and no offer is a hobby with analytics. Two hundred readers and one priced offer is a business. We turn her problem into one offer you can say in a sentence, and we put a price on it.</p>
@@ -1069,7 +1088,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
       <div class="drow" data-r>
         <div class="dbadge"><small>DAY</small><b>3</b></div>
         <div class="dtext">
-          <div class="dwhen">Thu Nov 19 <span>· 12:00 pm New York</span></div>
+          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>19</b></span><span class="dtx"><b>Thursday, Nov 19</b><span class="dtm"><span class="pill">12:00 pm New York</span><span class="gr">7:00 pm Greece</span><span class="dlt" data-t="2026-11-19T17:00:00Z"></span></span></span></div>
           <h3>Write the ask.</h3>
           <p class="out"><span>You leave with:</span> your first ask, written, ready to send.</p>
           <p class="body">Likes are not buyers. Readers who know what you sell are. You write the email that tells your readers what you sell and where to get it, and you leave with it ready to send.</p>
@@ -1224,7 +1243,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
         <div>
           <span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><rect x="7" y="10" width="38" height="34" rx="6" fill="#fff" stroke="#1A1412" stroke-width="3"/><path d="M7 16a6 6 0 0 1 6-6h26a6 6 0 0 1 6 6v5H7Z" fill="#F72585" stroke="#1A1412" stroke-width="3"/><path d="M17 6v8M35 6v8" stroke="#1A1412" stroke-width="3" stroke-linecap="round"/><text x="26" y="39.5" text-anchor="middle" font-family="Instrument Serif,serif" font-size="17" fill="#1A1412">17</text></svg></span>
           <h3>WHEN</h3>
-          <p>Tue Nov 17 to Thu Nov 19. 12:00 pm New York / 7:00 pm Greece, all three days<span class="lt"></span>.</p>
+          <p><b class="big">Tue Nov 17 to Thu Nov 19</b>12:00 pm New York / 7:00 pm Greece, all three days<span class="lt"></span>.</p>
         </div>
         <div>
           <span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><rect x="8" y="11" width="36" height="24" rx="4" fill="#fff" stroke="#1A1412" stroke-width="3"/><circle cx="26" cy="21" r="4" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><path d="M19 31c1.5-4 4-5.5 7-5.5s5.5 1.5 7 5.5" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><path d="M4 40h44l-3 4H7Z" fill="#FFD400" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/></svg></span>
@@ -1271,7 +1290,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   </div>
 </footer>
 
-<div class="mbar" id="mbar"><span class="mcd" role="timer"><span class="ld"><i></i>Day 1 in</span><b><span data-cd="d">00</span>d <span data-cd="h">00</span>h <span data-cd="m">00</span>m</b></span><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button></div>
+<div class="mbar" id="mbar"><span class="mcd" role="timer"><span class="ld"><i></i>Day 1 · <b class="md">Tue, Nov 17</b></span><b><span data-cd="d">00</span>d <span data-cd="h">00</span>h <span data-cd="m">00</span>m</b></span><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button></div>
 
 <!-- Ana's videos play here (YouTube, no cookies) -->
 <div class="vmodal" id="vmodal" aria-hidden="true"><div class="fr" role="dialog" aria-modal="true" aria-label="Video"></div><button class="x" type="button" aria-label="Close video"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button></div>
@@ -1370,6 +1389,11 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
       var lt = p.weekday + ' ' + p.hour + ':' + p.minute + ' ' + p.dayPeriod.toLowerCase();
       document.querySelectorAll('.lt').forEach(function(s){s.textContent = ' · that’s ' + lt + ' for you'});
       document.querySelectorAll('.lt2').forEach(function(s){s.textContent = ' / ' + lt + ' your time'});
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (tz && tz !== 'America/New_York') document.querySelectorAll('.dlt').forEach(function(s){
+        var q = {}; new Intl.DateTimeFormat('en-US',{weekday:'short',hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(new Date(s.getAttribute('data-t'))).forEach(function(x){q[x.type]=x.value});
+        s.textContent = q.weekday + ' ' + q.hour + ':' + q.minute + ' ' + q.dayPeriod.toLowerCase() + ' your time';
+      });
     }
   } catch (e) {}
 
