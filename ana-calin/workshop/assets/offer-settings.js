@@ -1,0 +1,18 @@
+/* ---- the offer pages' settings, one place for both /join and /program. Theia fills these in. ---- */
+window.OFFER = {
+  PROGRAM:       'The Exit Lab',  // working name; Ana may rename it after the survey (agreed Oct 23). Changes it everywhere.
+  CHECKOUT_FULL: '',              // Stripe (or ThriveCart) link, $1,500 paid in full. Empty = demo.
+  CHECKOUT_PLAN: '',              // the link for 2 payments of $850
+  PAY2_DATE:     '',              // e.g. 'Thu Dec 31'. Empty = "in 30 days".
+  LIVE_CALLS:    '',              // e.g. 'A weekly live call with me, recorded'. Empty = no live calls shown anywhere.
+  HOURS:         '',              // e.g. 'about 4 hours a week'. Empty = "built for the evenings you have".
+  BONUS2_NAME:   'An AI-assisted audit of your offer',  // [Ana confirms] the Day 2 bonus (ends Wed Nov 18, 11:59 pm New York)
+  BONUS2_SEATS:  '',              // e.g. 50. Empty = no seat count shown.
+  BONUS3_NAME:   '',              // [revealed live on Day 3] Empty = no Day 3 bonus tile.
+  BONUS3_SEATS:  '',
+  SAFETY_TITLE:  '',              // Ana's safety promise (B6). Empty = the promise block and its line stay hidden.
+  SAFETY_TEXT:   '',
+  SAFETY_LINE:   '',              // one line under the button, e.g. 'my do-the-work promise'
+  SKIP_TEXT:     '',              // for 10K Launch Lab students: which days they can skip. Empty = row hidden.
+  VIDEO_SRC:     ''               // the offer video (long page), cut from Day 2 the night of Wed Nov 18
+};
