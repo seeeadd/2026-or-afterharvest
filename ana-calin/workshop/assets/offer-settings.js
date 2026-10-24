@@ -14,5 +14,8 @@ window.OFFER = {
   SAFETY_TEXT:   '',
   SAFETY_LINE:   '',              // one line under the button, e.g. 'my do-the-work promise'
   SKIP_TEXT:     '',              // for 10K Launch Lab students: which days they can skip. Empty = row hidden.
-  VIDEO_SRC:     ''               // the offer video (long page), cut from Day 2 the night of Wed Nov 18
+  VIDEO_SRC:     '',              // the offer video (long page), cut from Day 2 the night of Wed Nov 18
+  METHOD:        '',              // [Ana names it] the name of the one reader / one sentence / one ask method. Empty = "How it works".
+  BACKUP_PAY_URL:  '',            // a second way to pay (PayPal or similar) if a card fails. Empty = the line stays hidden.
+  BACKUP_PAY_TEXT: ''             // e.g. 'Card not going through?' (that's the default)
 };

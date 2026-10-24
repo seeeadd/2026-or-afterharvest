@@ -34,6 +34,11 @@
     document.querySelectorAll('[data-safety-line]').forEach(function(e){ e.textContent = C.SAFETY_LINE || C.SAFETY_TITLE || 'My promise' });
   }
   if (C.SKIP_TEXT) document.querySelectorAll('[data-skip]').forEach(function(e){ e.textContent = C.SKIP_TEXT; e.closest('[data-skip-row]').hidden = false });
+  if (C.METHOD) document.querySelectorAll('[data-method]').forEach(function(e){ e.textContent = C.METHOD });
+  if (C.BACKUP_PAY_URL) document.querySelectorAll('[data-bkp]').forEach(function(e){
+    e.hidden = false; e.querySelector('[data-bkp-link]').href = C.BACKUP_PAY_URL;
+    if (C.BACKUP_PAY_TEXT) e.querySelector('[data-bkp-text]').textContent = C.BACKUP_PAY_TEXT;
+  });
   if (C.PAY2_DATE) document.querySelectorAll('[data-pay2]').forEach(function(e){ e.textContent = 'on ' + C.PAY2_DATE });
 
   /* where we are in the week */
@@ -61,19 +66,29 @@
     open:   'Doors close Mon Nov 30 · 11:59 pm New York',
     closed: 'Doors are closed. Thank you.'
   };
+  /* the four phase tiles: by the clock, today's in colour, the ones before it struck through, the ones after it greyed */
+  var cur = now < T.OPENS ? 0 : now < T.B2_ENDS ? 1 : now < T.B3_ENDS ? 2 : now < T.CLOSES ? 3 : 4;
+  document.querySelectorAll('[data-ph]').forEach(function(e){
+    var n = +e.getAttribute('data-ph');
+    e.classList.add(n === cur ? 'now' : n < cur ? 'past' : 'next');
+  });
+  if (C.BONUS2_NAME) document.querySelectorAll('[data-ph1]').forEach(function(e){ e.textContent = C.BONUS2_NAME });
+  if (C.BONUS3_NAME && now >= T.B3_REVEAL) document.querySelectorAll('[data-ph2]').forEach(function(e){ e.textContent = C.BONUS3_NAME });
+
   document.querySelectorAll('[data-barmsg]').forEach(function(e){ e.textContent = MSG[phase] });
 
-  /* pay in full or two payments: every order box on the page moves together */
-  var plan = 'full';
+  /* two payments or pay in full: every order box and button on the page moves together. Opens on the payment plan (SOP 3C). */
+  var plan = 'plan';
   function setPlan(p){
     plan = p;
     document.querySelectorAll('.tg button').forEach(function(x){ x.setAttribute('aria-pressed', x.getAttribute('data-plan') === p ? 'true' : 'false') });
     document.querySelectorAll('[data-total]').forEach(function(e){ e.textContent = p === 'full' ? '$1,500' : '$850' });
     document.querySelectorAll('[data-later]').forEach(function(e){ e.hidden = p === 'full' });
     document.querySelectorAll('[data-btnp]').forEach(function(e){ e.textContent = p === 'full' ? '$1,500' : '$850 today' });
+    document.querySelectorAll('[data-ctaline]').forEach(function(e){ e.textContent = p === 'full' ? 'or 2 payments of $850' : 'or $1,500 in full' });
   }
   document.querySelectorAll('.tg button').forEach(function(x){ x.addEventListener('click', function(){ setPlan(x.getAttribute('data-plan')) }) });
-  setPlan('full');
+  setPlan('plan');
 
   /* checkout: email prefilled, the partner ref (30% commission), which page */
   var toast = document.createElement('div'); toast.className = 'demo'; toast.textContent = 'Checkout link not set yet (demo).'; b.appendChild(toast);
