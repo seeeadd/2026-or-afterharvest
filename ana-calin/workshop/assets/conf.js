@@ -72,7 +72,7 @@
   });
 
   /* getting ready: the four things punch their ticket (saved in this browser only) */
-  var STEPS = ['cal', 'mail', 'group', 'sheet'], st = {};
+  var STEPS = C.STEPS || ['cal', 'mail', 'group', 'sheet'], st = {};
   try { st = JSON.parse(localStorage.getItem('ana_ready') || '{}') } catch (e) {}
   var ticket = document.querySelector('.tkt, .pcard'), wasReady = null;
   function renderReady(){
@@ -126,6 +126,16 @@
       bo2.disconnect(); setTimeout(function(){ burst(ticket, C.PAGE === 'vip' ? 70 : 40) }, 550);
     }, {threshold: .6});
     bo2.observe(ticket);
+  }
+
+  /* the address her emails come from, in the inbox notice */
+  if (C.SENDER) document.querySelectorAll('[data-sender]').forEach(function(e){ e.textContent = C.SENDER });
+
+  /* Meta pixel, for show-up ads to registrants: CompleteRegistration here, Purchase on the VIP confirmation */
+  if (C.META_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', C.META_PIXEL_ID); fbq('track', 'PageView');
+    if (C.PAGE === 'vip') fbq('track', 'Purchase', {value: 67, currency: 'USD'}); else fbq('track', 'CompleteRegistration');
   }
 
   /* links that are settings */
