@@ -33,7 +33,7 @@
     document.querySelectorAll('[data-safety-text]').forEach(function(e){ e.textContent = C.SAFETY_TEXT });
     document.querySelectorAll('[data-safety-line]').forEach(function(e){ e.textContent = C.SAFETY_LINE || C.SAFETY_TITLE || 'My promise' });
   }
-  if (C.SKIP_TEXT) document.querySelectorAll('[data-skip]').forEach(function(e){ e.textContent = C.SKIP_TEXT; e.closest('[data-skip-row]').hidden = false });
+  if (C.SKIP_TEXT) document.querySelectorAll('[data-skip]').forEach(function(e){ e.textContent = C.SKIP_TEXT; var r = e.closest('[data-skip-row]'); if (r) r.hidden = false });
   if (C.METHOD) document.querySelectorAll('[data-method]').forEach(function(e){ e.textContent = C.METHOD });
   if (C.BACKUP_PAY_URL) document.querySelectorAll('[data-bkp]').forEach(function(e){
     e.hidden = false; e.querySelector('[data-bkp-link]').href = C.BACKUP_PAY_URL;
@@ -109,7 +109,11 @@
   });
   /* the bar's button goes to the nearest order box */
   document.querySelectorAll('[data-toorder]').forEach(function(a){
-    a.addEventListener('click', function(e){ e.preventDefault(); var o = document.querySelector('.ob'); if (o) o.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'}) });
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var o = [].filter.call(document.querySelectorAll('.ob'), function(x){ return x.offsetParent })[0];
+      if (o) o.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'});
+    });
   });
   /* links between the pages keep the ref and email */
   document.querySelectorAll('a[data-keep]').forEach(function(a){
@@ -124,6 +128,30 @@
     ph.classList.add('has-v');
     s.addEventListener('click', function(){ if (!v.src) v.src = C.VIDEO_SRC; if (v.paused) { v.play(); ph.classList.add('on') } else v.pause() });
   });
+
+  /* the contents rail (long page): the section you're reading is lit */
+  var toc = document.querySelectorAll('.toc a');
+  if (toc.length && 'IntersectionObserver' in window) {
+    var secs = [].map.call(toc, function(a){ return document.querySelector(a.getAttribute('href')) });
+    var spy = function(){
+      var y = innerHeight * .35, cur = 0;
+      secs.forEach(function(s, i){ if (s && s.getBoundingClientRect().top < y) cur = i });
+      toc.forEach(function(a, i){ a.classList.toggle('on', i === cur) });
+    };
+    addEventListener('scroll', spy, {passive: true}); spy();
+  }
+
+  /* the phone buy bar: shows once the first screen is gone, hides while an order box is on screen */
+  var hero = document.querySelector('.hx,.ck-h'), seen = [], past = false;
+  function mb(){ b.classList.toggle('mb-on', past && !seen.length) }
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){ past = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; mb() }).observe(hero);
+    var oio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ var i = seen.indexOf(e.target); if (e.isIntersecting && i < 0) seen.push(e.target); if (!e.isIntersecting && i >= 0) seen.splice(i, 1) });
+      mb();
+    });
+    document.querySelectorAll('.ob').forEach(function(o){ if (o.offsetParent) oio.observe(o) });
+  }
 
   /* reveal */
   var els = document.querySelectorAll('[data-r]');

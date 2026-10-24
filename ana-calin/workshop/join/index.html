@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Join · Ana Calin</title>
-<!-- Ana Calin, offer short (/join). From "Ana's offer pages: spec (short + long), v2" (Oct 24, 2026) and SOP 3C (Sales Page) with its 2026 corpus update. For Day 2 and Day 3 (Nov 18 to 19): people who just watched the offer live. Order form on the first screen, then just enough to confirm the decision. Settings: ../assets/offer-settings.js -->
-<meta name="theme-color" content="#FFF8EE">
+<!-- Ana Calin, offer short (/join), v2: a checkout. From "Ana's offer pages: spec (short + long), v2" and SOP 3C. For Day 2 and Day 3 (Nov 18 to 19): people who just watched the offer live. The order is on the right the whole way down (on phones: first, then a bar at the bottom). Settings: ../assets/offer-settings.js -->
+<meta name="theme-color" content="#1A1412">
 <link rel="icon" type="image/png" href="../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/offer.css">
 </head>
 <body>
@@ -24,185 +24,117 @@
 <symbol id="arr" viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="ck" viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </defs></svg>
-<!-- 0. sticky deadline bar: the real deadline in words, no ticking numbers. The message changes by date (offer.js). -->
-<header class="db"><div class="db-bar">
-  <span class="db-id"><svg aria-hidden="true"><use href="#sf"/></svg><span data-prog>The Exit Lab</span></span><span class="sep"></span>
-  <span class="db-msg"><i></i><span data-barmsg>Doors close Mon Nov 30 · 11:59 pm New York</span></span>
-  <a class="btn" href="#" data-toorder><span>join<span class="bp"> <span data-prog>The Exit Lab</span></span></span></a>
+<header class="tb"><div class="tb-in">
+  <span class="tb-id"><svg aria-hidden="true"><use href="#sf"/></svg><span data-prog>The Exit Lab</span><em>Round 1</em></span>
+  <span class="tb-msg"><i></i><span data-barmsg>Doors close Mon Nov 30 · 11:59 pm New York</span></span>
+  <a class="tb-btn" href="#" data-toorder>join</a>
 </div></header>
 
-<!-- 1. the order box on the first screen. The toggle opens on 2 payments (SOP 3C: default to the payment plan). -->
-<section class="hero">
-  <svg class="bgf a" aria-hidden="true"><use href="#sfo"/></svg><svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="wrap hj">
-    <div class="ha" data-r>
-      <span class="eyebrow"><span data-progu>THE EXIT LAB</span> · Starts Tue Dec 1</span>
+<main class="wrap ck-g">
+  <div class="ck-c">
+    <!-- 1. the decision, in one screen -->
+    <div class="ck-h">
+      <span class="kick">Enrollment · Round 1 · Starts Tue Dec 1</span>
       <h1>You're one step from <em>your first launch.</em></h1>
+      <p class="lead">You heard it live. 30 days, together, from Tue Dec 1: your offer, your price and your first ask, sent to the readers you already have.</p>
+      <div class="who"><img src="../img/real/ana-real-b.webp" alt="Ana Calin" width="96" height="96"><span><b>Ana Calin</b><small>How We Grow</small></span><dl class="stats"><div><dt>$1.4M</dt><dd>from her newsletter</dd></div><div><dt>16,907</dt><dd>people bought from her</dd></div><div><dt>0</dt><dd>sales calls, ever</dd></div></dl></div>
     </div>
-    <div class="hb" data-r>
-      <p class="lead">You heard it live. Here's the short version: 30 days, together, from Tue Dec 1. Your offer, your price and your first ask, launched to the readers you already have.</p>
-      <div class="chips"><span class="p">Starts Tue Dec 1</span><span>30 days</span><span>Doors close Mon Nov 30</span></div>
-      <!-- 1b. the stats line (the long page has the full strip) -->
-      <p class="statl"><b>$1.4M</b> from my newsletter · <b>16,907</b> buyers · <b>never</b> a sales call</p>
-      <div class="who1"><img src="../img/real/ana-real-b.webp" alt="Ana Calin"><span>Ana Calin<small>How We Grow</small></span></div>
-      <a class="more" href="../program/" data-keep>see everything inside →</a>
-    </div>
-    <div class="ob hob" data-r>
-        <div class="obh"><span class="k"><span data-prog>The Exit Lab</span> · Round 1</span><span class="st">Starts Tue Dec 1</span></div>
-        <div class="tg" role="group" aria-label="How to pay"><button type="button" data-plan="plan" aria-pressed="true"><b>2 payments</b><span>$850<small>each</small></span></button><button type="button" data-plan="full" aria-pressed="false"><b>Pay in full</b><span>$1,500</span></button></div>
-        <ul class="inc">
-          <li><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span>30 days, together, starting Tue Dec 1</span></li>
-          <li><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span>Ana AI Coach, any hour</span></li>
-          <li data-calls><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span data-calls-text>A weekly live call with me</span></li>
-          <li class="lb"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span>The live bonus: <b data-bname></b>, until tonight 11:59 pm New York</span></li>
-        </ul>
-        <div class="band"><span>Total due today</span><span style="text-align:right"><b data-total>$850</b><small data-later>then $850 <span data-pay2>in 30 days</span></small></span></div>
-        <a class="btn join" href="#" data-join><span>join <span data-prog>The Exit Lab</span> · <span data-btnp>$850 today</span></span></a>
-        <p class="bkp" data-bkp hidden><span data-bkp-text>Card not going through?</span> <a href="#" data-bkp-link>Pay another way</a></p>
-        <p class="msg closed">Doors are closed. <em>Thank you.</em></p>
-        <p class="msg soon">Doors open <em>Wed Nov 18,</em> live on Day 2.</p>
-        <p class="sec">Secure checkout<span data-safety-on> · <span data-safety-line></span></span> · questions: <a href="mailto:sean@theafterharvest.com">sean@theafterharvest.com</a></p>
-      </div>
-  </div>
-</section>
 
-<!-- 1c. where we are this week: today's phase in colour, the rest greyed -->
-<div class="phw">
-  <div class="wrap"><div class="phz" data-r aria-label="Where we are this week">
-      <div class="ph" data-ph="1"><span class="d">Wed Nov 18</span><b>Day 2 bonus</b><small data-ph1>An AI-assisted audit of your offer</small><em>until 11:59 pm New York</em></div>
-      <div class="ph" data-ph="2"><span class="d">Thu Nov 19</span><b>Day 3 bonus</b><small data-ph2>Revealed live on Day 3</small><em>until 11:59 pm New York</em></div>
-      <div class="ph" data-ph="3"><span class="d">Fri Nov 20 to Mon Nov 30</span><b>Round 1 is open</b><small>Same program, same price</small><em>no live bonus</em></div>
-      <div class="ph" data-ph="4"><span class="d">Mon Nov 30, 11:59 pm</span><b>Doors close</b><small>They don't reopen</small><em>we start Tue Dec 1</em></div>
+    <div class="ck-o"><div class="ob first">
+      <div class="r-hd"><span>Order summary</span><span>Round 1</span></div>
+      <div class="r-pr"><img src="../img/real/ana-real-b.webp" alt="" width="96" height="96"><div><b><span data-prog>The Exit Lab</span></b><small>30 days with Ana Calin · Tue Dec 1 to Wed Dec 30</small></div></div>
+      <div class="tg" role="group" aria-label="How to pay"><button type="button" data-plan="plan" aria-pressed="true"><b>2 payments</b><span>$850<small> × 2</small></span></button><button type="button" data-plan="full" aria-pressed="false"><b>Pay in full</b><span>$1,500</span></button></div>
+      <ul class="inc">
+        <li><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span>30 days of daily tasks, from Tue Dec 1</span></li>
+        <li><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span>Ana AI Coach, any hour</span></li>
+        <li><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span>The Circle room with everyone in Round 1</span></li>
+        <li data-calls><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span data-calls-text>A weekly live call with me</span></li>
+        <li class="lb"><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span><b data-bname></b>, until tonight 11:59 pm New York</span></li>
+      </ul>
+      <div class="perf" aria-hidden="true"></div>
+      <div class="r-tot"><span>Due today</span><b data-total>$850</b></div>
+      <p class="r-later" data-later>Then $850 <span data-pay2>in 30 days</span>.</p>
+      <a class="btn join" href="#" data-join><span>join <span data-prog>The Exit Lab</span> · <span data-btnp>$850 today</span></span><svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><use href="#arr"/></svg></a>
+      <p class="bkp" data-bkp hidden><span data-bkp-text>Card not going through?</span> <a href="#" data-bkp-link>Pay another way</a></p>
+      <p class="msg closed">Doors are closed. <em>Thank you.</em></p>
+      <p class="msg soon">Doors open <em>Wed Nov 18,</em> live on Day 2.</p>
+      <p class="r-ft"><span>Secure checkout by Stripe</span><span data-safety-on> · <span data-safety-line></span></span></p>
+      <p class="r-dl">Doors close Mon Nov 30, 11:59 pm New York</p>
     </div></div>
-</div>
 
-<section class="c2">
+    <!-- 2. this week -->
+    <section class="blk">
+      <div class="sl"><span>01</span>This week</div>
+      <ol class="phz" aria-label="Where we are this week">
+      <li class="ph" data-ph="1"><i></i><span class="d">Wed Nov 18</span><b>Day 2 bonus</b><small data-ph1>An AI-assisted audit of your offer</small></li>
+      <li class="ph" data-ph="2"><i></i><span class="d">Thu Nov 19</span><b>Day 3 bonus</b><small data-ph2>Revealed live on Day 3</small></li>
+      <li class="ph" data-ph="3"><i></i><span class="d">Nov 20 to Nov 30</span><b>Round 1 open</b><small>Same program, same price</small></li>
+      <li class="ph" data-ph="4"><i></i><span class="d">Mon Nov 30, 11:59 pm</span><b>Doors close</b><small>They don't reopen</small></li>
+    </ol>
+    </section>
+
+    <!-- 3. included -->
+    <section class="blk">
+      <div class="sl"><span>02</span>What you get</div>
+      <ul class="incl"><li><span class="ii"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="22" height="20" rx="3"/><path d="M5 12h22M11 4v5M21 4v5M10 18l3 3 6-6"/></svg></span><div><b>30 days, step by step</b><p>A task a day from Tue Dec 1, built from my 10K Launch Lab. Open it, do it, move on.</p></div></li><li><span class="ii"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-9l-6 5v-5H9a3 3 0 0 1-3-3Z"/><path d="M12 12h.01M16 12h.01M20 12h.01"/></svg></span><div><b>Ana AI Coach</b><p>Trained on how I built the newsletter. Ask it anything, any hour.</p></div></li><li data-calls><span class="ii"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="17" height="14" rx="3"/><path d="m21 14 7-4v12l-7-4"/></svg></span><div><b>Live calls with me</b><p><span data-calls-text>A weekly live call with me</span>, recorded.</p></div></li><li><span class="ii"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="12" r="4"/><circle cx="22" cy="12" r="4"/><path d="M4 26c0-4 3-7 7-7s7 3 7 7M18 21c1-1 2.5-2 4-2 4 0 6 3 6 7"/></svg></span><div><b>The room</b><p>A private Circle space with everyone starting Tue Dec 1.</p></div></li></ul>
+    </section>
+
+    <!-- 4. the 30 days -->
+    <section class="blk">
+      <div class="sl"><span>03</span>The 30 days</div>
+      <h2>Four weeks, <em>one launch.</em></h2>
+      <ol class="syl sm"><li class="hd" aria-hidden="true"><span>Week</span><span>Dates</span><span>What gets done</span><span>You keep</span></li><li class=""><span class="wk">Week 1</span><span class="dt">Dec 1 to 7</span><div class="ot"><b>Your offer, checked with real readers</b></div><span class="kp">Offer + price, locked</span></li><li class=""><span class="wk">Week 2</span><span class="dt">Dec 8 to 14</span><div class="ot"><b>Your page and emails, written</b></div><span class="kp">Page + emails</span></li><li class=""><span class="wk">Week 3</span><span class="dt">Dec 15 to 20</span><div class="ot"><b>Your checkout, working</b></div><span class="kp">A tested checkout</span></li><li class="pz"><span class="wk">Pause</span><span class="dt">Dec 21 to 27</span><div class="ot"><b>Christmas week</b></div><span class="kp">Time off</span></li><li class="lw"><span class="wk">Week 4</span><span class="dt">Dec 28 to 30</span><div class="ot"><b>Your offer, sent</b></div><span class="kp">Your launch</span></li></ol>
+    </section>
+
+    <!-- 5. proof -->
+    <section class="blk">
+      <div class="sl"><span>04</span>In their words</div>
+      <figure class="qc hi"><span class="tag">3 days &gt; 13 months</span><p>"After building an 8k+ newsletter and not making more than a few hundred dollars with it in over a year, I am loving this Money Map Blueprint. It's gotten me out of my own way and I've done more in 3 days toward real revenue generation than in the previous 13 months."</p><div class="by"><span class="ini">A</span><span><b>Amaya Dinesa</b><small>Creator, Self As Source</small></span></div></figure>
+      <div class="qg"><figure class="qc "><span class="tag">Apr 23, 2025</span><p>"I love the way you get straight to the point about growth and how to communicate value to your audience so they WANT to pay you. It is a priority of mine to grow my audience and get paid for my offers & I'm really confident that your roadmap will help me achieve that."</p><div class="by"><img src="../img/av/shahidah.webp" alt="" loading="lazy" width="80" height="80"><span><b>Shahidah Al-Amin</b></span></div></figure><figure class="qc "><span class="tag">Apr 26, 2025</span><p>"One thing I notice and admire about you Ana, is you are an action taker. You don't sit around for months trying to decide on what to offer, or what colour to make your background. You ask the question, do what you need to get clear, and then act on it."</p><div class="by"><img src="../img/av/stacie.webp" alt="" loading="lazy" width="80" height="80"><span><b>Stacie Whitney</b></span></div></figure></div>
+      <div class="cta "><a class="btn join" href="#" data-join><span>join <span data-prog>The Exit Lab</span> · <span data-btnp>$850 today</span></span><svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><use href="#arr"/></svg></a><p class="msg closed">Doors are closed. <em>Thank you.</em></p><p class="msg soon">Doors open <em>Wed Nov 18,</em> live on Day 2.</p><p class="cl"><span data-ctaline>or $1,500 in full</span> · <a href="#" data-toorder>see both options</a></p></div>
+    </section>
+
+    <!-- 6. questions -->
+    <section class="blk">
+      <div class="sl"><span>05</span>Questions</div>
+      <div class="faq"><details><summary>I don't have a big list. Is this for me?<i aria-hidden="true"></i></summary><p class="a">Yes. Two hundred readers and one priced offer is a business.</p></details><details><summary>Can't I learn this from your free newsletter?<i aria-hidden="true"></i></summary><p class="a">A lot of it, yes. What the newsletter can't do is check your offer on Fri Dec 4, read your page on Thu Dec 10 and be in the room the day you send it. That's the part you pay for.</p></details><details><summary>I have a job. Can I do this?<i aria-hidden="true"></i></summary><p class="a">Yes. It's built <span data-hours>for the evenings you have</span>. A missed day costs nothing; the next task waits.</p></details><details><summary>Do you offer refunds?<i aria-hidden="true"></i></summary><p class="a">No, so only join if you'll do the work. <span data-safety-on>What I do instead: <span data-safety-text></span></span></p></details></div>
+      <p class="more"><a href="../program/" data-keep>Everything about the program →</a> · <a href="mailto:sean@theafterharvest.com">sean@theafterharvest.com</a></p>
+    </section>
+  </div>
+
+  <!-- the order, sticky on the right -->
+  <aside class="ck-r"><div class="ob rail">
+      <div class="r-hd"><span>Order summary</span><span>Round 1</span></div>
+      <div class="r-pr"><img src="../img/real/ana-real-b.webp" alt="" width="96" height="96"><div><b><span data-prog>The Exit Lab</span></b><small>30 days with Ana Calin · Tue Dec 1 to Wed Dec 30</small></div></div>
+      <div class="tg" role="group" aria-label="How to pay"><button type="button" data-plan="plan" aria-pressed="true"><b>2 payments</b><span>$850<small> × 2</small></span></button><button type="button" data-plan="full" aria-pressed="false"><b>Pay in full</b><span>$1,500</span></button></div>
+      <ul class="inc">
+        <li><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span>30 days of daily tasks, from Tue Dec 1</span></li>
+        <li><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span>Ana AI Coach, any hour</span></li>
+        <li><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span>The Circle room with everyone in Round 1</span></li>
+        <li data-calls><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span data-calls-text>A weekly live call with me</span></li>
+        <li class="lb"><i class="ck"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span><b data-bname></b>, until tonight 11:59 pm New York</span></li>
+      </ul>
+      <div class="perf" aria-hidden="true"></div>
+      <div class="r-tot"><span>Due today</span><b data-total>$850</b></div>
+      <p class="r-later" data-later>Then $850 <span data-pay2>in 30 days</span>.</p>
+      <a class="btn join" href="#" data-join><span>join <span data-prog>The Exit Lab</span> · <span data-btnp>$850 today</span></span><svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><use href="#arr"/></svg></a>
+      <p class="bkp" data-bkp hidden><span data-bkp-text>Card not going through?</span> <a href="#" data-bkp-link>Pay another way</a></p>
+      <p class="msg closed">Doors are closed. <em>Thank you.</em></p>
+      <p class="msg soon">Doors open <em>Wed Nov 18,</em> live on Day 2.</p>
+      <p class="r-ft"><span>Secure checkout by Stripe</span><span data-safety-on> · <span data-safety-line></span></span></p>
+      <p class="r-dl">Doors close Mon Nov 30, 11:59 pm New York</p>
+    </div></aside>
+</main>
+
+<footer class="ft">
   <div class="wrap">
-    <div class="shead" data-r><span class="eyebrow">What you get</span><h2>Everything you need to launch to <em>the readers you already have.</em></h2></div>
-    <div class="incg" data-renum>
-      <div class="it" data-r><span class="n" data-n>01</span><h3>30 days, step by step</h3><p>Daily tasks from Tue Dec 1, built from my 10K Launch Lab. Open the day, do the task, move on.</p></div>
-      <div class="it" data-r><span class="n" data-n>02</span><h3>Ana AI Coach</h3><p>"Trained on how I built the newsletter. Ask it anything, any hour."</p></div>
-      <div class="it" data-calls data-r><span class="n" data-n>03</span><h3>Live calls with me</h3><p><span data-calls-text>A weekly live call with me</span>, recorded.</p></div>
-      <div class="it" data-r><span class="n" data-n>04</span><h3>The room</h3><p>The private Circle space with everyone starting Tue Dec 1.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- the method: how the 30 days work. [Ana names it: METHOD in the settings] -->
-<section>
-  <div class="wrap">
-    <div class="shead" data-r><span class="eyebrow" data-method>How it works</span><h2>Three decisions, <em>made in writing.</em></h2><p>This is how I've sold everything I've ever sold. The 30 days walk you through the same three, in order, with your own readers.</p></div>
-    <div class="meth"><div class="ms" data-r><span class="n">01</span><h3>One reader</h3><p>One person on your list, with one problem you can fix. You write the whole offer to her, and everyone like her hears it.</p></div><span class="ma" aria-hidden="true"><svg aria-hidden="true"><use href="#arr"/></svg></span><div class="ms" data-r><span class="n">02</span><h3>One sentence</h3><p>What you sell, in a sentence she could repeat to a friend. If it takes a paragraph, it isn't ready to sell yet.</p></div><span class="ma" aria-hidden="true"><svg aria-hidden="true"><use href="#arr"/></svg></span><div class="ms" data-r><span class="n">03</span><h3>One ask</h3><p>Sent in writing, to the readers you already have. A page, a few emails and a link to pay. No calls and no ads.</p></div></div>
-    
-  </div>
-</section>
-
-<!-- 3. the four weeks. [Proposed from the 10K Launch Lab's four stages. Ana confirms the content by Wed Nov 4.] -->
-<section class="c2">
-  <div class="wrap">
-    <div class="shead" data-r><span class="eyebrow">The 30 days</span><h2>Four weeks, <em>with the dates.</em></h2></div>
-    <div class="wks">
-      <div class="wk " data-r><div class="wn"><small>WEEK</small><b>1</b></div><div class="tt"><span class="dts">Tue Dec 1 to Mon Dec 7</span><h3>Your offer, checked with real readers</h3></div><p class="ww"><b>What we do</b>We pick the one reader, write the one sentence, and ask a few of your readers whether they'd pay. Then you lock the price.</p></div>
-      <div class="wk " data-r><div class="wn"><small>WEEK</small><b>2</b></div><div class="tt"><span class="dts">Tue Dec 8 to Mon Dec 14</span><h3>Your page and emails, written</h3></div><p class="ww"><b>What we do</b>The sales page and the launch emails, in your voice. Ana AI Coach reads every draft before I do.</p></div>
-      <div class="wk " data-r><div class="wn"><small>WEEK</small><b>3</b></div><div class="tt"><span class="dts">Tue Dec 15 to Sun Dec 20</span><h3>Your checkout, working</h3></div><p class="ww"><b>What we do</b>Checkout set up, one test payment through it, and your launch dates on the calendar.</p></div>
-      <div class="wk pause" data-r><div class="wn"><small>PAUSE</small><b class="s"><svg aria-hidden="true"><use href="#sf"/></svg></b></div><div class="tt"><span class="dts">Mon Dec 21 to Sun Dec 27</span><h3>Christmas week</h3></div><p class="ww"><b>This week</b>No calls. Ana AI Coach keeps working. Catch up if you need to, or rest.</p></div>
-      <div class="wk l" data-r><div class="wn"><small>WEEK</small><b>4</b></div><div class="tt"><span class="dts">Mon Dec 28 to Wed Dec 30</span><h3>Your offer, sent</h3></div><p class="ww"><b>What we do</b>The emails go out to your readers, and we answer the replies together.</p></div>
-    </div>
-    <div class="cta" data-r><a class="btn join" href="#" data-join><span>join <span data-prog>The Exit Lab</span> · <span data-btnp>$850 today</span></span></a><p class="msg closed">Doors are closed. <em>Thank you.</em></p><p class="msg soon">Doors open <em>Wed Nov 18,</em> live on Day 2.</p><p class="cl"><span data-ctaline>or $1,500 in full</span> · <a href="#" data-toorder>see both options</a></p></div>
-  </div>
-</section>
-
-<!-- what they have on Wed Dec 30 -->
-<section class="sand">
-  <div class="wrap have">
-    <div class="hv1" data-r><span class="eyebrow">By Wed Dec 30</span><h2>What you'll <em>have.</em></h2><ul class="hl1"><li><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span><b>An offer with a price on it</b></span></li><li><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span><b>One sentence that sells it</b></span></li><li><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span><b>A sales page, live</b></span></li><li><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span><b>Your launch emails</b></span></li><li><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span><b>A checkout that works</b></span></li><li><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i><span><b>Your offer, sent</b></span></li></ul></div>
-    <div class="hv2" data-r><span class="k">What I won't ask you to do</span><ul><li><span class="x" aria-hidden="true"></span>Run ads</li><li><span class="x" aria-hidden="true"></span>Get on sales calls</li><li><span class="x" aria-hidden="true"></span>Grow your list first</li><li><span class="x" aria-hidden="true"></span>Sit through hours of video</li><li><span class="x" aria-hidden="true"></span>Copy someone else's offer</li></ul><p>You'll write, decide and send. That's the work, and it's enough.</p></div>
-  </div>
-</section>
-
-<!-- the proof wall, word for word. The spec also names Jill Hart, Nate Solon and Neera Mahajan: their quotes weren't
-     public anywhere we could reach. Ana sends them (12 to 20 in all, per the SOP) and OKs every name before launch. -->
-<section>
-  <div class="wrap">
-    <div class="shead" data-r><span class="eyebrow">In their own words</span><h2>Readers who did the work. <em>In their own words.</em></h2></div>
-    <div class="qs">
-      <figure class="qc big" data-r><div><p>"After building an 8k+ newsletter and not making more than a few hundred dollars with it in over a year, I am loving this Money Map Blueprint. It's gotten me out of my own way and I've done more in 3 days toward real revenue generation than in the previous 13 months."</p><div class="by"><span class="ini">A</span><span><b>Amaya Dinesa</b><small>Creator, Self As Source</small></span></div></div></figure>
-      <figure class="qc" data-r><div><p>"I love the way you get straight to the point about growth and how to communicate value to your audience so they WANT to pay you. It is a priority of mine to grow my audience and get paid for my offers & I'm really confident that your roadmap will help me achieve that."</p><div class="by"><img src="../img/av/shahidah.webp" alt="" loading="lazy"><span><b>Shahidah Al-Amin</b></span></div></div></figure>
-      <figure class="qc" data-r><div><p>"One thing I notice and admire about you Ana, is you are an action taker. You don't sit around for months trying to decide on what to offer, or what colour to make your background. You ask the question, do what you need to get clear, and then act on it."</p><div class="by"><img src="../img/av/stacie.webp" alt="" loading="lazy"><span><b>Stacie Whitney</b></span></div></div></figure>
-      <figure class="qc" data-r><div><p>"Everything was fabulous but I was particularly thrilled about the content strategy and how that was all interrelated with the paywall strategy, plus the promotional calendars, etc. I have to go back and review all of it. Thank you."</p><div class="by"><img src="../img/av/sue.webp" alt="" loading="lazy"><span><b>Sue Bolton</b></span></div></div></figure>
-      <figure class="qc" data-r><div><p>"What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana."</p><div class="by"><img src="../img/av/jeanette.webp" alt="" loading="lazy"><span><b>Jeanette Martin</b></span></div></div></figure>
-    </div>
-    <div class="cta" data-r><a class="btn join" href="#" data-join><span>join <span data-prog>The Exit Lab</span> · <span data-btnp>$850 today</span></span></a><p class="msg closed">Doors are closed. <em>Thank you.</em></p><p class="msg soon">Doors open <em>Wed Nov 18,</em> live on Day 2.</p><p class="cl"><span data-ctaline>or $1,500 in full</span> · <a href="#" data-toorder>see both options</a></p></div><p class="qnote">From readers and students of How We Grow, word for word.</p>
-  </div>
-</section>
-
-<!-- 5. bonuses, promises and the reason for the deadline -->
-<section class="c2">
-  <div class="wrap">
-    <div class="shead" data-r><span class="eyebrow">Bonuses and promises</span><h2>What comes with it, <em>and what I promise.</em></h2></div>
-    <div class="tiles">
-      <div class="tile live" data-r><span class="tk" data-bday>Live bonus</span><h3 data-bname></h3><p data-bends></p></div>
-      <div class="tile" data-safety-on data-r><span class="tk">My promise</span><h3 data-safety-title></h3><p data-safety-text></p></div>
-      <div class="tile" data-r><span class="tk">Real support</span><h3>Questions before you join?</h3><p><a href="mailto:sean@theafterharvest.com">sean@theafterharvest.com</a>. I'd rather you feel sure than rushed.</p></div>
-      <div class="tile" data-r><span class="tk">Secure</span><h3>Checkout through Stripe.</h3><p>Your card details never touch our servers.</p></div>
-    </div>
-    <div class="why" data-r>
-      <span class="eyebrow">Why there's a deadline</span>
-      <h3>We start together on Tue Dec 1, <em>so you finish before 2027.</em></h3>
-      <p>Everyone in Round 1 does the same task on the same day, in the same room. Someone who joined on Dec 9 would arrive after everyone else had finished week 1. So doors close Mon Nov 30 at 11:59 pm New York, and they stay closed.</p>
-      <p>This is the first round. I haven't set a date for another one.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 6. a short FAQ -->
-<section>
-  <div class="wrap">
-    <div class="shead" data-r><span class="eyebrow">Questions</span><h2>Before <em>you join.</em></h2></div>
-    <div class="faq" data-r><details open><summary>I don't have a big list. Is this for me?<i aria-hidden="true"></i></summary><p class="a">Yes. Two hundred readers and one priced offer is a business.</p></details><details><summary>Can't I just learn this from your free newsletter?<i aria-hidden="true"></i></summary><p class="a">You can learn a lot of it there, and plenty of readers do. What the newsletter can't do is check your offer on Fri Dec 4, read your page on Thu Dec 10 and be in the room the day you send it. That part is what you pay for: doing it, with me, by a date.</p></details><details><summary>I have a job. Can I do this?<i aria-hidden="true"></i></summary><p class="a">Yes. It's built <span data-hours>for the evenings you have</span>. A missed day costs nothing; the next task waits.</p></details><details><summary>What happens right after I pay?<i aria-hidden="true"></i></summary><p class="a">You get an email with your way into the Circle space and one small prep task to do before Tue Dec 1. That's all until we start.</p></details><details><summary>Do you offer refunds?<i aria-hidden="true"></i></summary><p class="a">No. I don't offer refunds, so only join if you'll do the work. <span data-safety-on>What I do instead: <span data-safety-text></span></span></p></details><details><summary>Can I pay in two parts?<i aria-hidden="true"></i></summary><p class="a">Yes. $850 today and $850 <span data-pay2>in 30 days</span>. Or $1,500 in full.</p></details></div>
-    <p class="qnote" data-r>Anything else: <a href="mailto:sean@theafterharvest.com">sean@theafterharvest.com</a></p>
-  </div>
-</section>
-
-<section class="c2">
-  <div class="wrap">
-    <div class="shead" data-r><span class="eyebrow">The full timeline</span><h2>From the door closing <em>to your launch.</em></h2></div>
-    <div class="tl" data-r>
-      <div class="s k"><i>30</i><b>MON NOV 30</b><span>Doors close, 11:59 pm New York</span></div>
-      <div class="s"><i>1</i><b>TUE DEC 1</b><span>We start, together</span></div>
-      <div class="s"><i>W1</i><b>DEC 1 TO 7</b><span>Test the offer</span></div>
-      <div class="s"><i>W2</i><b>DEC 8 TO 14</b><span>Write it</span></div>
-      <div class="s"><i>W3</i><b>DEC 15 TO 20</b><span>Set it up</span></div>
-      <div class="s p"><i><svg aria-hidden="true"><use href="#sf"/></svg></i><b>DEC 21 TO 27</b><span>Christmas pause</span></div>
-      <div class="s l"><i>W4</i><b>WED DEC 30</b><span>Launch week ends</span></div>
-    </div>
-    <div class="thru" data-r><span><b>Circle space</b> · throughout</span><span><b>Ana AI Coach</b> · throughout</span></div>
-  </div>
-</section>
-
-<!-- 7. final CTA -->
-<section class="fin">
-  <div class="wrap" data-r>
-    <figure class="q1 fq" data-r><p>"Can I just say that you have over delivered. Wow! It's nice to have a clear map. Still work to do, but much more satisfying, and less wheel spinning. :)"</p><div class="by"><img src="../img/av/gustavo.webp" alt="" loading="lazy"><span><b>Gustavo Karakey</b></span></div></figure>
-    <h2>Your offer, launched to <em>the readers you already have.</em></h2>
-    <p class="ln">Starts Tue Dec 1 · Doors close Mon Nov 30, 11:59 pm New York</p>
-    <a class="btn join" href="#" data-join><span>join <span data-prog>The Exit Lab</span> · <span data-btnp>$850 today</span></span></a>
-    <p class="cl"><span data-ctaline>or $1,500 in full</span> · <a href="#" data-toorder>see both options</a></p>
-    <p class="msg closed">Doors are closed. <em>Thank you.</em></p>
-    <p class="msg soon">Doors open <em>Wed Nov 18,</em> live on Day 2.</p>
-    <a class="more" href="../program/" data-keep>see everything inside →</a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="brand"><img src="../img/mark.png" alt="" width="46" height="46">how we grow</div>
+    <div class="ft-a"><span class="ft-b"><img src="../img/mark.png" alt="" width="34" height="34">how we grow</span><span class="ft-r"><span data-prog>The Exit Lab</span> · Round 1 · Dec 1 to Dec 30, 2026</span></div>
     <!-- [terms page to add before launch] -->
-    <div class="links"><a href="https://substack.com/privacy" rel="noopener">privacy</a><a href="#disclaimer">earnings disclaimer</a><a href="mailto:sean@theafterharvest.com">sean@theafterharvest.com</a></div>
-    <p class="rd"><span data-prog>The Exit Lab</span> · Round 1 · Dec 1 to Dec 30, 2026</p>
+    <div class="ft-l"><a href="https://substack.com/privacy" rel="noopener">privacy</a><a href="#disclaimer">earnings disclaimer</a><a href="mailto:sean@theafterharvest.com">sean@theafterharvest.com</a></div>
     <p class="disc" id="disclaimer"><b>Earnings disclaimer.</b> The numbers on this page are Ana's own and her readers' own. They are not typical and they are not a promise. What you earn depends on your offer, your readers and the work you do. The program teaches a way to launch; it doesn't guarantee income.</p>
   </div>
 </footer>
+<div class="mbar" aria-hidden="true"><span><b><span data-prog>The Exit Lab</span></b><small data-mbmsg>Round 1 · starts Tue Dec 1</small></span><a class="btn join" href="#" data-join tabindex="-1"><span><span data-btnp>$850 today</span></span><svg class="ar" viewBox="0 0 16 16" aria-hidden="true"><use href="#arr"/></svg></a></div>
 <script>window.OFFER_PAGE = 'join';</script>
 <script src="../assets/offer-settings.js"></script>
 <script src="../assets/offer.js"></script>
