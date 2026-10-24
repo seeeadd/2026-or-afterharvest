@@ -11,6 +11,7 @@
 
   /* the first name in the headline (never the email) */
   if (first) document.querySelectorAll('[data-first]').forEach(function(e){ e.textContent = ', ' + first });
+  if (first) document.querySelectorAll('[data-name]').forEach(function(e){ e.textContent = first });
 
   /* clicks: action_calendar, action_whatsapp, action_sheet (and the video plays) */
   function track(n){
@@ -42,15 +43,90 @@
     '20261119': ['Free 3-day live workshop · Day 3 with Ana Calin', 'Day 3: write the ask. You leave with your first ask, written, ready to send. Stay to the end: five people there live win a 1:1 with Ana.'],
     '20261120': ['VIP Q&A with Ana Calin', 'Bring your offer, your price or your ask. Ana works on it with you live.']
   };
+  function gcal(text, d0, details, recur){
+    return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+      + '&text=' + encodeURIComponent(text)
+      + '&dates=' + d0 + 'T170000Z/' + d0 + 'T183000Z'
+      + (recur ? '&recur=' + encodeURIComponent(recur) : '')
+      + '&details=' + encodeURIComponent(details)
+      + '&location=' + encodeURIComponent('Your Zoom link is in your email from Ana');
+  }
+  /* one Google link for every day: a repeating event (daily, 3 times, or 4 with the VIP Q&A on Fri Nov 20),
+     in their own calendar so their usual reminders fire. The notes hold each day, with its own lines and links. */
+  var vipCal = C.PAGE === 'vip', days = ['20261117', '20261118', '20261119'].concat(vipCal ? ['20261120'] : []);
+  var notes = 'Every day at 12:00 pm New York (7:00 pm Greece), live on Zoom. Your Zoom link is in your email from Ana.\n';
+  days.forEach(function(d, i){
+    var lab = ['DAY 1 · Tue Nov 17', 'DAY 2 · Wed Nov 18', 'DAY 3 · Thu Nov 19', 'VIP Q&A · Fri Nov 20'][i];
+    notes += '\n' + lab + '\n' + EV[d][1] + '\n';
+  });
+  notes += '\nPrint your sheet before Day 1: ' + SHEET;
+  var waLink = vipCal ? C.VIP_GROUP_URL : C.CHANNEL_URL;
+  if (waLink) notes += '\n' + (vipCal ? 'Your VIP WhatsApp group: ' : 'Reminders on WhatsApp: ') + waLink;
+  var gAll = gcal(vipCal ? 'Ana Calin: live workshop + VIP Q&A (Nov 17 to 20)' : 'Ana Calin: free live workshop (Nov 17 to 19)', '20261117', notes, 'RRULE:FREQ=DAILY;COUNT=' + days.length);
+  document.querySelectorAll('a[data-gall]').forEach(function(a){ a.href = gAll; a.target = '_blank'; a.rel = 'noopener' });
+  /* a single day (the VIP Q&A card) */
   document.querySelectorAll('a[data-g]').forEach(function(a){
     var d = a.getAttribute('data-g'), e = EV[d];
-    a.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-      + '&text=' + encodeURIComponent(e[0])
-      + '&dates=' + d + 'T170000Z/' + d + 'T183000Z'
-      + '&details=' + encodeURIComponent(e[1] + '\nPrint your sheet before Day 1: ' + SHEET)
-      + '&location=' + encodeURIComponent('Your Zoom link is in your email from Ana');
+    a.href = gcal(e[0], d, e[1] + '\n\nPrint your sheet before Day 1: ' + SHEET);
     a.target = '_blank'; a.rel = 'noopener';
   });
+
+  /* getting ready: the four things punch their ticket (saved in this browser only) */
+  var STEPS = ['cal', 'mail', 'group', 'sheet'], st = {};
+  try { st = JSON.parse(localStorage.getItem('ana_ready') || '{}') } catch (e) {}
+  var ticket = document.querySelector('.tkt, .pcard'), wasReady = null;
+  function renderReady(){
+    var n = 0;
+    STEPS.forEach(function(s){
+      var on = !!st[s]; if (on) n++;
+      document.querySelectorAll('[data-card="' + s + '"],[data-ph="' + s + '"]').forEach(function(e){ e.classList.toggle('done', on) });
+      document.querySelectorAll('button[data-step="' + s + '"]').forEach(function(b){ b.setAttribute('aria-pressed', on ? 'true' : 'false') });
+    });
+    document.querySelectorAll('[data-done]').forEach(function(e){ e.textContent = n });
+    var ready = n === STEPS.length;
+    document.body.classList.toggle('is-ready', ready);
+    if (ready && wasReady === false && ticket) burst(ticket, 46);
+    wasReady = ready;
+  }
+  function mark(s, toggle){
+    st[s] = toggle ? !st[s] : true;
+    try { localStorage.setItem('ana_ready', JSON.stringify(st)) } catch (e) {}
+    renderReady();
+  }
+  document.querySelectorAll('[data-step]').forEach(function(el){
+    el.addEventListener('click', function(){ mark(el.getAttribute('data-step'), el.tagName === 'BUTTON') });
+  });
+
+  /* a burst of her sunflowers and confetti: on arrival, and when the ticket is ready */
+  function burst(el, n){
+    if (reduce || !el.animate) return;
+    var r = el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height * .35;
+    var cols = ['#F72585', '#FFD400', '#1A1412', '#FF7FB6', '#FFD400'];
+    for (var i = 0; i < n; i++) {
+      var p = document.createElement('i'), flower = i % 4 === 0;
+      p.className = 'cf' + (flower ? ' fl' : '');
+      if (flower) p.innerHTML = '<svg><use href="#sf"/></svg>';
+      else p.style.background = cols[i % cols.length];
+      p.style.left = cx + 'px'; p.style.top = cy + 'px';
+      document.body.appendChild(p);
+      var a = Math.random() * Math.PI * 2, d = 120 + Math.random() * 260, dx = Math.cos(a) * d, dy = Math.sin(a) * d * .7 - 60;
+      var rot = (Math.random() - .5) * 720;
+      p.animate([
+        {transform: 'translate(-50%,-50%) scale(.4) rotate(0deg)', opacity: 1},
+        {transform: 'translate(calc(-50% + ' + dx + 'px), calc(-50% + ' + dy + 'px)) scale(1) rotate(' + rot / 2 + 'deg)', opacity: 1, offset: .45},
+        {transform: 'translate(calc(-50% + ' + dx * 1.1 + 'px), calc(-50% + ' + (dy + 220) + 'px)) scale(.9) rotate(' + rot + 'deg)', opacity: 0}
+      ], {duration: 1500 + Math.random() * 900, easing: 'cubic-bezier(.2,.7,.3,1)'}).onfinish = (function(q){ return function(){ q.remove() } })(p);
+    }
+  }
+  renderReady();
+  /* the arrival burst, once the ticket or pass is on screen (on phones it sits under the video) */
+  if (ticket && 'IntersectionObserver' in window) {
+    var bo2 = new IntersectionObserver(function(es){
+      if (!es[0].isIntersecting) return;
+      bo2.disconnect(); setTimeout(function(){ burst(ticket, C.PAGE === 'vip' ? 70 : 40) }, 550);
+    }, {threshold: .6});
+    bo2.observe(ticket);
+  }
 
   /* links that are settings */
   document.querySelectorAll('[data-link]').forEach(function(a){ var u = C[a.getAttribute('data-link')]; if (u) a.href = u });

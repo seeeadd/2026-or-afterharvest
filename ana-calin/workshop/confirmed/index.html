@@ -33,7 +33,7 @@
     <span class="db-days"><span class="dp">Tue Nov 17</span><span class="dp">Wed Nov 18</span><span class="dp">Thu Nov 19</span></span>
     <span class="db-tm">12:00 pm New York</span>
     <span class="db-ph">Nov 17, 18, 19 · 12 pm NY</span>
-    <a class="btn" href="#act1">add to calendar<svg aria-hidden="true"><use href="#arr"/></svg></a>
+    <a class="btn" href="#act1" data-gall data-step="cal" data-track="action_calendar"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4" width="15" height="13.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 8.5h15M6.5 2v4M13.5 2v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>add to calendar</a>
   </div>
 </header>
 
@@ -41,12 +41,29 @@
 <section class="hero">
   <svg class="bgf a" aria-hidden="true"><use href="#sfo"/></svg>
   <svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="wrap">
-    <span class="hp"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>you're registered</span>
-    <h1>You're in<span data-first></span>. <em>Tuesday, Nov 17 at 12:00 pm New York.</em></h1>
-    <p class="lead">Here's what to do next. Start with my video.</p>
-    <div class="tiles" aria-label="Tuesday to Thursday, November 17 to 19"><div class="dt"><b>17</b><small>Tue</small></div><div class="dt"><b>18</b><small>Wed</small></div><div class="dt"><b>19</b><small>Thu</small></div></div>
+  <div class="wrap hg">
+    <div class="htx">
+      <span class="hp"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>you're registered</span>
+      <h1>You're in<span data-first></span>. <em>Tuesday, Nov 17 at 12:00 pm New York.</em></h1>
+      <p class="lead">Here's what to do next. Start with my video.</p>
+      <div class="tiles" aria-label="Tuesday to Thursday, November 17 to 19"><div class="dt"><b>17</b><small>Tue</small></div><div class="dt"><b>18</b><small>Wed</small></div><div class="dt"><b>19</b><small>Thu</small></div></div>
       <p class="tline">Every day at <b>12:00 pm New York</b> · 7:00 pm Greece<span class="lt"></span></p>
+    </div>
+    <div class="hpass"><div class="tkw" aria-label="Your ticket"><div class="tkt">
+        <div class="tm">
+          <div class="tt"><svg aria-hidden="true"><use href="#sf"/></svg><span>how we grow<small>LIVE ON ZOOM</small></span><b>FREE SEAT</b></div>
+          <small class="ad">ADMIT ONE</small>
+          <b class="nm" data-name>You</b>
+          <div class="tw"><div><small>DAY 1</small><b>Tue Nov 17</b></div><div><small>TIME</small><b>12:00 pm</b><em>New York</em></div></div>
+          <div class="td"><span>17</span><span>18</span><span>19</span><em>NOV 2026</em></div>
+        </div>
+        <div class="ts">
+          <small>GET READY</small>
+          <ul><li data-ph="cal"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>calendar</li><li data-ph="mail"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>reply "in"</li><li data-ph="group"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>WhatsApp</li><li data-ph="sheet"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>your sheet</li></ul>
+          <b><span data-done>0</span>/4</b>
+        </div>
+        <span class="stamp">READY</span>
+      </div></div></div>
     <!-- 2. main video, about 3 minutes: "What's true, and what isn't". Autoplay muted, tap for sound. Not launched without it. -->
     <div class="vwrap">
       <div class="iph" data-src="MAIN_SRC" data-auto>
@@ -80,16 +97,16 @@
       <h2>Do these <em>4 things.</em></h2>
     </div>
     <div class="acts">
-      <div class="act" id="act1" data-r>
-        <span class="n">1</span>
+      <div class="act" id="act1" data-card="cal" data-r>
+        <span class="n">1</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <h3>Add all three days to your calendar.</h3>
         <p>Tue Nov 17, Wed Nov 18, Thu Nov 19, 12:00 pm New York.</p>
         <div class="vis"><div class="cal" aria-hidden="true"><div class="t">NOV 2026<em>12 PM NEW YORK</em></div><div class="g"><span class="h">S</span><span class="h">M</span><span class="h">T</span><span class="h">W</span><span class="h">T</span><span class="h">F</span><span class="h">S</span><span class="">8</span><span class="">9</span><span class="">10</span><span class="">11</span><span class="">12</span><span class="">13</span><span class="">14</span><span class="">15</span><span class="">16</span><span class="on">17</span><span class="on">18</span><span class="on">19</span><span class="">20</span><span class="">21</span><span class="">22</span><span class="">23</span><span class="">24</span><span class="">25</span><span class="">26</span><span class="">27</span><span class="">28</span></div></div></div>
-        <div class="go"><a class="btn" href="../assets/ana-calin-workshop.ics" download data-track="action_calendar">Apple / Outlook (.ics)<svg aria-hidden="true"><use href="#arr"/></svg></a></div>
-        <div class="gc"><span>Google Calendar</span><a data-g="20261117" data-track="action_calendar" class="" href="#">Tue Nov 17</a><a data-g="20261118" data-track="action_calendar" class="" href="#">Wed Nov 18</a><a data-g="20261119" data-track="action_calendar" class="" href="#">Thu Nov 19</a></div>
+        <div class="go"><a class="btn" href="#act1" data-gall data-step="cal" data-track="action_calendar"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4" width="15" height="13.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 8.5h15M6.5 2v4M13.5 2v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>add to Google Calendar</a><a class="btn ghost" href="../assets/ana-calin-workshop.ics" download data-step="cal" data-track="action_calendar">Apple / Outlook</a></div>
+        <p class="gnote">One click adds all three days, with each day's notes in the event.</p>
       </div>
-      <div class="act" data-r>
-        <span class="n">2</span>
+      <div class="act" data-card="mail" data-r>
+        <span class="n">2</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <h3>Find my email and reply "in".</h3>
         <p>I just sent your Zoom link. If it's not in your inbox, check Promotions or spam, move it to your main inbox, and reply "in". That one word makes sure the reminders reach you.</p>
         <div class="vis"><div class="mail" aria-hidden="true">
@@ -98,9 +115,10 @@
           <div class="row dim"><i></i><span><b>Your bank</b><small>Your October statement is ready</small></span><em>9:12</em></div>
           <div class="rp"><span>in</span><b>Send</b></div>
         </div></div>
+        <div class="go"><button class="btn ghost mk" type="button" data-step="mail" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>I replied "in"</button></div>
       </div>
-      <div class="act" data-r>
-        <span class="n">3</span>
+      <div class="act" data-card="group" data-r>
+        <span class="n">3</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <h3>Get my reminders on WhatsApp.</h3>
         <p>Voice notes from me, short videos and the Zoom link on each day, Nov 17, 18 and 19. Reminders only, so it won't fill up your phone.</p>
         <div class="vis"><div class="chat" aria-hidden="true">
@@ -109,21 +127,37 @@
           <div class="b"><small>Ana · Tue Nov 17</small>Day 1 starts at 12:00 pm New York. Your Zoom link is right here.</div>
         </div></div>
         <!-- CHANNEL_URL in the settings: the free WhatsApp Channel. Only this page (and the confirmation email) shows it. -->
-        <div class="go"><a class="btn" href="#" data-link="CHANNEL_URL" target="_blank" rel="noopener" data-track="action_whatsapp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>follow on WhatsApp</a></div>
+        <div class="go"><a class="btn" href="#" data-link="CHANNEL_URL" target="_blank" rel="noopener" data-step="group" data-track="action_whatsapp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>follow on WhatsApp</a></div>
       </div>
-      <div class="act" data-r>
-        <span class="n">4</span>
+      <div class="act" data-card="sheet" data-r>
+        <span class="n">4</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <h3>Print your sheet, and fill in the top box.</h3>
         <p>One page. Fill in the top box before Tue Nov 17. We fill in the rest together, live.</p>
         <div class="vis"><div class="sheetp"><img src="../assets/sheet-preview.webp" alt="The one-page sheet: a top box to fill in before Day 1, then a box for each day" width="620" height="510" loading="lazy"></div></div>
-        <div class="go"><a class="btn" href="../assets/sheet.pdf" download="Ana Calin - my offer sheet.pdf" data-track="action_sheet">download the sheet (PDF)<svg aria-hidden="true"><use href="#arr"/></svg></a></div>
+        <div class="go"><a class="btn" href="../assets/sheet.pdf" download="Ana Calin - my offer sheet.pdf" data-step="sheet" data-track="action_sheet">download the sheet (PDF)<svg aria-hidden="true"><use href="#arr"/></svg></a></div>
       </div>
+    </div>
+    <p class="readyline" data-r><span class="r1">Your ticket: <b><span data-done>0</span> of 4</b> done.</span><span class="r2">You're ready. <em>See you Tuesday, Nov 17 at 12:00 pm New York.</em></span></p>
+  </div>
+</section>
+
+<!-- 5. quick answers: three breakouts, 60 to 90 seconds each. If one gets under 50% plays after a week, change its thumbnail. -->
+<section>
+  <div class="wrap">
+    <div class="shead" data-r>
+      <span class="eyebrow">Quick answers</span>
+      <h2>Before <em>Tue Nov 17.</em></h2>
+    </div>
+    <div class="bos">
+      <button class="bo" type="button" data-r aria-label="Play: I only have a few hundred subscribers. Is this for me?"><span class="th"><span class="q"><span>I only have a few hundred subscribers. Is this for me?</span></span><img class="face" src="../img/ana-sea.webp" alt="" loading="lazy"><span class="pl"><i><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span><span class="pa">Ana answers · </span>about a minute</span></span></span></button>
+      <button class="bo" type="button" data-r aria-label="Play: I have a job. Can I do this in my evenings?"><span class="th"><span class="q"><span>I have a job. Can I do this in my evenings?</span></span><img class="face" src="../img/ana-kitchen.webp" alt="" loading="lazy"><span class="pl"><i><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span><span class="pa">Ana answers · </span>about a minute</span></span></span></button>
+      <button class="bo" type="button" data-r aria-label="Play: Will this be a pitch?"><span class="th"><span class="q"><span>Will this be a pitch?</span></span><img class="face" src="../img/ana-hat.webp" alt="" loading="lazy"><span class="pl"><i><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span><span class="pa">Ana answers · </span>about a minute</span></span></span></button>
     </div>
   </div>
 </section>
 
 <!-- component 7: what you'll make. Titles follow the registration page; if they change when the deck locks (Wed Oct 28), they change here too. -->
-<section class="make">
+<section class="make sand">
   <div class="wrap">
     <div class="shead" data-r>
       <span class="eyebrow">What you'll make</span>
@@ -147,21 +181,6 @@
       </div>
     </div>
     <p class="after" data-r>Come to all three, live. Each day builds on the one before.</p>
-  </div>
-</section>
-
-<!-- 5. quick answers: three breakouts, 60 to 90 seconds each. If one gets under 50% plays after a week, change its thumbnail. -->
-<section class="sand">
-  <div class="wrap">
-    <div class="shead" data-r>
-      <span class="eyebrow">Quick answers</span>
-      <h2>Before <em>Tue Nov 17.</em></h2>
-    </div>
-    <div class="bos">
-      <button class="bo" type="button" data-r aria-label="Play: I only have a few hundred subscribers. Is this for me?"><span class="th"><span class="q"><span>I only have a few hundred subscribers. Is this for me?</span></span><img class="face" src="../img/ana-sea.webp" alt="" loading="lazy"><span class="pl"><i><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span><span class="pa">Ana answers · </span>about a minute</span></span></span></button>
-      <button class="bo" type="button" data-r aria-label="Play: I have a job. Can I do this in my evenings?"><span class="th"><span class="q"><span>I have a job. Can I do this in my evenings?</span></span><img class="face" src="../img/ana-kitchen.webp" alt="" loading="lazy"><span class="pl"><i><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span><span class="pa">Ana answers · </span>about a minute</span></span></span></button>
-      <button class="bo" type="button" data-r aria-label="Play: Will this be a pitch?"><span class="th"><span class="q"><span>Will this be a pitch?</span></span><img class="face" src="../img/ana-hat.webp" alt="" loading="lazy"><span class="pl"><i><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span><span class="pa">Ana answers · </span>about a minute</span></span></span></button>
-    </div>
   </div>
 </section>
 
@@ -224,6 +243,7 @@
 <script>
   /* ---- settings Theia fills in ---- */
   window.CONF = {
+    PAGE:         'reg',
     MAIN_SRC:     '',            // main video (mp4 from Wistia/Vidalytics), about 3 min. Required for launch.
     BREAKOUTS:    ['', '', ''],  // the three quick answers, in page order
     CHANNEL_URL:  '',            // the free WhatsApp Channel (not a group): no member limit, numbers hidden, only admins post.

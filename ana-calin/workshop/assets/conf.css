@@ -419,3 +419,132 @@ footer .help{width:100%;font-size:14px;color:var(--ink2)}
   .get{box-shadow:6px 6px 0 var(--acc),6px 6px 0 1.8px var(--ink);margin-right:6px}
   footer .wrap{flex-direction:column;align-items:flex-start}
 }
+
+/* ---------- the hero: headline beside their ticket (or VIP pass), the video under both ---------- */
+.hg{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);grid-template-areas:"tx pass" "vid vid";gap:0 56px;align-items:center;text-align:left}
+.htx{grid-area:tx}
+.hpass{grid-area:pass}
+.hg .vwrap{grid-area:vid;width:100%;margin-left:auto;margin-right:auto}
+.hg h1{margin-left:0;max-width:none}
+.hg .tiles{justify-content:flex-start}
+body.vipc .hero{background:linear-gradient(180deg,var(--pk3) 0%,var(--cream) 82%)}
+
+/* the free ticket: four punches, one per thing to do before Tue Nov 17 */
+.tkw{width:min(440px,100%);margin:0 auto;filter:drop-shadow(7px 8px 0 var(--ink));transform:rotate(2.5deg);animation:tkin .9s var(--ease) both .15s}
+@keyframes tkin{from{opacity:0;transform:translateY(34px) rotate(9deg) scale(.92)}to{opacity:1;transform:rotate(2.5deg)}}
+.tkt{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 124px;background:#fff;border:2px solid var(--ink);border-radius:22px;
+  -webkit-mask:radial-gradient(circle at calc(100% - 124px) 0,#0000 13px,#000 14px) top/100% 51% no-repeat,radial-gradient(circle at calc(100% - 124px) 100%,#0000 13px,#000 14px) bottom/100% 51% no-repeat;
+  mask:radial-gradient(circle at calc(100% - 124px) 0,#0000 13px,#000 14px) top/100% 51% no-repeat,radial-gradient(circle at calc(100% - 124px) 100%,#0000 13px,#000 14px) bottom/100% 51% no-repeat}
+.tm{padding:20px 22px;min-width:0}
+.tt{display:flex;align-items:center;gap:10px}
+.tt svg{width:36px;height:36px;flex:none}
+.tt span{font-weight:800;font-size:15px;line-height:1.1}
+.tt span small{display:block;font-size:9.5px;letter-spacing:.16em;color:var(--ink3);margin-top:2px}
+.tt b{margin-left:auto;background:var(--pink);color:#fff;border-radius:999px;padding:4px 10px;font-size:10px;letter-spacing:.14em;font-weight:800;white-space:nowrap}
+.ad{display:block;font-weight:800;font-size:10px;letter-spacing:.2em;color:var(--ink3)}
+.tm .ad{margin-top:16px}
+.nm{display:block;font-family:var(--serif);font-weight:400;font-size:48px;line-height:1.05;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tw{display:flex;gap:24px;margin-top:12px;padding-top:12px;border-top:1.5px dashed rgba(26,20,18,.25)}
+.tw small{display:block;font-weight:800;font-size:9.5px;letter-spacing:.18em;color:var(--ink3)}
+.tw b{display:block;font-weight:800;font-size:17px;line-height:1.25}
+.tw em{font-style:normal;font-size:12.5px;color:var(--ink3);font-weight:600}
+.td{display:flex;align-items:center;gap:6px;margin-top:12px}
+.td span{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;border:1.6px solid var(--ink);font-family:var(--serif);font-size:18px;background:var(--sun)}
+.td em{font-style:normal;margin-left:6px;font-weight:800;font-size:10px;letter-spacing:.16em;color:var(--ink3)}
+.ts{background:var(--sun);border-left:2px dashed var(--ink);padding:18px 12px 16px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.ts small{font-weight:800;font-size:9.5px;letter-spacing:.16em}
+.ts ul{list-style:none;display:grid;gap:8px;margin:12px 0 10px;width:100%}
+.ts li{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;text-align:left;line-height:1.15}
+.ts li i{flex:none;width:21px;height:21px;border-radius:50%;background:var(--cream);border:1.6px solid var(--ink);display:grid;place-items:center;color:transparent;transition:background .3s,color .3s,transform .3s var(--ease)}
+.ts li i svg{width:11px;height:11px}
+.ts li.done i{background:var(--pink);color:#fff;transform:scale(1.15)}
+.ts>b{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1;margin-top:auto}
+.stamp{position:absolute;left:36%;top:46%;transform:translate(-50%,-50%) rotate(-14deg) scale(1.7);border:3px solid var(--green);color:var(--green);border-radius:10px;padding:3px 14px;font-weight:800;font-size:28px;letter-spacing:.2em;background:rgba(255,255,255,.88);opacity:0;transition:opacity .35s,transform .5s var(--ease);pointer-events:none}
+body.is-ready .stamp{opacity:1;transform:translate(-50%,-50%) rotate(-14deg) scale(1)}
+
+/* the VIP pass, on a lanyard that swings in */
+.vpass{position:relative;width:min(360px,100%);margin:0 auto;padding-top:132px;transform-origin:50% 0;animation:swing 2.6s var(--ease) both .1s}
+@keyframes swing{0%{opacity:0;transform:translateY(-70px) rotate(16deg)}28%{opacity:1;transform:rotate(-8deg)}52%{transform:rotate(4.5deg)}74%{transform:rotate(-2deg)}100%{transform:none}}
+.ly{position:absolute;top:-10px;left:calc(50% - 16px);width:32px;height:158px;background:var(--pink);border:2px solid var(--ink);border-radius:4px;overflow:hidden;display:flex;justify-content:center;transform-origin:50% 100%}
+.ly.l{transform:rotate(-15deg)}
+.ly.r{transform:rotate(15deg)}
+.ly i{writing-mode:vertical-rl;font-style:normal;font-weight:800;font-size:10.5px;letter-spacing:.32em;color:var(--sun);white-space:nowrap;padding-top:8px}
+.clip{position:absolute;left:50%;top:130px;z-index:3;width:46px;height:30px;margin-left:-23px;border-radius:9px;background:linear-gradient(180deg,#f1ece6,#bdb3a8);border:2px solid var(--ink)}
+.pcard{position:relative;background:#fff;border:2px solid var(--ink);border-radius:24px;overflow:hidden;box-shadow:8px 8px 0 var(--ink),8px 8px 0 2px var(--ink)}
+.ph{position:relative;background:var(--pink);color:#fff;padding:40px 22px 16px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--ink)}
+.ph .slot{position:absolute;left:50%;top:13px;width:56px;height:12px;margin-left:-28px;border-radius:6px;background:var(--pk3);border:2px solid var(--ink)}
+.ph b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:86px;line-height:.78;color:var(--sun);letter-spacing:-.02em}
+.ph>span:last-child{font-weight:800;font-size:12px;letter-spacing:.18em;text-align:right}
+.ph>span small{display:block;font-size:11px;letter-spacing:.08em;opacity:.9;margin-top:3px}
+.pb{padding:16px 22px 18px}
+.who{display:flex;align-items:center;gap:10px}
+.who img{width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:50% 25%;border:1.6px solid var(--ink)}
+.who span{font-family:var(--serif);font-size:23px;line-height:1}
+.who small{display:block;font-family:var(--sans);font-weight:800;font-size:9.5px;letter-spacing:.16em;color:var(--ink3);margin-bottom:3px}
+.pb .ad{margin-top:14px}
+.perks{list-style:none;display:grid;gap:7px;margin-top:12px;padding-top:12px;border-top:1.5px dashed rgba(26,20,18,.2)}
+.perks li{display:flex;align-items:center;gap:9px;font-weight:700;font-size:13.5px}
+.perks li svg{width:19px;height:19px;padding:4px;border-radius:50%;background:var(--green);color:#fff;flex:none}
+.pf{display:flex;align-items:center;justify-content:space-between;margin-top:14px;font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--ink3)}
+.pf b{color:var(--pink);font-size:15px;letter-spacing:0}
+.bc{width:118px;height:26px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,#0000 2px 4px,var(--ink) 4px 5px,#0000 5px 8px,var(--ink) 8px 11px,#0000 11px 12px)}
+.pcard .stamp{left:62%;top:62%}
+
+/* the VIP top bar is pink */
+body.vipc .db-bar{background:rgba(247,37,133,.97);box-shadow:0 18px 36px -18px rgba(247,37,133,.7)}
+body.vipc .db-live{color:#fff}
+body.vipc .db-live i{background:var(--sun);animation:none}
+body.vipc .dp{background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+body.vipc .dp.v{background:var(--sun);color:var(--ink);box-shadow:none}
+body.vipc .db-tm{color:rgba(255,255,255,.88)}
+
+/* VIP perks are stamped unlocked */
+.get{position:relative}
+.get .unl{position:absolute;right:18px;top:18px;z-index:2;transform:rotate(6deg);border:2px solid var(--green);color:var(--green);background:#fff;border-radius:8px;padding:3px 9px;font-weight:800;font-size:11px;letter-spacing:.16em}
+
+/* the four things: done badges, the "I replied" toggle, the line under the cards */
+.act .dn{position:absolute;right:24px;top:28px;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;background:var(--green);color:#fff;font-weight:800;font-size:13px;opacity:0;transform:scale(.7);transition:opacity .3s,transform .4s var(--ease)}
+.act .dn svg{width:12px;height:12px}
+.act.done .dn{opacity:1;transform:none}
+.act.done .n{background:var(--green);color:#fff}
+.act .go .btn.ghost{flex:0 1 auto}
+.mk svg{width:14px;height:14px}
+.mk[aria-pressed=true]{background:var(--green)!important;color:#fff;box-shadow:0 0 0 1.8px var(--green)}
+.gnote{margin-top:10px!important;font-size:14px!important;color:var(--ink3)!important;font-weight:600}
+.readyline{text-align:center;margin-top:40px;font-family:var(--serif);font-size:30px;line-height:1.2}
+.readyline b{font-family:var(--sans);font-weight:800;font-size:.8em;color:var(--pink)}
+.readyline em{color:var(--pink)}
+.readyline .r2{display:none}
+body.is-ready .readyline .r1{display:none}
+body.is-ready .readyline .r2{display:inline}
+
+/* confetti */
+.cf{position:fixed;z-index:200;width:9px;height:14px;border-radius:2px;pointer-events:none}
+.cf.fl{width:24px;height:24px;background:none}
+.cf.fl svg{width:100%;height:100%}
+
+@media (max-width:860px){
+  .hg{grid-template-columns:minmax(0,1fr);grid-template-areas:"tx" "vid" "pass";text-align:center}
+  .hg h1{margin-left:auto;margin-right:auto}
+  .hg .tiles{justify-content:center}
+  .hpass{margin-top:48px}
+}
+@media (max-width:640px){
+  .tkt{grid-template-columns:minmax(0,1fr) 108px;-webkit-mask:radial-gradient(circle at calc(100% - 108px) 0,#0000 12px,#000 13px) top/100% 51% no-repeat,radial-gradient(circle at calc(100% - 108px) 100%,#0000 12px,#000 13px) bottom/100% 51% no-repeat;mask:radial-gradient(circle at calc(100% - 108px) 0,#0000 12px,#000 13px) top/100% 51% no-repeat,radial-gradient(circle at calc(100% - 108px) 100%,#0000 12px,#000 13px) bottom/100% 51% no-repeat}
+  .tm{padding:16px 14px;text-align:left}
+  .tt span{font-size:13px}
+  .tt b{display:none}
+  .nm{font-size:38px}
+  .tw{gap:14px}
+  .tw b{font-size:15px}
+  .ts li{font-size:10.5px}
+  .vpass{width:min(320px,100%)}
+  .ph b{font-size:70px}
+  .pb{text-align:left}
+  .act .dn{right:18px;top:22px}
+  .act .go .btn.ghost{width:100%}
+  .readyline{font-size:24px}
+}
+.gets>.get{min-width:0}
+.get .btn{white-space:normal;text-align:center;line-height:1.2;height:auto;min-height:52px;padding:12px 18px}
+.tkt .stamp{top:72%;left:40%}
