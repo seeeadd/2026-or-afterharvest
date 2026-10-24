@@ -36,6 +36,7 @@ html{-webkit-text-size-adjust:100%}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body.lock{overflow:hidden}
 img,svg{display:block;max-width:100%}
+img{height:auto}
 button,input{font:inherit;color:inherit}
 a{color:inherit}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
@@ -78,6 +79,25 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .fb-tile b{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1}
 .fb-tile small{margin-top:3px;font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,248,238,.6)}
 .fb-tm{flex:none;font-weight:600;font-size:14px;color:rgba(255,248,238,.75);white-space:nowrap}
+.fb-l{display:flex;align-items:center;gap:7px}
+.fb-l i{width:8px;height:8px;border-radius:50%;background:var(--pink);animation:dot 2s ease-out infinite}
+.fb-tile.s{background:rgba(247,37,133,.18);box-shadow:inset 0 0 0 1px rgba(247,37,133,.5)}
+.fb-tile.s b{display:inline-block}
+.fb-tile.s.tk b{animation:tick .45s var(--ease)}
+@keyframes tick{0%{transform:translateY(-35%);opacity:.2}100%{transform:none;opacity:1}}
+.fb-jn{display:flex;align-items:center;gap:10px;flex:none;white-space:nowrap}
+.fb-jn .faces img{width:30px;height:30px;border:2px solid var(--ink);margin-left:-9px}
+.fb-jt{display:flex;flex-direction:column;line-height:1.05}
+.fb-jt b{font-weight:800;font-size:15px}
+.fb-jt small{font-weight:700;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,248,238,.6);margin-top:3px}
+.fb .btn{position:relative;overflow:hidden}
+.btn.shine:after,.fb .btn:after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,62%{left:-60%}82%,100%{left:130%}}
+.faces{display:flex;flex:none}
+.faces img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-10px;background:var(--sand)}
+.faces img:first-child{margin-left:0}
+.stars{display:inline-flex;gap:2px;vertical-align:-2px}
+.stars svg{width:15px;height:15px;fill:var(--sun);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
 .fb .btn{flex:none;box-shadow:none}
 
 /* ---------- 1. hero: the client hero layout, 1:1 ---------- */
@@ -163,8 +183,27 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--cream)}
 
 /* the registration card: dates + the one button */
-.regc{position:relative;margin-top:18px;background:#fff;border-radius:20px;padding:20px 22px 18px;box-shadow:var(--sh);border:1.6px solid var(--ink);border-top-width:5px}
-.regc .row1{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.regc{position:relative;margin-top:16px;background:#fff;border-radius:20px;padding:16px 20px 16px;box-shadow:var(--sh);border:1.6px solid var(--ink);border-top-width:5px}
+.regc .row1{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.regc .live{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:-4px -6px 12px;padding:9px 12px;border-radius:12px;background:var(--cream);font-size:13.5px;font-weight:700}
+.ld{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.ld i{width:9px;height:9px;border-radius:50%;background:#2fb36a;animation:gdot 2s ease-out infinite}
+@keyframes gdot{0%{box-shadow:0 0 0 0 rgba(47,179,106,.55)}70%,100%{box-shadow:0 0 0 8px rgba(47,179,106,0)}}
+.cdm{white-space:nowrap;color:var(--ink3);font-variant-numeric:tabular-nums}
+.cdm b{color:var(--ink);font-weight:800}
+.proof{display:flex;align-items:center;gap:12px;margin-top:14px;padding-top:14px;border-top:1.5px dashed rgba(26,20,18,.15);font-size:14px;color:var(--ink2);line-height:1.35}
+.proof b{font-weight:800;color:var(--ink)}
+.just{display:flex;align-items:center;gap:9px;margin-top:10px;padding:9px 12px;border-radius:12px;background:var(--ysoft);font-size:14px;color:var(--ink2);transition:opacity .35s}
+.just[hidden]{display:none}
+.just i{width:8px;height:8px;border-radius:50%;background:#2fb36a;flex:none}
+.just b{color:var(--ink);font-weight:800}
+.just.fade{opacity:0}
+.ltoast{position:fixed;left:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:12px;background:#fff;border:1.6px solid var(--ink);border-radius:16px;padding:10px 16px 10px 10px;box-shadow:0 18px 34px -16px rgba(26,20,18,.45);font-size:14px;line-height:1.3;transform:translateY(140%);transition:transform .5s var(--ease)}
+.ltoast{visibility:hidden}
+.ltoast.on{transform:none;visibility:visible}
+.ltoast .ic{width:36px;height:36px;border-radius:50%;background:var(--sun);border:1.6px solid var(--ink);display:grid;place-items:center;font-weight:800}
+.ltoast b{font-weight:800}
+.ltoast small{display:block;color:var(--ink3);font-size:12.5px}
 .mt{display:flex;gap:6px}
 .mt span{width:52px;border:1.5px solid var(--ink);border-radius:12px;text-align:center;padding:6px 0 5px;line-height:1;background:#fff}
 .mt span:first-child{background:var(--sun)}
@@ -216,20 +255,98 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .dlg.done .thanks{display:block}
 
 /* ---------- 2. who's Ana ---------- */
-.who .g{display:grid;grid-template-columns:360px 1fr;gap:72px;align-items:center}
-.who .ph{position:relative;background:#fff;padding:14px 14px 18px;border-radius:22px;box-shadow:var(--sh);transform:rotate(-2.5deg)}
-.who .ph img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px}
-.who .ph .mk{position:absolute;right:-24px;bottom:-22px;width:92px;height:92px;transform:rotate(8deg);filter:drop-shadow(0 8px 14px rgba(70,45,25,.25))}
+.vcard{position:absolute;display:block;padding:0;border:0;cursor:pointer;background:var(--ink);border-radius:22px;padding:6px;box-shadow:0 0 0 2px var(--ink),0 26px 40px -22px rgba(26,20,18,.65);transition:transform .35s var(--ease)}
+.vcard:hover{transform:rotate(0) translateY(-4px) scale(1.02)!important}
+.vcard .vi{position:relative;display:block;aspect-ratio:9/16;border-radius:17px;overflow:hidden}
+.vcard .vi img{width:100%;height:100%;object-fit:cover}
+.vcard .vi:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,18,0) 45%,rgba(26,20,18,.85))}
+.vcard .pl{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);z-index:1;width:52px;height:52px;border-radius:50%;background:var(--pink);display:grid;place-items:center;box-shadow:0 0 0 2px var(--ink)}
+.vcard .pl:before{content:"";position:absolute;inset:0;border-radius:50%;animation:ring2 2.4s ease-out infinite}
+@keyframes ring2{0%{box-shadow:0 0 0 0 rgba(247,37,133,.55)}70%,100%{box-shadow:0 0 0 16px rgba(247,37,133,0)}}
+.vcard .pl svg{margin-left:3px}
+.vcard .vt{position:absolute;left:12px;right:12px;bottom:12px;z-index:1;text-align:left;color:#fff;font-family:var(--serif);font-size:19px;line-height:1.08}
+.vcard .vt small{display:block;font-family:var(--sans);font-weight:800;font-size:9.5px;letter-spacing:.16em;color:var(--sun);margin-bottom:5px}
 .who .partner{display:none;font-weight:800;font-size:18px;line-height:1.4;margin-bottom:16px}
 .who.has-partner .partner{display:block}
-.who .bio{font-family:var(--serif);font-size:clamp(26px,2.5vw,33px);line-height:1.28;letter-spacing:-.005em;text-wrap:pretty}
-.who .sig{font-family:var(--serif);font-style:italic;font-size:38px;color:var(--pink);margin-top:18px;line-height:1}
+.who .sig{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--pink);margin-top:20px;line-height:1}
+.who{overflow:hidden}
+.hh{margin-bottom:56px}
+.hname{font-size:clamp(64px,9vw,128px);line-height:.92;margin-top:10px;letter-spacing:-.02em}
+.hsub{font-family:var(--serif);font-size:clamp(26px,2.8vw,38px);line-height:1.15;margin-top:12px;color:var(--ink2)}
+.hsub em{color:var(--pink)}
+.hg{display:grid;grid-template-columns:380px 1fr;gap:80px;align-items:start}
+.pol{position:relative}
+.pol figure{margin:0;background:#fff;padding:16px 16px 0;border:2px solid var(--ink);box-shadow:12px 12px 0 var(--sun),12px 12px 0 2px var(--ink);transform:rotate(-2.5deg)}
+.pol img{width:100%;aspect-ratio:1;object-fit:cover}
+.pol figcaption{font-family:var(--serif);font-style:italic;font-size:24px;text-align:center;padding:14px 0 16px}
+.note2{position:relative;margin:44px 18px 0 6px;background:var(--ysoft);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:18px 22px;transform:rotate(1.5deg);display:grid;gap:6px;font-size:15px;line-height:1.35}
+.note2 b{font-weight:800;font-size:18px;letter-spacing:-.02em}
+.note2 .pk{color:#c4105f;font-weight:700}
+.letter .bio{font-family:var(--sans);font-size:20px;line-height:1.7;color:var(--ink2)}
+.drop .dc{float:left;font-family:var(--serif);font-size:104px;line-height:.78;color:var(--pink);margin:6px 10px 0 0}
+.letter .bio{font-size:21px}
+.pull{position:relative;margin:34px 0 0;padding:26px 0 26px 64px;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.pull .qm2{position:absolute;left:0;top:6px;font-family:var(--serif);font-size:96px;line-height:1;color:var(--pink)}
+.pull p{font-family:var(--serif);font-size:clamp(24px,2.3vw,30px);line-height:1.25}
+.pull b{font-weight:400;background:var(--sun);padding:0 .1em}
 
-.miles{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:34px;border-top:1.5px solid var(--ink)}
-.miles li{padding:16px 18px 0 0;font-size:15px;line-height:1.45;color:var(--ink2)}
-.miles li+li{padding-left:18px;border-left:1.5px dashed rgba(26,20,18,.2)}
-.miles b{display:block;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1;color:var(--ink);margin-bottom:6px}
-.miles li:last-child b{color:var(--pink)}
+.story{position:relative;margin-top:120px;display:grid;gap:110px}
+.rail2{position:absolute;left:50%;top:20px;bottom:20px;border-left:2px dashed rgba(26,20,18,.28)}
+.ch{position:relative;display:grid;grid-template-columns:1fr 84px 1fr;gap:0 40px;align-items:center}
+.ch .vis{grid-column:1;grid-row:1}
+.ch .node{grid-column:2;grid-row:1;justify-self:center;width:72px;height:72px;border-radius:50%;background:var(--sand);display:grid;place-items:center;position:relative;z-index:1}
+.ch .node svg{width:64px;height:64px;transition:transform .8s cubic-bezier(.3,1.6,.5,1)}
+.ch:not(.in) .node svg{transform:scale(.3) rotate(-90deg)}
+.ch .tx{grid-column:3;grid-row:1}
+.ch.flip .vis{grid-column:3}
+.ch.flip .tx{grid-column:1;text-align:right}
+.yr{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.16em;background:var(--ink);color:var(--sun);border-radius:999px;padding:6px 12px}
+.ch h3{font-size:clamp(36px,3.6vw,52px);line-height:1.02;margin:16px 0 16px;text-wrap:balance}
+.ch h3 em{font-style:italic;color:var(--pink)}
+.ch p{font-size:17.5px;line-height:1.6;color:var(--ink2);margin-top:10px}
+.ch p b{color:var(--ink)}
+.ph1{margin:0;background:#fff;padding:12px 12px 16px;border-radius:20px;box-shadow:var(--sh);transform:rotate(-2deg)}
+.ph1 img{width:100%;border-radius:12px;aspect-ratio:1000/671;object-fit:cover}
+
+/* 2017: the 4 AM lock screen */
+.lock{position:relative;margin:0 auto;width:min(330px,100%);aspect-ratio:9/15;border-radius:44px;background:linear-gradient(170deg,#2c2420,#110d0b);border:2px solid var(--ink);box-shadow:0 0 0 8px #E4D4BB,0 0 0 10px var(--ink),0 40px 60px -30px rgba(26,20,18,.6);color:#fff;text-align:center;padding:64px 18px 0;transform:rotate(2deg);overflow:hidden}
+.isl2{position:absolute;left:50%;top:14px;width:90px;height:26px;margin-left:-45px;border-radius:14px;background:#000}
+.lock .tm{display:block;font-family:var(--serif);font-size:92px;line-height:1;letter-spacing:-.02em}
+.lock .pl2{display:block;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}
+.nt{display:flex;gap:10px;text-align:left;margin-top:40px;background:rgba(255,248,238,.94);color:var(--ink);border-radius:18px;padding:12px 14px;box-shadow:0 10px 24px -10px rgba(0,0,0,.6);transform:translateY(0);transition:transform .7s var(--ease) .3s,opacity .7s .3s}
+.ch:not(.in) .nt{transform:translateY(30px);opacity:0}
+.nt .ap{flex:none;width:34px;height:34px;border-radius:9px;background:var(--sun);display:grid;place-items:center;border:1.5px solid var(--ink)}
+.nt .ap svg{width:28px;height:28px}
+.nt .nb{font-family:var(--serif);font-size:21px;line-height:1.2}
+.nt small{display:block;font-family:var(--sans);font-weight:800;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);margin-bottom:3px}
+.wish{position:relative;text-decoration:none}
+.wish:after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:3px;background:var(--pink);border-radius:2px;transform-origin:0 50%;transition:transform .5s var(--ease) 1.3s}
+.ch:not(.in) .wish:after{transform:scaleX(0)}
+.want{font-style:italic;color:var(--pink);display:inline-block;margin:0 .15em;transition:opacity .5s 1.8s,transform .5s var(--ease) 1.8s}
+.ch:not(.in) .want{opacity:0;transform:translateY(-8px)}
+
+/* 2023 to 2025: the sunflowers grow */
+.grow{width:100%;max-width:480px;margin:0 auto;overflow:visible}
+.grow .st{stroke-dasharray:240;stroke-dashoffset:0;transition:stroke-dashoffset 1s cubic-bezier(.5,0,.3,1)}
+.grow .lf,.grow .hd{transform-box:fill-box;transform-origin:50% 100%;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
+.grow .hd{transform-origin:50% 50%}
+.grow .g2 .st{transition-delay:.5s}.grow .g3 .st{transition-delay:1s}
+.grow .g1 .lf,.grow .g1 .hd{transition-delay:.8s}.grow .g2 .lf,.grow .g2 .hd{transition-delay:1.3s}.grow .g3 .lf,.grow .g3 .hd{transition-delay:1.9s}
+.ch:not(.in) .grow .st{stroke-dashoffset:240}
+.ch:not(.in) .grow .lf,.ch:not(.in) .grow .hd{transform:scale(0)}
+
+/* 2026: the proof */
+.proofs{position:relative;height:440px;max-width:460px;margin:0 auto}
+.proofs .vcard{left:0;top:10px;width:44%;transform:rotate(-4deg);z-index:2}
+.pc{position:absolute;background:#fff;border-radius:18px;padding:18px 20px;box-shadow:0 22px 40px -24px rgba(70,45,25,.55);width:50%;transition:transform .8s var(--ease)}
+.pc b{display:block;font-weight:800;font-size:36px;letter-spacing:-.03em;line-height:1.1}
+.pc b span{background:var(--sun);padding:0 .12em}
+.pc small{display:block;font-size:14px;line-height:1.4;color:var(--ink2);margin-top:6px}
+.p-a{right:0;top:40px;transform:rotate(3deg)}
+.p-b{right:0;top:236px;transform:rotate(-2deg)}
+.ch:not(.in) .p-a{transform:translateX(40px) rotate(8deg)}
+.ch:not(.in) .p-b{transform:translateX(40px) rotate(-8deg)}
+
 
 /* ---------- 3. the three days: one row per day ---------- */
 .days .rows{position:relative;margin-top:76px}
@@ -352,7 +469,39 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .result figcaption b{display:block;font-weight:800;font-size:16px;line-height:1.3}
 .result figcaption small{font-size:15px;color:var(--ink3)}
 
+.result{overflow:hidden}
+.result .head{margin-bottom:56px}
+.feat{display:grid;grid-template-columns:270px 1fr;gap:56px;align-items:center;max-width:1000px;margin:0 auto}
+.feat .vcard{position:relative;width:100%;transform:rotate(-3deg)}
+.feat .vcard .vt{font-size:22px}
+.feat .vcard .pl{width:64px;height:64px}
+.result .feat figure{max-width:none;margin:0}
 .wins-h{text-align:center;margin:96px 0 30px}
+.win .ba{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;margin-top:14px;color:var(--ink3)}
+.win .ba s{text-decoration-color:rgba(26,20,18,.35)}
+.win .ba svg{width:28px;height:14px;flex:none}
+.win .to{font-size:30px}
+.cu{font-variant-numeric:tabular-nums}
+.wall{position:relative;margin-top:84px;display:grid;gap:18px;overflow:hidden;padding:6px 0 14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.lane{display:flex;gap:18px;width:max-content;animation:lane 70s linear infinite}
+.lane.r{animation-direction:reverse;animation-duration:80s}
+.wall:hover .lane{animation-play-state:paused}
+@keyframes lane{to{transform:translateX(calc(-50% - 9px))}}
+.rv{flex:none;width:340px;background:#fff;border-radius:20px;padding:20px 22px 18px;box-shadow:0 14px 26px -20px rgba(70,45,25,.5),0 0 0 1.4px rgba(26,20,18,.08);align-self:flex-start}
+.rv .who2{display:flex;align-items:center;gap:12px}
+.rv .who2 img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--ink)}
+.rv .who2 b{display:block;font-weight:800;font-size:15.5px;line-height:1.2}
+.rv q{display:block;quotes:none;font-family:var(--serif);font-size:20px;line-height:1.3;margin:12px 0 10px}
+.rv small{font-size:12.5px;color:var(--ink3);font-weight:600}
+.wall-src{text-align:center;margin-top:22px;font-size:13px;color:var(--ink3)}
+.wall-src a{text-underline-offset:3px}
+
+/* the video lightbox */
+.vmodal{position:fixed;inset:0;z-index:110;display:grid;place-items:center;padding:24px;background:rgba(26,20,18,.82);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
+.vmodal.open{opacity:1;visibility:visible;transition:opacity .3s}
+.vmodal .fr{position:relative;width:min(960px,100%);aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#000;box-shadow:0 0 0 2px var(--sun),0 40px 80px -30px #000}
+.vmodal iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vmodal .x{position:absolute;right:18px;top:18px;width:44px;height:44px;border-radius:50%;border:0;background:var(--cream);cursor:pointer;display:grid;place-items:center}
 .wins{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1080px;margin:0 auto}
 .win{background:#fff;border-radius:22px;padding:24px 24px 22px;box-shadow:0 22px 40px -26px rgba(70,45,25,.5),0 1px 3px rgba(70,45,25,.06);transition:transform .35s var(--ease)}
 .win:nth-child(1){transform:rotate(-1.6deg)}.win:nth-child(2){transform:rotate(1deg) translateY(10px)}.win:nth-child(3){transform:rotate(-.8deg)}
@@ -416,6 +565,8 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .claim .tiles{margin-bottom:24px}
 .claim .line{margin:18px 0 32px;max-width:520px}
 .claim .note{text-align:left}
+.claim .conf{display:flex;align-items:center;gap:9px;margin-top:16px;font-weight:600;font-size:15.5px;color:var(--ink2)}
+.claim .conf svg{flex:none}
 .final .tiles{display:flex;gap:10px;margin-bottom:28px}
 .final .tiles div{text-align:center;width:84px;border:1.8px solid var(--ink);border-radius:18px;background:#fff;padding:10px 0 9px;line-height:1}
 .final .tiles div:first-child{background:var(--sun)}
@@ -439,14 +590,15 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
 /* reveal */
 [data-r]{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s var(--ease)}
 [data-r].in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}[data-r]{opacity:1;transform:none}.band mark{background-size:100% 100%;color:var(--ink)}}
+@media (prefers-reduced-motion:reduce){.wall{overflow-x:auto;-webkit-mask-image:none;mask-image:none}*,*:before,*:after{transition:none!important;animation:none!important}[data-r]{opacity:1;transform:none}.band mark{background-size:100% 100%;color:var(--ink)}}
 
 @media (max-width:1180px){
   .fb-tm{display:none}
+  .fb-jn{display:none}
+  .hg{grid-template-columns:320px 1fr;gap:56px}
   .drow{grid-template-columns:64px minmax(0,1fr) minmax(0,1fr);gap:0 32px}
   .dbadge{width:64px;height:64px}
   .drow .rail{left:31px;top:64px}
-  .who .g{grid-template-columns:300px 1fr;gap:56px}
 }
 @media (max-width:1060px){
   .fb-cd{display:none}
@@ -477,15 +629,31 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   .claim .tiles{justify-content:center}
   .claim .line{margin-left:auto;margin-right:auto}
   .claim .note{text-align:center}
+  .claim .conf{justify-content:center}
+  .feat{grid-template-columns:220px 1fr;gap:36px}
   .tix{height:170px}
 }
 @media (max-width:900px){
   section{padding:88px 0}
   .fb{display:none}
-  .who .g{grid-template-columns:1fr;gap:48px;justify-items:center}
-  .who .ph{width:min(320px,80%)}
+  .hg{grid-template-columns:1fr;gap:56px}
+  .pol{max-width:360px;margin:0 auto;width:100%}
+  .story{margin-top:96px;gap:84px}
+  .rail2{left:27px}
+  .ch,.ch.flip{grid-template-columns:56px 1fr;gap:22px 18px}
+  .ch .node,.ch.flip .node{grid-column:1;grid-row:1;width:56px;height:56px;align-self:start}
+  .ch .node svg{width:50px;height:50px}
+  .ch .tx,.ch.flip .tx{grid-column:2;grid-row:1;text-align:left}
+  .ch .vis,.ch.flip .vis{grid-column:2;grid-row:2}
+  .feat{grid-template-columns:1fr;gap:40px}
+  .feat .vcard{width:min(260px,70%);margin:0 auto}
+  .ltoast{left:12px;right:12px;bottom:84px}
   .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,248,238,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
-  .mbar .btn{width:100%}
+  .mbar{display:flex!important;align-items:center;gap:12px}
+  html[data-sticky=off] .mbar{display:none!important}
+  .mbar .btn{flex:1;height:52px;font-size:16px}
+  .mcd{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:700;color:var(--ink3);white-space:nowrap}
+  .mcd b{font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
   .mbar.on{transform:none}
   html[data-sticky=off] .mbar{display:none}
 }
@@ -507,6 +675,9 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   .chips::-webkit-scrollbar{display:none}
   .chip{height:38px;font-size:14px;padding:0 14px}
   .regc{margin-top:18px;padding:14px 14px 12px;border-radius:18px}
+  .regc .row1{display:none}
+  .tstrip{display:none}
+  .hpill .hide-s{display:none}
   .regc .row1{margin-bottom:12px;gap:12px}
   .mt span{width:44px}
   .mt b{font-size:22px}
@@ -544,7 +715,6 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   .field input{height:54px}
   .avail label{padding:12px 0 10px}
   h2{font-size:40px}
-  .who .bio{font-size:24px}
   .drow,.drow.flip{grid-template-columns:44px minmax(0,1fr);gap:22px 14px;padding-bottom:76px}
   .dbadge{width:44px;height:44px;box-shadow:0 0 0 4px var(--cream)}
   .dbadge small{font-size:7.5px}
@@ -567,14 +737,31 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   .faqs{margin-top:80px}
   .faq summary{font-size:23px;padding:20px 2px}
   .faq .a{padding:0 8px 22px 2px;font-size:16px}
-  .miles{grid-template-columns:1fr}
-  .miles li+li{padding-left:0;border-left:0;border-top:1.5px dashed rgba(26,20,18,.2);margin-top:14px}
   .recap{padding:52px 18px 40px;border-radius:26px}
   .recap h2{margin-bottom:28px}
   .rc > div{padding:24px 22px 24px}
   .rc h3{font-size:24px}
   .recap .go .btn{width:100%;height:58px;font-size:17px}
   .wins-h{margin-top:72px}
+  .rv{width:290px}
+  .rv q{font-size:18px}
+  .regc .live{flex-wrap:wrap;margin:-2px -4px 12px}
+  .proof{font-size:13px}
+  .hname{font-size:64px}
+  .hsub{font-size:25px}
+  .letter .bio{font-size:17.5px}
+  .drop .dc{font-size:76px}
+  .pull{padding-left:46px}
+  .pull .qm2{font-size:72px}
+  .ch h3{font-size:34px}
+  .lock{width:min(270px,100%)}
+  .lock .tm{font-size:72px}
+  .proofs{height:380px}
+  .pc b{font-size:28px}
+  .pc{width:52%;padding:14px 14px}
+  .pc small{font-size:12.5px}
+  .vcard .vt{font-size:15px}
+  .vcard .pl{width:42px;height:42px}
   .final .tiles div{width:70px}
   .final .tiles b{font-size:36px}
   .final h2{font-size:48px}
@@ -631,11 +818,11 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
       <img class="fb-ic" src="img/mark.png" alt="" width="44" height="44">
       <span class="fb-t"><small>ANA CALIN</small><b>Free 3-day live workshop</b></span>
     </button>
-    <div class="fb-cd" aria-label="Tuesday to Thursday, November 17 to 19">
-      <span class="fb-l">NOV</span>
-      <span class="fb-tiles"><span class="fb-tile"><b>17</b><small>Tue</small></span><span class="fb-tile"><b>18</b><small>Wed</small></span><span class="fb-tile"><b>19</b><small>Thu</small></span></span>
+    <div class="fb-cd" role="timer" aria-label="Day 1 starts in">
+      <span class="fb-l"><i></i>DAY 1 IN</span>
+      <span class="fb-tiles"><span class="fb-tile"><b data-cd="d">00</b><small>days</small></span><span class="fb-tile"><b data-cd="h">00</b><small>hrs</small></span><span class="fb-tile"><b data-cd="m">00</b><small>min</small></span><span class="fb-tile s"><b data-cd="s">00</b><small>sec</small></span></span>
     </div>
-    <span class="fb-tm">12:00 pm New York</span>
+    <div class="fb-jn"><span class="faces"><img src="img/av/gustavo.webp" alt=""><img src="img/av/jeanette.webp" alt=""><img src="img/av/adora.webp" alt=""><img src="img/av/hilde.webp" alt=""><img src="img/av/stacie.webp" alt=""></span><span class="fb-jt"><b data-feed="n">800+</b><small data-feed="l">student wins</small></span></div>
     <button class="btn sm open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button>
   </div>
 </header>
@@ -683,7 +870,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
     </div>
 
     <div class="hright">
-      <span class="hpill"><span class="dot"></span>Free <i>/</i> 3 days live <i>/</i> <span class="dchip">Tue Nov 17 to Thu Nov 19</span></span>
+      <span class="hpill"><span class="dot"></span>Free <i>/</i> <span class="hide-s">3 days live <i>/</i></span> <span class="dchip">Tue Nov 17 to Thu Nov 19</span></span>
       <!-- the headline Ana picks: ?h=2 and ?h=3 preview the two alternatives -->
       <h1 id="h1"><span class="l nw">Your readers</span> <span class="l nw">like <span class="hl">your writing.</span></span></h1>
       <p class="hkick" id="hk"><span class="l nw">Now give them</span> <span class="l nw">something to buy.</span></p>
@@ -697,32 +884,90 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
         </div>
       </div>
       <div class="regc" id="regcard">
+        <div class="live"><span class="ld"><i></i>Registration is open</span><span class="cdm" role="timer">Day 1 in <b data-cd="d">00</b>d <b data-cd="h">00</b>h <b data-cd="m">00</b>m <b data-cd="s">00</b>s</span></div>
         <div class="row1">
           <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
           <p class="when"><b>Three live sessions<span class="gr">, Nov 17 to 19</span></b>12:00 pm New York<span class="gr"> / 7:00 pm Greece</span></p>
         </div>
-        <button class="btn big open" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
+        <button class="btn big open shine" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
         <p class="note">free · live on Zoom<span class="lt"></span></p>
+        <div class="proof"><span class="faces"><img src="img/av/gustavo.webp" alt=""><img src="img/av/jeanette.webp" alt=""><img src="img/av/adora.webp" alt=""><img src="img/av/hilde.webp" alt=""><img src="img/av/stacie.webp" alt=""></span><span id="proofTxt"><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins came through the Lab</span></div>
+        <p class="just" id="just" hidden><i></i><span id="justTxt"></span></p>
       </div>
     </div>
   </div>
 </section>
 
 <main>
-<!-- 2. who's Ana -->
+<!-- 2. who's Ana: the host letter, then her story in four chapters, word for word from howwegrowtoday.com -->
 <section class="sand who" id="who">
   <div class="wrap">
-    <div class="g">
-      <div class="ph" data-r><img src="img/ana-sea.webp" alt="Ana Calin" width="480" height="480" loading="lazy"><img class="mk" src="img/mark.png" alt="" width="92" height="92" loading="lazy"></div>
-      <div data-r>
+    <div class="hh" data-r>
+      <span class="eyebrow">Your host</span>
+      <h2 class="hname">Ana Calin.</h2>
+      <p class="hsub">I believed the wrong thing about money <em>for ten years.</em></p>
+    </div>
+    <div class="hg">
+      <div class="pol" data-r>
+        <figure><img src="img/ana-hat.webp" alt="Ana Calin" width="520" height="520" loading="lazy"><figcaption>Ana, How We Grow</figcaption></figure>
+        <div class="note2"><b>how we grow</b><span>a newsletter about getting paid for your writing</span><span class="pk">+ the Lab, where 800+ wins came from</span></div>
+      </div>
+      <div class="letter" data-r>
         <p class="partner"><span id="pname"></span> sent you here. Here's who I am.</p>
-        <p class="bio">I'm Ana Calin. I write How We Grow, a newsletter read by about 80,000 people who want to get paid for their writing. It's made $1.4M, on about two hours a day, and I've never taken a sales call. These three days are for writers with readers and nothing to sell yet.</p>
+        <p class="bio drop"><span class="dc">I</span>'m Ana Calin. I write How We Grow, a newsletter read by about 80,000 people who want to get paid for their writing. It's made $1.4M, on about two hours a day, and I've never taken a sales call. These three days are for writers with readers and nothing to sell yet.</p>
+        <blockquote class="pull"><span class="qm2">&ldquo;</span><p><b>"I wish"</b> tells your brain: fantasy, file it. <b>"I want"</b> tells your brain: start looking for the next step.</p></blockquote>
         <div class="sig">Ana</div>
-        <ul class="miles">
-          <li><b>2023</b>First four-figure months.</li>
-          <li><b>2025</b>First six-figure year, baby on my hip, in my forties.</li>
-          <li><b>2026</b>The business passed a million.</li>
-        </ul>
+      </div>
+    </div>
+
+    <div class="story">
+      <span class="rail2" aria-hidden="true"></span>
+      <div class="ch" data-r>
+        <div class="vis"><figure class="ph1"><img src="img/ana-paris.webp" alt="Ana Calin" width="1000" height="671" loading="lazy"></figure></div>
+        <span class="node" aria-hidden="true"><svg><use href="#sf"/></svg></span>
+        <div class="tx"><span class="yr">2015</span><h3>Senior executive. Big salary. <em>I felt poor.</em></h3><p>I earned more than my parents earned in their whole lives. My belief was "I should be grateful for what I have." It sounds like wisdom. It means: don't want more, don't ask, don't leave.</p></div>
+      </div>
+      <div class="ch flip" data-r>
+        <div class="vis">
+          <div class="lock" aria-hidden="true">
+            <span class="isl2"></span>
+            <span class="tm">4:00</span><span class="pl2">Singapore</span>
+            <div class="nt"><span class="ap"><svg><use href="#sf"/></svg></span><span class="nb"><small>NOTES · now</small>I <s class="wish">wish</s><em class="want">want</em> I could do my own thing.</span></div>
+          </div>
+        </div>
+        <span class="node" aria-hidden="true"><svg><use href="#sf"/></svg></span>
+        <div class="tx"><span class="yr">2017</span><h3>The company collapsed.</h3><p>4 AM on a hotel bathroom floor in Singapore, I said out loud for the first time: "I wish I could do my own thing."</p><p><b>Wish. Not want.</b> It took five more years to hear the difference.</p></div>
+      </div>
+      <div class="ch" data-r>
+        <div class="vis">
+          <!-- how we grow: one sunflower per milestone, each taller -->
+          <svg class="grow" viewBox="0 0 420 320" aria-hidden="true">
+            <path d="M14 270h392" stroke="#1A1412" stroke-width="4" stroke-linecap="round"/>
+            <g class="g1"><path class="st" d="M80 268c0-20 2-40 0-62" stroke="#1A1412" stroke-width="4" fill="none" stroke-linecap="round"/><path class="lf" d="M80 246c-16-2-26-12-28-24 14 0 26 8 28 24Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><g class="hd"><circle cx="80" cy="196" r="12" fill="#FFD400" stroke="#1A1412" stroke-width="4"/></g></g>
+            <g class="g2"><path class="st" d="M210 268c-4-40 4-80 0-122" stroke="#1A1412" stroke-width="4" fill="none" stroke-linecap="round"/><path class="lf" d="M209 228c18-4 30-18 30-32-16 2-28 14-30 32Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><path class="lf" d="M208 196c-18-2-30-14-32-28 16 0 30 10 32 28Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><g class="hd"><use href="#sf" x="180" y="96" width="60" height="60"/></g></g>
+            <g class="g3"><path class="st" d="M340 268c4-60-6-120 0-176" stroke="#1A1412" stroke-width="5" fill="none" stroke-linecap="round"/><path class="lf" d="M341 222c20-4 34-20 34-36-18 2-32 16-34 36Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><path class="lf" d="M339 172c-20-2-34-16-36-32 18 0 34 12 36 32Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><g class="hd"><use href="#sf" x="290" y="10" width="100" height="100"/></g></g>
+            <text x="80" y="300" text-anchor="middle" font-family="Instrument Serif,serif" font-size="24" fill="#1A1412">2023</text>
+            <text x="210" y="300" text-anchor="middle" font-family="Instrument Serif,serif" font-size="24" fill="#1A1412">2025</text>
+            <text x="340" y="300" text-anchor="middle" font-family="Instrument Serif,serif" font-size="24" fill="#F72585">2026</text>
+          </svg>
+        </div>
+        <span class="node" aria-hidden="true"><svg><use href="#sf"/></svg></span>
+        <div class="tx"><span class="yr">2023 to 2025</span><h3>First four-figure months. <em>Then a six-figure year.</em></h3><p>First six-figure year, baby on my hip, in my forties.</p></div>
+      </div>
+      <div class="ch flip" data-r>
+        <div class="vis">
+          <div class="proofs">
+            <button class="vcard" type="button" data-yt="vxGJ8TjtnC4" aria-label="Watch Ana: Most people make offers that get ignored">
+              <span class="vi"><img src="img/yt-offers.webp" alt="" width="405" height="720" loading="lazy"></span>
+              <span class="pl"><svg width="20" height="20" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></span>
+              <span class="vt"><small>WATCH · 14 MIN</small>Most people make offers that get ignored.</span>
+            </button>
+            <div class="pc p-a"><b><span>$1.4M</span></b><small>from the newsletter, on about two hours a day, from Greece</small></div>
+            <div class="pc p-b"><b>Top 10</b><small>Substack on turning what you know into income</small></div>
+          </div>
+        </div>
+        <span class="node" aria-hidden="true"><svg><use href="#sf"/></svg></span>
+        <div class="tx"><span class="yr">2026</span><h3>The business passed <em>a million.</em></h3><p>$1.4M from the newsletter, on two hours a day.</p><p><b>Same skills the whole time.</b> The beliefs changed. The actions followed. The money followed the actions.</p></div>
       </div>
     </div>
   </div>
@@ -906,22 +1151,38 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   <div class="wrap"><q>Likes are not buyers. <mark>An offer is how you get paid.</mark></q></div>
 </section>
 
-<!-- 6. one reader's result: word for word. Needs Ana's OK on the name, else Jill Hart's quote, else remove the block. -->
+<!-- 6. proof: one featured quote with her bootcamp video, three wins (word for word from howwegrowtoday.com),
+     and the review wall (word for word, with their photos, from howwegrowtoday.substack.com/about). Needs Ana's OK on the names. -->
 <section class="sand result">
   <div class="wrap">
-    <figure data-r>
-      <span class="qm" aria-hidden="true">&ldquo;</span>
-      <blockquote>"After building an 8k+ newsletter and not making more than a few hundred dollars with it in over a year, I am loving this Money Map Blueprint. It's gotten me out of my own way and I've done more in 3 days toward real revenue generation than in the previous 13 months."</blockquote>
-      <figcaption><span class="ini" aria-hidden="true">AD</span><span><b>Amaya Dinesa</b><small>Creator, Self As Source</small></span></figcaption>
-    </figure>
-    <!-- three wins, word for word from howwegrowtoday.com -->
-    <div class="head wins-h" data-r><span class="eyebrow">800+ wins came through the Lab</span></div>
+    <div class="head" data-r>
+      <span class="eyebrow">800+ wins came through the Lab</span>
+      <h2>It works with <em>the readers you have.</em></h2>
+    </div>
+    <div class="feat" data-r>
+      <button class="vcard" type="button" data-yt="6AV65yCJNzU" aria-label="Watch Ana: The money map bootcamp and everything growth">
+        <span class="vi"><img src="img/yt-moneymap.webp" alt="" width="405" height="720" loading="lazy"></span>
+        <span class="pl"><svg width="24" height="24" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></span>
+        <span class="vt"><small>WATCH</small>The money map bootcamp and everything growth</span>
+      </button>
+      <figure>
+        <span class="qm" aria-hidden="true">&ldquo;</span>
+        <blockquote>"After building an 8k+ newsletter and not making more than a few hundred dollars with it in over a year, I am loving this Money Map Blueprint. It's gotten me out of my own way and I've done more in 3 days toward real revenue generation than in the previous 13 months."</blockquote>
+        <figcaption><span class="ini" aria-hidden="true">AD</span><span><b>Amaya Dinesa</b><small>Creator, Self As Source</small></span></figcaption>
+      </figure>
+    </div>
+
     <div class="wins" data-r>
-      <div class="win"><small>Lab student</small><div class="from">312 subscribers</div><div class="to"><span>$1,067 in a week</span></div><p>One offer, written to the one reader who would buy, sent to the 312. Eleven bought at $97.</p></div>
-      <div class="win"><small>Hit Your First $10K Month student</small><div class="from">14 months free</div><div class="to"><span>23 paid in month one</span></div><p>Same writing. Paid tier on, the offer in plain words. Nothing about his skill changed.</p></div>
-      <div class="win"><small>Me</small><div class="from">$97 for three years</div><div class="to"><span>$797 that week</span></div><p>Ready for what? There was no exam. I wrote the belief down, asked it that question, and changed the price.</p></div>
+      <div class="win"><small>Lab student</small><div class="ba"><s>312 subscribers</s><svg viewBox="0 0 28 14" fill="none" stroke="#F72585" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h22M19 2l5 5-5 5"/></svg></div><div class="to"><span><b class="cu" data-to="1067" data-pre="$">$1,067</b> in a week</span></div><p>One offer, written to the one reader who would buy, sent to the 312. Eleven bought at $97.</p></div>
+      <div class="win"><small>Hit Your First $10K Month student</small><div class="ba"><s>14 months free</s><svg viewBox="0 0 28 14" fill="none" stroke="#F72585" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h22M19 2l5 5-5 5"/></svg></div><div class="to"><span><b class="cu" data-to="23">23</b> paid in month one</span></div><p>Same writing. Paid tier on, the offer in plain words. Nothing about his skill changed.</p></div>
+      <div class="win"><small>Me</small><div class="ba"><s>$97 for three years</s><svg viewBox="0 0 28 14" fill="none" stroke="#F72585" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h22M19 2l5 5-5 5"/></svg></div><div class="to"><span><b class="cu" data-to="797" data-pre="$">$797</b> that week</span></div><p>Ready for what? There was no exam. I wrote the belief down, asked it that question, and changed the price.</p></div>
     </div>
   </div>
+  <div class="wall" aria-label="Reviews from Ana's readers and students">
+    <div class="lane"><article class="rv"><div class="who2"><img src="img/av/gustavo.webp" alt="" width="80" height="80" loading="lazy"><span><b>Gustavo Karakey</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Can I just say that you have over delivered. Wow! It's nice to have a clear map. Still work to do, but much more satisfying, and less wheel spinning. :)</q><small>Apr 21, 2025</small></article><article class="rv"><div class="who2"><img src="img/av/jeanette.webp" alt="" width="80" height="80" loading="lazy"><span><b>Jeanette Martin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana.</q><small>Apr 21, 2025</small></article><article class="rv"><div class="who2"><img src="img/av/shahidah.webp" alt="" width="80" height="80" loading="lazy"><span><b>Shahidah Al-Amin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I love the way you get straight to the point about growth and how to communicate value to your audience so they WANT to pay you. It is a priority of mine to grow my audience and get paid for my offers & I'm really confident that your roadmap will help me achieve that.</q><small>Apr 23, 2025</small></article><article class="rv"><div class="who2"><img src="img/av/adora.webp" alt="" width="80" height="80" loading="lazy"><span><b>Adora Lee</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I finally see the possibility of monetizing here!</q><small>Apr 23, 2025</small></article><article class="rv"><div class="who2"><img src="img/av/hilde.webp" alt="" width="80" height="80" loading="lazy"><span><b>Hilde Palladino</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Thank you so much, this was so worth my time and money</q><small>May 26, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/gustavo.webp" alt="" width="80" height="80" loading="lazy"><span><b>Gustavo Karakey</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Can I just say that you have over delivered. Wow! It's nice to have a clear map. Still work to do, but much more satisfying, and less wheel spinning. :)</q><small>Apr 21, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/jeanette.webp" alt="" width="80" height="80" loading="lazy"><span><b>Jeanette Martin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana.</q><small>Apr 21, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/shahidah.webp" alt="" width="80" height="80" loading="lazy"><span><b>Shahidah Al-Amin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I love the way you get straight to the point about growth and how to communicate value to your audience so they WANT to pay you. It is a priority of mine to grow my audience and get paid for my offers & I'm really confident that your roadmap will help me achieve that.</q><small>Apr 23, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/adora.webp" alt="" width="80" height="80" loading="lazy"><span><b>Adora Lee</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I finally see the possibility of monetizing here!</q><small>Apr 23, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/hilde.webp" alt="" width="80" height="80" loading="lazy"><span><b>Hilde Palladino</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Thank you so much, this was so worth my time and money</q><small>May 26, 2025</small></article></div>
+    <div class="lane r"><article class="rv"><div class="who2"><img src="img/av/michael.webp" alt="" width="80" height="80" loading="lazy"><span><b>Michael Wallace</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Ana provides clear advice and actionable steps on how to grow your Substack.</q><small>Apr 23, 2025</small></article><article class="rv"><div class="who2"><img src="img/av/annemarie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Anne-Marie Duchene</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I support your work because you are wicked smart and share such valuable information for someone getting started on this platform. I have a full grown 20+ year business and have been on SM for years but want to write better content for my audience and you are helping me do just that. I am so grateful to have found you!</q><small>Apr 23, 2025</small></article><article class="rv"><div class="who2"><img src="img/av/sue.webp" alt="" width="80" height="80" loading="lazy"><span><b>Sue Bolton</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Everything was fabulous but I was particularly thrilled about the content strategy and how that was all interrelated with the paywall strategy, plus the promotional calendars, etc. I have to go back and review all of it. Thank you.</q><small>Apr 26, 2025</small></article><article class="rv"><div class="who2"><img src="img/av/stacie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Stacie Whitney</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>One thing I notice and admire about you Ana, is you are an action taker. You don't sit around for months trying to decide on what to offer, or what colour to make your background. You ask the question, do what you need to get clear, and then act on it.</q><small>Apr 26, 2025</small></article><article class="rv"><div class="who2"><img src="img/av/alyssa.webp" alt="" width="80" height="80" loading="lazy"><span><b>Alyssa Zander</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Thank you so much Ana for the support, guidance, and tools!</q><small>May 26, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/michael.webp" alt="" width="80" height="80" loading="lazy"><span><b>Michael Wallace</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Ana provides clear advice and actionable steps on how to grow your Substack.</q><small>Apr 23, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/annemarie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Anne-Marie Duchene</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I support your work because you are wicked smart and share such valuable information for someone getting started on this platform. I have a full grown 20+ year business and have been on SM for years but want to write better content for my audience and you are helping me do just that. I am so grateful to have found you!</q><small>Apr 23, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/sue.webp" alt="" width="80" height="80" loading="lazy"><span><b>Sue Bolton</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Everything was fabulous but I was particularly thrilled about the content strategy and how that was all interrelated with the paywall strategy, plus the promotional calendars, etc. I have to go back and review all of it. Thank you.</q><small>Apr 26, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/stacie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Stacie Whitney</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>One thing I notice and admire about you Ana, is you are an action taker. You don't sit around for months trying to decide on what to offer, or what colour to make your background. You ask the question, do what you need to get clear, and then act on it.</q><small>Apr 26, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="img/av/alyssa.webp" alt="" width="80" height="80" loading="lazy"><span><b>Alyssa Zander</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Thank you so much Ana for the support, guidance, and tools!</q><small>May 26, 2025</small></article></div>
+  </div>
+  <p class="wall-src">Reviews from Ana's readers and students, as published on <a href="https://howwegrowtoday.substack.com/about" rel="noopener">her Substack</a>.</p>
 </section>
 
 <!-- 7. stay until the end + FAQ -->
@@ -999,7 +1260,8 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
         </div>
         <h2>See you <em class="nw">Tuesday, Nov 17.</em></h2>
         <p class="line">Free. Three evenings live with me. You leave with your offer, your price and your first ask.</p>
-        <button class="btn open" type="button" id="finalBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
+        <button class="btn open shine" type="button" id="finalBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
+        <p class="conf"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="#1A1412" stroke-width="1.8" stroke-linejoin="round"><rect x="1.5" y="1.5" width="17" height="13" rx="2.5" fill="#FFD400"/><path d="M2 3l8 6 8-6"/></svg>You’ll get the confirmation sent to your email address.</p>
         <p class="note">free · live on Zoom · 12:00 pm New York / 7:00 pm Greece<span class="lt"></span></p>
       </div>
     </div>
@@ -1017,7 +1279,13 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   </div>
 </footer>
 
-<div class="mbar" id="mbar"><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button></div>
+<div class="mbar" id="mbar"><span class="mcd" role="timer"><span class="ld"><i></i>Day 1 in</span><b><span data-cd="d">00</span>d <span data-cd="h">00</span>h <span data-cd="m">00</span>m</b></span><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button></div>
+
+<!-- Ana's videos play here (YouTube, no cookies) -->
+<div class="vmodal" id="vmodal" aria-hidden="true"><div class="fr" role="dialog" aria-modal="true" aria-label="Video"></div><button class="x" type="button" aria-label="Close video"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button></div>
+
+<!-- live registrations, only from the real feed -->
+<div class="ltoast" id="ltoast" aria-live="polite"><span class="ic" id="ltI"></span><span><b id="ltN"></b> just saved a seat<small id="ltT"></small></span></div>
 
 <!-- the registration popup: every "save my seat (free)" button opens it -->
 <div class="modal" id="modal" aria-hidden="true">
@@ -1056,6 +1324,8 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   var VIP_URL     = '';   // the VIP page; first_name and email go on the query string for the checkout prefill
   var VSL_SRC     = '';   // Ana's 60-second welcome video (mp4). Empty = the still with the play button.
   var PARTNERS    = 'partners.json'; // { "ref": "Partner newsletter name" }, from us by Wed Oct 28
+  var FEED_URL    = '/api/ana-feed'; // live registrations from Kit (api/ana-feed.js); shows only real data. ?demo=1 previews it with sample data
+  var FEED_MIN    = 100;             // the count shows once this many have registered
   /* ---------------------------------- */
 
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1110,6 +1380,64 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
       document.querySelectorAll('.lt2').forEach(function(s){s.textContent = ' / ' + lt + ' your time'});
     }
   } catch (e) {}
+
+  /* countdown to Day 1 (Tue Nov 17, 12:00 pm New York = 17:00 UTC), ticking in the bar and the card */
+  var T0 = Date.UTC(2026,10,17,17,0), cds = {d:[],h:[],m:[],s:[]}, secTile = document.querySelector('.fb-tile.s');
+  ['d','h','m','s'].forEach(function(k){cds[k] = document.querySelectorAll('[data-cd="'+k+'"]')});
+  function two(n){return (n<10?'0':'')+n}
+  function tick(){
+    var r = Math.max(0, Math.floor((T0 - Date.now())/1000)), v = {d:Math.floor(r/86400), h:Math.floor(r%86400/3600), m:Math.floor(r%3600/60), s:r%60};
+    ['d','h','m','s'].forEach(function(k){cds[k].forEach(function(e){e.textContent = two(v[k])})});
+    if (secTile && !reduce) {secTile.classList.remove('tk'); void secTile.offsetWidth; secTile.classList.add('tk')}
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* live registrations: the count and the latest first names, only when the feed has real data */
+  function ago(at){var m = Math.max(1, Math.round((Date.now() - new Date(at).getTime())/60000)); return m < 60 ? m + ' min ago' : (m < 1440 ? Math.round(m/60) + ' h ago' : Math.round(m/1440) + ' d ago')}
+  function useFeed(f){
+    if (!f || !f.ok) return;
+    if (f.count && f.count >= FEED_MIN) {
+      var n = f.count.toLocaleString('en-US');
+      document.querySelectorAll('[data-feed="n"]').forEach(function(e){e.textContent = n});
+      document.querySelectorAll('[data-feed="l"]').forEach(function(e){e.textContent = 'have their seat'});
+      document.getElementById('proofTxt').innerHTML = '<b>' + n + '</b> writers have their seat';
+    }
+    var rec = (f.recent || []).filter(function(x){return x && x.name});
+    if (!rec.length) return;
+    var just = document.getElementById('just'), jt = document.getElementById('justTxt'), i = 0;
+    function show(){ var x = rec[i % rec.length]; jt.innerHTML = '<b></b> just saved a seat · ' + ago(x.at); jt.querySelector('b').textContent = x.name; i++ }
+    show(); just.hidden = false;
+    if (!reduce) setInterval(function(){ just.classList.add('fade'); setTimeout(function(){ show(); just.classList.remove('fade') }, 350) }, 5000);
+    /* a small toast now and then, desktop and phone */
+    var lt = document.getElementById('ltoast'), k = 0;
+    function toast(){ var x = rec[k++ % rec.length]; document.getElementById('ltN').textContent = x.name; document.getElementById('ltI').textContent = x.name.charAt(0); document.getElementById('ltT').textContent = ago(x.at); lt.classList.add('on'); setTimeout(function(){lt.classList.remove('on')}, 4200) }
+    if (!reduce) {setTimeout(toast, 9000); setInterval(toast, 26000)}
+  }
+  if (qs.get('demo') === '1') {
+    var now = Date.now();
+    useFeed({ok:true, count:1204, recent:[{name:'Maya',at:now-4*6e4},{name:'Daniela',at:now-9*6e4},{name:'Priya',at:now-17*6e4},{name:'Sofia',at:now-26*6e4},{name:'Hannah',at:now-41*6e4}]});
+  } else if (window.fetch) {
+    fetch(FEED_URL, {cache:'no-store'}).then(function(r){return r.ok ? r.json() : null}).then(useFeed).catch(function(){});
+  }
+
+  /* Ana's videos: YouTube in a lightbox, loaded only on click */
+  var vm = document.getElementById('vmodal'), vfr = vm.querySelector('.fr');
+  function closeV(){ vm.classList.remove('open'); vm.setAttribute('aria-hidden','true'); vfr.innerHTML = ''; document.body.classList.remove('lock') }
+  document.querySelectorAll('[data-yt]').forEach(function(b){ b.addEventListener('click', function(){
+    vfr.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0&modestbranding=1" title="' + b.getAttribute('aria-label') + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    vm.classList.add('open'); vm.setAttribute('aria-hidden','false'); document.body.classList.add('lock'); vm.querySelector('.x').focus();
+  })});
+  vm.querySelector('.x').addEventListener('click', closeV);
+  vm.addEventListener('click', function(e){ if (e.target === vm) closeV() });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && vm.classList.contains('open')) closeV() });
+
+  /* the win numbers count up when they come into view */
+  function countUp(el){
+    var to = +el.dataset.to, pre = el.dataset.pre || '', t0 = null;
+    if (reduce) return;
+    function f(t){ if (!t0) t0 = t; var p = Math.min(1, (t - t0)/1400), e = 1 - Math.pow(1 - p, 3); el.textContent = pre + Math.round(to*e).toLocaleString('en-US'); if (p < 1) requestAnimationFrame(f) }
+    el.textContent = pre + '0'; requestAnimationFrame(f);
+  }
 
   /* the popup */
   var modal = document.getElementById('modal'), dlg = modal.querySelector('.dlg'), lastBtn = null;
@@ -1276,6 +1604,7 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
   if (!canAnim) { document.querySelector('#mail .sendb').textContent = 'sent'; document.getElementById('mail').classList.add('typed','sent') }
   function seen(el){
     el.classList.add('in');
+    if (el.classList.contains('wins')) el.querySelectorAll('.cu').forEach(countUp);
     var art = el.querySelector && el.querySelector('.art');
     if (art && canAnim && !played[art.id]) {played[art.id] = 1; fit(); plays[art.id](art)}
   }
