@@ -1067,13 +1067,15 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
             </g>
           </svg>
           <!-- the highlighter, from her slide -->
-          <svg class="pen" style="position:absolute;left:0;top:0;width:150px;height:46px;transform:translate(70px,404px) rotate(-8deg)" viewBox="0 0 150 46">
-            <g transform="rotate(-24 75 23)">
-              <path d="M8 20l10-6v18l-10-6Z" fill="#FFD400" stroke="#1A1412" stroke-width="3.4" stroke-linejoin="round"/>
-              <path d="M18 12h20v22H18Z" fill="#1A1412"/>
-              <rect x="38" y="9" width="78" height="28" rx="5" fill="#FFD400" stroke="#1A1412" stroke-width="3.6"/>
-              <rect x="112" y="8" width="32" height="30" rx="6" fill="#1A1412"/>
-            </g>
+          <svg class="pen" style="position:absolute;left:0;top:0;width:184px;height:60px;overflow:visible;transform-origin:4px 36px;transform:translate(48px,410px) rotate(-10deg)" viewBox="0 0 184 60">
+            <path d="M4 36 18 22h12v26H18Z" fill="#FFD400" stroke="#1A1412" stroke-width="3.4" stroke-linejoin="round"/>
+            <rect x="30" y="16" width="16" height="38" rx="3" fill="#1A1412"/>
+            <rect x="44" y="12" width="88" height="46" rx="9" fill="#FFD400" stroke="#1A1412" stroke-width="3.6"/>
+            <path d="M56 22h62" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+            <rect x="130" y="12" width="8" height="46" fill="#1A1412"/>
+            <rect x="136" y="9" width="44" height="52" rx="10" fill="#1A1412"/>
+            <rect x="144" y="3" width="32" height="9" rx="4.5" fill="#1A1412"/>
+            <path d="M148 22h24" stroke="#4a3f3a" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div></div>
       </div>
@@ -1556,13 +1558,13 @@ footer .src{margin-top:26px;padding-top:20px;border-top:1.5px solid rgba(26,20,1
       /* the pen runs along each block while it highlights, then rests */
       var blocks = [a.querySelector('.b1'), a.querySelector('.b2'), a.querySelector('.b3')], kf = [], step = 700, total = step*3 + 500;
       blocks.forEach(function(b,i){
-        var r = b.getBoundingClientRect(), x0 = (r.left-sr.left)/k - 8, x1 = (r.right-sr.left)/k - 8, y = (r.bottom-sr.top)/k - 34;
-        kf.push({offset:(i*step)/total, transform:'translate('+(x0-30)+'px,'+(y-24)+'px) rotate(0deg)'});
-        kf.push({offset:(i*step+150)/total, transform:'translate('+x0+'px,'+y+'px) rotate(0deg)'});
-        kf.push({offset:(i*step+670)/total, transform:'translate('+x1+'px,'+y+'px) rotate(0deg)'});
+        var r = b.getBoundingClientRect(), x0 = (r.left-sr.left)/k - 4, x1 = (r.right-sr.left)/k - 4, y = (r.bottom-sr.top)/k - 42;
+        kf.push({offset:(i*step)/total, transform:'translate('+(x0-24)+'px,'+(y-30)+'px) rotate(-30deg)'});
+        kf.push({offset:(i*step+150)/total, transform:'translate('+x0+'px,'+y+'px) rotate(-30deg)'});
+        kf.push({offset:(i*step+670)/total, transform:'translate('+x1+'px,'+y+'px) rotate(-30deg)'});
         sweep(b, t + i*step + 150, 520);
       });
-      kf.push({offset:1, transform:'translate(70px,404px) rotate(-8deg)'});
+      kf.push({offset:1, transform:'translate(48px,410px) rotate(-10deg)'});
       A(pen, kf, {duration:total, delay:t, easing:'ease-in-out'});
       a.querySelectorAll('.parts span').forEach(function(s,i){A(s,[{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:350,delay:t+i*step+500})});
       A(a.querySelector('.prow'),[{opacity:0},{opacity:1}],{duration:400,delay:t+2200});
