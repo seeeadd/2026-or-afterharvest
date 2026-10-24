@@ -66,6 +66,6 @@ deliverables are final.
 - `assets/screens/channel.png`: the free WhatsApp channel (photo 1, free page)
 - `assets/screens/vipgroup.png`: the VIP group, with the new group picture (photo 1, VIP page)
 - `assets/screens/call.png`: Day 1 live, real Ana (photo 2)
-- `assets/screens/compose.png`: the Day 3 ask, ready to send (photo 3)
+- `assets/screens/compose.png`: the Day 3 ask as a Substack post, cursor on Continue (photo 3)
 - `assets/screens/review.png`: Ana reviewing an offer live on Fri Nov 20 (photo 4)
 - `assets/vip-group-photo.png`: the VIP group's picture, for Theia to upload to the real WhatsApp group
