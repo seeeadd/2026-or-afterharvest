@@ -128,6 +128,9 @@
     bo2.observe(ticket);
   }
 
+  /* bookmark: show the shortcut for their computer */
+  if (!/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) document.querySelectorAll('.bmk kbd').forEach(function(k){ k.style.display = k.classList.contains('win') ? 'inline-block' : 'none' });
+
   /* the address her emails come from, in the inbox notice */
   if (C.SENDER) document.querySelectorAll('[data-sender]').forEach(function(e){ e.textContent = C.SENDER });
 
