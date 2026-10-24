@@ -698,3 +698,5 @@ body.vipc .inb .ic{background:var(--pk3)}
 @media (max-width:1060px){.gm .here{top:40px}}
 .gm .here{flex-direction:column-reverse;top:78px}
 .gm .pl .here svg{margin:2px 0 0 40px}
+.gm.four{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1000px}
+@media (max-width:860px){.gm.four{grid-template-columns:1fr}}
