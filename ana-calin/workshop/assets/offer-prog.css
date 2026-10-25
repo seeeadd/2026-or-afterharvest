@@ -4,7 +4,7 @@
    fits into, her letter, the price at night: a ruler of everything she sells and the order as a receipt.
    Linen ground, white screens, ink type, pink for the ask, sunflower only as a highlighter. No pink or yellow grounds. */
 :root{
-  --ground:#ECE7DF;--ground2:#F4F0EA;--paper:#FFFDF9;--white:#fff;
+  --ground:#F3F0EB;--ground2:#F9F7F3;--paper:#FFFDF9;--white:#fff;
   --ink:#1A1412;--ink2:#4A3F39;--ink3:#857870;--line:rgba(26,20,18,.12);
   --pink:#F72585;--pink2:#D6136F;--pinkl:#FF8CC0;--sun:#FFD400;--night:#17110F;--cream:#FFF8EE;
   --serif:'Instrument Serif',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,sans-serif;--ui:Inter,system-ui,-apple-system,sans-serif;
@@ -52,7 +52,7 @@ body.has-safety span[data-safety-on]{display:inline}
 .q figcaption b{display:block;color:var(--ink);font-weight:700}
 
 /* ---------- the bar ---------- */
-.pbar{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:rgba(236,231,223,.84);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid var(--line)}
+.pbar{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:rgba(243,240,235,.86);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid var(--line)}
 .pbar-in{max-width:1240px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
 .pb-id{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px;letter-spacing:-.01em;white-space:nowrap}
 .pb-id img{width:28px;height:28px}
@@ -369,7 +369,7 @@ body.is-closed .tiers,body.is-closed .o-tot{display:none}
 @keyframes tear{0%{opacity:1;transform:none}35%{transform:rotateX(-14deg) rotateZ(2deg)}100%{opacity:0;transform:translateY(60px) rotateX(-95deg) rotateZ(6deg)}}
 .fn-t h2{font-size:clamp(46px,5.4vw,80px);line-height:.95;letter-spacing:-.03em}
 .fn-t>p{color:var(--ink2);max-width:34em;margin:24px 0 30px}
-.tiers.mini{display:inline-grid;grid-template-columns:auto auto;gap:4px;padding:5px;border-radius:13px;background:#E3DCD2;margin-bottom:16px}
+.tiers.mini{display:inline-grid;grid-template-columns:auto auto;gap:4px;padding:5px;border-radius:13px;background:#ECE7E0;margin-bottom:16px}
 .tiers.mini button{padding:10px 15px;border-radius:9px;border:0;font-weight:700;font-size:15px;color:var(--ink2);background:transparent;box-shadow:none}
 .tiers.mini button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08),0 4px 10px -4px rgba(0,0,0,.15)}
 .fn-t .btn{display:flex;width:max-content}
