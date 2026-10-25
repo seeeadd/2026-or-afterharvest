@@ -75,19 +75,26 @@
   if (C.BONUS2_NAME) document.querySelectorAll('[data-ph1]').forEach(function(e){ e.textContent = C.BONUS2_NAME });
   if (C.BONUS3_NAME && now >= T.B3_REVEAL) document.querySelectorAll('[data-ph2]').forEach(function(e){ e.textContent = C.BONUS3_NAME });
 
+  /* the sticky pill: a short label and the deadline as date tiles (nothing ticks) */
+  var SHORT = {soon: ['Doors open', 'Wed', 'Nov 18', '12:55'], b2: ['Day 2 bonus ends', 'Wed', 'Nov 18', '11:59'], b3pre: ['Day 3 bonus today', 'Thu', 'Nov 19', '12:55'],
+               b3: ['Day 3 bonus ends', 'Thu', 'Nov 19', '11:59'], open: ['Doors close', 'Mon', 'Nov 30', '11:59'], closed: ['Doors are closed', '', '', '']};
+  var sh = SHORT[phase];
+  document.querySelectorAll('[data-barshort]').forEach(function(e){ e.textContent = sh[0] });
+  [1, 2, 3].forEach(function(i){ document.querySelectorAll('[data-t' + i + ']').forEach(function(e){ e.textContent = sh[i] }) });
+
   document.querySelectorAll('[data-barmsg]').forEach(function(e){ e.textContent = MSG[phase] });
 
   /* two payments or pay in full: every order box and button on the page moves together. Opens on the payment plan (SOP 3C). */
   var plan = 'plan';
   function setPlan(p){
     plan = p;
-    document.querySelectorAll('.tg button').forEach(function(x){ x.setAttribute('aria-pressed', x.getAttribute('data-plan') === p ? 'true' : 'false') });
-    document.querySelectorAll('[data-total]').forEach(function(e){ e.textContent = p === 'full' ? '$1,500' : '$850' });
+    document.querySelectorAll('.tg button,.tiers button').forEach(function(x){ x.setAttribute('aria-pressed', x.getAttribute('data-plan') === p ? 'true' : 'false') });
+    document.querySelectorAll('[data-total]').forEach(function(e){ e.textContent = p === 'full' ? '$1,500.00' : '$850.00' });
     document.querySelectorAll('[data-later]').forEach(function(e){ e.hidden = p === 'full' });
     document.querySelectorAll('[data-btnp]').forEach(function(e){ e.textContent = p === 'full' ? '$1,500' : '$850 today' });
     document.querySelectorAll('[data-ctaline]').forEach(function(e){ e.textContent = p === 'full' ? 'or 2 payments of $850' : 'or $1,500 in full' });
   }
-  document.querySelectorAll('.tg button').forEach(function(x){ x.addEventListener('click', function(){ setPlan(x.getAttribute('data-plan')) }) });
+  document.querySelectorAll('.tg button,.tiers button').forEach(function(x){ x.addEventListener('click', function(){ setPlan(x.getAttribute('data-plan')) }) });
   setPlan('plan');
 
   /* checkout: email prefilled, the partner ref (30% commission), which page */
@@ -152,6 +159,31 @@
     });
     document.querySelectorAll('.ob').forEach(function(o){ if (o.offsetParent) oio.observe(o) });
   }
+
+  /* the full build: the row in the middle of the screen lights up */
+  var bms = document.querySelectorAll('.bm-item');
+  if (bms.length) {
+    var lit = function(){
+      var mid = innerHeight * .5, best = null, bd = 1e9;
+      bms.forEach(function(li){ if (!li.offsetParent) return; var r = li.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - mid); if (d < bd) { bd = d; best = li } });
+      bms.forEach(function(li){ li.classList.toggle('is-active', li === best && bd < innerHeight * .45) });
+    };
+    addEventListener('scroll', lit, {passive: true}); lit();
+  }
+  /* the long page's road map: stops light up as you reach them, and the line fills to the last one lit */
+  var stops = document.querySelectorAll('.rm-stop'), fill = document.querySelector('.rm-fill');
+  if (stops.length) {
+    var road = function(){
+      var lim = innerHeight * .62, last = null;
+      stops.forEach(function(st){ var on = st.getBoundingClientRect().top < lim; st.classList.toggle('lit', on); if (on) last = st });
+      if (fill) { var rm = fill.parentNode.getBoundingClientRect(); fill.style.height = last ? (last.getBoundingClientRect().top - rm.top + 42) + 'px' : '0px' }
+    };
+    addEventListener('scroll', road, {passive: true}); road();
+  }
+  /* the buy button's glow follows the pointer */
+  document.querySelectorAll('.cta-buy,.is-buy').forEach(function(c){
+    c.addEventListener('pointermove', function(e){ var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px') });
+  });
 
   /* reveal */
   var els = document.querySelectorAll('[data-r]');
