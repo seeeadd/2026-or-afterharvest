@@ -1,5 +1,5 @@
 /* Ana Calin, offer long (/program), v5. Its own idea: the page is written the way Ana teaches.
-   A draft in a newsletter editor on a desk at lamp light (her notes in the margin: the sentence, the reader, the ask),
+   The offer as one of her newsletter posts, on a desk at lamp light (masthead, headline, byline, button, plain facts),
    her $0 post, December on example screens that move sideways as you scroll (offer-ui.css draws them), the hours it
    fits into, her letter, the price at night: a ruler of everything she sells and the order as a receipt.
    Linen ground, white screens, ink type, pink for the ask, sunflower only as a highlighter. No pink or yellow grounds. */
@@ -69,47 +69,25 @@ body.is-closed .pb-btn{display:none}
   background:radial-gradient(60% 55% at 12% -8%,rgba(255,222,160,.85),rgba(255,222,160,0) 70%),radial-gradient(45% 40% at 96% 4%,rgba(255,236,205,.7),rgba(255,236,205,0) 70%)}
 .ed-wrap{max-width:1200px;margin:0 auto}
 .ed{position:relative;background:var(--white);border-radius:16px;box-shadow:0 0 0 1px rgba(30,20,10,.06),0 60px 110px -50px rgba(60,35,15,.55),0 18px 36px -18px rgba(60,35,15,.25)}
-.ed-chrome{display:flex;align-items:center;gap:16px;height:46px;padding:0 18px;border-bottom:1px solid #EEEBE6;font-family:var(--ui);font-size:13.5px;color:#8A847E}
-.ed-dots{display:flex;gap:7px}
-.ed-dots i{width:11px;height:11px;border-radius:50%;background:#E4DFD8}
-.ed-path b{font-weight:400;margin:0 8px;color:#C9C3BB}
-.ed-saved{position:relative;margin-left:auto;display:grid}
-.ed-saved>span{grid-area:1/1;display:flex;align-items:center;gap:5px;justify-content:flex-end}
-.ed-saved svg{width:14px;height:14px;color:#3E9B6E}
-.ed-saved .sv1{opacity:0}
-.ed-tools{display:flex;align-items:center;justify-content:center;gap:18px;height:48px;border-bottom:1px solid #F1EEEA;font-family:var(--ui);font-size:15px;color:#6E6964}
-.ed-tools svg{width:19px;height:19px}
-.ed-tools b{font-weight:800}.ed-tools em{font-family:Georgia,serif}.ed-tools s{text-decoration-thickness:1.5px}
-.et-s{display:flex;align-items:center;gap:6px;font-size:13.5px}
-.et-s svg{width:9px;height:9px}
-.et-d{width:1px;height:20px;background:#E6E2DC}
-.et-b{font-size:13px;font-weight:600;padding:5px 11px;border-radius:7px;border:1px solid #E3DED8}
+.ed-mast{display:flex;align-items:center;justify-content:center;gap:10px;padding:22px 24px 20px;border-bottom:1px solid #EEEBE6;font-size:17px;letter-spacing:-.01em}
+.ed-mast img{width:34px;height:34px}
+.ed-mast b{font-weight:800}
 .ed-doc{position:relative;max-width:680px;margin:0 auto;padding:60px 0 70px}
 .ed-row{position:relative}
 .ed h1{font-size:clamp(46px,5.4vw,70px);line-height:.98;letter-spacing:-.025em}
-.caret{display:inline-block;width:3px;height:.78em;margin-left:.08em;vertical-align:-.04em;background:var(--pink);border-radius:2px;opacity:0}
 .sub{font-size:20px;line-height:1.55;color:var(--ink2);margin-top:26px;max-width:36em}
 .ed-by{display:flex;align-items:center;gap:12px;margin:28px 0 30px;padding:18px 0;border-top:1px solid #F0EDE8;border-bottom:1px solid #F0EDE8}
 .ed-by img{width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:50% 22%}
 .ed-by b{display:block;font-size:15px}
 .ed-by small{display:block;font-size:13.5px;color:var(--ink3)}
 .ed-ask{display:flex;flex-direction:column;align-items:flex-start}
-.ed-fine{font-size:14px;color:var(--ink3);margin-top:22px}
-/* her notes in the margin */
-.ed-note0{display:none}
-.mnote{position:absolute;top:10px;width:190px;font-size:14px;line-height:1.45;color:var(--ink2)}
-.mnote b{display:block;color:var(--pink);font-weight:800;margin-bottom:2px}
-.mnote::after{content:"";position:absolute;top:10px;width:46px;height:1.5px;background:var(--pink)}
-.mnote::before{content:"";position:absolute;top:6.5px;width:8px;height:8px;border-radius:50%;background:var(--pink)}
-.mnote.l{right:calc(100% + 64px);text-align:right}
-.mnote.l::after{left:calc(100% + 10px)}.mnote.l::before{left:calc(100% + 54px)}
-.mnote.r{left:calc(100% + 64px)}
-.mnote.r::after{right:calc(100% + 10px)}.mnote.r::before{right:calc(100% + 54px)}
-.ed-row.t .mnote{top:16px}
-.ed-row.a .mnote{top:12px}
-.ed-row.t .mnote.r.n0{top:-6px;width:210px;font-family:var(--serif);font-size:23px;line-height:1.12;color:var(--ink)}
-.ed-row.t .mnote.r.n0 span{display:block;font-family:var(--sans);font-size:13.5px;line-height:1.4;color:var(--ink3);margin-top:8px}
-.ed-row.t .mnote.r.n0::after,.ed-row.t .mnote.r.n0::before{display:none}
+.ed-fine{font-size:14px;color:var(--ink3);margin-top:18px}
+.ed-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:34px;border-top:1px solid #EEEBE6;border-bottom:1px solid #EEEBE6}
+.ed-facts>div{padding:18px 18px 18px 0}
+.ed-facts>div+div{padding-left:18px;border-left:1px solid #EEEBE6}
+.ed-facts span{display:block;font-size:13px;font-weight:700;color:var(--ink3)}
+.ed-facts b{display:block;font-size:15.5px;line-height:1.35;margin-top:4px}
+.ed-facts small{display:block;font-size:13.5px;color:var(--ink3);margin-top:2px}
 /* the offer video, inside the post */
 .ed-video{margin-top:44px}
 .ed-video .scr{position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#15100E;color:#fff;cursor:default}
@@ -129,25 +107,7 @@ body.is-closed .pb-btn{display:none}
 .ed-video figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin-top:12px;font-size:14px;color:var(--ink2)}
 .ev-soon{color:var(--ink3)}
 .iph.has-v .ev-soon{display:none}
-/* the opening moment: the caret blinks, the draft saves, her notes come in one by one */
-@media (prefers-reduced-motion:no-preference){
-  .caret{animation:caret 1s steps(1) 0s 4,gone .01s 4s forwards}
-  .ed-saved .sv1{animation:shown .01s .2s both,gone .3s 1.4s forwards}
-  .ed-saved .sv2{animation:fadein .4s 1.5s both}
-  .mnote{animation:noteIn .7s var(--ease) both}
-  .mnote::after{animation:lineIn .6s var(--ease) both;animation-delay:inherit}
-  .ed-row.t .mnote.r.n0{animation-delay:1.6s}
-  .mnote.n1{animation-delay:2.4s}.mnote.n2{animation-delay:3.1s}.mnote.n3{animation-delay:3.8s}
-  .et-b{animation:tool 1.6s ease 3.8s both}
-}
-@keyframes caret{0%{opacity:1}50%{opacity:0}}
-@keyframes gone{to{opacity:0}}
-@keyframes shown{to{opacity:1}}
-@keyframes fadein{from{opacity:0}to{opacity:1}}
 @keyframes noteIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@keyframes lineIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes tool{0%,100%{background:transparent;color:inherit;border-color:#E3DED8}20%,70%{background:#FFE3EF;color:var(--pink2);border-color:var(--pinkl)}}
-.mnote.l::after{transform-origin:right}.mnote.r::after{transform-origin:left}
 
 /* ================= 2. the hook ================= */
 .hook{padding:120px 0 100px}
@@ -425,13 +385,7 @@ body.is-closed .tiers,body.is-closed .o-tot{display:none}
 .mbar{display:none}
 
 /* ================= smaller screens ================= */
-@media (max-width:1330px){
-  .mnote{display:none}
-  .ed-note0{display:block;font-family:var(--serif);font-size:22px;line-height:1.15;color:var(--ink);padding:0 0 22px;margin-bottom:26px;border-bottom:1px dashed #E8E3DC}
-  .ed-note0 span{display:block;font-family:var(--sans);font-size:14px;color:var(--ink3);margin-top:4px}
-  .ed-row .mnote{display:block;position:static;width:auto;text-align:left;margin-top:14px;padding-left:14px;border-left:2px solid var(--pink);animation:none}
-  .ed-row .mnote::before,.ed-row .mnote::after{display:none}
-  .ed-row.t .mnote.r.n0{display:none}
+@media (max-width:1240px){
   .ed-doc{padding:48px 40px 56px;max-width:760px}
 }
 @media (max-width:1100px){
@@ -448,13 +402,16 @@ body.is-closed .tiers,body.is-closed .o-tot{display:none}
   body{font-size:17px}
   .wrap{padding:0 20px}
   .pb-msg{display:none}
-  .pb-id em{display:none}
+  .pb-hwg{display:none}
+  .pb-id em{color:var(--ink);font-weight:800;padding-left:0;margin-left:0;border-left:0}
   .pbar-in{justify-content:space-between}
   .hero{padding:24px 0 72px}
   .ed{border-radius:0 0 14px 14px;box-shadow:0 30px 60px -36px rgba(60,35,15,.5)}
-  .ed-chrome{padding:0 14px}
-  .ed-path{display:none}
-  .ed-tools{justify-content:flex-start;gap:14px;padding:0 14px;overflow:hidden}
+  .ed-mast{padding:16px 20px 14px;font-size:16px}
+  .ed-mast img{width:28px;height:28px}
+  .ed-facts{grid-template-columns:1fr;margin-top:28px}
+  .ed-facts>div{padding:14px 0}
+  .ed-facts>div+div{padding-left:0;border-left:0;border-top:1px solid #EEEBE6}
   .ed-doc{padding:30px 20px 36px}
   .ed h1{font-size:44px}
   .sub{font-size:18px;margin-top:18px}
