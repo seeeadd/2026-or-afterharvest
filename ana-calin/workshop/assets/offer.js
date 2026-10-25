@@ -209,8 +209,23 @@
       lastI = -1; move();
     };
     size(); addEventListener('resize', size); addEventListener('scroll', move, {passive: true});
+    /* on a phone the month is a swipe: the dots under it follow the frame in view */
+    var ddots = dec.querySelectorAll('.dec-dots i');
+    dtrack.addEventListener('scroll', function(){
+      if (pin || !frs.length) return;
+      var k = Math.round(dtrack.scrollLeft / (frs[0].getBoundingClientRect().width + 14));
+      ddots.forEach(function(d, j){ d.classList.toggle('on', j === k) });
+    }, {passive: true});
     if (document.fonts) document.fonts.ready.then(size);
   }
+  /* the long page's crossroads: three statements to tick; when all three are ticked, the button below nods */
+  document.querySelectorAll('[data-nod]').forEach(function(n){
+    var bs = n.querySelectorAll('.nod-l button');
+    bs.forEach(function(x){ x.addEventListener('click', function(){
+      x.setAttribute('aria-pressed', x.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      n.classList.toggle('all', [].every.call(bs, function(y){ return y.getAttribute('aria-pressed') === 'true' }));
+    }) });
+  });
   /* the long page's calendar: where you're starting from changes the day shown */
   document.querySelectorAll('.eve').forEach(function(ev){
     ev.querySelectorAll('[data-pick]').forEach(function(bt){
