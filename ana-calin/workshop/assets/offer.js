@@ -91,6 +91,7 @@
     document.querySelectorAll('.tg button,.tiers button').forEach(function(x){ x.setAttribute('aria-pressed', x.getAttribute('data-plan') === p ? 'true' : 'false') });
     document.querySelectorAll('[data-total]').forEach(function(e){ e.textContent = p === 'full' ? '$1,500.00' : '$850.00' });
     document.querySelectorAll('[data-later]').forEach(function(e){ e.hidden = p === 'full' });
+    document.querySelectorAll('[data-full]').forEach(function(e){ e.hidden = p !== 'full' });
     document.querySelectorAll('[data-btnp]').forEach(function(e){ e.textContent = p === 'full' ? '$1,500' : '$850 today' });
     document.querySelectorAll('[data-ctaline]').forEach(function(e){ e.textContent = p === 'full' ? 'or 2 payments of $850' : 'or $1,500 in full' });
   }
