@@ -19,7 +19,6 @@
 a:hover .sf-hov,a:focus-visible .sf-hov{transform:rotate(-16deg) scale(1.1)}
 a:hover .sf-mouth,a:focus-visible .sf-mouth{animation:sfLaugh .42s ease-in-out 2}
 a:active .sf{transform:scale(.92)}
-body.is-soon .sf{filter:grayscale(1);opacity:.65}
 .has-sf{padding-left:10px!important;gap:13px!important}
 
 /* ---------- the whole flower, in the margin of the /program hero ---------- */

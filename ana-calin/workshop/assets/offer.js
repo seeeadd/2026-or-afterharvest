@@ -118,15 +118,18 @@
   setPlan('plan');
 
   /* checkout: email prefilled, the partner ref (30% commission), which page */
-  var toast = document.createElement('div'); toast.className = 'demo'; toast.textContent = 'Checkout link not set yet (demo).'; b.appendChild(toast);
+  var toast = document.createElement('div'); toast.className = 'demo'; toast.setAttribute('role', 'status'); b.appendChild(toast);
+  var toastT = 0;
+  function say(t){ toast.textContent = t; toast.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function(){ toast.classList.remove('on') }, 2600) }
   function track(n){ try { (window.dataLayer = window.dataLayer || []).push({event: n}); if (window.fbq) fbq('track', 'InitiateCheckout', {value: plan === 'full' ? 1500 : 850, currency: 'USD'}) } catch (e) {} }
   document.querySelectorAll('[data-join]').forEach(function(a){
     a.addEventListener('click', function(e){
       e.preventDefault();
-      if (phase === 'closed' || phase === 'soon') return;
+      if (phase === 'closed') return;
+      if (phase === 'soon') { say('Doors open Wed Nov 18, live on Day 2.'); return }   // the buttons stay live; before doors open they say when
       var u = plan === 'full' ? C.CHECKOUT_FULL : C.CHECKOUT_PLAN;
       track('offer_checkout_' + plan);
-      if (!u) { toast.classList.add('on'); setTimeout(function(){ toast.classList.remove('on') }, 2200); return }
+      if (!u) { say('Checkout link not set yet (demo).'); return }
       var p = [];
       if (email) p.push('prefilled_email=' + encodeURIComponent(email));
       if (ref) p.push('client_reference_id=' + encodeURIComponent(ref.replace(/[^\w-]/g, '_').slice(0, 200)));

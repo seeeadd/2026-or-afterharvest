@@ -91,7 +91,6 @@ body.b2 .incl li.lb,body.b3 .incl li.lb{display:block}
 .cta .ar{display:inline-block;animation:ctaArrow 1.6s ease-in-out infinite}
 .cta:hover .ar{animation:none;transform:translateX(6px)}
 @keyframes ctaArrow{0%,100%{transform:translateX(0)}55%{transform:translateX(5px)}}
-body.is-soon .cta.join{background:#d8d0c7;color:var(--ink-60);box-shadow:none;pointer-events:none;filter:none}
 body.is-closed .cta.join{display:none}
 .msg{display:none;font-family:var(--font-display);font-size:28px;line-height:1.15;text-align:center;margin-top:16px}
 .msg em{color:var(--acc-t)}
@@ -537,7 +536,6 @@ body.b2 .live-b,body.b3 .live-b{display:flex}
 .sign-lede{font-size:16.5px;color:rgba(255,252,247,.72);margin-top:16px}
 .sbtn{display:inline-flex;align-items:center;justify-content:center;height:58px;padding:0 26px;margin-top:28px;border-radius:12px;background:var(--sun);color:var(--ink);font-weight:700;font-size:16.5px;text-decoration:none;box-shadow:0 16px 30px -16px rgba(255,212,0,.6);transition:background .2s,transform .2s}
 .sbtn:hover{background:var(--acc-h);transform:translateY(-1px)}
-body.is-soon .sbtn.join{background:#d8d0c7;color:var(--ink-60);box-shadow:none;pointer-events:none}
 body.is-closed .sbtn.join{display:none}
 .sign .msg{color:var(--bg)}
 .sign-fine{font-size:14px;color:rgba(255,252,247,.68);margin-top:12px}
