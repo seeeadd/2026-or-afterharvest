@@ -218,6 +218,21 @@
     }, {passive: true});
     if (document.fonts) document.fonts.ready.then(size);
   }
+  /* the long page's last day: November on a wall calendar, the days already gone in New York crossed off, today marked,
+     the 30th circled (placed by script so the ring sits on the real cell at every width) */
+  document.querySelectorAll('[data-nov]').forEach(function(cal){
+    var f = new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', year: 'numeric', month: 'numeric', day: 'numeric'}).formatToParts(new Date(now));
+    var g = {}; f.forEach(function(x){ g[x.type] = +x.value });
+    var today = g.year > 2026 || (g.year === 2026 && g.month > 11) ? 31 : (g.year === 2026 && g.month === 11 ? g.day : 0);
+    cal.querySelectorAll('[data-n]').forEach(function(c){ var n = +c.getAttribute('data-n'); c.classList.toggle('x', n < today); c.classList.toggle('today', n === today) });
+    var place = function(){
+      var box = cal.getBoundingClientRect(), d30 = cal.querySelector('[data-n="30"]'), ring = cal.querySelector('.nov-ring');
+      if (!d30 || !ring) return;
+      var r = d30.getBoundingClientRect(), g = ring.getBoundingClientRect();   // an svg has no offsetWidth
+      ring.style.left = (r.left - box.left + r.width / 2 - g.width / 2) + 'px'; ring.style.top = (r.top - box.top + r.height / 2 - g.height / 2) + 'px';
+    };
+    place(); addEventListener('resize', place); if (document.fonts) document.fonts.ready.then(place);
+  });
   /* the long page's crossroads: three statements to tick; when all three are ticked, the button below nods */
   document.querySelectorAll('[data-nod]').forEach(function(n){
     var bs = n.querySelectorAll('.nod-l button');
