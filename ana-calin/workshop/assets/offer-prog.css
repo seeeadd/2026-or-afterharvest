@@ -823,3 +823,13 @@ body.is-closed .trust,body.is-soon .trust{display:none}
   .t3-end small{font-size:12.5px}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.pb-msg i{animation:none}}
+
+/* ---------- the hero's one moment: the headline rises, Ana's highlighter sweeps under the promise, her sunflower grows
+   in the margin (offer-sun.css) ---------- */
+.hero h1 mark{color:inherit;background:linear-gradient(transparent 58%,rgba(255,212,0,.92) 58%,rgba(255,212,0,.92) 92%,transparent 92%) no-repeat 0 0/100% 100%;padding:0 .04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+@media (prefers-reduced-motion:no-preference){
+  .hero .ed-doc>h1{animation:heroUp .8s var(--ease) .1s both}
+  .hero .ed-doc>.sub{animation:heroUp .8s var(--ease) .28s both}
+  .hero h1 mark{animation:hl 1s cubic-bezier(.6,0,.2,1) .95s both}
+}
+@keyframes heroUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}

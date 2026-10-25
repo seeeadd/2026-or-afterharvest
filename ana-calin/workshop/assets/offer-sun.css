@@ -1,0 +1,72 @@
+/* Ana's sunflower (built by mksun.py), drawn like her How We Grow mark. The small one sits on the left of the buttons,
+   the tall one grows in the margin of the /program hero. Each blooms once it is in view (offer-sun.js adds .sf-in),
+   blinks now and then, and turns its face toward the pointer, the way a sunflower follows the sun (--hx, --hy, --hr).
+   On a button, hover turns the smile into her grin and gives the petals a quarter turn.
+   Without JavaScript, or with reduced motion, both are simply in bloom. */
+.sf,.sun-big{--hx:0px;--hy:0px;--hr:0deg}
+.sf-look{transform-box:view-box;transform:translate(var(--hx),var(--hy)) rotate(var(--hr));transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.sf-eyes{transform-box:fill-box;transform-origin:center}
+
+/* ---------- on the buttons ---------- */
+.sf{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#FFF8EE;box-shadow:inset 0 0 0 1.5px rgba(26,20,18,.85),0 4px 10px -4px rgba(26,20,18,.35)}
+.sf svg{width:40px;height:40px;overflow:visible}
+.sf-look{transform-origin:24px 24px}
+.sf-pets{transform-box:view-box;transform-origin:24px 24px;transition:transform 1s cubic-bezier(.3,1.5,.4,1)}
+.sf .sp{transform-box:view-box;transform-origin:24px 24px}
+.sf-face{transform-box:fill-box;transform-origin:center}
+.sf-grin{transform-box:fill-box;transform-origin:50% 0;transform:scale(.2);opacity:0;transition:transform .35s cubic-bezier(.3,1.6,.5,1),opacity .2s}
+.sf-smile{transition:opacity .2s}
+a:hover .sf-pets,a:focus-visible .sf-pets{transform:rotate(90deg)}
+a:hover .sf-grin,a:focus-visible .sf-grin{transform:none;opacity:1}
+a:hover .sf-smile,a:focus-visible .sf-smile{opacity:0}
+a:active .sf{transform:scale(.92)}
+.sf{transition:transform .2s}
+body.is-soon .sf{filter:grayscale(1);opacity:.65}
+/* the buttons that carry one: a little less padding on the left */
+.has-sf{padding-left:10px!important;gap:13px!important}
+
+/* ---------- the tall one, in the margin of the /program hero ---------- */
+.sun-big{position:absolute;z-index:2;right:44px;top:74px;width:190px;pointer-events:none;
+  -webkit-mask-image:linear-gradient(#000 78%,transparent 99%);mask-image:linear-gradient(#000 78%,transparent 99%)}
+.sun-big svg{display:block;width:100%;height:auto;overflow:visible}
+.sun-big .sf-look{transform-origin:100px 132px}
+.sb-sway{transform-box:view-box;transform-origin:100px 132px}
+.sun-big .sf-pets,.sun-big .sp{transform-box:view-box;transform-origin:100px 100px}
+.sb-leaf{transform-box:fill-box}
+.sb-leaf.r{transform-origin:0 100%}
+.sb-leaf.l{transform-origin:100% 100%}
+.sb-grin{transform-box:fill-box;transform-origin:50% 0}
+@media (max-width:1220px){
+  .sun-big{right:12px;top:-22px;width:92px;-webkit-mask-image:linear-gradient(#000 40%,transparent 52%);mask-image:linear-gradient(#000 40%,transparent 52%)}
+}
+
+/* ---------- motion (armed by offer-sun.js; it plays once the flower is in view) ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .sf-js .sf .sp{transform:scale(0) rotate(-40deg)}
+  .sf-js .sf .sf-face{transform:scale(0)}
+  .sf-js .sf .sf-eyes,.sf-js .sf .sf-smile{opacity:0}
+  .sf-js .sf.sf-in .sp{animation:sfPetal .55s cubic-bezier(.3,1.5,.45,1) calc(.15s + var(--i) * .045s) both}
+  .sf-js .sf.sf-in .sf-face{animation:sfPop .45s cubic-bezier(.3,1.6,.5,1) .05s both}
+  .sf-js .sf.sf-in .sf-eyes{animation:sfFade .2s ease .6s both,sfBlink 5.5s ease 2.4s infinite}
+  .sf-js .sf.sf-in .sf-smile{animation:sfFade .3s ease .7s both}
+
+  .sf-js .sun-big .sb-stem{stroke-dasharray:240;stroke-dashoffset:240}
+  .sf-js .sun-big .sb-leaf,.sf-js .sun-big .sp,.sf-js .sun-big .sf-face{transform:scale(0)}
+  .sf-js .sun-big .sf-eyes,.sf-js .sun-big .sb-grin{opacity:0}
+  .sf-js .sun-big.sf-in .sb-stem{animation:sbStem 1s cubic-bezier(.4,0,.2,1) .25s both}
+  .sf-js .sun-big.sf-in .sb-leaf.r{animation:sbLeaf .7s cubic-bezier(.3,1.4,.5,1) .85s both}
+  .sf-js .sun-big.sf-in .sb-leaf.l{animation:sbLeaf .7s cubic-bezier(.3,1.4,.5,1) 1.05s both}
+  .sf-js .sun-big.sf-in .sf-face{animation:sfPop .55s cubic-bezier(.3,1.6,.5,1) 1.1s both}
+  .sf-js .sun-big.sf-in .sp{animation:sfPetal .7s cubic-bezier(.3,1.45,.45,1) calc(1.25s + var(--i) * .05s) both}
+  .sf-js .sun-big.sf-in .sf-eyes{animation:sfFade .25s ease 1.95s both,sfBlink 6s ease 3.6s infinite}
+  .sf-js .sun-big.sf-in .sb-grin{animation:sbGrin .5s cubic-bezier(.3,1.6,.5,1) 2.05s both}
+  .sf-js .sun-big.sf-in .sb-sway{animation:sbSway 7s ease-in-out 2.6s infinite alternate}
+}
+@keyframes sfPetal{from{transform:scale(0) rotate(-40deg)}to{transform:none}}
+@keyframes sfPop{from{transform:scale(0)}to{transform:none}}
+@keyframes sfFade{from{opacity:0}to{opacity:1}}
+@keyframes sfBlink{0%,93%,100%{transform:none}96%{transform:scaleY(.12)}}
+@keyframes sbStem{to{stroke-dashoffset:0}}
+@keyframes sbLeaf{from{transform:scale(0) rotate(-20deg)}to{transform:none}}
+@keyframes sbGrin{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+@keyframes sbSway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
