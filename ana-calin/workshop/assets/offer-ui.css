@@ -2,9 +2,9 @@
    Each scene is a 64 x 44 em artboard that scales with its box (1em = 1/64 of the box), and below 560px a 40-wide
    artboard that keeps the text readable on a phone. Without JavaScript, or with reduced motion, every scene shows its
    finished state; offer-ui.js arms them (u-armed) and plays them once on screen (u-play), and replays on return.
-   The example newsletter is Back to Work: its accent is green; Ana's things (the coach, Round 1) are pink. */
+   The example newsletter is Back to Work: its accent is green; Ana's things (the coach, Round 1) are sunflower yellow. */
 .u{container-type:inline-size;position:relative;width:100%}
-.u-sc{--g:#2F6B5C;--g2:#E7F1EE;--t:#1E1C1A;--m:#8A847E;--l:#E9E6E1;--pk:#F72585;
+.u-sc{--g:#2F6B5C;--g2:#E7F1EE;--t:#1E1C1A;--m:#8A847E;--l:#E9E6E1;--pk:#FFD400;--pkt:#806000;--pkg:#B98900;
   position:relative;width:100%;aspect-ratio:64/44;font-size:calc(100cqw / 64);font-family:Inter,system-ui,-apple-system,sans-serif;
   color:var(--t);line-height:1.35;text-align:left;letter-spacing:-.005em;-webkit-font-smoothing:antialiased;user-select:none}
 .u-sc *{box-sizing:border-box}
@@ -38,7 +38,7 @@
 
 /* ---- Day 1: Ana AI Coach ---- */
 .u-app{display:flex;align-items:center;gap:.75em;padding:.5em 1.1em .9em;border-bottom:1px solid #EFEDEA}
-.u-app .u-back{width:1.5em;height:1.5em;color:var(--pk)}
+.u-app .u-back{width:1.5em;height:1.5em;color:var(--pkt)}
 .u-app .u-back svg{width:100%;height:100%}
 .u-app img{width:2.7em;height:2.7em;border-radius:50%;background:#FFF5D6;padding:.25em}
 .u-app b{display:block;font-weight:700;font-size:1.18em}
@@ -53,14 +53,14 @@
 .u-dots i:nth-child(2){animation-delay:.15s}.u-dots i:nth-child(3){animation-delay:.3s}
 @keyframes uDot{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-.3em);opacity:1}}
 .u-comp{position:absolute;left:1em;right:1em;bottom:1.3em;display:flex;align-items:center;justify-content:space-between;height:3em;padding:0 .35em 0 1.1em;border:1px solid #E4E1DC;border-radius:2em;font-size:1em;color:#A49E97}
-.u-comp i{width:2.3em;height:2.3em;border-radius:50%;background:var(--pk);color:#fff;display:grid;place-items:center}
+.u-comp i{width:2.3em;height:2.3em;border-radius:50%;background:var(--pk);color:var(--t);display:grid;place-items:center}
 .u-comp i svg{width:1.3em;height:1.3em}
 .u-card{position:absolute;left:31em;top:11em;width:27.5em;padding:2.2em 2.2em 2em;background:#FFFDF8;border-radius:.3em;transform:rotate(-2deg);z-index:1;
   background-image:repeating-linear-gradient(transparent 0 2.35em,rgba(70,110,180,.13) 2.35em calc(2.35em + 1px));background-position:0 4.4em;
   box-shadow:0 0 0 1px rgba(30,20,10,.05),0 2em 3em -1.4em rgba(30,20,10,.35),0 .3em .6em rgba(30,20,10,.08)}
 .u-card::before{content:"";position:absolute;left:3.6em;top:0;bottom:0;width:1px;background:rgba(220,60,90,.28)}
 .u-tape{position:absolute;top:-1.2em;left:50%;width:7em;height:2.3em;margin-left:-3.5em;background:rgba(255,212,0,.55);transform:rotate(3deg);box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.u-card small{display:block;font-weight:600;font-size:.95em;color:var(--pk);padding-left:2.4em}
+.u-card small{display:block;font-weight:600;font-size:.95em;color:var(--pkt);padding-left:2.4em}
 .u-card .u-cp{font-family:'Instrument Serif',Georgia,serif;font-size:2.55em;line-height:1.08;letter-spacing:-.01em;margin:.35em 0 .4em;padding-left:.95em;color:#1A1412}
 .u-card em{display:block;font-style:normal;font-size:1em;color:var(--m);padding-left:2.4em}
 
@@ -104,9 +104,9 @@
 .u-sp .u-ul>span{display:flex;gap:.6em;align-items:center;font-size:1.08em;color:#3B3733}
 .u-sp .u-ul svg{width:1.2em;height:1.2em;color:var(--g)}
 .u-btn{display:inline-block;font-weight:700;font-size:1.12em;color:#fff;background:var(--g);padding:.85em 1.5em;border-radius:.55em;box-shadow:0 .5em 1em -.5em rgba(47,107,92,.7)}
-.u-cmt{position:absolute;right:1.4em;top:6.2em;width:12.6em;display:flex;gap:.6em;padding:.8em .9em;background:#fff;border-radius:.8em;border:1.5px solid rgba(247,37,133,.45);font-size:.95em;line-height:1.38;color:#3B3733;box-shadow:0 1em 2em -1em rgba(30,20,10,.35)}
+.u-cmt{position:absolute;right:1.4em;top:6.2em;width:12.6em;display:flex;gap:.6em;padding:.8em .9em;background:#fff;border-radius:.8em;border:1.5px solid rgba(185,137,0,.5);font-size:.95em;line-height:1.38;color:#3B3733;box-shadow:0 1em 2em -1em rgba(30,20,10,.35)}
 .u-cmt img{width:2em;height:2em;border-radius:50%;background:#FFF5D6;padding:.15em}
-.u-cmt b{display:block;font-weight:700;color:var(--pk);margin-bottom:.15em}
+.u-cmt b{display:block;font-weight:700;color:var(--pkt);margin-bottom:.15em}
 .u-ems{position:absolute;left:35em;top:18.5em;width:27.4em;background:#fff;border-radius:1em;z-index:3;overflow:hidden;
   box-shadow:0 0 0 1px rgba(30,20,10,.08),0 2.4em 4em -1.6em rgba(30,20,10,.45)}
 .u-emh{display:flex;justify-content:space-between;align-items:baseline;padding:1.1em 1.3em .8em;border-bottom:1px solid #EFEDE9}
@@ -120,7 +120,7 @@
 .u-st{position:relative;flex:none;width:9.4em;height:2.1em;font-size:.92em}
 .u-st i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:.3em;border-radius:2em;font-style:normal;font-weight:600;white-space:nowrap}
 .u-st .s1{background:#F1EFEC;color:#77716B}
-.u-st .s2{background:#FFE4F0;color:#C2185B}
+.u-st .s2{background:#FFF1B8;color:#6B5000}
 .u-st .s3{background:#E1F2E9;color:#1F7A4D}
 .u-st .s3 svg{width:1.05em;height:1.05em}
 
@@ -183,7 +183,7 @@
 .u-mg i{font-style:normal;font-size:1.05em;font-weight:500;height:2.65em;display:grid;place-items:center;border-radius:.55em;color:#3B3733}
 .u-mg i.o{color:#C9C4BD}
 .u-mg i.p{color:#9A8F86;background:repeating-linear-gradient(135deg,#F3EFEA 0 .45em,#E9E3DC .45em .9em)}
-.u-mg i.l{background:var(--pk);color:#fff;font-weight:700}
+.u-mg i.l{background:var(--pk);color:var(--t);font-weight:700}
 .u-mk{display:flex;gap:1.4em;margin-top:1.1em;font-size:.95em;color:#5D5852}
 .u-mk span{display:flex;align-items:center;gap:.45em}
 .u-mk i{width:1em;height:1em;border-radius:.25em}
@@ -227,7 +227,7 @@
 .u-lh img{width:1.7em;height:1.7em}
 .u-lh b{font-weight:700;font-size:1.05em}
 .u-lh span{font-size:.92em;color:var(--m)}
-.u-lh em{margin-left:auto;font-style:normal;font-weight:600;font-size:.85em;color:#C2185B;background:#FFE4F0;padding:.3em .7em;border-radius:2em}
+.u-lh em{margin-left:auto;font-style:normal;font-weight:600;font-size:.85em;color:#6B5000;background:#FFF1B8;padding:.3em .7em;border-radius:2em}
 .u-lb{display:grid;grid-template-columns:12.5em 1fr;height:calc(100% - 3.1em)}
 .u-ld{display:flex;flex-direction:column;gap:.15em;padding:.8em .6em;background:#FAF9F7;border-right:1px solid #EFECE7}
 .u-ld>span{display:grid;grid-template-columns:1.6em 1fr;align-items:center;padding:.42em .5em;border-radius:.5em;font-weight:600;font-size:.92em;color:#5D5852}
@@ -235,17 +235,17 @@
 .u-ld i{grid-row:1/span 2;width:1.15em;height:1.15em;border-radius:50%;border:.12em solid #CFCAC3;display:grid;place-items:center}
 .u-ld .d i{background:#1E1A18;border-color:#1E1A18;color:#fff}
 .u-ld i svg{width:.8em;height:.8em}
-.u-ld .on{background:#FFE4F0;color:#8E0F4B}
-.u-ld .on i{border-color:var(--pk)}
+.u-ld .on{background:#FFF6D1;color:#4D3A00}
+.u-ld .on i{border-color:var(--pkg)}
 .u-lt{padding:1.5em 1.8em}
-.u-lt small{display:block;font-weight:600;font-size:.88em;color:var(--pk)}
+.u-lt small{display:block;font-weight:600;font-size:.88em;color:var(--pkt)}
 .u-lt b{display:block;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:2.15em;line-height:1.02;letter-spacing:-.01em;margin:.2em 0 .45em;color:#1A1412}
 .u-lp{display:block;font-size:.98em;line-height:1.45;color:#6F6A64;margin-bottom:.8em}
 .u-lc{display:flex;align-items:center;gap:.55em;font-size:.98em;margin:.35em 0}
 .u-lc i{flex:none;width:1.15em;height:1.15em;border-radius:.3em;border:.12em solid #CFCAC3;display:grid;place-items:center}
 .u-lc i.d{background:#1E1A18;border-color:#1E1A18;color:#fff}
 .u-lc i svg{width:.8em;height:.8em}
-.u-lbtn{display:inline-block;margin-top:.9em;font-weight:700;font-size:.95em;color:#fff;background:var(--pk);padding:.6em 1.1em;border-radius:.5em}
+.u-lbtn{display:inline-block;margin-top:.9em;font-weight:700;font-size:.95em;color:var(--t);background:var(--pk);padding:.6em 1.1em;border-radius:.5em}
 .u-bundle .u-ph{font-size:.8em;left:57.6em;top:6.4em;z-index:3}
 .u-bundle .u-thread{padding-top:1.2em}
 .u-bundle .u-card{font-size:.8em;left:1.2em;top:31.4em;width:24em;padding:1.8em 1.8em 1.6em;z-index:4}
