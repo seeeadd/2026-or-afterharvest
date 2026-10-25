@@ -1,8 +1,9 @@
 # Ana's offer pages: Gemini prompts (hands only, green screens)
 
 Six photos that show where the 30 days fit into an ordinary evening. Same method as the confirmation-page timeline:
-no faces, only hands and the device. Every screen is **solid green**, and Rosa's real screen goes in afterwards, matched
-to its angle, so the text is sharp and right. Until a photo arrives, the page shows the screen in a plain device frame.
+no faces, only hands and the device. Every screen is **solid green**, and the example screen from the page goes in
+afterwards, matched to its angle, so the text is sharp and right. Until a photo arrives, the pages show the screens
+drawn in HTML (they act out what they show: the replies arrive, the test payment goes through).
 
 ## How to run them
 
@@ -33,7 +34,7 @@ to its angle, so the text is sharp and right. Until a photo arrives, the page sh
 > casting yellow light. A mug of tea on the sofa cushion beside her, slightly out of focus. The screen is tilted toward
 > the camera, almost flat on.
 
-**Screen that goes in:** `w1-replies.webp` (Rosa's inbox). **Where:** /join week 1 card.
+**Screen that goes in:** the inbox (week 1, the replies). **Where:** /join week 1 card, /program Week 1.
 
 ## Photo 2 · Week 2 · writing the page (laptop, kitchen table, 9:10 pm)
 
@@ -42,8 +43,7 @@ to its angle, so the text is sharp and right. Until a photo arrives, the page sh
 > A mug of tea and a child's drawing half under the laptop at the left edge. Behind the laptop only a dark window with
 > a faint reflection of the kitchen light. A few specks of dust on the bezel. Slightly soft at the edges.
 
-**Screen that goes in:** `w2-page.webp` (Rosa's sales page and scheduled emails). **Where:** /join week 2 card,
-/program order box.
+**Screen that goes in:** the sales page and the three scheduled emails. **Where:** /join week 2 card, /program Week 2.
 
 ## Photo 3 · Week 3 · the test payment (laptop and a card)
 
@@ -51,7 +51,7 @@ to its angle, so the text is sharp and right. Until a photo arrives, the page sh
 > left hand holds a plain bank card (no logo, no numbers visible) near the bottom-left corner, her right hand types at
 > the bottom edge. Warm lamp light, a little noise. Not styled.
 
-**Screen that goes in:** `w3-checkout.webp`. **Where:** /join week 3 card.
+**Screen that goes in:** the checkout with the test payment. **Where:** /join week 3 card, /program Week 3.
 
 ## Photo 4 · Week 4 · launch morning (iPhone, by the window, 7:12 am)
 
@@ -59,7 +59,7 @@ to its angle, so the text is sharp and right. Until a photo arrives, the page sh
 > winter morning light. A coffee mug in her other hand at the edge of the frame, steam barely visible. A few fairy
 > lights or a small Christmas decoration blurred in the background, not dominant.
 
-**Screen that goes in:** `w4-lock.webp` (launch morning: the post sent, readers replying). **Where:** /join week 4 card, /program order box.
+**Screen that goes in:** launch morning (the post sent, readers replying). **Where:** /join week 4 card, /program Week 4.
 
 ## Photo 5 · Ana AI Coach at 10 pm (iPhone in bed)
 
@@ -67,7 +67,7 @@ to its angle, so the text is sharp and right. Until a photo arrives, the page sh
 > of the frame. A paperback book face-down on the duvet and reading glasses beside it. The screen is the brightest
 > thing in the photo, tilted toward the camera.
 
-**Screen that goes in:** `coach.webp` (the coach chat). **Where:** /join bonuses card.
+**Screen that goes in:** the Ana AI Coach chat. **Where:** /join bonuses card, /program Day 1.
 
 ## Photo 6 · the evening, no screen (background for "But I don't have much time")
 
@@ -75,4 +75,4 @@ to its angle, so the text is sharp and right. Until a photo arrives, the page sh
 > down, one hand resting flat beside the laptop. Warm, dim pendant light, a little grain. Dark, calm, ordinary. Nothing
 > on any screen.
 
-**Where:** behind the evening timeline on /program (darkened, so the text stays readable).
+**Where:** behind the calendar on /program ("It fits in the hours you already have"), darkened so the text stays readable.

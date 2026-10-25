@@ -149,7 +149,7 @@
   }
 
   /* the phone buy bar: shows once the first screen is gone, hides while an order box is on screen */
-  var hero = document.querySelector('.hx,.ck-h'), seen = [], past = false;
+  var hero = document.querySelector('.hero,.hx,.ck-h'), seen = [], past = false;
   function mb(){ b.classList.toggle('mb-on', past && !seen.length) }
   if (hero && 'IntersectionObserver' in window) {
     new IntersectionObserver(function(es){ past = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; mb() }).observe(hero);
@@ -180,18 +180,46 @@
     };
     addEventListener('scroll', road, {passive: true}); road();
   }
-  /* the long page's story: the chapter in the middle of the screen chooses the screen shown beside it */
-  var steps = document.querySelectorAll('.st-step'), shots = document.querySelectorAll('[data-shot]'), dots = document.querySelectorAll('[data-dot]');
-  if (steps.length && shots.length) {
-    var story = function(){
-      var mid = innerHeight * .55, cur = 0;
-      steps.forEach(function(st, i){ if (st.getBoundingClientRect().top < mid) cur = i });
-      steps.forEach(function(st, i){ st.classList.toggle('on', i === cur) });
-      shots.forEach(function(sh){ sh.classList.toggle('on', +sh.getAttribute('data-shot') === cur) });
-      dots.forEach(function(d){ d.classList.toggle('on', +d.getAttribute('data-dot') === cur) });
+  /* the long page's December: on a laptop or bigger the month is pinned and moves sideways as you scroll; the
+     frame in the middle is lit, and the calendar under it fills to the end of that stretch. Stacked on a phone. */
+  var dec = document.querySelector('[data-dec]');
+  if (dec) {
+    var dtrack = dec.querySelector('.dec-track'), frs = [].slice.call(dec.querySelectorAll('.fr')), cells = dec.querySelectorAll('[data-day]'), dlab = dec.querySelector('[data-daylab]');
+    var mq = matchMedia('(min-width: 1101px) and (min-height: 620px)'), pin = false, span = 0, lastI = -1;
+    var LAB = ['Tue Dec 1', 'Dec 1 to 7', 'Dec 8 to 14', 'Dec 15 to 20', 'Dec 21 to 27, Christmas', 'Dec 28 to 30, launch'];
+    var light = function(i){
+      if (i === lastI) return; lastI = i;
+      frs.forEach(function(f, k){ f.classList.toggle('on', k === i) });
+      var a = +frs[i].getAttribute('data-from'), z = +frs[i].getAttribute('data-to');
+      cells.forEach(function(c){ var d = +c.getAttribute('data-day'); c.classList.toggle('done', d <= z); c.classList.toggle('cur', d >= a && d <= z) });
+      if (dlab) dlab.textContent = LAB[i] || '';
     };
-    addEventListener('scroll', story, {passive: true}); story();
+    var move = function(){
+      if (!pin) return;
+      var r = dec.getBoundingClientRect(), p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight)));
+      dtrack.style.transform = 'translate3d(' + (-p * span).toFixed(1) + 'px,0,0)';
+      light(Math.round(p * (frs.length - 1)));
+    };
+    var size = function(){
+      pin = mq.matches && !reduce;
+      dec.classList.toggle('is-pin', pin);
+      if (!pin) { dec.style.height = ''; dtrack.style.transform = ''; frs.forEach(function(f){ f.classList.add('on') }); lastI = -1; return }
+      span = dtrack.scrollWidth - innerWidth;
+      dec.style.height = (span + innerHeight * 1.15) + 'px';
+      lastI = -1; move();
+    };
+    size(); addEventListener('resize', size); addEventListener('scroll', move, {passive: true});
+    if (document.fonts) document.fonts.ready.then(size);
   }
+  /* the long page's calendar: where you're starting from changes the day shown */
+  document.querySelectorAll('.eve').forEach(function(ev){
+    ev.querySelectorAll('[data-pick]').forEach(function(bt){
+      bt.addEventListener('click', function(){
+        ev.setAttribute('data-p', bt.getAttribute('data-pick'));
+        ev.querySelectorAll('[data-pick]').forEach(function(x){ x.setAttribute('aria-pressed', x === bt ? 'true' : 'false') });
+      });
+    });
+  });
   /* the buy button's glow follows the pointer */
   document.querySelectorAll('.cta-buy,.is-buy').forEach(function(c){
     c.addEventListener('pointermove', function(e){ var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px') });

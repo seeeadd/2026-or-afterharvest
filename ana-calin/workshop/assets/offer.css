@@ -1,7 +1,7 @@
 /* Ana Calin, the offer pages (/join, /program), v3. The layout is Jay Clouse's offer page (the team's own build),
    re-skinned in Ana's brand: pink where Jay has blue, ink where he has dark, a warm neutral where he has light blue,
    Instrument Serif + Manrope + Space Mono. No pink or yellow grounds. No ticking countdown: the deadline is a date.
-   The pictures are Rosa's screens (an example member) and, later, Gemini hands-only photos with those screens in. */
+   The pictures are example screens drawn in HTML (offer-ui.css, shared with /program), an example newsletter. */
 :root{
   --pink:#F72585;--pink-600:#D9126E;--pink-700:#B80E5C;--pink-100:#FFE1EE;--pink-l:#FF8CC0;
   --ink:#1A1412;--ink-80:rgba(26,20,18,.82);--ink-60:rgba(26,20,18,.60);--ink-30:rgba(26,20,18,.30);--ink-10:rgba(26,20,18,.10);
@@ -142,7 +142,7 @@ body.has-safety span[data-safety-on]{display:inline}
 .week-d{font-size:14.5px;line-height:1.5;color:var(--ink-60);margin-top:5px}
 .week.pz{border-style:dashed;background:repeating-linear-gradient(135deg,transparent 0 8px,rgba(26,20,18,.03) 8px 16px)}
 
-/* ---------- what you walk away with: Rosa's screens ---------- */
+/* ---------- what you walk away with: the example screens ---------- */
 .deepdive{background:var(--bg);border-top:1.5px solid var(--ink);padding:60px 28px}
 .deepdive-inner{max-width:1100px;margin:0 auto}
 .deepdive-head{text-align:center;margin-bottom:36px}
@@ -150,8 +150,6 @@ body.has-safety span[data-safety-on]{display:inline}
 .deepdive-head h2{font-size:clamp(36px,4.2vw,54px);line-height:1.02;max-width:18ch;margin:0 auto}
 .deepdive-head h2 em{color:var(--pink)}
 .deepdive-head p{margin:14px auto 0;max-width:56ch;font-size:16.5px;color:var(--ink-60)}
-.rosa{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-60);border:1.5px dashed var(--ink-30);border-radius:999px;padding:6px 12px 6px 6px}
-.rosa i{width:24px;height:24px;border-radius:50%;background:#C77B5B;color:#fff;font-style:normal;font-family:var(--font-text);font-weight:700;font-size:12px;display:grid;place-items:center;letter-spacing:0}
 .dcards{display:flex;flex-direction:column;gap:22px}
 .dcard{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--ink);border-radius:4px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;background:var(--bg)}
 .dcard-body{padding:30px 32px;display:flex;flex-direction:column;justify-content:center}
@@ -163,17 +161,15 @@ body.has-safety span[data-safety-on]{display:inline}
 .dcard-meta{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-600)}
 .dcard-keep{display:flex;align-items:center;gap:10px;margin-top:4px;padding-top:14px;border-top:1.5px dashed var(--ink-10);font-size:14.5px;color:var(--ink)}
 .dcard-keep b{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--ink);padding:3px 8px;border-radius:3px;flex:none}
-.dcard-visual{position:relative;border-left:2px solid var(--ink);overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:380px;padding:34px 26px;
+.dcard-visual{position:relative;border-left:2px solid var(--ink);overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:380px;padding:52px 18px 44px;
   background:radial-gradient(55% 70% at 18% 22%,rgba(247,37,133,.55) 0%,rgba(247,37,133,0) 62%),radial-gradient(50% 60% at 84% 18%,rgba(255,212,0,.32) 0%,rgba(255,212,0,0) 60%),radial-gradient(60% 70% at 80% 92%,rgba(247,37,133,.35) 0%,rgba(247,37,133,0) 60%),linear-gradient(140deg,#231915,#3a1f2b);background-size:200% 200%,190% 190%,215% 215%,100% 100%;animation:aurora 22s ease-in-out infinite}
 @keyframes aurora{0%,100%{background-position:0% 12%,100% 0%,52% 100%,0 0}50%{background-position:72% 18%,28% 72%,74% 84%,0 0}}
 .dcard-visual .wk{position:absolute;top:13px;left:13px;z-index:3;width:33px;height:33px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:19px;line-height:1;color:#fff;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.45);border-radius:10px}
 .dcard-visual .wkl{position:absolute;bottom:12px;left:0;right:0;text-align:center;z-index:3;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,252,247,.8)}
 .dcard-visual .ex{position:absolute;top:16px;right:14px;z-index:3;font-family:var(--font-mono);font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,252,247,.75);border:1px solid rgba(255,252,247,.35);border-radius:999px;padding:3px 9px}
-/* device frames for the screens (Gemini photos can replace them: .dcard-visual.photo) */
-.phone{position:relative;width:min(205px,62%);aspect-ratio:393/852;border-radius:34px;padding:7px;background:#0d0b0a;box-shadow:0 0 0 1.5px rgba(255,255,255,.18),0 30px 60px -20px rgba(0,0,0,.7);transform:rotate(-3deg)}
-.phone img{width:100%;height:100%;object-fit:cover;border-radius:27px}
-.browser{position:relative;width:100%;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 0 0 1.5px rgba(255,255,255,.18),0 30px 60px -20px rgba(0,0,0,.7);transform:rotate(1.5deg)}
-.browser img{width:100%;display:block}
+/* the screen fills the panel (a Gemini photo can replace it later: .dcard-visual.photo) */
+.dcard-visual .u{position:relative;z-index:1}
+.dcard-visual .u-ex{background:rgba(255,255,255,.14);color:rgba(255,252,247,.82);border-color:rgba(255,255,255,.28)}
 .dcard-visual.photo{padding:0;animation:none}
 .dcard-visual.photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media (max-width:760px){.dcard{grid-template-columns:1fr}.dcard-visual{order:-1;border-left:none;border-bottom:2px solid var(--ink);min-height:320px}.dcard-body{padding:22px 20px}.dcard h3{font-size:29px}}
@@ -234,7 +230,8 @@ body.b2 .bonus-card.is-hero.live,body.b3 .bonus-card.is-hero.live{display:grid}
 .bonus-hero-body p{font-size:15.5px}
 .bonus-hero-val{font-family:var(--font-display);font-size:30px;color:var(--pink);white-space:nowrap;line-height:1;text-align:right}
 .bonus-hero-shot{align-self:stretch;margin:-22px -24px -22px 0;position:relative;background:linear-gradient(140deg,#231915,#3a1f2b);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;min-height:200px;border-left:2px solid var(--ink)}
-.bonus-hero-shot img{width:150px;border-radius:20px 20px 0 0;margin-top:22px;box-shadow:0 0 0 5px #0d0b0a}
+.bonus-hero-shot .u{width:190px;margin:24px auto -96px}
+.bonus-hero-shot .u-ex{display:none}
 @media (max-width:780px){.bonus-grid{grid-template-columns:1fr}.bonus-card.is-hero{grid-template-columns:1fr;gap:14px}.bonus-hero-shot{margin:6px -24px -22px;border-left:0;border-top:2px solid var(--ink);min-height:220px}.bonus-hero-val{text-align:left}}
 
 /* ---------- the full build (dark) ---------- */
