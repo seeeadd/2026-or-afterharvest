@@ -59,7 +59,7 @@ to its angle, so the text is sharp and right. Until a photo arrives, the page sh
 > winter morning light. A coffee mug in her other hand at the edge of the frame, steam barely visible. A few fairy
 > lights or a small Christmas decoration blurred in the background, not dominant.
 
-**Screen that goes in:** `w4-lock.webp` (payments on the lock screen). **Where:** /join week 4 card, /program order box.
+**Screen that goes in:** `w4-lock.webp` (launch morning: the post sent, readers replying). **Where:** /join week 4 card, /program order box.
 
 ## Photo 5 · Ana AI Coach at 10 pm (iPhone in bed)
 
