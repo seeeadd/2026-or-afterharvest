@@ -40,6 +40,25 @@
     if (C.BACKUP_PAY_TEXT) e.querySelector('[data-bkp-text]').textContent = C.BACKUP_PAY_TEXT;
   });
   if (C.PAY2_DATE) document.querySelectorAll('[data-pay2]').forEach(function(e){ e.textContent = 'on ' + C.PAY2_DATE });
+  /* the long page's answers only Ana can give: each line, question or block stays hidden until its setting is filled in */
+  document.querySelectorAll('[data-opt]').forEach(function(e){
+    var v = C[e.getAttribute('data-opt')]; if (!v) return;
+    e.hidden = false; e.querySelectorAll('[data-opt-text]').forEach(function(t){ t.textContent = v });
+  });
+  if (C.SENTENCE) document.querySelectorAll('[data-sentence]').forEach(function(e){ e.textContent = C.SENTENCE });
+  if (C.HOURS) document.querySelectorAll('[data-hours-px]').forEach(function(e){ e.textContent = 'One a day (' + C.HOURS + '). A missed day costs nothing; the next task waits.' });
+  if (C.RESULTS && C.RESULTS.length) document.querySelectorAll('[data-results]').forEach(function(box){
+    var g = box.querySelector('.hg-rg'), el = function(t, c, txt){ var x = document.createElement(t); if (c) x.className = c; if (txt) x.textContent = txt; return x };
+    C.RESULTS.forEach(function(r){
+      var f = el('figure', 'hg-r'); f.appendChild(el('b', '', r.result));
+      if (r.quote) f.appendChild(el('blockquote', '', r.quote));
+      var cap = el('figcaption');
+      if (r.photo) { var im = el('img'); im.src = r.photo; im.alt = ''; cap.appendChild(im) }
+      var who = el('span'); who.appendChild(el('strong', '', r.name)); if (r.where) who.appendChild(document.createTextNode(r.where));
+      cap.appendChild(who); f.appendChild(cap); g.appendChild(f);
+    });
+    box.hidden = false;
+  });
 
   /* where we are in the week */
   var b = document.body, phase;

@@ -17,5 +17,13 @@ window.OFFER = {
   VIDEO_SRC:     '',              // the offer video (long page), cut from Day 2 the night of Wed Nov 18
   METHOD:        '',              // [Ana names it] the name of the one reader / one sentence / one ask method. Empty = "How it works".
   BACKUP_PAY_URL:  '',            // a second way to pay (PayPal or similar) if a card fails. Empty = the line stays hidden.
-  BACKUP_PAY_TEXT: ''             // e.g. 'Card not going through?' (that's the default)
+  BACKUP_PAY_TEXT: '',            // e.g. 'Card not going through?' (that's the default)
+
+  /* ---- the long page (/program) only. Each one stays hidden until it's filled in. In Ana's words, first person. ---- */
+  SENTENCE:      '',              // [Ana] the real last sentence of her 82-like post, word for word. Empty = "What I sell, and where to get it."
+  ANA_PART:      '',              // [Ana] what she does herself, e.g. 'I read your sentence and your sales page myself, and I'm in the Circle room every weekday.'
+  WHERE:         '',              // [Ana] where it happens, e.g. 'In the Circle room: one task a day, with the coach linked from each one.'
+  KEEP:          '',              // [Ana] what's kept after Dec 30, e.g. 'The tasks stay yours, and Ana AI Coach stays open until Mar 31.'
+  TOOLS:         '',              // [Ana] what people need set up, e.g. 'Your newsletter and a free Stripe account.'
+  RESULTS:       []               // [Ana, with each student's OK] e.g. { result: 'First paid offer, 14 buyers in a week', quote: '...', name: 'Jill Hart', where: 'Writer, The Second Act', photo: '../img/av/jill.webp' }
 };
