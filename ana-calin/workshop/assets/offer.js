@@ -180,6 +180,18 @@
     };
     addEventListener('scroll', road, {passive: true}); road();
   }
+  /* the long page's story: the chapter in the middle of the screen chooses the screen shown beside it */
+  var steps = document.querySelectorAll('.st-step'), shots = document.querySelectorAll('[data-shot]'), dots = document.querySelectorAll('[data-dot]');
+  if (steps.length && shots.length) {
+    var story = function(){
+      var mid = innerHeight * .55, cur = 0;
+      steps.forEach(function(st, i){ if (st.getBoundingClientRect().top < mid) cur = i });
+      steps.forEach(function(st, i){ st.classList.toggle('on', i === cur) });
+      shots.forEach(function(sh){ sh.classList.toggle('on', +sh.getAttribute('data-shot') === cur) });
+      dots.forEach(function(d){ d.classList.toggle('on', +d.getAttribute('data-dot') === cur) });
+    };
+    addEventListener('scroll', story, {passive: true}); story();
+  }
   /* the buy button's glow follows the pointer */
   document.querySelectorAll('.cta-buy,.is-buy').forEach(function(c){
     c.addEventListener('pointermove', function(e){ var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px') });
