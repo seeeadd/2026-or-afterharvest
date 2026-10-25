@@ -430,7 +430,7 @@ body.is-closed .trust,body.is-soon .trust{display:none}
 .ed-proof figcaption{font-size:13px;color:var(--ink3);margin-top:8px}
 /* the copy hinge, on ink: her numbers once, Amaya's words big, three more beside them */
 .hinge{position:relative;overflow:hidden;padding:120px 0 128px;background:var(--night);color:var(--cream)}
-.hinge::before{content:"";position:absolute;right:-10%;top:-30%;width:70%;height:90%;background:radial-gradient(closest-side,rgba(255,212,0,.08),rgba(255,212,0,0));pointer-events:none}
+.hinge::before{content:"";position:absolute;right:-10%;top:-30%;width:70%;height:90%;background:radial-gradient(closest-side,rgba(255,248,238,.06),rgba(255,248,238,0));pointer-events:none}
 .hg-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
 .hg-top h2{font-size:clamp(44px,5vw,72px);line-height:.95;letter-spacing:-.03em}
 .hg-top p{color:rgba(255,248,238,.7);max-width:30em}
@@ -513,7 +513,7 @@ body.is-closed .trust,body.is-soon .trust{display:none}
 .t3-e.en small{transform:translateX(calc(-100% + 10px))}
 .t3-end b{display:block;font-family:var(--serif);font-weight:400;font-size:46px;line-height:1;letter-spacing:-.02em;color:#B4AAA1}
 .t3-end small{display:block;font-size:13.5px;line-height:1.35;color:var(--ink3);margin-top:6px}
-.t3-lane.l3{background:linear-gradient(90deg,rgba(247,37,133,.06),rgba(247,37,133,0) 75%)}
+.t3-lane.l3{background:var(--paper)}
 .l3 .t3-lab b{color:var(--ink)}
 .l3 .t3-lab small{color:var(--pink2)}
 .l3 .t3-line{height:4px;margin-top:-2px;border-radius:2px;background:var(--pink);transform-origin:left}
