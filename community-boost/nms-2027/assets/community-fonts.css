@@ -1,0 +1,6 @@
+/* Independent foundry fonts. Original licenses accompany these files. */
+@font-face{font-family:'Basteleur';font-style:normal;font-weight:400 500;font-display:swap;src:url('basteleur-moonlight.woff2') format('woff2')}
+@font-face{font-family:'Basteleur';font-style:normal;font-weight:600 800;font-display:swap;src:url('basteleur-bold.woff2') format('woff2')}
+@font-face{font-family:'Apfel Grotezk';font-style:normal;font-weight:400;font-display:swap;src:url('ApfelGrotezk-Regular.woff2') format('woff2')}
+@font-face{font-family:'Apfel Grotezk';font-style:normal;font-weight:500 600;font-display:swap;src:url('ApfelGrotezk-Mittel.woff2') format('woff2')}
+@font-face{font-family:'Apfel Grotezk';font-style:normal;font-weight:700 900;font-display:swap;src:url('ApfelGrotezk-Fett.woff2') format('woff2')}
