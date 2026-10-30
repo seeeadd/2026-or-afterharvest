@@ -10,7 +10,8 @@
   /* the dates (all New York; November is UTC-5) */
   var T = {
     OPENS:     Date.UTC(2026, 10, 18, 17, 55), // Wed Nov 18, about 12:55 pm, the price reveal on Day 2
-    B2_ENDS:   Date.UTC(2026, 10, 19, 4, 59),  // Wed Nov 18, 11:59 pm
+    WED_ENDS:  Date.UTC(2026, 10, 19, 4, 59),  // Wed Nov 18, 11:59 pm (the phase tiles only)
+    B2_ENDS:   Date.UTC(2026, 10, 20, 4, 59),  // Thu Nov 19, 11:59 pm: the audit's last seats (one live bonus, Day 2 buyers first)
     B3_REVEAL: Date.UTC(2026, 10, 19, 17, 55), // Thu Nov 19, revealed live on Day 3
     B3_ENDS:   Date.UTC(2026, 10, 20, 4, 59),  // Thu Nov 19, 11:59 pm
     CLOSES:    Date.UTC(2026, 11, 1, 4, 59)    // Mon Nov 30, 11:59 pm. Buttons off at that minute. No reopening.
@@ -74,19 +75,19 @@
   if (phase === 'b3' && !bname) { b.classList.remove('b3'); phase = 'open' }   // nothing to show until Ana names it
   var seats = phase === 'b2' ? C.BONUS2_SEATS : C.BONUS3_SEATS;
   document.querySelectorAll('[data-bname]').forEach(function(e){ e.textContent = bname });
-  document.querySelectorAll('[data-bday]').forEach(function(e){ e.textContent = phase === 'b2' ? 'Day 2 bonus' : 'Day 3 bonus' });
-  document.querySelectorAll('[data-bends]').forEach(function(e){ e.textContent = (phase === 'b2' ? 'Ends Wed Nov 18' : 'Ends Thu Nov 19') + ' at 11:59 pm New York' + (seats ? '. ' + seats + ' seats.' : '.') });
+  document.querySelectorAll('[data-bday]').forEach(function(e){ e.textContent = phase === 'b2' ? 'Live bonus' : 'Day 3 bonus' });
+  document.querySelectorAll('[data-bends]').forEach(function(e){ e.textContent = (phase === 'b2' ? 'Last seats Thu Nov 19' : 'Ends Thu Nov 19') + ' at 11:59 pm New York' + (seats ? '. ' + seats + ' seats.' : '.') });
 
   var MSG = {
     soon:   'Doors open Wed Nov 18, live on Day 2',
-    b2:     'Doors are open · Day 2 bonus ends tonight, 11:59 pm New York',
+    b2:     'Doors are open · audit seats close Thu Nov 19, 11:59 pm New York',
     b3pre:  'Doors are open · the Day 3 bonus is revealed live today',
     b3:     'Day 3 bonus ends tonight, 11:59 pm New York',
     open:   'Doors close Mon Nov 30 · 11:59 pm New York',
     closed: 'Doors are closed. Thank you.'
   };
   /* the four phase tiles: by the clock, today's in colour, the ones before it struck through, the ones after it greyed */
-  var cur = now < T.OPENS ? 0 : now < T.B2_ENDS ? 1 : now < T.B3_ENDS ? 2 : now < T.CLOSES ? 3 : 4;
+  var cur = now < T.OPENS ? 0 : now < T.WED_ENDS ? 1 : now < T.B2_ENDS ? 2 : now < T.CLOSES ? 3 : 4;
   document.querySelectorAll('[data-ph]').forEach(function(e){
     var n = +e.getAttribute('data-ph');
     e.classList.add(n === cur ? 'now' : n < cur ? 'past' : 'next');
@@ -95,7 +96,7 @@
   if (C.BONUS3_NAME && now >= T.B3_REVEAL) document.querySelectorAll('[data-ph2]').forEach(function(e){ e.textContent = C.BONUS3_NAME });
 
   /* the sticky pill: a short label and the deadline as date tiles (nothing ticks) */
-  var SHORT = {soon: ['Doors open', 'Wed', 'Nov 18', '12:55'], b2: ['Day 2 bonus ends', 'Wed', 'Nov 18', '11:59'], b3pre: ['Day 3 bonus today', 'Thu', 'Nov 19', '12:55'],
+  var SHORT = {soon: ['Doors open', 'Wed', 'Nov 18', '12:55'], b2: ['Audit seats close', 'Thu', 'Nov 19', '11:59'], b3pre: ['Day 3 bonus today', 'Thu', 'Nov 19', '12:55'],
                b3: ['Day 3 bonus ends', 'Thu', 'Nov 19', '11:59'], open: ['Doors close', 'Mon', 'Nov 30', '11:59'], closed: ['Doors are closed', '', '', '']};
   var sh = SHORT[phase];
   document.querySelectorAll('[data-barshort]').forEach(function(e){ e.textContent = sh[0] });

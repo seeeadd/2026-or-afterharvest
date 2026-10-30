@@ -724,7 +724,68 @@ body.vipc .sart{background:var(--pk3)}
 }
 @media (max-width:640px){.sdate b{height:56px;font-size:40px}.sdate b.sf svg{width:40px;height:40px}.sdate small{font-size:10px;letter-spacing:.12em}}
 
-/* the bar keeps WhatsApp */
+/* the bar: the exit number on /confirmed, WhatsApp on /vip-confirmed */
 .db .bwa .j2{display:none}
 body.did-group .db .bwa .j1{display:none}
 body.did-group .db .bwa .j2{display:inline}
+
+/* ---------- step 1: the small links under the exit number button ---------- */
+.act p.alt{margin-top:12px;font-size:14px;color:var(--ink3)}
+.act p.alt a{color:var(--ink2);font-weight:700;text-underline-offset:3px}
+.act p.alt a:hover{color:var(--pink)}
+.act p.alt-ok{margin-top:8px;font-size:14px;font-weight:700;color:var(--green)}
+.chat .b.pin{font-weight:800;border-left:4px solid var(--pink)}
+.gc.mail-open{margin-top:14px}
+
+/* ---------- quick answers, as text ---------- */
+.qas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;max-width:1080px;margin:0 auto}
+.qa{background:#fff;border:1.8px solid var(--ink);border-radius:24px;padding:26px 24px;box-shadow:8px 8px 0 var(--acc),8px 8px 0 1.8px var(--ink)}
+.qa h3{font-size:clamp(24px,2.2vw,30px);line-height:1.08}
+.qa h3 em{color:var(--pink)}
+.qa p{margin-top:12px;font-size:16px;line-height:1.55;color:var(--ink2)}
+@media (max-width:900px){.qas{grid-template-columns:1fr}}
+
+/* ---------- the survey: 7 quick questions, full screen on phones ---------- */
+html.sv-on,html.sv-on body{overflow:hidden}
+.sv{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(26,20,18,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.sv[hidden]{display:none}
+.sv-card{position:relative;display:flex;flex-direction:column;width:min(600px,100%);max-height:calc(100vh - 48px);background:var(--cream);border:2px solid var(--ink);border-radius:28px;box-shadow:10px 10px 0 var(--acc),10px 10px 0 2px var(--ink);overflow:hidden}
+.sv-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px 8px}
+.sv-back,.sv-x{border:0;background:none;cursor:pointer;font:inherit;font-weight:700;color:var(--ink2);padding:6px 4px}
+.sv-x{font-size:28px;line-height:1;width:40px;height:40px;border-radius:50%}
+.sv-x:hover,.sv-back:hover{color:var(--pink)}
+.sv-prog{font-weight:800;font-size:14px;letter-spacing:.06em;color:var(--ink3);font-variant-numeric:tabular-nums}
+.sv-bar{height:6px;margin:0 22px;border-radius:999px;background:var(--sand);overflow:hidden}
+.sv-bar i{display:block;height:100%;width:0;background:var(--pink);border-radius:inherit;transition:width .35s var(--ease)}
+.sv.vip .sv-bar i{background:var(--ink)}
+.sv-body{padding:22px 26px 28px;overflow-y:auto}
+.sv-body h2{font-size:clamp(28px,4.2vw,40px);line-height:1.05}
+.sv-body p{margin-top:12px;font-size:17px;line-height:1.55;color:var(--ink2)}
+.sv-body .sv-note{margin-top:8px;font-size:15px;color:var(--ink3)}
+.sv-opts{display:grid;gap:10px;margin-top:20px}
+.sv-o{display:block;width:100%;text-align:left;border:1.8px solid var(--ink);border-radius:16px;background:#fff;padding:14px 18px;font:inherit;font-weight:700;font-size:16.5px;line-height:1.35;color:var(--ink);cursor:pointer;transition:background .15s,transform .15s}
+.sv-o:hover{background:var(--ysoft)}
+.sv-o.on{background:var(--sun)}
+.sv.vip .sv-o.on{background:var(--pk2)}
+.sv-opts.multi .sv-o{position:relative;padding-left:50px}
+.sv-opts.multi .sv-o::before{content:"";position:absolute;left:16px;top:50%;width:20px;height:20px;margin-top:-10px;border:1.8px solid var(--ink);border-radius:6px;background:#fff}
+.sv-opts.multi .sv-o.on::before{background:var(--ink)}
+.sv-act{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:22px}
+.sv-act .btn[disabled]{opacity:.45;cursor:default;transform:none}
+.sv-skip{border:0;background:none;cursor:pointer;font:inherit;font-weight:700;font-size:15px;color:var(--ink3);text-decoration:underline;text-underline-offset:3px}
+.sv-alt{font-size:15px}
+.sv-alt a{font-weight:800;color:var(--ink);text-underline-offset:3px}
+.sv-ok{font-weight:700;color:var(--green)}
+.sv-em{display:grid;gap:10px;margin-top:18px}
+.sv-em label{font-weight:800;font-size:15px}
+.sv-em label small{font-weight:600;color:var(--ink3)}
+.sv-em input{height:52px;border:1.8px solid var(--ink);border-radius:14px;padding:0 16px;font:inherit;font-size:17px;background:#fff}
+@media (max-width:640px){
+  .sv{padding:0}
+  .sv-card{width:100%;height:100%;max-height:none;border:0;border-radius:0;box-shadow:none}
+  .sv-body{padding:18px 20px 32px}
+  .sv-act .btn{flex:1 1 auto}
+}
+@media (prefers-reduced-motion: reduce){.sv-bar i{transition:none}}
+/* longer button labels (the Head start page, "any other calendar") wrap on phones instead of pushing the page wide */
+@media (max-width:640px){.act .go .btn{white-space:normal;height:auto;min-height:56px;padding:14px 22px;line-height:1.2;text-align:center}}
