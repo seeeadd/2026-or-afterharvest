@@ -191,7 +191,8 @@
   document.querySelectorAll('.bo').forEach(function(bo, i){
     bo.addEventListener('click', function(){
       var src = (C.BREAKOUTS || [])[i];
-      if (!src || bo.querySelector('video')) return;
+      if (bo.querySelector('video')) return;
+      if (!src) { bo.querySelector('.pl > span').textContent = "Ana's answer is on its way"; return }
       var v = document.createElement('video'); v.src = src; v.controls = true; v.playsInline = true; v.autoplay = true;
       bo.querySelector('.th').appendChild(v); track('video_play_breakout_' + (i + 1));
     });
