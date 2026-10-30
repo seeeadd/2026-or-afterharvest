@@ -1327,6 +1327,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       <h3 id="dlg-h">Save your seat for <em>all three days.</em></h3>
       <div class="field"><input type="text" name="first_name" placeholder="What your readers call you" autocomplete="given-name" aria-label="First name" required><span class="err">add your first name</span></div>
       <div class="field"><input type="email" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" aria-label="Email" required><span class="err">Almost. Check that email once more.</span></div>
+      <input type="text" name="ep_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn big send" type="submit">save my seat (free)<svg><use href="#arr"/></svg></button>
       <p class="note">You'll get my emails about the workshop and my program. Unsubscribe anytime. No hard feelings, no guilt email.</p>
       <p class="note">free · live on Zoom<span class="lt"></span></p>
@@ -1344,6 +1345,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 (function(){
   /* ---- settings Theia fills in ---- */
   var KIT_FORM_ID = '10120079';   // Kit form "Workshop registration" (numeric id). Empty = demo mode, nothing is sent.
+  var REG_URL     = '/api/ana-register'; // sends the sign-up to Kit through the API (api/ana-register.js); Kit's own form address is only the fallback
   var VIP_URL     = 'vip/'; // the VIP page (step 2); first_name and email go on the query string for the checkout prefill
   var VSL_SRC     = '';   // Ana's 60-second welcome video (mp4). Empty = the still with the play button.
   var PARTNERS    = 'partners.json'; // { "ref": "Partner newsletter name" }, from us by Wed Oct 28
@@ -1494,7 +1496,11 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
     try {sessionStorage.setItem('ana_reg', regJ)} catch (x) {}
     try {localStorage.setItem('ana_reg', regJ)} catch (x) {}
     if (!KIT_FORM_ID) {next();return}
-    fetch('https://app.kit.com/forms/'+KIT_FORM_ID+'/subscriptions',{method:'POST',body:new URLSearchParams(new FormData(form)),headers:{'Accept':'application/json'}}).then(next, next);
+    var data = new URLSearchParams(new FormData(form)); data.set('referrer', location.href);
+    function direct(){ return fetch('https://app.kit.com/forms/'+KIT_FORM_ID+'/subscriptions',{method:'POST',body:data,headers:{'Accept':'application/json'}}) }
+    fetch(REG_URL,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+      .then(function(r){ return r.ok ? r : direct() }, direct)
+      .then(next, next);
   });
 
   /* phone, sticky "on" half only: the bottom button once the hero button scrolls away, out of the way of the final button */

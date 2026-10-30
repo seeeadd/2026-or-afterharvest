@@ -16,7 +16,7 @@
   ],
   "redirects": [
     {
-      "source": "/((?!ana-calin/workshop/).*)",
+      "source": "/((?!ana-calin/workshop/|api/).*)",
       "has": [{ "type": "host", "value": "exitplan.howwegrowtoday.com" }],
       "destination": "/ana-calin/workshop/",
       "permanent": false
