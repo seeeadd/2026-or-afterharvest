@@ -13,5 +13,13 @@
       "source": "/community-boost/nms-2027/site.js",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/((?!ana-calin/workshop/).*)",
+      "has": [{ "type": "host", "value": "exitplan.howwegrowtoday.com" }],
+      "destination": "/ana-calin/workshop/",
+      "permanent": false
+    }
   ]
 }
