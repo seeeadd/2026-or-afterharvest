@@ -22,7 +22,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (e.isIntersecting) {
         if (!s.classList.contains('is-in')) {
           // plates side by side build one after another, a beat apart
-          var g = s.closest('.cb-trip,.cb-walk'), sg = g ? [].indexOf.call(g.querySelectorAll('.cb-anim'), s) * 0.28 : 0;
+          var g = s.closest('.cb-trip,.cb-walk,.cbc-cols'), sg = g ? [].indexOf.call(g.querySelectorAll('.cb-anim'), s) * 0.28 : 0;
           s.style.setProperty('--sg', sg + 's');
           s.classList.add('is-in');
           s.querySelectorAll('animate,animateTransform').forEach(function (a) { try { a.beginElementAt(sg); } catch (x) {} });
