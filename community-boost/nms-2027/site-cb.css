@@ -215,6 +215,114 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-al
 /* the schedule's day columns: the full plates, built when they come into view */
 .cbc-dh .cbc-art{margin:14px 0 0}
 
+/* ===== fourth pass (2026-11-12, Sean's 15 notes) ===== */
+/* hero: a bigger headline; the name sized to the slimmer mountain */
+.cb-hero-b .hb-h1{font-size:clamp(34px,3.95vw,60px)!important;max-width:none!important}
+.nms-on-mtn b{font-size:2.32em!important}
+.nms-on-mtn span{font-size:.7em!important}
+
+/* past summit speakers: two full rows of six, bigger faces, the five more as cards, then the organisations as a wall */
+.sp-alumni-cards.cb-past-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important;column-gap:16px!important;row-gap:22px!important}
+@container summit-alumni (max-width:614px){.sp-alumni-cards.cb-past-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+.cb-past-grid>li{min-width:0}
+.cb-past-grid .sp-archive-portrait{display:block!important;width:100%!important;height:auto!important;aspect-ratio:1/1;border-radius:14px!important;overflow:hidden;background:var(--cb-tint)}
+.cb-past-grid .sp-archive-portrait img{width:100%!important;height:100%!important;object-fit:cover;border-radius:0!important}
+.cb-past-grid .sp-directory-name b{font-size:15px!important}
+.cb-mono{display:grid!important;place-items:center;background:linear-gradient(160deg,var(--cb-bloom),var(--cb-tint))!important;box-shadow:inset 0 0 0 1px rgba(0,155,39,.18)}
+.cb-mono b{font-size:clamp(28px,3vw,44px);font-weight:750;letter-spacing:-.04em;color:var(--cb-cat)}
+.cb-more-tile{display:flex!important;flex-direction:column;justify-content:center;gap:6px;padding:18px;border-radius:14px;background:var(--cb-cat);color:#fff;aspect-ratio:1/1;align-self:start}
+.cb-more-tile b{font-size:clamp(30px,3.2vw,46px);font-weight:750;letter-spacing:-.04em;line-height:1;color:var(--cb-alt)}
+.cb-more-tile span{font-size:13px;line-height:1.3;color:rgba(255,255,255,.82)}
+.cb-orgs-wall{margin:30px 0 0;padding-top:20px;border-top:1px solid var(--cb-line)}
+.cb-orgs-h{margin:0 0 12px;font-size:13px;font-weight:650;color:var(--cb-ink2)}
+.cb-orgs-wall ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.cb-orgs-wall li{height:64px;display:grid;place-items:center;padding:8px 12px;border-radius:10px;background:#fff;border:1px solid var(--cb-line)}
+.cb-orgs-wall li img{max-height:28px;max-width:84%;width:auto;height:auto;object-fit:contain;filter:grayscale(1) contrast(1.1);opacity:.85;transition:filter .3s,opacity .3s}
+.cb-orgs-wall li:hover img{filter:none;opacity:1}
+.cb-orgs-wall .cb-word{font-weight:700;font-size:15px;letter-spacing:-.01em;color:#3d463d;text-align:center;line-height:1.15}
+.cb-orgs-wall .cb-and{background:var(--cb-tint);border-style:dashed;font-weight:600;font-size:13px;color:var(--cb-rad-d)}
+@media (max-width:700px){.cb-orgs-wall ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* "What you actually walk away with": one day at a time, as rows; a faint blueprint behind the heading */
+.cb-walk{grid-template-columns:1fr!important;gap:22px!important}
+.cb-wday{display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);align-items:stretch}
+.cb-wday:nth-child(2){grid-template-columns:minmax(0,1fr) minmax(0,1.08fr)}
+.cb-wday:nth-child(2) .cb-wart{order:2;border-right:0;border-left:1px solid var(--cb-line)}
+.cb-wart{border-bottom:0!important;border-right:1px solid var(--cb-line);display:flex;align-items:center;justify-content:center;padding:14px}
+.cb-wbody{padding:30px 34px 30px!important;justify-content:center}
+.cb-wday h3{font-size:clamp(22px,2vw,28px)!important}
+.cb-wbody>p{font-size:16px!important;max-width:52ch}
+.cb-deliv{margin-top:18px!important;padding-top:0!important}
+.d1 .cb-walk-head{position:relative}
+.d1 .cb-walk-head::after{content:"";position:absolute;right:0;top:-40px;width:min(560px,55%);aspect-ratio:800/497;background:url(assets/2027/tex/blueprint-elevation.webp) center/contain no-repeat;
+ filter:grayscale(1) contrast(2.4) brightness(.7);mix-blend-mode:screen;opacity:.2;pointer-events:none}
+@media (max-width:860px){.cb-wday,.cb-wday:nth-child(2){grid-template-columns:1fr!important}.cb-wart,.cb-wday:nth-child(2) .cb-wart{order:0!important;border:0!important;border-bottom:1px solid var(--cb-line)!important}.d1 .cb-walk-head::after{display:none}}
+
+/* "What would you build on Day 3?": one clean workshop viewer */
+.d2 .cb-ds,.d2 .ww-slot>span,.d2 .ww-session-name,.d2 .wm-panel-foot{display:none!important}
+.d2 .ww-workshop-surface{border:1px solid var(--cb-line)!important;border-radius:18px!important;box-shadow:0 30px 60px -44px rgba(7,20,7,.5)!important;padding:24px 26px 26px!important;background:#fff!important}
+.d2 .ww-picker-label{font-size:13px!important;font-weight:650!important;color:var(--cb-ink2)!important;margin-bottom:10px!important}
+.d2 .ww-choice{border-radius:10px!important}
+.d2 .ww-radio:checked+.ww-choice{background:var(--cb-cat)!important;border-color:var(--cb-cat)!important;color:#fff!important}
+.d2 .ww-radio:checked+.ww-choice b{color:#fff!important}
+.d2 .ww-intro{display:block!important;margin:20px 0 16px!important}
+.d2 .ww-intro h3{margin:0 0 6px!important}
+.d2 .ww-intro p{margin:0!important;max-width:60ch}
+
+/* the schedule: the old Google Calendar frame around the three days, a taped note for "times to come" */
+.cbc.gc{position:relative;overflow:visible!important;margin:36px auto 0!important;border:0!important;border-radius:14px!important;
+ box-shadow:0 0 0 1px rgba(7,20,7,.1),0 40px 70px -46px rgba(7,20,7,.55)!important;background:#fff!important}
+.cbc .gc-top{border-radius:14px 14px 0 0;border-bottom:1px solid #e6ebe3}
+.cbc .gc-main{border-radius:0 0 14px 14px;overflow:hidden}
+.cbc .gc-month{font-size:20px;font-weight:450;color:var(--cb-cat)}
+.cbc .gc-mini li.m0{background:var(--cb-rad)!important;color:#fff!important;border-radius:50%;font-weight:700}
+.cbc .gc-mini li.m1,.cbc .gc-mini li.m2{background:var(--cb-tint)!important;color:var(--cb-cat)!important;border-radius:50%;font-weight:700}
+.cbc .gc-cals .cbc-cal1{--c:var(--cb-alt)}.cbc .gc-cals .cbc-cal2{--c:var(--cb-rad)}.cbc .gc-cals .cbc-cal3{--c:var(--cb-cat)}
+.cbc-area{min-width:0;border-left:1px solid #e6ebe3}
+.cbc .cbc-dh{display:flex!important;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 14px 8px!important}
+.cbc .cbc-dow{font-size:11px!important;font-weight:600!important;letter-spacing:.08em;color:#5d6a5d!important}
+.cbc .cbc-num{display:grid!important;place-items:center;width:44px;height:44px;border-radius:50%;font-size:24px!important;font-weight:500!important;letter-spacing:-.02em;color:var(--cb-cat)!important;background:none!important}
+.cbc .cbc-d1 .cbc-num{background:var(--cb-rad)!important;color:#fff!important}
+.cbc-allday{margin:0 10px 10px;padding:5px 9px;border-radius:5px;font-size:12px;line-height:1.3;font-weight:500;color:var(--cb-cat);background:var(--cb-alt)}
+.cbc-allday b{font-weight:700;margin-right:3px}
+.cbc-d2 .cbc-allday{background:var(--cb-rad);color:#fff}
+.cbc-d3 .cbc-allday{background:var(--cb-cat);color:#fff}
+.cbc-day>.cbc-art{display:block;width:calc(100% - 20px);height:auto;margin:0 10px 12px;border-radius:8px;border:1px solid var(--cb-line);background:var(--cb-paper)}
+.cbc .cbc-list{padding:0 10px 14px!important}
+.cbc .cbc-ev{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.cbc .cbc-ev:hover{transform:translateY(-1px);box-shadow:0 8px 16px -10px rgba(7,20,7,.35)}
+.cbc-note{position:absolute;right:-26px;top:-44px;width:150px;transform:rotate(5deg);z-index:6;pointer-events:none;filter:drop-shadow(0 8px 10px rgba(7,20,7,.18))}
+.cbc-note img{display:block;width:100%;height:auto}
+.cbc-note span{position:absolute;left:14%;right:12%;top:40%;font-weight:700;font-size:15px;line-height:1.2;color:#2a2a1a;transform:rotate(-2deg)}
+@media (max-width:1000px){.cbc .gc-side{display:none!important}.cbc-area{border-left:0}.cbc-note{right:-6px;top:-38px;width:118px}.cbc-note span{font-size:12.5px}}
+
+/* partner with the 2027 summit: the head on one baseline, a blueprint behind the fence, a pencil arrow to the sign */
+.pt .pt-head{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)!important;align-items:end!important;gap:48px!important;margin-bottom:38px!important}
+.pt .pt-head h2{font-weight:750!important;letter-spacing:-.04em!important;line-height:1!important;font-size:clamp(36px,4.2vw,60px)!important}
+.pt .pt-head h2 em{display:block;font-weight:750!important;color:var(--cb-rad)!important}
+.pt .pt-head>p{margin:0 0 6px!important;padding:2px 0 2px 18px!important;border-left:3px solid var(--cb-rad)!important;font-size:17px!important;line-height:1.55!important;color:var(--cb-ink2)!important;max-width:40ch}
+.pt .pt-fence{position:relative;isolation:isolate}
+.pt .pt-history header h3{font-weight:750!important;letter-spacing:-.03em!important}
+@media (max-width:1000px){.pt .pt-head{grid-template-columns:1fr!important;gap:16px!important}}
+
+/* fourth pass, fixes after the look */
+.gc svg.cb-art{fill:none!important;width:auto!important;height:auto!important}
+.cb-past-grid .cb-mono{display:grid!important}
+.cb-more-tile{margin-top:13px}
+.cb-orgs-wall li.cb-sq img{max-height:44px;max-width:60%}
+.cbc-note{right:-20px;top:-92px}
+/* the open partner spots as plots on a blueprint: the summit's grid inside, a green dashed line, a solid line on hover */
+.pt .pt-slot>a{background:linear-gradient(rgba(7,20,7,.055) 1px,transparent 1px) 0 0/16px 16px,linear-gradient(90deg,rgba(7,20,7,.055) 1px,transparent 1px) 0 0/16px 16px,var(--cb-paper)!important;
+ border:1.5px dashed rgba(0,155,39,.55)!important;transition:border-color .3s,background-color .3s,transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s!important}
+.pt .pt-slot>a:hover{border-style:solid!important;border-color:var(--cb-rad)!important;transform:translateY(-2px);box-shadow:0 16px 26px -18px rgba(0,122,31,.45)}
+.pt .pt-slot>a b{color:var(--cb-cat)!important;font-weight:750!important}
+.pt .pt-slot>a small,.pt .pt-slot>a span{color:var(--cb-rad-d)!important}
+.cb-past-grid>li.cb-more-tile{padding:16px 16px 16px 18px!important;border-bottom:0!important}
+/* the calendar toolbar on a phone: menu, logo and the dates only; the note smaller, clear of the copy */
+@media (max-width:700px){.cbc .gc-top .gc-today,.cbc .gc-top button.gc-ib,.cbc .gc-top .gc-sp~*{display:none!important}
+ .cbc .gc-month{font-size:15px;margin-left:8px;white-space:nowrap}.cbc-note{width:92px;right:-4px;top:-50px}.cbc-note span{font-size:10.5px}}
+@media (max-width:700px){.cbc .gc-logo{font-size:0!important;gap:0!important}.cbc .gc-logo img{width:30px!important;height:30px!important}}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL extrusions). Without .cb-motion, or with reduced motion, every
    plate is simply its finished drawing. One build per plate, then a quiet loop that pauses off screen. */
