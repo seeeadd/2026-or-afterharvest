@@ -348,6 +348,11 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-al
 .cb-navdate b{font-weight:700;font-size:14px;color:var(--cb-cat);white-space:nowrap}
 .cb-navdate small{font-size:11.5px;font-weight:500;color:var(--cb-ink2);white-space:nowrap}
 .cb-navcal{color:var(--cb-rad)!important;stroke:none!important;fill:none!important}
+/* the summit name with depth: a stepped edge in the mountain's shade blue, then a soft shadow on the slope */
+.nms-on-mtn b{text-shadow:.02em .025em 0 #234F9C,.04em .05em 0 #234F9C,.06em .075em 0 #1E4588,.08em .1em 0 #1A3C78,
+ .1em .14em .12em rgba(7,20,7,.35)!important}
+.nms-on-mtn span{text-shadow:0 .08em 0 #234F9C}
+.nms-pic>.nms-on-mtn{margin-top:31.6%!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL extrusions). Without .cb-motion, or with reduced motion, every
