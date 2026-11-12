@@ -48,7 +48,7 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-al
 .hb-art .nms-land{filter:none!important}
 /* the caption sits on the mountains, inside the picture's own box, sized to it */
 .cb-hero-b .hb-main .hb-pano-balanced>.nms-pic{position:relative;container-type:inline-size}
-.nms-pic>.nms-on-mtn{position:absolute;left:0;right:0;top:0;margin-top:27.6%;z-index:3;pointer-events:none;
+.nms-pic>.nms-on-mtn{position:absolute;left:0;right:0;top:0;margin-top:32.6%;z-index:3;pointer-events:none;
  display:grid;justify-items:center;gap:.35em;text-align:center;color:#fff;font-size:2.65cqi}
 .nms-on-mtn span{font-weight:600;font-size:.8em;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.86);padding-left:.24em}
 .nms-on-mtn b{font-weight:750;font-size:2.7em;letter-spacing:-.035em;line-height:.95;white-space:nowrap}
@@ -218,7 +218,7 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-al
 /* ===== fourth pass (2026-11-12, Sean's 15 notes) ===== */
 /* hero: a bigger headline; the name sized to the slimmer mountain */
 .cb-hero-b .hb-h1{font-size:clamp(34px,3.95vw,60px)!important;max-width:none!important}
-.nms-on-mtn b{font-size:2.32em!important}
+.nms-on-mtn b{font-size:2.5em!important}
 .nms-on-mtn span{font-size:.7em!important}
 
 /* past summit speakers: two full rows of six, bigger faces, the five more as cards, then the organisations as a wall */
@@ -322,6 +322,10 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-al
 @media (max-width:700px){.cbc .gc-top .gc-today,.cbc .gc-top button.gc-ib,.cbc .gc-top .gc-sp~*{display:none!important}
  .cbc .gc-month{font-size:15px;margin-left:8px;white-space:nowrap}.cbc-note{width:92px;right:-4px;top:-50px}.cbc-note span{font-size:10.5px}}
 @media (max-width:700px){.cbc .gc-logo{font-size:0!important;gap:0!important}.cbc .gc-logo img{width:30px!important;height:30px!important}}
+/* the headline: as big as the column allows with its first line whole; each half balances when it has to wrap */
+.cb-hero-b .hb-h1 .hl{display:block;text-wrap:balance}
+.cb-hero-b .hb-h1 .hb-mech{display:block}
+@media (min-width:1200px){.cb-hero-b .hb-h1{font-size:min(52px,calc((100vw - 480px) / 18.9))!important}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL extrusions). Without .cb-motion, or with reduced motion, every
