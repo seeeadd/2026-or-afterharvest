@@ -353,6 +353,11 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-al
  .1em .14em .12em rgba(7,20,7,.35)!important}
 .nms-on-mtn span{text-shadow:0 .08em 0 #234F9C}
 .nms-pic>.nms-on-mtn{margin-top:31.6%!important}
+.footer .cb-foot-credit{flex-basis:100%;width:100%;margin:14px 0 0;font-size:10.5px;line-height:1.5;color:rgba(7,20,7,.45)}
+.footer .cb-foot-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+footer.footer{flex-wrap:wrap!important}
+.footer .cb-foot-credit{grid-column:1 / -1;order:9}
+.footer .cb-foot-credit a{font-size:inherit!important;font-weight:400!important;display:inline!important;padding:0!important;letter-spacing:0!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL extrusions). Without .cb-motion, or with reduced motion, every
