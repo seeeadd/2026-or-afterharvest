@@ -18,6 +18,32 @@
     addEventListener('scroll', onScroll, { passive: true }); onScroll();
   }
 
+  // the countdown to Day 1, 9:00 am Pacific (as on the previous page)
+  var start = new Date(NMS.day1Start || '2027-02-23T09:00:00-08:00').getTime();
+  var cd = document.querySelector('.cd');
+  if (cd) {
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var tick = function () {
+      var ms = start - Date.now();
+      if (ms <= 0) { cd.hidden = true; return; }
+      var s = Math.floor(ms / 1000), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+      cd.querySelector('[data-cd=days]').textContent = d;
+      cd.querySelector('[data-cd=hrs]').textContent = pad(h);
+      cd.querySelector('[data-cd=min]').textContent = pad(m);
+      cd.querySelector('[data-cd=sec]').textContent = pad(s % 60);
+    };
+    tick(); setInterval(tick, 1000);
+  }
+
+  // the menu on smaller screens
+  var menu = document.querySelector('.menu'), links = document.getElementById('nav-links');
+  if (menu && links) {
+    var setMenu = function (open) { links.classList.toggle('is-open', open); menu.setAttribute('aria-expanded', String(open)); menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation'); };
+    menu.addEventListener('click', function () { setMenu(!links.classList.contains('is-open')); });
+    links.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  }
+
   // every "Save my free seat" takes people to the form on the side and puts the cursor in it
   var reg = document.getElementById('register');
   function toForm(e) {
