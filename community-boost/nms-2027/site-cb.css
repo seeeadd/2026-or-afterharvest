@@ -270,7 +270,7 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-al
 .d2 .ww-intro p{margin:0!important;max-width:60ch}
 
 /* the schedule: the old Google Calendar frame around the three days, a taped note for "times to come" */
-.cbc.gc{position:relative;overflow:visible!important;margin:36px auto 0!important;border:0!important;border-radius:14px!important;
+.cbc.gc{position:relative;overflow:visible!important;margin-top:36px!important;border:0!important;border-radius:14px!important;
  box-shadow:0 0 0 1px rgba(7,20,7,.1),0 40px 70px -46px rgba(7,20,7,.55)!important;background:#fff!important}
 .cbc .gc-top{border-radius:14px 14px 0 0;border-bottom:1px solid #e6ebe3}
 .cbc .gc-main{border-radius:0 0 14px 14px;overflow:hidden}
@@ -326,6 +326,19 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-al
 .cb-hero-b .hb-h1 .hl{display:block;text-wrap:balance}
 .cb-hero-b .hb-h1 .hb-mech{display:block}
 @media (min-width:1200px){.cb-hero-b .hb-h1{font-size:min(52px,calc((100vw - 480px) / 18.9))!important}}
+/* the calendar inside the page column: a slimmer side panel, the speaker's face on the session picture, one chip per row */
+.cbc .gc-main{grid-template-columns:158px minmax(0,1fr)!important}
+.cbc .gc-side{padding:6px 6px 16px 6px!important}
+.cbc .gc-mini li{font-size:10.5px!important}
+.cbc .cbc-ev{grid-template-columns:60px 1fr!important;position:relative;padding:7px!important;gap:9px!important;align-items:start!important}
+.cbc .cbc-th{width:60px!important;height:40px!important}
+.cbc .cbc-face{position:absolute;left:46px;top:30px;width:24px!important;height:24px!important;border:2px solid #fff;box-shadow:0 2px 6px rgba(7,20,7,.25)}
+.cbc .cbc-tx b{font-size:13px!important;line-height:1.28!important}
+.cbc .cbc-tx small{font-size:11.5px!important}
+.cbc .cbc-chips{grid-template-columns:1fr!important}
+.cbc .cbc-chips li{font-size:12px!important}
+.cbc .cbc-allday{font-size:11.5px}
+.cbc .cbc-ev.cbc-ws{grid-template-columns:1fr!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL extrusions). Without .cb-motion, or with reduced motion, every
