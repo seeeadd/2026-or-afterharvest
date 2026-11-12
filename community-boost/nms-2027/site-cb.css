@@ -368,6 +368,11 @@ footer.footer{flex-wrap:wrap!important}
 .wm-figure,.wm-figure *{font-family:Geist,system-ui,-apple-system,sans-serif!important}
 .closing-poster svg text{font-family:Geist,system-ui,sans-serif!important}
 
+/* ---- press cards: the organisations as names (CB has no permission for their logos) ---- */
+.wa-names{list-style:none;margin:12px 0 6px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.wa-names li{display:flex;align-items:center;min-height:40px;font-size:12.5px;font-weight:650;line-height:1.2;letter-spacing:-.005em;color:var(--cb-cat);background:var(--cb-tint);border:1px solid var(--cb-line);border-radius:6px;padding:6px 9px}
+@media (max-width:700px){.cb-orgs-wall li{padding:8px 6px}.cb-orgs-wall .cb-word{font-size:13.5px;overflow-wrap:anywhere}}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL extrusions). Without .cb-motion, or with reduced motion, every
    plate is simply its finished drawing. One build per plate, then a quiet loop that pauses off screen. */
