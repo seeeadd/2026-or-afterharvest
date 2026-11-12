@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nonprofit Marketing Summit 2027 (sage) · Free, live online · Feb 23 and 24</title>
+<meta name="description" content="A free two-day live summit for nonprofit teams from Community Boost. Plan your 2027 marketing on Day 1. Build it on Day 2.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../fonts/geist.css">
+<script>
+/* Settings. Empty means hidden or not connected. The team fills these in. */
+window.NMS = {
+  day1Start: "2027-02-23T09:00:00-08:00",   // Tue Feb 23, 9:00 AM Pacific
+  day1End:   "2027-02-23T14:30:00-08:00",
+  day2Start: "2027-02-24T09:00:00-08:00",
+  day2End:   "2027-02-24T14:30:00-08:00",
+  formAction: "",                            // HubSpot form endpoint, once CB builds it
+  confirmUrl: "",                            // where people go after registering
+  privacyUrl: "https://nonprofitmarketingsummit.org/privacy-policy"
+};
+</script>
+<style>
+:root{
+  --forest:#1C2B1C; --forest-2:#243524; --forest-3:#314231; --green:#009B27; --green-dk:#00731D;
+  --mint:#73D88C; --mint-2:#A8E8B7; --tint:#EFF6F1; --paper:#F5F5F3; --white:#fff;
+  --ink:#1C2B1C; --text:#2A2F2A; --mute:#566158; --line:#DCE5DD; --line-dk:rgba(255,255,255,.12);
+  --s-rays:var(--mint); --s-sun:var(--green); --s-mountain:var(--forest); --s-text:var(--forest);
+  --ease:cubic-bezier(.2,.7,.2,1); --r:14px;
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--text);background:var(--white);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px,100% - 40px);margin:0 auto}
+.nw{white-space:nowrap}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{color:var(--ink);font-weight:700;letter-spacing:-.025em;line-height:1.08}
+h2{font-size:clamp(30px,4vw,46px)}
+.lede{font-size:19px;color:var(--mute);max-width:620px}
+.hl{color:var(--green-dk)}
+.dark .hl,.hero .hl{color:var(--mint)}
+.label{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-dk);margin-bottom:14px}
+.dark .label{color:var(--mint)}
+.ex{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:3px 9px;background:#fff}
+
+/* ---------- button with the summit mark: the sun rises behind the mountain ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:12px;border:0;cursor:pointer;text-decoration:none;
+  background:var(--mint);color:var(--forest);font-family:var(--mono);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;
+  padding:15px 22px 15px 15px;border-radius:10px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s;box-shadow:0 1px 0 rgba(0,0,0,.06),0 10px 30px -12px rgba(115,216,140,.55);overflow:hidden}
+.btn:hover{transform:translateY(-2px);background:#86E09C;box-shadow:0 1px 0 rgba(0,0,0,.06),0 18px 40px -14px rgba(115,216,140,.75)}
+.btn:active{transform:translateY(0)}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);transform:translateX(-120%);transition:transform .9s var(--ease)}
+.btn:hover::after{transform:translateX(120%)}
+.mk{width:30px;height:30px;flex:none;border-radius:8px;background:var(--forest);display:grid;place-items:center;overflow:hidden}
+.mk svg{width:26px;height:26px;overflow:visible}
+.mk .sun{transform:translateY(7px);transition:transform .55s var(--ease)}
+.mk .ray{stroke:var(--mint);stroke-width:1.6;stroke-linecap:round;opacity:0;transform-origin:14px 15px;transform:scale(.6);transition:opacity .4s .12s,transform .55s .12s var(--ease)}
+.btn:hover .mk .sun,.btn:focus-visible .mk .sun{transform:translateY(0)}
+.btn:hover .mk .ray,.btn:focus-visible .mk .ray{opacity:1;transform:scale(1)}
+.btn.go .mk .ray{animation:burst .7s var(--ease)}
+@keyframes burst{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+.btn.wide{width:100%;justify-content:center}
+.btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.btn.ghost:hover{background:rgba(255,255,255,.06)}
+
+/* ---------- top bar + floating pill ---------- */
+.top{position:absolute;inset:0 0 auto 0;z-index:20}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.brand svg{width:42px;height:39px;--s-mountain:#fff;--s-text:#fff}
+.brand b{font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
+.brand small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mint)}
+.by{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.62);font-size:13px}
+.by img{height:26px;width:auto}
+.pill{position:fixed;left:50%;top:14px;z-index:50;transform:translate(-50%,-140%);transition:transform .6s var(--ease);
+  display:flex;align-items:center;gap:16px;padding:8px 8px 8px 12px;border-radius:99px;background:rgba(28,43,28,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 0 0 1px rgba(115,216,140,.22),0 20px 50px -20px rgba(0,0,0,.6);color:#fff;white-space:nowrap}
+.pill.on{transform:translate(-50%,0)}
+.pill .ps{width:34px;height:32px;--s-mountain:#fff;--s-text:#fff}
+.pill .pt b{display:block;font-size:14px;font-weight:600;letter-spacing:-.01em}
+.pill .pt span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mint)}
+.cd{display:flex;align-items:center;gap:5px}
+.cd .dot{width:7px;height:7px;border-radius:50%;background:var(--mint);margin-right:6px;box-shadow:0 0 0 0 rgba(115,216,140,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(115,216,140,.55)}70%{box-shadow:0 0 0 9px rgba(115,216,140,0)}100%{box-shadow:0 0 0 0 rgba(115,216,140,0)}}
+.cd i{font-style:normal;font-family:var(--mono);font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 6px;min-width:34px;text-align:center}
+.cd i small{opacity:.55;margin-left:1px}
+.pill .btn{padding:10px 16px 10px 10px;font-size:12px}
+.pill .btn .mk{width:24px;height:24px;border-radius:6px}.pill .btn .mk svg{width:20px;height:20px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--forest);color:#fff;overflow:hidden;padding:150px 0 170px}
+.hero .bg{position:absolute;inset:0;background:url(../img/hero.jpg) center 40%/cover;opacity:.26;transform:scale(1.06);animation:drift 30s ease-in-out infinite alternate;filter:saturate(.55) blur(1px)}
+@keyframes drift{to{transform:scale(1.14) translate(-1.5%,1%)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:
+  radial-gradient(55% 65% at 85% 25%,rgba(0,155,39,.16),transparent 70%),
+  linear-gradient(180deg,rgba(28,43,28,.55) 0%,rgba(28,43,28,.82) 55%,var(--forest) 100%)}
+.hero .grid{position:absolute;inset:0;z-index:1;opacity:.07;background-image:linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(80% 60% at 50% 40%,#000,transparent)}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center}
+.when{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border-radius:99px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);font-size:14px;color:rgba(255,255,255,.88);margin-bottom:26px}
+.when .cal{width:30px;height:30px;border-radius:7px;background:#fff;color:var(--forest);display:grid;grid-template-rows:9px 1fr;overflow:hidden;text-align:center;font-weight:700;font-size:13px;line-height:1}
+.when .cal::before{content:"FEB";font-family:var(--mono);font-size:7px;letter-spacing:.06em;background:var(--green);color:#fff;display:grid;place-items:center}
+.when .cal span{display:grid;place-items:center}
+.when b{color:#fff;font-weight:600}
+.hero h1{color:#fff;font-size:clamp(40px,5.6vw,72px);letter-spacing:-.035em;line-height:1.02;margin-bottom:24px}
+.hero h1 .hl{background:linear-gradient(90deg,var(--mint),#C9F5D4 40%,var(--mint) 60%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 9s ease-in-out infinite}
+@keyframes shine{0%,70%{background-position:100% 0}100%{background-position:-120% 0}}
+.hero .sub{font-size:19px;color:rgba(255,255,255,.78);max-width:560px;margin-bottom:34px}
+.hero .sub b{color:#fff;font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.quiet{font-size:14px;color:rgba(255,255,255,.62)}
+.who{display:flex;align-items:center;gap:16px;margin-top:42px;padding-top:26px;border-top:1px solid var(--line-dk);max-width:560px}
+.faces{display:flex}
+.faces > *{width:46px;height:46px;border-radius:50%;border:2px solid var(--forest);margin-left:-10px;overflow:hidden;flex:none}
+.faces > *:first-child{margin-left:0}
+.faces img{object-fit:cover}
+.ph{position:relative;background:linear-gradient(135deg,#3A4E3A,#2A3B2A)}
+.ph::before{content:"";position:absolute;left:50%;top:30%;width:34%;height:34%;transform:translateX(-50%);border-radius:50%;background:rgba(255,255,255,.18)}
+.ph::after{content:"";position:absolute;left:50%;bottom:-18%;width:70%;height:50%;transform:translateX(-50%);border-radius:50% 50% 0 0;background:rgba(255,255,255,.14)}
+.who p{font-size:14px;color:rgba(255,255,255,.68);line-height:1.45}
+.who p b{color:#fff;font-weight:600}
+
+/* registration card */
+.reg{position:relative;background:#fff;color:var(--text);border-radius:20px;padding:28px;box-shadow:0 40px 90px -40px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08)}
+.reg::before{content:"";position:absolute;inset:-1px;border-radius:21px;padding:1px;background:linear-gradient(160deg,rgba(115,216,140,.9),rgba(115,216,140,0) 45%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.reg .days{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.day-t{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:12px;align-items:center}
+.day-t .n{font-size:30px;font-weight:700;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.day-t .n small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--green-dk);font-weight:500}
+.day-t b{display:block;font-size:15px;color:var(--ink);font-weight:600;line-height:1.2}
+.day-t span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:2px}
+.reg h3{font-size:22px;margin-bottom:4px}
+.reg .note{font-size:14px;color:var(--mute);margin-bottom:18px}
+.f{display:grid;gap:12px}
+.f .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.f label em{font-style:normal;font-weight:400;color:var(--mute)}
+.f input[type=text],.f input[type=email]{width:100%;height:48px;border:1px solid var(--line);border-radius:10px;padding:0 14px;background:var(--paper);transition:border-color .25s,background .25s,box-shadow .25s}
+.f input:focus{outline:0;border-color:var(--green);background:#fff;box-shadow:0 0 0 4px rgba(115,216,140,.25)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{margin:0;font-weight:500;font-size:13.5px;border:1px solid var(--line);border-radius:99px;padding:8px 13px;cursor:pointer;transition:all .25s var(--ease);background:#fff}
+.chips label:hover{border-color:var(--mint)}
+.chips input:checked + label{background:var(--forest);border-color:var(--forest);color:#fff}
+.chips input:focus-visible + label{outline:2px solid var(--green);outline-offset:2px}
+.f .btn{margin-top:6px}
+.fine{font-size:12px;color:var(--mute);text-align:center;margin-top:10px}
+.done{display:none;text-align:center;padding:20px 0 6px}
+.done .tick{width:56px;height:56px;margin:0 auto 14px}
+.done .tick path{stroke-dasharray:60;stroke-dashoffset:60;animation:draw .7s .1s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done h3{margin-bottom:6px}
+.reg.sent .f,.reg.sent .note,.reg.sent > h3{display:none}.reg.sent .done{display:block}
+
+/* ---------- two days (sheet over the hero) ---------- */
+.sheet{position:relative;z-index:3;margin-top:-110px}
+.sheet .in-sheet{background:#fff;border-radius:24px;box-shadow:0 30px 80px -40px rgba(28,43,28,.45),0 0 0 1px var(--line);padding:56px}
+.days2{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:38px}
+.dcard{border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:#fff}
+.dcard .art{position:relative;height:296px;background:var(--tint);border-bottom:1px solid var(--line);overflow:hidden}
+.dcard .art.dk{background:var(--forest)}
+.dcard .txt{padding:26px 28px 30px}
+.dcard .when2{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-dk);margin-bottom:8px}
+.dcard h3{font-size:28px;margin-bottom:10px}
+.dcard p{color:var(--mute)}
+.dcard .leave{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-size:15px;color:var(--ink)}
+.dcard .leave b{font-weight:600}
+.art .ex{position:absolute;right:14px;top:14px;z-index:3}
+/* blueprint sheet */
+.bp{position:absolute;left:28px;right:28px;top:30px;bottom:-12px;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 20px 40px -24px rgba(28,43,28,.4),0 0 0 1px var(--line);padding:18px 20px;
+  background-image:linear-gradient(rgba(0,155,39,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,155,39,.06) 1px,transparent 1px);background-size:18px 18px}
+.bp .bh{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.bp .bh b{font-size:14px;color:var(--ink)}
+.bp .bh span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--mute)}
+.bp .row{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.bp .row i{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:all .4s var(--ease)}
+.bp .row i svg{width:10px;height:10px;opacity:0;transition:opacity .3s}
+.bp .row span{font-size:14px;color:var(--ink)}
+.bp .row em{font-style:normal;font-size:12px;color:var(--mute);font-family:var(--mono)}
+.bp .row .bar{height:6px;border-radius:9px;background:var(--tint);width:0;transition:width .9s var(--ease)}
+.bp .row.ok i{background:var(--green);border-color:var(--green)}.bp .row.ok i svg{opacity:1}
+/* report */
+.rp{position:absolute;left:28px;right:28px;top:30px;bottom:-12px;background:#fff;border-radius:12px 12px 0 0;padding:18px 20px;box-shadow:0 30px 50px -24px rgba(0,0,0,.6)}
+.rp .bh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.rp .bh b{font-size:14px;color:var(--ink)}
+.rp .bh span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--mute)}
+.rp .chan{display:grid;grid-template-columns:84px 1fr 40px;gap:10px;align-items:center;font-size:13px;padding:7px 0}
+.rp .chan .tr{height:8px;border-radius:9px;background:var(--tint);overflow:hidden}
+.rp .chan .tr i{display:block;height:100%;width:0;border-radius:9px;background:var(--mint);transition:width 1.1s var(--ease)}
+.rp .chan .tr i.g{background:var(--green)}
+.rp .chan em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--mute);text-align:right}
+.rp .fix{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.rp .fix span{font-size:12px;border-radius:99px;padding:5px 10px;background:var(--tint);color:var(--ink);opacity:0;transform:translateY(6px);transition:all .5s var(--ease)}
+.rp .fix span b{color:var(--green-dk)}
+.in .rp .fix span{opacity:1;transform:none}
+.in .rp .fix span:nth-child(2){transition-delay:.25s}.in .rp .fix span:nth-child(3){transition-delay:.5s}
+
+/* ---------- stages ---------- */
+.sec{padding:120px 0}
+.paper{background:var(--paper)}
+.stages{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;margin-top:10px}
+.pick{display:grid;gap:12px;margin-top:30px}
+.pick button{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:all .35s var(--ease)}
+.pick button:hover{border-color:var(--mint);transform:translateX(4px)}
+.pick button[aria-pressed=true]{background:var(--forest);border-color:var(--forest);color:#fff;transform:none}
+.pick .rd{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line);flex:none;display:grid;place-items:center}
+.pick button[aria-pressed=true] .rd{border-color:var(--mint)}
+.pick button[aria-pressed=true] .rd::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--mint)}
+.pick b{display:block;font-size:16.5px;font-weight:600;color:inherit}
+.pick small{display:block;font-size:14px;color:var(--mute)}
+.pick button[aria-pressed=true] small{color:rgba(255,255,255,.65)}
+.everyone{margin-top:20px;font-size:15px;color:var(--mute);display:flex;gap:10px;align-items:flex-start}
+.everyone svg{flex:none;margin-top:3px}
+.stage{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px;min-height:420px;overflow:hidden}
+.stage .tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-dk);background:var(--tint);border-radius:99px;padding:6px 12px}
+.stage h3{font-size:34px;margin:16px 0 8px}
+.stage .for{color:var(--mute);margin-bottom:22px;max-width:480px}
+.sess{list-style:none;display:grid;gap:10px}
+.sess li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:14px 16px;border-radius:12px;background:var(--paper);font-size:15px;color:var(--ink);line-height:1.4}
+.sess li span{font-family:var(--mono);font-size:11px;color:var(--mute);padding-top:3px;white-space:nowrap}
+.stage .wt{margin-top:16px;font-size:12.5px;color:var(--mute)}
+.panel{display:none;animation:fadeup .5s var(--ease)}
+.panel.on{display:block}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- agenda ---------- */
+.dark{background:var(--forest);color:rgba(255,255,255,.78)}
+.dark h2,.dark h3{color:#fff}
+.dark .lede{color:rgba(255,255,255,.66)}
+.ag-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.tz{font-size:14px;color:rgba(255,255,255,.6)}
+.tz b{color:#fff;font-weight:600}
+.tabs{display:inline-flex;gap:6px;padding:5px;border-radius:12px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--line-dk);margin:38px 0 26px}
+.tabs button{border:0;background:transparent;color:rgba(255,255,255,.7);padding:10px 16px;border-radius:9px;cursor:pointer;font-size:14.5px;transition:all .3s}
+.tabs button[aria-selected=true]{background:#fff;color:var(--forest);font-weight:600}
+.tl{list-style:none;position:relative;display:grid;gap:4px}
+.tl::before{content:"";position:absolute;left:131px;top:16px;bottom:16px;width:1px;background:rgba(255,255,255,.14)}
+.tl li{display:grid;grid-template-columns:110px 44px 1fr;align-items:start;padding:14px 0}
+.tl .t{font-family:var(--mono);font-size:13px;color:#fff;padding-top:2px}
+.tl .t small{display:block;color:rgba(255,255,255,.45);font-size:11px;margin-top:3px}
+.tl .pt{width:11px;height:11px;border-radius:50%;background:var(--forest);border:2px solid var(--mint);margin:5px 0 0 16px}
+.tl li.key .pt{background:var(--mint);box-shadow:0 0 0 6px rgba(115,216,140,.15)}
+.tl h4{color:#fff;font-size:18px;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+.tl p{font-size:15px;color:rgba(255,255,255,.6);margin-top:4px}
+.tl .who2{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:13.5px;color:rgba(255,255,255,.75)}
+.tl .who2 img,.tl .who2 .ph{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.tl .soon{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mint);border:1px solid rgba(115,216,140,.35);border-radius:99px;padding:3px 9px}
+.tl .split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.tl .split div{border-radius:10px;padding:11px 13px;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--line-dk);font-size:14px;color:rgba(255,255,255,.85);line-height:1.35}
+.tl .split div small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mint);margin-bottom:4px}
+.room{display:flex;align-items:center;gap:18px;margin-top:34px;padding:20px 22px;border-radius:16px;background:rgba(115,216,140,.08);box-shadow:inset 0 0 0 1px rgba(115,216,140,.25)}
+.room .door{position:relative;width:46px;height:46px;border-radius:12px;background:var(--forest-3);flex:none;display:grid;place-items:center}
+.room .door::after{content:"";position:absolute;right:-3px;top:-3px;width:11px;height:11px;border-radius:50%;background:var(--mint);animation:pulse 2s infinite}
+.room b{color:#fff;font-weight:600}
+.room p{font-size:15px}
+.d2{display:none}
+.d2.on{display:block}
+.d2box{border-radius:16px;padding:26px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--line-dk);max-width:760px}
+.d2box h4{color:#fff;font-size:20px;margin-bottom:8px}
+
+/* ---------- proof ---------- */
+.proof-top{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ten{display:flex;align-items:baseline;gap:16px;margin:8px 0 18px}
+.ten b{font-size:clamp(84px,10vw,128px);line-height:.9;letter-spacing:-.06em;color:var(--ink);font-weight:700}
+.ten span{font-size:18px;color:var(--mute);line-height:1.35}
+.shot{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(28,43,28,.5),0 0 0 1px var(--line)}
+.shot img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.shot figcaption{position:absolute;left:14px;bottom:14px;font-size:12.5px;color:#fff;background:rgba(28,43,28,.75);backdrop-filter:blur(6px);padding:6px 11px;border-radius:99px}
+.shot .live{position:absolute;left:14px;top:14px;display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:#fff;background:rgba(28,43,28,.75);padding:5px 10px;border-radius:99px}
+.shot .live i{width:7px;height:7px;border-radius:50%;background:#FF5A4E}
+.logos{margin-top:80px}
+.logos p{font-size:14px;color:var(--mute);text-align:center;margin-bottom:26px}
+.lw{display:grid;grid-template-columns:repeat(6,1fr);gap:26px 34px;align-items:center;justify-items:center}
+.lw img{max-height:44px;width:auto;max-width:130px;filter:grayscale(1) contrast(1.1);opacity:.62;transition:all .4s var(--ease);mix-blend-mode:multiply}
+.lw img:hover{filter:none;opacity:1}
+.past{margin-top:90px}
+.past-h{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.past-h h3{font-size:28px}
+.past-h p{font-size:14px;color:var(--mute)}
+.pg{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.pp{position:relative}
+.pp .im{border-radius:14px;overflow:hidden;aspect-ratio:1;background:var(--tint)}
+.pp img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25);transition:transform .6s var(--ease),filter .6s}
+.pp:hover img{transform:scale(1.05);filter:none}
+.pp b{display:block;margin-top:10px;font-size:15px;color:var(--ink);font-weight:600;line-height:1.25}
+.pp span{font-size:13px;color:var(--mute)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:80px}
+.q{border-radius:16px;padding:26px;background:var(--paper);position:relative}
+.q::before{content:"";position:absolute;left:26px;top:0;width:40px;height:3px;background:var(--green);border-radius:0 0 3px 3px}
+.q p{font-size:17px;color:var(--ink);line-height:1.5}
+.q footer{margin-top:16px;font-size:13.5px;color:var(--mute)}
+.q footer b{color:var(--ink);font-weight:600}
+
+/* ---------- host ---------- */
+.host{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.hp{position:relative;max-width:420px}
+.hp .im{border-radius:50%;overflow:hidden;aspect-ratio:1;max-width:400px;box-shadow:0 0 0 10px #fff,0 0 0 11px var(--line);background:var(--tint)}
+.hp .im img{width:100%;height:100%;object-fit:cover}
+.hp .badge{position:absolute;right:0;bottom:18px;background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 20px 40px -20px rgba(28,43,28,.45),0 0 0 1px var(--line);display:flex;align-items:center;gap:12px}
+.hp .badge img{height:28px;width:auto}
+.hp .badge span{font-size:12.5px;color:var(--mute);line-height:1.3}
+.letter p{font-size:19px;color:var(--ink);line-height:1.6;margin-bottom:16px}
+.letter .sig{margin-top:22px;font-size:15px;color:var(--mute)}
+.letter .sig b{color:var(--ink);font-weight:600;display:block;font-size:17px}
+.nums{display:flex;gap:38px;margin-top:32px;padding-top:26px;border-top:1px solid var(--line);flex-wrap:wrap}
+.nums div b{display:block;font-size:34px;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.nums div span{font-size:13.5px;color:var(--mute)}
+
+/* ---------- faq ---------- */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
+.qa{border-top:1px solid var(--line)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-size:18px;font-weight:600;color:var(--ink)}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary i{width:28px;height:28px;border-radius:50%;background:var(--tint);flex:none;position:relative;transition:transform .35s var(--ease)}
+.qa summary i::before,.qa summary i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.6px;background:var(--forest);transform:translate(-50%,-50%)}
+.qa summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .35s var(--ease)}
+.qa details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.qa .a{padding:0 50px 22px 0;color:var(--mute)}
+
+/* ---------- final ---------- */
+.final{position:relative;background:var(--forest);color:#fff;text-align:center;padding:130px 0 70px;overflow:hidden}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 100%,rgba(0,155,39,.35),transparent 70%)}
+.final .wrap{position:relative}
+.final .big{width:150px;height:140px;margin:0 auto 30px;--s-mountain:#fff;--s-text:#fff}
+.final .big .sl-sun{transform:translateY(60px);transition:transform 1.6s var(--ease)}
+.final.in .big .sl-sun{transform:none}
+.final h2{color:#fff;font-size:clamp(36px,5vw,60px);margin-bottom:14px}
+.final p{color:rgba(255,255,255,.7);font-size:18px;margin-bottom:34px}
+.foot{position:relative;margin-top:100px;padding-top:30px;border-top:1px solid var(--line-dk);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13.5px;color:rgba(255,255,255,.55);text-align:left}
+.foot img{height:30px;width:auto}
+.foot a{color:rgba(255,255,255,.75);text-decoration:none}
+.foot a:hover{color:#fff}
+
+/* sticky phone CTA */
+.mcta{display:none}
+
+/* reveal */
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+[data-r].in{opacity:1;transform:none}
+[data-r="2"]{transition-delay:.12s}[data-r="3"]{transition-delay:.24s}
+
+/* ---------- responsive ---------- */
+@media (max-width:1060px){
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .reg{max-width:560px}
+  .stages,.proof-top,.host,.faq{grid-template-columns:1fr;gap:40px}
+  .pg{grid-template-columns:repeat(4,1fr)}
+  .lw{grid-template-columns:repeat(4,1fr)}
+  .quotes{grid-template-columns:1fr}
+  .hp{max-width:420px}
+  .pill .pt{display:none}
+}
+@media (max-width:420px){.by{display:none}}
+@media (max-width:760px){
+  body{font-size:16px}
+  .wrap{width:calc(100% - 32px)}
+  .top .wrap{height:70px}
+  .by span{display:none}
+  .w2{display:none}
+  .day-t span{font-size:9.5px}
+  .day-t{padding:11px 12px;gap:10px}
+  .brand b{font-size:13.5px}
+  .hero{padding:104px 0 140px}
+  .hero h1{font-size:40px;margin-bottom:18px}
+  .hero .sub{font-size:17px;margin-bottom:24px}
+  .when{font-size:13px;margin-bottom:20px}
+  .who{margin-top:30px}
+  .reg{padding:22px}
+  .f .two{grid-template-columns:1fr}
+  .sheet{margin-top:-90px}
+  .sheet .in-sheet{padding:30px 20px}
+  .days2{grid-template-columns:1fr;gap:20px}
+  .dcard .art{height:230px}
+  .bp,.rp{left:16px;right:16px}
+  .sec{padding:84px 0}
+  .stage{padding:22px;min-height:0}
+  .stage h3{font-size:28px}
+  .tl::before{left:96px}
+  .tl li{grid-template-columns:76px 40px 1fr}
+  .tl .split{grid-template-columns:1fr}
+  .pg{grid-template-columns:repeat(2,1fr)}
+  .lw{grid-template-columns:repeat(3,1fr);gap:22px}
+  .lw img{max-height:34px;max-width:96px}
+  .letter p{font-size:17px}
+  .hp .badge{right:12px}
+  .qa .a{padding-right:0}
+  .pill{left:16px;right:16px;transform:translateY(-140%);justify-content:space-between}
+  .pill.on{transform:none}
+  .pill .btn{display:none}
+  .mcta{display:block;position:fixed;left:16px;right:16px;bottom:14px;z-index:60;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mcta.on{transform:none}
+  .mcta .btn{width:100%;justify-content:center;box-shadow:0 20px 40px -12px rgba(0,0,0,.5)}
+  .foot{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  [data-r]{opacity:1;transform:none}
+  .mk .sun{transform:none}.mk .ray{opacity:1;transform:none}
+  .final .big .sl-sun{transform:none}
+}
+
+/* ================= Sage, cream and sunrise: the summit as a mountain, the event as a blueprint ================= */
+:root{
+  --forest:#1F3529; --forest-2:#27412F; --forest-3:#33503D; --green:#4E7A5A; --green-dk:#3D6347;
+  --mint:#C3D1B0; --mint-2:#DCE5CF; --tint:#E7ECDC; --paper:#F3EDE1; --white:#FBF8F1; --cream:#F7F2E8;
+  --sage:#B9C8A5; --sage-dk:#8FA57C; --sun:#EE7A3E; --sun-dk:#B4521E; --sun-soft:#F8D9C4;
+  --ink:#1F3529; --text:#33413A; --mute:#66705F; --line:#E3DCCB; --line-dk:rgba(243,237,225,.14);
+  --s-rays:var(--sage); --s-sun:var(--sun); --s-mountain:var(--forest); --s-text:var(--forest);
+}
+body{background:var(--cream)}
+.hl{color:var(--green-dk)}
+.label{color:var(--green-dk)}
+.label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sun)}
+.dark .label{color:var(--sage)}
+.ex{background:var(--white);border-color:var(--line)}
+
+/* button: deep sage with the sun mark */
+.btn{background:var(--forest);color:var(--cream);box-shadow:0 1px 0 rgba(0,0,0,.08),0 14px 30px -16px rgba(31,53,41,.7)}
+.btn:hover{background:#2A4636;box-shadow:0 1px 0 rgba(0,0,0,.08),0 22px 40px -18px rgba(31,53,41,.75)}
+.btn::after{background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.18) 48%,transparent 66%)}
+.mk{background:var(--cream);--mk-sun:var(--sun);--mk-mt:var(--forest);--mk-line:var(--cream)}
+.final .btn .mk{background:var(--forest);--mk-mt:var(--cream);--mk-line:var(--forest)}
+.mk .ray{stroke:var(--sun-dk)}
+.btn.ghost{color:var(--forest);box-shadow:inset 0 0 0 1px var(--line)}
+
+/* top bar on cream */
+.brand{color:var(--ink)}
+.brand svg{--s-mountain:var(--forest);--s-text:var(--forest)}
+.brand small{color:var(--sun-dk)}
+.by{color:var(--mute)}
+.pill{opacity:0;transition:transform .6s var(--ease),opacity .4s;background:rgba(247,242,232,.88);color:var(--ink);box-shadow:0 0 0 1px var(--line),0 20px 50px -24px rgba(31,53,41,.45)}
+.pill.on{opacity:1}
+.pill .ps{--s-mountain:var(--forest);--s-text:var(--forest)}
+.pill .pt span{color:var(--sun-dk)}
+.cd .dot{background:var(--sun);animation-name:pulseSun}
+@keyframes pulseSun{0%{box-shadow:0 0 0 0 rgba(238,122,62,.5)}70%{box-shadow:0 0 0 9px rgba(238,122,62,0)}100%{box-shadow:0 0 0 0 rgba(238,122,62,0)}}
+.cd i{background:var(--white);border-color:var(--line);color:var(--ink)}
+
+/* hero: cream, contour lines, the sun rising behind the pass */
+.hero{background:var(--cream);color:var(--text);padding:150px 0 190px}
+.hero::before{background:radial-gradient(42% 50% at 76% 46%,rgba(238,122,62,.16),transparent 70%),linear-gradient(180deg,transparent 70%,var(--cream))}
+.hero .bg,.hero .grid{display:none}
+.topo{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 62%);mask-image:linear-gradient(90deg,transparent 30%,#000 62%)}
+.topo path{fill:none;stroke:var(--sage);stroke-width:1.1;opacity:.6;stroke-dasharray:3000;stroke-dashoffset:3000;animation:contour 3.2s var(--ease) forwards;animation-delay:calc(var(--i) * 90ms)}
+.topo path.ck{stroke:var(--sage-dk);stroke-width:1.5}
+@keyframes contour{to{stroke-dashoffset:0}}
+.sunrise{position:absolute;z-index:1;right:calc(50% - 520px);top:62px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle at 50% 45%,#F49A62,var(--sun) 62%);opacity:.95;transform:translateY(120px);animation:rise 2.6s .4s var(--ease) forwards;filter:saturate(.95)}
+@keyframes rise{to{transform:translateY(0)}}
+.hero h1{color:var(--ink)}
+.hero h1 .hl{background:none;color:var(--ink);-webkit-background-clip:border-box;background-clip:border-box;animation:none;position:relative;display:inline-block}
+.hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;border-radius:3px;background:var(--sun);z-index:-1;transform:scaleX(0);transform-origin:left;animation:mark 1s 1.1s var(--ease) forwards}
+@keyframes mark{to{transform:scaleX(1)}}
+.hero .sub{color:var(--mute)}
+.hero .sub b{color:var(--ink)}
+.quiet{color:var(--mute)}
+.when{background:var(--white);box-shadow:0 0 0 1px var(--line);color:var(--mute)}
+.when b{color:var(--ink)}
+.when .cal::before{background:var(--sun)}
+.when .cal{box-shadow:0 0 0 1px var(--line)}
+.who{border-top-color:var(--line)}
+.who p{color:var(--mute)}.who p b{color:var(--ink)}
+.faces > *{border-color:var(--cream)}
+.ph{background:linear-gradient(135deg,var(--mint),var(--sage))}
+
+/* the registration card is a summit pass */
+.reg{background:var(--white);padding:0;border-radius:18px;box-shadow:0 50px 90px -50px rgba(31,53,41,.55),0 0 0 1px var(--line)}
+.reg::before{display:none}
+.pass-top{position:relative;background:var(--forest);color:var(--cream);border-radius:18px 18px 0 0;padding:26px 28px 22px;overflow:hidden}
+.pass-top::after{content:"";position:absolute;left:50%;top:12px;width:56px;height:9px;border-radius:9px;background:var(--cream);transform:translateX(-50%);opacity:.9}
+.pass-top .pr{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.pass-top .pr svg{width:62px;height:58px;--s-rays:#5E7D63;--s-mountain:var(--cream);--s-text:var(--cream)}
+.pass-top .pr .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage)}
+.pass-top .pr b{display:block;font-size:22px;letter-spacing:-.02em;margin-top:4px}
+.pass-top .topo2{position:absolute;inset:0;opacity:.18}
+.pass-top .topo2 path{fill:none;stroke:var(--sage);stroke-width:1.4}
+.perf{position:relative;height:0;border-top:2px dashed var(--line);margin:0 18px}
+.perf::before,.perf::after{content:"";position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)}
+.perf::before{left:-30px}.perf::after{right:-30px}
+.pass-body{padding:22px 28px 26px}
+.reg .days{margin-bottom:18px}
+.day-t{background:var(--cream);border-color:var(--line)}
+.day-t .n small{color:var(--sun-dk)}
+.f input[type=text],.f input[type=email]{background:var(--cream);border-color:var(--line)}
+.f input:focus{border-color:var(--green);box-shadow:0 0 0 4px rgba(185,200,165,.45)}
+.chips label{background:var(--white);border-color:var(--line)}
+.chips label:hover{border-color:var(--sage-dk)}
+.chips input:checked + label{background:var(--forest);border-color:var(--forest);color:var(--cream)}
+.done .tick circle{fill:var(--tint)}.done .tick path{stroke:var(--green)}
+
+/* two days: on a sage band */
+.sheet .in-sheet{background:var(--white);box-shadow:0 40px 80px -50px rgba(31,53,41,.5),0 0 0 1px var(--line)}
+.dcard{background:var(--white);border-color:var(--line)}
+.dcard .art{background:var(--tint);border-color:var(--line)}
+.dcard .art.dk{background:var(--forest)}
+.bp{background-color:var(--white);background-image:linear-gradient(rgba(78,122,90,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(78,122,90,.09) 1px,transparent 1px);box-shadow:0 20px 40px -24px rgba(31,53,41,.4),0 0 0 1px var(--line)}
+.bp .row.ok i{background:var(--green);border-color:var(--green)}
+.rp{background:var(--white)}
+.rp .chan .tr{background:var(--tint)}.rp .chan .tr i{background:var(--sage)}.rp .chan .tr i.g{background:var(--sun)}
+.rp .fix span{background:var(--tint)}.rp .fix span b{color:var(--sun-dk)}
+.dcard .when2{color:var(--sun-dk)}
+.dcard .leave{border-top-color:var(--line)}
+
+/* stages */
+.sec{background:transparent}
+.paper{background:var(--tint)}
+.pick button{background:var(--white);border-color:var(--line)}
+.pick button:hover{border-color:var(--sage-dk)}
+.pick button[aria-pressed=true]{background:var(--forest);border-color:var(--forest);color:var(--cream)}
+.pick button[aria-pressed=true] .rd{border-color:var(--sun)}
+.pick button[aria-pressed=true] .rd::after{background:var(--sun)}
+.pick button[aria-pressed=true] small{color:rgba(247,242,232,.65)}
+.stage{background:var(--white);border-color:var(--line)}
+.stage .tag{background:var(--sun-soft);color:var(--sun-dk)}
+.sess li{background:var(--cream)}
+.everyone svg circle{fill:var(--tint)}.everyone svg path{stroke:var(--green)}
+
+/* agenda: deep sage */
+.dark{background:var(--forest);color:rgba(247,242,232,.78)}
+.dark h2,.dark h3{color:var(--cream)}
+.tz b{color:var(--cream)}
+.tabs button[aria-selected=true]{background:var(--cream);color:var(--forest)}
+.tl h4{color:var(--cream)}
+.tl .pt{background:var(--forest);border-color:var(--sage)}
+.tl li.key .pt{background:var(--sun);border-color:var(--sun);box-shadow:0 0 0 6px rgba(238,122,62,.18)}
+.tl .soon{color:var(--sun);border-color:rgba(238,122,62,.45)}
+.tl .split div small{color:var(--sage)}
+.room{background:rgba(185,200,165,.10);box-shadow:inset 0 0 0 1px rgba(185,200,165,.3)}
+.room .door::after{background:var(--sun);animation-name:pulseSun}
+.room .door svg rect{stroke:var(--sage)}.room .door svg circle{fill:var(--sage)}
+.room b{color:var(--cream)}
+.dark{position:relative;overflow:hidden}
+.dark .topo3{position:absolute;inset:0;opacity:.09}
+.dark .topo3 path{fill:none;stroke:var(--sage);stroke-width:1.2}
+.dark .wrap{position:relative}
+
+/* proof */
+.ten b{color:var(--ink)}
+.ten b sup{font-size:.35em;color:var(--sun);vertical-align:top;margin-left:4px}
+.shot{box-shadow:0 30px 60px -30px rgba(31,53,41,.5),0 0 0 1px var(--line)}
+.shot figcaption,.shot .live{background:rgba(31,53,41,.78)}
+.lw img{mix-blend-mode:multiply;opacity:.55;filter:grayscale(1) sepia(.15) contrast(1.05)}
+.pp .im{background:var(--tint)}
+.pp img{filter:grayscale(.35) sepia(.12)}
+.q{background:var(--white);box-shadow:0 0 0 1px var(--line)}
+.q::before{background:var(--sun)}
+
+/* host on sage */
+.hp .im{box-shadow:0 0 0 10px var(--white),0 0 0 11px var(--line)}
+.hp .badge{background:var(--white);box-shadow:0 20px 40px -20px rgba(31,53,41,.45),0 0 0 1px var(--line)}
+.nums{border-top-color:rgba(31,53,41,.12)}
+
+/* faq */
+.qa,.qa details{border-color:var(--line)}
+.qa summary i{background:var(--tint)}
+
+/* final: sunrise over the summit */
+.final{background:linear-gradient(180deg,var(--forest) 0%,#2D4A38 55%,#46664F 100%)}
+.final::before{background:radial-gradient(45% 55% at 50% 108%,rgba(238,122,62,.55),transparent 70%)}
+.final h2{color:var(--cream)}
+.final p{color:rgba(247,242,232,.75)}
+.final .big{--s-mountain:var(--cream);--s-text:var(--cream);--s-rays:#7E9A7F}
+.final .btn{background:var(--cream);color:var(--forest)}
+.final .btn:hover{background:#fff}
+.foot{border-top-color:var(--line-dk);color:rgba(247,242,232,.6)}
+.foot a{color:rgba(247,242,232,.8)}
+
+/* phone */
+@media (max-width:760px){
+  .hero{padding:100px 0 150px}
+  .sunrise{width:150px;height:150px;right:-56px;top:-40px;opacity:.9}
+  .topo{-webkit-mask-image:linear-gradient(180deg,#000,transparent 60%);mask-image:linear-gradient(180deg,#000,transparent 60%)}
+  .reg{transform:none}
+  .pass-top{padding:22px 20px 18px}
+  .pass-body{padding:18px 20px 22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .topo path{stroke-dashoffset:0}
+  .sunrise{transform:none}
+  .hero h1 .hl::after{transform:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="seal" viewBox="0 0 1431 1334"><path class="sl-rays" fill="var(--s-rays)" fill-rule="evenodd" d="M963 738 954 760 941 783 933 793 932 799 1218 979 1233 990 1250 1000 1254 999 1281 940 1298 891 1302 869 1194 829 1111 794 1074 782 981 743ZM474 738 470 737 458 743 454 743 361 782 349 785 288 808 241 829 132 869 140 901 162 961 181 1000 185 1000 202 990 217 979 503 799 504 794 484 762ZM981 657 977 693 970 717 971 722 1079 757 1115 772 1204 800 1269 825 1273 825 1310 838 1315 811 1321 754 1321 693 1318 665 1218 666 1154 663 1128 664ZM456 657 307 664 281 663 217 666 116 665 113 721 114 757 119 806 125 838 162 825 166 825 231 800 320 772 356 757 467 721 458 681ZM1313 620 1299 556 1286 517 1264 464 1259 464 1227 477 1184 490 1088 528 971 568 978 598 982 634 1080 628 1178 627 1238 624 1313 626ZM122 619 122 626 197 624 257 627 355 628 456 634 459 598 461 595 466 568 420 554 399 545 331 522 251 490 208 477 176 464 171 464 156 498 144 531 133 567ZM1135 285 1128 288 968 439 924 475 924 479 937 496 953 523 963 546 970 545 993 534 1043 516 1096 494 1177 466 1207 452 1248 437 1248 433 1240 418 1203 362 1177 329ZM300 285 271 314 239 352 207 398 188 430 186 437 228 452 258 466 355 500 392 516 442 534 470 547 474 547 486 519 505 489 512 481 513 477 467 439 307 288ZM961 169 956 170 944 202 932 225 912 271 887 319 874 351 860 378 842 406 842 411 872 429 904 457 908 457 913 450 957 407 1112 268 1110 262 1050 217 1003 189ZM475 168 430 190 388 215 337 252 323 264 323 268 478 407 522 450 529 459 531 459 557 435 593 412 594 408 575 378 561 351 548 319 523 271 503 225 491 202 478 168ZM735 118 732 119 733 200 731 225 731 292 733 306 731 379 778 386 817 398 824 376 843 334 855 314 918 187 931 166 933 158 907 148 862 135 853 134 847 131 798 123ZM701 118 645 122 606 128 547 142 502 157 504 166 517 187 580 314 592 334 611 376 619 399 663 385 704 379 702 306 704 292 704 225 702 200 703 119Z"/><path class="sl-sun" fill="var(--s-sun)" fill-rule="evenodd" d="M539 513 524 537 513 560 507 577 499 615 500 618 497 643 501 682 509 714 516 732 527 754 540 773 546 772 699 674 711 668 717 667 724 668 736 674 893 774 898 773 919 737 929 711 936 685 939 658 939 628 936 603 927 568 913 536 889 501 868 479 851 465 833 453 810 441 774 428 747 423 731 422 691 423 657 430 633 438 609 450 590 462 576 473 555 493Z"/><path class="sl-mountain" fill="var(--s-mountain)" fill-rule="evenodd" d="M204 1037 204 1041 237 1089 280 1139 316 1174 342 1196 404 1239 446 1262 478 1277 517 1292 555 1304 632 1320 702 1326 736 1326 777 1323 857 1310 932 1287 974 1269 1010 1251 1071 1212 1106 1185 1139 1155 1189 1100 1213 1068 1231 1040 1230 1036 964 868 960 869 939 903 933 916 921 929 916 929 914 931 905 930 850 906 842 904 790 961 786 964 772 968 765 968 756 965 719 938 716 938 677 966 663 968 649 964 593 904 585 906 530 930 521 931 519 929 514 929 502 916 496 903 475 869 471 868Z"/><path class="sl-text" fill="var(--s-text)" fill-rule="evenodd" d="M1375 720 1368 725 1366 728 1365 734 1367 740 1371 744 1376 746 1384 745 1390 739 1391 729 1390 726 1385 721ZM56 720 49 725 47 729 47 736 54 745 62 746 67 744 71 740 73 731 71 726 67 722 63 720ZM10 656 9 684 8 685 8 700 9 701 22 701 24 687 91 690 91 675 27 672 24 670 25 661 24 656ZM1420 649 1407 649 1406 650 1406 663 1402 665 1340 668 1339 669 1340 683 1407 680 1408 681 1408 694 1422 694 1423 684 1422 683ZM1417 620 1407 620 1367 626 1336 629 1335 630 1336 642 1337 644 1343 644 1351 642 1359 642 1367 640 1418 634ZM20 581 19 587 20 595 48 599 49 605 46 624 44 627 14 623 12 638 93 650 95 635 61 630 60 629 63 604 65 601 92 606 100 606 102 592 28 580ZM1396 520 1378 520 1377 521 1314 524 1313 525 1316 538 1335 538 1353 536 1366 536 1367 537 1364 540 1324 564 1323 569 1326 578 1371 582 1379 584 1375 587 1333 604 1332 607 1335 618 1343 616 1412 586 1408 572 1358 568 1349 566 1352 563 1397 536 1399 534 1399 529ZM37 512 27 550 28 554 106 574 116 539 117 531 103 528 97 553 95 556 89 554 78 552 74 549 81 524 80 521 73 519 67 519 61 544 59 546 56 546 45 542 52 514 43 511ZM1356 413 1346 414 1275 431 1275 434 1280 444 1327 433 1330 434 1291 469 1292 475 1296 482 1327 480 1328 479 1342 479 1343 478 1349 479 1346 482 1307 506 1307 511 1311 519 1316 518 1381 477 1381 472 1376 462 1346 465 1332 465 1331 466 1318 466 1317 465 1361 426ZM83 396 78 409 126 431 116 434 65 441 62 443 59 449 58 456 129 488 132 488 137 478 136 474 90 453 93 451 153 442 158 432 158 428 87 396ZM1312 334 1308 334 1267 358 1258 364 1250 373 1248 379 1248 390 1250 396 1254 403 1263 411 1275 414 1285 412 1338 381 1338 378 1333 369 1330 368 1279 398 1275 399 1271 398 1265 393 1262 385 1266 377 1318 346ZM145 316 129 322 119 331 111 346 110 367 112 374 119 386 131 396 137 399 149 402 163 401 176 396 187 386 195 371 196 352 190 336 177 323 160 316ZM142 332 146 331 162 332 169 336 177 344 180 350 182 358 180 369 176 376 165 385 159 387 145 386 136 381 126 369 124 362 125 350 130 341 135 336ZM1281 288 1274 284 1264 283 1256 286 1250 292 1246 304 1244 332 1242 337 1237 341 1230 339 1225 333 1225 325 1227 318 1217 314 1213 314 1210 323 1210 334 1217 347 1227 354 1241 355 1248 352 1255 345 1259 334 1261 304 1265 298 1270 298 1274 302 1276 307 1275 311 1276 317 1289 319 1290 303 1287 295ZM198 232 190 241 190 243 226 273 229 277 226 278 172 270 165 270 159 277 158 282 217 333 220 333 228 324 228 322 189 288 192 287 246 295 253 295 261 286 261 283 201 232ZM1168 191 1154 196 1143 205 1138 212 1134 221 1132 230 1132 239 1134 248 1139 258 1150 270 1163 277 1182 278 1189 276 1200 270 1205 265 1205 262 1178 236 1175 236 1168 244 1168 246 1183 262 1179 264 1169 264 1161 260 1152 251 1147 237 1148 227 1153 217 1159 211 1166 207 1182 206 1191 210 1199 217 1204 225 1207 239 1221 239 1221 229 1218 219 1214 212 1203 200 1188 192ZM244 190 232 199 220 211 220 213 261 258 274 271 276 271 285 263 285 261 263 237 263 235 267 232 275 222 277 216 276 204 272 197 261 189 250 188ZM256 203 261 207 262 215 252 225 243 216 241 211 248 205 252 203ZM301 144 274 162 274 166 320 227 325 228 333 222 333 218 314 193 315 191 348 207 353 207 362 200 362 197 329 182 327 179 330 174 331 164 327 154 320 147 314 144 309 143ZM308 158 311 159 315 163 316 170 308 178 304 180 294 166 302 160ZM1098 122 1056 180 1052 188 1061 195 1064 195 1094 154 1096 156 1095 157 1093 217 1103 225 1106 225 1151 162 1152 158 1144 152 1140 151 1109 193 1108 186 1109 185 1111 129 1102 122ZM1068 102 1063 103 1024 170 1025 173 1034 178 1038 177 1077 110 1077 107ZM380 93 372 95 364 99 352 110 345 125 344 142 349 157 361 171 375 178 390 180 400 178 409 174 421 164 429 148 430 130 428 122 424 114 419 107 411 100 397 94ZM380 108 392 108 400 111 409 119 415 131 415 143 410 154 402 161 392 165 379 164 370 159 362 149 359 141 359 129 363 120 370 113ZM1015 74 1011 75 1007 83 1007 87 1017 92 1018 95 989 152 989 154 999 159 1003 159 1031 102 1033 100 1046 106 1052 95 1052 93ZM463 55 453 58 426 70 457 145 461 145 470 141 469 134 457 106 480 96 475 83 453 92 450 90 446 81 447 77 468 68ZM959 52 929 125 929 128 970 144 974 135 974 130 949 120 948 118 954 103 957 99 982 109 984 109 988 100 987 95 962 85 966 73 968 71 995 81 1000 68 962 52ZM492 44 481 48 481 52 506 125 510 126 520 122 520 118 495 45ZM884 29 864 97 862 108 873 111 877 110 883 86 887 78 901 118 904 120 918 123 901 71 937 45 937 43 920 39 893 59 892 55 897 40 898 32ZM552 28 547 28 508 39 512 53 522 50 525 50 527 52 544 114 558 111 558 107 541 47 544 44 555 41ZM812 15 799 96 809 98 814 97 819 65 821 64 823 67 834 102 849 104 849 100 838 69 838 66 840 64 847 62 853 56 857 46 856 33 854 29 848 23 842 20ZM826 32 835 33 841 37 842 45 838 50 831 51 824 50 822 48 824 34ZM744 9 708 90 724 90 729 77 732 74 764 75 767 79 771 93 786 94 782 78 759 10ZM750 32 752 34 760 59 759 60 740 60 738 57ZM682 9 667 10 655 64 653 68 649 62 628 14 613 15 607 98 621 97 622 95 624 57 626 46 628 47 648 94 662 93 671 52 675 41 677 44 689 90 703 89Z"/></symbol>
+  <symbol id="mk" viewBox="0 0 28 28">
+    <g class="rays"><line class="ray" x1="14" y1="5" x2="14" y2="2"/><line class="ray" x1="7.5" y1="7.8" x2="5.5" y2="5.8"/><line class="ray" x1="20.5" y1="7.8" x2="22.5" y2="5.8"/><line class="ray" x1="4.8" y1="13.5" x2="2" y2="13.5"/><line class="ray" x1="23.2" y1="13.5" x2="26" y2="13.5"/></g>
+    <clipPath id="above"><rect x="0" y="0" width="28" height="19"/></clipPath>
+    <circle class="sun" cx="14" cy="15" r="6" fill="var(--mk-sun,#009B27)" clip-path="url(#above)"/>
+    <path d="M1 25 L10.5 15.5 L13 18 L16.5 13.5 L27 25 Z" fill="var(--mk-mt,#fff)"/>
+    <path d="M10.5 15.5 L12 17 L13 16 L14.5 17 L16.5 13.5" fill="none" stroke="var(--mk-line,#1C2B1C)" stroke-width=".9" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="tick" viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.6 9.6 3.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- floating pill after the hero -->
+<div class="pill" id="pill" aria-hidden="true">
+  <svg class="ps"><use href="#seal"/></svg>
+  <div class="pt"><b>Nonprofit Marketing Summit 2027</b><span>Feb 23 and 24 · Free · Online</span></div>
+  <div class="cd" data-cd><span class="dot"></span><i data-d>00<small>d</small></i><i data-h>00<small>h</small></i><i data-m>00<small>m</small></i></div>
+  <a class="btn" href="#register" tabindex="-1"><span class="mk"><svg><use href="#mk"/></svg></span>Save my free seat</a>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Nonprofit Marketing Summit 2027">
+      <svg aria-hidden="true"><use href="#seal"/></svg>
+      <span><b>Nonprofit Marketing Summit</b><small>2027 · Architects of Impact</small></span>
+    </a>
+    <div class="by"><span>Hosted by</span><img src="../img/cb-lockup.svg" alt="Community Boost"></div>
+  </div>
+</header>
+
+<main id="top">
+<!-- ===== hero ===== -->
+<section class="hero">
+  <div class="bg" aria-hidden="true"></div><div class="grid" aria-hidden="true"></div><svg class="topo" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="c" style="--i:1" d="M1152 520 1151 524 1149 528 1147 533 1144 536 1140 540 1135 543 1129 545 1122 547 1115 548 1108 548 1102 548 1096 548 1091 549 1085 550 1080 551 1074 553 1067 555 1060 556 1052 556 1044 556 1038 554 1032 551 1027 547 1023 544 1020 540 1017 536 1014 532 1012 528 1011 524 1011 520 1012 516 1014 512 1018 508 1022 505 1027 502 1031 500 1036 497 1040 494 1044 492 1049 489 1054 486 1060 484 1066 483 1073 482 1080 483 1086 485 1092 486 1098 488 1103 490 1109 491 1115 492 1122 493 1129 495 1135 497 1141 500 1146 503 1149 507 1151 511 1152 516 1152 520Z"/><path class="c" style="--i:2" d="M1216 520 1213 528 1207 536 1198 542 1188 548 1177 553 1167 556 1157 560 1148 564 1141 569 1134 574 1127 581 1118 588 1108 595 1095 601 1080 604 1065 605 1049 603 1035 600 1022 596 1009 591 997 586 986 580 976 574 967 568 960 560 956 552 955 543 956 535 959 527 962 520 966 513 968 506 971 499 972 492 974 485 978 477 983 470 991 463 1002 458 1014 454 1028 452 1042 452 1055 452 1068 451 1080 451 1093 449 1106 448 1121 447 1136 447 1151 449 1165 453 1177 458 1186 465 1195 472 1201 480 1207 487 1211 495 1215 503 1216 512 1216 520Z"/><path class="c" style="--i:3" d="M1289 520 1292 533 1290 546 1281 558 1269 569 1253 578 1238 586 1222 594 1208 602 1194 611 1179 619 1163 628 1145 635 1124 640 1102 642 1080 641 1059 638 1039 631 1022 624 1007 615 994 606 982 598 969 591 956 585 942 578 928 571 915 562 905 553 898 542 894 531 891 520 889 508 886 496 883 483 882 469 884 455 892 441 905 429 923 420 946 413 971 411 996 411 1020 413 1042 416 1062 419 1080 422 1097 424 1115 425 1133 426 1151 428 1170 430 1187 435 1203 441 1217 448 1229 457 1240 467 1250 476 1261 486 1272 496 1282 508 1289 520Z"/><path class="ck" style="--i:4" d="M1346 520 1346 536 1340 552 1328 567 1312 580 1295 592 1277 603 1260 613 1242 624 1224 634 1204 644 1182 652 1158 658 1132 662 1106 664 1080 663 1054 660 1030 656 1006 651 983 646 958 642 931 639 901 635 870 629 840 621 814 609 795 593 786 575 786 556 793 537 804 520 817 504 830 489 843 475 856 462 870 450 887 439 907 430 928 422 949 416 970 410 991 405 1012 399 1033 392 1055 385 1080 377 1107 370 1137 365 1169 362 1201 363 1231 369 1257 379 1277 394 1291 410 1300 428 1307 444 1314 460 1323 474 1332 489 1341 504 1346 520Z"/><path class="c" style="--i:5" d="M1368 520 1361 537 1355 554 1353 571 1353 590 1351 610 1345 631 1331 651 1309 667 1279 678 1245 685 1210 689 1176 691 1144 694 1112 697 1080 702 1046 706 1010 709 973 710 936 707 900 700 866 690 837 676 813 659 795 640 783 619 776 598 771 578 768 558 766 539 766 520 771 501 781 483 798 467 820 453 844 441 867 431 887 419 902 406 915 389 929 369 948 349 973 329 1004 314 1041 304 1080 300 1120 302 1158 308 1193 318 1226 331 1255 345 1281 360 1304 376 1324 393 1342 410 1358 427 1370 445 1377 464 1378 483 1375 502 1368 520Z"/><path class="c" style="--i:6" d="M1460 520 1480 544 1494 571 1499 599 1495 627 1479 653 1453 676 1417 695 1373 708 1327 716 1280 720 1236 723 1196 726 1157 730 1119 736 1080 741 1040 742 1000 738 962 729 929 716 900 700 873 685 845 671 816 657 785 644 754 629 727 611 707 590 695 567 692 544 695 520 702 497 713 475 726 453 739 432 753 411 767 389 783 365 801 341 825 317 855 295 894 278 939 269 987 267 1035 273 1080 285 1120 298 1157 310 1192 321 1226 331 1259 341 1289 354 1315 369 1336 387 1352 406 1365 425 1378 443 1395 461 1415 479 1438 498 1460 520Z"/><path class="c" style="--i:7" d="M1606 520 1610 552 1603 584 1582 614 1552 641 1514 665 1472 685 1431 703 1390 719 1350 735 1308 748 1263 757 1215 761 1168 758 1122 751 1080 742 1041 735 1002 732 960 733 914 736 863 738 811 734 762 724 721 707 689 684 666 658 650 631 640 603 633 575 629 547 627 520 627 493 629 465 633 436 641 407 655 378 678 351 710 327 751 309 798 296 848 288 896 282 943 276 988 269 1033 263 1080 259 1127 260 1172 269 1213 284 1246 304 1274 326 1300 345 1327 362 1359 375 1397 387 1440 400 1485 416 1526 436 1562 461 1589 489 1606 520Z"/><path class="ck" style="--i:8" d="M1614 520 1595 551 1576 581 1563 611 1554 642 1544 675 1527 708 1499 738 1457 762 1405 778 1347 787 1289 791 1234 793 1182 796 1131 801 1080 805 1028 805 977 801 928 791 883 776 843 757 807 737 772 718 738 698 704 678 669 657 633 635 595 611 555 584 516 554 483 520 463 483 461 444 480 407 519 376 572 351 631 332 689 316 741 302 788 288 833 273 880 260 929 251 980 249 1031 253 1080 260 1126 268 1171 274 1217 277 1266 279 1319 281 1374 286 1430 295 1484 310 1533 330 1575 355 1608 384 1628 417 1636 452 1630 487 1614 520Z"/><path class="c" style="--i:9" d="M1683 520 1691 557 1679 594 1650 627 1609 656 1563 681 1516 703 1471 723 1427 743 1383 761 1339 779 1293 796 1245 813 1194 830 1139 846 1080 859 1017 867 952 868 888 861 827 848 768 832 709 815 648 797 586 777 528 752 481 720 455 681 453 638 474 594 510 555 551 520 587 490 613 463 630 435 640 407 651 377 667 347 689 317 718 288 754 261 795 235 843 212 896 193 954 179 1016 170 1080 165 1145 164 1211 165 1278 169 1345 177 1408 192 1463 216 1505 247 1532 285 1549 323 1560 360 1575 393 1598 423 1628 453 1660 485 1683 520Z"/><path class="c" style="--i:10" d="M1712 520 1674 556 1634 588 1598 617 1568 646 1542 674 1519 704 1495 736 1469 769 1439 805 1403 843 1358 880 1301 913 1234 938 1158 951 1080 951 1003 942 930 927 861 910 793 893 725 875 660 854 604 825 564 788 544 745 542 699 551 656 561 617 563 583 553 552 533 520 511 485 493 448 487 409 493 369 512 331 542 294 582 261 630 231 687 207 749 189 815 176 881 167 947 158 1012 147 1080 135 1152 125 1227 121 1301 128 1368 146 1426 174 1474 207 1516 240 1559 271 1606 299 1655 328 1701 360 1734 397 1748 438 1739 480 1712 520Z"/><path class="c" style="--i:11" d="M1811 520 1795 563 1782 606 1765 649 1734 688 1686 722 1622 747 1548 764 1476 774 1412 784 1359 799 1312 822 1266 851 1214 883 1152 913 1080 937 1001 954 918 961 832 961 748 951 669 931 601 901 545 863 504 820 473 775 447 731 420 690 390 650 362 608 344 565 344 520 365 477 405 437 453 402 499 371 536 338 563 303 586 263 616 222 658 184 715 155 785 137 861 130 937 130 1010 134 1080 138 1149 142 1218 146 1287 152 1358 159 1431 169 1507 180 1587 195 1667 214 1742 242 1802 279 1840 324 1854 375 1848 426 1830 474 1811 520Z"/><path class="ck" style="--i:12" d="M1891 520 1866 568 1841 613 1812 657 1778 700 1740 740 1697 779 1652 817 1603 855 1547 891 1481 921 1404 941 1321 948 1236 944 1155 933 1080 922 1008 916 934 916 856 918 775 916 696 904 628 879 574 844 533 805 497 765 455 728 403 694 340 659 274 619 218 572 180 520 167 465 178 409 210 357 259 309 321 267 396 233 480 208 569 192 657 184 739 179 812 172 878 160 942 144 1008 126 1080 113 1154 111 1228 119 1297 135 1363 152 1433 167 1511 177 1600 186 1697 199 1789 222 1865 258 1914 305 1935 359 1932 415 1914 469 1891 520Z"/><path class="c" style="--i:13" d="M1907 520 1924 571 1914 622 1876 669 1820 710 1756 745 1694 778 1639 811 1588 846 1537 883 1481 921 1417 957 1345 991 1265 1023 1177 1053 1080 1077 976 1091 871 1089 771 1069 686 1032 618 983 564 930 518 881 471 837 421 797 372 756 334 712 318 663 326 613 354 564 389 520 415 480 424 439 415 395 398 344 386 288 390 230 416 175 464 125 529 82 606 46 693 17 787 -2 885 -10 984 -7 1080 7 1170 26 1254 46 1338 62 1423 75 1511 88 1597 109 1672 140 1727 184 1759 235 1775 288 1786 338 1804 384 1834 427 1872 472 1907 520Z"/><path class="c" style="--i:14" d="M2007 520 1979 575 1941 626 1903 674 1864 722 1822 768 1773 811 1714 850 1648 884 1578 916 1507 947 1434 979 1356 1011 1270 1037 1177 1051 1080 1048 988 1028 904 997 829 967 753 944 668 932 567 928 453 922 338 906 237 874 161 827 116 768 96 705 92 641 95 580 104 520 120 462 149 406 196 354 259 309 330 270 404 236 475 205 545 177 616 151 690 130 768 115 847 105 923 94 1000 78 1080 51 1172 16 1278 -18 1396 -41 1515 -44 1621 -22 1706 22 1766 80 1810 140 1848 197 1890 250 1935 300 1979 351 2009 406 2020 463 2007 520Z"/></svg><div class="sunrise" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <div class="when" data-r><span class="cal"><span>23</span></span><span><b>Tue Feb 23 and Wed Feb 24, 2027</b><span class="w2"> · Free · Live online</span></span></div>
+      <h1 data-r><span class="nw">Plan your 2027</span> <span class="nw">marketing on Day 1.</span> <span class="hl nw">Build it on Day 2.</span></h1>
+      <p class="sub" data-r="2">A free, two-day live summit for nonprofit teams from Community Boost. Leave with your <b>2027 marketing blueprint and goals</b>, the first pieces of it built, and a clear next step for your team.</p>
+      <div class="cta-row" data-r="2">
+        <a class="btn" href="#register"><span class="mk"><svg><use href="#mk"/></svg></span>Save my free seat</a>
+        <span class="quiet">Both days free · Recordings included</span>
+      </div>
+      <div class="who" data-r="3">
+        <div class="faces">
+          <img src="../img/sp-cameron.jpg" alt="Cameron Ripley">
+          <span class="ph" aria-hidden="true"></span><span class="ph" aria-hidden="true"></span><span class="ph" aria-hidden="true"></span>
+        </div>
+        <p>Hosted by <b>Cameron Ripley</b>, founder and CEO of Community Boost.<br>Keynote speakers announced soon.</p>
+      </div>
+    </div>
+
+    <div class="reg" id="register" data-r="2"><div class="pass-top"><svg class="topo2" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="c" style="--i:1" d="M1152 520 1151 524 1149 528 1147 533 1144 536 1140 540 1135 543 1129 545 1122 547 1115 548 1108 548 1102 548 1096 548 1091 549 1085 550 1080 551 1074 553 1067 555 1060 556 1052 556 1044 556 1038 554 1032 551 1027 547 1023 544 1020 540 1017 536 1014 532 1012 528 1011 524 1011 520 1012 516 1014 512 1018 508 1022 505 1027 502 1031 500 1036 497 1040 494 1044 492 1049 489 1054 486 1060 484 1066 483 1073 482 1080 483 1086 485 1092 486 1098 488 1103 490 1109 491 1115 492 1122 493 1129 495 1135 497 1141 500 1146 503 1149 507 1151 511 1152 516 1152 520Z"/><path class="c" style="--i:2" d="M1216 520 1213 528 1207 536 1198 542 1188 548 1177 553 1167 556 1157 560 1148 564 1141 569 1134 574 1127 581 1118 588 1108 595 1095 601 1080 604 1065 605 1049 603 1035 600 1022 596 1009 591 997 586 986 580 976 574 967 568 960 560 956 552 955 543 956 535 959 527 962 520 966 513 968 506 971 499 972 492 974 485 978 477 983 470 991 463 1002 458 1014 454 1028 452 1042 452 1055 452 1068 451 1080 451 1093 449 1106 448 1121 447 1136 447 1151 449 1165 453 1177 458 1186 465 1195 472 1201 480 1207 487 1211 495 1215 503 1216 512 1216 520Z"/><path class="c" style="--i:3" d="M1289 520 1292 533 1290 546 1281 558 1269 569 1253 578 1238 586 1222 594 1208 602 1194 611 1179 619 1163 628 1145 635 1124 640 1102 642 1080 641 1059 638 1039 631 1022 624 1007 615 994 606 982 598 969 591 956 585 942 578 928 571 915 562 905 553 898 542 894 531 891 520 889 508 886 496 883 483 882 469 884 455 892 441 905 429 923 420 946 413 971 411 996 411 1020 413 1042 416 1062 419 1080 422 1097 424 1115 425 1133 426 1151 428 1170 430 1187 435 1203 441 1217 448 1229 457 1240 467 1250 476 1261 486 1272 496 1282 508 1289 520Z"/><path class="ck" style="--i:4" d="M1346 520 1346 536 1340 552 1328 567 1312 580 1295 592 1277 603 1260 613 1242 624 1224 634 1204 644 1182 652 1158 658 1132 662 1106 664 1080 663 1054 660 1030 656 1006 651 983 646 958 642 931 639 901 635 870 629 840 621 814 609 795 593 786 575 786 556 793 537 804 520 817 504 830 489 843 475 856 462 870 450 887 439 907 430 928 422 949 416 970 410 991 405 1012 399 1033 392 1055 385 1080 377 1107 370 1137 365 1169 362 1201 363 1231 369 1257 379 1277 394 1291 410 1300 428 1307 444 1314 460 1323 474 1332 489 1341 504 1346 520Z"/><path class="c" style="--i:5" d="M1368 520 1361 537 1355 554 1353 571 1353 590 1351 610 1345 631 1331 651 1309 667 1279 678 1245 685 1210 689 1176 691 1144 694 1112 697 1080 702 1046 706 1010 709 973 710 936 707 900 700 866 690 837 676 813 659 795 640 783 619 776 598 771 578 768 558 766 539 766 520 771 501 781 483 798 467 820 453 844 441 867 431 887 419 902 406 915 389 929 369 948 349 973 329 1004 314 1041 304 1080 300 1120 302 1158 308 1193 318 1226 331 1255 345 1281 360 1304 376 1324 393 1342 410 1358 427 1370 445 1377 464 1378 483 1375 502 1368 520Z"/><path class="c" style="--i:6" d="M1460 520 1480 544 1494 571 1499 599 1495 627 1479 653 1453 676 1417 695 1373 708 1327 716 1280 720 1236 723 1196 726 1157 730 1119 736 1080 741 1040 742 1000 738 962 729 929 716 900 700 873 685 845 671 816 657 785 644 754 629 727 611 707 590 695 567 692 544 695 520 702 497 713 475 726 453 739 432 753 411 767 389 783 365 801 341 825 317 855 295 894 278 939 269 987 267 1035 273 1080 285 1120 298 1157 310 1192 321 1226 331 1259 341 1289 354 1315 369 1336 387 1352 406 1365 425 1378 443 1395 461 1415 479 1438 498 1460 520Z"/><path class="c" style="--i:7" d="M1606 520 1610 552 1603 584 1582 614 1552 641 1514 665 1472 685 1431 703 1390 719 1350 735 1308 748 1263 757 1215 761 1168 758 1122 751 1080 742 1041 735 1002 732 960 733 914 736 863 738 811 734 762 724 721 707 689 684 666 658 650 631 640 603 633 575 629 547 627 520 627 493 629 465 633 436 641 407 655 378 678 351 710 327 751 309 798 296 848 288 896 282 943 276 988 269 1033 263 1080 259 1127 260 1172 269 1213 284 1246 304 1274 326 1300 345 1327 362 1359 375 1397 387 1440 400 1485 416 1526 436 1562 461 1589 489 1606 520Z"/><path class="ck" style="--i:8" d="M1614 520 1595 551 1576 581 1563 611 1554 642 1544 675 1527 708 1499 738 1457 762 1405 778 1347 787 1289 791 1234 793 1182 796 1131 801 1080 805 1028 805 977 801 928 791 883 776 843 757 807 737 772 718 738 698 704 678 669 657 633 635 595 611 555 584 516 554 483 520 463 483 461 444 480 407 519 376 572 351 631 332 689 316 741 302 788 288 833 273 880 260 929 251 980 249 1031 253 1080 260 1126 268 1171 274 1217 277 1266 279 1319 281 1374 286 1430 295 1484 310 1533 330 1575 355 1608 384 1628 417 1636 452 1630 487 1614 520Z"/><path class="c" style="--i:9" d="M1683 520 1691 557 1679 594 1650 627 1609 656 1563 681 1516 703 1471 723 1427 743 1383 761 1339 779 1293 796 1245 813 1194 830 1139 846 1080 859 1017 867 952 868 888 861 827 848 768 832 709 815 648 797 586 777 528 752 481 720 455 681 453 638 474 594 510 555 551 520 587 490 613 463 630 435 640 407 651 377 667 347 689 317 718 288 754 261 795 235 843 212 896 193 954 179 1016 170 1080 165 1145 164 1211 165 1278 169 1345 177 1408 192 1463 216 1505 247 1532 285 1549 323 1560 360 1575 393 1598 423 1628 453 1660 485 1683 520Z"/><path class="c" style="--i:10" d="M1712 520 1674 556 1634 588 1598 617 1568 646 1542 674 1519 704 1495 736 1469 769 1439 805 1403 843 1358 880 1301 913 1234 938 1158 951 1080 951 1003 942 930 927 861 910 793 893 725 875 660 854 604 825 564 788 544 745 542 699 551 656 561 617 563 583 553 552 533 520 511 485 493 448 487 409 493 369 512 331 542 294 582 261 630 231 687 207 749 189 815 176 881 167 947 158 1012 147 1080 135 1152 125 1227 121 1301 128 1368 146 1426 174 1474 207 1516 240 1559 271 1606 299 1655 328 1701 360 1734 397 1748 438 1739 480 1712 520Z"/><path class="c" style="--i:11" d="M1811 520 1795 563 1782 606 1765 649 1734 688 1686 722 1622 747 1548 764 1476 774 1412 784 1359 799 1312 822 1266 851 1214 883 1152 913 1080 937 1001 954 918 961 832 961 748 951 669 931 601 901 545 863 504 820 473 775 447 731 420 690 390 650 362 608 344 565 344 520 365 477 405 437 453 402 499 371 536 338 563 303 586 263 616 222 658 184 715 155 785 137 861 130 937 130 1010 134 1080 138 1149 142 1218 146 1287 152 1358 159 1431 169 1507 180 1587 195 1667 214 1742 242 1802 279 1840 324 1854 375 1848 426 1830 474 1811 520Z"/><path class="ck" style="--i:12" d="M1891 520 1866 568 1841 613 1812 657 1778 700 1740 740 1697 779 1652 817 1603 855 1547 891 1481 921 1404 941 1321 948 1236 944 1155 933 1080 922 1008 916 934 916 856 918 775 916 696 904 628 879 574 844 533 805 497 765 455 728 403 694 340 659 274 619 218 572 180 520 167 465 178 409 210 357 259 309 321 267 396 233 480 208 569 192 657 184 739 179 812 172 878 160 942 144 1008 126 1080 113 1154 111 1228 119 1297 135 1363 152 1433 167 1511 177 1600 186 1697 199 1789 222 1865 258 1914 305 1935 359 1932 415 1914 469 1891 520Z"/><path class="c" style="--i:13" d="M1907 520 1924 571 1914 622 1876 669 1820 710 1756 745 1694 778 1639 811 1588 846 1537 883 1481 921 1417 957 1345 991 1265 1023 1177 1053 1080 1077 976 1091 871 1089 771 1069 686 1032 618 983 564 930 518 881 471 837 421 797 372 756 334 712 318 663 326 613 354 564 389 520 415 480 424 439 415 395 398 344 386 288 390 230 416 175 464 125 529 82 606 46 693 17 787 -2 885 -10 984 -7 1080 7 1170 26 1254 46 1338 62 1423 75 1511 88 1597 109 1672 140 1727 184 1759 235 1775 288 1786 338 1804 384 1834 427 1872 472 1907 520Z"/><path class="c" style="--i:14" d="M2007 520 1979 575 1941 626 1903 674 1864 722 1822 768 1773 811 1714 850 1648 884 1578 916 1507 947 1434 979 1356 1011 1270 1037 1177 1051 1080 1048 988 1028 904 997 829 967 753 944 668 932 567 928 453 922 338 906 237 874 161 827 116 768 96 705 92 641 95 580 104 520 120 462 149 406 196 354 259 309 330 270 404 236 475 205 545 177 616 151 690 130 768 115 847 105 923 94 1000 78 1080 51 1172 16 1278 -18 1396 -41 1515 -44 1621 -22 1706 22 1766 80 1810 140 1848 197 1890 250 1935 300 1979 351 2009 406 2020 463 2007 520Z"/></svg><div class="pr"><div><span class="k">Summit pass · 2027</span><b>Nonprofit Marketing Summit</b></div><svg aria-hidden="true"><use href="#seal"/></svg></div></div><div class="perf" aria-hidden="true"></div><div class="pass-body">
+      <div class="days">
+        <div class="day-t"><div class="n"><small>FEB</small>23</div><div><span>Day 1 · Tue</span><b>The Blueprint</b></div></div>
+        <div class="day-t"><div class="n"><small>FEB</small>24</div><div><span>Day 2 · Wed</span><b>The Build</b></div></div>
+      </div>
+      <h3>Save your free seat</h3>
+      <p class="note">9:00 AM to 2:30 PM Pacific both days<span data-local></span>.</p>
+      <form class="f" id="regform" novalidate>
+        <div class="two">
+          <div><label for="fn">First name</label><input id="fn" name="firstname" type="text" autocomplete="given-name" required></div>
+          <div><label for="em">Work email</label><input id="em" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div><label for="org">Organization <em>(optional)</em></label><input id="org" name="company" type="text" autocomplete="organization"></div>
+        <div>
+          <label id="stl">Which stage fits you?</label>
+          <div class="chips" role="radiogroup" aria-labelledby="stl">
+            <input type="radio" name="stage" id="s1" value="foundation"><label for="s1">Starting or growing</label>
+            <input type="radio" name="stage" id="s2" value="scale"><label for="s2">Scaling a plan</label>
+            <input type="radio" name="stage" id="s3" value="not_sure"><label for="s3">Not sure yet</label>
+          </div>
+        </div>
+        <input type="hidden" name="ref"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
+        <button class="btn wide" type="submit"><span class="mk"><svg><use href="#mk"/></svg></span>Save my free seat</button>
+        <p class="fine">We'll email your link and reminders. <a href="#" data-privacy>Privacy</a></p>
+      </form>
+      <div class="done" role="status" aria-live="polite">
+        <svg class="tick" viewBox="0 0 56 56"><circle cx="28" cy="28" r="27" fill="#EFF6F1"/><path d="M17 29 25 37 40 20" fill="none" stroke="#009B27" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Your seat is saved<span data-name></span></h3>
+        <p class="note">See you Tuesday, February 23. Your link is on its way.</p>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ===== two days ===== -->
+<section class="sheet">
+  <div class="wrap"><div class="in-sheet">
+    <span class="label" data-r>Two days</span>
+    <h2 data-r><span class="nw">First the plan.</span> <span class="hl nw">Then the work.</span></h2>
+    <div class="days2">
+      <article class="dcard" data-r>
+        <div class="art" id="art1">
+          <span class="ex">Example</span>
+          <div class="bp">
+            <div class="bh"><b>Your 2027 marketing blueprint</b><span>DAY 1</span></div>
+            <div class="row"><i><svg><use href="#tick"/></svg></i><span>2027 goals</span><em>set</em></div>
+            <div class="row"><i><svg><use href="#tick"/></svg></i><span>Who you're reaching</span><em>3 audiences</em></div>
+            <div class="row"><i><svg><use href="#tick"/></svg></i><span>Channels to focus on</span><em>4 picked</em></div>
+            <div class="row"><i><svg><use href="#tick"/></svg></i><span>First 90 days</span><em>mapped</em></div>
+          </div>
+        </div>
+        <div class="txt">
+          <div class="when2">Day 1 · Tue Feb 23 · The Blueprint</div>
+          <h3>Map your year</h3>
+          <p>Talks on where nonprofit marketing is going in 2027, then a guided session where you build your own marketing blueprint and goals. Sessions on your stage fit the size of your team.</p>
+          <p class="leave"><b>You leave with</b> your 2027 blueprint and goals, written down.</p>
+        </div>
+      </article>
+      <article class="dcard" data-r="2">
+        <div class="art dk" id="art2">
+          <span class="ex">Example</span>
+          <div class="rp">
+            <div class="bh"><b>Campaign report for your leadership</b><span>DAY 2</span></div>
+            <div class="chan"><span>Ad Grant</span><span class="tr"><i class="g" data-w="82"></i></span><em>82%</em></div>
+            <div class="chan"><span>Email</span><span class="tr"><i data-w="64"></i></span><em>64%</em></div>
+            <div class="chan"><span>Social</span><span class="tr"><i data-w="41"></i></span><em>41%</em></div>
+            <div class="chan"><span>AI search</span><span class="tr"><i data-w="23"></i></span><em>23%</em></div>
+            <div class="fix"><span><b>Fix</b> ad grant keywords</span><span><b>Fix</b> welcome email</span><span><b>Next</b> AI search audit</span></div>
+          </div>
+        </div>
+        <div class="txt">
+          <div class="when2">Day 2 · Wed Feb 24 · The Build</div>
+          <h3>Put it to work</h3>
+          <p>Hands-on sessions where you work on your own campaigns with Community Boost's new AI tool and team: see how they're performing, find what to improve, and make the changes.</p>
+          <p class="leave"><b>You leave with</b> a report you can take to your leadership.</p>
+        </div>
+      </article>
+    </div>
+  </div></div>
+</section>
+
+<!-- ===== stages ===== -->
+<section class="sec">
+  <div class="wrap stages">
+    <div>
+      <span class="label" data-r>Three stages</span>
+      <h2 data-r>Pick the stage that sounds like you</h2>
+      <p class="lede" data-r style="margin-top:14px">Everyone meets on the Community Stage. In between, you choose the room that fits where your nonprofit is.</p>
+      <div class="pick" role="group" aria-label="Choose your stage" data-r="2">
+        <button type="button" aria-pressed="true" data-stage="foundation"><span class="rd"></span><span><b>We're starting or growing our marketing</b><small>Smaller teams, tight budgets, building the basics</small></span></button>
+        <button type="button" aria-pressed="false" data-stage="scale"><span class="rd"></span><span><b>We have a plan and want to scale it</b><small>Established teams with marketing that's working</small></span></button>
+      </div>
+      <p class="everyone" data-r="2"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.5" fill="#EFF6F1"/><path d="M4.5 8.3 7 10.6 11.6 5.6" fill="none" stroke="#009B27" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>You can move between stages any time during the day.</p>
+    </div>
+    <div class="stage" data-r="2">
+      <div class="panel on" data-panel="foundation">
+        <span class="tag">Foundation Stage</span>
+        <h3>For nonprofits starting or growing</h3>
+        <p class="for">Emerging and smaller organizations building their marketing, often with a small team and a tight budget.</p>
+        <ul class="sess">
+          <li><span>11:30 AM</span>Building a winning marketing plan on a tight budget</li>
+          <li><span>12:30 PM</span>Analytics tracking and reporting</li>
+        </ul>
+      </div>
+      <div class="panel" data-panel="scale">
+        <span class="tag">Scale Stage</span>
+        <h3>For nonprofits ready to scale</h3>
+        <p class="for">Larger, established organizations with a marketing plan in place that's ready to grow.</p>
+        <ul class="sess">
+          <li><span>11:30 AM</span>The scale equation: the creative and channel mix defining 2027</li>
+          <li><span>12:30 PM</span>Decoding the donor journey: multi-touch attribution</li>
+        </ul>
+      </div>
+      <p class="wt">Plus the Community Stage for everyone: the welcome, the keynote, building your blueprint, and a live panel on AI in fundraising. Day 1 sessions shown, Pacific time. Titles may still change.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== agenda ===== -->
+<section class="sec dark" id="agenda"><svg class="topo3" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="c" style="--i:1" d="M1152 520 1151 524 1149 528 1147 533 1144 536 1140 540 1135 543 1129 545 1122 547 1115 548 1108 548 1102 548 1096 548 1091 549 1085 550 1080 551 1074 553 1067 555 1060 556 1052 556 1044 556 1038 554 1032 551 1027 547 1023 544 1020 540 1017 536 1014 532 1012 528 1011 524 1011 520 1012 516 1014 512 1018 508 1022 505 1027 502 1031 500 1036 497 1040 494 1044 492 1049 489 1054 486 1060 484 1066 483 1073 482 1080 483 1086 485 1092 486 1098 488 1103 490 1109 491 1115 492 1122 493 1129 495 1135 497 1141 500 1146 503 1149 507 1151 511 1152 516 1152 520Z"/><path class="c" style="--i:2" d="M1216 520 1213 528 1207 536 1198 542 1188 548 1177 553 1167 556 1157 560 1148 564 1141 569 1134 574 1127 581 1118 588 1108 595 1095 601 1080 604 1065 605 1049 603 1035 600 1022 596 1009 591 997 586 986 580 976 574 967 568 960 560 956 552 955 543 956 535 959 527 962 520 966 513 968 506 971 499 972 492 974 485 978 477 983 470 991 463 1002 458 1014 454 1028 452 1042 452 1055 452 1068 451 1080 451 1093 449 1106 448 1121 447 1136 447 1151 449 1165 453 1177 458 1186 465 1195 472 1201 480 1207 487 1211 495 1215 503 1216 512 1216 520Z"/><path class="c" style="--i:3" d="M1289 520 1292 533 1290 546 1281 558 1269 569 1253 578 1238 586 1222 594 1208 602 1194 611 1179 619 1163 628 1145 635 1124 640 1102 642 1080 641 1059 638 1039 631 1022 624 1007 615 994 606 982 598 969 591 956 585 942 578 928 571 915 562 905 553 898 542 894 531 891 520 889 508 886 496 883 483 882 469 884 455 892 441 905 429 923 420 946 413 971 411 996 411 1020 413 1042 416 1062 419 1080 422 1097 424 1115 425 1133 426 1151 428 1170 430 1187 435 1203 441 1217 448 1229 457 1240 467 1250 476 1261 486 1272 496 1282 508 1289 520Z"/><path class="ck" style="--i:4" d="M1346 520 1346 536 1340 552 1328 567 1312 580 1295 592 1277 603 1260 613 1242 624 1224 634 1204 644 1182 652 1158 658 1132 662 1106 664 1080 663 1054 660 1030 656 1006 651 983 646 958 642 931 639 901 635 870 629 840 621 814 609 795 593 786 575 786 556 793 537 804 520 817 504 830 489 843 475 856 462 870 450 887 439 907 430 928 422 949 416 970 410 991 405 1012 399 1033 392 1055 385 1080 377 1107 370 1137 365 1169 362 1201 363 1231 369 1257 379 1277 394 1291 410 1300 428 1307 444 1314 460 1323 474 1332 489 1341 504 1346 520Z"/><path class="c" style="--i:5" d="M1368 520 1361 537 1355 554 1353 571 1353 590 1351 610 1345 631 1331 651 1309 667 1279 678 1245 685 1210 689 1176 691 1144 694 1112 697 1080 702 1046 706 1010 709 973 710 936 707 900 700 866 690 837 676 813 659 795 640 783 619 776 598 771 578 768 558 766 539 766 520 771 501 781 483 798 467 820 453 844 441 867 431 887 419 902 406 915 389 929 369 948 349 973 329 1004 314 1041 304 1080 300 1120 302 1158 308 1193 318 1226 331 1255 345 1281 360 1304 376 1324 393 1342 410 1358 427 1370 445 1377 464 1378 483 1375 502 1368 520Z"/><path class="c" style="--i:6" d="M1460 520 1480 544 1494 571 1499 599 1495 627 1479 653 1453 676 1417 695 1373 708 1327 716 1280 720 1236 723 1196 726 1157 730 1119 736 1080 741 1040 742 1000 738 962 729 929 716 900 700 873 685 845 671 816 657 785 644 754 629 727 611 707 590 695 567 692 544 695 520 702 497 713 475 726 453 739 432 753 411 767 389 783 365 801 341 825 317 855 295 894 278 939 269 987 267 1035 273 1080 285 1120 298 1157 310 1192 321 1226 331 1259 341 1289 354 1315 369 1336 387 1352 406 1365 425 1378 443 1395 461 1415 479 1438 498 1460 520Z"/><path class="c" style="--i:7" d="M1606 520 1610 552 1603 584 1582 614 1552 641 1514 665 1472 685 1431 703 1390 719 1350 735 1308 748 1263 757 1215 761 1168 758 1122 751 1080 742 1041 735 1002 732 960 733 914 736 863 738 811 734 762 724 721 707 689 684 666 658 650 631 640 603 633 575 629 547 627 520 627 493 629 465 633 436 641 407 655 378 678 351 710 327 751 309 798 296 848 288 896 282 943 276 988 269 1033 263 1080 259 1127 260 1172 269 1213 284 1246 304 1274 326 1300 345 1327 362 1359 375 1397 387 1440 400 1485 416 1526 436 1562 461 1589 489 1606 520Z"/><path class="ck" style="--i:8" d="M1614 520 1595 551 1576 581 1563 611 1554 642 1544 675 1527 708 1499 738 1457 762 1405 778 1347 787 1289 791 1234 793 1182 796 1131 801 1080 805 1028 805 977 801 928 791 883 776 843 757 807 737 772 718 738 698 704 678 669 657 633 635 595 611 555 584 516 554 483 520 463 483 461 444 480 407 519 376 572 351 631 332 689 316 741 302 788 288 833 273 880 260 929 251 980 249 1031 253 1080 260 1126 268 1171 274 1217 277 1266 279 1319 281 1374 286 1430 295 1484 310 1533 330 1575 355 1608 384 1628 417 1636 452 1630 487 1614 520Z"/><path class="c" style="--i:9" d="M1683 520 1691 557 1679 594 1650 627 1609 656 1563 681 1516 703 1471 723 1427 743 1383 761 1339 779 1293 796 1245 813 1194 830 1139 846 1080 859 1017 867 952 868 888 861 827 848 768 832 709 815 648 797 586 777 528 752 481 720 455 681 453 638 474 594 510 555 551 520 587 490 613 463 630 435 640 407 651 377 667 347 689 317 718 288 754 261 795 235 843 212 896 193 954 179 1016 170 1080 165 1145 164 1211 165 1278 169 1345 177 1408 192 1463 216 1505 247 1532 285 1549 323 1560 360 1575 393 1598 423 1628 453 1660 485 1683 520Z"/><path class="c" style="--i:10" d="M1712 520 1674 556 1634 588 1598 617 1568 646 1542 674 1519 704 1495 736 1469 769 1439 805 1403 843 1358 880 1301 913 1234 938 1158 951 1080 951 1003 942 930 927 861 910 793 893 725 875 660 854 604 825 564 788 544 745 542 699 551 656 561 617 563 583 553 552 533 520 511 485 493 448 487 409 493 369 512 331 542 294 582 261 630 231 687 207 749 189 815 176 881 167 947 158 1012 147 1080 135 1152 125 1227 121 1301 128 1368 146 1426 174 1474 207 1516 240 1559 271 1606 299 1655 328 1701 360 1734 397 1748 438 1739 480 1712 520Z"/><path class="c" style="--i:11" d="M1811 520 1795 563 1782 606 1765 649 1734 688 1686 722 1622 747 1548 764 1476 774 1412 784 1359 799 1312 822 1266 851 1214 883 1152 913 1080 937 1001 954 918 961 832 961 748 951 669 931 601 901 545 863 504 820 473 775 447 731 420 690 390 650 362 608 344 565 344 520 365 477 405 437 453 402 499 371 536 338 563 303 586 263 616 222 658 184 715 155 785 137 861 130 937 130 1010 134 1080 138 1149 142 1218 146 1287 152 1358 159 1431 169 1507 180 1587 195 1667 214 1742 242 1802 279 1840 324 1854 375 1848 426 1830 474 1811 520Z"/><path class="ck" style="--i:12" d="M1891 520 1866 568 1841 613 1812 657 1778 700 1740 740 1697 779 1652 817 1603 855 1547 891 1481 921 1404 941 1321 948 1236 944 1155 933 1080 922 1008 916 934 916 856 918 775 916 696 904 628 879 574 844 533 805 497 765 455 728 403 694 340 659 274 619 218 572 180 520 167 465 178 409 210 357 259 309 321 267 396 233 480 208 569 192 657 184 739 179 812 172 878 160 942 144 1008 126 1080 113 1154 111 1228 119 1297 135 1363 152 1433 167 1511 177 1600 186 1697 199 1789 222 1865 258 1914 305 1935 359 1932 415 1914 469 1891 520Z"/><path class="c" style="--i:13" d="M1907 520 1924 571 1914 622 1876 669 1820 710 1756 745 1694 778 1639 811 1588 846 1537 883 1481 921 1417 957 1345 991 1265 1023 1177 1053 1080 1077 976 1091 871 1089 771 1069 686 1032 618 983 564 930 518 881 471 837 421 797 372 756 334 712 318 663 326 613 354 564 389 520 415 480 424 439 415 395 398 344 386 288 390 230 416 175 464 125 529 82 606 46 693 17 787 -2 885 -10 984 -7 1080 7 1170 26 1254 46 1338 62 1423 75 1511 88 1597 109 1672 140 1727 184 1759 235 1775 288 1786 338 1804 384 1834 427 1872 472 1907 520Z"/><path class="c" style="--i:14" d="M2007 520 1979 575 1941 626 1903 674 1864 722 1822 768 1773 811 1714 850 1648 884 1578 916 1507 947 1434 979 1356 1011 1270 1037 1177 1051 1080 1048 988 1028 904 997 829 967 753 944 668 932 567 928 453 922 338 906 237 874 161 827 116 768 96 705 92 641 95 580 104 520 120 462 149 406 196 354 259 309 330 270 404 236 475 205 545 177 616 151 690 130 768 115 847 105 923 94 1000 78 1080 51 1172 16 1278 -18 1396 -41 1515 -44 1621 -22 1706 22 1766 80 1810 140 1848 197 1890 250 1935 300 1979 351 2009 406 2020 463 2007 520Z"/></svg>
+  <div class="wrap">
+    <div class="ag-head">
+      <div><span class="label" data-r>The agenda</span><h2 data-r>How the two days run</h2></div>
+      <p class="tz" data-r>Times in <b>Pacific</b><span data-tzline></span></p>
+    </div>
+    <div class="tabs" role="tablist" data-r>
+      <button role="tab" aria-selected="true" data-day="1">Day 1 · Tue Feb 23</button>
+      <button role="tab" aria-selected="false" data-day="2">Day 2 · Wed Feb 24</button>
+    </div>
+    <div class="d2 on" data-dayp="1">
+      <ol class="tl">
+        <li class="key" data-r><div class="t" data-pt="09:00">9:00 AM</div><span class="pt"></span><div><h4>Welcome: the antidote to average, being uniquely great in the AI era</h4><div class="who2"><img src="../img/sp-cameron.jpg" alt="">Cameron Ripley, Community Boost</div></div></li>
+        <li data-r><div class="t" data-pt="09:45">9:45 AM</div><span class="pt"></span><div><h4>Opening keynote</h4><div class="who2"><span class="ph"></span><span class="soon">Announced soon</span></div></div></li>
+        <li class="key" data-r><div class="t" data-pt="10:30">10:30 AM</div><span class="pt"></span><div><h4>Build your community-first marketing blueprint and goals</h4><p>A guided hour. You build yours as you go.</p><div class="who2"><img src="../img/sp-cameron.jpg" alt="">Cameron Ripley</div></div></li>
+        <li data-r><div class="t" data-pt="11:30">11:30 AM</div><span class="pt"></span><div><h4>Stage sessions</h4><div class="split"><div><small>Foundation</small>Building a winning marketing plan on a tight budget</div><div><small>Scale</small>The scale equation: the creative and channel mix defining 2027</div></div></div></li>
+        <li data-r><div class="t" data-pt="12:30">12:30 PM</div><span class="pt"></span><div><h4>The AI reality check: real talk on tech, trends and fundraising</h4><p>A live panel on the Community Stage, with stage sessions alongside.</p></div></li>
+        <li class="key" data-r><div class="t" data-pt="14:00">2:00 PM</div><span class="pt"></span><div><h4>Day 1 wrap up: from blueprint to build</h4><p>What to bring tomorrow.</p></div></li>
+      </ol>
+    </div>
+    <div class="d2" data-dayp="2">
+      <div class="d2box">
+        <h4>The Build: the full Day 2 agenda is coming soon</h4>
+        <p>Hands-on sessions on both stages where you work on your own campaigns with Community Boost's new AI tool and team, from 9:00 AM to about 2:30 PM Pacific, closing with a launch party on the Community Stage. Day 2 is the day to be there live: you build with the team in the room.</p>
+      </div>
+    </div>
+    <div class="room" data-r>
+      <div class="door"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="5" y="3" width="12" height="17" rx="1.5" fill="none" stroke="#73D88C" stroke-width="1.6"/><circle cx="14" cy="12" r="1.1" fill="#73D88C"/></svg></div>
+      <p><b>The CB AI Support Room is open all day.</b> Stuck on your blueprint or the tool? Drop in and someone from the Community Boost team helps you, live.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== proof ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="proof-top">
+      <div>
+        <span class="label" data-r>Since 2020</span>
+        <div class="ten" data-r><b>10</b><span>summits run by<br>Community Boost</span></div>
+        <p class="lede" data-r="2">The Nonprofit Marketing Summit is back for 2027, rebuilt as two focused days.</p>
+      </div>
+      <figure class="shot" data-r="2">
+        <span class="live"><i></i>PAST SUMMIT</span>
+        <img src="../img/past-33.jpg" alt="Cameron Ripley and speakers live on a past Nonprofit Marketing Summit session" loading="lazy">
+        <figcaption>A live session from a past summit</figcaption>
+      </figure>
+    </div>
+
+    <div class="logos" data-r>
+      <p>Nonprofits that have joined past summits</p>
+      <div class="lw">
+        <img src="../img/lg-tnc.png" alt="The Nature Conservancy" loading="lazy"><img src="../img/lg-stc.png" alt="Save the Children" loading="lazy"><img src="../img/lg-irc.png" alt="International Rescue Committee" loading="lazy"><img src="../img/lg-msf.png" alt="Doctors Without Borders" loading="lazy"><img src="../img/lg-heifer.png" alt="Heifer International" loading="lazy"><img src="../img/lg-aspca.png" alt="ASPCA" loading="lazy"><img src="../img/lg-bgca.png" alt="Boys and Girls Clubs of America" loading="lazy"><img src="../img/lg-ftc.png" alt="Feed the Children" loading="lazy"><img src="../img/lg-cri.png" alt="Cancer Research Institute" loading="lazy"><img src="../img/lg-earth.png" alt="Earthjustice" loading="lazy"><img src="../img/lg-ip.png" alt="Innocence Project" loading="lazy"><img src="../img/lg-redcross.png" alt="Canadian Red Cross" loading="lazy">
+      </div>
+    </div>
+
+    <div class="past">
+      <div class="past-h" data-r><h3>On past summit stages</h3><p>The 2027 line-up is announced soon.</p></div>
+      <div class="pg">
+        <div class="pp" data-r><div class="im"><img src="../img/sp-deepak.jpg" alt="Deepak Chopra" loading="lazy"></div><b>Deepak Chopra</b><span>Deepak Chopra LLC</span></div><div class="pp" data-r><div class="im"><img src="../img/sp-neil.jpg" alt="Neil Patel" loading="lazy"></div><b>Neil Patel</b><span>NP Digital</span></div><div class="pp" data-r><div class="im"><img src="../img/sp-jake.jpg" alt="Jake Wood" loading="lazy"></div><b>Jake Wood</b><span>Groundswell</span></div><div class="pp" data-r><div class="im"><img src="../img/sp-katie.jpg" alt="Katie Camacho Smith" loading="lazy"></div><b>Katie Camacho Smith</b><span>TikTok</span></div><div class="pp" data-r><div class="im"><img src="../img/sp-nathan.jpg" alt="Nathan Chappell" loading="lazy"></div><b>Nathan Chappell</b><span>DonorSearch AI</span></div><div class="pp" data-r><div class="im"><img src="../img/sp-julia.jpg" alt="Julia Campbell" loading="lazy"></div><b>Julia Campbell</b><span>J Campbell Social Marketing</span></div><div class="pp" data-r><div class="im"><img src="../img/sp-celeste.jpg" alt="Celeste Flores" loading="lazy"></div><b>Celeste Flores</b><span>GivingTuesday</span></div><div class="pp" data-r><div class="im"><img src="../img/sp-kim.jpg" alt="Kim Steele" loading="lazy"></div><b>Kim Steele</b><span>Visa</span></div><div class="pp" data-r><div class="im"><img src="../img/sp-courtney.jpg" alt="Courtney Hodge" loading="lazy"></div><b>Courtney Hodge</b><span>Microsoft</span></div><div class="pp" data-r><div class="im"><img src="../img/sp-adrian.jpg" alt="Adrian Sargeant" loading="lazy"></div><b>Adrian Sargeant</b><span>Institute for Sustainable Philanthropy</span></div>
+      </div>
+    </div>
+
+    <div class="quotes">
+      <blockquote class="q" data-r><p>These sessions were about heart. I learned so much last year about how to execute, but this feeds my soul.</p><footer><b>Lisa M.</b> · past summit attendee</footer></blockquote>
+      <blockquote class="q" data-r="2"><p>I started attending your conference shortly after I started my job. It's been an invaluable resource, and what we've been learning has been paying off.</p><footer><b>Trevor J.</b> · past summit attendee</footer></blockquote>
+      <blockquote class="q" data-r="3"><p>As a person who had drive and energy but no experience, I've gained such a wealth of information in a short amount of time.</p><footer><b>Mariana V.</b> · past summit attendee</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== host ===== -->
+<section class="sec paper">
+  <div class="wrap host">
+    <div class="hp" data-r>
+      <div class="im"><img src="../img/cameron-lg.jpg" alt="Cameron Ripley" loading="lazy"></div>
+      <div class="badge"><img src="../img/cb-mark.png" alt=""><span>Community Boost<br>Since 2012</span></div>
+    </div>
+    <div class="letter">
+      <span class="label" data-r>Why it's back</span>
+      <h2 data-r style="margin-bottom:24px">A note from Cameron</h2>
+      <p data-r>We ran this summit ten times, and it grew bigger every year. For 2027 we rebuilt it around what you leave with.</p>
+      <p data-r>Day 1 is content we want you to stay for, all of it. Day 2 you build, with our team next to you. You should leave with clarity and less stress, and with work that's already done.</p>
+      <p data-r>Both days are free, and so are the recordings.</p>
+      <p class="sig" data-r><b>Cameron Ripley</b>Founder and CEO, Community Boost</p>
+      <div class="nums" data-r="2">
+        <div><b>$150M+</b><span>raised for nonprofits</span></div>
+        <div><b>1,500+</b><span>nonprofit partners</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== faq ===== -->
+<section class="sec">
+  <div class="wrap faq">
+    <div><span class="label" data-r>Questions</span><h2 data-r>Before you register</h2><p class="lede" data-r style="margin-top:14px">Anything else? Email <a href="mailto:summit@communityboost.org">summit@communityboost.org</a>.</p></div>
+    <div class="qa" data-r>
+      <details open><summary>Is it really free?<i></i></summary><p class="a">Yes. Both days are free, and so are the recordings.</p></details>
+      <details><summary>What time is it where I am?<i></i></summary><p class="a">Both days run 9:00 AM to 2:30 PM Pacific, which is 12:00 to 5:30 PM Eastern<span data-faqtz></span>.</p></details>
+      <details><summary>Which stage is for me?<i></i></summary><p class="a">If you're starting or growing your marketing, the Foundation Stage. If you already have a plan and want to scale it, the Scale Stage. Everyone meets on the Community Stage, and you can switch any time.</p></details>
+      <details><summary>Do I need to know how to use AI?<i></i></summary><p class="a">No. Day 1 is about your strategy. On Day 2 the Community Boost team walks you through the tool, and the Support Room is open all day if you get stuck.</p></details>
+      <details><summary>Can my team come?<i></i></summary><p class="a">Yes. Send them this page so each person gets their own link and reminders.</p></details>
+      <details><summary>Will you sell something?<i></i></summary><p class="a">Community Boost will show its new AI tool on Day 2, and you can try it. You don't need to buy anything to take part in either day.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== final ===== -->
+<section class="final" data-r>
+  <div class="wrap">
+    <svg class="big" aria-hidden="true"><use href="#seal"/></svg>
+    <h2>See you on February 23.</h2>
+    <p>Two free days. Your plan on the first, the work on the second.</p>
+    <a class="btn" href="#register"><span class="mk"><svg><use href="#mk"/></svg></span>Save my free seat</a>
+    <div class="foot">
+      <img src="../img/cb-white.svg" alt="Community Boost">
+      <span>Nonprofit Marketing Summit 2027 · Tue Feb 23 and Wed Feb 24 · Live online</span>
+      <span><a href="mailto:summit@communityboost.org">summit@communityboost.org</a> · <a href="#" data-privacy>Privacy</a></span>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="mcta" id="mcta"><a class="btn" href="#register"><span class="mk"><svg><use href="#mk"/></svg></span>Save my free seat</a></div>
+
+<script>
+(function(){
+  var S = window.NMS, d1 = new Date(S.day1Start);
+  // reveal on scroll
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.18, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('[data-r]').forEach(function(el){ io.observe(el); });
+
+  // day cards act out their lines
+  function play(id, fn){ var el = document.getElementById(id); if(!el) return; new IntersectionObserver(function(es,o){ if(es[0].isIntersecting){ fn(el); o.disconnect(); } }, {threshold:.45}).observe(el); }
+  play('art1', function(el){ el.querySelectorAll('.row').forEach(function(r,i){ setTimeout(function(){ r.classList.add('ok'); }, 450 + i*520); }); });
+  play('art2', function(el){ el.classList.add('in'); el.querySelectorAll('.tr i').forEach(function(b,i){ setTimeout(function(){ b.style.width = b.dataset.w + '%'; }, 300 + i*220); }); });
+
+  // floating pill and phone CTA after the hero
+  var hero = document.querySelector('.hero'), pill = document.getElementById('pill'), m = document.getElementById('mcta'), reg = document.getElementById('register');
+  function onScroll(){
+    var past = hero.getBoundingClientRect().bottom < 80;
+    pill.classList.toggle('on', past);
+    var r = reg.getBoundingClientRect(), regVis = r.top < innerHeight && r.bottom > 0;
+    var fin = document.querySelector('.final').getBoundingClientRect().top < innerHeight*.7;
+    m.classList.toggle('on', past && !regVis && !fin);
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // countdown to Day 1
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var ms = Math.max(0, d1 - Date.now()), mm = Math.floor(ms/60000);
+    document.querySelectorAll('[data-cd]').forEach(function(c){
+      c.querySelector('[data-d]').innerHTML = pad(Math.floor(mm/1440)) + '<small>d</small>';
+      c.querySelector('[data-h]').innerHTML = pad(Math.floor(mm%1440/60)) + '<small>h</small>';
+      c.querySelector('[data-m]').innerHTML = pad(mm%60) + '<small>m</small>';
+    });
+  }
+  tick(); setInterval(tick, 20000);
+
+  // the visitor's own time, when it isn't Pacific or Eastern
+  try {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz && !/^America\/(Los_Angeles|New_York|Vancouver|Tijuana|Toronto|Detroit)/.test(tz)) {
+      var f = new Intl.DateTimeFormat([], {hour:'numeric', minute:'2-digit'}), s = f.format(d1), e = f.format(new Date(S.day1End));
+      var city = tz.split('/').pop().replace(/_/g,' ');
+      document.querySelectorAll('[data-local]').forEach(function(x){ x.textContent = ' (' + s + ' to ' + e + ' your time)'; });
+      document.querySelectorAll('[data-faqtz]').forEach(function(x){ x.textContent = ', or ' + s + ' to ' + e + ' in ' + city; });
+      document.querySelectorAll('[data-tzline]').forEach(function(x){ x.innerHTML = ', and in <b>' + city + '</b> time'; });
+      var base = new Date(S.day1Start).getTime();
+      document.querySelectorAll('[data-pt]').forEach(function(x){
+        var p = x.dataset.pt.split(':'), t = new Date(base + ((+p[0]-9)*60 + +p[1])*60000);
+        x.insertAdjacentHTML('beforeend', '<small>' + f.format(t) + ' your time</small>');
+      });
+    }
+  } catch(err){}
+
+  // stage chooser
+  document.querySelectorAll('[data-stage]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-stage]').forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+      document.querySelectorAll('[data-panel]').forEach(function(p){ p.classList.toggle('on', p.dataset.panel === b.dataset.stage); });
+      var c = document.querySelector('.chips input[value="' + b.dataset.stage + '"]'); if (c) c.checked = true;
+    });
+  });
+
+  // agenda tabs
+  document.querySelectorAll('[data-day]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-day]').forEach(function(x){ x.setAttribute('aria-selected', x === b); });
+      document.querySelectorAll('[data-dayp]').forEach(function(p){ p.classList.toggle('on', p.dataset.dayp === b.dataset.day); });
+    });
+  });
+
+  // the summit mark on every button: the sun bursts on click
+  document.querySelectorAll('.btn').forEach(function(b){ b.addEventListener('click', function(){ b.classList.remove('go'); void b.offsetWidth; b.classList.add('go'); }); });
+
+  // privacy link, partner and UTM fields
+  document.querySelectorAll('[data-privacy]').forEach(function(a){ a.href = S.privacyUrl; });
+  var q = new URLSearchParams(location.search), form = document.getElementById('regform');
+  ['ref','utm_source','utm_medium','utm_campaign'].forEach(function(k){ if (q.get(k)) form.elements[k].value = q.get(k); });
+
+  // registration (not connected yet: shows the saved state)
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var fn = form.elements.firstname, em = form.elements.email, ok = true;
+    [fn, em].forEach(function(i){ var bad = !i.value.trim() || (i.type === 'email' && !/^\S+@\S+\.\S+$/.test(i.value)); i.style.borderColor = bad ? '#C0392B' : ''; if (bad) ok = false; });
+    if (!ok) return;
+    if (S.formAction) { fetch(S.formAction, {method:'POST', body:new FormData(form)}).catch(function(){}); }
+    if (S.confirmUrl) { location.href = S.confirmUrl + '?name=' + encodeURIComponent(fn.value.trim()); return; }
+    document.querySelector('[data-name]').textContent = ', ' + fn.value.trim().split(' ')[0];
+    reg.classList.add('sent');
+  });
+})();
+</script>
+</body>
+</html>
