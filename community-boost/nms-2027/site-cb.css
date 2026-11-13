@@ -420,25 +420,39 @@ footer.footer{flex-wrap:wrap!important}
 }
 @keyframes cbDays3{0%,22%{transform:none}34%,56%{transform:translateY(-12.5px)}68%,100%{transform:translateY(-25px)}}
 @media (prefers-reduced-motion:reduce){.cb-days3 i{transition:none}}
-/* "What you actually walk away with" (cb_edits walk): one quiet row per day */
-.cb-set{display:grid;gap:18px;margin-top:34px;grid-template-columns:minmax(0,1fr)!important}
-.cb-sheet{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:#fff;border-radius:12px;overflow:hidden;
+/* "What you actually walk away with" (cb_edits walk): the drawing set, quiet. Hairlines, one inset sheet border, the
+   title block's rows ruled lightly; no tilt, no stagger, no boxes */
+.cb-set{display:grid;gap:20px;margin-top:34px;grid-template-columns:minmax(0,1fr)!important}
+.cb-sheet{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:#fff;border-radius:8px;
  box-shadow:0 24px 48px -32px rgba(0,0,0,.7)}
-.cb-sheet-draw{display:flex;align-items:center;justify-content:center;padding:26px;background:var(--cb-paper)}
-.cb-sheet-draw .cb-art{display:block;width:100%;max-width:520px;height:auto}
-.cb-tb{display:flex;flex-direction:column;justify-content:center;padding:34px 38px}
-.cb-tb-day{margin:0;font-size:14px;color:var(--cb-ink2)}
-.cb-tb-day b{font-weight:700;color:var(--cb-rad);margin-right:6px}
-.cb-tb h3{margin:8px 0 0;font-weight:720;font-size:clamp(22px,2vw,27px);line-height:1.15;letter-spacing:-.025em;color:var(--cb-cat)}
-.cb-tb-desc{margin:10px 0 0;font-size:15.5px;line-height:1.6;color:var(--cb-ink2);max-width:50ch}
-.cb-tb-deliv{margin-top:20px;padding-top:16px;border-top:1px solid var(--cb-line)}
-.cb-tb-deliv b{display:block;font-size:13px;font-weight:700;color:var(--cb-rad-d)}
-.cb-tb-deliv p{margin:4px 0 0;font-size:15px;line-height:1.55;color:var(--cb-cat);max-width:50ch}
+.cb-sheet::before{content:"";position:absolute;inset:9px;border:1px solid rgba(7,20,7,.13);border-radius:3px;pointer-events:none}
+.cb-sheet-draw{position:relative;margin:9px 0 9px 9px;padding:24px 24px 40px;display:flex;align-items:center;justify-content:center;
+ background:var(--cb-paper);border-right:1px solid rgba(7,20,7,.13);border-radius:3px 0 0 3px}
+.cb-sheet-draw .cb-art{display:block;width:100%;max-width:540px;height:auto}
+.cb-sheet-draw figcaption{position:absolute;left:20px;bottom:13px;font-size:12px;color:rgba(7,20,7,.5)}
+.cb-tb{display:flex;flex-direction:column;margin:9px 9px 9px 0;padding:22px 28px 24px}
+.cb-tb-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 -28px;padding:0 28px 12px;border-bottom:1px solid rgba(7,20,7,.13)}
+.cb-tb-top .cb-wnum{font-weight:700;font-size:14px;color:var(--cb-rad)}
+.cb-tb-no{font-size:12px;color:rgba(7,20,7,.5);font-variant-numeric:tabular-nums}
+.cb-tb h3{margin:16px 0 0;font-weight:720;font-size:clamp(22px,2vw,27px);line-height:1.14;letter-spacing:-.025em;color:var(--cb-cat)}
+.cb-tb-desc{margin:10px 0 0;font-size:15.5px;line-height:1.58;color:var(--cb-ink2);max-width:52ch}
+.cb-tb-meta{display:grid;grid-template-columns:1fr 1fr;margin:20px -28px 0;border-top:1px solid rgba(7,20,7,.13);border-bottom:1px solid rgba(7,20,7,.13)}
+.cb-tb-meta div{padding:9px 28px 10px}
+.cb-tb-meta div+div{border-left:1px solid rgba(7,20,7,.13)}
+.cb-tb-meta dt{font-size:11.5px;color:rgba(7,20,7,.5)}
+.cb-tb-meta dd{margin:2px 0 0;font-size:14px;font-weight:600;color:var(--cb-cat)}
+.cb-tb-deliv{margin-top:16px}
+.cb-tb-deliv b{display:block;font-size:12.5px;font-weight:700;color:var(--cb-rad-d)}
+.cb-tb-deliv p{margin:4px 0 0;font-size:15px;line-height:1.55;color:var(--cb-cat);max-width:52ch}
 @media (max-width:860px){
  .cb-sheet{grid-template-columns:1fr}
- .cb-sheet-draw{padding:18px 16px}
- .cb-tb{padding:22px 20px 24px}
+ .cb-sheet-draw{margin:9px 9px 0;border-right:0;border-bottom:1px solid rgba(7,20,7,.13);border-radius:3px 3px 0 0;padding:16px 14px 36px}
+ .cb-tb{margin:0 9px 9px;padding:18px 18px 18px}
+ .cb-tb-top,.cb-tb-meta{margin-inline:-18px;padding-inline:18px}
+ .cb-tb-meta{padding-inline:0}
+ .cb-tb-meta div{padding-inline:18px}
 }
+@media (max-width:480px){.cb-tb-meta dd{font-size:13.5px}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL extrusions). Without .cb-motion, or with reduced motion, every
