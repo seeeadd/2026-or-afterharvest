@@ -33,3 +33,56 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }, { threshold: 0.35 });
   arts.forEach(function (s) { io.observe(s); });
 })();
+
+/* The summit where the visitor lives (Sean 2026-11-13: "apply all the custom date stuff from Ana Calin's page ... add the
+   graphic location every time you're going to put their custom location or city, so they know it's targeted for them
+   live"; https://exitplan.howwegrowtoday.com/). Ana's page shows each date and time in the visitor's own zone, names their
+   city from the device's time zone, and puts a pin by it. CB asked for no clock times ("remove the time ... keep the
+   date"), so here only the DATES move: each day starts 9:00 am US Pacific (CB's own schedule), Feb 23-25, 2027, which is
+   Feb 24-26 in Manila or Sydney. The markup carries the Pacific dates, so with no script, or a zone it can't name, the page
+   reads as before. Hooks (cb_edits.py): [data-here] on the spots, [data-here-day="0|1|2"] on per-day dates. */
+;(function () {
+  try {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    if (!/^[A-Za-z]+\/[A-Za-z_\-\/]+$/.test(tz) || /^Etc\//.test(tz)) return;
+    var city = tz.split('/').pop().replace(/_/g, ' ');
+    var starts = [0, 1, 2].map(function (k) { return new Date(Date.UTC(2027, 1, 23 + k, 17, 0)); });   // 9:00 am PST
+    var F = function (o) { o.timeZone = tz; return new Intl.DateTimeFormat('en-US', o); };
+    var fMD = F({ month: 'short', day: 'numeric' }), fWD = F({ weekday: 'short' }), fD = F({ day: 'numeric' }),
+        fM = F({ month: 'short' }), fML = F({ month: 'long' }), fY = F({ year: 'numeric' });
+    var d = starts.map(function (t) { return { md: fMD.format(t), wd: fWD.format(t), day: fD.format(t), mon: fM.format(t), monL: fML.format(t), y: fY.format(t) }; });
+    var same = d[0].mon === d[2].mon;
+    var range = same ? d[0].mon + ' ' + d[0].day + '-' + d[2].day : d[0].md + ' to ' + d[2].md;
+    var rangeLong = same ? d[0].monL + ' ' + d[0].day + '-' + d[2].day + ', ' + d[2].y : d[0].md + ' to ' + d[2].md + ', ' + d[2].y;
+    var shifted = d[0].md !== 'Feb 23';
+    var PIN = '<svg class="cb-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>';
+    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var place = '<span class="cb-place">' + PIN + esc(city) + '</span>';
+    var html = {
+      range: esc(range) + ' in ' + place,                                   // Feb 23-25 in (pin) Chicago
+      rangeY: esc(range) + ', ' + d[2].y,                                   // Feb 24-26, 2027
+      rangeShort: esc(range),
+      from: 'Live on Zoom from ' + place,                                    // hero line, sheets
+      stubFrom: 'Live from ' + place,
+      city: place,
+      calMonth: esc(rangeLong),
+      where: place + ' · free on Zoom',                                    // the header's second line
+      foryou: '<b>For you:</b> ' + esc(d[0].wd + ', ' + d[0].md) + ' to ' + esc(d[2].wd + ', ' + d[2].md) + ' in ' + place +
+              (shifted ? ' (Feb 23-25 in the US)' : '') + '. <span class="cb-fy-live">Come live and bring a campaign: on Day 3 you build it with the team.</span>'
+    };
+    document.documentElement.classList.add('cb-here');
+    if (shifted) document.documentElement.classList.add('cb-here-shift');
+    document.querySelectorAll('[data-here]').forEach(function (el) {
+      var k = el.getAttribute('data-here');
+      if (!(k in html)) return;
+      if (!html[k]) { el.hidden = true; return; }
+      el.innerHTML = html[k];
+      el.hidden = false;
+      if (k === 'range' || k === 'from' || k === 'stubFrom' || k === 'foryou') el.setAttribute('title', 'Dates where you are (' + city + ')');
+    });
+    document.querySelectorAll('[data-here-day]').forEach(function (el) {
+      var k = +el.getAttribute('data-here-day'), f = el.getAttribute('data-here-fmt') || 'wd-md';
+      el.textContent = f === 'dow' ? d[k].wd.toUpperCase() : f === 'num' ? d[k].day : f === 'wd-md-y' ? d[k].wd + ', ' + d[k].md + ', ' + d[k].y : d[k].wd + ', ' + d[k].md;
+    });
+  } catch (e) {}
+})();

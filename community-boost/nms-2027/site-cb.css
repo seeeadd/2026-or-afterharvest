@@ -426,7 +426,7 @@ footer.footer{flex-wrap:wrap!important}
 .cb-sheet{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:#fff;border-radius:8px;
  box-shadow:0 24px 48px -32px rgba(0,0,0,.7)}
 .cb-sheet::before{content:"";position:absolute;inset:9px;border:1px solid rgba(7,20,7,.13);border-radius:3px;pointer-events:none}
-.cb-sheet-draw{position:relative;margin:9px 0 9px 9px;padding:24px 24px 40px;display:flex;align-items:center;justify-content:center;
+.cb-sheet-draw{position:relative;margin:9px 0 9px 9px;padding:24px;display:flex;align-items:center;justify-content:center;
  background:var(--cb-paper);border-right:1px solid rgba(7,20,7,.13);border-radius:3px 0 0 3px}
 .cb-sheet-draw .cb-art{display:block;width:100%;max-width:540px;height:auto}
 .cb-sheet-draw figcaption{position:absolute;left:20px;bottom:13px;font-size:12px;color:rgba(7,20,7,.5)}
@@ -453,6 +453,25 @@ footer.footer{flex-wrap:wrap!important}
  .cb-tb-meta div{padding-inline:18px}
 }
 @media (max-width:480px){.cb-tb-meta dd{font-size:13.5px}}
+/* the summit where the visitor lives (cb-here.js): their city with a pin in the summit sun's orange, wherever it is named */
+.cb-pin{display:inline-block;width:.95em;height:.95em;margin:0 .14em 0 .06em;vertical-align:-.13em;flex:none}
+.cb-pin path{fill:var(--cb-sun)}
+.cb-pin circle{fill:#fff}
+.cb-place{white-space:nowrap}
+.cb-navdate b{max-width:250px;overflow:hidden;text-overflow:ellipsis}
+.cb-foryou{margin:10px 0 0;font-size:13px;line-height:1.45;color:var(--cb-ink2);text-align:left}
+.cb-foryou b{color:var(--cb-cat);font-weight:650}
+.cb-foryou .cb-fy-live{display:block;margin-top:2px}
+.cbc-here{display:inline-flex;align-items:center;margin-left:10px;padding:3px 10px 3px 7px;border-radius:999px;background:var(--cb-tint);
+ font-size:12.5px;font-weight:600;color:var(--cb-cat);white-space:nowrap}
+.cbc-here[hidden]{display:none}
+@media (max-width:700px){.cbc-here{display:none!important}}
+.hb-kick .cb-place::before,.hb-kick .cb-place::after{content:none!important;display:none!important}
+.cb-navdate{min-width:0}
+.cb-navdate small{max-width:190px;overflow:hidden;text-overflow:ellipsis}
+.cbc-here{flex:none}
+.cbc-here .cb-place{display:inline-flex;align-items:center}
+.cbc .gc-view,.cbc .gc-top button{white-space:nowrap}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL extrusions). Without .cb-motion, or with reduced motion, every
