@@ -476,18 +476,20 @@ footer.footer{flex-wrap:wrap!important}
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.
-   .d draws a line (pathLength 1)  .f fades in  .pin draws a ring and fills it  .dz moves in by --dy and locks with a
-   small settle (.up: smoothly, no settle)  .gx / .gy grow from the left / the bottom  .pp switches on (scale)  .sw slides by --dx  .hb lands and
-   then beats every --p  .pg pings once  .sg a signal running along a path every --p  .bl blinks  .halo breathes */
+   .d draws a line (pathLength 1)  .f fades in  .dz moves in by --dy and locks with a small settle (.up: smoothly)
+   .gx / .gy grow from the left / the bottom  .pp switches on (scale)  .sw slides by --dx  .off is the "not yet on"
+   cover that lifts  .hb lands, then beats every --p  .sg a signal running along a path every --p  .bl blinks
+   .rays turn slowly round --ox --oy */
 @media (prefers-reduced-motion: no-preference) {
-  .cb-anim .pp, .cb-anim .hb, .cb-anim .pg, .cb-anim .halo { transform-box: fill-box; transform-origin: 50% 50%; }
+  .cb-anim .pp, .cb-anim .hb { transform-box: fill-box; transform-origin: 50% 50%; }
   .cb-anim .gx { transform-box: fill-box; transform-origin: 0 50%; }
   .cb-anim .gy { transform-box: fill-box; transform-origin: 50% 100%; }
+  .cb-anim .rays { transform-box: view-box; transform-origin: var(--ox, 0) var(--oy, 0); }
 
   /* before the plate is reached */
-  .cb-motion .cb-anim .d, .cb-motion .cb-anim .pin { stroke-dasharray: 1 1.02; stroke-dashoffset: 1.005; }
-  .cb-motion .cb-anim .pin { fill-opacity: 0; }
+  .cb-motion .cb-anim .d { stroke-dasharray: 1 1.02; stroke-dashoffset: 1.005; }
   .cb-motion .cb-anim .f { opacity: 0; }
+  .cb-motion .cb-anim .off { opacity: 1; }
   .cb-motion .cb-anim .dz, .cb-motion .cb-anim .up { opacity: 0; transform: translateY(var(--dy, -20px)); }
   .cb-motion .cb-anim .gx { transform: scaleX(0); }
   .cb-motion .cb-anim .gy { transform: scaleY(0); }
@@ -497,13 +499,12 @@ footer.footer{flex-wrap:wrap!important}
   /* the build */
   .cb-motion .cb-anim.is-in .d { animation: cbDraw var(--u, 1.2s) cubic-bezier(.65, 0, .35, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
   .cb-motion .cb-anim.is-in .f { animation: cbFade var(--u, .8s) cubic-bezier(.4, 0, .2, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
-  .cb-motion .cb-anim.is-in .pin { animation: cbPin var(--u, .5s) cubic-bezier(.16, 1, .3, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
+  .cb-motion .cb-anim.is-in .off { animation: cbLift var(--u, .35s) cubic-bezier(.4, 0, .2, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
   .cb-motion .cb-anim.is-in .dz { animation: cbLock var(--u, .8s) cubic-bezier(.3, 1.45, .5, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
   .cb-motion .cb-anim.is-in .up { animation: cbLock var(--u, 1.2s) cubic-bezier(.22, 1, .36, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
   .cb-motion .cb-anim.is-in .gx, .cb-motion .cb-anim.is-in .gy { animation: cbTo var(--u, .6s) cubic-bezier(.16, 1, .3, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
   .cb-motion .cb-anim.is-in .pp { animation: cbTo var(--u, .45s) cubic-bezier(.34, 1.5, .64, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
   .cb-motion .cb-anim.is-in .sw { animation: cbTo var(--u, .45s) cubic-bezier(.7, 0, .2, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
-  .cb-motion .cb-anim.is-in .pg { animation: cbPing var(--u, 1.1s) cubic-bezier(.2, .6, .35, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards; }
   .cb-motion .cb-anim.is-in .hb {
     animation: cbTo var(--u, .55s) cubic-bezier(.34, 1.6, .64, 1) calc(var(--t, 0s) + var(--sg, 0s)) forwards,
                cbBeat var(--p, 4.6s) cubic-bezier(.45, 0, .55, 1) calc(var(--t, 0s) + var(--sg, 0s) + 1.5s) infinite;
@@ -511,16 +512,15 @@ footer.footer{flex-wrap:wrap!important}
   /* the loop after it */
   .cb-motion .cb-anim.is-in .sg { stroke-dasharray: .1 1.2; animation: cbSig var(--p, 3s) linear calc(var(--t, 0s) + var(--sg, 0s)) infinite; }
   .cb-motion .cb-anim.is-in .bl { animation: cbBlink 2.4s cubic-bezier(.45, 0, .55, 1) calc(var(--t, 0s) + var(--sg, 0s)) infinite; }
-  .cb-motion .cb-anim.is-in .halo { animation: cbHalo 5s cubic-bezier(.45, 0, .55, 1) calc(4s + var(--sg, 0s)) infinite; }
+  .cb-motion .cb-anim.is-in .rays { animation: cbTurn 90s linear calc(var(--t, 0s) + var(--sg, 0s)) infinite; }
   .cb-motion .cb-anim.is-off * { animation-play-state: paused !important; }
 }
 @keyframes cbDraw { to { stroke-dashoffset: 0; } }
 @keyframes cbFade { to { opacity: 1; } }
-@keyframes cbPin { to { stroke-dashoffset: 0; fill-opacity: 1; } }
+@keyframes cbLift { from { opacity: 1; } to { opacity: 0; } }
 @keyframes cbTo { to { transform: none; } }
 @keyframes cbLock { 0% { opacity: 0; transform: translateY(var(--dy, -20px)); } 30% { opacity: 1; } 100% { opacity: 1; transform: none; } }
-@keyframes cbPing { 0% { opacity: .8; transform: none; } 100% { opacity: 0; transform: scale(1.16, 1.15); } }
 @keyframes cbBeat { 0%, 70%, 100% { transform: none; } 77% { transform: scale(1.14); } 85% { transform: scale(.97); } 92% { transform: scale(1.03); } }
 @keyframes cbSig { 0% { opacity: 1; stroke-dashoffset: .1; } 100% { opacity: 1; stroke-dashoffset: -1.2; } }
 @keyframes cbBlink { 50% { opacity: .2; } }
-@keyframes cbHalo { 50% { transform: scale(1.16); stroke-opacity: .12; } }
+@keyframes cbTurn { to { transform: rotate(360deg); } }
