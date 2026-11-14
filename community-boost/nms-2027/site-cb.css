@@ -658,6 +658,12 @@ section.wa .wa-col{margin-top:0!important;transform:none!important;translate:non
 .cb-trip a{grid-template-columns:1fr!important;padding:14px 16px!important;row-gap:4px}
 .cb-trip-n{align-self:start!important}
 @media (max-width:700px){.cb-trip a{grid-template-columns:1fr!important;padding:12px 14px!important}}
+/* the pass's top bar: the two labels balanced either side of the lanyard clip, never under it (Sean 2026-11-14) */
+.pass-top{display:grid!important;grid-template-columns:minmax(0,1fr) 66px minmax(0,1fr)!important;align-items:center;column-gap:0!important}
+.pass-top>span:first-child{justify-self:start;font-size:10.5px!important;letter-spacing:.12em!important;white-space:nowrap}
+.pass-top .pass-slot{display:block!important;visibility:hidden;grid-column:2}
+.pass-top .pass-no{justify-self:end;grid-column:3;font-size:10.5px!important;letter-spacing:.12em!important;white-space:nowrap}
+.pass-top>span:first-child,.pass-top .pass-no{justify-self:center!important;letter-spacing:.09em!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
