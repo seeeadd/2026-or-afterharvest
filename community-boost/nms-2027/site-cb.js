@@ -58,16 +58,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var PIN = '<svg class="cb-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>';
     var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
     var place = '<span class="cb-place">' + PIN + esc(city) + '</span>';
+    // the summit's own dates (US Pacific, as the emails say them), small and grey, only where the visitor's dates differ
+    var PT = shifted ? ' <small class="cb-pt">Feb 23-25 PT</small>' : '';
     var html = {
-      range: esc(range) + ' in ' + place,                                   // Feb 23-25 in (pin) Chicago
-      rangeY: esc(range) + ', ' + d[2].y,                                   // Feb 24-26, 2027
+      range: esc(range) + ' in ' + place + PT,                                   // Feb 23-25 in (pin) Chicago
+      rangeY: esc(range) + ', ' + d[2].y,
+      rangeYpt: esc(range) + ', ' + d[2].y + PT,                            // the hero: theirs, then Pacific when it differs                                   // Feb 24-26, 2027
       rangeShort: esc(range),
       from: 'Live on Zoom from ' + place,
       liveFrom: '<i class="cb-live" aria-hidden="true"></i>Live on Zoom from ' + place,   // the hero line, with the live dot                                    // hero line, sheets
       stubFrom: 'Live from ' + place,
       city: place,
       calMonth: esc(rangeLong),
-      where: place + ' · free on Zoom',                                    // the header's second line
+      where: place + (shifted ? ' · Feb 23-25 PT' : ' · free on Zoom'),                                    // the header's second line
       foryou: '<b>For you:</b> ' + esc(d[0].wd + ', ' + d[0].md) + ' to ' + esc(d[2].wd + ', ' + d[2].md) + ' in ' + place +
               (shifted ? ' (Feb 23-25 in the US)' : '') + '. <span class="cb-fy-live">Come live and bring a campaign: on Day 3 you build it with the team.</span>'
     };
