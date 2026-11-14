@@ -654,6 +654,10 @@ header.nav-shell.event-nav{-webkit-backdrop-filter:blur(14px) saturate(1.3);back
 section.wa .wa-col{margin-top:0!important;transform:none!important;translate:none!important;align-self:start}
 .nms-pic>.nms-on-mtn{gap:0!important}
 :root .nms-pic>.nms-on-mtn b{margin-top:-.08em}
+/* the hero's day cards, text only (the drawings were too small to read there; they live in the day sheets and the schedule) */
+.cb-trip a{grid-template-columns:1fr!important;padding:14px 16px!important;row-gap:4px}
+.cb-trip-n{align-self:start!important}
+@media (max-width:700px){.cb-trip a{grid-template-columns:1fr!important;padding:12px 14px!important}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
