@@ -704,7 +704,6 @@ section.wa .wa-col{margin-top:0!important;transform:none!important;translate:non
 .cb-herosub[hidden]{display:none}
 /* the schedule's toolbar, simple (Sean 2026-11-14: "this looks messy ... maybe smaller stuff"): only the seal and name, the
    dates and the visitor's city; the dead Google-style buttons go (the real controls are the Show bar under it) */
-.cbc .gc-top>i.gc-ib,.cbc .gc-top>button,.cbc .gc-top .gc-view,.cbc .gc-top .gc-sp{display:none!important}
 .cbc .gc-top{gap:14px!important;padding:12px 18px!important;min-height:0!important;justify-content:flex-start;flex-wrap:wrap}
 .cbc .gc-top>*{opacity:1!important}
 .cbc .gc-logo{font-size:15px!important;font-weight:600!important;color:var(--cb-ink2)!important;gap:8px!important;margin-right:6px}
@@ -715,7 +714,6 @@ section.wa .wa-col{margin-top:0!important;transform:none!important;translate:non
 /* the schedule's left panel, placed: one left edge, room on both sides, the month on one line, no dead Create button */
 @media (min-width:1001px){.cbc .gc-main{grid-template-columns:196px minmax(0,1fr)!important}}
 .cbc .gc-side{padding:18px 16px 20px!important;box-sizing:border-box}
-.cbc .gc-create{display:none!important}
 .cbc .gc-mini{margin:0!important;width:100%!important}
 .cbc .gc-mini p{display:flex!important;align-items:center;justify-content:space-between;margin:0 0 8px!important;padding:0!important}
 .cbc .gc-mini p b{font-size:13.5px!important;white-space:nowrap;color:var(--cb-cat)}
@@ -727,6 +725,23 @@ section.wa .wa-col{margin-top:0!important;transform:none!important;translate:non
 .cbc .gc-cals li{display:flex;align-items:center;gap:9px;margin:0!important;padding:0!important;font-size:13px!important}
 .cbc .gc-cals li i{flex:none}
 @media (max-width:700px){.cbc .gc-logo{gap:0!important}}
+/* the calendar UI kept, every control smaller and quieter so the parts sit together (Sean: "you don't really need to remove
+   the UI ... make sure they all fit together in a nice way without making it overwhelming") */
+.cbc .gc-top{gap:10px!important;padding:10px 16px!important;align-items:center;flex-wrap:nowrap}
+.cbc .gc-top .gc-sp{flex:1!important;display:block!important}
+.cbc .gc-top .gc-ib{width:30px!important;height:30px!important;display:inline-grid!important;place-items:center;opacity:.5!important}
+.cbc .gc-top .gc-ib svg{width:18px!important;height:18px!important}
+.cbc .gc-top .gc-today,.cbc .gc-top .gc-view{height:30px!important;padding:0 12px!important;font-size:12.5px!important;border-radius:999px!important;opacity:.6!important;
+ display:inline-flex!important;align-items:center;gap:4px}
+.cbc .gc-top .gc-view svg{width:16px;height:16px}
+.cbc .gc-top .gc-logo{margin-right:4px}
+.cbc .gc-top .gc-month,.cbc .gc-top .cbc-here,.cbc .gc-top .gc-logo{opacity:1!important}
+.cbc .gc-create{display:inline-flex!important;align-items:center;gap:8px;height:36px!important;padding:0 14px 0 10px!important;margin:0 0 16px!important;
+ font-size:13px!important;border-radius:10px!important;box-shadow:0 1px 2px rgba(7,20,7,.12),0 0 0 1px rgba(7,20,7,.08)!important;opacity:.7}
+.cbc .gc-create svg{width:18px!important;height:18px!important}
+@media (max-width:1000px){.cbc .gc-top .gc-ib:not(:first-child),.cbc .gc-top .gc-today,.cbc .gc-top button.gc-ib{display:none!important}}
+@media (max-width:700px){.cbc .gc-top .gc-view{display:none!important}}
+.cbc .gc-logo img{flex:none!important;min-width:28px}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
