@@ -473,6 +473,124 @@ footer.footer{flex-wrap:wrap!important}
 .cbc-here .cb-place{display:inline-flex;align-items:center}
 .cbc .gc-view,.cbc .gc-top button{white-space:nowrap}
 
+/* ===== v5 (Sean 2026-11-14) ===== */
+/* the summit name on the mountain: the line above it bigger, between two short rules; "Architects of Impact" on a ribbon
+   in the mountain's deep green with the seal's white keyline, instead of a stacked shadow ("I don't like how you just put a
+   shadow ... it doesn't read well") */
+.nms-pic>.nms-on-mtn{gap:.55em!important}
+.nms-on-mtn span{display:flex!important;align-items:center;gap:.75em;font-size:.98em!important;font-weight:700!important;letter-spacing:.2em!important;
+ color:#fff!important;text-shadow:0 .06em .2em rgba(0,40,10,.35)!important;padding-left:.2em}
+.nms-on-mtn span::before,.nms-on-mtn span::after{content:"";width:2.4em;height:.13em;border-radius:1em;background:rgba(255,255,255,.75)}
+.nms-on-mtn b{position:relative;font-size:2.3em!important;font-weight:780!important;letter-spacing:-.03em!important;line-height:1!important;
+ padding:.16em .62em .22em;color:#fff;background:#005A17;border-radius:.1em;
+ box-shadow:0 0 0 .07em #fff,0 .22em .5em -.1em rgba(0,30,8,.45)!important;text-shadow:none!important}
+.nms-on-mtn b::before,.nms-on-mtn b::after{content:"";position:absolute;z-index:-1;top:.32em;width:.9em;height:100%;background:#004211;
+ box-shadow:0 0 0 .07em #fff}
+.nms-on-mtn b::before{left:-.62em;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,.3em 50%)}
+.nms-on-mtn b::after{right:-.62em;clip-path:polygon(0 0,100% 0,calc(100% - .3em) 50%,100% 100%,0 100%)}
+[data-logo="green"] .nms-on-mtn b,.nms-on-mtn b{text-shadow:none!important}
+:root:not([data-logo="green"]) .nms-on-mtn b{background:#1E4588}
+:root:not([data-logo="green"]) .nms-on-mtn b::before,:root:not([data-logo="green"]) .nms-on-mtn b::after{background:#163670}
+
+/* the live dot before "Live on Zoom from ...": the summit sun's orange, pulsing softly */
+.cb-live{position:relative;display:inline-block;width:.6em;height:.6em;margin:0 .5em 0 .1em;border-radius:50%;background:var(--cb-sun);vertical-align:.08em;font-style:normal}
+.cb-live::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--cb-sun);opacity:0}
+@media (prefers-reduced-motion:no-preference){.cb-live::after{animation:cbLive 2.2s cubic-bezier(.2,.6,.3,1) infinite}}
+@keyframes cbLive{0%{transform:scale(1);opacity:.55}100%{transform:scale(2.8);opacity:0}}
+
+/* a little life in the surfaces: a fine print grain on the buttons, the dark sections and the cards, barely there */
+:root{--cb-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)'/%3E%3C/svg%3E")}
+a.button,button.button{background-image:var(--cb-grain),linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,0) 55%)!important;
+ background-size:140px 140px,100% 100%!important;background-blend-mode:soft-light,normal!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 10px 22px -14px rgba(0,122,31,.75)!important}
+a.button:hover,button.button:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 14px 26px -14px rgba(0,122,31,.85)!important}
+.button-cream,.d1 a.button,.lp a.button{box-shadow:inset 0 1px 0 rgba(255,255,255,.45)!important}
+section.d1,.cb-party,.cb-sheet{background-image:var(--cb-grain);background-size:140px 140px;background-blend-mode:soft-light}
+
+/* the schedule, one day at a time */
+.cbc-viewbar{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:10px 16px;border-bottom:1px solid var(--cb-line);background:#fff}
+.cbc-viewbar>span{font-size:13px;color:var(--cb-ink2);margin-right:4px}
+.cbc-viewbar button{display:inline-flex;align-items:baseline;gap:6px;font:600 13px/1 Geist,system-ui,sans-serif;padding:8px 13px;border-radius:999px;
+ border:1px solid rgba(7,20,7,.16);background:#fff;color:var(--cb-cat);cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.cbc-viewbar button i{font-style:normal;font-weight:500;opacity:.65}
+.cbc-viewbar button:hover{border-color:var(--cb-rad);background:var(--cb-tint)}
+.cbc-viewbar button[aria-pressed="true"]{background:var(--cb-cat);border-color:var(--cb-cat);color:#fff}
+.cbc-viewbar button:focus-visible,.cbc-focus:focus-visible{outline:2px solid var(--cb-rad);outline-offset:2px}
+.cbc .cbc-dh{position:relative}
+.cbc-focus{position:absolute;top:10px;right:10px;width:32px;height:32px;display:grid;place-items:center;border-radius:8px;border:1px solid rgba(7,20,7,.14);
+ background:#fff;color:var(--cb-cat);cursor:pointer;transition:background-color .2s,border-color .2s}
+.cbc-focus:hover{background:var(--cb-tint);border-color:var(--cb-rad)}
+.cbc-focus svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cbc-focus .cbc-ic-close,.cbc-focus[aria-pressed="true"] .cbc-ic-open{display:none}
+.cbc-focus[aria-pressed="true"] .cbc-ic-close{display:inline}
+figure.cbc[data-view="1"] .cbc-day:not(.cbc-d1),figure.cbc[data-view="2"] .cbc-day:not(.cbc-d2),figure.cbc[data-view="3"] .cbc-day:not(.cbc-d3){display:none!important}
+figure.cbc:not([data-view="all"]) .cbc-cols{grid-template-columns:minmax(0,1fr)!important}
+/* one day: the same column, just wider and scaled up (Sean: "Just one column: literally just expand and scale up the stuff") */
+figure.cbc:not([data-view="all"]) .cbc-day{max-width:780px;margin:0 auto;padding:6px 8px 26px;animation:cbFocusIn .45s cubic-bezier(.2,.8,.2,1)}
+figure.cbc:not([data-view="all"]) .cbc-dh{padding:18px 18px 10px!important}
+figure.cbc:not([data-view="all"]) .cbc-dow{font-size:15px!important}
+figure.cbc:not([data-view="all"]) .cbc-num{font-size:34px!important}
+figure.cbc:not([data-view="all"]) .cbc-allday{font-size:16px!important;padding:9px 14px!important;margin:0 18px!important}
+figure.cbc:not([data-view="all"]) .cbc-art{display:block;width:calc(100% - 36px)!important;max-width:none!important;height:auto!important;margin:14px 18px 6px!important}
+figure.cbc:not([data-view="all"]) .cbc-list{padding:10px 18px 0!important;gap:12px!important}
+figure.cbc:not([data-view="all"]) .cbc-ev{grid-template-columns:150px minmax(0,1fr)!important;gap:16px!important;padding:12px!important}
+figure.cbc:not([data-view="all"]) .cbc-ev .cbc-th{width:150px!important;height:94px!important}
+figure.cbc:not([data-view="all"]) .cbc-ev b{font-size:18px!important;line-height:1.25}
+figure.cbc:not([data-view="all"]) .cbc-ev small{font-size:14.5px!important}
+figure.cbc:not([data-view="all"]) .cbc-ev.cbc-ws{grid-template-columns:1fr!important}
+figure.cbc:not([data-view="all"]) .cbc-ws-h b{font-size:18px!important}
+figure.cbc:not([data-view="all"]) .cbc-chips li{font-size:14.5px}
+@media (max-width:700px){
+ figure.cbc:not([data-view="all"]) .cbc-ev{grid-template-columns:96px minmax(0,1fr)!important;gap:12px!important}
+ figure.cbc:not([data-view="all"]) .cbc-ev .cbc-th{width:96px!important;height:60px!important}
+ figure.cbc:not([data-view="all"]) .cbc-ev b{font-size:15.5px!important}
+}
+@media (max-width:860px){figure.cbc:not([data-view="all"]) .cbc-day{animation:cbFocusIn .4s cubic-bezier(.2,.8,.2,1)}}
+@media (max-width:560px){.cbc-viewbar button i{display:none}.cbc-viewbar{padding:10px 12px}}
+@media (prefers-reduced-motion:reduce){figure.cbc .cbc-day{animation:none!important}}
+@keyframes cbFocusIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Cause Command, the star of the night (cb_edits: .cb-cc) */
+.cb-party.cb-cc{position:relative;overflow:hidden;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;align-items:center;
+ padding:clamp(28px,4vw,56px)!important;border-radius:18px!important;background-color:#071407!important;color:#fff;
+ background-image:var(--cb-grain),radial-gradient(60% 70% at 78% 55%,rgba(115,216,140,.22),rgba(115,216,140,0) 70%),radial-gradient(40% 45% at 78% 40%,rgba(252,117,64,.18),rgba(252,117,64,0) 70%)!important;
+ background-size:140px 140px,100% 100%,100% 100%!important;background-blend-mode:soft-light,normal,normal!important;
+ box-shadow:inset 0 0 0 1px rgba(115,216,140,.22),inset 0 1px 0 rgba(255,255,255,.08),0 40px 80px -40px rgba(0,0,0,.8)!important}
+.cb-cc>*{position:relative;z-index:1}
+.cb-cc .cc-beam{position:absolute;z-index:0;top:-30%;width:42%;height:150%;pointer-events:none;opacity:.5;
+ background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 70%);filter:blur(18px)}
+.cb-cc .cc-beam-l{right:30%;transform:rotate(18deg);clip-path:polygon(44% 0,56% 0,100% 100%,0 100%)}
+.cb-cc .cc-beam-r{right:4%;transform:rotate(-14deg);clip-path:polygon(44% 0,56% 0,100% 100%,0 100%)}
+.cc-badge{display:inline-flex;align-items:center;margin:0;padding:7px 14px 7px 10px;border-radius:999px;font-size:13px;font-weight:650;letter-spacing:.01em;
+ color:#fff;background:rgba(252,117,64,.14);box-shadow:inset 0 0 0 1px rgba(252,117,64,.45)}
+.cc-h{margin:18px 0 0!important;font-weight:780!important;font-size:clamp(40px,4.6vw,64px)!important;line-height:.98!important;letter-spacing:-.04em!important;color:#fff!important}
+.cc-h span{display:block;color:var(--cb-alt);background:linear-gradient(90deg,#73D88C,#C7EBA2 60%,#73D88C);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cc-sub{margin:16px 0 0!important;font-size:18px!important;line-height:1.45!important;color:rgba(255,255,255,.86)!important;max-width:30ch}
+.cc-tag{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0!important}
+.cc-tag b{font-size:13.5px;font-weight:650;color:var(--cb-cat);background:var(--cb-alt);padding:6px 11px;border-radius:6px}
+.cc-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;max-width:46ch}
+.cc-list li{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;font-size:15.5px;line-height:1.45;color:rgba(255,255,255,.88)}
+.cc-list svg{width:20px;height:20px;margin-top:1px}
+.cc-list circle{fill:rgba(115,216,140,.18);stroke:var(--cb-alt);stroke-width:1.2}
+.cc-list path{fill:none;stroke:var(--cb-alt);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.cc-go{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;margin-top:26px}
+.cc-free{font-size:13.5px;color:rgba(255,255,255,.7)}
+.cc-stage{margin:0;position:relative}
+.cc-stage::before{content:"";position:absolute;inset:8% 6% -6%;border-radius:50%;background:radial-gradient(closest-side,rgba(115,216,140,.35),rgba(115,216,140,0));filter:blur(24px)}
+.cc-panel{position:relative;border-radius:16px;padding:clamp(14px,2vw,24px);background:#F6FAF3;
+ background-image:var(--cb-grain);background-size:140px 140px;background-blend-mode:soft-light;
+ box-shadow:0 0 0 1px rgba(255,255,255,.6),0 0 0 7px rgba(115,216,140,.12),0 30px 60px -24px rgba(0,0,0,.7),0 0 60px rgba(115,216,140,.25)}
+.cc-panel .cb-art{display:block;width:100%;height:auto}
+.cb-cc .lp-head,.cb-cc .lp-foot,.cb-cc .lp-city{display:none}
+@media (max-width:900px){.cb-party.cb-cc{grid-template-columns:1fr;gap:28px}.cb-cc .cc-beam{display:none}}
+.cc-badge span{margin-left:.32em}
+/* the blueprint behind "What you actually walk away with": bigger and readable, light green linework on the dark ground
+   (Sean 2026-11-14: "I didn't even notice the blueprint picture ... make that bigger ... more visible") */
+.d1 .cb-walk-head::after{right:-4%!important;top:-90px!important;width:min(920px,74%)!important;
+ background:url(assets/2027/tex/blueprint-lines-green.webp) center/contain no-repeat!important;filter:none!important;mix-blend-mode:normal!important;opacity:.55!important;
+ -webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent);mask-image:radial-gradient(closest-side,#000 70%,transparent)}
+@media (max-width:860px){.d1 .cb-walk-head::after{display:block!important;right:-30%!important;top:-50px!important;width:110%!important;opacity:.3!important}}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.

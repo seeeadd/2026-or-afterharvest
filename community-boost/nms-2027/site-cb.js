@@ -62,7 +62,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       range: esc(range) + ' in ' + place,                                   // Feb 23-25 in (pin) Chicago
       rangeY: esc(range) + ', ' + d[2].y,                                   // Feb 24-26, 2027
       rangeShort: esc(range),
-      from: 'Live on Zoom from ' + place,                                    // hero line, sheets
+      from: 'Live on Zoom from ' + place,
+      liveFrom: '<i class="cb-live" aria-hidden="true"></i>Live on Zoom from ' + place,   // the hero line, with the live dot                                    // hero line, sheets
       stubFrom: 'Live from ' + place,
       city: place,
       calMonth: esc(rangeLong),
@@ -78,11 +79,33 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (!html[k]) { el.hidden = true; return; }
       el.innerHTML = html[k];
       el.hidden = false;
-      if (k === 'range' || k === 'from' || k === 'stubFrom' || k === 'foryou') el.setAttribute('title', 'Dates where you are (' + city + ')');
+      if (k === 'range' || k === 'from' || k === 'liveFrom' || k === 'stubFrom' || k === 'foryou') el.setAttribute('title', 'Dates where you are (' + city + ')');
     });
     document.querySelectorAll('[data-here-day]').forEach(function (el) {
       var k = +el.getAttribute('data-here-day'), f = el.getAttribute('data-here-fmt') || 'wd-md';
       el.textContent = f === 'dow' ? d[k].wd.toUpperCase() : f === 'num' ? d[k].day : f === 'wd-md-y' ? d[k].wd + ', ' + d[k].md + ', ' + d[k].y : d[k].wd + ', ' + d[k].md;
     });
   } catch (e) {}
+})();
+
+/* the schedule, one day at a time (cb_schedule.py: the view bar and each day's expand button) */
+;(function () {
+  var f = document.querySelector('figure.cbc');
+  if (!f) return;
+  function set(v) {
+    f.setAttribute('data-view', v);
+    f.querySelectorAll('[data-cbc-view]').forEach(function (b) {
+      var n = b.getAttribute('data-cbc-view'), on = n === v;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (b.classList.contains('cbc-focus')) b.setAttribute('aria-label', on ? 'Show all three days' : 'Focus on Day ' + n);
+    });
+  }
+  f.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-cbc-view]');
+    if (!b) return;
+    var v = b.getAttribute('data-cbc-view');
+    if (b.classList.contains('cbc-focus') && f.getAttribute('data-view') === v) v = 'all';
+    set(v);
+    if (f.getBoundingClientRect().top < 0) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 })();
