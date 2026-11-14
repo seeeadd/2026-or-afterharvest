@@ -635,6 +635,23 @@ header.nav-shell.event-nav{-webkit-backdrop-filter:blur(14px) saturate(1.3);back
 .pt-rail{background:#C9CFC9!important;box-shadow:none!important}
 #partners .pt-tape{background:var(--cb-alt)!important;box-shadow:none!important}
 .pt-sign a{background:var(--cb-rad)!important;border-radius:8px!important}
+/* v5d (Sean 2026-11-14) */
+/* the summit name: the two lines closer, the pair a touch lower so it sits in the middle of the mountain */
+.nms-pic>.nms-on-mtn{gap:.12em!important;margin-top:33.2%!important}
+/* the partner fence: both halves sit evenly between their posts (36px each side), the sign no longer crosses the middle post;
+   a faint grid back inside the spots */
+#partners .pt-fence{padding-left:36px!important;padding-right:36px!important}
+@media (min-width:861px){
+#partners .pt-grid{grid-template-columns:1fr 1fr 64px 2fr!important;column-gap:16px!important}
+#partners .pt-grid>li.pt-sign{grid-column:4!important;grid-row:1/3!important}
+#partners .pt-grid>li.pt-slot-title{grid-column:1/3!important;grid-row:1!important}
+#partners .pt-grid>li.pt-slot-a{grid-column:1!important;grid-row:2!important}
+#partners .pt-grid>li.pt-slot-b{grid-column:2!important;grid-row:2!important}
+}
+#partners .pt-sign{margin:0!important;width:auto!important;justify-self:stretch}
+.pt .pt-slot>a{background:linear-gradient(rgba(7,20,7,.03) 1px,transparent 1px) 0 0/18px 18px,linear-gradient(90deg,rgba(7,20,7,.03) 1px,transparent 1px) 0 0/18px 18px,#fff!important}
+/* the three press clippings level with each other */
+section.wa .wa-col{margin-top:0!important;transform:none!important;translate:none!important;align-self:start}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
