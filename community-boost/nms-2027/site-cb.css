@@ -591,6 +591,22 @@ figure.cbc:not([data-view="all"]) .cbc-chips li{font-size:14.5px}
  -webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent);mask-image:radial-gradient(closest-side,#000 70%,transparent)}
 @media (max-width:860px){.d1 .cb-walk-head::after{display:block!important;right:-30%!important;top:-50px!important;width:110%!important;opacity:.3!important}}
 
+/* v5b (Sean 2026-11-14): no banner on the summit name; the social posts' print effect instead, the white letters over two
+   offset copies (the sun's orange and a deep green), crisp, no blur. The blueprint a bit quieter */
+.nms-on-mtn b{background:none!important;box-shadow:none!important;padding:0!important;border-radius:0!important;font-size:2.55em!important;
+ text-shadow:-.045em 0 0 #FC7540,.045em 0 0 #00451A!important}
+.nms-on-mtn b::before,.nms-on-mtn b::after{display:none!important;content:none!important}
+.nms-on-mtn span{text-shadow:-.06em 0 0 rgba(252,117,64,.85),.06em 0 0 #00451A!important}
+.d1 .cb-walk-head::after{opacity:.3!important}
+/* the visitor's first name in the form heading ("Save your free seat, Maria."): emphasised again, as the old page did with
+   its display face (lost when everything moved to Geist; Sean 2026-11-14) */
+.pass-heading [data-greet]{color:var(--cb-rad);font-weight:800;background:linear-gradient(var(--cb-bloom),var(--cb-bloom)) 0 88%/0 .22em no-repeat;
+ padding:0 .04em;transition:background-size .6s cubic-bezier(.2,.8,.2,1)}
+.pass-heading [data-greet]:not(:empty){background-size:100% .22em}
+[data-holder]{color:var(--cb-rad)}
+:root .nms-pic>.nms-on-mtn b{text-shadow:-.045em 0 0 #FC7540,.045em 0 0 #00451A!important}
+:root .nms-pic>.nms-on-mtn span{text-shadow:-.06em 0 0 rgba(252,117,64,.85),.06em 0 0 #00451A!important}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.
