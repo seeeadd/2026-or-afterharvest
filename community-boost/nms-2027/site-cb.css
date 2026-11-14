@@ -756,6 +756,29 @@ label.wm-version:hover{background:var(--cb-tint)!important;color:var(--cb-rad-d)
 @keyframes cbNudge{0%,100%{box-shadow:0 0 0 0 rgba(0,155,39,0)}50%{box-shadow:0 0 0 4px rgba(0,155,39,.18)}}
 @media (max-width:600px){label.wm-version[for="wm-first-email"]::before{right:auto;left:0;top:auto;bottom:calc(100% + 6px);transform:none;font-size:11.5px}}
 @media (max-width:600px){label.wm-version[for="wm-first-email"]::before{display:none}}
+/* the appeal versions as the workshop chooser: a circle on each, the chosen one dark with a filled circle and a green ring */
+label.wm-version{position:relative;padding-left:34px!important}
+label.wm-version::after{content:"";position:absolute;left:12px;top:50%;width:13px;height:13px;margin-top:-6.5px;border-radius:50%;
+ box-shadow:inset 0 0 0 2px rgba(7,20,7,.45);background:#fff;transition:box-shadow .2s,background-color .2s}
+input.wm-radio:checked+label.wm-version{background:#071407!important;color:#fff!important;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--cb-rad)!important;z-index:1}
+input.wm-radio:checked+label.wm-version::after{background:#071407;box-shadow:inset 0 0 0 3px #fff}
+input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color:#fff!important}
+/* the AI search preview, as ChatGPT showed it */
+.cb-gpt{font-size:13px;line-height:1.55;color:#0d0d0d}
+.cb-gpt>p{margin:0 0 10px}
+.cb-gpt h5{margin:14px 0 10px;font-size:15px;font-weight:650}
+.cb-gpt-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.cb-gpt-list li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;align-items:start;padding-bottom:12px;border-bottom:1px solid #ececec}
+.cb-gpt-list li:last-child{border-bottom:0}
+.cb-gpt-list img{width:86px;height:108px;object-fit:cover;border-radius:10px}
+.cb-gpt-t{display:inline-block;font-size:14.5px;font-weight:650;border-bottom:1px dotted #9a9a9a;margin-bottom:5px}
+.cb-gpt-badge{display:table;margin:0 0 6px;padding:2px 8px;border-radius:999px;font-size:11.5px;background:#f0f0f0;color:#333}
+.cb-gpt-badge.is-top{background:#E6F4D6;color:#007A1F}
+.cb-gpt-list p{margin:0 0 5px}
+.cb-gpt-list small{display:block;font-size:11.5px;color:#777;margin:2px 0 4px}
+.cb-gpt-link{display:inline-block;font-size:12.5px;border-bottom:1px dotted #9a9a9a}
+.cb-gpt .wm-citation{vertical-align:1px}
+#preview-aisearch .wm-user-question{background:#000!important;color:#fff!important;border-radius:20px!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
