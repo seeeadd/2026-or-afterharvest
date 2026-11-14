@@ -699,6 +699,9 @@ section.wa .wa-col{margin-top:0!important;transform:none!important;translate:non
 @media (max-width:700px){.cb-trip a{align-items:flex-start!important}.cb-trip b{text-align:left!important;margin:0}}
 .cbc .gc-logo{white-space:nowrap;font-size:19px!important}
 @media (max-width:700px){.cbc .gc-logo{font-size:0!important}}
+/* the hero eyebrow short; the visitor's city (and the Pacific dates when theirs differ) on a small grey line under it */
+.cb-herosub{margin:-6px 0 10px!important;text-align:center;font-size:13.5px;font-weight:500;color:var(--cb-ink2)}
+.cb-herosub[hidden]{display:none}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply

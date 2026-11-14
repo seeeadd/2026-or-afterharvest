@@ -63,10 +63,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var html = {
       range: esc(range) + ' in ' + place + PT,                                   // Feb 23-25 in (pin) Chicago
       rangeY: esc(range) + ', ' + d[2].y,
-      rangeYpt: esc(range) + ', ' + d[2].y + PT,                            // the hero: theirs, then Pacific when it differs                                   // Feb 24-26, 2027
+      rangeYpt: esc(range) + ', ' + d[2].y,
+      heroSub: 'Your dates in ' + place + (shifted ? ' · Feb 23-25 PT' : ''),   // the small line under the eyebrow                            // the hero: theirs, then Pacific when it differs                                   // Feb 24-26, 2027
       rangeShort: esc(range),
       from: 'On Zoom, you join from ' + place,                              // the day sheets' Where (the visitor joins from there, not the hosts)
-      liveFrom: '<i class="cb-live" aria-hidden="true"></i>Join live on Zoom from ' + place,   // the hero line, the visitor is the subject, with the live dot                                    // hero line, sheets
+      liveFrom: '<i class="cb-live" aria-hidden="true"></i>Live on Zoom',   // the hero eyebrow stays short, with the live dot                                    // hero line, sheets
       stubFrom: 'Joining from ' + place,
       city: place,
       calMonth: esc(rangeLong),
