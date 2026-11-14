@@ -779,6 +779,50 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 .cb-gpt-link{display:inline-block;font-size:12.5px;border-bottom:1px dotted #9a9a9a}
 .cb-gpt .wm-citation{vertical-align:1px}
 #preview-aisearch .wm-user-question{background:#000!important;color:#fff!important;border-radius:20px!important}
+/* the source preview fills its column next to the longer ChatGPT answer: taller photo, larger text, and it stays in view while
+   the answer scrolls (Sean 2026-11-14: "make the source preview fit the page more ... it's too small") */
+#preview-aisearch .wm-sources{align-self:stretch;display:flex;flex-direction:column}
+#preview-aisearch .wm-sourcecard{position:sticky;top:12px}
+#preview-aisearch .wm-campus-feature{min-height:270px!important}
+#preview-aisearch .wm-campus-feature>div{margin-top:170px!important}
+#preview-aisearch .wm-campus-feature h5{font-size:30px!important}
+#preview-aisearch .wm-source-copy{padding:16px 18px 18px!important}
+#preview-aisearch .wm-source-copy p{font-size:15px!important;line-height:1.55!important}
+#preview-aisearch .wm-source-copy small{font-size:12px!important}
+#preview-aisearch .wm-check-detail summary{font-size:14px!important;padding:12px 0!important}
+#preview-aisearch .wm-sources-head{font-size:14px!important}
+/* closer to the real ChatGPT screen (Sean's screenshot): the chat's own title, "Worked for 42s", grey link pills, the composer */
+#preview-aisearch .wm-chatbar>span{font-size:13px!important;font-weight:500!important;gap:10px!important;display:inline-flex;align-items:center}
+#preview-aisearch .wm-chatbar .cb-gpt-title{max-width:30ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#preview-aisearch .wm-searched{font-size:13px!important;color:#8f8f8f!important}
+#preview-aisearch .wm-searched svg{display:none}
+#preview-aisearch .cb-gpt .wm-citation{display:inline-flex;align-items:center;gap:4px;padding:1px 8px 1px 5px!important;border-radius:999px!important;
+ background:#f0f0f0!important;color:#5d5d5d!important;font-size:11px!important;font-weight:500!important;border:0!important;box-shadow:none!important;cursor:pointer}
+#preview-aisearch .cb-gpt .wm-citation span{width:13px;height:13px;border-radius:50%;background:#2CBFD4;color:transparent!important;font-size:0!important;display:inline-block}
+#preview-aisearch .cb-gpt .wm-citation:hover{background:#e3e3e3!important;color:#111!important}
+.wm-claim-one:checked~.wm-thread .wm-cite-one,.wm-claim-two:checked~.wm-thread .wm-cite-two{background:#111!important;color:#fff!important}
+.cb-gpt-composer{display:flex;align-items:center;gap:10px;margin:14px 0 4px;padding:8px 8px 8px 14px;border-radius:999px;background:#fff;
+ box-shadow:0 0 0 1px #e6e6e6,0 4px 14px -6px rgba(0,0,0,.15);color:#8f8f8f;font-size:13px}
+.cb-gpt-composer b{font-weight:300;font-size:20px;color:#333;line-height:1}
+.cb-gpt-composer span{flex:1}
+.cb-gpt-composer em{font-style:normal;font-size:12px}
+.cb-gpt-composer svg{width:16px;height:16px;color:#333}
+.cb-gpt-composer i{width:30px;height:30px;border-radius:50%;background:#000;display:grid;place-items:center}
+.cb-gpt-composer i svg{color:#fff;width:14px;height:14px}
+#preview-aisearch .wm-sources-menu{display:none}
+/* the ChatGPT rail */
+.cb-gpt-rail{gap:14px!important;padding:12px 0 12px!important;width:46px;background:#f9f9f9!important;border-right:1px solid #ececec!important;color:#5d5d5d!important}
+.cb-gpt-rail .wm-icon{width:17px!important;height:17px!important}
+.cb-rail-home{width:30px;height:30px;border-radius:9px;background:#ececec;display:grid;place-items:center;color:#0d0d0d;position:relative}
+.cb-rail-home svg{width:16px;height:16px}
+.cb-rail-home::after{content:"";position:absolute;top:5px;right:6px;width:5px;height:5px;border-radius:50%;background:#0d0d0d;box-shadow:0 0 0 1.5px #ececec}
+.cb-rail-dots{font-size:15px;letter-spacing:1px;line-height:1;color:#5d5d5d;font-weight:700}
+.cb-gpt-rail hr{width:22px;border:0;border-top:1px solid #dcdcdc;margin:0}
+.cb-rail-fill{flex:1}
+.cb-rail-me{width:24px;height:24px;border-radius:50%;background:#6b6f6b;color:#fff;font-style:normal;font-size:9px;font-weight:600;display:grid;place-items:center}
+.cb-real{display:inline-flex;align-items:center;gap:8px;margin:12px 0 0!important;padding:6px 12px 6px 10px;border-radius:999px;background:var(--cb-tint);
+ color:var(--cb-rad-d);font-size:13.5px;font-weight:600}
+.cb-real i{width:8px;height:8px;border-radius:50%;background:var(--cb-rad);box-shadow:0 0 0 3px rgba(0,155,39,.18)}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
