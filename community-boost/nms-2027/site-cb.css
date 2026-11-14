@@ -697,6 +697,8 @@ section.wa .wa-col{margin-top:0!important;transform:none!important;translate:non
 .cb-trip a{align-items:center!important}
 .cb-trip b{text-align:center!important;margin:0 auto}
 @media (max-width:700px){.cb-trip a{align-items:flex-start!important}.cb-trip b{text-align:left!important;margin:0}}
+.cbc .gc-logo{white-space:nowrap;font-size:19px!important}
+@media (max-width:700px){.cbc .gc-logo{font-size:0!important}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply

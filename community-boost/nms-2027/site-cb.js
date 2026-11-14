@@ -65,9 +65,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       rangeY: esc(range) + ', ' + d[2].y,
       rangeYpt: esc(range) + ', ' + d[2].y + PT,                            // the hero: theirs, then Pacific when it differs                                   // Feb 24-26, 2027
       rangeShort: esc(range),
-      from: 'Live on Zoom from ' + place,
-      liveFrom: '<i class="cb-live" aria-hidden="true"></i>Live on Zoom from ' + place,   // the hero line, with the live dot                                    // hero line, sheets
-      stubFrom: 'Live from ' + place,
+      from: 'On Zoom, you join from ' + place,                              // the day sheets' Where (the visitor joins from there, not the hosts)
+      liveFrom: '<i class="cb-live" aria-hidden="true"></i>Join live on Zoom from ' + place,   // the hero line, the visitor is the subject, with the live dot                                    // hero line, sheets
+      stubFrom: 'Joining from ' + place,
       city: place,
       calMonth: esc(rangeLong),
       where: place + (shifted ? ' · Feb 23-25 PT' : ' · free on Zoom'),                                    // the header's second line
