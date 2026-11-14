@@ -825,6 +825,11 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 .cb-real i{width:8px;height:8px;border-radius:50%;background:var(--cb-rad);box-shadow:0 0 0 3px rgba(0,155,39,.18)}
 /* the quiet source caption under each workshop preview */
 .cb-src{margin:8px 2px 0;font-size:12.5px;color:var(--cb-ink2);font-style:italic}
+/* the chooser's rounded ends follow the new order (AI search first, appeal last) */
+#build .ww-choice.ww-aisearch{border-radius:7px 0 0!important}
+#build .ww-choice.ww-story{border-radius:0 7px 0 0!important}
+#build .ww-picker .ww-choice.ww-story,#build .ww-picker .ww-choice.ww-aisearch{border-radius:7px!important}
+#build .ww-choice.ww-adgrant{border-left:1px solid #c9ccc9}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
