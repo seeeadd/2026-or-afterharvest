@@ -622,7 +622,8 @@ figure.cbc:not([data-view="all"]) .cbc-art{width:220px!important;max-width:40%!i
 .cbc-viewbar button[aria-pressed="true"]{background:var(--cb-tint);border-color:var(--cb-rad);color:var(--cb-rad-d)}
 .cbc-viewbar>span{opacity:.7}
 /* the sticky header a little see-through, with the page softly blurred behind it */
-header.nav-shell.event-nav,header.nav-shell.event-nav .nav{background-color:rgba(255,255,255,.8)!important}
+header.nav-shell.event-nav{background-color:rgba(255,255,255,.82)!important}
+header.nav-shell.event-nav .nav{background:transparent!important}
 header.nav-shell.event-nav{-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}
 /* the partner fence, simpler (Sean 2026-11-14: "too much texture here ... they would probably get overwhelmed"): no chain-link
    pattern, no grid in the spots, no dashes or wire ties; plain posts and rail, white spots with a thin line, a flat tape */
