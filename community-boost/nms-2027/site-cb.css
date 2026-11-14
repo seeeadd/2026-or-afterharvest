@@ -823,6 +823,14 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 .cb-real{display:inline-flex;align-items:center;gap:8px;margin:12px 0 0!important;padding:6px 12px 6px 10px;border-radius:999px;background:var(--cb-tint);
  color:var(--cb-rad-d);font-size:13.5px;font-weight:600}
 .cb-real i{width:8px;height:8px;border-radius:50%;background:var(--cb-rad);box-shadow:0 0 0 3px rgba(0,155,39,.18)}
+/* "This really happened": a dated strip above a preview, so it reads as a record, not a mockup */
+.cb-happened{display:grid;gap:6px;margin:0 0 14px;padding:14px 18px;border-radius:10px;background:#071407;color:rgba(255,255,255,.88);
+ background-image:var(--cb-grain);background-size:140px 140px;background-blend-mode:soft-light}
+.cb-hp-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cb-alt)}
+.cb-hp-tag i{width:8px;height:8px;border-radius:50%;background:var(--cb-sun);box-shadow:0 0 0 3px rgba(252,117,64,.25)}
+.cb-happened p{margin:0;font-size:15px;line-height:1.5;max-width:70ch}
+.cb-happened b{color:#fff}
+.cb-happened p{color:rgba(255,255,255,.86)!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
