@@ -1277,3 +1277,32 @@ html.still .sc .g-toast{opacity:1;transform:none}html.still .sc-promo .cur{left:
 .cf-log .cl-t b{padding:2px 7px;border-radius:4px;background:#fff3c4;color:#7a5a00;font-size:11px;border:1px dashed #e0b74a}
 .cfre-real figcaption{margin-top:16px;padding-left:20px;font-size:13px;color:#5e675e}
 @media (max-width:700px){.cfre-real{padding-left:14px}.cf-log{width:200px;left:-4px;bottom:40px}.cf-log .cl-n{font-size:18px}}
+
+/* the credits card, again (Sean: "pls improve it looks ugly"): straight, crisp, one-line header, a meter */
+.cfre-real .CL{position:absolute;left:-10px;bottom:56px;width:250px;padding:14px 14px 12px;border-radius:12px;background:#fff;transform:none;box-shadow:0 0 0 1px rgba(7,20,7,.07),0 1px 0 rgba(7,20,7,.05),0 24px 44px -18px rgba(7,20,7,.45)}
+.cfre-real .CL .cl-hd{display:flex;align-items:center;gap:10px;padding-bottom:11px;border-bottom:1px solid #edf1ea}
+.cfre-real .CL .cl-hd img{width:30px;height:30px;flex:none}
+.cfre-real .CL .cl-hd b{display:block;font-size:15px;font-weight:800;letter-spacing:-.02em;color:#071407;line-height:1.1}
+.cfre-real .CL .cl-hd small{display:block;margin-top:2px;font-size:11.5px;font-weight:600;color:#B6121D;letter-spacing:.01em}
+.cfre-real .CL .cl-days{list-style:none;margin:8px 0 0;padding:0}
+.cfre-real .CL .cl-days li{display:flex;align-items:center;gap:10px;padding:6px 0}
+.cfre-real .CL .cl-days i{flex:none;width:20px;height:20px;border-radius:50%;background:#009b27 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.8 8.4l2.7 2.6L12.2 5.3' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat;box-shadow:0 0 0 3px #e6f4dc}
+.cfre-real .CL .cl-days span{flex:1;min-width:0;font-size:13px;color:#4b554b;white-space:nowrap}
+.cfre-real .CL .cl-days span b{margin-right:6px;font-weight:750;color:#071407}
+.cfre-real .CL .cl-days em{font-style:normal;font-size:11px;font-weight:700;color:#007a1f;background:#edf6e5;padding:2px 7px;border-radius:99px}
+.cfre-real .CL .cl-meter{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:9px}
+.cfre-real .CL .cl-meter i{height:5px;border-radius:3px;background:#009b27}
+.cfre-real .CL .cl-t{display:flex;align-items:center;justify-content:space-between;margin:10px 0 0;font-size:12.5px;font-weight:700;color:#071407}
+.cfre-real .CL .cl-t b{padding:2px 7px;border-radius:4px;background:#fff3c4;color:#7a5a00;font-size:11px;border:1px dashed #e0b74a}
+@media (max-width:700px){.cfre-real .CL{width:224px;left:-6px;bottom:52px}}
+
+/* the three checks fill in one after another when the card comes into view */
+.cfre-real .CL .cl-days i{animation:clpop .35s ease both}
+.cfre-real .CL .r1 i{animation-delay:.3s}.cfre-real .CL .r2 i{animation-delay:.7s}.cfre-real .CL .r3 i{animation-delay:1.1s}
+.cfre-real .CL .cl-meter i{transform-origin:0 50%;animation:clbar .4s ease both}
+.cfre-real .CL .cl-meter i:nth-child(1){animation-delay:.45s}.cfre-real .CL .cl-meter i:nth-child(2){animation-delay:.85s}.cfre-real .CL .cl-meter i:nth-child(3){animation-delay:1.25s}
+.cfre-art:not(.in) .CL .cl-days i,.cfre-art:not(.in) .CL .cl-meter i{animation-play-state:paused}
+@keyframes clpop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+@keyframes clbar{from{transform:scaleX(0)}to{transform:none}}
+html.still .CL .cl-days i,html.still .CL .cl-meter i{animation:none}
+@media (prefers-reduced-motion:reduce){.CL .cl-days i,.CL .cl-meter i{animation:none}}
