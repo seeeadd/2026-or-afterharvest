@@ -83,7 +83,7 @@ if (line) {
   var items = $$('li', line);
   items.forEach(function(li, i){
     var d = D[i];
-    if (!d) { li.remove(); return; }
+    if (!d) { if (!li.classList.contains('goal')) li.remove(); return; }
     var s = $('.ld span', li); if (s) s.textContent = d.label + ' · ' + ptTime(EVENT.startPT) + ' PT';
     var h = $('h3', li); if (h && d.title) h.textContent = d.title;
   });
@@ -212,28 +212,38 @@ each('[data-when-local] [data-range]', function(el){ el.textContent = rangeLong;
 var d3 = $('.days3[data-daystrip]');
 if (d3) d3.innerHTML = D.map(function(d){ return '<li><b>' + d.p.wd + '</b><i>' + d.p.day + '</i><small>' + ptTime(EVENT.startPT) + ' PT</small></li>'; }).join('');
 /* the visitor's own time first, PT beside it (Sean on Ana's pages: the visitor's place and time come first; CB rule: PT on every time) */
-var localLine = '';
+var localLine = '', localShort = null, dLocal = null;
 try {
   var tz2 = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
   if (tz2 && ['America/Los_Angeles','America/Vancouver','America/Tijuana','US/Pacific'].indexOf(tz2) < 0) {
     var f2 = function(d){ return new Intl.DateTimeFormat('en-US',{timeZone:tz2,hour:'numeric',minute:'2-digit'}).format(d).replace(':00','').replace(' AM',' am').replace(' PM',' pm').replace(/^12 pm$/,'noon'); };
     var city2 = tz2.split('/').pop().replace(/_/g,' ');
-    var nextDay = new Intl.DateTimeFormat('en-US',{timeZone:tz2,day:'numeric'}).format(start1) !== new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',day:'numeric'}).format(start1) ? ' (the next day)' : '';
-    localLine = f2(start1) + ' to ' + f2(end1) + nextDay + ' in ' + city2;
-    each('[data-when-local]', function(el){ el.innerHTML = '<b>' + rangeLong + '</b><span class="sep"> · </span><span class="nw">' + localLine + '</span>'; });
-    each('[data-when-pt]', function(el){ el.textContent = 'That’s ' + ptTime(EVENT.startPT) + ' to ' + ptTime(EVENT.endPT) + ' PT each day.'; el.hidden = false; });
+    var dayIn = function(d, tz){ return new Intl.DateTimeFormat('en-US',{timeZone:tz,day:'numeric'}).format(d); };
+    var shifted = dayIn(start1, tz2) !== dayIn(start1, 'America/Los_Angeles');
+    var endNext = dayIn(end1, tz2) !== dayIn(start1, tz2) ? ' the next day' : '';
+    dLocal = function(date){ return new Intl.DateTimeFormat('en-US',{timeZone:tz2,weekday:'short',month:'short',day:'numeric'}).format(at(date, EVENT.startPT)); };
+    var rangeHere = rangeLong;
+    if (shifted) {
+      rangeHere = dLocal(first.date) + (multi ? ' to ' + dLocal(last.date) : '') + ', 2027';
+      var p1 = dLocal(first.date).split(' '), p3 = dLocal(last.date).split(' ');
+      localShort = {mo: p1[1], d1: +p1[2], d2: +p3[2], shift: +p1[2] - first.p.day};
+    }
+    localLine = f2(start1) + ' to ' + f2(end1) + endNext + ' in ' + city2;
+    each('[data-when-local]', function(el){ el.innerHTML = '<b>' + rangeHere + '</b><span class="sep"> · </span><span class="nw">' + localLine + '</span>'; });
+    each('[data-when-pt]', function(el){ el.textContent = 'That’s ' + ptTime(EVENT.startPT) + ' to ' + ptTime(EVENT.endPT) + ' PT each day' + (shifted ? ', ' + rangeLong.replace(', 2027', '') + ' in PT.' : '.'); el.hidden = false; });
     each('[data-local-start-inline]', function(el){ el.textContent = ' (' + f2(start1) + ' in ' + city2 + ')'; });
   }
 } catch(e) {}
 /* the header's event line: their dates and start time in their own city first, PT beside it */
 (function(){
   var mo = first.label.split(', ')[1].split(' ')[0];
-  var short = mo + ' ' + first.p.day + (multi ? ' to ' + last.p.day : '');
+  var short = localShort ? localShort.mo + ' ' + localShort.d1 + (multi ? ' to ' + localShort.d2 : '') : mo + ' ' + first.p.day + (multi ? ' to ' + last.p.day : '');
+  if (localShort) { var cb = document.querySelectorAll('.cal3 b'); if (cb.length === 3) { cb[0].textContent = localShort.d1 + 2; cb[1].textContent = localShort.d1 + 1; cb[2].textContent = localShort.d1; } window.__yiShift = localShort.shift; }
   var startL = localLine ? localLine.split(' to ')[0] : ptTime(EVENT.startPT);
   var cityL = localLine ? localLine.split(' in ').pop() : '';
-  each('[data-hd-main]', function(el){ el.innerHTML = '<span class="nw">' + short + '</span> · <span class="nw">' + startL + (cityL ? '<span class="cty"> in ' + cityL + '</span>' : ' PT') + '</span>'; });
+  each('[data-hd-main]', function(el){ el.innerHTML = '<span class="nw">' + short + '</span><span class="tm"> · <span class="nw">' + startL + (cityL ? ' in ' + cityL : ' PT') + '</span></span>'; });
   each('[data-hd-start]', function(el){ el.textContent = cityL ? startL + ' in ' + cityL + ' (' + ptTime(EVENT.startPT) + ' PT)' : ptTime(EVENT.startPT) + ' PT'; });
-  each('[data-hd-sub]', function(el){ el.innerHTML = (cityL ? '<span class="cty2">' + cityL + ' · </span>' + ptTime(EVENT.startPT) + ' PT' : '') + '<span class="free">' + (cityL ? ' · free' : 'Free') + ', live on Zoom</span>'; });
+  each('[data-hd-sub]', function(el){ el.innerHTML = '<span class="tm2"><span class="nw">' + startL + (cityL ? ' in ' + cityL : ' PT') + '</span>' + (cityL ? ' · ' : '') + '</span>' + (cityL ? ptTime(EVENT.startPT) + ' PT' : '') + '<span class="free">' + (cityL ? ' · free' : 'Free') + ', live on Zoom</span>'; });
   var pt = ptTime(EVENT.startPT);
   var tzv = ''; try { tzv = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
   function fmtIn(d, tz){ try { return new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit'}).format(d).replace(' AM',' am').replace(' PM',' pm').replace(/^12:00 pm$/,'noon'); } catch(e) { return ''; } }
@@ -246,7 +256,7 @@ try {
   var m30 = new Date(start1.getTime() - 30 * 60000);
   each('[data-tl-30]', function(el){ el.textContent = ' (' + (cityL && tzv ? fmtIn(m30, tzv) + ' in ' + cityL + ', ' : '') + fmtIn(m30, 'America/Los_Angeles') + ' PT)'; });
   /* "what you'll leave with": each day in their city, PT beside it */
-  Array.prototype.forEach.call(document.querySelectorAll('[data-dayline] .ld span'), function(el, i){ if (D[i]) el.textContent = D[i].label + ' · ' + (cityL ? startL + ' in ' + cityL + ' · ' : '') + pt + ' PT'; });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-dayline] .ld span'), function(el, i){ if (D[i]) el.textContent = (dLocal && localShort ? dLocal(D[i].date) : D[i].label) + ' · ' + (cityL ? startL + ' in ' + cityL + ' · ' : '') + pt + ' PT'; });
   /* step 3's two seats: their name on the first */
   each('[data-seat-me]', function(el){ if (who.first) el.textContent = who.first + (who.last ? ' ' + who.last : ''); });
   /* an iPhone or iPad gets its own calendar as a full button (Sean: a calendar link tested on phones) */
