@@ -219,3 +219,28 @@ html[data-state="week"] .hero-in{padding-top:156px}
 .qa-ex .ex-list b{display:block;margin-top:2px;font-size:15px;font-weight:650;color:var(--green-d)}
 @media (max-width:600px){.qa-ex{transform:none}}
 .qa-row [data-play="ai"] img{transform:scale(1.32);transform-origin:50% 18%}
+
+/* the breakouts, video first (Sean 2026-11-16): the question big, the thumbnail big, one line on what watching gives you,
+   the full written answer one tap away under "Read the answer" */
+.answers .qa-row{align-items:center}
+.answers .qa-tx h3{font-size:clamp(1.55rem,1.1rem + 1.3vw,2.3rem);line-height:1.08;letter-spacing:-.03em}
+.answers .qa-tx .qa-why{margin-top:12px;font-size:17.5px;line-height:1.5;color:var(--ink-2);max-width:30em}
+.qa-more{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line-2);max-width:34em}
+.qa-more summary{list-style:none;display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-size:15.5px;font-weight:700;color:var(--green-d)}
+.qa-more summary::-webkit-details-marker{display:none}
+.qa-more summary:after{content:"";width:8px;height:8px;margin-top:-4px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .2s var(--ease),margin .2s var(--ease)}
+.qa-more[open] summary:after{transform:rotate(-135deg);margin-top:4px}
+.qa-more summary:hover{color:var(--green)}
+.qa-more summary:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
+.qa-more .o2,.qa-more[open] .o1{display:none}
+.qa-more[open] .o2{display:inline}
+.qa-ans{padding-top:2px}
+.answers .qa-ans p{font-size:16px}
+html.still .qa-more summary:after{transition:none}
+@media (max-width:900px){
+  .answers .qa-row{display:flex;flex-direction:column;align-items:stretch;gap:14px}
+  .answers .qa-row .qa-tx{display:contents}
+  .answers .qa-row h3{order:-1}
+  .answers .qa-row .player{order:0}
+  .answers .qa-row .qa-why,.answers .qa-row .qa-more,.answers .qa-row .who{order:1;margin-top:0}
+}
