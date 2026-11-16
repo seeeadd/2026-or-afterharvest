@@ -1259,3 +1259,6 @@ html.still .sc .g-toast{opacity:1;transform:none}html.still .sc-promo .cur{left:
 .cert-did{color:var(--green-d)}
 .cert .cf-rows li{border-bottom-color:#dfe9d8}
 .cert .cf-rows li b{background:var(--tint);color:var(--green-d)}
+
+/* round 14b (Sean: "you can make these red"): the laurel and "letters after your name" in CFRE red */
+.cfre h2 em{color:#B6121D}
