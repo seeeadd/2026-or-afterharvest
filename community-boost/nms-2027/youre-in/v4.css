@@ -1,0 +1,184 @@
+/* You're in page v4 (2026-11-16): the copy, order and behaviour from Sean's revised copy and edit map, on top of v3.css. */
+
+/* ---- the floating header: event, three places on the page, one button ---- */
+.nav .hd-nav{display:flex;align-items:center;gap:2px;margin-left:auto}
+.nav .hd-nav a{padding:7px 10px;border-radius:6px;font-size:13.5px;font-weight:600;color:var(--ink-2);text-decoration:none;white-space:nowrap;transition:background-color .2s var(--ease),color .2s var(--ease)}
+.nav .hd-nav a:hover{background:rgba(0,155,39,.09);color:var(--green-d)}
+.nav .hd-nav a:focus-visible{outline:2px solid var(--green);outline-offset:1px}
+.nav.on-dark .hd-nav a{color:rgba(255,255,255,.86)}
+.nav.on-dark .hd-nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+.nav .nextbtn{flex:none;margin-left:6px}
+.nav .hd-day{margin-left:auto;white-space:normal;text-align:right;line-height:1.3}
+.nav .wrap.bar{width:min(1000px,calc(100% - 24px))}
+@media (max-width:1000px){.nav .hd-nav{display:none}.nav .nextbtn{margin-left:auto}}
+@media (max-width:600px){.nav .hd-day{font-size:12.5px}}
+
+/* ---- hero ---- */
+.hero .hero-lede{margin-top:16px;max-width:31em;font-size:clamp(1.05rem,.95rem + .3vw,1.2rem);line-height:1.5;color:rgba(255,255,255,.8)}
+.hero .when-big{margin-top:14px}
+.hero .when-pt{margin-top:4px}
+.s1 .step-hd{margin-bottom:10px}
+.other-cal{font-size:14.5px;color:var(--mute)}
+.other-cal a{font-weight:650;color:var(--green-d);text-underline-offset:3px}
+/* the welcome video: once it exists, a play control and Cameron's line; before that, the photo and a plain fact */
+.vid-sub .vid-h{display:block;margin-bottom:3px;font-size:clamp(1.1rem,1rem + .3vw,1.3rem);font-weight:750;letter-spacing:-.02em;color:#fff}
+.vid-sub .v-on,.vid-sub .v-off{display:block}
+.vid .v-off,.vid.novid .v-on,.vid.novid .watch,.vid.novid .tap{display:none}
+.vid.novid .v-off{display:block}
+.vid.novid .player{cursor:default}
+.vid.novid .player:hover img,.vid.novid .player:focus img{transform:none}
+.hero-player .tap .dur{margin-left:8px;font-size:13px;font-weight:700;color:#fff}
+.hero-player .tap .dur:empty{display:none}
+
+/* ---- step 2: each place the email can land, with what to do there ---- */
+.ib-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.ib-switch button{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-height:52px;padding:9px 11px;text-align:left;line-height:1.2}
+.ib-switch button b{font-size:13.5px;font-weight:700}
+.ib-switch button span{font-size:12.5px;font-weight:500;opacity:.78}
+.st2 .p + .p{margin-top:10px}
+.st2 .mark{margin-top:20px}
+.st2 .done-msg{margin-top:8px}
+.help{margin-top:22px;padding-top:16px;border-top:1px dashed var(--line-2);display:grid;gap:6px;font-size:15px;color:var(--mute);max-width:34em}
+.help b{color:var(--ink);font-weight:650}
+.help a{font-weight:650;color:var(--green-d);text-underline-offset:3px}
+@media (max-width:520px){.ib-switch{grid-template-columns:minmax(0,1fr)}.ib-switch button{min-height:0;flex-direction:row;align-items:baseline;gap:8px;flex-wrap:wrap}}
+
+/* ---- what you'll leave with: three days on the road ---- */
+.days .sec-hd h2{max-width:none}
+.stops{grid-template-columns:repeat(3,minmax(0,1fr))}
+.stops .stop-body h3{margin-top:10px;font-size:19px;line-height:1.2;letter-spacing:-.02em}
+.stops .ld-local{margin-top:6px;font-size:12.5px;line-height:1.4;color:var(--mute)}
+.got-p{margin-top:6px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.days-ft{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:36px}
+.days-ft p{font-size:16.5px;color:var(--ink-2);max-width:36em}
+@media (max-width:1000px){.stops{grid-template-columns:minmax(0,1fr)}}
+
+/* ---- the manager note: its own short band under the programme ---- */
+.mgr-sec{padding:56px 0;background:#fff}
+.mgr-sec .mgr{max-width:780px;margin:0 auto}
+.mgr-sec .mgr-tx b{font-size:clamp(1.15rem,1rem + .5vw,1.45rem);letter-spacing:-.025em}
+.mgr-sec .mgr-tx small{font-size:15px}
+.mgr-sec .mgr-art{width:72px;height:56px}
+.copy-fail{margin-top:10px;font-size:14px;font-weight:600;color:#9a3412}
+.share .copy-fail{margin:4px 0 8px}
+input.share-show{display:block;width:100%;margin:0 0 8px;padding:9px 11px;border-radius:6px;border:1.5px solid var(--green);background:#fff;font:500 14px/1.3 Geist,sans-serif;color:var(--ink)}
+
+/* ---- bring a coworker: optional, no number ---- */
+.st3 .col-tx .step-h{margin-bottom:12px}
+.st3 .p + .p{margin-top:8px}
+.st3 .share{margin-top:22px}
+
+/* ---- two concerns: two compact cards, the answer always written, the video only once it exists ---- */
+.answers .sec-hd h2{max-width:none}
+.qa2{margin-top:36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.qa-card{display:grid;grid-template-columns:128px minmax(0,1fr);gap:22px;align-items:start;padding:22px;border-radius:14px;background:#fff url(assets/tex-grain.png);box-shadow:0 0 0 1px var(--line),0 2px 0 #d5e2cd,0 24px 44px -32px rgba(7,20,7,.5)}
+.qa-face{display:block;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--bloom) url(assets/tex-grain.png)}
+.qa-face img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.qa-card h3{font-size:clamp(1.1rem,1rem + .4vw,1.35rem);line-height:1.2;letter-spacing:-.02em}
+.qa-card .qa-tx p{margin-top:8px;font-size:15.5px;line-height:1.55;color:var(--ink-2)}
+.qa-card .qa-acts{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:14px}
+.qa-card .qa-acts a{font-weight:650;color:var(--green-d);text-underline-offset:3px}
+.qa-card .who{display:block;margin-top:12px;font-size:13px;color:var(--mute)}
+.hear{display:inline-flex;align-items:center;gap:8px;padding:5px 13px 5px 5px;border-radius:99px;border:1.5px solid var(--line-2);background:#fff;font:700 14px/1 Geist,sans-serif;color:var(--ink);cursor:pointer;transition:border-color .18s var(--ease)}
+.hear:hover{border-color:var(--green-d)}
+.hear:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.hear .pp-i{width:26px;height:26px}
+.hear .pp-i:after{left:10px;top:7.5px;border-width:5.5px 0 5.5px 8.5px}
+.hear .dur{margin-left:2px;font-weight:500;color:var(--mute)}
+.hear .dur:empty{display:none}
+.hear[hidden]{display:none}
+@media (max-width:900px){.qa2{grid-template-columns:minmax(0,1fr);gap:16px}}
+@media (max-width:520px){.qa-card{grid-template-columns:84px minmax(0,1fr);gap:14px;padding:16px}}
+
+/* ---- CFRE: availability only; the wreath in CFRE red, the summit in Community Boost green, frosted glass on grid paper ---- */
+.cfre .cfre-tx .lede-sm + .lede-sm{margin-top:10px}
+.cfre-note a{font-weight:650}
+.cfre-art.cfre-avail{display:grid;place-items:center;width:min(460px,100%);margin:0 auto;padding:46px 28px;border-radius:20px;overflow:hidden;
+  background:radial-gradient(circle at 24% 26%,#3cc463 0 66px,transparent 67px),radial-gradient(circle at 78% 76%,#d33a44 0 54px,transparent 55px),
+    radial-gradient(circle at 86% 18%,#c7eba2 0 36px,transparent 37px),var(--gridp),#f6faf1;
+  box-shadow:inset 0 0 0 1px var(--line),0 2px 0 #d5e2cd,0 30px 60px -40px rgba(7,20,7,.5)}
+.cfre-avail:before{content:"";position:absolute;inset:0;background:url(assets/tex-grain.png);opacity:.6;pointer-events:none}
+.ca-card{position:relative;width:min(330px,100%);padding:24px 22px 22px;border-radius:16px;text-align:center;overflow:hidden;
+  background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),inset 0 1px 0 #fff,0 0 0 1px rgba(7,20,7,.06),0 30px 50px -22px rgba(7,20,7,.45)}
+.ca-card:before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)'/%3E%3C/svg%3E");opacity:.2;pointer-events:none}
+.ca-card:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.6),rgba(255,255,255,0) 45%);pointer-events:none}
+.ca-card>*{position:relative;z-index:1}
+.ca-wreath svg{display:block;width:132px;height:132px;margin:0 auto}
+.ca-t{margin-top:10px;font-size:clamp(1.35rem,1.15rem + .6vw,1.65rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;color:var(--ink)}
+.ca-s{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;font-size:14.5px;font-weight:650;color:var(--green-d)}
+.ca-s img{width:22px;height:22px;flex:none}
+.ca-p{width:fit-content;margin:16px auto 0;padding:6px 14px;border-radius:99px;font-size:13.5px;font-weight:700;color:#8E0E17;background:rgba(182,18,29,.07);box-shadow:inset 0 0 0 1.5px rgba(182,18,29,.32)}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.ca-card{background:rgba(255,255,255,.94)}}
+@media (max-width:700px){.cfre-art.cfre-avail{padding:34px 16px}}
+
+/* ---- when it's time to join ---- */
+.day h2{margin-bottom:6px}
+.todo-acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:10px}
+.todo-acts a{font-weight:650;color:var(--green-d);text-underline-offset:3px}
+.todo .ti-tool{width:56px;padding:0;background:var(--forest) url(assets/tex-grain-w.png)}
+.todo .ti-tool .tw{position:absolute;left:8px;right:8px;top:16px;bottom:8px;display:flex;flex-direction:column;gap:3px;padding:6px 5px;border-radius:4px;background:#fff}
+.todo .ti-tool .tw i{display:block;height:3px;border-radius:2px;background:#d7e3d1}
+.todo .ti-tool .tw i.s{width:55%}
+.todo .ti-tool b{position:absolute;left:8px;top:4px;margin:0;padding:1px 6px;border-radius:99px;background:var(--orange);color:#fff;font-size:8.5px;font-weight:800;letter-spacing:.03em;line-height:1.3}
+
+/* ---- footer ---- */
+.foot-in p{line-height:1.6}
+.foot-cal{margin-left:auto}
+@media (max-width:700px){.foot-cal{margin-left:0}}
+
+/* ---- the frozen checklist: two items and what comes next ---- */
+.dock-next{margin-top:8px;padding-left:4px;font-size:12.5px;font-weight:650;line-height:1.3;color:var(--green-d)}
+.dock.on-dark .dock-next{color:var(--alt)}
+@media (max-width:1439px){
+  .dock-next{margin:0;padding:0;white-space:nowrap}
+  .yi-ready .dock-list{display:none}
+}
+@media (max-width:700px){.dock-next{display:none}.yi-ready .dock-next{display:block}.yi-ready .dock-list{display:none}}
+
+/* ---- the video player, once a video exists ---- */
+.vdlg{padding:0;border:0;border-radius:12px;background:#000;width:min(960px,92vw);overflow:visible}
+.vdlg::backdrop{background:rgba(7,20,7,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.vdlg-in{aspect-ratio:16/9}
+.vdlg-in video,.vdlg-in iframe{display:block;width:100%;height:100%;border:0;border-radius:12px}
+.vdlg .ib-x{top:-46px;right:0;background:#fff}
+
+
+/* ---- round 2 (Sean 2026-11-16) ---- */
+/* the date clock back in the header: their own dates and start time first, PT under it; the page links only where they fit */
+.nav .wrap.bar{width:min(1180px,calc(100% - 24px))}
+.nav .clock{margin-left:auto}
+.nav .hd-nav{margin-left:4px;padding-left:10px;border-left:1px solid rgba(7,20,7,.1)}
+.nav.on-dark .hd-nav{border-left-color:rgba(255,255,255,.16)}
+@media (max-width:1240px){.nav .hd-nav{display:none}}
+@media (max-width:1000px){.nav .nextbtn{margin-left:10px}}
+@media (max-width:600px){.nav .nextbtn{margin-left:6px;padding:7px 10px 8px;font-size:13px}}
+/* "See you at the summit" smaller, on one line */
+.hero h1 em.h1-sub{display:block;margin-top:.16em;font-size:.56em;line-height:1.05;letter-spacing:-.03em;white-space:nowrap}
+/* a thinner hero */
+.hero-in{padding-top:92px;padding-bottom:30px}
+html[data-state="week"] .hero-in{padding-top:130px}
+.hero-side{margin-bottom:52px}
+.hero .kick-ok{margin-bottom:12px}
+.hero .hero-lede{margin-top:12px}
+.hero .when-big{margin-top:12px}
+.hero .step{margin-top:18px;padding:18px 22px 16px}
+.hero .step-hd{margin-bottom:8px}
+.hero .step-h{font-size:clamp(1.35rem,1.05rem + .9vw,1.75rem)}
+.hero .why{margin-top:4px}
+.hero .cal-btns{max-width:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:14px}
+.hero .cal-btns .btn-app:first-child{grid-column:1/-1}
+.hero .cal-btns .btn-app{min-height:46px;font-size:14.5px;white-space:nowrap}
+.hero .step-ft{margin-top:12px;padding-top:12px}
+@media (max-width:1000px){.hero-in{padding-top:84px}.hero-side{margin-bottom:0}}
+@media (max-width:560px){.hero .cal-btns{grid-template-columns:minmax(0,1fr)}.hero .cal-btns .btn-app{white-space:normal}}
+.hero .cal-btns .btn-2.btn-app{font-size:14px;padding-right:10px}
+@media (max-width:860px){.nav .nextbtn .lg{display:none}.nav .nextbtn .sm{display:inline}}
+/* Sean: "too tight": clear air between Cameron's caption and the Day tiles on the floor */
+.hero-side{margin-bottom:96px}
+.hero .vid-sub{margin-top:14px}
+@media (max-width:1000px){.hero-side{margin-bottom:0}}
+@media (min-width:1001px){.hero-side{align-self:start;margin:8px 0 0}}
+@media (min-width:1001px){.hero-side .vid{width:90%;margin-left:auto}.hero .vid-lab.watch{margin-bottom:22px}}
+@media (max-width:1399px){.hero .cal-btns{grid-template-columns:minmax(0,1fr)}.hero .cal-btns .btn-app{white-space:normal}}
+@media (max-width:440px){.nav .cal3{display:none}.nav .nextbtn{padding:7px 9px 8px;font-size:12.5px}.nav .hd-date small{font-size:11px}}

@@ -1,0 +1,75 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Community Boost//Nonprofit Marketing Summit 2027//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Nonprofit Marketing Summit 2027
+BEGIN:VEVENT
+UID:nms2027-day1@communityboost.org
+DTSTAMP:20261116T000000Z
+DTSTART:20270223T170000Z
+DTEND:20270223T223000Z
+SUMMARY:Nonprofit Marketing Summit 2027\, Day 1: Org Strategy & AI Tech Fou
+ ndation
+DESCRIPTION:Free and live on Zoom\, hosted by Community Boost.\nYour person
+ al Zoom link is in your confirmation email\, with "You’re in" in the sub
+ ject. Search your inbox for "Nonprofit Marketing Summit".\nQuestions: summ
+ it@communityboost.org
+LOCATION:Zoom (your personal link is in your email)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:The summit is tomorrow. Your Zoom link is in your email.
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:The summit starts in 15 minutes.
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nms2027-day2@communityboost.org
+DTSTAMP:20261116T000000Z
+DTSTART:20270224T170000Z
+DTEND:20270224T223000Z
+SUMMARY:Nonprofit Marketing Summit 2027\, Day 2: The Growth & Marketing Blu
+ eprint
+DESCRIPTION:Free and live on Zoom\, hosted by Community Boost.\nYour person
+ al Zoom link is in your confirmation email\, with "You’re in" in the sub
+ ject. Search your inbox for "Nonprofit Marketing Summit".\nQuestions: summ
+ it@communityboost.org
+LOCATION:Zoom (your personal link is in your email)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:The summit is tomorrow. Your Zoom link is in your email.
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:The summit starts in 15 minutes.
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nms2027-day3@communityboost.org
+DTSTAMP:20261116T000000Z
+DTSTART:20270225T170000Z
+DTEND:20270225T223000Z
+SUMMARY:Nonprofit Marketing Summit 2027\, Day 3: The Build
+DESCRIPTION:Free and live on Zoom\, hosted by Community Boost.\nYour person
+ al Zoom link is in your confirmation email\, with "You’re in" in the sub
+ ject. Search your inbox for "Nonprofit Marketing Summit".\nQuestions: summ
+ it@communityboost.org
+LOCATION:Zoom (your personal link is in your email)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:The summit is tomorrow. Your Zoom link is in your email.
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:The summit starts in 15 minutes.
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
