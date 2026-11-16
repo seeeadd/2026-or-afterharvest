@@ -1262,3 +1262,18 @@ html.still .sc .g-toast{opacity:1;transform:none}html.still .sc-promo .cur{left:
 
 /* round 14b (Sean: "you can make these red"): the laurel and "letters after your name" in CFRE red */
 .cfre h2 em{color:#B6121D}
+
+/* round 15 (Sean: "here's a real cfre certificate to use"): the framed certificate, our credit card over its corner */
+.cfre-real{position:relative;width:min(500px,100%);margin:0 auto;padding:6px 6px 0 26px}
+.cfre-cert{display:block;width:100%;height:auto;border-radius:3px;transform:rotate(-1.4deg);box-shadow:0 2px 0 rgba(7,20,7,.12),0 40px 70px -34px rgba(7,20,7,.65)}
+.cf-log{position:absolute;left:-6px;bottom:44px;width:236px;padding:14px 16px 12px;border-radius:10px;background:#fff;transform:rotate(2.2deg);box-shadow:0 0 0 1px rgba(7,20,7,.08),0 2px 0 #d5e2cd,0 28px 44px -22px rgba(7,20,7,.6)}
+.cf-log .cl-k{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#B6121D}
+.cf-log .cl-n{margin-top:4px;font-size:20px;font-weight:800;letter-spacing:-.03em;color:#071407;line-height:1.1}
+.cf-log .cf-rows{margin-top:6px}
+.cf-log .cf-rows li{grid-template-columns:44px minmax(0,1fr) 20px;gap:8px;padding:5px 0;font-size:12.5px;border-bottom:1px dashed #dfe9d8}
+.cf-log .cf-rows li b{font-size:11px;padding:2px 6px;background:#edf6e5;color:#007a1f}
+.cf-log .cf-rows li i{width:19px;height:19px;border-radius:4px}
+.cf-log .cl-t{display:flex;align-items:center;justify-content:space-between;margin-top:8px;font-size:12.5px;font-weight:700;color:#071407}
+.cf-log .cl-t b{padding:2px 7px;border-radius:4px;background:#fff3c4;color:#7a5a00;font-size:11px;border:1px dashed #e0b74a}
+.cfre-real figcaption{margin-top:16px;padding-left:20px;font-size:13px;color:#5e675e}
+@media (max-width:700px){.cfre-real{padding-left:14px}.cf-log{width:200px;left:-4px;bottom:40px}.cf-log .cl-n{font-size:18px}}
