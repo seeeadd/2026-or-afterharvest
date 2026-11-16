@@ -259,3 +259,9 @@ html.still .qa-more summary:after{transition:none}
 .qa-bub{padding:20px 28px 21px;border-radius:30px 30px 30px 8px;box-shadow:0 0 0 2px var(--line),0 3px 0 var(--line),0 28px 48px -32px rgba(7,20,7,.5)}
 .qa-row:nth-child(even) .qa-bub{box-shadow:0 0 0 2px #d2e6c6,0 3px 0 #d2e6c6,0 28px 48px -32px rgba(7,20,7,.45)}
 @media (max-width:600px){.answers .qa-tx h3.qa-q{font-size:1.45rem;gap:10px}.qa-av{width:34px;height:34px;background-size:26px}.qa-bub{padding:15px 19px 16px;border-radius:24px 24px 24px 6px}}
+/* Sean: "make the videos bigger scale than the text section": the player takes about 60% of each row */
+@media (min-width:901px){
+  .answers .qa-row{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:52px}
+  .answers .qa-row:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}
+  .answers .qa-tx h3.qa-q{font-size:clamp(1.45rem,1.05rem + 1.05vw,2.05rem)}
+}
