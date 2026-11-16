@@ -1239,3 +1239,23 @@ html.still .sc .g-toast{opacity:1;transform:none}html.still .sc-promo .cur{left:
 .cert-seal{width:118px;height:152px;right:-36px;bottom:-74px}
 @media (max-width:700px){.cert-foot{padding-right:0}.cert-seal{width:88px;height:114px;right:-6px;bottom:-62px}.cfre-art{padding-bottom:66px}}
 .cert-cr,.cert-cr b{white-space:nowrap}
+
+/* round 14 (Sean: "make it a bit more comm boost colors"): Community Boost green leads (laurel, heading, border, ribbons, the
+   pale green ground); CFRE red is the accent (the word CFRE, ", CFRE", the seal, the 21); CFRE's teal is gone */
+.cfre{background:linear-gradient(180deg,#f3f9ec,#fbfdf8 70%)}
+.cfre:before,.cfre:after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='16'%3E%3Cg fill='none' stroke='%23009b27' stroke-width='1'%3E%3Cpath d='M0 8C6 0 12 0 18 8S30 16 36 8'/%3E%3Cpath d='M0 8C6 16 12 16 18 8S30 0 36 8'/%3E%3Cpath d='M0 4C6 12 12 12 18 4S30-4 36 4' stroke='%23B6121D' stroke-opacity='.55'/%3E%3Cpath d='M0 12C6 4 12 4 18 12S30 20 36 12' stroke='%23B6121D' stroke-opacity='.55'/%3E%3C/g%3E%3C/svg%3E") repeat-x center/36px 16px;opacity:.4}
+.cfre-head span b{color:var(--green-d)}
+.cfre h2{color:var(--ink)}
+.cfre h2 em{color:var(--green)}
+.cfre-facts>li>span:last-child b{color:var(--ink)}
+.cf-ico i{background:var(--green)}
+.cf-ico i:after{border-color:transparent var(--green) transparent transparent}
+.cf-ico.doc i{background-color:#fff;box-shadow:inset 0 0 0 2px var(--green-d);background-image:linear-gradient(var(--green-d),var(--green-d)),linear-gradient(var(--green-d),var(--green-d)),linear-gradient(var(--cf-red),var(--cf-red))}
+.cfre-note a{color:var(--green-d)}
+.cert{background:repeating-linear-gradient(45deg,rgba(0,155,39,.3) 0 1px,transparent 1px 5px),repeating-linear-gradient(-45deg,rgba(182,18,29,.16) 0 1px,transparent 1px 5px),#f7fbf1}
+.cert-in{background:#fffefa url(assets/tex-grain.png);box-shadow:0 0 0 1px rgba(0,122,31,.4),inset 0 0 0 5px #fffefa,inset 0 0 0 6px rgba(182,18,29,.4)}
+.cert-kick{color:var(--green-d)}
+.cert-name{border-bottom-color:rgba(0,122,31,.35)}
+.cert-did{color:var(--green-d)}
+.cert .cf-rows li{border-bottom-color:#dfe9d8}
+.cert .cf-rows li b{background:var(--tint);color:var(--green-d)}
