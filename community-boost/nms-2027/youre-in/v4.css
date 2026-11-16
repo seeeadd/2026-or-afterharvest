@@ -182,3 +182,19 @@ html[data-state="week"] .hero-in{padding-top:130px}
 @media (min-width:1001px){.hero-side .vid{width:90%;margin-left:auto}.hero .vid-lab.watch{margin-bottom:22px}}
 @media (max-width:1399px){.hero .cal-btns{grid-template-columns:minmax(0,1fr)}.hero .cal-btns .btn-app{white-space:normal}}
 @media (max-width:440px){.nav .cal3{display:none}.nav .nextbtn{padding:7px 9px 8px;font-size:12.5px}.nav .hd-date small{font-size:11px}}
+
+/* Sean: "now its too thin it looks ugly. make it balanced": room above and below, the step card off the bottom edge,
+   the copy and the video sharing the same middle */
+.hero-in{padding-top:118px;padding-bottom:84px;align-items:center}
+html[data-state="week"] .hero-in{padding-top:156px}
+.hero .kick-ok{margin-bottom:16px}
+.hero .hero-lede{margin-top:16px}
+.hero .when-big{margin-top:18px}
+.hero .step{margin-top:26px;padding:22px 26px 20px}
+.hero .step-hd{margin-bottom:10px}
+.hero .why{margin-top:6px}
+.hero .cal-btns{margin-top:16px;gap:10px}
+.hero .step-ft{margin-top:16px;padding-top:16px}
+@media (min-width:1001px){.hero-side{align-self:center;margin:0 0 72px}}
+@media (max-width:1000px){.hero-in{padding-top:96px;padding-bottom:56px}}
+.hero .step-ft{gap:12px 16px}
