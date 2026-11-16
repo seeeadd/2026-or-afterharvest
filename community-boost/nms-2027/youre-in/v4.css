@@ -265,3 +265,6 @@ html.still .qa-more summary:after{transition:none}
   .answers .qa-row:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}
   .answers .qa-tx h3.qa-q{font-size:clamp(1.45rem,1.05rem + 1.05vw,2.05rem)}
 }
+/* the header's two short links (Zoom link, Agenda) fit down to 1000 px */
+@media (max-width:1240px){.nav .hd-nav{display:flex}}
+@media (max-width:1000px){.nav .hd-nav{display:none}}
