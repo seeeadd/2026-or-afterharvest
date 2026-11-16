@@ -30,8 +30,10 @@ try { var was = localStorage.getItem(KEY); if (was) pick(was, true); } catch(e) 
    Loom embed link). Until then the written words carry it. ?videos shows the slots for review before the videos exist. */
 var VIDEOS = {
   welcome: {src: '', dur: ''},   // Cameron's welcome, beside the calendar
-  time:    {src: '', dur: ''},   // "I can't be away from my desk for whole days." Cameron
+  leave:   {src: '', dur: ''},   // "What will I actually leave with?" Cameron
+  budget:  {src: '', dur: ''},   // "We're a small team with a small budget. Will this work for us?" Chloe
   ai:      {src: '', dur: ''},   // "I'm not good with AI." Chloe
+  time:    {src: '', dur: ''},   // "I can't be away from my desk for whole days." Cameron
   join:    {src: '', dur: ''}    // how to join on the day
 };
 var preview = q.has('videos');
@@ -55,7 +57,7 @@ if (dlg) {
 }
 $$('[data-play]').forEach(function(b){
   var v = VIDEOS[b.dataset.play] || {}, has = !!v.src, wrap = b.closest('[data-vid]');
-  var always = b.dataset.play === 'welcome';   /* Sean: "not remove the 'Watch this video' text and the arrow" */
+  var always = b.classList.contains('player');   /* Sean: keep "Watch this video" and bring back the breakout videos */
   if (!has && !preview && !always) {
     if (b.classList.contains('player')) { b.disabled = true; b.tabIndex = -1; b.setAttribute('aria-hidden', 'true'); if (wrap) wrap.classList.add('novid'); }
     else b.hidden = true;
