@@ -143,7 +143,42 @@ input.share-show{display:block;width:100%;margin:0 0 8px;padding:9px 11px;border
 .vdlg-in video,.vdlg-in iframe{display:block;width:100%;height:100%;border:0;border-radius:12px}
 .vdlg .ib-x{top:-46px;right:0;background:#fff}
 
-/* the event name stays readable on narrow screens (edit map: "preserve a readable event name") */
-html[data-state] .nav .brand>span{display:block}
-@media (max-width:1000px){.nav .brand small{display:none}.nav .brand b{font-size:13px;line-height:1.15;max-width:15em}}
-@media (max-width:600px){.nav .brand b{font-size:12.5px;max-width:9.5em}.nav .nextbtn{padding:7px 11px 8px;font-size:13px}}
+
+/* ---- round 2 (Sean 2026-11-16) ---- */
+/* the date clock back in the header: their own dates and start time first, PT under it; the page links only where they fit */
+.nav .wrap.bar{width:min(1180px,calc(100% - 24px))}
+.nav .clock{margin-left:auto}
+.nav .hd-nav{margin-left:4px;padding-left:10px;border-left:1px solid rgba(7,20,7,.1)}
+.nav.on-dark .hd-nav{border-left-color:rgba(255,255,255,.16)}
+@media (max-width:1240px){.nav .hd-nav{display:none}}
+@media (max-width:1000px){.nav .nextbtn{margin-left:10px}}
+@media (max-width:600px){.nav .nextbtn{margin-left:6px;padding:7px 10px 8px;font-size:13px}}
+/* "See you at the summit" smaller, on one line */
+.hero h1 em.h1-sub{display:block;margin-top:.16em;font-size:.56em;line-height:1.05;letter-spacing:-.03em;white-space:nowrap}
+/* a thinner hero */
+.hero-in{padding-top:92px;padding-bottom:30px}
+html[data-state="week"] .hero-in{padding-top:130px}
+.hero-side{margin-bottom:52px}
+.hero .kick-ok{margin-bottom:12px}
+.hero .hero-lede{margin-top:12px}
+.hero .when-big{margin-top:12px}
+.hero .step{margin-top:18px;padding:18px 22px 16px}
+.hero .step-hd{margin-bottom:8px}
+.hero .step-h{font-size:clamp(1.35rem,1.05rem + .9vw,1.75rem)}
+.hero .why{margin-top:4px}
+.hero .cal-btns{max-width:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:14px}
+.hero .cal-btns .btn-app:first-child{grid-column:1/-1}
+.hero .cal-btns .btn-app{min-height:46px;font-size:14.5px;white-space:nowrap}
+.hero .step-ft{margin-top:12px;padding-top:12px}
+@media (max-width:1000px){.hero-in{padding-top:84px}.hero-side{margin-bottom:0}}
+@media (max-width:560px){.hero .cal-btns{grid-template-columns:minmax(0,1fr)}.hero .cal-btns .btn-app{white-space:normal}}
+.hero .cal-btns .btn-2.btn-app{font-size:14px;padding-right:10px}
+@media (max-width:860px){.nav .nextbtn .lg{display:none}.nav .nextbtn .sm{display:inline}}
+/* Sean: "too tight": clear air between Cameron's caption and the Day tiles on the floor */
+.hero-side{margin-bottom:96px}
+.hero .vid-sub{margin-top:14px}
+@media (max-width:1000px){.hero-side{margin-bottom:0}}
+@media (min-width:1001px){.hero-side{align-self:start;margin:8px 0 0}}
+@media (min-width:1001px){.hero-side .vid{width:90%;margin-left:auto}.hero .vid-lab.watch{margin-bottom:22px}}
+@media (max-width:1399px){.hero .cal-btns{grid-template-columns:minmax(0,1fr)}.hero .cal-btns .btn-app{white-space:normal}}
+@media (max-width:440px){.nav .cal3{display:none}.nav .nextbtn{padding:7px 9px 8px;font-size:12.5px}.nav .hd-date small{font-size:11px}}

@@ -12,7 +12,7 @@ var KEY = 'nms27-yi-commit';
 function firstLine(){
   var wd = null, dn = null, main = $('[data-hd-main]');
   var tm = main ? (main.textContent.split(' · ')[1] || '') : '';
-  return 'See you Tuesday, February 23.';
+  return 'See you ' + (window.__yiFirstLocal || 'Tuesday, February 23') + '.';
 }
 function pick(a, quiet){
   $$('[data-ans]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.ans === a ? 'true' : 'false'); });
@@ -55,7 +55,8 @@ if (dlg) {
 }
 $$('[data-play]').forEach(function(b){
   var v = VIDEOS[b.dataset.play] || {}, has = !!v.src, wrap = b.closest('[data-vid]');
-  if (!has && !preview) {
+  var always = b.dataset.play === 'welcome';   /* Sean: "not remove the 'Watch this video' text and the arrow" */
+  if (!has && !preview && !always) {
     if (b.classList.contains('player')) { b.disabled = true; b.tabIndex = -1; b.setAttribute('aria-hidden', 'true'); if (wrap) wrap.classList.add('novid'); }
     else b.hidden = true;
     return;
@@ -63,7 +64,7 @@ $$('[data-play]').forEach(function(b){
   if (v.dur) Array.prototype.forEach.call(b.querySelectorAll('[data-dur]'), function(d){ d.textContent = v.dur; });
   b.addEventListener('click', function(){
     if (has) openVideo(v.src, b.getAttribute('aria-label') || b.textContent.trim());
-    else note('Preview: the video goes here once it’s recorded.');
+    else note('This video is coming soon. Everything it says is written on this page.');
   });
 });
 })();
@@ -82,7 +83,7 @@ $$('[data-play]').forEach(function(b){
   var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
   if (!tz || ['America/Los_Angeles','America/Vancouver','America/Tijuana','US/Pacific'].indexOf(tz) >= 0) return;
   var city = tz.split('/').pop().replace(/_/g, ' ');
-  var SEL = '.reply .r-h,[data-local-line],[data-day-local],[data-week-local],[data-state-local]';
+  var SEL = '.reply .r-h,[data-hd-main],[data-hd-sub],[data-when-local],[data-week-start],[data-state-when],[data-hd-state],.stops .ld span';
   function wrapCity(){
     Array.prototype.forEach.call(document.querySelectorAll(SEL), function(el){
       if (el.classList.contains('city') || el.closest('.city')) return;

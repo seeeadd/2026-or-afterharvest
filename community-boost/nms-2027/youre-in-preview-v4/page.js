@@ -66,26 +66,54 @@ var startPT = ptTime(EVENT.startPT);
 var start1 = at(first.date, EVENT.startPT), endLast = at(last.date, EVENT.endPT);
 each('[data-fill="daylong"]', function(el){ el.textContent = first.long; });
 
-var tz = '', city = '', local = null;
+/* their own city's date and time first, PT beside it (Sean: "bring back the prioritization of the custom date and time");
+   a date is always shown with the time of the same place, never a PT date beside a local time */
+var tz = '', city = '';
 try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
-if (tz && ['America/Los_Angeles','America/Vancouver','America/Tijuana','US/Pacific','PST8PDT'].indexOf(tz) < 0) {
-  city = tz.split('/').pop().replace(/_/g, ' ');
-  local = function(date, withYear){
-    var t = at(date, EVENT.startPT);
-    var o = {timeZone: tz, weekday: 'long', month: 'long', day: 'numeric'}; if (withYear) o.year = 'numeric';
-    var d = new Intl.DateTimeFormat('en-US', o).format(t);
-    var tm = new Intl.DateTimeFormat('en-US', {timeZone: tz, hour: 'numeric', minute: '2-digit'}).format(t).replace(' AM',' am').replace(' PM',' pm');
-    return {date: d, time: tm, dom: +new Intl.DateTimeFormat('en-US', {timeZone: tz, day: 'numeric'}).format(t)};
+var isPT = !tz || ['America/Los_Angeles','America/Vancouver','America/Tijuana','US/Pacific','PST8PDT'].indexOf(tz) >= 0;
+if (!isPT) city = tz.split('/').pop().replace(/_/g, ' ');
+function inTz(d, o){ return new Intl.DateTimeFormat('en-US', Object.assign({timeZone: tz}, o)).format(d); }
+function tm(d){ return inTz(d, {hour: 'numeric', minute: '2-digit'}).replace(' AM',' am').replace(' PM',' pm'); }
+function shortPT(d){ return d.long.replace(/^(\w{3})\w*, (\w{3})\w* (\d+), \d{4}$/, '$1, $2 $3'); }
+var endPT = ptTime(EVENT.endPT);
+var L = null;
+if (city) {
+  L = {
+    shortDay: function(dd){ return inTz(at(dd.date, EVENT.startPT), {weekday: 'short', month: 'short', day: 'numeric'}); },
+    longDay: function(dd){ return inTz(at(dd.date, EVENT.startPT), {weekday: 'long', month: 'long', day: 'numeric'}); },
+    start: tm(start1), end: tm(at(first.date, EVENT.endPT)),
+    dom: +inTz(start1, {day: 'numeric'}), mo: inTz(start1, {month: 'short'}),
+    endNext: inTz(at(first.date, EVENT.endPT), {day: 'numeric'}) !== inTz(start1, {day: 'numeric'}) ? ' the next day' : ''
   };
+  L.domLast = +inTz(at(last.date, EVENT.startPT), {day: 'numeric'});
+  window.__yiShift = L.dom - first.dom;   /* the hero's February floor holds their own dates */
 }
-if (local) {
-  var a = local(first.date), b = local(last.date, true);
-  each('[data-local-line]', function(el){ el.textContent = 'Your time in ' + city + ': ' + a.date + ' to ' + b.date + ', starting ' + a.time + ' each day.'; el.hidden = false; });
-  each('[data-dayline] > li', function(li, i){ var d = D[i], el = $('[data-day-local]', li); if (d && el) { var l = local(d.date); el.textContent = 'Your time in ' + city + ': ' + l.date + ', ' + l.time; el.hidden = false; } });
-  each('[data-week-local]', function(el){ var l = local(first.date, true); el.textContent = ' In ' + city + ', that’s ' + l.date + ', ' + l.time + '.'; });
-  window.__yiShift = a.dom - first.dom;   /* the hero's February floor holds their own dates */
-}
-each('[data-week-start]', function(el){ el.textContent = first.long + ', ' + startPT + ' PT'; });
+var rangePT = shortPT(first) + ' to ' + shortPT(last) + ', 2027';
+/* the hero's dates line, and the line under it */
+each('[data-when-local]', function(el){
+  el.innerHTML = L ? '<b>' + L.shortDay(first) + ' to ' + L.shortDay(last) + ', 2027</b><span class="sep"> · </span><span class="nw">' + L.start + ' to ' + L.end + L.endNext + ' in ' + city + '</span>'
+                   : '<b>' + rangePT + '</b><span class="sep"> · </span><span class="nw">' + startPT + ' to ' + endPT + ' PT</span>';
+});
+each('[data-when-pt]', function(el){
+  el.textContent = L ? 'That’s ' + rangePT.replace(', 2027', '') + ', ' + startPT + ' to ' + endPT + ' PT. Free, live on Zoom.' : 'Free, live on Zoom.';
+});
+/* the header's clock: their dates and start time first, PT under it (v3's markup, so its narrow-screen rules still apply) */
+(function(){
+  var short = L ? L.mo + ' ' + L.dom + ' to ' + L.domLast : MOL[1].slice(0, 3) + ' ' + first.dom + ' to ' + last.dom;
+  var startL = L ? L.start : startPT;
+  each('[data-hd-main]', function(el){ el.innerHTML = '<span class="nw">' + short + '</span><span class="tm"> · <span class="nw">' + startL + (L ? ' in ' + city : ' PT') + '</span></span>'; });
+  each('[data-hd-sub]', function(el){ el.innerHTML = '<span class="tm2"><span class="nw">' + startL + (L ? ' in ' + city : ' PT') + '</span>' + (L ? ' · ' : '') + '</span>' + (L ? startPT + ' PT' : '') + '<span class="free">' + (L ? ' · free' : 'Free') + ', live on Zoom</span>'; });
+  if (L) { var cb = document.querySelectorAll('.cal3 b'); if (cb.length === 3) { cb[0].textContent = L.dom + 2; cb[1].textContent = L.dom + 1; cb[2].textContent = L.dom; } var ce = document.querySelector('.cal3 em'); if (ce) ce.textContent = L.mo; }
+})();
+/* each day card: their date and time first, PT beside it */
+each('[data-dayline] > li', function(li, i){
+  var d = D[i], el = $('.ld span', li); if (!d || !el) return;
+  el.textContent = L ? L.shortDay(d) + ' · ' + L.start + ' in ' + city + ' · ' + startPT + ' PT' : shortPT(d) + ' · ' + startPT + ' PT';
+});
+/* the RSVP reply's first day, in their own time first */
+window.__yiFirstLocal = L ? L.longDay(first) + ', ' + L.start + ' in ' + city + ' (' + startPT + ' PT)' : first.long.replace(/, \d{4}$/, '') + ', ' + startPT + ' PT';
+/* the week strip */
+each('[data-week-start]', function(el){ el.textContent = L ? L.longDay(first) + ', ' + L.start + ' in ' + city + ' (' + first.long.replace(/, \d{4}$/, '') + ', ' + startPT + ' PT)' : first.long + ', ' + startPT + ' PT'; });
 
 /* ---- calendar links: one Google entry repeating daily, a hosted file for Outlook, Apple and the rest ---- */
 function z(d){ return d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''); }
@@ -170,12 +198,16 @@ var fill = { day: 'Day ' + cur.n, daylong: cur.long };
 each('[data-fill]', function(el){ var k = el.dataset.fill; if (fill[k] != null) el.textContent = fill[k]; });
 each('[data-show]', function(el){ el.hidden = el.dataset.show.split(' ').indexOf(state) < 0; });
 each('[data-hide]', function(el){ if (el.dataset.hide.split(' ').indexOf(state) >= 0) el.hidden = true; });
-/* the session start as a complete date and time in PT; the visitor's own on its own line */
+/* the session start as a complete date and time: their own first, PT in brackets */
 var when = state === 'between' ? nxt : cur;
 if (when) {
-  each('[data-state-when]', function(el){ el.textContent = 'Day ' + when.n + ' starts ' + when.long + ', ' + startPT + ' PT.'; });
-  each('[data-hd-state]', function(el){ el.textContent = state === 'between' ? 'Day ' + when.n + ' starts ' + when.long.replace(/, \d{4}$/, '') + ', ' + startPT + ' PT.' : 'Day ' + when.n + ' starts at ' + startPT + ' PT.'; });
-  if (local) each('[data-state-local]', function(el){ if (state !== 'morning' && state !== 'between') return; var l = local(when.date, true); el.textContent = 'Your time in ' + city + ': ' + l.date + ', ' + l.time + '.'; el.hidden = false; });
+  var ptFull = when.long + ', ' + startPT + ' PT';
+  each('[data-state-when]', function(el){ el.textContent = 'Day ' + when.n + ' starts ' + (L ? L.longDay(when) + ', ' + L.start + ' in ' + city + ' (' + ptFull + ').' : ptFull + '.'); });
+  each('[data-hd-state]', function(el){
+    el.textContent = state === 'between'
+      ? 'Day ' + when.n + ' starts ' + (L ? L.shortDay(when) + ', ' + L.start + ' in ' + city : shortPT(when) + ', ' + startPT + ' PT') + '.'
+      : 'Day ' + when.n + ' starts at ' + (L ? L.start + ' in ' + city + ' (' + startPT + ' PT)' : startPT + ' PT') + '.';
+  });
 }
 if (EVENT.betaUrl) { each('[data-beta-link]', function(a){ a.href = EVENT.betaUrl; }); each('[data-beta]', function(p){ p.hidden = false; }); }
 
