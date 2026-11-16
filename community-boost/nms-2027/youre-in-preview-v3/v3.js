@@ -120,3 +120,145 @@ if (new URLSearchParams(location.search).has('still')) document.documentElement.
   function ask(){ if (!queued) { queued = true; requestAnimationFrame(upd); } }
   addEventListener('scroll', ask, {passive: true}); addEventListener('resize', ask); upd();
 })();
+
+/* the road through the three days, with a car on it. Wide screens: hover (or focus, or tap) a day and the car drives
+   there. Narrow screens: the road runs down the left and the car follows the day you have scrolled to. */
+(function(){
+  var road = document.querySelector('.road'), svg = road && road.querySelector('.road-svg'), list = road && road.querySelector('.stops');
+  if (!svg || !list) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  var stops = Array.prototype.slice.call(list.children).filter(function(el){ return el.tagName === 'LI'; });
+  var still = document.documentElement.classList.contains('still');
+  var reduce = still || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var path, car, total = 0, at = [], cur = 0, ang = 0, active = -1, raf = 0, vertical = false, seen = false;
+  function mk(n, a, parent){ var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (parent) parent.appendChild(e); return e; }
+  function f(x){ return Math.round(x * 10) / 10; }
+  function curve(p){
+    var d = 'M' + f(p[0][0]) + ' ' + f(p[0][1]);
+    for (var i = 0; i < p.length - 1; i++) {
+      var p0 = p[i - 1] || p[i], p1 = p[i], p2 = p[i + 1], p3 = p[i + 2] || p2;
+      d += ' C' + f(p1[0] + (p2[0] - p0[0]) / 6) + ' ' + f(p1[1] + (p2[1] - p0[1]) / 6) + ' ' + f(p2[0] - (p3[0] - p1[0]) / 6) + ' ' + f(p2[1] - (p3[1] - p1[1]) / 6) + ' ' + f(p2[0]) + ' ' + f(p2[1]);
+    }
+    return d;
+  }
+  function tangent(L){ var a = path.getPointAtLength(Math.max(0, L - 1.5)), b = path.getPointAtLength(Math.min(total, L + 1.5)); return Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI; }
+  function drawCar(){
+    var p = path.getPointAtLength(cur);
+    car.setAttribute('transform', 'translate(' + f(p.x) + ' ' + f(p.y) + ') rotate(' + f(ang) + ')' + (vertical ? ' scale(.74)' : ''));
+  }
+  function build(){
+    vertical = innerWidth <= 1000;
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var rr = road.getBoundingClientRect(), lr = list.getBoundingClientRect();
+    var W = vertical ? (innerWidth <= 700 ? 40 : 54) : rr.width, H = vertical ? lr.height : 118;
+    svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var pts = stops.map(function(li, i){
+      var r = li.getBoundingClientRect();
+      return vertical ? [W * (i % 2 ? .62 : .4), r.top - rr.top + 46] : [r.left - rr.left + r.width / 2, i % 2 ? 66 : 48];
+    });
+    var all = [vertical ? [W * .5, -26] : [-40, 64]].concat(pts, [vertical ? [W * .5, H + 26] : [W + 40, 58]]);
+    var d = curve(all), band = vertical ? 22 : 30;
+    mk('path', {d: d, fill: 'none', stroke: '#c7eba2', 'stroke-width': band, 'stroke-linecap': 'round'}, svg);
+    path = mk('path', {d: d, fill: 'none', stroke: '#009b27', 'stroke-width': 2.2, 'stroke-dasharray': '9 10', 'stroke-linecap': 'round'}, svg);
+    total = path.getTotalLength();
+    at = pts.map(function(pt){
+      var best = 0, bd = 1e9;
+      for (var L = 0; L <= total; L += 2) { var q = path.getPointAtLength(L), dd = (q.x - pt[0]) * (q.x - pt[0]) + (q.y - pt[1]) * (q.y - pt[1]); if (dd < bd) { bd = dd; best = L; } }
+      return best;
+    });
+    pts.forEach(function(pt, i){
+      var a = tangent(at[i]), goal = stops[i].classList.contains('goal');
+      if (!vertical) mk('path', {d: 'M' + f(pt[0]) + ' ' + f(pt[1] + band / 2 + 3) + 'V' + (H - 4), stroke: '#8fcc9c', 'stroke-width': 1.6, 'stroke-dasharray': '3 4', 'stroke-linecap': 'round', fill: 'none'}, svg);
+      var g = mk('g', {transform: 'translate(' + f(pt[0]) + ' ' + f(pt[1]) + ') rotate(' + f(a) + ')'}, svg);
+      if (goal) {
+        for (var r = 0; r < 5; r++) for (var col = 0; col < 2; col++)
+          mk('rect', {x: -4 + col * 4, y: -band / 2 + r * band / 5, width: 4, height: band / 5, fill: (r + col) % 2 ? '#071407' : '#ffffff'}, g);
+      } else {
+        mk('rect', {x: -1.6, y: -band / 2 + 3, width: 3.2, height: band - 6, rx: 1.2, fill: '#ffffff'}, g);
+      }
+    });
+    car = mk('g', {'class': 'car'}, svg);
+    var c = mk('g', {}, car);
+    mk('rect', {x: -21, y: -10, width: 46, height: 26, rx: 9, fill: '#071407', opacity: '.16'}, c);
+    [[-15, -15.5], [7, -15.5], [-15, 10.5], [7, 10.5]].forEach(function(w){ mk('rect', {x: w[0], y: w[1], width: 10, height: 5, rx: 2, fill: '#071407'}, c); });
+    mk('rect', {x: -23, y: -13, width: 46, height: 26, rx: 9, fill: '#FC7540'}, c);
+    mk('path', {d: 'M-23 4H23V5A8 8 0 0 1 15 13H-15A8 8 0 0 1-23 5Z', fill: '#071407', opacity: '.13'}, c);
+    mk('rect', {x: -12, y: -9.5, width: 20, height: 19, rx: 5, fill: '#FFB27F'}, c);
+    mk('path', {d: 'M8.5-9.5L14.5-8Q16.6 0 14.5 8L8.5 9.5Z', fill: '#071407'}, c);
+    mk('path', {d: 'M-12-9L-16.5-7.2Q-18 0-16.5 7.2L-12 9Z', fill: '#071407', opacity: '.82'}, c);
+    mk('rect', {x: 19.5, y: -10, width: 3, height: 5, rx: 1.2, fill: '#FFF4C2'}, c);
+    mk('rect', {x: 19.5, y: 5, width: 3, height: 5, rx: 1.2, fill: '#FFF4C2'}, c);
+    mk('rect', {x: -23, y: -9.5, width: 2, height: 4.5, rx: 1, fill: '#C7321F'}, c);
+    mk('rect', {x: -23, y: 5, width: 2, height: 4.5, rx: 1, fill: '#C7321F'}, c);
+    if (active >= 0) cur = at[active]; else cur = Math.min(total, vertical ? 6 : 70);
+    ang = tangent(cur);
+    drawCar();
+  }
+  function go(i){
+    if (i < 0 || i >= at.length) return;
+    stops.forEach(function(li, k){ li.classList.toggle('here', k === i); });
+    if (i === active) return;
+    active = i;
+    var from = cur, to = at[i], dir = to >= from ? 1 : -1;
+    cancelAnimationFrame(raf);
+    if (reduce) { cur = to; ang = tangent(cur); drawCar(); return; }
+    var dur = Math.min(1700, 420 + Math.abs(to - from) * 1.05), t0 = performance.now();
+    function step(now){
+      var k = Math.min(1, (now - t0) / dur), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      cur = from + (to - from) * e;
+      var want = tangent(cur) + (dir < 0 ? 180 : 0), dl = ((want - ang + 540) % 360) - 180;
+      ang += dl * .22;
+      drawCar();
+      if (k < 1 || Math.abs(dl) > .6) raf = requestAnimationFrame(step);
+    }
+    raf = requestAnimationFrame(step);
+  }
+  stops.forEach(function(li, i){
+    li.addEventListener('mouseenter', function(){ if (!vertical) go(i); });
+    li.addEventListener('click', function(){ go(i); });
+    li.addEventListener('focusin', function(){ go(i); });
+  });
+  /* on summit days the car waits at today's day (between days: tomorrow's) */
+  var st = document.documentElement.dataset.state, dn = parseInt(((document.querySelector('[data-fill="day"]') || {}).textContent || '').replace(/\D/g, ''), 10);
+  var home = (st === 'morning' || st === 'live') && dn ? dn - 1 : (st === 'between' && dn ? dn : 0);
+  function scrolled(){
+    if (!vertical) return;
+    var mid = innerHeight * .55, pick = -1;
+    stops.forEach(function(li, i){ if (li.getBoundingClientRect().top < mid) pick = i; });
+    if (pick >= 0) go(pick);
+  }
+  function start(){ if (seen) return; seen = true; if (vertical) scrolled(); else go(Math.min(home, stops.length - 1)); }
+  build();
+  if (still) { active = -1; go(Math.min(home, stops.length - 1)); seen = true; }
+  else if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { start(); io.disconnect(); } }); }, {threshold: .35});
+    io.observe(road);
+  } else start();
+  var rq = 0;
+  addEventListener('scroll', function(){ if (seen && vertical && !rq) rq = requestAnimationFrame(function(){ rq = 0; scrolled(); }); }, {passive: true});
+  var rt; addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ cancelAnimationFrame(raf); build(); if (active >= 0) { var a = active; active = -1; reduce = true; go(a); reduce = still || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); } }, 150); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ var a = active; build(); if (a >= 0) { active = -1; var r0 = reduce; reduce = true; go(a); reduce = r0; } });
+  window.addEventListener('load', function(){ var a = active; build(); if (a >= 0) { active = -1; var r0 = reduce; reduce = true; go(a); reduce = r0; } });
+})();
+
+/* the frozen three steps: in view once they have scrolled past step 3, to the end of the page; the first step not done is lit */
+(function(){
+  var dock = document.querySelector('[data-dock]'), st3 = document.getElementById('step-3');
+  if (!dock || !st3) return;
+  var items = Array.prototype.slice.call(dock.querySelectorAll('[data-step-dot]'));
+  function mark(){ var n = items.filter(function(li){ return !li.classList.contains('done'); })[0]; items.forEach(function(li){ li.classList.toggle('next', li === n); }); }
+  mark();
+  if (window.MutationObserver) new MutationObserver(mark).observe(dock, {subtree: true, attributes: true, attributeFilter: ['class']});
+  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .commit')), q = false;
+  var sec = st3.closest('section') || st3;
+  function upd(){
+    q = false;
+    var past = sec.getBoundingClientRect().bottom < innerHeight * .35;
+    dock.classList.toggle('on', past);
+    var r = dock.getBoundingClientRect(), y = r.top + r.height / 2, on = false;
+    dark.forEach(function(s){ var b = s.getBoundingClientRect(); if (b.top <= y && b.bottom > y) on = true; });
+    dock.classList.toggle('on-dark', on);
+  }
+  function ask(){ if (!q) { q = true; requestAnimationFrame(upd); } }
+  addEventListener('scroll', ask, {passive: true}); addEventListener('resize', ask); upd();
+})();

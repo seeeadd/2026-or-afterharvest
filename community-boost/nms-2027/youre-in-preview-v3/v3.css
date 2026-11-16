@@ -820,3 +820,142 @@ html[data-state="week"] .hero-in{padding-top:156px}
 /* the held days stand still for anyone who has reduced motion on (and in ?still screenshots) */
 html.still .cf-d.hold .cf-ev,html.still .cf-d.hold .cf-ev i,html.still .cf-d.hold .cf-ev:before,html.still .cf-d.hold .cf-ev:after{animation:none}
 @media (prefers-reduced-motion:reduce){.cf-d.hold .cf-ev,.cf-d.hold .cf-ev i,.cf-d.hold .cf-ev:before,.cf-d.hold .cf-ev:after{animation:none}}
+
+/* ===== round 9 (Sean 2026-11-16: "add a car in the roadmap ... when you hover on each, the car is going to go there") =====
+   Wide screens: the road runs above the four cards, one stop over each card, a finish line at the plan. Narrow screens:
+   the road runs down the left of the stacked cards. The car is drawn top-down in Community Boost orange. */
+.road{margin-top:40px}
+.road-line{display:none}
+.road-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:2}
+.stops{padding-top:118px}
+.stops li.stop:nth-child(even){margin-top:0}
+.stop-card{transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.stops li.stop.here .stop-card{transform:translateY(-6px);box-shadow:0 0 0 2px var(--green),0 2px 0 #d5e2cd,0 30px 50px -28px rgba(7,20,7,.55)}
+.stops li.goal.here .goal-card{box-shadow:0 0 0 3px var(--green),0 30px 50px -28px rgba(7,20,7,.55)}
+.stops li.stop{cursor:default}
+@media (max-width:1000px){
+  .stops{grid-template-columns:minmax(0,1fr);gap:22px;padding-top:0;padding-left:62px;max-width:700px}
+  .stops li.stop:nth-child(even){margin-top:0}
+}
+@media (max-width:700px){
+  .stops{padding-left:46px;gap:18px}
+}
+html.still .stop-card{transition:none}
+@media (prefers-reduced-motion:reduce){.stop-card{transition:none}}
+
+/* ===== round 10 (Sean 2026-11-16: "Watch this video" with animation and a branded arrow into the video; the three steps
+   frozen on the side until the end of the page) ===== */
+
+/* the video's label: medium white type with a green marker swipe, and a drawn arrow that curls down into the video */
+.hero .vid-lab.watch{position:relative;display:inline-block;margin:0 0 14px;font:750 clamp(1.25rem,1rem + .7vw,1.6rem)/1.15 Geist,sans-serif;letter-spacing:-.025em;color:#fff}
+.w-txt{position:relative;z-index:1;padding:0 .12em;background:linear-gradient(transparent 58%,rgba(0,155,39,.85) 58%,rgba(0,155,39,.85) 92%,transparent 92%) no-repeat 0 0/100% 100%;animation:wswipe .7s .35s cubic-bezier(.3,.7,.2,1) both}
+.w-arrow{position:absolute;left:calc(100% + 4px);top:-8px;width:118px;height:76px;overflow:visible;z-index:3;pointer-events:none}
+.w-arrow path{stroke:var(--alt);stroke-width:4.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.w-arrow .w-line{animation:wdraw .75s .75s cubic-bezier(.4,.1,.2,1) forwards}
+.w-arrow .w-head{animation:wdraw .28s 1.45s ease-out forwards}
+.w-arrow .w-tick{stroke:var(--bloom);stroke-width:3;opacity:.0}
+.w-arrow{animation:wnudge 3.2s 2.4s ease-in-out infinite}
+@keyframes wswipe{from{background-size:0 100%}to{background-size:100% 100%}}
+@keyframes wdraw{to{stroke-dashoffset:0}}
+@keyframes wnudge{0%,72%,100%{transform:none}80%{transform:translate(2px,5px)}88%{transform:translate(0,1px)}}
+html.still .w-txt,html.still .w-arrow,html.still .w-arrow path{animation:none}
+html.still .w-arrow path{stroke-dashoffset:0}
+@media (prefers-reduced-motion:reduce){.w-txt,.w-arrow,.w-arrow path{animation:none}.w-arrow path{stroke-dashoffset:0}}
+@media (max-width:700px){.w-arrow{width:84px;height:56px;top:-4px}}
+
+/* the frozen steps */
+.dock{position:fixed;z-index:35;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s;
+  background:rgba(255,255,255,.72);-webkit-backdrop-filter:saturate(1.8) blur(18px);backdrop-filter:saturate(1.8) blur(18px);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 1px rgba(7,20,7,.08),0 18px 40px -18px rgba(7,20,7,.5);border-radius:14px}
+.dock.on{opacity:1;visibility:visible;transform:none;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s}
+.dock.on-dark{background:rgba(9,24,11,.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),0 18px 40px -18px rgba(0,0,0,.7)}
+.dock-h{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-2)}
+.dock-list a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-size:13.5px;font-weight:650;line-height:1.2;border-radius:8px}
+.dock-list a:hover{background:rgba(0,155,39,.08)}
+.dock-list a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.dn{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:6px;background:#fff;color:var(--ink);font:800 12.5px/1 Geist,sans-serif;box-shadow:inset 0 0 0 1.5px var(--line-2)}
+.dock-list li.next .dn{background:var(--green);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 0 3px rgba(0,155,39,.18)}
+.dock-list li.next .dl{color:var(--green-d)}
+.dock-list li.done .dn{background:var(--tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.3l2.8 2.7L12.5 5' fill='none' stroke='%23007a1f' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;color:transparent;box-shadow:inset 0 0 0 1.5px #bfe0c4}
+.dock-list li.done .dl{color:var(--mute);text-decoration:line-through;text-decoration-color:rgba(7,20,7,.3)}
+.dock.on-dark .dock-h{color:rgba(255,255,255,.6)}
+.dock.on-dark .dock-list a{color:#fff}
+.dock.on-dark .dock-list li.done .dl{color:rgba(255,255,255,.6)}
+.dock.on-dark .dock-list li.next .dl{color:var(--alt)}
+.dock-ok{display:none;font-size:13.5px;font-weight:700;color:var(--green-d)}
+.yi-ready .dock-ok{display:block}
+.dock.on-dark .dock-ok{color:var(--alt)}
+
+/* wide screens: a card in the left margin, the three steps stacked */
+@media (min-width:1440px){
+  .dock{left:max(10px,calc((100vw - 1180px) / 2 - 136px));top:50%;width:122px;padding:12px 10px 12px;transform:translate(-8px,-50%)}
+  .dock.on{transform:translate(0,-50%)}
+  .dock-list{margin-top:8px;display:grid;gap:4px}
+  .dock-list a{padding:5px 4px}
+  .dock-ok{margin-top:8px;padding-left:4px}
+}
+/* narrower screens and phones: a bar at the bottom */
+@media (max-width:1439px){
+  .dock{left:50%;bottom:14px;display:flex;align-items:center;gap:14px;padding:6px 8px 6px 14px;transform:translate(-50%,10px);border-radius:12px;max-width:calc(100% - 16px)}
+  .dock.on{transform:translate(-50%,0)}
+  .dock-list{display:flex;gap:4px}
+  .dock-list a{padding:6px 8px;white-space:nowrap}
+  .yi-ready .dock-list{display:none}
+}
+@media (max-width:560px){
+  .dock{bottom:10px;width:calc(100% - 16px);justify-content:center;padding:6px}
+  .dock-h{display:none}
+  .dock-list{width:100%;justify-content:space-between}
+  .dock-list a{padding:6px 6px;font-size:13px;gap:6px}
+  .dn{width:22px;height:22px}
+}
+/* round 10b: the side card a little narrower so it clears the content at 1440; more frosting so the page behind stays quiet */
+@media (min-width:1440px){
+  .dock{left:max(8px,calc((100vw - 1180px) / 2 - 124px));width:108px;padding:11px 8px}
+  .dock-list a{font-size:13px;gap:7px}
+}
+.dock{background:rgba(255,255,255,.84)}
+.dock.on-dark{background:rgba(9,24,11,.66)}
+.nav .wrap.bar{background:rgba(255,255,255,.74)}
+.nav.on-dark .wrap.bar{background:rgba(9,24,11,.6)}
+.dock.on-dark .dock-list li.done .dl{text-decoration-color:rgba(255,255,255,.4)}
+
+/* round 10c (Sean: "make it a checklist ... a custom mini graphic on them"): each step is a checkbox on its own mini
+   drawing (a calendar with the days held, the email with the video link, a pass with a +), then the number and the step */
+.dn{display:none}
+.dg{position:relative;flex:none;display:block;width:40px;height:28px}
+.dg svg{display:block;width:100%;height:100%;filter:drop-shadow(0 3px 4px rgba(7,20,7,.14))}
+.dbox{position:absolute;left:-6px;top:-6px;width:16px;height:16px;border-radius:4px;background:#fff;box-shadow:inset 0 0 0 1.6px #071407,0 1px 2px rgba(7,20,7,.25)}
+.dock-list li.done .dbox{background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.3l2.8 2.7L12.4 5' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat;box-shadow:0 1px 2px rgba(7,20,7,.25)}
+.dock-list li.done .dg svg{opacity:.55;filter:grayscale(.3)}
+.dock-list li.next .dbox{box-shadow:inset 0 0 0 1.6px var(--green-d),0 0 0 3px rgba(0,155,39,.2)}
+.dock-list li.next .dg svg{filter:drop-shadow(0 4px 6px rgba(0,155,39,.35))}
+.dl b{font-weight:800;color:var(--green-d);margin-right:1px}
+.dl .sm{display:none}
+.dock-list li.done .dl{text-decoration:none}
+.dock-list li.done .dl .lg,.dock-list li.done .dl .sm{text-decoration:line-through;text-decoration-color:rgba(7,20,7,.35);color:var(--mute)}
+.dock.on-dark .dl b{color:var(--alt)}
+.dock.on-dark .dbox{box-shadow:inset 0 0 0 1.6px #fff}
+.dock.on-dark .dock-list li.done .dl .lg,.dock.on-dark .dock-list li.done .dl .sm{color:rgba(255,255,255,.6);text-decoration-color:rgba(255,255,255,.45)}
+@media (min-width:1440px){
+  .dock{width:112px;left:max(8px,calc((100vw - 1180px) / 2 - 126px));padding:12px 9px}
+  .dock-list{gap:6px}
+  .dock-list a{flex-direction:column;align-items:flex-start;gap:7px;padding:9px 6px 7px 9px;font-size:12.5px;line-height:1.25}
+  .dg{width:52px;height:36px}
+  .dock-list li.next a{background:rgba(0,155,39,.07)}
+  .dock.on-dark .dock-list li.next a{background:rgba(115,216,140,.1)}
+}
+@media (min-width:1600px){
+  .dock{width:150px;left:calc((100vw - 1180px) / 2 - 172px)}
+}
+@media (max-width:1439px){
+  .dock-list{gap:6px}
+  .dock-list a{gap:10px;padding:7px 10px 7px 12px}
+  .dg{width:36px;height:25px}
+  .dbox{width:14px;height:14px;left:-6px;top:-5px;background-size:10px}
+}
+@media (max-width:860px){ .dl .lg{display:none} .dl .sm{display:inline} }
+@media (max-width:560px){
+  .dock-list a{gap:8px;padding:6px 6px 6px 10px;font-size:12.5px}
+  .dg{width:32px;height:23px}
+}
