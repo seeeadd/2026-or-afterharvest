@@ -104,3 +104,19 @@ if (new URLSearchParams(location.search).has('still')) document.documentElement.
   addEventListener('resize', place);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
 })();
+
+/* the floating header's glass: dark over the dark sections, light over the rest */
+(function(){
+  var nav = document.querySelector('.nav'), bar = nav && nav.querySelector('.bar');
+  if (!bar) return;
+  var dark = Array.prototype.slice.call(document.querySelectorAll('.hero, .commit'));
+  var queued = false;
+  function upd(){
+    queued = false;
+    var r = bar.getBoundingClientRect(), y = r.top + r.height / 2, on = false;
+    dark.forEach(function(s){ if (s.offsetParent === null) return; var b = s.getBoundingClientRect(); if (b.top <= y && b.bottom > y) on = true; });
+    nav.classList.toggle('on-dark', on);
+  }
+  function ask(){ if (!queued) { queued = true; requestAnimationFrame(upd); } }
+  addEventListener('scroll', ask, {passive: true}); addEventListener('resize', ask); upd();
+})();

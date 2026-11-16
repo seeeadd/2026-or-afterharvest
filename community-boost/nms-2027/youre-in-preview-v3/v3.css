@@ -719,3 +719,104 @@ html.still .cf-ev,html.still .cf-ev i,html.still .cf-ev:before,html.still .cf-ev
   .cal-floor{height:calc(var(--cw) * 2.2)}
   .hero-in{padding-bottom:calc(var(--cw) * .46 + 40px)}
 }
+
+/* ===== round 8 (Sean 2026-11-16: steps 2 and 3 divided with far fewer lines, "Invite", no line on the eyebrows, the answers
+   without divider lines, the video a little higher, a narrow floating header in frosted glass) ===== */
+
+/* header: a narrow bar that floats over the page, frosted glass, smaller type */
+html{scroll-padding-top:76px}
+.nav{position:sticky;top:0;padding-top:10px;margin-bottom:-58px;background:none;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;pointer-events:none}
+.nav .wrap.bar{pointer-events:auto;position:relative;width:min(920px,calc(100% - 24px));min-height:48px;gap:14px;padding:5px 6px 5px 12px;border-radius:14px;overflow:hidden;
+  background:rgba(255,255,255,.68);-webkit-backdrop-filter:saturate(1.8) blur(18px);backdrop-filter:saturate(1.8) blur(18px);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.65),0 0 0 1px rgba(7,20,7,.07),0 16px 36px -18px rgba(7,20,7,.5)}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.nav .wrap.bar{background:rgba(255,255,255,.96)}}
+.nav .brand{gap:8px}
+.nav .brand img{width:28px;height:28px}
+.nav .brand b{font-size:13.5px}
+.nav .brand small{font-size:11px}
+.nav .clock{gap:8px}
+.nav .cal3{transform:scale(.84);transform-origin:50% 50%}
+.nav .hd-date b{font-size:13px}
+.nav .hd-date small{font-size:11px;margin-top:1px}
+.nav .hd-next{padding-left:12px;border-left:1px solid rgba(7,20,7,.1)}
+.nav .nextbtn{min-height:36px;padding:7px 13px 8px;font-size:13.5px;border-radius:5px;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 0 rgba(0,0,0,.14)}
+.nav .hd-when{font-size:13.5px}
+.nav .progline{left:14px;right:14px;bottom:0;height:2px;gap:4px}
+.nav .progline i{background:rgba(7,20,7,.08);border-radius:2px}
+.nav .strip{pointer-events:auto;width:min(920px,calc(100% - 24px));margin:6px auto 0;border-radius:10px;padding:7px 0;font-size:13.5px;box-shadow:0 12px 28px -16px rgba(7,20,7,.6)}
+.nav .strip .wrap{width:calc(100% - 28px)}
+.hero-in{padding-top:114px}
+html[data-state="week"] .hero-in{padding-top:156px}
+
+/* hero: the video sits a little higher than centre */
+.hero-side{margin-bottom:100px}
+
+/* no short line before the small section labels */
+.kick:before,.commit .kick:before{content:none;display:none}
+
+/* step 2 on white, step 3 on its own green band: two blocks, no grid paper behind them */
+.steps:before{display:none}
+.st2{background:#fff}
+.st3{background:var(--tint)}
+.s3{margin-top:0}
+.checks li:before{box-shadow:none}
+.st3 .pass.empty{background:rgba(255,255,255,.55)}
+.st3 .share-row{border-color:#cfe3c4}
+
+/* the three answers: no divider lines; rows alternate sides, each video on a soft green block */
+.qa{margin-top:52px;gap:64px}
+.qa-row,.qa-row:last-child{border:0;padding:0}
+.qa-row .player{box-shadow:0 0 0 1px rgba(7,20,7,.06),0 26px 50px -30px rgba(7,20,7,.6),22px 22px 0 0 var(--tint)}
+.qa-row:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.qa-row:nth-child(even) .player{order:2;box-shadow:0 0 0 1px rgba(7,20,7,.06),0 26px 50px -30px rgba(7,20,7,.6),-22px 22px 0 0 var(--tint)}
+
+@media (max-width:1000px){
+  .hero-in{padding-top:98px}
+  .hero-side{margin-bottom:0}
+  .qa{gap:48px}
+  .qa-row:nth-child(even){grid-template-columns:minmax(0,1fr)}
+  .qa-row:nth-child(even) .player{order:0}
+  .qa-row .player,.qa-row:nth-child(even) .player{box-shadow:0 0 0 1px rgba(7,20,7,.06),0 22px 44px -28px rgba(7,20,7,.6),12px 12px 0 0 var(--tint)}
+  .qa-row .player{width:calc(100% - 12px)}
+}
+@media (max-width:700px){
+  html{scroll-padding-top:68px}
+  .nav{padding-top:8px;margin-bottom:-54px}
+  .nav .wrap.bar{width:calc(100% - 16px);min-height:46px;gap:8px;padding:4px 5px 4px 8px;border-radius:12px}
+  .nav .hd-next{padding-left:0;border-left:0}
+  .nav .nextbtn{min-height:36px;padding:7px 10px 8px;font-size:13px}
+  .hero-in{padding-top:80px}
+}
+
+/* round 8b: the header's glass turns dark over the dark sections (hero, the live band) and light everywhere else */
+.nav .wrap.bar,.nav .brand b,.nav .brand small,.nav .hd-date b,.nav .hd-date small,.nav .hd-next{transition:background-color .3s var(--ease),box-shadow .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.nav.on-dark .wrap.bar{background:rgba(9,24,11,.42);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),inset 0 1px 0 rgba(255,255,255,.12),0 18px 40px -18px rgba(0,0,0,.7)}
+.nav.on-dark .brand b,.nav.on-dark .hd-date b,.nav.on-dark .hd-when{color:#fff}
+.nav.on-dark .brand small,.nav.on-dark .hd-date small{color:rgba(255,255,255,.66)}
+.nav.on-dark .hd-next{border-left-color:rgba(255,255,255,.16)}
+.nav.on-dark .progline i{background:rgba(255,255,255,.14)}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.nav.on-dark .wrap.bar{background:rgba(9,24,11,.94)}}
+
+/* fewer lines: the step 3 tag on white, no dashed rule above the manager note, no rules in the lists */
+.st3 .imp{background:#fff}
+.mgr{border-top:0;padding-top:4px}
+.todo li,.todo li:last-child{border:0;padding:12px 0}
+.got li{text-align:left;border-top:0;padding:4px 0 4px 24px}
+
+/* round 8c: the road's checklists keep their own look at every width (the older road's phone rules no longer reach them) */
+.stops .got li{display:block;min-height:0;text-align:left;padding:4px 0 4px 24px;grid-template-columns:none}
+.stops .got li:before{display:block;bottom:auto;border-left:0}
+.stops .stop-card .stop-art{width:auto;height:auto;grid-row:auto;margin:8px 8px 0}
+@media (max-width:700px){
+  .stops li.stop{padding:0;margin-bottom:6px}
+  .stop-card .stop-art{aspect-ratio:16/9}
+  .stop-card .stop-art svg{max-width:300px;margin:0 auto}
+  .pass-top{font-size:9.5px;letter-spacing:.06em;padding:8px 10px 7px}
+}
+@media (max-width:700px){
+  .pass-top{font-size:8.5px;letter-spacing:.04em;gap:5px;padding:8px 8px 7px}
+  .pass-top .slot{width:14px}
+}
+/* the held days stand still for anyone who has reduced motion on (and in ?still screenshots) */
+html.still .cf-d.hold .cf-ev,html.still .cf-d.hold .cf-ev i,html.still .cf-d.hold .cf-ev:before,html.still .cf-d.hold .cf-ev:after{animation:none}
+@media (prefers-reduced-motion:reduce){.cf-d.hold .cf-ev,.cf-d.hold .cf-ev i,.cf-d.hold .cf-ev:before,.cf-d.hold .cf-ev:after{animation:none}}

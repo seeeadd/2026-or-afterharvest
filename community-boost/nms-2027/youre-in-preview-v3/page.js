@@ -80,7 +80,7 @@ each('[data-end]', function(el){ el.textContent = ptTime(EVENT.endPT); });
 /* the day line in "Here's what you'll leave with" */
 var line = $('[data-dayline]');
 if (line) {
-  var items = $$('li', line);
+  var items = Array.prototype.slice.call(line.children).filter(function(el){ return el.tagName === 'LI'; });   /* the stops only, not the checklist items inside them */
   items.forEach(function(li, i){
     var d = D[i];
     if (!d) { if (!li.classList.contains('goal')) li.remove(); return; }
