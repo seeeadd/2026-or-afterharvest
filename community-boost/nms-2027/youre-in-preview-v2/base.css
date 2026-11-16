@@ -1,0 +1,84 @@
+/* Nonprofit Marketing Summit 2027 · You're in page
+   Tokens taken from the live opt-in page's computed styles (2026-or-afterharvest, community-boost/nms-2027, main, 2026-11-14).
+   Only Community Boost colours and Geist. No outside requests. */
+@font-face{font-family:Geist;src:url(assets/Geist-Variable.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{
+  --paper:#ffffff;          /* opt-in body ground */
+  --sage:#f9fcf7;           /* opt-in light section ground (cb-cream) */
+  --tint:#eef8e5;           /* cb-tint */
+  --bloom:#c7ebA2;          /* Rapid Bloom */
+  --alt:#73d88c;            /* Altruistic */
+  --green:#009b27;          /* Radium: every button */
+  --green-d:#007a1f;
+  --forest:#071407;         /* Catalyst: headlines, dark sections */
+  --forest-2:#152b17;
+  --ink:#182919;            /* body text */
+  --ink-2:rgba(7,20,7,.72); /* lede */
+  --mute:#566056;           /* small text, 6.4:1 on white */
+  --line:rgba(7,20,7,.12);
+  --line-2:#cbd3c7;
+  --card-shadow:0 2px #beceb9,0 44px 60px -34px rgba(7,20,7,.55); /* opt-in ticket card */
+  --soft:0 3px 4px #11201208,0 15px 30px #11201212;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --wrap:960px;
+}
+*,*:before,*:after{box-sizing:border-box}
+html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 Geist,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--green-d);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--forest)}
+::selection{background:var(--alt);color:var(--forest)}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:2px}
+.skip{position:fixed;top:-80px;left:16px;z-index:99;background:var(--forest);color:#fff;padding:12px 16px;font-weight:600}
+.skip:focus{top:12px}
+.wrap{width:min(var(--wrap),calc(100% - 32px));margin-inline:auto}
+.wrap-wide{width:min(1180px,calc(100% - 32px));margin-inline:auto}
+h1,h2,h3{color:var(--forest);margin:0;text-wrap:balance}
+h1{font-weight:750;letter-spacing:-.04em;line-height:1.02}
+h2{font-weight:750;letter-spacing:-.03em;line-height:1.05;font-size:clamp(1.9rem,1.2rem + 2.6vw,3.2rem)}
+h3{font-weight:700;letter-spacing:-.015em;line-height:1.2;font-size:1.25rem}
+p{margin:0}
+.nw{white-space:nowrap}
+
+/* header: the opt-in's frosted sticky bar, minus nav (this page has one job) */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(29,48,31,.086),0 5px 18px rgba(21,35,22,.047)}
+.top .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--forest);text-decoration:none;line-height:1.1}
+.brand img{width:38px;height:38px}
+.brand b{display:block;font-weight:700;font-size:15px;letter-spacing:-.01em}
+.brand small{display:block;font-size:12.5px;color:var(--mute)}
+.top .meta{font-size:14px;color:var(--mute);text-align:right;line-height:1.3}
+.top .meta b{color:var(--forest);font-weight:650}
+
+/* buttons: the opt-in's green rectangle, no icon (CB 11.10). The main button keeps the opt-in's #009b27 and is set at 19px bold,
+   so it counts as large text (3:1 needed, 3.67 measured); smaller buttons use the darker CB green (5.52). */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:16px 28px 18px;border:0;border-radius:4px;background:var(--green);color:#fff;font:700 1.1875rem/1.3 Geist,system-ui,sans-serif;letter-spacing:-.005em;text-decoration:none;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 10px 22px -14px rgba(0,122,31,.75);transition:background .18s var(--ease),transform .18s var(--ease)}
+.btn:hover{background:var(--green-d);color:#fff;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-2{background:#fff;color:var(--forest);box-shadow:inset 0 0 0 1.5px var(--forest)}
+.btn-2:hover{background:var(--tint);color:var(--forest)}
+.btn-sm{min-height:44px;padding:10px 18px 11px;font-size:1rem;background:var(--green-d)}
+.btn-sm.btn-2{background:#fff}
+.btn-sm:hover{background:var(--forest-2)}
+.btn-sm.btn-2:hover{background:var(--tint)}
+.linkbtn{background:none;border:0;padding:10px 0;font:inherit;font-weight:600;color:var(--green-d);text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:44px}
+.linkbtn:hover{color:var(--forest)}
+
+/* the opt-in's ticket card */
+.card{background:#fff;border:1px solid #e3ebdd;border-radius:4px;box-shadow:var(--card-shadow)}
+
+/* markers: visible to the team, styled so they cannot be mistaken for copy; ?clean hides the bracket */
+.mk{display:inline;font-size:.78em;font-weight:600;letter-spacing:0;color:#7a4b00;background:#fff4d6;border:1px dashed #d6a64a;border-radius:3px;padding:0 .35em;white-space:normal;vertical-align:.08em}
+html.clean .mk{display:none}
+
+.small{font-size:14.5px;color:var(--mute);line-height:1.5}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+@media (max-width:600px){
+  .top .bar{min-height:56px;gap:10px}
+  .brand img{width:32px;height:32px}
+  .brand b{font-size:14px}
+  .brand small{display:none}
+  .top .meta{font-size:12.5px}
+}
