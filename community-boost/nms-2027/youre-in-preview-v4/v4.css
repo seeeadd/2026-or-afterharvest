@@ -244,3 +244,12 @@ html.still .qa-more summary:after{transition:none}
   .answers .qa-row .player{order:0}
   .answers .qa-row .qa-why,.answers .qa-row .qa-more,.answers .qa-row .who{order:1;margin-top:0}
 }
+
+/* each question as the attendee's own chat bubble (Sean 2026-11-16: "simple chat bubble graphic"); the video is the reply */
+.answers .qa-tx h3.qa-q{display:flex;align-items:flex-end;gap:10px;font-size:clamp(1.2rem,1rem + .75vw,1.6rem);line-height:1.22;letter-spacing:-.02em}
+.qa-av{flex:none;width:34px;height:34px;border-radius:50%;background:#e4ece0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='12.5' r='5.5' fill='%237d9a83'/%3E%3Cpath d='M6.5 27c1.4-5 5-7.5 9.5-7.5s8.1 2.5 9.5 7.5z' fill='%237d9a83'/%3E%3C/svg%3E") center/26px no-repeat}
+.qa-bub{position:relative;display:inline-block;padding:14px 20px 15px;border-radius:22px 22px 22px 6px;background:#fff;color:var(--ink);font-weight:700;
+  box-shadow:0 0 0 1.5px var(--line),0 2px 0 var(--line),0 22px 38px -30px rgba(7,20,7,.5)}
+.qa-row:nth-child(even) .qa-bub{background:var(--tint);box-shadow:0 0 0 1.5px #d2e6c6,0 2px 0 #d2e6c6,0 22px 38px -30px rgba(7,20,7,.45)}
+.answers .qa-tx .qa-why{margin-top:16px}
+@media (max-width:600px){.qa-av{width:28px;height:28px;background-size:22px}.qa-bub{padding:12px 16px 13px}}
