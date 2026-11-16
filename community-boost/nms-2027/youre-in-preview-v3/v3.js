@@ -64,6 +64,7 @@ $$('[data-play]').forEach(function(b){ b.addEventListener('click', function(){
   var SEL = '[data-hd-main],[data-hd-sub],[data-hd-when],[data-when-local],[data-hd-start],[data-tl-30],.stops .ld span,.reply .r-h,[data-local-start-inline]';
   function wrapCity(){
     Array.prototype.forEach.call(document.querySelectorAll(SEL), function(el){
+      if (el.classList.contains('city') || el.closest('.city')) return;
       if (el.innerHTML.indexOf(city) < 0 || el.innerHTML.indexOf('class="city"') >= 0) return;
       el.innerHTML = el.innerHTML.split(city).join('<span class="city">' + city + '</span>');
     });
@@ -261,4 +262,47 @@ if (new URLSearchParams(location.search).has('still')) document.documentElement.
   }
   function ask(){ if (!q) { q = true; requestAnimationFrame(upd); } }
   addEventListener('scroll', ask, {passive: true}); addEventListener('resize', ask); upd();
+})();
+
+/* the CFRE credit log ticks its three days when it comes into view */
+(function(){
+  var a = document.querySelector('.cfre-art'); if (!a) return;
+  if (!('IntersectionObserver' in window)) { a.classList.add('in'); return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { a.classList.add('in'); io.disconnect(); } }); }, {threshold: .45});
+  io.observe(a);
+})();
+
+/* step 2's demo: plays Promotions, Spam and Outlook in turn (8 s each) until they tap one; "Watch how to move it" opens it bigger */
+(function(){
+  var ib = document.querySelector('[data-ib]'); if (!ib) return;
+  var still = document.documentElement.classList.contains('still') || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var ORDER = ['promo', 'spam', 'outlook'];
+  function wire(root, hint){
+    var win = root.querySelector('.ib-win'), btns = Array.prototype.slice.call(root.querySelectorAll('[data-sc]')), i = 0, locked = false;
+    function show(k){
+      root.dataset.scene = k;
+      btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.sc === k ? 'true' : 'false'); });
+      win.classList.remove('run'); void win.offsetWidth; win.classList.add('run');
+    }
+    btns.forEach(function(b){ b.addEventListener('click', function(){ locked = true; i = ORDER.indexOf(b.dataset.sc); show(b.dataset.sc); if (hint) hint.textContent = 'Tap another to see it.'; }); });
+    var timer = still ? 0 : setInterval(function(){ if (locked || document.hidden) return; i = (i + 1) % ORDER.length; show(ORDER[i]); }, 8000);
+    show(root.dataset.scene || 'promo');
+    return function(){ clearInterval(timer); };
+  }
+  wire(ib, ib.querySelector('[data-ib-hint]'));
+  var dlg = document.querySelector('[data-ib-dlg]'), open = ib.querySelector('[data-ib-open]'), stop = null;
+  if (!dlg || !open || !dlg.showModal) { if (open) open.hidden = true; return; }
+  open.addEventListener('click', function(){
+    var box = dlg.querySelector('.ib-dlg-in'); box.innerHTML = '';
+    var big = document.createElement('div'); big.className = 'ib big'; big.dataset.scene = ib.dataset.scene;
+    big.appendChild(ib.querySelector('.ib-switch').cloneNode(true));
+    big.appendChild(ib.querySelector('.ib-win').cloneNode(true));
+    box.appendChild(big);
+    stop = wire(big, null);
+    dlg.showModal();
+  });
+  function close(){ if (stop) stop(); stop = null; if (dlg.open) dlg.close(); }
+  dlg.querySelector('[data-ib-close]').addEventListener('click', close);
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) close(); });
+  dlg.addEventListener('close', function(){ if (stop) stop(); stop = null; });
 })();
