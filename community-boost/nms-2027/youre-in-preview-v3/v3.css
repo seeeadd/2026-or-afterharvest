@@ -1143,3 +1143,29 @@ html.still .sc .g-toast{opacity:1;transform:none}html.still .sc-promo .cur{left:
 @media (max-width:700px){.cf-seal{right:-10px;bottom:-50px}}
 .cf-tot{justify-content:flex-start;gap:12px}
 @media (max-width:700px){.ib-q{width:100%;margin-bottom:2px}}
+
+/* round 12 (Sean: "i dont think this is being seen"): the manager note is a card with its own picture and a clear button */
+.mgr{margin-top:22px;padding:0;border:0;max-width:560px;border-radius:12px;background:#fff;box-shadow:0 0 0 1px #cfe3c4,0 2px 0 #cfe3c4,0 22px 40px -28px rgba(7,20,7,.55);transition:box-shadow .2s var(--ease),transform .2s var(--ease)}
+.mgr:hover{box-shadow:0 0 0 1.5px var(--green),0 2px 0 #cfe3c4,0 26px 44px -28px rgba(7,20,7,.6)}
+.mgr summary{display:flex;align-items:center;gap:14px;padding:14px 14px 14px 12px;font-size:15.5px}
+.mgr summary:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:12px}
+.mgr summary span{display:block;text-decoration:none;font-weight:inherit;color:inherit;font-size:inherit}
+.mgr[open] summary span{display:block}
+.mgr-art{flex:none;width:60px;height:47px}
+.mgr-art svg{display:block;width:100%;height:100%;filter:drop-shadow(0 4px 6px rgba(7,20,7,.16))}
+.mgr-tx{flex:1;min-width:0}
+.mgr-tx b{display:block;font-size:16.5px;color:var(--ink);letter-spacing:-.01em}
+.mgr-tx small{display:block;margin-top:2px;font-size:14px;color:var(--mute)}
+.mgr summary .mgr-cta{flex:none;display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:5px;background:var(--green) url(assets/tex-grain-btn.png);background-size:200px 200px;color:#fff;font-weight:650;font-size:14.5px;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 0 rgba(0,0,0,.14)}
+.mgr summary .o2{display:none}
+.mgr[open] summary .o1{display:none}
+.mgr[open] summary .o2{display:inline}
+.mgr[open] summary .mgr-cta{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.mgr-in{margin:0 14px 14px;box-shadow:0 0 0 1px var(--line)}
+@media (max-width:560px){
+  .mgr summary{flex-wrap:wrap;gap:10px 12px}
+  .mgr summary .mgr-cta{width:100%;justify-content:center}
+}
+
+.c-line .c-sub{display:block;min-width:0;flex:1}
+.c-line .c-sub span{display:inline}
