@@ -855,6 +855,49 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 @media (max-width:760px){.ck-photos{grid-template-columns:1fr 1fr;gap:18px;max-width:440px}.ck-mono{font-size:3rem}.ck-photo figcaption{white-space:normal}
  .sp-cards .cb-more-key{grid-column:1 / -1}}
 
+/* ---- the partner section as the tall blueprint sheet (Sean 2026-11-19: "make it a background", "the blueprint extended
+   up, not super landscape"). The sheet runs the full width, anchored to the bottom; the heading sits over the floor
+   plan at its top, darkened just enough to read. Sheet: 1600 x 1500; the drawing under the heading zone is 940/1600 of
+   the width, so that is the bottom padding. ---- */
+#partners.pt-bp{padding:0!important;max-width:none!important;width:auto!important;margin:0!important}
+.pt-bp-sheet{position:relative;overflow:hidden;color:#fff;padding:92px 0 calc(58.75vw + 10px);
+ background:#06191E image-set(url(assets/blueprint/main-partners-bg-1600.webp) 1x, url(assets/blueprint/main-partners-bg-2400.webp) 2x) 50% 100%/100% auto no-repeat}
+.pt-bp-sheet:before{content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(180deg,rgba(4,18,22,.84) 0,rgba(4,18,22,.74) calc(100% - 58.75vw - 150px),rgba(4,18,22,.36) calc(100% - 58.75vw),rgba(4,18,22,0) calc(100% - 55.25vw))}
+.pt-bp-head{position:relative;text-align:center}
+.pt-bp-head p{max-width:48ch}
+.pt-bp-head h2{margin:0;font:700 clamp(34px,4.3vw,62px)/1 Geist,system-ui,sans-serif;letter-spacing:-.04em;color:#fff}
+.pt-bp-head h2 span,.pt-bp-head h2 em{white-space:nowrap}
+.pt-bp-head h2 em{font-style:normal;color:#73D88C}
+.pt-bp-head p{margin:20px auto 0;max-width:48ch;font:400 18px/1.55 Geist,system-ui,sans-serif;color:rgba(255,255,255,.9)}
+.pt-bp-ctas{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.pt-bp-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;min-width:200px;padding:0 28px;border-radius:0;
+ font:600 16px/1.1 Geist,system-ui,sans-serif;text-decoration:none;white-space:nowrap;transition:background-color .15s,box-shadow .15s}
+.pt-bp-go{background:#73D88C;color:#071407}
+.pt-bp-go:hover{background:#C7EBA2}
+.pt-bp-ghost{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7)}
+.pt-bp-ghost:hover{box-shadow:inset 0 0 0 2px #fff}
+.pt-bp-btn:focus-visible{outline:3px solid #C7EBA2;outline-offset:3px}
+.pt-bp-hist{padding-top:56px;padding-bottom:var(--calm-section,96px)}
+@media (max-width:760px){
+ .pt-bp-sheet{padding:64px 0 560px;background-size:auto 820px;background-position:30% 100%}
+ .pt-bp-sheet:before{background:linear-gradient(180deg,rgba(4,18,22,.86) 0,rgba(4,18,22,.8) calc(100% - 565px),rgba(4,18,22,.4) calc(100% - 525px),rgba(4,18,22,0) calc(100% - 475px))}
+ .pt-bp-head{text-align:left}
+ .pt-bp-head p{font-size:17px;margin-left:0}
+ .pt-bp-ctas{display:grid;grid-template-columns:1fr 1fr}
+ .pt-bp-btn{min-width:0}
+ .pt-bp-go{grid-column:1 / -1}
+}
+/* from 1200px the sign-up form is fixed on the right (the rail): the sheet ends where the form begins and lies on
+   Catalyst, so the billboard is never under the form; the heading and the drawing share the content column's centre */
+@media (min-width:1200px){
+ .pt-bp-sheet{--pt-bp-w:calc(100vw - var(--rail,340px) - var(--rgap,52px));background-color:#071407;
+  background-size:var(--pt-bp-w) auto,26px 100%;background-position:0 100%,var(--pt-bp-w) 0;background-repeat:no-repeat;
+  background-image:image-set(url(assets/blueprint/main-partners-bg-1600.webp) 1x, url(assets/blueprint/main-partners-bg-2400.webp) 2x),linear-gradient(90deg,rgba(0,0,0,.5),rgba(0,0,0,0));
+  padding-bottom:calc(var(--pt-bp-w) * .5875 + 10px)}
+ .pt-bp-sheet:before{background:linear-gradient(180deg,rgba(4,18,22,.84) 0,rgba(4,18,22,.74) calc(100% - var(--pt-bp-w) * .5875 - 150px),rgba(4,18,22,.36) calc(100% - var(--pt-bp-w) * .5875),rgba(4,18,22,0) calc(100% - var(--pt-bp-w) * .5525))}
+}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.
