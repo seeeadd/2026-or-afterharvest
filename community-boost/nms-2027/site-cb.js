@@ -38,42 +38,42 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
    graphic location every time you're going to put their custom location or city, so they know it's targeted for them
    live"; https://exitplan.howwegrowtoday.com/). Ana's page shows each date and time in the visitor's own zone, names their
    city from the device's time zone, and puts a pin by it. CB asked for no clock times ("remove the time ... keep the
-   date"), so here only the DATES move: each day starts 9:00 am US Pacific (CB's own schedule), Feb 23-25, 2027, which is
-   Feb 24-26 in Manila or Sydney. The markup carries the Pacific dates, so with no script, or a zone it can't name, the page
-   reads as before. Hooks (cb_edits.py): [data-here] on the spots, [data-here-day="0|1|2"] on per-day dates. */
+   date"), so here only the DATES move: each day starts 9:00 am US Pacific (CB's own schedule), Feb 23-24, 2027, which is
+   Feb 24-25 in Manila or Sydney. The markup carries the Pacific dates, so with no script, or a zone it can't name, the page
+   reads as before. Hooks (cb_edits.py): [data-here] on the spots, [data-here-day="0|1"] on per-day dates. */
 ;(function () {
   try {
     var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
     if (!/^[A-Za-z]+\/[A-Za-z_\-\/]+$/.test(tz) || /^Etc\//.test(tz)) return;
     var city = tz.split('/').pop().replace(/_/g, ' ');
-    var starts = [0, 1, 2].map(function (k) { return new Date(Date.UTC(2027, 1, 23 + k, 17, 0)); });   // 9:00 am PST
+    var starts = [0, 1].map(function (k) { return new Date(Date.UTC(2027, 1, 23 + k, 17, 0)); });   // 9:00 am PST
     var F = function (o) { o.timeZone = tz; return new Intl.DateTimeFormat('en-US', o); };
     var fMD = F({ month: 'short', day: 'numeric' }), fWD = F({ weekday: 'short' }), fD = F({ day: 'numeric' }),
         fM = F({ month: 'short' }), fML = F({ month: 'long' }), fY = F({ year: 'numeric' });
     var d = starts.map(function (t) { return { md: fMD.format(t), wd: fWD.format(t), day: fD.format(t), mon: fM.format(t), monL: fML.format(t), y: fY.format(t) }; });
-    var same = d[0].mon === d[2].mon;
-    var range = same ? d[0].mon + ' ' + d[0].day + '-' + d[2].day : d[0].md + ' to ' + d[2].md;
-    var rangeLong = same ? d[0].monL + ' ' + d[0].day + '-' + d[2].day + ', ' + d[2].y : d[0].md + ' to ' + d[2].md + ', ' + d[2].y;
+    var same = d[0].mon === d[1].mon;
+    var range = same ? d[0].mon + ' ' + d[0].day + '-' + d[1].day : d[0].md + ' to ' + d[1].md;
+    var rangeLong = same ? d[0].monL + ' ' + d[0].day + '-' + d[1].day + ', ' + d[1].y : d[0].md + ' to ' + d[1].md + ', ' + d[1].y;
     var shifted = d[0].md !== 'Feb 23';
     var PIN = '<svg class="cb-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>';
     var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
     var place = '<span class="cb-place">' + PIN + esc(city) + '</span>';
     // the summit's own dates (US Pacific, as the emails say them), small and grey, only where the visitor's dates differ
-    var PT = shifted ? ' <small class="cb-pt">Feb 23-25 PT</small>' : '';
+    var PT = shifted ? ' <small class="cb-pt">Feb 23-24 PT</small>' : '';
     var html = {
-      range: esc(range) + ' in ' + place + PT,                                   // Feb 23-25 in (pin) Chicago
-      rangeY: esc(range) + ', ' + d[2].y,
-      rangeYpt: esc(range) + ', ' + d[2].y,
-      heroSub: 'Your dates in ' + place + (shifted ? ' · Feb 23-25 PT' : ''),   // the small line under the eyebrow                            // the hero: theirs, then Pacific when it differs                                   // Feb 24-26, 2027
+      range: esc(range) + ' in ' + place + PT,                                   // Feb 23-24 in (pin) Chicago
+      rangeY: esc(range) + ', ' + d[1].y,
+      rangeYpt: esc(range) + ', ' + d[1].y,
+      heroSub: 'Your dates in ' + place + (shifted ? ' · Feb 23-24 PT' : ''),   // the small line under the eyebrow                            // the hero: theirs, then Pacific when it differs                                   // Feb 24-25, 2027
       rangeShort: esc(range),
       from: 'On Zoom, you join from ' + place,                              // the day sheets' Where (the visitor joins from there, not the hosts)
       liveFrom: '<i class="cb-live" aria-hidden="true"></i>Live on Zoom',   // the hero eyebrow stays short, with the live dot                                    // hero line, sheets
       stubFrom: 'Joining from ' + place,
       city: place,
       calMonth: esc(rangeLong),
-      where: place + (shifted ? ' · Feb 23-25 PT' : ' · free on Zoom'),                                    // the header's second line
-      foryou: '<b>For you:</b> ' + esc(d[0].wd + ', ' + d[0].md) + ' to ' + esc(d[2].wd + ', ' + d[2].md) + ' in ' + place +
-              (shifted ? ' (Feb 23-25 in the US)' : '') + '. <span class="cb-fy-live">Come live and bring a campaign: on Day 3 you build it with the team.</span>'
+      where: place + (shifted ? ' · Feb 23-24 PT' : ' · free on Zoom'),                                    // the header's second line
+      foryou: '<b>For you:</b> ' + esc(d[0].wd + ', ' + d[0].md) + ' to ' + esc(d[1].wd + ', ' + d[1].md) + ' in ' + place +
+              (shifted ? ' (Feb 23-24 in the US)' : '') + '. <span class="cb-fy-live">Come live and bring a campaign: on Day 2 you build it with the team.</span>'
     };
     document.documentElement.classList.add('cb-here');
     if (shifted) document.documentElement.classList.add('cb-here-shift');
@@ -101,7 +101,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     f.querySelectorAll('[data-cbc-view]').forEach(function (b) {
       var n = b.getAttribute('data-cbc-view'), on = n === v;
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      if (b.classList.contains('cbc-focus')) b.setAttribute('aria-label', on ? 'Show all three days' : 'Focus on Day ' + n);
+      if (b.classList.contains('cbc-focus')) b.setAttribute('aria-label', on ? 'Show both days' : 'Focus on Day ' + n);
     });
   }
   f.addEventListener('click', function (e) {

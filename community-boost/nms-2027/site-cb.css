@@ -55,7 +55,7 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-ca
 .hb-lede{color:var(--cb-ink2)!important}
 .hb-free{margin:18px auto 0;max-width:60ch;font-weight:600;color:var(--cb-cat);text-align:center;font-size:16px}
 /* the three days, as the build: foundation, route, summit */
-.cb-trip{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:left}
+.cb-trip{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;text-align:left}
 .cb-trip li{min-width:0}
 .cb-trip a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:var(--cb-cat);background:#fff;border:1px solid var(--cb-line);border-radius:12px;overflow:hidden;
  box-shadow:0 1px 0 rgba(7,20,7,.03),0 18px 34px -24px rgba(7,20,7,.35);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,border-color .3s}
@@ -125,7 +125,7 @@ a.button:focus-visible,button.button:focus-visible{outline:3px solid var(--cb-ca
 .cbc-range{font-size:14px;color:var(--cb-ink2);margin-left:6px}
 .cbc-tent{margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:#fff;border:1px dashed rgba(0,155,39,.5);font-size:12.5px;font-weight:650;color:var(--cb-rad-d)}
 .cbc-tent i{width:7px;height:7px;border-radius:50%;background:var(--cb-alt)}
-.cbc-cols{display:grid;grid-template-columns:repeat(3,1fr)}
+.cbc-cols{display:grid;grid-template-columns:repeat(2,1fr)}
 .cbc-day{min-width:0;border-left:1px solid var(--cb-line)}
 .cbc-day:first-child{border-left:0}
 .cbc-dh{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;padding:16px 16px 0;align-items:end}
@@ -831,6 +831,29 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 #build .ww-choice.ww-story{border-radius:0 7px 0 0!important}
 #build .ww-picker .ww-choice.ww-story,#build .ww-picker .ww-choice.ww-aisearch{border-radius:7px!important}
 #build .ww-choice.ww-adgrant{border-left:1px solid #c9ccc9}
+/* CB 11.16: two days again. The header's calendar mark has two pages (23 in front, 24 behind) and flips once on hover */
+@media (prefers-reduced-motion:no-preference){
+ .nav-event-clock:hover .cb-days2 .p1 b span{animation:cbDays2 1.3s cubic-bezier(.65,0,.35,1) forwards}
+}
+@keyframes cbDays2{0%,30%{transform:none}55%,100%{transform:translateY(-12.5px)}}
+/* CB 11.16: Ashley Brannan as co-host, as big as Cameron (Sean: "she's facilitating the whole event too"); her initials hold the
+   place until her headshot comes. Adam's two logos, two partner spots, two write-ups */
+.cb-mono{display:grid;place-items:center;border-radius:50%;background:#009B27!important;color:#fff!important;font-weight:750;letter-spacing:.02em;opacity:1!important}
+.sp-pic.cb-mono-pic{display:grid;place-items:center}
+.sp-pic.cb-mono-pic .cb-mono{width:62%;aspect-ratio:1;font-size:clamp(34px,4.4vw,58px)}
+.sp-cards .cb-more-key{grid-column:span 3}
+.sp-cards .cb-more-key .sp-topic{aspect-ratio:auto!important;height:100%;min-height:0;padding:28px 32px}
+.sp-cards .cb-more-key .sp-topic>span{max-width:none;font-size:clamp(1.3rem,2.2vw,2rem)}
+.cb-logos2{display:flex!important;align-items:center;gap:10px;flex-wrap:wrap}
+.cb-logos2 img{width:auto!important;max-width:46%;height:auto!important;max-height:22px}
+.hb-org.cb-logos2 img{max-height:15px}
+.ck-photos{display:grid;gap:30px;align-self:start}
+.ck-photo-2{rotate:2deg}
+.ck-mono{display:grid;place-items:center;width:100%;aspect-ratio:4/5;border-radius:6px;background:#EEF6E7;color:#009B27;font-size:4.2rem;font-weight:750;letter-spacing:.02em;
+ box-shadow:0 0 0 1px #0714071a,0 22px 34px -20px #1a2c1cb3}
+@media (min-width:861px){#partners .pt-fence.cb-pt-two .pt-grid>li.pt-slot-a{grid-area:2 / 1 / 3 / 3!important}}
+@media (max-width:760px){.ck-photos{grid-template-columns:1fr 1fr;gap:18px;max-width:440px}.ck-mono{font-size:3rem}.ck-photo figcaption{white-space:normal}
+ .sp-cards .cb-more-key{grid-column:1 / -1}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
