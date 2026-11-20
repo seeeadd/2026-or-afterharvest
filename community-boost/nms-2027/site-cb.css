@@ -1083,6 +1083,23 @@ section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:aut
 .cbc-viewbar .cbc-full:focus-visible{outline:3px solid var(--cb-alt);outline-offset:2px}
 @media (max-width:700px){.cbc-viewbar{flex-wrap:wrap}.cbc-viewbar .cbc-full{margin-left:0;width:100%;justify-content:center}}
 
+/* every way into the schedule page reads as a button (Sean 2026-11-20: "make sure it looks clickable"): the pill in the
+   view bar with a small table mark, a full-width link at the foot of each day, and an outlined twin of "Save my free seat" */
+.cbc-tic{flex:none;width:17px;height:17px}
+.cbc-viewbar .cbc-full{gap:8px;box-shadow:0 8px 18px -10px rgba(0,122,31,.8);transition:background .15s,transform .15s}
+.cbc-viewbar .cbc-full:hover{transform:translateY(-1px)}
+.cbc-daylink{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0 4px;min-height:44px;padding:0 14px;border:1.5px solid var(--cb-rad);border-radius:999px;
+ background:#fff;color:var(--cb-rad-d)!important;font:650 14px/1.2 Geist,system-ui,sans-serif;text-decoration:none;transition:background .15s,color .15s}
+.cbc-daylink:hover{background:var(--cb-rad);color:#fff!important}
+.cbc-daylink:focus-visible{outline:3px solid var(--cb-alt);outline-offset:2px}
+.sc-btns{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px}
+.sc-full{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:64px;padding:0 28px;border:2px solid var(--cb-rad);border-radius:4px;
+ background:#fff;color:var(--cb-rad-d)!important;font:650 18px/1.1 Geist,system-ui,sans-serif;text-decoration:none;transition:background .15s,color .15s,transform .15s}
+.sc-full svg{width:20px;height:20px}
+.sc-full:hover{background:var(--cb-tint);transform:translateY(-1px)}
+.sc-full:focus-visible{outline:3px solid var(--cb-alt);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.sc-full,.cbc-daylink,.cbc-viewbar .cbc-full{transition:none}.sc-full:hover,.cbc-viewbar .cbc-full:hover{transform:none}}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.

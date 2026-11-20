@@ -4,6 +4,7 @@
 @media (max-width:1180px){.links{display:none}.navdate{margin-left:auto}}
 @media (max-width:760px){:root{--gut:16px}.nav-in{height:64px;gap:12px}.brand img{width:32px;height:32px}.brand b{font-size:12.5px}.brand small{display:none}
  .navdate{display:none}.nav .btn{margin-left:auto;min-height:44px;padding:0 14px;font-size:13px}}
+@media (max-width:400px){.brand{flex:0 1 auto;min-width:0}.nav .btn{flex:none;padding:0 12px}}   /* the name wraps before the button leaves the screen */
 .sch-head{padding:56px var(--gut) 28px}
 .sch-head h1{margin:0;font-size:clamp(36px,5vw,64px);line-height:1;font-weight:700;letter-spacing:-.04em;max-width:16ch}
 .sch-head h1 span{color:var(--rad)}
@@ -21,7 +22,25 @@
 .tt-arrows button{width:36px;height:36px;border:0;border-radius:50%;background:none;font:400 24px/1 var(--sans);color:#5f6368;cursor:pointer}
 .tt-arrows button:hover{background:#f1f3f4}
 .tt-title{font-size:20px;font-weight:600;color:#202124;letter-spacing:-.01em}
-.tt-view{margin-left:auto;padding:7px 14px;border:1px solid #dadce0;border-radius:999px;font-size:14px;font-weight:500;color:#3c4043}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+/* the visitor's own clock and the zone switch, at the toolbar's right like a calendar's view menu */
+.tt-now{margin-left:auto;display:inline-flex;align-items:center;gap:8px;padding:6px 13px 6px 10px;border-radius:999px;background:#FFF1EA;font-size:13px;color:#5f6368;white-space:nowrap}
+.tt-now[hidden],.tt-zone[hidden]{display:none}
+.tt-pin{display:inline-block;width:1.05em;height:1.05em;margin:0 .2em 0 0;vertical-align:-.17em;flex:none}
+.tt-pin path{fill:#FC7540}.tt-pin circle{fill:#fff}
+.tt-place{white-space:nowrap;font-weight:650;color:#14201a}
+.tt-allday .tt-place{display:inline-block;line-height:1.5;margin-left:2px;padding:1px 10px 1px 7px;border-radius:999px;background:#fff;color:#14201a;font-size:13px;
+ box-shadow:0 1px 0 rgba(7,20,7,.12)}
+.tt-pw,.tt-in{white-space:nowrap}
+.tt-corner small .tt-place{display:block;font-size:12px;white-space:normal}.tt-corner small span:not(.tt-place){display:block}
+.tt-note .tt-place{color:#14201a}
+.navdate .tt-place{font-weight:600;color:inherit}
+.tt-now b{font-weight:650;color:#14201a;font-variant-numeric:tabular-nums}
+.tt-zone{margin-left:auto}.tt-now:not([hidden])+.tt-zone{margin-left:0}
+.tt-zone select{-webkit-appearance:none;appearance:none;padding:7px 32px 7px 14px;border:1px solid #dadce0;border-radius:999px;cursor:pointer;font:500 14px var(--sans);color:#3c4043;
+ background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%235f6368' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 13px center}
+.tt-zone select:hover{background-color:#f6f8f6}.tt-zone select:focus-visible{outline:2px solid var(--rad);outline-offset:2px}
+.tt-time sup{margin-left:3px;font-size:9.5px;font-weight:700;color:#B4461A;vertical-align:3px}
 .tt-bar{display:flex;align-items:center;gap:8px;padding:10px 18px;border-bottom:1px solid #e3e5e8;font-size:14px;color:#5f6368}
 .tt-bar button{display:flex;gap:6px;align-items:baseline;padding:7px 14px;border:1px solid #dadce0;border-radius:999px;background:#fff;font:600 14px var(--sans);color:#202124;cursor:pointer}
 .tt-bar button i{font-style:normal;font-weight:400;color:#5f6368}
@@ -31,10 +50,12 @@
 .tt-month{margin:0 0 8px;font-weight:600;font-size:14px}
 .tt-mini{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:11.5px}
 .tt-mini b{font-weight:500;color:#70757a;padding:4px 0}
-.tt-mini i{font-style:normal;padding:5px 0;border-radius:50%}
+.tt-mini i{display:grid;place-items:center;width:24px;height:24px;margin:1px auto;font-style:normal;border-radius:50%}
 .tt-mini i:first-of-type{grid-column:2}
-.tt-mini .is-d1{background:var(--rad);color:#fff;font-weight:700}
-.tt-mini .is-d2{background:#C7EBA2;color:#071407;font-weight:700}
+/* the summit days: a thin ring, the one on show a light fill (Sean 2026-11-20: "less opaque and a little bit thinner") */
+.tt-mini i.is-day{box-shadow:inset 0 0 0 1px rgba(0,155,39,.5);color:#007A1F;font-weight:600;cursor:pointer}
+.tt-mini i.is-day:hover{background:#F4F7F2}
+.tt-mini i.is-on{background:#EEF8E5;box-shadow:inset 0 0 0 1.5px #009B27;font-weight:700}
 .tt-cals{margin:22px 0 6px;font-weight:600;font-size:14px}
 .tt-filter{list-style:none;margin:0;padding:0}
 .tt-filter label{display:flex;align-items:center;gap:10px;padding:6px 0;cursor:pointer;font-size:13.5px}
@@ -49,8 +70,10 @@
 .tt-day[hidden]{display:none}
 .tt-allday{display:flex;align-items:baseline;gap:8px;margin:14px 16px 0;padding:8px 12px;border-radius:6px;background:#73D88C;color:#071407;font-size:14px}
 .tt-day[data-day="2"] .tt-allday{background:var(--rad);color:#fff}
-.tt-allday span{margin-left:auto;font-size:13px;opacity:.85}
-.tt-scroll{overflow-x:auto;padding:12px 16px 18px;scroll-snap-type:x proximity}
+.tt-allday{flex-wrap:wrap;row-gap:2px}
+.tt-allday [data-day-date]{margin-left:auto;font-size:13px;color:rgba(7,20,7,.8)}
+.tt-day[data-day="2"] .tt-allday [data-day-date]{color:rgba(255,255,255,.9)}
+.tt-scroll{--sp:16px;overflow-x:auto;padding:12px var(--sp) 18px;scroll-snap-type:x proximity}
 .tt-scroll:focus-visible{outline:2px solid var(--rad);outline-offset:-2px}
 
 /* the table: ruled like a sheet (Sean 2026-11-20: "more like an actual table, like lines instead of boards"). A line every
@@ -58,13 +81,14 @@
    header and a tint with a coloured edge in each cell */
 .tt{--tl:#d6ddd6;--tl2:#aeb9ae}
 .tt-grid{position:relative;display:grid;grid-template-columns:96px var(--w-main) var(--w-mkt) var(--w-ai) var(--w-room);grid-template-rows:84px repeat(var(--rows),var(--rowh));
+ width:-webkit-fit-content;width:fit-content;min-width:100%;   /* as wide as its columns, so a narrow screen scrolls to every stage */
  border:1px solid var(--tl2);border-radius:8px;overflow:clip;background:#fff;
  background-image:linear-gradient(var(--tl) 1px,transparent 1px);background-size:100% calc(var(--rowh)*2);background-position:0 84px}
 .tt-lane{grid-row:1 / -1;border-left:1px solid var(--tl);pointer-events:none}
-.tt-corner{grid-row:1;grid-column:1;position:sticky;left:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;background:#F4F7F2;border-bottom:2px solid var(--tl2);border-right:1px solid var(--tl2)}
+.tt-corner{grid-row:1;grid-column:1;position:sticky;left:calc(var(--sp) * -1);z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;background:#F4F7F2;border-bottom:2px solid var(--tl2);border-right:1px solid var(--tl2)}
 .tt-corner b{font-size:12.5px;font-weight:700;color:#14201a}
 .tt-corner small{font-size:11px;color:#6b746b}
-.tt-time{grid-column:1;position:sticky;left:0;z-index:3;padding:8px 10px;background:#FAFBF9;border-right:1px solid var(--tl2);border-bottom:1px solid var(--tl);line-height:1.25}
+.tt-time{grid-column:1;position:sticky;left:calc(var(--sp) * -1);z-index:3;padding:8px 10px;background:#FAFBF9;border-right:1px solid var(--tl2);border-bottom:1px solid var(--tl);line-height:1.25}
 .tt-time b{display:block;font-size:12.5px;font-weight:650;color:#14201a;white-space:nowrap}
 .tt-time small{display:block;font-size:11px;color:#6b746b;white-space:nowrap}
 .tt-sh{grid-row:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:10px 12px;overflow:hidden;border-bottom:2px solid var(--c);border-left:1px solid var(--tl2)}
@@ -109,17 +133,21 @@
 .tt.no-main [data-stage="main"],.tt.no-mkt [data-stage="mkt"],.tt.no-ai [data-stage="ai"],.tt.no-room [data-stage="room"]{display:none}
 .tt.no-main{--w-main:0px}.tt.no-mkt{--w-mkt:0px}.tt.no-ai{--w-ai:0px}.tt.no-room{--w-room:0px}
 
-@media (max-width:980px){.tt-body{grid-template-columns:1fr}.tt-side{display:none}}
+@media (max-width:980px){.tt-body{grid-template-columns:minmax(0,1fr)}.tt-side{display:none}}   /* minmax(0,..): the table scrolls inside its frame */
 @media (max-width:760px){
  .sch-head{padding-top:36px}
  .tt{--rowh:56px;padding:0}
  .tt-xs h3{font-size:13px;-webkit-line-clamp:4}
  .tt-frame{border-radius:0;border-left:0;border-right:0}
- .tt-top{gap:10px;padding:10px 12px}.tt-logo{font-size:16px}.tt-logo img{width:28px;height:28px}.tt-title{font-size:15px}.tt-view{display:none}.tt-arrows{margin-left:auto;order:3}
+ .tt-top{gap:10px;padding:10px 12px}.tt-logo{font-size:16px}.tt-logo img{width:28px;height:28px}.tt-title{font-size:15px}.tt-arrows{margin-left:auto;order:3}
+ .tt-top{flex-wrap:wrap;row-gap:8px}.tt-now{order:4;margin-left:0;padding:5px 11px 5px 9px;font-size:12.5px}
+ .tt-zone{order:5;margin-left:auto}.tt-now:not([hidden])+.tt-zone{margin-left:auto}.tt-zone select{padding:6px 28px 6px 12px;font-size:13px}
  .tt-bar{padding:8px 12px;overflow-x:auto}.tt-bar button{flex:none}
  .tt{--w:minmax(220px,78vw)}
  .tt-grid{grid-template-columns:72px var(--w-main) var(--w-mkt) var(--w-ai) var(--w-room)}
- .tt-scroll{padding:10px 12px 16px}
+ .tt-scroll{--sp:12px;padding:10px var(--sp) 16px}
+ .tt-allday{margin:12px 12px 0}.tt-allday [data-day-date]{flex-basis:100%;margin-left:0;font-size:12.5px}
+ .tt-corner small .tt-place{font-size:11px}
  .tt-time,.tt-corner{padding:6px 7px}.tt-time b{font-size:11.5px}.tt-time small{font-size:9.5px}
 }
 @media (prefers-reduced-motion:reduce){.tt-ev{transition:none}}
