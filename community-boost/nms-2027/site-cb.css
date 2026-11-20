@@ -1119,6 +1119,19 @@ section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:aut
  .ww-match-choice:checked+label .fr-box svg{stroke:HighlightText}
 }
 
+/* the checklist's sessions in their schedule-page stage colours (Main green, Marketing orange, AI blueprint teal), so a
+   reader can tell the stages apart, and "Your two days" cards with the same colour on their left edge */
+.fr-ans .ws-main i{--dot:#009B27}
+.fr-ans .ws-mkt i{--dot:#FC7540}
+.fr-ans .ws-ai i{--dot:#0F3E4A}
+.fr-ans .ws-room i{--dot:#73D88C}
+.ww-match-result small{color:#4D594F}
+.fr-day li.ws-main{--bg:#F1F8EB;box-shadow:inset 3px 0 0 #009B27}
+.fr-day li.ws-mkt{--bg:#FFF4EE;box-shadow:inset 3px 0 0 #FC7540}
+.fr-day li.ws-ai{--bg:#EEF4F5;box-shadow:inset 3px 0 0 #0F3E4A}
+.fr-day li.ws-room{--bg:#F3FAEE;box-shadow:inset 3px 0 0 #73D88C}
+.fr-day li .ww-clash{color:#9A3B12;font-weight:600}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.

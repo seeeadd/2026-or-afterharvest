@@ -138,7 +138,7 @@ if (refTag && !who.ref) refTag = 'invite-' + refTag;
 var share = EVENT.optinUrl + '?utm_source=coworker-invite&utm_medium=referral&utm_campaign=nms2027' + (refTag ? '&ref=' + encodeURIComponent(refTag) : '');
 each('[data-share-link]', function(el){ el.value = share; });
 each('[data-optin]', function(a){ a.href = EVENT.optinUrl; });
-each('[data-schedule]', function(a){ a.href = EVENT.optinUrl + '#schedule'; });
+each('[data-schedule]', function(a){ a.href = EVENT.optinUrl + 'schedule/'; });
 
 /* copy: say what was copied; when the browser refuses, show the text selected so they can copy it themselves */
 function copy(text, btn, okText, onFail){

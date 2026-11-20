@@ -201,3 +201,8 @@
  .tt-time,.tt-corner{padding:6px 7px}.tt-time b{font-size:11.5px}.tt-time small{font-size:9.5px}
 }
 @media (prefers-reduced-motion:reduce){.tt-ev,.tt-tab{transition:none}}
+.sch-end{display:flex;flex-wrap:wrap;gap:12px;padding:40px var(--gut) 0}
+.sch-back{flex:none;width:18px;height:18px;margin-right:10px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sch-end .btn-ghost:hover{background:rgba(7,20,7,.05)}
+.sch-end .btn:focus-visible{outline:3px solid var(--alt);outline-offset:2px}
+@media (max-width:560px){.sch-end .btn{flex:1 1 100%}}
