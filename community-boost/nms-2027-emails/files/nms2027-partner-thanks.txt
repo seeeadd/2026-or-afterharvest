@@ -1,0 +1,47 @@
+[We got your note. Our team will reply with the 2027 partner options.]
+
+Hi {{ contact.firstname }},
+Thanks for reaching out about partnering with the Nonprofit Marketing Summit 2027. Your note reached our team.
+What happens next:
+
+1. We read your note. [CB: who reads partner inquiries, for example Ashley]
+
+2. We reply with the 2027 partner options and what each costs, [CB: how soon, for example within two business days].
+
+3. Want to talk it through? Reply to this email and we’ll find a time.
+
+WHAT YOU SENT
+{{ contact.company }}
+{{ contact.message }}
+
+The summit, so far
+
+180,000+
+registrations
+670+
+sessions
+10
+summits since 2020
+
+Totals as of March 2025. 53% of attendees lead their nonprofit or head its development or marketing.
+Ways to take part
+
+Title partnership: the summit name.
+
+A stage session: run a session for the nonprofit teams who attend.
+
+Run a workshop: a hands-on workshop for the teams in the room.
+
+We’re keeping the 2027 partner list short, so each partner gets real time with the nonprofits in the room.
+
+See who attends: {{ partners_url }}
+
+[CB: first name of who signs, for example Ashley]
+[CB: full name and title]
+Community Boost · summit@communityboost.org
+The Nonprofit Marketing Summit 2027 runs February 23 and 24, 2027 (PT), free for nonprofits and live on Zoom.
+
+Community Boost · Helping nonprofits grow since 2012
+summit@communityboost.org
+{{ site_settings.company_street_address_1 }}, {{ site_settings.company_city }}, {{ site_settings.company_state }}
+Unsubscribe: {{ unsubscribe_link }}

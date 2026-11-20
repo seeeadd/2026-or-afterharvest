@@ -1,0 +1,40 @@
+[You’re in. Your free seat is saved. Nonprofit Marketing Summit 2027, Feb 23-24, 2027 PT, live on Zoom.]
+
+Hi {{ contact.firstname }},
+You’re in. Your free seat for the Nonprofit Marketing Summit 2027 is saved.
+
+DAY 1
+The Blueprint
+Tuesday, February 23, 2027 (PT)
+
+DAY 2
+The Build
+Wednesday, February 24, 2027 (PT)
+
+9:00 am to 2:30 pm PT each day (12:00 to 5:30 pm ET), live on Zoom
+See every session by time and stage: {{ schedule_url }}
+
+Three things to do now:
+
+1. Put both days in your calendar. The button adds both days in one tap, so they’re held before anything else lands on them.
+Add both days to Google Calendar: {{ calendar_google_url }}
+
+Using Outlook or Apple Calendar? Use this link instead: {{ calendar_file_url }}.
+
+2. Keep your Zoom link. This one is yours: {{ zoom_join_link }}
+If this email landed in Promotions or Spam, move it to your inbox so the reminders reach you. We’ll send the link again the day before and on each live morning.
+
+3. Bring a coworker. Planning goes faster with someone beside you. Send them your invite link: {{ share_link }}
+They sign up with their own name and get their own Zoom link.
+
+Day 2 marks the debut of our new Cause Command platform, so plan to stay for the whole day.
+Need a yes from your manager? There’s a note you can send as it is on your You’re in page: {{ youre_in_url }}.
+Cameron
+Cameron Ripley
+Founder and CEO, Community Boost
+P.S. Hit reply and tell me the one campaign you want to move forward in 2027.
+
+Community Boost · Helping nonprofits grow since 2012
+summit@communityboost.org
+{{ site_settings.company_street_address_1 }}, {{ site_settings.company_city }}, {{ site_settings.company_state }}
+Unsubscribe: {{ unsubscribe_link }}

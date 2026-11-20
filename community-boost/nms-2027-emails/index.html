@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Confirmation emails · NMS 2027</title>
+<link rel="icon" href="https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/assets/2027/nms-emblem-64-green.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&display=swap">
+<style>
+:root{--cat:#071407;--rad:#009B27;--alt:#73D88C;--bloom:#C7EBA2;--teal:#0F3E4A;--line:#E4EFF3;--paper:#F7F9F3;--ink:#172219;--ink2:#4D594F;
+ --hair:#DCE2D8;--slot:#C2410C;--gut:clamp(16px,4vw,48px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Geist,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;padding:12px var(--gut);background:rgba(247,249,243,.92);
+ backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
+.top img{width:36px;height:36px}
+.top p{margin:0;line-height:1.2}.top b{display:block;font-size:15px}.top small{font-size:13px;color:var(--ink2)}
+.top nav{margin-left:auto;display:flex;gap:6px}
+.top nav a{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;font-size:14px;font-weight:500;text-decoration:none;color:var(--ink)}
+.top nav a:hover{background:#fff;box-shadow:inset 0 0 0 1px var(--hair)}
+.top nav span{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:700}
+.hero{position:relative;overflow:hidden;padding:64px var(--gut) 56px;background:var(--teal);color:#fff;
+ background-image:linear-gradient(rgba(228,239,243,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(228,239,243,.07) 1px,transparent 1px);background-size:24px 24px}
+.hero-in{max-width:1180px;margin:0 auto}
+.hero h1{margin:0;max-width:18ch;font-size:clamp(34px,5vw,60px);line-height:1.02;letter-spacing:-.035em;font-weight:700}
+.hero p{max-width:62ch;margin:18px 0 0;font-size:18px;color:rgba(255,255,255,.82)}
+.hero p em{font-style:normal;color:#FDBA8C;font-weight:600}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:28px}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(228,239,243,.3)}
+.seg button{min-height:38px;padding:0 18px;border:0;border-radius:999px;background:none;color:#fff;font:500 15px Geist,system-ui,sans-serif;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--cat)}
+.seg button:focus-visible,.top nav a:focus-visible{outline:2px solid var(--alt);outline-offset:2px}
+.ctl small{font-size:14px;color:rgba(255,255,255,.7)}
+main{max-width:1180px;margin:0 auto;padding:0 var(--gut)}
+.mail{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:40px;padding:64px 0;border-bottom:1px solid var(--hair)}
+.meta{align-self:start;position:sticky;top:96px}
+.num{margin:0;font-size:14px;font-weight:600;color:var(--rad)}
+.meta h2{margin:4px 0 18px;font-size:32px;line-height:1.1;letter-spacing:-.025em}
+dl{margin:0;display:grid;gap:12px}
+dt{font-size:13px;font-weight:600;color:var(--ink2)}
+dd{margin:2px 0 0;font-size:15.5px;line-height:1.45}
+.fill{margin-top:22px;padding:14px 16px;border-radius:10px;background:#FFF4EC;box-shadow:inset 0 0 0 1px #F8D3BB}
+.fill p{margin:0 0 6px;font-size:13px;font-weight:600;color:var(--slot)}
+.fill ul{margin:0;padding-left:18px;font-size:14.5px}
+.files{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.files a{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--hair);font-size:14px;font-weight:600;text-decoration:none;color:var(--teal)}
+.files a:hover{box-shadow:inset 0 0 0 1px var(--teal)}
+.files a:focus-visible{outline:2px solid var(--rad);outline-offset:2px}
+.viewer{min-width:0;border-radius:14px;background:#fff;box-shadow:0 0 0 1px var(--hair),0 30px 60px -40px rgba(7,20,7,.45);overflow:hidden}
+.chrome{display:flex;align-items:center;gap:14px;padding:12px 16px;border-bottom:1px solid #EEF0EC;background:#FBFBFA}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#DADDD8}
+.chrome p{margin:0;min-width:0;line-height:1.3}
+.chrome b{display:block;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chrome span{font-size:13px;color:var(--ink2)}
+.stage{display:flex;justify-content:center;padding:24px 16px;background:#F3F5F1;overflow-x:auto}
+.stage iframe{display:block;width:680px;max-width:none;height:900px;border:0;background:#fff;transition:width .25s}
+body.is-phone .stage iframe{width:390px;border-radius:22px;box-shadow:0 0 0 8px #1d231e,0 20px 40px -20px rgba(0,0,0,.5)}
+body.is-phone .stage{padding:32px 16px}
+.setup{padding:72px 0 24px}
+.setup>h2,.need>h2{margin:0;font-size:clamp(28px,3.4vw,40px);line-height:1.08;letter-spacing:-.03em}
+.setup>p,.need>p{max-width:66ch;margin:12px 0 0;font-size:17px;color:var(--ink2)}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:32px 0 0;padding:0;list-style:none}
+.steps>li{counter-increment:s;position:relative;padding:22px 22px 20px 70px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--hair)}
+.steps>li:before{content:counter(s);position:absolute;left:22px;top:20px;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;
+ background:var(--teal);color:#fff;font-weight:700;font-size:15px}
+.steps h3{margin:4px 0 10px;font-size:19px;letter-spacing:-.01em}
+.steps ul{margin:0;padding-left:18px;display:grid;gap:8px;font-size:15px;line-height:1.5}
+.need{padding:56px 0 80px}
+.need ul{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--hair)}
+.need li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:18px 0;border-bottom:1px solid var(--hair)}
+.need li b{font-size:16px}.need li span{font-size:16px;color:var(--ink)}
+footer{padding:28px var(--gut);border-top:1px solid var(--hair);font-size:14px;color:var(--ink2);text-align:center}
+@media (max-width:980px){.mail{grid-template-columns:1fr;gap:24px}.meta{position:static}.steps{grid-template-columns:1fr}}
+@media (max-width:720px){.top nav{display:none}.stage{padding:16px 8px}.need li{grid-template-columns:1fr;gap:4px}.mail{padding:44px 0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stage iframe{transition:none}}
+</style></head><body>
+<header class="top"><img src="https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/assets/2027/nms-emblem-64-green.png" alt="" width="36" height="36"><p><b>Nonprofit Marketing Summit 2027</b><small>Confirmation emails</small></p>
+<nav aria-label="The three emails"><a href="#youre-in"><span>1</span>You’re in</a><a href="#partner-thanks"><span>2</span>We got your note</a><a href="#partner-alert"><span>3</span>New partner inquiry</a></nav></header>
+<div class="hero"><div class="hero-in">
+<h1>Three confirmation emails, ready for HubSpot</h1>
+<p>One for everyone who signs up for the summit, and two for partners who send the form on the sponsors page. They’re shown
+with sample values. <em>Orange text</em> marks what only your team can fill in. The setup steps are below the emails.</p>
+<div class="ctl"><div class="seg" role="group" aria-label="Preview width"><button type="button" aria-pressed="true" data-w="desk">Desktop</button>
+<button type="button" aria-pressed="false" data-w="phone">Phone</button></div><small>Switches all three previews</small></div>
+</div></div>
+<main><section class="mail" id="youre-in" aria-labelledby="youre-in-h">
+<div class="meta">
+ <p class="num">Email 1</p>
+ <h2 id="youre-in-h">You’re in</h2>
+ <dl>
+  <dt>Goes to</dt><dd>Everyone who signs up for the summit</dd>
+  <dt>Sends</dt><dd>A few minutes after they sign up, once their personal join link is stored. Repeat sign-ups get it again.</dd>
+  <dt>Subject</dt><dd>You’re in, Maria</dd>
+  <dt>Preview line</dt><dd>Your Zoom link, both days in your calendar, and a link for a coworker.</dd>
+ </dl>
+ <div class="fill"><p>Only your team can fill in</p><ul><li>Who it comes from (name and address)</li><li>Who reads the replies (the P.S. asks people to hit reply)</li></ul></div>
+ <p class="files"><a href="files/nms2027-youre-in.html" download>HubSpot HTML</a><a href="files/nms2027-youre-in.txt" download>Plain-text version</a></p>
+</div>
+<div class="viewer">
+ <div class="chrome"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+  <p><b>You’re in, Maria</b><span>[CB: sender name and address]</span></p></div>
+ <div class="stage"><iframe src="email-youre-in.html" title="You’re in email, with sample values" loading="lazy" scrolling="no"></iframe></div>
+</div>
+</section><section class="mail" id="partner-thanks" aria-labelledby="partner-thanks-h">
+<div class="meta">
+ <p class="num">Email 2</p>
+ <h2 id="partner-thanks-h">We got your note</h2>
+ <dl>
+  <dt>Goes to</dt><dd>A partner who sends the form on the sponsors page</dd>
+  <dt>Sends</dt><dd>Right after they send the form.</dd>
+  <dt>Subject</dt><dd>We got your note, Maria</dd>
+  <dt>Preview line</dt><dd>Our team will reply with the 2027 partner options.</dd>
+ </dl>
+ <div class="fill"><p>Only your team can fill in</p><ul><li>Who it comes from</li><li>How soon your team replies</li><li>The name and title that sign it</li></ul></div>
+ <p class="files"><a href="files/nms2027-partner-thanks.html" download>HubSpot HTML</a><a href="files/nms2027-partner-thanks.txt" download>Plain-text version</a></p>
+</div>
+<div class="viewer">
+ <div class="chrome"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+  <p><b>We got your note, Maria</b><span>[CB: sender name and address]</span></p></div>
+ <div class="stage"><iframe src="email-partner-thanks.html" title="We got your note email, with sample values" loading="lazy" scrolling="no"></iframe></div>
+</div>
+</section><section class="mail" id="partner-alert" aria-labelledby="partner-alert-h">
+<div class="meta">
+ <p class="num">Email 3</p>
+ <h2 id="partner-alert-h">New partner inquiry</h2>
+ <dl>
+  <dt>Goes to</dt><dd>Your team: whoever handles partners</dd>
+  <dt>Sends</dt><dd>Right after a partner sends the form, at the same time as the email above.</dd>
+  <dt>Subject</dt><dd>New partner inquiry: Brightline Software</dd>
+  <dt>Preview line</dt><dd>Maria Lopez sent the partner form.</dd>
+ </dl>
+ <div class="fill"><p>Only your team can fill in</p><ul><li>Which people or inbox get it</li><li>The reply time the partner email promises</li></ul></div>
+ <p class="files"><a href="files/nms2027-partner-alert.html" download>HubSpot HTML</a><a href="files/nms2027-partner-alert.txt" download>Plain-text version</a></p>
+</div>
+<div class="viewer">
+ <div class="chrome"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+  <p><b>New partner inquiry: Brightline Software</b><span>HubSpot</span></p></div>
+ <div class="stage"><iframe src="email-partner-alert.html" title="New partner inquiry email, with sample values" loading="lazy" scrolling="no"></iframe></div>
+</div>
+</section>
+<section class="setup" aria-labelledby="setup-h"><h2 id="setup-h">Setting them up in HubSpot</h2>
+<p>Everything below happens in your HubSpot account. Each email’s HubSpot-ready HTML and plain-text version are linked
+beside it above.</p>
+<ol class="steps"><li><h3>Load the three emails</h3><ul><li>In <b>Marketing &gt; Files and Templates &gt; Design Tools</b>, create a coded email template for each email and paste in our HTML. The footer already has HubSpot’s required unsubscribe link and company address.</li><li>Create an automated email from each template. Set the from name, from address, reply-to and the subscription type it sends under (for example, summit or event updates).</li><li>Optional: upload the four pictures to your File Manager and swap their links. Today they load from our server.</li></ul></li><li><h3>The sign-up email (You’re in)</h3><ul><li>A contact-based workflow. Trigger: a submission of the summit sign-up form. Turn re-enrollment on, so someone who signs up again gets the email again.</li><li>Action: send the You’re in email.</li><li>Leave it off for now. The email carries each person’s own join link, which comes from the event platform’s HubSpot connection. We’ll send our platform recommendation first, then map the link and turn it on.</li></ul></li><li><h3>The partner form and its two emails</h3><ul><li>Create a HubSpot form, for example “NMS 2027 partner inquiry”, with First name, Last name, Email, Company and Message. These are HubSpot’s built-in properties, and the sponsors page form already uses the same names.</li><li>Send us your portal ID (Hub ID) and the form’s ID (both are in the form’s embed code). We connect the sponsors page to it through HubSpot’s Forms API, so the page keeps its design and every inquiry lands in HubSpot as a contact.</li><li>A workflow. Trigger: a submission of that form. Actions: send the “We got your note” email, then a <b>Send internal email notification</b> with our alert’s subject and text to the people who handle partners. HubSpot sends internal alerts in its own plain layout, so the alert above shows the content to paste.</li></ul></li><li><h3>Test before anything goes live</h3><ul><li>Send each email to a test contact from HubSpot (not the template preview) and open it in Gmail, Outlook and on a phone.</li><li>Send the sponsors page form once: check the contact, the thank-you email and the team alert.</li><li>Check that a contact with no first name still gets a clean subject line.</li></ul></li></ol></section>
+<section class="need" aria-labelledby="need-h"><h2 id="need-h">What we need from your team</h2>
+<p>With these, the two partner emails can go live as soon as the form is connected. The sign-up email follows once the
+event platform is picked.</p>
+<ul><li><b>Who builds it</b><span>It all lives in your HubSpot. Either Al sets it up with the steps on this page, or you add us as a HubSpot user with access to forms, email, workflows and design tools, and we build it for you to review before anything is turned on.</span></li><li><b>Senders</b><span>The from name and address for the You’re in email and for the partner email, and who reads replies.</span></li><li><b>Partner alerts</b><span>Which people get the alert, how soon your team replies to partners, and the name and title that sign the partner email.</span></li><li><b>The partner form</b><span>Your portal ID and the partner form’s ID, once the form exists.</span></li></ul></section>
+</main>
+<footer>Prepared for Community Boost, November 20, 2026.</footer>
+<script>
+(function(){
+  var frames=[].slice.call(document.querySelectorAll('.stage iframe'));
+  function fit(f){try{var d=f.contentDocument;if(!d||!d.body)return;f.style.height='0px';f.style.height=Math.ceil(d.documentElement.scrollHeight)+'px'}catch(e){}}
+  frames.forEach(function(f){f.addEventListener('load',function(){fit(f)});fit(f)});
+  addEventListener('resize',function(){frames.forEach(fit)});
+  var bs=[].slice.call(document.querySelectorAll('.seg button'));
+  bs.forEach(function(b){b.addEventListener('click',function(){
+    bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    document.body.classList.toggle('is-phone',b.dataset.w==='phone');
+    setTimeout(function(){frames.forEach(fit)},300)})});
+})();
+</script>
+</body></html>

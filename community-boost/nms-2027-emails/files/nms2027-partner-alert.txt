@@ -1,0 +1,15 @@
+NEW PARTNER INQUIRY · NMS 2027
+{{ contact.company }} wants to talk about partnering.
+Someone just sent the partner form on the summit’s partners page.
+
+Name{{ contact.firstname }} {{ contact.lastname }}
+Work email{{ contact.email }}
+Company{{ contact.company }}
+Their note{{ contact.message }}
+Sent fromThe partners page form
+
+Reply to {{ contact.firstname }}: mailto:{{ contact.email }}?subject=NMS%202027%20partner%20options
+
+They already got the automatic “We got your note” email, which says our team will reply with the 2027 partner options and what each costs, [CB: the reply time that email promises].
+
+Sent by HubSpot when the partner form on the summit’s partners page is sent.
