@@ -897,6 +897,10 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
   padding-bottom:calc(var(--pt-bp-w) * .5875 + 10px)}
  .pt-bp-sheet:before{background:linear-gradient(180deg,rgba(4,18,22,.84) 0,rgba(4,18,22,.74) calc(100% - var(--pt-bp-w) * .5875 - 150px),rgba(4,18,22,.36) calc(100% - var(--pt-bp-w) * .5875),rgba(4,18,22,0) calc(100% - var(--pt-bp-w) * .5525))}
 }
+/* the best-of heading is CB's longer line now ("The conference that nonprofits can't stop talking about"): its highlight
+   may wrap, and each line keeps its own underline */
+.wa-head h2 mark{white-space:normal!important;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+@media (max-width:760px){.wa-head h2{font-size:clamp(32px,9vw,40px)!important;overflow-wrap:break-word}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
