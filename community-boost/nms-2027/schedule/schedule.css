@@ -118,6 +118,7 @@
 .tt-a-cta:hover{background:#008A22}
 .tt-a1 .tt-a-cta:focus-visible{outline:3px solid var(--alt);outline-offset:2px}.tt-a2 .tt-a-cta:focus-visible{outline:3px solid #0F3E4A;outline-offset:2px}
 .tt-a-art{position:absolute;right:0;bottom:0;display:block;width:500px;height:auto}
+.tt-a-mini{display:none}
 @media (max-width:1240px) and (min-width:761px){.tt-allday{padding-right:380px;min-height:188px}.tt-a-art{width:370px}}
 .tt-scroll{--sp:16px;overflow-x:auto;padding:12px var(--sp) 18px;scroll-snap-type:x proximity}
 .tt-scroll:focus-visible{outline:2px solid var(--rad);outline-offset:-2px}
@@ -197,10 +198,14 @@
  .tt-grid{grid-template-columns:72px var(--w-main) var(--w-mkt) var(--w-ai) var(--w-room)}
  .tt-scroll{--sp:12px;padding:10px var(--sp) 16px}
  .tt-allday{margin:12px 12px 0}
- .tt-allday{display:block;min-height:0;padding:16px 16px 0 18px}
+ .tt-allday{display:grid;grid-template-columns:minmax(0,1fr) 80px;grid-template-areas:"n mini" "nm mini" "meta meta" "cta cta";column-gap:12px;
+  min-height:0;padding:16px 16px 16px 18px}
  .tt-a-n{font-size:36px}.tt-a-name{font-size:19px}.tt-a-meta{font-size:12.5px;gap:4px 10px}
- .tt-a-cta{display:flex;width:100%;margin-top:14px}
- .tt-a-art{position:static;width:calc(100% + 34px);max-width:none;margin:10px -16px 0 -18px}
+ .tt-a-cta{grid-area:cta;display:flex;width:100%;margin-top:14px}
+ .tt-a-art{display:none}
+ .tt-a-mini{grid-area:mini;align-self:center;display:block;width:80px;height:64px;border-radius:10px;overflow:hidden}
+ .tt-a1 .tt-a-mini{box-shadow:inset 0 0 0 1px rgba(228,239,243,.35)}.tt-a2 .tt-a-mini{background:#FCF3E3;box-shadow:inset 0 0 0 1px rgba(7,20,7,.12)}
+ .tt-a-mini svg{display:block;width:100%;height:100%}
  .tt-corner small .tt-place{font-size:11px}
  .tt-time,.tt-corner{padding:6px 7px}.tt-time b{font-size:11.5px}.tt-time small{font-size:9.5px}
 }
@@ -209,4 +214,4 @@
 .sch-back{flex:none;width:18px;height:18px;margin-right:10px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .sch-end .btn-ghost:hover{background:rgba(7,20,7,.05)}
 .sch-end .btn:focus-visible{outline:3px solid var(--alt);outline-offset:2px}
-@media (max-width:560px){.sch-end .btn{flex:1 1 100%}}
+@media (max-width:560px){.sch-end .btn{flex:1 1 100%;min-width:0;padding:0 16px;white-space:normal;text-align:center}}
