@@ -1037,6 +1037,19 @@ section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:aut
 }
 }
 
+/* ---- a brand mark beside each named organization (Sean 2026-11-20: "a square or something that kind of represents their
+   logos"): a square in the organization's own colours (sampled from its real logo), a short monogram, and a band of its
+   second colours where it has them; never the logo itself (Cameron) ---- */
+.wa-names li{gap:10px;padding:6px 10px 6px 7px}
+.bm{flex:none;position:relative;display:grid;place-items:center;width:30px;height:30px;border-radius:7px;background:var(--b);color:var(--k,#fff);
+ font:800 12px/1 Geist,system-ui,sans-serif;font-style:normal;letter-spacing:-.02em;overflow:hidden;
+ box-shadow:inset 0 0 0 1px #00000014,0 1px 2px #0714071f,0 4px 10px -6px #07140759}
+.bm-3{font-size:9.5px;letter-spacing:-.03em}
+.bm:after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--band,none)}
+.bm[style*="--band"]{padding-bottom:4px}
+.bm-tt{font-size:15px;text-shadow:-1.3px -1px 0 #00F2EA,1.3px 1px 0 #FF0550}
+@media (max-width:420px){.wa-names li{gap:8px}.bm{width:26px;height:26px;font-size:11px}.bm-3{font-size:8.5px}}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.
