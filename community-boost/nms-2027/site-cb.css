@@ -1099,6 +1099,8 @@ section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:aut
 .sc-full:hover{background:var(--cb-tint);transform:translateY(-1px)}
 .sc-full:focus-visible{outline:3px solid var(--cb-alt);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.sc-full,.cbc-daylink,.cbc-viewbar .cbc-full{transition:none}.sc-full:hover,.cbc-viewbar .cbc-full:hover{transform:none}}
+.sc-full-top{display:flex;width:-webkit-fit-content;width:fit-content;margin-top:18px;min-height:52px;padding:0 22px;font-size:16px}
+@media (max-width:700px){.sc-full-top{width:100%}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply

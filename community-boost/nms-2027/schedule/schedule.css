@@ -52,18 +52,20 @@
 .tt-tab-s{grid-column:2;grid-row:1 / 3}
 .tt-tab-s em{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;font:650 14px/1 var(--sans);font-style:normal;white-space:nowrap}
 .tt-tab .tt-on{display:none}
-.tt-tab .tt-go{background:#009B27;color:#fff;box-shadow:0 6px 14px -8px rgba(0,122,31,.9)}
+.tt-tab .tt-go{background:#007A1F;color:#fff;box-shadow:0 6px 14px -8px rgba(0,122,31,.9)}
+.tt-t2 .tt-go{background:#FC7540;color:#071407;box-shadow:0 6px 14px -8px rgba(180,70,26,.9)}
 .tt-tab:hover{border-color:#009B27;background:#F6FAF3}
 .tt-tab:focus-visible{outline:3px solid #FC7540;outline-offset:2px}
 .tt-tab[aria-current="true"] .tt-go{display:none}
 .tt-tab[aria-current="true"] .tt-on{display:inline-flex}
 .tt-tab[aria-current="true"] .tt-on:before{content:"";width:9px;height:5px;margin-top:-3px;border:2px solid currentColor;border-top:0;border-right:0;transform:rotate(-45deg)}
-.tt-t1[aria-current="true"]{background:#73D88C;border-color:#73D88C;color:#071407}
-.tt-t1[aria-current="true"] .tt-tab-d{color:rgba(7,20,7,.75)}
-.tt-t1[aria-current="true"] .tt-on{background:rgba(7,20,7,.1);color:#071407}
-.tt-t2[aria-current="true"]{background:#009B27;border-color:#009B27;color:#fff}
-.tt-t2[aria-current="true"] .tt-tab-d{color:rgba(255,255,255,.85)}
-.tt-t2[aria-current="true"] .tt-on{background:rgba(255,255,255,.18);color:#fff}
+.tt-t1[aria-current="true"]{background:#007A1F;border-color:#007A1F;color:#fff}
+.tt-t1[aria-current="true"] .tt-tab-d{color:rgba(255,255,255,.85)}
+.tt-t1[aria-current="true"] .tt-on{background:rgba(255,255,255,.18);color:#fff}
+.tt-t2[aria-current="true"]{background:#FC7540;border-color:#FC7540;color:#071407}
+.tt-t2[aria-current="true"] .tt-tab-d{color:rgba(7,20,7,.78)}
+.tt-t2[aria-current="true"] .tt-on{background:rgba(7,20,7,.12);color:#071407}
+.tt-t2:hover{border-color:#FC7540;background:#FFF6F1}
 .tt-body{display:grid;grid-template-columns:232px minmax(0,1fr)}
 .tt-side{padding:18px 18px 24px;border-right:1px solid #e3e5e8;font-size:13px;color:#3c4043}
 .tt-month{margin:0 0 8px;font-weight:600;font-size:14px}
@@ -89,11 +91,19 @@
 /* the days, one under the other; a jump lands the day's bar just under the pinned tabs */
 .tt-day{scroll-margin-top:176px}
 .tt-day+.tt-day{margin-top:22px;padding-top:22px;border-top:1px solid #e3e5e8}
-.tt-allday{display:flex;align-items:baseline;gap:8px;margin:14px 16px 0;padding:8px 12px;border-radius:6px;background:#73D88C;color:#071407;font-size:14px}
-.tt-day[data-day="2"] .tt-allday{background:var(--rad);color:#fff}
-.tt-allday{flex-wrap:wrap;row-gap:2px}
-.tt-allday [data-day-date]{margin-left:auto;font-size:13px;color:rgba(7,20,7,.8)}
-.tt-day[data-day="2"] .tt-allday [data-day-date]{color:rgba(255,255,255,.9)}
+/* the day banners: Day 1 deep green with a plan grid, Day 2 the summit sun's orange, each with its twin drawing */
+.tt-allday{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 292px;grid-template-areas:"n art" "nm art" "meta art";column-gap:24px;align-items:end;
+ margin:16px 16px 0;padding:22px 24px 20px 28px;border-radius:16px;overflow:hidden}
+.tt-a1{background:#007A1F;color:#fff;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px),
+ linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:40px 40px,40px 40px,10px 10px,10px 10px}
+.tt-a2{background:#FC7540;color:#071407;background-image:radial-gradient(rgba(255,255,255,.22) 1.3px,transparent 1.6px);background-size:12px 12px}
+.tt-allday p{margin:0}
+.tt-a-n{grid-area:n;font-size:48px;line-height:.95;font-weight:800;letter-spacing:-.045em}
+.tt-a-name{grid-area:nm;margin-top:4px!important;font-size:26px;line-height:1.15;font-weight:650;letter-spacing:-.02em}
+.tt-a-meta{grid-area:meta;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:12px!important;font-size:14px}
+.tt-a1 .tt-a-meta{color:rgba(255,255,255,.92)}.tt-a2 .tt-a-meta{color:rgba(7,20,7,.85)}
+.tt-a-count{font-weight:650}
+.tt-a-art{grid-area:art;align-self:end;width:316px;height:auto;margin:-6px -24px -20px 0;overflow:visible}
 .tt-scroll{--sp:16px;overflow-x:auto;padding:12px var(--sp) 18px;scroll-snap-type:x proximity}
 .tt-scroll:focus-visible{outline:2px solid var(--rad);outline-offset:-2px}
 
@@ -172,7 +182,8 @@
  .tt{--w:minmax(220px,78vw)}
  .tt-grid{grid-template-columns:72px var(--w-main) var(--w-mkt) var(--w-ai) var(--w-room)}
  .tt-scroll{--sp:12px;padding:10px var(--sp) 16px}
- .tt-allday{margin:12px 12px 0}.tt-allday [data-day-date]{flex-basis:100%;margin-left:0;font-size:12.5px}
+ .tt-allday{margin:12px 12px 0;padding:16px 16px 14px 18px;grid-template-columns:minmax(0,1fr) 128px;grid-template-areas:"n art" "nm art" "meta meta";column-gap:10px;border-radius:14px}
+ .tt-a-n{font-size:36px}.tt-a-name{font-size:19px}.tt-a-meta{font-size:12.5px;gap:4px 10px}.tt-a-art{width:128px;margin:0 -16px 0 0;align-self:center}
  .tt-corner small .tt-place{font-size:11px}
  .tt-time,.tt-corner{padding:6px 7px}.tt-time b{font-size:11.5px}.tt-time small{font-size:9.5px}
 }
