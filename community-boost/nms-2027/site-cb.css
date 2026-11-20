@@ -852,7 +852,8 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 .ck-mono{display:grid;place-items:center;width:100%;aspect-ratio:4/5;border-radius:6px;background:#EEF6E7;color:#009B27;font-size:4.2rem;font-weight:750;letter-spacing:.02em;
  box-shadow:0 0 0 1px #0714071a,0 22px 34px -20px #1a2c1cb3}
 @media (min-width:861px){#partners .pt-fence.cb-pt-two .pt-grid>li.pt-slot-a{grid-area:2 / 1 / 3 / 3!important}}
-@media (max-width:760px){.ck-photos{grid-template-columns:1fr 1fr;gap:18px;max-width:440px}.ck-mono{font-size:3rem}.ck-photo figcaption{white-space:normal}
+/* on small phones the two host photos share the width instead of keeping 150px each (they ran past the card at 320-360) */
+@media (max-width:760px){.ck-photos{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:440px}.ck-photos .ck-photo{width:auto;max-width:150px;min-width:0}.ck-mono{font-size:3rem}.ck-photo figcaption{white-space:normal}
  .sp-cards .cb-more-key{grid-column:1 / -1}}
 
 /* ---- the partner section as the tall blueprint sheet (Sean 2026-11-19: "make it a background", "the blueprint extended
@@ -954,6 +955,9 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
    the drawn buildings keep their names (Sean 2026-11-20: "why did you remove the title of the buildings?") */
 .lc-bp :is(.lc-dim,.lc-dimmine,.lc-spill,.lc-glowg,.lc-smoke,[class*="sheen"],[class*="glow"]){display:none!important}
 .lc-bp .lc-in{opacity:1!important}
+/* a drawing has no lights to switch off: the window toggler never fades a drawn interior (Sean asked where the window
+   details went), so only the built shop windows still switch */
+.lc-bp .lc-win.is-off .lc-in{opacity:1!important}
 .lc-bp :is([fill="none"],.lc-glass,.lc-rim,.lc-tape){fill:none!important}
 .lc-bp text{fill:#E4EFF3!important;fill-opacity:1!important;stroke:none!important}
 .lc-front>g.lc-edge>rect{fill:url(#lc-bp-brick)!important}
@@ -961,6 +965,76 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 .lc-front>g.lc-bp>rect:first-child{fill:url(#lc-bp-brick)!important}
 .lc-bp [class*="lc-blink"],.lc-bp [class*="glow"],.lc-bp [class*="sheen"]{display:none!important}
 .lc-svg-notes{pointer-events:none}
+
+/* ---- device pass (Sean 2026-11-20: "very, very optimized for all devices without removing the quality"): the partner
+   sheet in AVIF first (25-30% lighter at the same look), WebP where AVIF is not supported (the rule above stays as the
+   fallback); a 3200 tier so 2x laptops and big screens stay sharp; phones get the tier their screen can show. On a phone
+   the crop sits on the stage session and the Become a partner billboard ---- */
+.pt-bp-sheet{background-image:image-set(url(assets/blueprint/main-partners-wide-1600.avif) type("image/avif") 1x,url(assets/blueprint/main-partners-wide-1600.webp) type("image/webp") 1x,url(assets/blueprint/main-partners-wide-3200.avif) type("image/avif") 2x,url(assets/blueprint/main-partners-wide-3200.webp) type("image/webp") 2x)}
+@media (min-width:1601px){.pt-bp-sheet{background-image:image-set(url(assets/blueprint/main-partners-wide-2400.avif) type("image/avif") 1x,url(assets/blueprint/main-partners-wide-2400.webp) type("image/webp") 1x,url(assets/blueprint/main-partners-wide-3200.avif) type("image/avif") 2x,url(assets/blueprint/main-partners-wide-3200.webp) type("image/webp") 2x)}}
+@media (max-width:760px){.pt-bp-sheet{background-image:image-set(url(assets/blueprint/main-partners-wide-1600.avif) type("image/avif") 1x,url(assets/blueprint/main-partners-wide-1600.webp) type("image/webp") 1x,url(assets/blueprint/main-partners-wide-2400.avif) type("image/avif") 2x,url(assets/blueprint/main-partners-wide-2400.webp) type("image/webp") 2x);background-position:42% 100%}}
+
+/* ---- the town, split for speed (Sean 2026-11-20: "very, very optimized for all devices without removing the quality",
+   "its still laggy"; site-brand/town_split.js, cb_edits_bp.py). Each layer is still SVG pictures (vector, as sharp as
+   before) under a small live SVG of what moves: the unlit picture, the lit one fading over it when the lights come on
+   (then the unlit one stops being drawn), and the street once a visitor signs up (No. 23 lit, loaded only then) ---- */
+/* the street is the layer in the flow that gives the town its height (an SVG used to take it from its viewBox) */
+.lc-ras.lc-svg-street{aspect-ratio:1600/720}
+/* each layer on its own compositor layer: the scroll parallax only moves them, and the moving pieces never make the
+   browser draw the pictures again */
+.lc-city>.lc-ras,.lc-city>.lc-near,.lc-city>.lc-svg-traffic,.lc-city>.lc-svg-notes{will-change:transform}
+.lc-ras>img,.lc-ras>.lc-ras-yours,.lc-ras>.lc-ras-live{position:absolute;left:0;top:0;width:100%;height:100%}
+.lc-ras>img{object-fit:contain;object-position:50% 100%;pointer-events:none;user-select:none}
+.lc-ras-live{overflow:visible;will-change:transform}
+.lc-ras-lit{opacity:0;transition:opacity 1.6s cubic-bezier(.3,0,.2,1)}
+.lc-svg-back .lc-ras-lit{transition-delay:.25s}
+.lc-svg-mid .lc-ras-lit{transition-delay:.5s}
+.lc-svg-street .lc-ras-lit{transition-delay:.7s}
+.lc.is-lit .lc-ras-lit{opacity:1}
+.lc.is-lit .lc-ras-base{visibility:hidden;transition:visibility 0s linear 2.8s}
+.lc-ras-yours{background:none 50% 100%/contain no-repeat;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s linear .9s}
+.lc.is-yours .lc-ras-yours{background-image:var(--pic);opacity:1;visibility:visible;transition:opacity .9s ease}
+.motion-paused .lc-ras>*{transition:none!important}
+/* a small animation off the visible part of the town waits (site-cb.js marks it) */
+.lc .lc-out{animation-play-state:paused!important}
+/* the sky is hidden on the plan (the paper is the sky): its stars and birds stop running too */
+.lc-svg-sky *{animation:none!important}
+/* the scroll parallax runs on the compositor (a scroll-driven animation, same depths as the old script: far 70, back 50,
+   mid 26, near -46 px across the section's pass through the screen), so it stays smooth while the page is busy; the
+   script skips its own parallax where this is supported (cb_transform.py) */
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: no-preference){
+.lc{view-timeline:--lc-view block;view-timeline-inset:0}
+.lc-city>.lc-svg-far{animation:lc-par-far linear both}
+.lc-city>.lc-svg-back{animation:lc-par-back linear both}
+.lc-city>.lc-svg-mid{animation:lc-par-mid linear both}
+.lc-city>.lc-near{animation:lc-par-near linear both}
+.lc-city>.lc-svg-far,.lc-city>.lc-svg-back,.lc-city>.lc-svg-mid,.lc-city>.lc-near{animation-timeline:--lc-view;animation-range:cover 0% cover 100%;animation-play-state:running!important}
+@keyframes lc-par-far{from{transform:translateY(-35px)}to{transform:translateY(35px)}}
+@keyframes lc-par-back{from{transform:translateY(-25px)}to{transform:translateY(25px)}}
+@keyframes lc-par-mid{from{transform:translateY(-13px)}to{transform:translateY(13px)}}
+@keyframes lc-par-near{from{transform:translateY(23px)}to{transform:translateY(-23px)}}
+}
+}
+
+/* ---- off-screen sections are not rendered (Sean 2026-11-20, "its still laggy": every animation frame made the browser
+   re-process the whole 18,000px page; now it only handles the sections near the screen). The heights are measured ones,
+   used only until a section has been drawn once ("auto" then keeps its real height), so the scrollbar stays steady ---- */
+@supports (content-visibility:auto){
+#speakers,#days,#build,#schedule,section.fr,section.lc,section.pb,#voices,section.wa,#host,#partners,#faq,#register,footer.footer{content-visibility:auto}
+#speakers{contain-intrinsic-size:auto 1989px}#days{contain-intrinsic-size:auto 1459px}#build{contain-intrinsic-size:auto 2891px}
+#schedule{contain-intrinsic-size:auto 1920px}section.fr{contain-intrinsic-size:auto 747px}section.lc{contain-intrinsic-size:auto 1220px}
+section.pb{contain-intrinsic-size:auto 584px}#voices{contain-intrinsic-size:auto 1152px}section.wa{contain-intrinsic-size:auto 1185px}
+#host{contain-intrinsic-size:auto 785px}#partners{contain-intrinsic-size:auto 1558px}#faq{contain-intrinsic-size:auto 790px}
+#register{contain-intrinsic-size:auto 962px}footer.footer{contain-intrinsic-size:auto 169px}
+@media (max-width:760px){
+#speakers{contain-intrinsic-size:auto 2862px}#days{contain-intrinsic-size:auto 1870px}#build{contain-intrinsic-size:auto 3688px}
+#schedule{contain-intrinsic-size:auto 3422px}section.fr{contain-intrinsic-size:auto 1181px}section.lc{contain-intrinsic-size:auto 1194px}
+section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:auto 1637px}section.wa{contain-intrinsic-size:auto 1665px}
+#host{contain-intrinsic-size:auto 1234px}#partners{contain-intrinsic-size:auto 1477px}#faq{contain-intrinsic-size:auto 657px}
+#register{contain-intrinsic-size:auto 1059px}footer.footer{contain-intrinsic-size:auto 196px}
+}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply

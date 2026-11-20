@@ -110,8 +110,19 @@
 .inq input,.inq textarea{font-size:16px}
 .inq-done p+p{margin-top:10px}
 .inq-done .btn{margin-top:18px}
-.row-bg{background-image:image-set(url(assets/partner-row-bg-2400.webp) 1x, url(assets/partner-row-bg-3200.webp) 2x)}
-@media (max-width:1600px){.row-bg{background-image:image-set(url(assets/partner-row-bg-1600.webp) 1x, url(assets/partner-row-bg-3200.webp) 2x)}}
+.row-bg{background-image:image-set(url(assets/partner-row-bg-1600.avif) type("image/avif") 1x,url(assets/partner-row-bg-1600.webp) type("image/webp") 1x,url(assets/partner-row-bg-3200.avif) type("image/avif") 2x,url(assets/partner-row-bg-3200.webp) type("image/webp") 2x)}
+@media (min-width:1601px){.row-bg{background-image:image-set(url(assets/partner-row-bg-2400.avif) type("image/avif") 1x,url(assets/partner-row-bg-2400.webp) type("image/webp") 1x,url(assets/partner-row-bg-3200.avif) type("image/avif") 2x,url(assets/partner-row-bg-3200.webp) type("image/webp") 2x)}}
+@media (max-width:760px){.row-bg{background-image:image-set(url(assets/partner-row-bg-1600.avif) type("image/avif") 1x,url(assets/partner-row-bg-1600.webp) type("image/webp") 1x,url(assets/partner-row-bg-2400.avif) type("image/avif") 2x,url(assets/partner-row-bg-2400.webp) type("image/webp") 2x)}}
+/* small phones (Sean 2026-11-20, device pass): the top bar, the hero headline, the proof row and the section heads fit 320 px */
+@media (max-width:400px){
+ .nav-in{gap:10px}.nav .brand small{display:none}.nav .brand b{font-size:13px;line-height:1.15}
+ .nav .brand{min-width:0;flex:0 1 auto;gap:8px}.nav .brand span{min-width:0}.nav .brand b{white-space:normal;max-width:118px}
+ .nav .brand img{width:34px;height:34px}.nav .btn{flex:none}
+ .nav .btn{padding:0 11px;font-size:12.5px}
+ .hero-b h1{font-size:clamp(33px,10.4vw,44px)}
+ .proof{column-gap:14px}.proof div b{font-size:clamp(23px,7.4vw,30px)}.proof div span{font-size:12.5px}
+ .row-bg h2,.sec-head h2,.faq-b h2{font-size:clamp(28px,8.8vw,34px)}
+}
 @media (max-width:1100px){.hero-b .grid{grid-template-columns:minmax(0,1fr) 380px;gap:40px}.hero-b .inq{max-width:none}}
 @media (max-width:1023px){.dsheet-main{grid-template-columns:1fr}}
 @media (max-width:900px){.hero-b .grid{grid-template-columns:1fr}.faq-b .in{grid-template-columns:1fr;gap:34px}}
