@@ -909,6 +909,15 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
  .cb-mk-slots{gap:8px}.cb-mk-slots li{padding:8px 8px 10px}.cb-mk-slots b{font-size:13px}.cb-mk-slots small{font-size:11.5px!important}
 }
 .cb-mk-slots .nw{white-space:nowrap}
+/* the catch: Cameron and Ashley stacked as two square pinned photos, so the column ends with the letter (Sean 2026-11-20:
+   "It looks so unbalanced": the two 4:5 photos ran ~190px past the text) */
+@media (min-width:701px){
+ .cb-letter.ck .ck-photos{gap:20px!important;align-self:start;justify-items:center}
+ .cb-letter.ck .ck-photo{width:200px!important}
+ .cb-letter.ck .ck-photo img,.cb-letter.ck .ck-mono{aspect-ratio:1/1!important}
+ .cb-letter.ck .ck-photo img{object-position:50% 18%}
+ .cb-letter.ck .ck-photo figcaption{margin-top:10px;white-space:normal!important;line-height:1.35}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
