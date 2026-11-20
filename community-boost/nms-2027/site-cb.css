@@ -922,22 +922,39 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
    an empty slot (Sean 2026-11-20: "where's the other column?") */
 @media (min-width:641px){.wa-row.cb-wa-two{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:clamp(28px,3.4vw,52px)!important}}
 
-/* ---- the town as a plan (Sean 2026-11-20: "the blueprint is still not in the main. The town came back"; the Zoom
-   backgrounds' idea, "some parts are blueprints, some are not"): the sky is the teal blueprint paper, the skyline and the
-   crane are drawn in white linework with their lit windows still lit (each light is a nonprofit), the three shops on the
-   right are still the plan; No. 23 and the shops on the left, the street, the cars, the shelter and the people are built ---- */
-.lc-city{background:#0E3B47 image-set(url(assets/blueprint/town-paper-1600.webp) 1x, url(assets/blueprint/town-paper-2400.webp) 2x) 50% 0/100% 100% no-repeat}
+/* ---- the town as a plan (Sean 2026-11-20: "the blueprint is still not in the main. The town came back", then "make the
+   other buildings in the town also blueprint and more detailed ... some cars could be blueprint, some humans ... expand the
+   blue background up the top, like ... the sponsors page"). The whole section down to the road is the teal sheet: plain
+   paper, a CSS drafting grid (continuous from the heading into the town), the top darkened for the heading. In the town the
+   skyline and every element marked lc-bp (five of the seven shops, some people, two cars, two walkers) are white linework
+   on the paper, the shops' walls in brick hatch; The Open Book, No. 23, the crane, the shelter and the rest are built.
+   The drafting marks (grid bubbles, dimension chain, notes, view tag, the green markup on No. 23) are city.html's
+   lc-svg-notes layer, written by cb_edits_bp.py ---- */
+.lc{background-color:#0E3B47!important;background-image:
+ linear-gradient(180deg,rgba(4,18,22,.86) 0,rgba(4,18,22,.7) 150px,rgba(4,18,22,.28) 230px,rgba(4,18,22,0) 300px),
+ repeating-linear-gradient(0deg,rgba(228,239,243,.15) 0 1px,transparent 1px 90px),
+ repeating-linear-gradient(90deg,rgba(228,239,243,.15) 0 1px,transparent 1px 90px),
+ repeating-linear-gradient(0deg,rgba(228,239,243,.06) 0 1px,transparent 1px 18px),
+ repeating-linear-gradient(90deg,rgba(228,239,243,.06) 0 1px,transparent 1px 18px),
+ image-set(url(assets/blueprint/town-paper-plain-1600.webp) 1x,url(assets/blueprint/town-paper-plain-2400.webp) 2x)!important;
+ background-size:auto,auto,auto,auto,auto,cover!important;background-position:0 0,50% 0,50% 0,50% 0,50% 0,50% 0!important;background-repeat:no-repeat,repeat,repeat,repeat,repeat,no-repeat!important}
+.lc-city{background:none!important}
+.lc-city:before,.lc-city:after{display:none!important}
+.lc-foot{margin-top:0!important;padding-top:30px;background:#11291F;box-shadow:0 0 0 100vmax #11291F;clip-path:inset(0 -100vmax -100vmax)}
+.lc-bp .lc-beam{display:none!important}
 .lc-svg-sky>:not(defs){display:none!important}
 .lc-svg-far .lc-b,.lc-svg-far .lc-b *,.lc-svg-far .lc-roof,.lc-svg-far .lc-roof *,
 .lc-svg-back .lc-b,.lc-svg-back .lc-b *,.lc-svg-back .lc-roof,.lc-svg-back .lc-roof *,
-.lc-svg-mid .lc-b,.lc-svg-mid .lc-b *,.lc-svg-mid .lc-roof,.lc-svg-mid .lc-roof *,
-.lc-svg-mid [class^="lc-crane"],.lc-svg-mid [class^="lc-crane"] *{
+.lc-svg-mid .lc-b,.lc-svg-mid .lc-b *,.lc-svg-mid .lc-roof,.lc-svg-mid .lc-roof *{
  fill:none!important;stroke:#E4EFF3!important;stroke-width:1px!important;vector-effect:non-scaling-stroke;filter:none!important}
 .lc-svg-far{opacity:.5}.lc-svg-back{opacity:.68}.lc-svg-mid{opacity:.86}
-.lc-front>g:nth-child(n+5) :is(rect,path,circle,ellipse,polygon,line,polyline){
- fill:#0F3E4A!important;fill-opacity:1!important;stroke:#E4EFF3!important;stroke-width:1px!important;vector-effect:non-scaling-stroke;filter:none!important;opacity:1!important}
-.lc-front>g:nth-child(n+5) text{fill:#E4EFF3!important;stroke:none!important}
-.lc-front>g:nth-child(n+5) [class*="lc-blink"],.lc-front>g:nth-child(n+5) [class*="glow"]{display:none!important}
+.lc-bp :is(rect,path,circle,ellipse,polygon,line,polyline){
+ fill:#0F3E4A!important;fill-opacity:1!important;stroke:#E4EFF3!important;stroke-width:1px!important;stroke-opacity:1!important;vector-effect:non-scaling-stroke;filter:none!important;opacity:1!important}
+.lc-bp [fill^="url"]{fill:none!important}
+.lc-front>g.lc-bp>rect:first-child{fill:url(#lc-bp-brick)!important}
+.lc-bp text{fill:#E4EFF3!important;stroke:none!important}
+.lc-bp [class*="lc-blink"],.lc-bp [class*="glow"],.lc-bp [class*="sheen"]{display:none!important}
+.lc-svg-notes{pointer-events:none}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
