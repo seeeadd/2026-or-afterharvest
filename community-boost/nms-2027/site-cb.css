@@ -951,11 +951,11 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 .lc-bp :is(rect,path,circle,ellipse,polygon,line,polyline){
  fill:#0F3E4A!important;stroke:#E4EFF3!important;stroke-width:1px!important;stroke-opacity:.9!important;vector-effect:non-scaling-stroke;filter:none!important}
 /* the "lights off" covers, the light spills and the sheens stay out, so every window shows its room, shelves and curtains;
-   the drawn buildings carry no words or numbers (Sean 2026-11-20) */
+   the drawn buildings keep their names (Sean 2026-11-20: "why did you remove the title of the buildings?") */
 .lc-bp :is(.lc-dim,.lc-dimmine,.lc-spill,.lc-glowg,.lc-smoke,[class*="sheen"],[class*="glow"]){display:none!important}
 .lc-bp .lc-in{opacity:1!important}
 .lc-bp :is([fill="none"],.lc-glass,.lc-rim,.lc-tape){fill:none!important}
-.lc-bp text{display:none!important}
+.lc-bp text{fill:#E4EFF3!important;fill-opacity:1!important;stroke:none!important}
 .lc-front>g.lc-edge>rect{fill:url(#lc-bp-brick)!important}
 .lc-bp [fill^="url"]{fill:none!important}
 .lc-front>g.lc-bp>rect:first-child{fill:url(#lc-bp-brick)!important}
