@@ -901,6 +901,22 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
    may wrap, and each line keeps its own underline */
 .wa-head h2 mark{white-space:normal!important;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 @media (max-width:760px){.wa-head h2{font-size:clamp(32px,9vw,40px)!important;overflow-wrap:break-word}}
+/* the keynote card: CB's line on the left, the schedule's open keynote slots as empty speaker tiles on the right */
+.sp-cards .cb-more-key .sp-topic.cb-mk{display:grid!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:28px;align-items:center;justify-content:normal}
+.cb-mk-h{display:block;color:#fff;font-weight:700;font-size:clamp(1.35rem,2vw,1.8rem);line-height:1.12;letter-spacing:-.02em}
+.cb-mk-link{display:inline-block;margin-top:16px;color:#C7EBA2!important;font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:3px}
+.cb-mk-link:hover{color:#fff!important}
+.cb-mk-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;list-style:none;margin:0;padding:0}
+.cb-mk-slots li{border:1px dashed rgba(199,235,162,.5);border-radius:8px;padding:12px 12px 14px;background:rgba(255,255,255,.035)}
+.cb-mk-who{display:block;border-radius:6px;background:rgba(199,235,162,.08)}
+.cb-mk-who svg{display:block;width:100%;height:auto;fill:rgba(199,235,162,.16);stroke:#73D88C;stroke-width:2;stroke-dasharray:5 4}
+.cb-mk-slots b{display:block;margin-top:10px;color:#fff!important;font-size:15px;font-weight:650;letter-spacing:-.01em;line-height:1.2}
+.cb-mk-slots small{display:block;margin-top:4px;color:rgba(255,255,255,.72)!important;font-size:12.5px!important;font-weight:450!important;line-height:1.35;text-transform:none!important;letter-spacing:0!important}
+@media (max-width:760px){
+ .sp-cards .cb-more-key .sp-topic.cb-mk{grid-template-columns:1fr;gap:18px;padding:22px 20px!important}
+ .cb-mk-slots{gap:8px}.cb-mk-slots li{padding:8px 8px 10px}.cb-mk-slots b{font-size:13px}.cb-mk-slots small{font-size:11.5px!important}
+}
+.cb-mk-slots .nw{white-space:nowrap}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
