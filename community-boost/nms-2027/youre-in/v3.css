@@ -311,7 +311,7 @@ h3{font-size:1.2rem;line-height:1.25;letter-spacing:-.015em;font-weight:700}
 .zoomwin .play{left:16px;bottom:16px}
 .art-cap{margin-top:12px;font-size:14.5px;color:var(--mute)}.art-cap b{color:var(--ink)}
 
-/* the road through the three days */
+/* the road through the summit days */
 .days{background:var(--sage)}
 .days:before{content:"";position:absolute;inset:0;background:var(--gridp);opacity:.55;pointer-events:none}
 .days .wrap{position:relative}
@@ -537,7 +537,7 @@ h3{font-size:1.2rem;line-height:1.25;letter-spacing:-.015em;font-weight:700}
 .btn{background-image:url(assets/tex-grain-btn.png);background-size:200px 200px;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 0 rgba(0,0,0,.14),0 10px 22px -14px rgba(0,122,31,.75)}
 .btn-2{background-image:url(assets/tex-grain.png);box-shadow:inset 0 0 0 1.5px var(--ink),inset 0 -2px 0 rgba(7,20,7,.06),0 8px 18px -14px rgba(7,20,7,.5)}
 
-/* the hero: dark ground (the opt-in's hero is white), February as a floor, the three days filling in */
+/* the hero: dark ground (the opt-in's hero is white), February as a floor, the summit days filling in */
 .hero{background:radial-gradient(70% 70% at 28% 30%,#1d3d22 0,rgba(29,61,34,0) 70%),radial-gradient(60% 60% at 82% 40%,#1a3a20 0,rgba(26,58,32,0) 70%),#0d1f10;border-bottom:0}
 .hero .kick-ok{color:var(--bloom)}
 .hero .tick{background-color:var(--green)}
@@ -567,7 +567,6 @@ h3{font-size:1.2rem;line-height:1.25;letter-spacing:-.015em;font-weight:700}
 .cf-d.hold:after{content:"Held";position:absolute;right:16px;bottom:14px;font:800 20px/1 Geist,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:0;animation:fadeup .5s var(--ease) both}
 .cf-d.h1:before{animation-delay:.5s}.cf-d.h1:after{animation-delay:1.2s}
 .cf-d.h2:before{animation-delay:.9s}.cf-d.h2:after{animation-delay:1.6s}
-.cf-d.h3:before{animation-delay:1.3s}.cf-d.h3:after{animation-delay:2s}
 @keyframes hold{from{transform:scaleX(0);opacity:.2}to{transform:scaleX(1);opacity:1}}
 @keyframes fadeup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 html.still .cf-d.hold:before,html.still .cf-d.hold:after{animation:none;opacity:1}
@@ -655,7 +654,7 @@ html.still .cf-d.hold:before,html.still .cf-d.hold:after{animation:none;opacity:
 /* ===== round 7 (Sean: "I don't really like the texture on the back ... especially the circles ... I really like the
    calendar idea ... maybe there's a better way to execute this") =====
    The ground is one smooth dark green, no texture and no dots. The calendar is February as a floor: four week rows,
-   the summit week nearest, its three days lined up exactly under Cameron's video (each day a third of the video's
+   the summit week nearest, its days lined up exactly under Cameron's video (each day a third of the video's
    width, set by v3.js), filling in green one after another like a range dragged across a calendar. */
 .hero{background:linear-gradient(180deg,#0a190c 0%,#0d2211 58%,#113016 100%)}
 .hero:before,.hero:after{display:none}
@@ -683,11 +682,10 @@ html.still .cf-d.hold:before,html.still .cf-d.hold:after{animation:none;opacity:
 .cf-ev:after{position:absolute;left:calc(var(--cw) * .06);bottom:calc(var(--cw) * .05);font:800 calc(var(--cw) * .135)/1 Geist,sans-serif;letter-spacing:-.025em;color:#fff;animation:cffade .4s ease both}
 .cf-ev:before{content:"";position:absolute;right:calc(var(--cw) * .06);top:calc(var(--cw) * .05);width:calc(var(--cw) * .085);height:calc(var(--cw) * .085);
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8.6l3.6 3.4L13.5 4' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;animation:cffade .4s ease both}
-.cf-d.h1 .cf-ev:after{content:"Day 1"}.cf-d.h2 .cf-ev:after{content:"Day 2"}.cf-d.h3 .cf-ev:after{content:"Day 3"}
-.cf-d.h1 .cf-ev{animation-delay:.6s}.cf-d.h2 .cf-ev{animation-delay:1.05s}.cf-d.h3 .cf-ev{animation-delay:1.5s}
+.cf-d.h1 .cf-ev:after{content:"Day 1"}.cf-d.h2 .cf-ev:after{content:"Day 2"}
+.cf-d.h1 .cf-ev{animation-delay:.6s}.cf-d.h2 .cf-ev{animation-delay:1.05s}
 .cf-d.h1 .cf-ev i,.cf-d.h1 .cf-ev:before,.cf-d.h1 .cf-ev:after{animation-delay:.95s}
 .cf-d.h2 .cf-ev i,.cf-d.h2 .cf-ev:before,.cf-d.h2 .cf-ev:after{animation-delay:1.4s}
-.cf-d.h3 .cf-ev i,.cf-d.h3 .cf-ev:before,.cf-d.h3 .cf-ev:after{animation-delay:1.85s}
 @keyframes cfhold{from{transform:scaleX(0)}to{transform:none}}
 @keyframes cffade{from{opacity:0}to{opacity:1}}
 html.still .cf-ev,html.still .cf-ev i,html.still .cf-ev:before,html.still .cf-ev:after{animation:none}

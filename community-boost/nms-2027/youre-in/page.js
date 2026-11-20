@@ -10,9 +10,8 @@
    Times are Pacific (PT); 9:00 am is the first session on the published schedule. Run make_ics.py after any change. */
 var EVENT = {
   days: [
-    {n:1, date:'2027-02-23', title:'Org Strategy & AI Tech Foundation'},
-    {n:2, date:'2027-02-24', title:'The Growth & Marketing Blueprint'},
-    {n:3, date:'2027-02-25', title:'The Build'}
+    {n:1, date:'2027-02-23', title:'The Blueprint'},
+    {n:2, date:'2027-02-24', title:'The Build'}
   ],
   startPT: '09:00',
   endPT:   '14:30',
@@ -103,7 +102,7 @@ each('[data-when-pt]', function(el){
   var startL = L ? L.start : startPT;
   each('[data-hd-main]', function(el){ el.innerHTML = '<span class="nw">' + short + '</span><span class="tm"> · <span class="nw">' + startL + (L ? ' in ' + city : ' PT') + '</span></span>'; });
   each('[data-hd-sub]', function(el){ el.innerHTML = '<span class="tm2"><span class="nw">' + startL + (L ? ' in ' + city : ' PT') + '</span>' + (L ? ' · ' : '') + '</span>' + (L ? startPT + ' PT' : '') + '<span class="free">' + (L ? ' · free' : 'Free') + ', live on Zoom</span>'; });
-  if (L) { var cb = document.querySelectorAll('.cal3 b'); if (cb.length === 3) { cb[0].textContent = L.dom + 2; cb[1].textContent = L.dom + 1; cb[2].textContent = L.dom; } var ce = document.querySelector('.cal3 em'); if (ce) ce.textContent = L.mo; }
+  if (L) { var cb = document.querySelectorAll('.cal3 b'); for (var k = 0; k < cb.length; k++) cb[k].textContent = L.dom + (cb.length - 1 - k); var ce = document.querySelector('.cal3 em'); if (ce) ce.textContent = L.mo; }
 })();
 /* each day card: their date and time first, PT beside it */
 each('[data-dayline] > li', function(li, i){
@@ -165,7 +164,7 @@ each('[data-copy="share"]', function(b){ b.addEventListener('click', function(){
     var inp = $('[data-share-link]'); if (inp) { inp.classList.remove('sr'); inp.classList.add('share-show'); inp.focus(); inp.select(); }
   });
 }); });
-var invite = 'Hi,\n\nI’m registered for Community Boost’s free Nonprofit Marketing Summit, February 23–25, 2027 PT. The three days cover nonprofit strategy, marketing planning and hands-on campaign work.\n\nWant to join me? We can choose a few sessions together and compare notes afterward.\n\nRegister for the summit: ' + share;
+var invite = 'Hi,\n\nI’m registered for Community Boost’s free Nonprofit Marketing Summit, February 23–24, 2027 PT. The two days cover nonprofit strategy, marketing planning and hands-on campaign work.\n\nWant to join me? We can choose a few sessions together and compare notes afterward.\n\nRegister for the summit: ' + share;
 each('[data-mail="team"]', function(a){ a.href = 'mailto:?subject=' + encodeURIComponent('Join me at the Nonprofit Marketing Summit?') + '&body=' + encodeURIComponent(invite); });
 var noteEl = $('[data-note]');
 if (noteEl) {

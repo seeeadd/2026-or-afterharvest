@@ -7,7 +7,7 @@ function $(s){ return document.querySelector(s); }
 function $$(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
 function say(t){ var l = $('#live'); if (l) { l.textContent = ''; setTimeout(function(){ l.textContent = t; }, 30); } }
 
-/* "Will you be there live?": one answer, its own reply. The default we hope for is all three days. */
+/* "Will you be there live?": one answer, its own reply. The default we hope for is both days. */
 var KEY = 'nms27-yi-commit';
 function firstLine(){
   var wd = null, dn = null, main = $('[data-hd-main]');
@@ -21,7 +21,7 @@ function pick(a, quiet){
   $$('[data-me-tile]').forEach(function(t){ t.classList.toggle('on', a === 'all' || a === 'some'); t.classList.toggle('maybe', a === 'some'); });
   $$('[data-r-first]').forEach(function(e){ e.parentNode.textContent = firstLine(); });
   try { localStorage.setItem(KEY, a); } catch(e) {}
-  if (!quiet) say(a === 'all' ? 'Saved: all three days.' : a === 'some' ? 'Saved: some of it, around work.' : 'Saved: not sure yet.');
+  if (!quiet) say(a === 'all' ? 'Saved: both days.' : a === 'some' ? 'Saved: some of it, around work.' : 'Saved: not sure yet.');
 }
 $$('[data-ans]').forEach(function(b){ b.addEventListener('click', function(){ pick(b.dataset.ans); }); });
 try { var was = localStorage.getItem(KEY); if (was) pick(was, true); } catch(e) {}
@@ -100,8 +100,8 @@ $$('[data-play]').forEach(function(b){
 
 if (new URLSearchParams(location.search).has('still')) document.documentElement.classList.add('still');
 
-/* the summit's three days, held on the hero's February floor: their own dates (Manila holds Wed 24 to Fri 26),
-   lined up under Cameron's video, each day a third of the video's width */
+/* the summit's two days, held on the hero's February floor: their own dates (Manila holds Wed 24 and Thu 25),
+   centred under Cameron's video, each day a third of the video's width */
 (function(){
   var hero = document.getElementById('hero'), fl = hero && hero.querySelector('.cal-floor'), vid = hero && hero.querySelector('.hero-player');
   if (!fl) return;
@@ -114,7 +114,8 @@ if (new URLSearchParams(location.search).has('still')) document.documentElement.
       idx.forEach(function(i, k){ cells[i + s].classList.add('hold', 'h' + (k + 1)); });
     }
   }
-  var mid = 3; cells.forEach(function(c, i){ if (c.classList.contains('h2')) mid = i % 7; });
+  var hc = cells.map(function(c, i){ return c.classList.contains('hold') ? i % 7 : -1; }).filter(function(i){ return i >= 0; });
+  var mid = hc.length ? (Math.min.apply(null, hc) + Math.max.apply(null, hc)) / 2 : 3;
   fl.style.setProperty('--mid', mid);
   function place(){
     var vr = vid ? vid.getBoundingClientRect() : null;
@@ -146,7 +147,7 @@ if (new URLSearchParams(location.search).has('still')) document.documentElement.
   addEventListener('scroll', ask, {passive: true}); addEventListener('resize', ask); upd();
 })();
 
-/* the road through the three days, with a car on it. Wide screens: hover (or focus, or tap) a day and the car drives
+/* the road through the summit days, with a car on it. Wide screens: hover (or focus, or tap) a day and the car drives
    there. Narrow screens: the road runs down the left and the car follows the day you have scrolled to. */
 (function(){
   var road = document.querySelector('.road'), svg = road && road.querySelector('.road-svg'), list = road && road.querySelector('.stops');
@@ -288,7 +289,7 @@ if (new URLSearchParams(location.search).has('still')) document.documentElement.
   addEventListener('scroll', ask, {passive: true}); addEventListener('resize', ask); upd();
 })();
 
-/* the CFRE credit log ticks its three days when it comes into view */
+/* the CFRE graphic animates in when it comes into view */
 (function(){
   var a = document.querySelector('.cfre-art'); if (!a) return;
   if (!('IntersectionObserver' in window)) { a.classList.add('in'); return; }
