@@ -21,7 +21,8 @@ Google Calendar shows the times in your own time zone. If they look off, check t
 
 2. Watch for your link to join. We’ll email your personal link to join before the summit starts. To make sure it reaches you, add this address to your contacts, and if this email landed in Promotions or Spam, move it to your inbox.
 
-3. Bring a coworker. Planning goes faster with someone beside you. The button opens an email to them with your invite link in it.
+3. Bring a coworker. Planning goes faster with someone beside you. The button opens your invite page, where you can copy your link or email it to them.
+Invite a coworker: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/youre-in/?ref={{ contact.hs_object_id }}#invite
 
 Or copy your invite link: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/?utm_source=coworker-invite&utm_medium=referral&utm_campaign=nms2027&ref={{ contact.hs_object_id }}. They sign up with their own name and get their own seat.
 

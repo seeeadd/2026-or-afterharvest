@@ -116,13 +116,13 @@ each('[data-week-start]', function(el){ el.textContent = L ? L.longDay(first) + 
 
 /* ---- calendar links: one Google entry repeating daily, a hosted file for Outlook, Apple and the rest ---- */
 function z(d){ return d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''); }
-var details = 'Free and live on Zoom, hosted by Community Boost. Your personal Zoom link is in your confirmation email, with "You’re in" in the subject. Search your inbox for "Nonprofit Marketing Summit". Questions: ' + EVENT.contact;
+var details = 'Free and live on Zoom, hosted by Community Boost. Your personal Zoom link comes by email before the summit: search your inbox for "Nonprofit Marketing Summit". Questions: ' + EVENT.contact;
 var gcal = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
   + '&text=' + encodeURIComponent(EVENT.name + ' (live on Zoom)')
   + '&dates=' + z(start1) + '/' + z(at(first.date, EVENT.endPT)) + '&ctz=America/Los_Angeles'
   + (D.length > 1 ? '&recur=' + encodeURIComponent('RRULE:FREQ=DAILY;COUNT=' + D.length) : '')
   + '&details=' + encodeURIComponent(details)
-  + '&location=' + encodeURIComponent('Zoom (your personal link is in your email)');
+  + '&location=' + encodeURIComponent('Zoom (your personal link comes by email)');
 each('[data-cal="google"]', function(a){ a.href = gcal; });
 each('[data-cal="ics"]', function(a){ a.href = EVENT.icsUrl; });
 /* opening a calendar is not saving it: only "It's in my calendar" marks the step done */
