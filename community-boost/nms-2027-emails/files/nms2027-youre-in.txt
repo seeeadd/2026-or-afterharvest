@@ -1,37 +1,37 @@
-[You’re in. Your free seat is saved. Nonprofit Marketing Summit 2027, Feb 23-24, 2027 PT, live on Zoom.]
+[You’re in. Your free seat for the Nonprofit Marketing Summit 2027 is saved: Day 1, The Blueprint, Tuesday, Feb 23, and Day 2, The Build, Wednesday, Feb 24 (PT).]
 
 Hi {{ contact.firstname }},
 You’re in. Your free seat for the Nonprofit Marketing Summit 2027 is saved.
 
-DAY 1
-The Blueprint
-Tuesday, February 23, 2027 (PT)
+Day 1: The Blueprint
+Tuesday, February 23, 2027
 
-DAY 2
-The Build
-Wednesday, February 24, 2027 (PT)
+Day 2: The Build
+Wednesday, February 24, 2027
 
 9:00 am to 2:30 pm PT each day (12:00 to 5:30 pm ET), live on Zoom
-See every session by time and stage: {{ schedule_url }}
+See every session by time and stage: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/schedule/
 
 Three things to do now:
 
-1. Put both days in your calendar. The button adds both days in one tap, so they’re held before anything else lands on them.
-Add both days to Google Calendar: {{ calendar_google_url }}
+1. Put both days in your calendar. One tap holds both days before anything else lands on them.
+Add both days to Google Calendar: https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nonprofit%20Marketing%20Summit%202027%20%28live%20on%20Zoom%29&dates=20270223T170000Z/20270223T223000Z&ctz=America/Los_Angeles&recur=RRULE%3AFREQ%3DDAILY%3BCOUNT%3D2&details=Free%20and%20live%20on%20Zoom%2C%20hosted%20by%20Community%20Boost.%20Your%20link%20to%20join%20comes%20by%20email%20before%20the%20summit.%20Full%20schedule%3A%20https%3A//2026-or-afterharvest.vercel.app/community-boost/nms-2027/schedule/%20%20Questions%3A%20summit%40communityboost.org&location=Zoom%20%28link%20by%20email%20before%20the%20summit%29
 
-Using Outlook or Apple Calendar? Use this link instead: {{ calendar_file_url }}.
+Google Calendar shows the times in your own time zone. If they look off, check the time zone in your Google Calendar settings. Using Outlook or Apple Calendar? Add it with this file: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/assets/email/nms-2027.ics.
 
-2. Keep your Zoom link. This one is yours: {{ zoom_join_link }}
-If this email landed in Promotions or Spam, move it to your inbox so the reminders reach you. We’ll send the link again the day before and on each live morning.
+2. Watch for your link to join. We’ll email your personal link to join before the summit starts. To make sure it reaches you, add this address to your contacts, and if this email landed in Promotions or Spam, move it to your inbox.
 
-3. Bring a coworker. Planning goes faster with someone beside you. Send them your invite link: {{ share_link }}
-They sign up with their own name and get their own Zoom link.
+3. Bring a coworker. Planning goes faster with someone beside you. The button opens an email to them with your invite link in it.
+
+Or copy your invite link: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/?utm_source=coworker-invite&utm_medium=referral&utm_campaign=nms2027&ref={{ contact.hs_object_id }}. They sign up with their own name and get their own seat.
 
 Day 2 marks the debut of our new Cause Command platform, so plan to stay for the whole day.
-Need a yes from your manager? There’s a note you can send as it is on your You’re in page: {{ youre_in_url }}.
-Cameron
+Need a yes from your manager? There’s a note you can send as it is on your You’re in page: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/youre-in/.
+See you on February 23,
+
 Cameron Ripley
 Founder and CEO, Community Boost
+
 P.S. Hit reply and tell me the one campaign you want to move forward in 2027.
 
 Community Boost · Helping nonprofits grow since 2012

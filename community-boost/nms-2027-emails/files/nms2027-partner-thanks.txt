@@ -2,19 +2,20 @@
 
 Hi {{ contact.firstname }},
 Thanks for reaching out about partnering with the Nonprofit Marketing Summit 2027. Your note reached our team.
-What happens next:
 
-1. We read your note. [CB: who reads partner inquiries, for example Ashley]
-
-2. We reply with the 2027 partner options and what each costs, [CB: how soon, for example within two business days].
-
-3. Want to talk it through? Reply to this email and we’ll find a time.
-
-WHAT YOU SENT
+What you sent
 {{ contact.company }}
 {{ contact.message }}
 
-The summit, so far
+What happens next:
+
+1. We read your note. [CB: who reads partner inquiries, for example Ashley] reads every one.
+
+2. We reply with the 2027 partner options and what each includes, [CB: how soon, for example within two business days].
+
+3. Anything to add? Reply to this email. It comes straight to us.
+
+Who you’d be meeting
 
 180,000+
 registrations
@@ -24,17 +25,9 @@ sessions
 summits since 2020
 
 Totals as of March 2025. 53% of attendees lead their nonprofit or head its development or marketing.
-Ways to take part
-
-Title partnership: the summit name.
-
-A stage session: run a session for the nonprofit teams who attend.
-
-Run a workshop: a hands-on workshop for the teams in the room.
-
 We’re keeping the 2027 partner list short, so each partner gets real time with the nonprofits in the room.
 
-See who attends: {{ partners_url }}
+See who attends: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/partners/
 
 [CB: first name of who signs, for example Ashley]
 [CB: full name and title]
