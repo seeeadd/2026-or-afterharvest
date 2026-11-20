@@ -1075,6 +1075,14 @@ section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:aut
 .cb-gpt-list li:first-child::after{content:"Community Boost client";position:absolute;top:-9px;right:12px;padding:2px 8px;border-radius:999px;
  background:var(--cb-sun);color:#fff;font:700 10.5px/1.4 Geist,system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap}
 
+/* the calendar's link to the schedule page, a table by stage and time (Sean 2026-11-20: "Add a link to the schedule
+   subpage, like 'View Full Schedule'") */
+.cbc-viewbar .cbc-full{margin-left:auto;display:inline-flex;align-items:center;min-height:36px;padding:0 16px;border-radius:999px;background:var(--cb-rad);
+ color:#fff!important;font-weight:650;font-size:14px;text-decoration:none;white-space:nowrap}
+.cbc-viewbar .cbc-full:hover{background:var(--cb-rad-d)}
+.cbc-viewbar .cbc-full:focus-visible{outline:3px solid var(--cb-alt);outline-offset:2px}
+@media (max-width:700px){.cbc-viewbar{flex-wrap:wrap}.cbc-viewbar .cbc-full{margin-left:0;width:100%;justify-content:center}}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.
