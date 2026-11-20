@@ -918,6 +918,9 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
  .cb-letter.ck .ck-photo img{object-position:50% 18%}
  .cb-letter.ck .ck-photo figcaption{margin-top:10px;white-space:normal!important;line-height:1.35}
 }
+/* the best-of section has two write-ups since Big Sea came out (CB 11.16): two columns that fill the row, not three with
+   an empty slot (Sean 2026-11-20: "where's the other column?") */
+@media (min-width:641px){.wa-row.cb-wa-two{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:clamp(28px,3.4vw,52px)!important}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
