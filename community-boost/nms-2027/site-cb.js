@@ -115,6 +115,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 })();
 
 ;(function () {
+  if (!window.CSS || !CSS.supports('content-visibility', 'auto')) return;
+  var root = document.documentElement, t, first = true;
+  function prime() {
+    root.classList.add('cv-all');
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      root.classList.remove('cv-all');
+      var id = first && location.hash.slice(1), el = id && document.getElementById(id);
+      first = false;
+      if (el && scrollY > 0) el.scrollIntoView();
+    }); });
+  }
+  (document.fonts && document.fonts.ready || Promise.resolve()).then(function () { (window.requestIdleCallback || setTimeout)(prime, { timeout: 1500 }); });
+  addEventListener('resize', function () { clearTimeout(t); t = setTimeout(prime, 400); });
+})();
+
+;(function () {
   var city = document.querySelector('[data-city] .lc-city');
   if (!city || !('IntersectionObserver' in window) || !document.getAnimations) return;
   var travels = /^lc-(drive|back|walk1|walk2|bike)$/, seen = new WeakSet(), io = new IntersectionObserver(function (es) {
