@@ -12,7 +12,7 @@
 .foot .foot-in{padding:26px var(--gut)}
 
 /* the calendar frame, kept from the main page */
-.tt{--rowh:40px;--w:minmax(196px,1fr);--w-main:var(--w);--w-mkt:var(--w);--w-ai:var(--w);--w-room:var(--w);margin:0 auto;max-width:calc(1360px + var(--gut)*2);padding:0 var(--gut)}
+.tt{--rowh:46px;--w:minmax(196px,1fr);--w-main:var(--w);--w-mkt:var(--w);--w-ai:var(--w);--w-room:var(--w);margin:0 auto;max-width:calc(1360px + var(--gut)*2);padding:0 var(--gut)}
 .tt-frame{border:1px solid #dadce0;border-radius:14px;background:#fff;overflow:hidden;box-shadow:0 30px 60px -44px rgba(7,20,7,.45)}
 .tt-top{display:flex;align-items:center;gap:18px;padding:12px 18px;border-bottom:1px solid #e3e5e8}
 .tt-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:600;color:#3c4043;letter-spacing:-.01em}
@@ -53,39 +53,45 @@
 .tt-scroll{overflow-x:auto;padding:12px 16px 18px;scroll-snap-type:x proximity}
 .tt-scroll:focus-visible{outline:2px solid var(--rad);outline-offset:-2px}
 
-/* the table: the clock down the side, one column per stage, each session as tall as its time */
-.tt-grid{position:relative;display:grid;grid-template-columns:86px var(--w-main) var(--w-mkt) var(--w-ai) var(--w-room);grid-template-rows:76px repeat(var(--rows),var(--rowh));column-gap:8px;
- background-image:linear-gradient(#eceef0 1px,transparent 1px);background-size:100% calc(var(--rowh)*2);background-position:0 76px}
-.tt-time{grid-column:1;position:sticky;left:0;z-index:3;padding:0 10px 0 0;background:#fff;text-align:right;transform:translateY(-.6em);line-height:1.2}
-.tt-time b{display:block;font-size:12.5px;font-weight:600;color:#3c4043}
-.tt-time small{display:block;font-size:11px;color:#80868b}
-.tt-sh{grid-row:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:68px;margin-bottom:8px;padding:10px 12px;border-radius:10px;overflow:hidden;scroll-snap-align:start}
+/* the table: ruled like a sheet (Sean 2026-11-20: "more like an actual table, like lines instead of boards"). A line every
+   half hour and between columns; a session fills the cells it runs across, like merged cells; the stage colour is the
+   header and a tint with a coloured edge in each cell */
+.tt{--tl:#d6ddd6;--tl2:#aeb9ae}
+.tt-grid{position:relative;display:grid;grid-template-columns:96px var(--w-main) var(--w-mkt) var(--w-ai) var(--w-room);grid-template-rows:84px repeat(var(--rows),var(--rowh));
+ border:1px solid var(--tl2);border-radius:8px;overflow:clip;background:#fff;
+ background-image:linear-gradient(var(--tl) 1px,transparent 1px);background-size:100% calc(var(--rowh)*2);background-position:0 84px}
+.tt-lane{grid-row:1 / -1;border-left:1px solid var(--tl);pointer-events:none}
+.tt-corner{grid-row:1;grid-column:1;position:sticky;left:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;background:#F4F7F2;border-bottom:2px solid var(--tl2);border-right:1px solid var(--tl2)}
+.tt-corner b{font-size:12.5px;font-weight:700;color:#14201a}
+.tt-corner small{font-size:11px;color:#6b746b}
+.tt-time{grid-column:1;position:sticky;left:0;z-index:3;padding:8px 10px;background:#FAFBF9;border-right:1px solid var(--tl2);border-bottom:1px solid var(--tl);line-height:1.25}
+.tt-time b{display:block;font-size:12.5px;font-weight:650;color:#14201a;white-space:nowrap}
+.tt-time small{display:block;font-size:11px;color:#6b746b;white-space:nowrap}
+.tt-sh{grid-row:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:10px 12px;overflow:hidden;border-bottom:2px solid var(--c);border-left:1px solid var(--tl2)}
 .tt-sh b{position:relative;font-size:15px;font-weight:700;letter-spacing:-.01em}
-.tt-sh small{position:relative;font-size:12px;opacity:.82}
-.tt-ev{position:relative;z-index:1;display:flex;flex-direction:column;margin:2px 0;padding:8px 10px 8px 12px;border-radius:8px;overflow:hidden;background:var(--tint2);
- box-shadow:inset 4px 0 0 var(--c),inset 0 0 0 1px rgba(7,20,7,.07);transition:transform .2s,box-shadow .2s}
-.tt-ev:hover{transform:translateY(-1px);box-shadow:inset 4px 0 0 var(--c),inset 0 0 0 1px rgba(7,20,7,.12),0 14px 24px -18px rgba(7,20,7,.5)}
-.tt-when{display:flex;justify-content:space-between;gap:8px;margin:0;font-size:11.5px;font-weight:600;color:var(--c2)}
+.tt-sh small{position:relative;font-size:12px;opacity:.85}
+.tt-ev{position:relative;z-index:1;display:flex;flex-direction:column;padding:8px 12px 10px 14px;background:var(--tint2);
+ border-bottom:1px solid var(--tl);border-left:1px solid var(--tl);box-shadow:inset 3px 0 0 var(--c)}
+.tt-ev:hover{background:var(--tint3)}
+.tt-when{display:flex;justify-content:space-between;gap:8px;margin:0;font-size:11.5px;font-weight:650;color:var(--c2)}
 .tt-when span{font-weight:500;opacity:.8}
-.tt-ev h3{margin:3px 0 0;font-size:14px;line-height:1.28;font-weight:650;letter-spacing:-.005em;color:#14201a}
+.tt-ev h3{margin:3px 0 0;font-size:14px;line-height:1.3;font-weight:650;letter-spacing:-.005em;color:#14201a}
 .tt-xs h3{font-size:13px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .tt-ev:has(.tt-face) .tt-who{padding-right:36px}
 .tt-who{margin-top:2px;font-size:12px;color:rgba(7,20,7,.7)}
-.tt-face{position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff}
-.tt-xs .tt-face,.tt-s .tt-face{width:26px;height:26px}
-.tt-th{margin-top:auto;width:96px;height:56px;object-fit:cover;border-radius:5px;box-shadow:0 0 0 1px rgba(7,20,7,.08)}
-.tt-ev.is-tba{background:repeating-linear-gradient(135deg,transparent 0 7px,rgba(7,20,7,.04) 7px 8px),var(--tint2)}
-.tt-ev.is-tba h3{color:rgba(7,20,7,.62);font-style:normal}
-.tt-quiet{display:flex;align-items:center;justify-content:center;margin:2px 0;padding:10px;border-radius:8px;border:1.5px dashed var(--line2);text-align:center;font-size:12.5px;line-height:1.35;color:var(--c2)}
+.tt-face{position:absolute;right:8px;bottom:8px;width:28px;height:28px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff}
+.tt-ev.is-tba{background:repeating-linear-gradient(135deg,transparent 0 7px,rgba(7,20,7,.045) 7px 8px),var(--tint2)}
+.tt-ev.is-tba h3{color:rgba(7,20,7,.62)}
+.tt-quiet{display:flex;align-items:center;justify-content:center;padding:10px 14px;text-align:center;font-size:12.5px;line-height:1.35;color:#6b746b;
+ background:repeating-linear-gradient(135deg,rgba(7,20,7,.045) 0 1px,transparent 1px 8px),#FBFCFA;border-bottom:1px solid var(--tl);border-left:1px solid var(--tl)}
 
 /* each stage, its own colour and texture from the page's art */
-.tt-main{--c:#009B27;--c2:#007A1F;--tint2:#F0F8EA;--line2:rgba(0,155,39,.3)}
-.tt-mkt{--c:#FC7540;--c2:#B4461A;--tint2:#FFF3EC;--line2:rgba(252,117,64,.4)}
-.tt-ai{--c:#0F3E4A;--c2:#0F3E4A;--tint2:#ECF3F4;--line2:rgba(15,62,74,.3)}
-.tt-room{--c:#73D88C;--c2:#1F5A2E;--tint2:#F2FAEC;--line2:rgba(115,216,140,.5)}
+.tt-main{--c:#009B27;--c2:#007A1F;--tint2:#F1F8EB;--tint3:#E7F3DD}
+.tt-mkt{--c:#FC7540;--c2:#B4461A;--tint2:#FFF4EE;--tint3:#FFE9DE}
+.tt-ai{--c:#0F3E4A;--c2:#0F3E4A;--tint2:#EEF4F5;--tint3:#E2EDEF}
+.tt-room{--c:#73D88C;--c2:#1F5A2E;--tint2:#F3FAEE;--tint3:#E9F6E1}
 .tt-filter .tt-main{--c:#009B27}.tt-filter .tt-mkt{--c:#FC7540}.tt-filter .tt-ai{--c:#0F3E4A}.tt-filter .tt-room{--c:#73D88C;--k:#071407}
-.tt-sh.tt-main{background:#071407;color:#fff}
-.tt-sh.tt-main{padding-right:96px}
+.tt-sh.tt-main{background:#071407;color:#fff;padding-right:84px}
 .tt-sh.tt-main:before{content:"";position:absolute;right:-26px;bottom:-62px;width:118px;height:118px;border-radius:50%;
  background:repeating-conic-gradient(from 180deg,rgba(252,117,64,.85) 0 7deg,transparent 7deg 15deg);-webkit-mask:radial-gradient(circle,transparent 30%,#000 31%,#000 70%,transparent 71%);mask:radial-gradient(circle,transparent 30%,#000 31%,#000 70%,transparent 71%)}
 .tt-sh.tt-main:after{content:"";position:absolute;right:9px;bottom:-22px;width:46px;height:46px;border-radius:50%;background:#FC7540}
@@ -93,13 +99,10 @@
 .tt-sh.tt-ai{background:#0F3E4A;color:#fff;background-image:linear-gradient(rgba(228,239,243,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(228,239,243,.14) 1px,transparent 1px),linear-gradient(rgba(228,239,243,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(228,239,243,.06) 1px,transparent 1px);
  background-size:36px 36px,36px 36px,9px 9px,9px 9px}
 .tt-sh.tt-room{background:#C7EBA2;color:#071407;background-image:repeating-linear-gradient(135deg,rgba(7,20,7,.1) 0 1px,transparent 1px 8px)}
-.tt-ev.tt-main.is-key{background:#071407;box-shadow:inset 4px 0 0 #FC7540}
+.tt-ev.tt-main.is-key{background:#071407;box-shadow:inset 3px 0 0 #FC7540}
 .tt-ev.tt-main.is-key h3{color:#fff}.tt-ev.tt-main.is-key .tt-when{color:#FC9A72}.tt-ev.tt-main.is-key .tt-who{color:rgba(255,255,255,.75)}
 .tt-ev.tt-main.is-key.is-tba{background:repeating-linear-gradient(135deg,transparent 0 7px,rgba(255,255,255,.05) 7px 8px),#071407}
 .tt-ev.tt-main.is-key.is-tba h3{color:rgba(255,255,255,.8)}
-.tt-ev.tt-ai{background-image:linear-gradient(rgba(15,62,74,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(15,62,74,.06) 1px,transparent 1px);background-size:12px 12px}
-.tt-ev.tt-mkt{background-image:radial-gradient(rgba(252,117,64,.14) 1px,transparent 1.3px);background-size:8px 8px}
-.tt-ev.tt-room{justify-content:flex-start;background:repeating-linear-gradient(135deg,rgba(115,216,140,.28) 0 1px,transparent 1px 9px),#F4FBEE}
 .tt-ev.tt-room h3{font-size:15px}
 
 /* hidden stages (the side panel's list) */
@@ -109,13 +112,14 @@
 @media (max-width:980px){.tt-body{grid-template-columns:1fr}.tt-side{display:none}}
 @media (max-width:760px){
  .sch-head{padding-top:36px}
- .tt{--rowh:44px;padding:0}
+ .tt{--rowh:56px;padding:0}
+ .tt-xs h3{font-size:13px;-webkit-line-clamp:4}
  .tt-frame{border-radius:0;border-left:0;border-right:0}
  .tt-top{gap:10px;padding:10px 12px}.tt-logo{font-size:16px}.tt-logo img{width:28px;height:28px}.tt-title{font-size:15px}.tt-view{display:none}.tt-arrows{margin-left:auto;order:3}
  .tt-bar{padding:8px 12px;overflow-x:auto}.tt-bar button{flex:none}
  .tt{--w:minmax(220px,78vw)}
- .tt-grid{grid-template-columns:66px var(--w-main) var(--w-mkt) var(--w-ai) var(--w-room)}
+ .tt-grid{grid-template-columns:72px var(--w-main) var(--w-mkt) var(--w-ai) var(--w-room)}
  .tt-scroll{padding:10px 12px 16px}
- .tt-time{padding-right:6px}.tt-time b{font-size:11.5px;white-space:nowrap}.tt-time small{font-size:9.5px;white-space:nowrap}
+ .tt-time,.tt-corner{padding:6px 7px}.tt-time b{font-size:11.5px}.tt-time small{font-size:9.5px}
 }
 @media (prefers-reduced-motion:reduce){.tt-ev{transition:none}}
