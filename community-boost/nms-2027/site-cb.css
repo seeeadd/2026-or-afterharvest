@@ -1050,6 +1050,31 @@ section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:aut
 .bm-tt{font-size:15px;text-shadow:-1.3px -1px 0 #00F2EA,1.3px 1px 0 #FF0550}
 @media (max-width:420px){.wa-names li{gap:8px}.bm{width:26px;height:26px;font-size:11px}.bm-3{font-size:8.5px}}
 
+/* the hero's two days sit close together now that there is no Day 3 (Sean 2026-11-20: "too far apart from each other");
+   the dashed route runs only between the two markers */
+@media (min-width:701px){
+ .cb-trip{max-width:520px;margin-left:auto!important;margin-right:auto!important}
+ .cb-trip::before{left:25%!important;right:25%!important}
+}
+/* the past-stages grid with its brand marks: mark beside the name on wider screens, above it on phones; the tile grows */
+.cb-orgs-wall li.cb-word{height:auto;min-height:64px}
+@media (min-width:701px){
+ .cb-orgs-wall li.cb-word:not(.cb-and){display:flex;align-items:center;justify-content:flex-start;gap:10px;padding:10px 12px;text-align:left;font-size:14px}
+ .cb-orgs-wall .cb-word .bm{width:30px;height:30px}
+}
+@media (max-width:700px){
+ .cb-orgs-wall li.cb-word:not(.cb-and){display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 6px}
+}
+
+/* the AI search preview (Day 2 "Audit an AI search"): the answer gets the room, the source preview is a narrow side
+   column; Per Scholas, Community Boost's client and the answer's first pick, sits in a thin orange outline with a soft
+   glow and a small label (Sean 2026-11-20: "so people know that this is CommunityBoost's client and they rank top one") */
+@container workshop (min-width:690px){.wm-figure .wm-chat{grid-template-columns:34px minmax(0,1.6fr) minmax(0,.78fr)!important}}
+.cb-gpt-list li:first-child{position:relative;padding:14px 12px 12px;margin:6px -6px 0;border:0;border-radius:12px;
+ box-shadow:0 0 0 1.5px var(--cb-sun),0 0 0 5px rgba(252,117,64,.14),0 10px 30px -8px rgba(252,117,64,.45)}
+.cb-gpt-list li:first-child::after{content:"Community Boost client";position:absolute;top:-9px;right:12px;padding:2px 8px;border-radius:999px;
+ background:var(--cb-sun);color:#fff;font:700 10.5px/1.4 Geist,system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.

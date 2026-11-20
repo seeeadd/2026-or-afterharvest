@@ -136,6 +136,68 @@
  .row-bg{padding-bottom:420px;background-size:auto 680px;background-position:50% 100%}
  .row-bg:before{background:linear-gradient(180deg,rgba(4,18,22,.86) 0,rgba(4,18,22,.8) calc(100% - 432px),rgba(4,18,22,.4) calc(100% - 396px),rgba(4,18,22,0) calc(100% - 352px))}
 }
+
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* the title screen: the summit's own title with a blank for the partner, dark like the stage */
+.tcard{margin-top:30px;max-width:600px}
+.tc-screen{position:relative;display:flex;align-items:center;gap:18px;padding:22px 24px;background:#071407;color:#fff;
+ background-image:radial-gradient(120% 140% at 0% 0%,rgba(0,155,39,.32),transparent 55%),linear-gradient(rgba(115,216,140,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(115,216,140,.07) 1px,transparent 1px);
+ background-size:auto,24px 24px,24px 24px;box-shadow:0 30px 50px -34px rgba(7,20,7,.8),inset 0 0 0 1px rgba(115,216,140,.18)}
+.tc-screen img{flex:none;width:64px;height:64px}
+.tc-name{margin:0;min-width:0;flex:1}
+.tc-name b{display:block;font-size:clamp(19px,1.9vw,24px);line-height:1.15;font-weight:700;letter-spacing:-.02em}
+.tc-by{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px;margin-top:6px;font-size:16px;color:rgba(255,255,255,.72)}
+.tc-slot{flex:1 1 180px;min-width:150px}
+.tc-slot input{display:block;width:100%;padding:2px 2px 3px;border:0;border-bottom:1.5px dashed var(--alt);background:none;border-radius:0;
+ font:700 17px/1.3 var(--sans);color:#fff;caret-color:var(--alt);outline:none;transition:border-color .2s,color .2s,text-shadow .3s}
+.tc-slot input::placeholder{color:rgba(199,235,162,.62);font-weight:500}
+.tc-slot input:focus{border-bottom-style:solid}
+.tc-slot input:focus,.tc-slot input:focus-visible{outline:none;border-bottom-width:2px;border-bottom-color:var(--alt)}
+.tcard.is-filled .tc-slot input{border-bottom-color:transparent;color:#C7EBA2;text-shadow:0 0 18px rgba(115,216,140,.55)}
+.tc-note{margin-top:10px;font-size:14px;color:var(--ink2)}
+/* the proof: small numbers, then the teams as a row cut off at the edge */
+.pf{margin-top:30px;max-width:600px}
+.pf-line{font-size:16px;line-height:1.5;color:var(--ink2)}
+.pf-line b{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+/* the hero's columns may shrink below the teams row (it is cut off on purpose) */
+.hero-b .grid>*{min-width:0}
+.pf-wall{list-style:none;display:flex;gap:8px;margin:12px 0 0;padding:0;overflow:hidden;
+ -webkit-mask-image:linear-gradient(90deg,#000 72%,transparent);mask-image:linear-gradient(90deg,#000 72%,transparent)}
+.pf-wall li{flex:none;display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;background:#fff;border:1px solid var(--hair);font-size:13.5px;font-weight:600;white-space:nowrap}
+.pf-wall .pf-more{padding:6px 12px;color:var(--ink3);font-weight:500}
+.pf small{display:block;margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink3)}
+.bm{flex:none;position:relative;display:grid;place-items:center;width:26px;height:26px;border-radius:6px;background:var(--b);color:var(--k,#fff);
+ font:800 11px/1 var(--sans);font-style:normal;letter-spacing:-.02em;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.bm-3{font-size:8.5px}
+.bm:after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--band,none)}
+.bm[style*="--band"]{padding-bottom:3px}
+@media (max-width:640px){.tc-screen{padding:18px 16px;gap:12px}.tc-screen img{width:44px;height:44px}.tc-name b{font-size:18px}}
+/* the message box: bold, italic, bullets, and an expand button that brings it to the middle of the screen */
+.ed{margin-top:14px}
+.ed-l{display:block;font-size:13.5px;font-weight:600}
+.ed-box{margin-top:6px;border:1px solid var(--hair2);background:#fff}
+.ed-box:focus-within{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.ed-bar{display:flex;align-items:center;gap:2px;padding:4px;border-bottom:1px solid var(--hair)}
+.ed-bar button{display:grid;place-items:center;min-width:32px;height:30px;padding:0 6px;border:0;background:none;color:var(--ink);font:15px var(--sans);cursor:pointer}
+.ed-bar button:hover{background:rgba(7,20,7,.06)}
+.ed-bar button[aria-pressed="true"]{background:rgba(0,155,39,.12);color:var(--rad)}
+.ed-bar button i{font-family:Georgia,serif}
+.ed-bar svg{width:18px;height:18px;fill:currentColor;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
+.ed-bar svg path{fill:none}
+.ed-bar .ed-grow{margin-left:auto;display:flex;gap:6px;font-size:13px;font-weight:600;color:var(--ink2)}
+.ed-grow .ed-close,.is-big .ed-grow .ed-open{display:none}.is-big .ed-grow .ed-close{display:inline}
+.ed-in{min-height:64px;max-height:180px;overflow:auto;padding:10px 12px;font:15px/1.5 var(--sans);color:var(--ink);outline:none}
+.ed-in:empty::before{content:attr(data-placeholder);color:var(--ink3)}
+.ed-in ul{margin:4px 0;padding-left:20px}
+.ed-done{display:none}
+.ed textarea[hidden]{display:none!important}
+.ed-back{position:fixed;inset:0;z-index:90;background:rgba(7,20,7,.55);backdrop-filter:blur(2px)}
+.ed.is-big .ed-box{position:fixed;z-index:91;left:50%;top:50%;transform:translate(-50%,-50%);width:min(760px,calc(100vw - 32px));
+ display:flex;flex-direction:column;box-shadow:0 40px 90px -30px rgba(7,20,7,.7);animation:ed-in .22s cubic-bezier(.2,.8,.2,1)}
+.ed.is-big .ed-in{min-height:min(52vh,420px);max-height:min(64vh,560px);font-size:17px;padding:18px 20px}
+.ed.is-big .ed-done{display:block;margin:0 12px 12px auto;width:auto;padding:0 22px}
+@keyframes ed-in{from{opacity:0;transform:translate(-50%,-46%)}}
+@media (prefers-reduced-motion:reduce){.ed.is-big .ed-box{animation:none}}
 </style></head>
 <body class="dir-b"><header class="nav"><div class="wrap nav-in">
 <a class="brand" href="../"><img src="assets/nms-emblem-240-green.png" alt="" width="40" height="40"><span><b>Nonprofit Marketing Summit</b><small>Architects of Impact</small></span></a>
@@ -148,7 +210,7 @@
 <div>
 <h1><span class="nw">Meet nonprofits</span> <em><span class="nw">while they</span> <span class="nw">plan 2027.</span></em></h1>
 <p class="lede">The 2027 Nonprofit Marketing Summit is Community Boost’s free two-day summit, live on Zoom. Partners take the title partnership or run a session or workshop for the nonprofit teams who attend.</p>
-<div class="proof"><div><b>10</b><span>summits since 2020</span></div><div><b>180,000+</b><span>registrations</span></div><div><b>670+</b><span>sessions</span></div><small>Totals as of March 2025</small></div>
+<div class="tcard"><div class="tc-screen"><img src="assets/nms-emblem-240-green.png" alt="" width="64" height="64"><p class="tc-name"><b>Nonprofit Marketing Summit 2027</b><span class="tc-by">presented by <label class="tc-slot"><span class="vh">Your company</span><input data-tc placeholder="your company" maxlength="38" autocomplete="organization" enterkeyhint="next" spellcheck="false"></label></span></p></div><p class="tc-note">The title partnership puts your name on the summit.</p></div><div class="pf"><p class="pf-line"><b>180,000+</b> registrations, <b>670+</b> sessions and <b>10</b> summits since 2020. Teams who have come include:</p><ul class="pf-wall" aria-label="Teams who have attended"><li><i class="bm bm-3" style="--b:rgb(74 162 65);--k:rgb(255 255 255)" aria-hidden="true">TNC</i>The Nature Conservancy</li><li><i class="bm" style="--b:rgb(218 41 28);--k:rgb(255 255 255)" aria-hidden="true">SC</i>Save the Children</li><li><i class="bm bm-3" style="--b:rgb(238 0 0);--k:rgb(255 255 255)" aria-hidden="true">MSF</i>Doctors Without Borders</li><li><i class="bm" style="--b:rgb(0 0 0);--k:rgb(255 255 255)" aria-hidden="true">IP</i>Innocence Project</li><li><i class="bm" style="--b:rgb(126 114 109);--k:rgb(255 255 255);--band:linear-gradient(90deg,rgb(245 129 28) 0 25%,rgb(213 7 141) 25% 50%,rgb(130 196 63) 50% 75%,rgb(109 180 197) 75% 100%)" aria-hidden="true">FC</i>Feed the Children</li><li><i class="bm bm-3" style="--b:rgb(6 128 196);--k:rgb(255 255 255)" aria-hidden="true">BGC</i>Boys &amp; Girls Clubs of America</li><li class="pf-more">and thousands more</li></ul><small>Totals as of March 2025. Teams named by NonProfit PRO, 2022.</small></div>
 <div class="ctas"><a class="btn btn-ghost" href="#people">See who attends</a></div>
 </div>
 <form class="inq" id="talk" novalidate data-partner-form>
@@ -159,7 +221,13 @@
 <div class="row2"><label>First name<input name="firstname" autocomplete="given-name" required></label><label>Last name <span class="opt">Optional</span><input name="lastname" autocomplete="family-name"></label></div>
 <label>Work email<input name="email" type="email" autocomplete="email" required></label>
 <label>Company<input name="company" autocomplete="organization" required></label>
-<label>Anything else? <span class="opt">Optional</span><textarea name="message" rows="2"></textarea></label>
+<div class="ed" data-ed><span class="ed-l" id="ed-l">Anything else? <span class="opt">Optional</span></span>
+<div class="ed-box"><div class="ed-bar" role="toolbar" aria-label="Format your message">
+<button type="button" data-cmd="bold" aria-label="Bold" aria-pressed="false"><b>B</b></button><button type="button" data-cmd="italic" aria-label="Italic" aria-pressed="false"><i>I</i></button><button type="button" data-cmd="insertUnorderedList" aria-label="Bulleted list" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="4" cy="6" r="1.6"/><circle cx="4" cy="14" r="1.6"/><path d="M8 6h9M8 14h9"/></svg></button>
+<button type="button" class="ed-grow" data-grow aria-label="Expand the message box" aria-expanded="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="ed-open" d="M12 3h5v5M17 3l-6 6M8 17H3v-5M3 17l6-6"/><path class="ed-close" d="M16 4l-5 5M11 5v4h4M4 16l5-5M9 15v-4H5"/></svg><span>Expand</span></button></div>
+<div class="ed-in" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="ed-l" data-placeholder="Your goals for 2027, the audience you want to reach, questions for our team"></div>
+<button type="button" class="btn btn-primary ed-done" data-grow-done>Done</button></div>
+<textarea name="message" hidden></textarea></div>
 <p class="inq-err" role="alert" hidden>Please fill in your first name, a work email and your company.</p>
 <button class="btn btn-primary btn-block" type="submit">Send to our team</button>
 <p class="alt">This opens an email to our team with your details. It reaches us when you press send. Or write to <a href="mailto:summit@communityboost.org">summit@communityboost.org</a>.</p>
@@ -230,4 +298,36 @@ document.querySelectorAll('[data-partner-form]').forEach(function(f){
 // every Talk to our team / Become a partner link: glide to the form and put the cursor in First name
 document.querySelectorAll('a[href="#talk"]').forEach(function(a){a.addEventListener('click',function(e){var f=document.getElementById('talk');if(!f)return;e.preventDefault();
   f.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});setTimeout(function(){var i=f.querySelector('input:not([type=hidden])');i&&i.focus({preventScroll:true})},450)})});
+</script><script>
+// the title screen's blank and the form's Company field are one value: type in either, both fill
+(function(){var t=document.querySelector('[data-tc]'),f=document.querySelector('[data-partner-form]');if(!t||!f)return;
+  var c=f.elements.company,card=t.closest('.tcard');
+  function show(v){card.classList.toggle('is-filled',!!v.trim())}
+  t.addEventListener('input',function(){c.value=t.value;c.removeAttribute('aria-invalid');show(t.value)});
+  c.addEventListener('input',function(){t.value=c.value;show(c.value)});
+  t.addEventListener('keydown',function(e){if(e.key!=='Enter')return;e.preventDefault();var n=f.elements.firstname;
+    f.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});setTimeout(function(){n.focus({preventScroll:true})},420)});
+})();
+// the message box: bold, italic and bullets, kept as plain marks in the email (*bold*, _italic_, • item); Expand brings it
+// to the middle of the screen, Done or Esc puts it back
+document.querySelectorAll('[data-ed]').forEach(function(ed){
+  var box=ed.querySelector('.ed-box'),inp=ed.querySelector('.ed-in'),ta=ed.querySelector('textarea'),grow=ed.querySelector('[data-grow]'),back=null;
+  function txt(n){var s='';n.childNodes.forEach(function(k){
+    if(k.nodeType===3){s+=k.nodeValue;return}if(k.nodeType!==1)return;var t=k.tagName,inner=txt(k);
+    if(t==='B'||t==='STRONG')s+=inner.trim()?'*'+inner+'*':inner;else if(t==='I'||t==='EM')s+=inner.trim()?'_'+inner+'_':inner;
+    else if(t==='LI')s+='\n• '+inner.trim();else if(t==='UL'||t==='OL')s+=inner+'\n';else if(t==='BR')s+='\n';
+    else if(t==='DIV'||t==='P')s+='\n'+inner;else s+=inner});return s}
+  function sync(){ta.value=txt(inp).replace(/\n{3,}/g,'\n\n').trim();ed.querySelectorAll('[data-cmd]').forEach(function(b){
+    var on=false;try{on=document.queryCommandState(b.dataset.cmd)}catch(e){}b.setAttribute('aria-pressed',on&&ed.contains(document.activeElement)?'true':'false')})}
+  ed.querySelectorAll('[data-cmd]').forEach(function(b){b.addEventListener('mousedown',function(e){e.preventDefault()});
+    b.addEventListener('click',function(){inp.focus();document.execCommand(b.dataset.cmd,false,null);sync()})});
+  inp.addEventListener('input',function(){if(!inp.textContent.trim()&&!inp.querySelector('li'))inp.innerHTML='';sync()});
+  inp.addEventListener('keyup',sync);inp.addEventListener('mouseup',sync);
+  inp.addEventListener('paste',function(e){e.preventDefault();var t=(e.clipboardData||window.clipboardData).getData('text/plain');document.execCommand('insertText',false,t)});
+  function open(){if(ed.classList.contains('is-big'))return close();ed.classList.add('is-big');back=document.createElement('div');back.className='ed-back';
+    back.addEventListener('click',close);document.body.appendChild(back);grow.setAttribute('aria-expanded','true');grow.lastChild.textContent='Smaller';inp.focus()}
+  function close(){ed.classList.remove('is-big');back&&back.remove();back=null;grow.setAttribute('aria-expanded','false');grow.lastChild.textContent='Expand';inp.focus()}
+  grow.addEventListener('click',open);ed.querySelector('[data-grow-done]').addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ed.classList.contains('is-big'))close()});
+});
 </script></body></html>
