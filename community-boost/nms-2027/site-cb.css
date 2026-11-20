@@ -1102,6 +1102,23 @@ section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:aut
 .sc-full-top{display:flex;width:-webkit-fit-content;width:fit-content;margin-top:18px;min-height:52px;padding:0 22px;font-size:16px}
 @media (max-width:700px){.sc-full-top{width:100%}}
 
+/* "Which room is yours?": the checklist boxes as light as the schedule page's side panel (Sean 2026-11-20, "update this
+   too" after "make this ... thinner, and less opaque"): a 1px ring, a pale green fill and a green tick when picked,
+   lighter card borders, and the keyboard ring around the whole card so it no longer cuts through the sessions below */
+.ww-match{border-color:#D6DAD5}
+.ww-match:has(.ww-match-choice:checked){border-color:rgb(0 155 39/.42)}
+.ww-match .fr-box{width:22px;height:22px;border:0;border-radius:6px;background:#fff;box-shadow:inset 0 0 0 1px rgb(23 46 26/.32);transition:background .2s,box-shadow .2s}
+.ww-match .fr-box svg{width:15px;height:15px;stroke:#007A1F;stroke-width:2.2}
+.ww-match-choice:checked+label .fr-box{background:#F1F8EB;box-shadow:inset 0 0 0 1px #009B27}
+.ww-plus{border-color:#C9CEC8;color:#5A665B}
+.ww-match-choice:focus-visible+label{outline:none}
+.ww-match:has(.ww-match-choice:focus-visible){outline:2px solid #009B27;outline-offset:2px}
+@media (forced-colors:active){
+ .ww-match .fr-box{border:1px solid CanvasText}
+ .ww-match-choice:checked+label .fr-box{forced-color-adjust:none;background:Highlight;border-color:Highlight}
+ .ww-match-choice:checked+label .fr-box svg{stroke:HighlightText}
+}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.

@@ -138,22 +138,31 @@
 }
 
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-/* the title screen: the summit's own title with a blank for the partner, dark like the stage */
+/* the title screen as a blueprint title sheet (Sean 2026-11-20: "this black 'presented by' could be better, more on
+   brand"): the town's teal plan paper and white linework, a sheet border, the seal in an axis bubble, a view tag like the
+   town's, and the partner's blank drawn as a dimension line with tick ends */
 .tcard{margin-top:30px;max-width:600px}
-.tc-screen{position:relative;display:flex;align-items:center;gap:18px;padding:22px 24px;background:#071407;color:#fff;
- background-image:radial-gradient(120% 140% at 0% 0%,rgba(0,155,39,.32),transparent 55%),linear-gradient(rgba(115,216,140,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(115,216,140,.07) 1px,transparent 1px);
- background-size:auto,24px 24px,24px 24px;box-shadow:0 30px 50px -34px rgba(7,20,7,.8),inset 0 0 0 1px rgba(115,216,140,.18)}
-.tc-screen img{flex:none;width:64px;height:64px}
+.tc-screen{position:relative;display:flex;align-items:center;gap:20px;padding:24px 64px 24px 22px;background:#0F3E4A;color:#fff;
+ background-image:radial-gradient(90% 120% at 0% 0%,rgba(0,155,39,.22),transparent 60%),linear-gradient(rgba(228,239,243,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(228,239,243,.075) 1px,transparent 1px);
+ background-size:auto,20px 20px,20px 20px;background-position:0 0,-1px -1px,-1px -1px;
+ box-shadow:0 26px 44px -32px rgba(15,62,74,.75),inset 0 0 0 1px rgba(228,239,243,.5)}
+.tc-screen:before{content:"";position:absolute;inset:5px;border:1px solid rgba(228,239,243,.2);pointer-events:none}
+.tc-seal{flex:none;display:grid;place-items:center;width:78px;height:78px;border-radius:50%;box-shadow:0 0 0 1px rgba(228,239,243,.55)}
+.tc-seal img{width:64px;height:64px}
 .tc-name{margin:0;min-width:0;flex:1}
-.tc-name b{display:block;font-size:clamp(19px,1.9vw,24px);line-height:1.15;font-weight:700;letter-spacing:-.02em}
-.tc-by{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px;margin-top:6px;font-size:16px;color:rgba(255,255,255,.72)}
-.tc-slot{flex:1 1 180px;min-width:150px}
-.tc-slot input{display:block;width:100%;padding:2px 2px 3px;border:0;border-bottom:1.5px dashed var(--alt);background:none;border-radius:0;
- font:700 17px/1.3 var(--sans);color:#fff;caret-color:var(--alt);outline:none;transition:border-color .2s,color .2s,text-shadow .3s}
+.tc-name b{display:block;font-size:clamp(19px,1.9vw,24px);line-height:1.15;font-weight:700;letter-spacing:-.02em;color:#fff}
+.tc-by{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin-top:9px;font-size:15.5px;color:#C7EBA2}
+.tc-slot{position:relative;flex:1 1 180px;min-width:150px}
+.tc-slot:before,.tc-slot:after{content:"";position:absolute;bottom:-5px;width:1px;height:11px;background:#73D88C;transform:rotate(45deg);pointer-events:none}
+.tc-slot:before{left:0}.tc-slot:after{right:0}
+.tc-slot input{display:block;width:100%;padding:2px 6px 3px;border:0;border-bottom:1px solid #73D88C;background:none;border-radius:0;
+ font:700 17px/1.3 var(--sans);color:#fff;caret-color:#73D88C;outline:none;transition:border-color .2s,color .2s,text-shadow .3s}
 .tc-slot input::placeholder{color:rgba(199,235,162,.62);font-weight:500}
-.tc-slot input:focus{border-bottom-style:solid}
-.tc-slot input:focus,.tc-slot input:focus-visible{outline:none;border-bottom-width:2px;border-bottom-color:var(--alt)}
-.tcard.is-filled .tc-slot input{border-bottom-color:transparent;color:#C7EBA2;text-shadow:0 0 18px rgba(115,216,140,.55)}
+.tc-slot input:focus,.tc-slot input:focus-visible{outline:none;border-bottom:2px solid #C7EBA2;padding-bottom:2px}
+.tcard.is-filled .tc-slot input{color:#C7EBA2;text-shadow:0 0 18px rgba(115,216,140,.5)}
+.tc-tag{position:absolute;top:13px;right:13px;width:38px;height:38px;fill:none;stroke:rgba(228,239,243,.6);stroke-width:1}
+.tc-tag text{fill:rgba(228,239,243,.75);stroke:none;font:600 9.5px var(--mono)}
+.tc-tag .tc-tag-s{font-size:6.6px;font-weight:500}
 .tc-note{margin-top:10px;font-size:14px;color:var(--ink2)}
 /* the proof: small numbers, then the teams as a row cut off at the edge */
 .pf{margin-top:30px;max-width:600px}
@@ -167,15 +176,13 @@
 .hero-b .grid>*{min-width:0}
 .pf-wall{list-style:none;display:flex;gap:8px;margin:12px 0 0;padding:0;overflow:hidden;
  -webkit-mask-image:linear-gradient(90deg,#000 72%,transparent);mask-image:linear-gradient(90deg,#000 72%,transparent)}
-.pf-wall li{flex:none;display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;background:#fff;border:1px solid var(--hair);font-size:13.5px;font-weight:600;white-space:nowrap}
-.pf-wall .pf-more{padding:6px 12px;color:var(--ink3);font-weight:500}
+.pf-wall li{flex:none;position:relative;display:flex;align-items:center;padding:8px 14px 10px;background:var(--t,#fff);border:1px solid var(--bd,var(--hair));
+ color:var(--k,var(--ink));font-size:14px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+.pf-wall li:after{content:"";position:absolute;left:-1px;right:-1px;bottom:-1px;height:3px;background:var(--band,var(--c))}
+.pf-wall .pf-more{padding:8px 14px 10px;background:#fff;color:var(--ink3);font-weight:500}
+.pf-wall .pf-more:after{content:none}
 .pf small{display:block;margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink3)}
-.bm{flex:none;position:relative;display:grid;place-items:center;width:26px;height:26px;border-radius:6px;background:var(--b);color:var(--k,#fff);
- font:800 11px/1 var(--sans);font-style:normal;letter-spacing:-.02em;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
-.bm-3{font-size:8.5px}
-.bm:after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--band,none)}
-.bm[style*="--band"]{padding-bottom:3px}
-@media (max-width:640px){.tc-screen{padding:18px 16px;gap:12px}.tc-screen img{width:44px;height:44px}.tc-name b{font-size:18px}}
+@media (max-width:640px){.tc-screen{padding:20px 16px 20px 14px;gap:13px}.tc-seal{width:54px;height:54px}.tc-seal img{width:44px;height:44px}.tc-name b{font-size:18px;padding-right:34px}.tc-tag{top:10px;right:10px;width:32px;height:32px}}
 /* the message box: bold, italic, bullets, and an expand button that brings it to the middle of the screen */
 .ed{margin-top:14px}
 .ed-l{display:block;font-size:13.5px;font-weight:600}
@@ -214,7 +221,7 @@
 <div>
 <h1><span class="nw">Meet nonprofits</span> <em><span class="nw">while they</span> <span class="nw">plan 2027.</span></em></h1>
 <p class="lede">The 2027 Nonprofit Marketing Summit is Community Boost’s free two-day summit, live on Zoom. Partners take the title partnership or run a session or workshop for the nonprofit teams who attend.</p>
-<div class="tcard"><div class="tc-screen"><img src="assets/nms-emblem-240-green.png" alt="" width="64" height="64"><p class="tc-name"><b>Nonprofit Marketing Summit 2027</b><span class="tc-by">presented by <label class="tc-slot"><span class="vh">Your company</span><input data-tc placeholder="your company" maxlength="38" autocomplete="organization" enterkeyhint="next" spellcheck="false"></label></span></p></div><p class="tc-note">The title partnership puts your name on the summit.</p></div><div class="pf"><ul class="pf-stats"><li><b>180,000+</b><span>registrations</span></li><li><b>670+</b><span>sessions</span></li><li><b>10</b><span>summits since 2020</span></li></ul><p class="pf-line">Teams who have come include:</p><ul class="pf-wall" aria-label="Teams who have attended"><li><i class="bm bm-3" style="--b:rgb(74 162 65);--k:rgb(255 255 255)" aria-hidden="true">TNC</i>The Nature Conservancy</li><li><i class="bm" style="--b:rgb(218 41 28);--k:rgb(255 255 255)" aria-hidden="true">SC</i>Save the Children</li><li><i class="bm bm-3" style="--b:rgb(238 0 0);--k:rgb(255 255 255)" aria-hidden="true">MSF</i>Doctors Without Borders</li><li><i class="bm" style="--b:rgb(0 0 0);--k:rgb(255 255 255)" aria-hidden="true">IP</i>Innocence Project</li><li><i class="bm" style="--b:rgb(126 114 109);--k:rgb(255 255 255);--band:linear-gradient(90deg,rgb(245 129 28) 0 25%,rgb(213 7 141) 25% 50%,rgb(130 196 63) 50% 75%,rgb(109 180 197) 75% 100%)" aria-hidden="true">FC</i>Feed the Children</li><li><i class="bm bm-3" style="--b:rgb(6 128 196);--k:rgb(255 255 255)" aria-hidden="true">BGC</i>Boys &amp; Girls Clubs of America</li><li class="pf-more">and thousands more</li></ul><small>Totals as of March 2025. Teams named by NonProfit PRO, 2022.</small></div>
+<div class="tcard"><div class="tc-screen"><span class="tc-seal"><img src="assets/nms-emblem-240-green.png" alt="" width="64" height="64"></span><p class="tc-name"><b>Nonprofit Marketing Summit 2027</b><span class="tc-by"><span class="tc-lbl">presented by</span><label class="tc-slot"><span class="vh">Your company</span><input data-tc placeholder="your company" maxlength="38" autocomplete="organization" enterkeyhint="next" spellcheck="false"></label></span></p><svg class="tc-tag" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path d="M3 20h34"/><text x="20" y="16" text-anchor="middle">1</text><text x="20" y="30" text-anchor="middle" class="tc-tag-s">A-001</text></svg></div><p class="tc-note">The title partnership puts your name on the summit.</p></div><div class="pf"><ul class="pf-stats"><li><b>180,000+</b><span>registrations</span></li><li><b>670+</b><span>sessions</span></li><li><b>10</b><span>summits since 2020</span></li></ul><p class="pf-line">Teams who have come include:</p><ul class="pf-wall" aria-label="Teams who have attended"><li style="--c:#4AA241;--k:#397E32;--t:#F4F9F4;--bd:#CCE5CA">The Nature Conservancy</li><li style="--c:#DA291C;--k:#C92417;--t:#FDF2F1;--bd:#F5C3BF">Save the Children</li><li style="--c:#EE0000;--k:#CC0000;--t:#FEF0F0;--bd:#FAB8B8">Doctors Without Borders</li><li style="--c:#000000;--k:#000000;--t:#F3F3F3;--bd:#CFCFCF">Innocence Project</li><li style="--c:#7E726D;--k:#6E625D;--t:#F7F7F6;--bd:#DBD8D6;--band:linear-gradient(90deg,#F5811C 0 25%,#D5078D 25% 50%,#82C43F 50% 75%,#6DB4C5 75% 100%)">Feed the Children</li><li style="--c:#0680C4;--k:#0570AC;--t:#F0F7FB;--bd:#B9DBEE">Boys &amp; Girls Clubs of America</li><li class="pf-more">and thousands more</li></ul><small>Totals as of March 2025. Teams named by NonProfit PRO, 2022.</small></div>
 <div class="ctas"><a class="btn btn-ghost" href="#people">See who attends</a></div>
 </div>
 <form class="inq" id="talk" novalidate data-partner-form>
