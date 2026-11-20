@@ -114,6 +114,9 @@
 .tt-a-meta{grid-area:meta;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:12px!important;font-size:14px}
 .tt-a1 .tt-a-meta{color:rgba(255,255,255,.92)}.tt-a2 .tt-a-meta{color:rgba(7,20,7,.85)}
 .tt-a-count{font-weight:650}
+.tt-a-cta{position:relative;z-index:1;align-self:flex-start;min-height:44px;margin-top:16px;padding:0 20px;font-size:15px;box-shadow:0 10px 20px -12px rgba(0,60,15,.7)}
+.tt-a-cta:hover{background:#008A22}
+.tt-a1 .tt-a-cta:focus-visible{outline:3px solid var(--alt);outline-offset:2px}.tt-a2 .tt-a-cta:focus-visible{outline:3px solid #0F3E4A;outline-offset:2px}
 .tt-a-art{position:absolute;right:0;bottom:0;display:block;width:500px;height:auto}
 @media (max-width:1240px) and (min-width:761px){.tt-allday{padding-right:380px;min-height:188px}.tt-a-art{width:370px}}
 .tt-scroll{--sp:16px;overflow-x:auto;padding:12px var(--sp) 18px;scroll-snap-type:x proximity}
@@ -196,6 +199,7 @@
  .tt-allday{margin:12px 12px 0}
  .tt-allday{display:block;min-height:0;padding:16px 16px 0 18px}
  .tt-a-n{font-size:36px}.tt-a-name{font-size:19px}.tt-a-meta{font-size:12.5px;gap:4px 10px}
+ .tt-a-cta{display:flex;width:100%;margin-top:14px}
  .tt-a-art{position:static;width:calc(100% + 34px);max-width:none;margin:10px -16px 0 -18px}
  .tt-corner small .tt-place{font-size:11px}
  .tt-time,.tt-corner{padding:6px 7px}.tt-time b{font-size:11.5px}.tt-time small{font-size:9.5px}

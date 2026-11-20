@@ -2,11 +2,11 @@ NEW PARTNER INQUIRY · NMS 2027
 {{ contact.company }} wants to talk about partnering.
 Someone just sent the partner form on the summit’s partners page.
 
-Name{{ contact.firstname }} {{ contact.lastname }}
-Work email{{ contact.email }}
-Company{{ contact.company }}
-Their note{{ contact.message }}
-Sent fromThe partners page form
+Name: {{ contact.firstname }} {{ contact.lastname }}
+Work email: {{ contact.email }}
+Company: {{ contact.company }}
+Their note: {{ contact.message }}
+Sent from: The partners page form
 
 Reply to {{ contact.firstname }}: mailto:{{ contact.email }}?subject=NMS%202027%20partner%20options
 

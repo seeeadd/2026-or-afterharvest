@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>HubSpot setup guide · NMS 2027</title>
+<link rel="icon" href="https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/assets/2027/nms-emblem-64-green.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<style>
+:root{--cat:#071407;--rad:#009B27;--rad2:#007A1F;--alt:#73D88C;--teal:#0F3E4A;--paper:#F7F9F3;--ink:#172219;--ink2:#4D594F;--hair:#DCE2D8;
+ --gut:clamp(16px,4vw,48px);--mono:"Geist Mono",ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Geist,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;padding:12px var(--gut);background:rgba(247,249,243,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
+.top img{width:36px;height:36px}.top p{margin:0;line-height:1.2}.top b{display:block;font-size:15px}.top small{font-size:13px;color:var(--ink2)}
+.top a.back{margin-left:auto;display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;box-shadow:inset 0 0 0 1px var(--hair);background:#fff}
+.hero{padding:56px var(--gut) 48px;background:var(--teal);color:#fff;
+ background-image:linear-gradient(rgba(228,239,243,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(228,239,243,.07) 1px,transparent 1px);background-size:24px 24px}
+.hero-in,.wrap{max-width:1120px;margin:0 auto}
+.hero h1{margin:0;max-width:20ch;font-size:clamp(32px,4.6vw,54px);line-height:1.04;letter-spacing:-.035em}
+.hero p{max-width:64ch;margin:16px 0 0;font-size:18px;color:rgba(255,255,255,.84)}
+.hero p a{color:#C7EBA2}
+.wrap{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;padding:48px var(--gut) 80px}
+.toc{position:sticky;top:88px;align-self:start}
+.toc p{margin:0 0 10px;font-size:13px;font-weight:600;color:var(--ink2)}
+.toc ol{margin:0;padding:0;list-style:none;counter-reset:t}
+.toc li a{display:block;padding:7px 0 7px 14px;border-left:2px solid var(--hair);font-size:14.5px;line-height:1.35;text-decoration:none;color:var(--ink2)}
+.toc li a:hover,.toc li a.on{border-left-color:var(--rad);color:var(--ink)}
+.part{padding:0 0 40px;margin:0 0 40px;border-bottom:1px solid var(--hair)}
+.part:last-child{border-bottom:0}
+.part header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-bottom:14px}
+.pn{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;font-weight:700}
+.part h2{margin:0;font-size:clamp(23px,2.4vw,28px);line-height:1.15;letter-spacing:-.02em}
+.tm{margin:0;padding:3px 10px;border-radius:999px;background:#EAF5E3;color:var(--rad2);font-size:13px;font-weight:600}
+.part-pre{padding:22px 24px;border:0;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--hair)}
+.st{margin:0;padding-left:22px;display:grid;gap:12px}
+.st li{padding-left:6px}
+ol.st li::marker{font-weight:700;color:var(--rad2)}
+.path{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 6px}
+.path b{padding:1px 8px;border-radius:6px;background:#fff;box-shadow:inset 0 0 0 1px var(--hair);font-weight:600;white-space:nowrap}
+.path i{font-style:normal;color:var(--ink2)}
+code{font:500 .88em var(--mono);padding:1px 5px;border-radius:5px;background:#EEF2EA}
+.copy{display:inline-flex;align-items:center;gap:0;vertical-align:baseline;border-radius:7px;box-shadow:inset 0 0 0 1px #C9D8C2;background:#fff}
+.copy code{background:none;padding:2px 8px}
+.copy button,.copy-block button{min-height:30px;padding:0 10px;border:0;border-left:1px solid #C9D8C2;border-radius:0 7px 7px 0;background:#F1F8EB;color:var(--rad2);font:600 12.5px Geist,system-ui,sans-serif;cursor:pointer}
+.copy button.done,.copy-block button.done{background:var(--rad);color:#fff}
+.copy button:focus-visible,.copy-block button:focus-visible,.dls a:focus-visible,.toc a:focus-visible,.top a:focus-visible{outline:2px solid var(--rad);outline-offset:2px}
+.copy-block{position:relative;display:block;margin-top:10px;border-radius:10px;background:#0F1A12;box-shadow:none}
+.copy-block pre{margin:0;padding:16px 18px;overflow-x:auto;color:#E4EFE0;font:13px/1.6 var(--mono);white-space:pre-wrap}
+.copy-block button{position:absolute;top:8px;right:8px;border:0;border-radius:6px;background:#1F3324;color:#C7EBA2}
+.dls{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0}
+.dls a{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:999px;background:#F1F8EB;box-shadow:inset 0 0 0 1px #C9D8C2;font-size:14px;font-weight:600;text-decoration:none;color:var(--rad2)}
+footer{padding:28px var(--gut);border-top:1px solid var(--hair);font-size:14px;color:var(--ink2);text-align:center}
+@media (max-width:860px){.wrap{grid-template-columns:1fr;gap:24px}.toc{position:static}.toc ol{display:flex;flex-wrap:wrap;gap:6px}
+ .toc li a{padding:6px 12px;border:0;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--hair)}.top a.back{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<header class="top"><img src="https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/assets/2027/nms-emblem-64-green.png" alt="" width="36" height="36"><p><b>Nonprofit Marketing Summit 2027</b><small>HubSpot setup guide</small></p>
+<a class="back" href="../">See the three emails</a></header>
+<div class="hero"><div class="hero-in"><h1>Setting up the confirmation emails in HubSpot</h1>
+<p>Step by step, for whoever sets this up on your team: two email templates, two automated emails, the partner form and two
+workflows. The emails themselves are on the <a href="../">preview page</a>. If any step looks different in your account,
+message us and we’ll walk through it with you.</p></div></div>
+<div class="wrap"><nav class="toc" aria-label="Steps"><p>On this page</p><ol><li><a href="#before">Before you start</a></li><li><a href="#templates">Add the two email templates</a></li><li><a href="#emails">Create the two automated emails</a></li><li><a href="#form">Create the partner form</a></li><li><a href="#partner-flow">Build the partner workflow</a></li><li><a href="#signup-flow">Build the sign-up workflow (leave it off)</a></li><li><a href="#test">Test before anything goes live</a></li></ol></nav>
+<main><section class="part part-pre" id="before" aria-labelledby="before-h"><header><h2 id="before-h">Before you start</h2></header><ul class="st"><li>A HubSpot user who can edit Design Manager files, marketing emails, forms and workflows.</li><li>The three files: <p class="dls"><a href="../files/nms2027-youre-in.html" download>You’re in (HTML)</a><a href="../files/nms2027-partner-thanks.html" download>We got your note (HTML)</a><a href="../files/nms2027-partner-alert.txt" download>Team alert (text)</a></p></li><li>Your answers for the blanks: who sends each email and reads the replies, who gets partner alerts, how soon you reply to partners, and the name and title that sign the partner email.</li><li>Menu names are from HubSpot’s current navigation. Where a menu moved, the older name is in brackets.</li></ul></section><section class="part" id="templates" aria-labelledby="templates-h"><header><span class="pn">1</span><h2 id="templates-h">Add the two email templates</h2><p class="tm">About 10 minutes</p></header><ol class="st"><li>Open <span class="path"><b>Content</b><i aria-hidden="true">›</i><b>Design Manager</b></span> (older menus: <span class="path"><b>Marketing</b><i aria-hidden="true">›</i><b>Files and Templates</b><i aria-hidden="true">›</i><b>Design Tools</b></span>).</li><li>Click <span class="path"><b>File</b><i aria-hidden="true">›</i><b>New file</b></span>. Choose <b>HTML + HubL</b>, then <b>Template</b>, and set the template type to <b>Email</b>. Name it <span class="copy"><code>NMS 2027 You’re in</code><button type="button" data-copy="NMS 2027 You’re in" aria-label="Copy template name">Copy</button></span> and create it.</li><li>HubSpot starts the new file with a comment block (it begins with <code>&lt;!--</code> and includes <code>templateType: email</code>). Keep that block. Select everything below it and paste the whole You’re in HTML file.</li><li>Click <b>Publish changes</b>.</li><li>Do the same for <span class="copy"><code>NMS 2027 We got your note</code><button type="button" data-copy="NMS 2027 We got your note" aria-label="Copy template name">Copy</button></span> with the We got your note file.</li><li>In the We got your note template, replace the four orange <code>[CB: …]</code> notes with your answers (search the file for <code>[CB:</code>). Or send us the answers and we’ll send the file back filled in.</li><li>Optional: upload the four pictures to your File Manager and swap their addresses in both templates. Until then they load from our server.</li></ol></section><section class="part" id="emails" aria-labelledby="emails-h"><header><span class="pn">2</span><h2 id="emails-h">Create the two automated emails</h2><p class="tm">About 10 minutes</p></header><ol class="st"><li>Go to <span class="path"><b>Marketing</b><i aria-hidden="true">›</i><b>Email</b></span> and click <b>Create email</b>. Choose <b>Automated</b>, then pick <b>NMS 2027 You’re in</b> from your custom templates.</li><li>Fill in the email’s settings: internal name, from name, from address (and reply-to), and the subscription type it sends under (the one summit sign-ups agree to, for example event or summit updates).</li><li>Subject line: <span class="copy"><code>You’re in, </code><button type="button" data-copy="You’re in, " aria-label="Copy subject">Copy</button></span> then insert the <b>First name</b> token. Preview text: <span class="copy"><code>Your Zoom link, both days in your calendar, and a link for a coworker.</code><button type="button" data-copy="Your Zoom link, both days in your calendar, and a link for a coworker." aria-label="Copy preview text">Copy</button></span></li><li>Click <b>Review and publish</b>, then <b>Publish</b>. A workflow can only send an automated email once it’s published.</li><li>Repeat with <b>NMS 2027 We got your note</b>. Subject line: <span class="copy"><code>We got your note, </code><button type="button" data-copy="We got your note, " aria-label="Copy subject">Copy</button></span> then the <b>First name</b> token. Preview text: <span class="copy"><code>Our team will reply with the 2027 partner options.</code><button type="button" data-copy="Our team will reply with the 2027 partner options." aria-label="Copy preview text">Copy</button></span></li></ol></section><section class="part" id="form" aria-labelledby="form-h"><header><span class="pn">3</span><h2 id="form-h">Create the partner form</h2><p class="tm">About 5 minutes</p></header><ol class="st"><li>Go to <span class="path"><b>Marketing</b><i aria-hidden="true">›</i><b>Forms</b></span> and click <b>Create form</b>. Choose <b>Embedded form</b> and start from a blank template.</li><li>Name it <span class="copy"><code>NMS 2027 partner inquiry</code><button type="button" data-copy="NMS 2027 partner inquiry" aria-label="Copy form name">Copy</button></span>.</li><li>Add these fields, in this order: <b>First name</b>, <b>Last name</b>, <b>Email</b>, <b>Company name</b>, <b>Message</b>. These are HubSpot’s built-in properties, and the form on the sponsors page already uses the same ones (<code>firstname</code>, <code>lastname</code>, <code>email</code>, <code>company</code>, <code>message</code>).</li><li>Leave the form’s own email notifications off. The team alert comes from the workflow in step 4, so nobody gets two.</li><li>Publish the form, then open its <b>Share</b> or <b>Embed code</b>. Copy the <code>portalId</code> and <code>formId</code> values and send them to us. We connect the sponsors page to the form through HubSpot’s Forms API: the page keeps its design, and every inquiry lands in HubSpot as a contact.</li></ol></section><section class="part" id="partner-flow" aria-labelledby="partner-flow-h"><header><span class="pn">4</span><h2 id="partner-flow-h">Build the partner workflow</h2><p class="tm">About 10 minutes</p></header><ol class="st"><li>Go to <span class="path"><b>Automation</b><i aria-hidden="true">›</i><b>Workflows</b></span> (older menus: <span class="path"><b>Automations</b><i aria-hidden="true">›</i><b>Workflows</b></span>) and click <b>Create workflow</b>, then <b>From scratch</b>. Choose <b>Contact-based</b> and a blank workflow. Name it <span class="copy"><code>NMS 2027 partner inquiry</code><button type="button" data-copy="NMS 2027 partner inquiry" aria-label="Copy workflow name">Copy</button></span>.</li><li>Set up the trigger: <span class="path"><b>When an event occurs</b><i aria-hidden="true">›</i><b>Form submission</b></span>, and choose <b>NMS 2027 partner inquiry</b>. Turn on <b>re-enrollment</b> for this trigger, so a partner who writes twice is answered twice.</li><li>Add an action: <span class="path"><b>Send marketing email</b></span>, and choose <b>NMS 2027 We got your note</b>.</li><li>Add an action: <span class="path"><b>Send internal email notification</b></span>. Recipients: the people who handle partners. Subject: <span class="copy"><code>New partner inquiry: </code><button type="button" data-copy="New partner inquiry: " aria-label="Copy alert subject">Copy</button></span> then insert the <b>Company name</b> token.</li><li>Body: paste the alert text below. Then replace each <code>{{ … }}</code> with the matching contact token from the token button (First name, Last name, Email, Company name, Message).<div class="copy copy-block"><pre>NEW PARTNER INQUIRY · NMS 2027
+{{ contact.company }} wants to talk about partnering.
+Someone just sent the partner form on the summit’s partners page.
+
+Name: {{ contact.firstname }} {{ contact.lastname }}
+Work email: {{ contact.email }}
+Company: {{ contact.company }}
+Their note: {{ contact.message }}
+Sent from: The partners page form
+
+Reply to {{ contact.firstname }}: mailto:{{ contact.email }}?subject=NMS%202027%20partner%20options
+
+They already got the automatic “We got your note” email, which says our team will reply with the 2027 partner options and what each costs, [CB: the reply time that email promises].
+
+Sent by HubSpot when the partner form on the summit’s partners page is sent.</pre><button type="button" data-copy="NEW PARTNER INQUIRY · NMS 2027
+{{ contact.company }} wants to talk about partnering.
+Someone just sent the partner form on the summit’s partners page.
+
+Name: {{ contact.firstname }} {{ contact.lastname }}
+Work email: {{ contact.email }}
+Company: {{ contact.company }}
+Their note: {{ contact.message }}
+Sent from: The partners page form
+
+Reply to {{ contact.firstname }}: mailto:{{ contact.email }}?subject=NMS%202027%20partner%20options
+
+They already got the automatic “We got your note” email, which says our team will reply with the 2027 partner options and what each costs, [CB: the reply time that email promises].
+
+Sent by HubSpot when the partner form on the summit’s partners page is sent.">Copy</button></div></li><li>Review the workflow and turn it on.</li></ol></section><section class="part" id="signup-flow" aria-labelledby="signup-flow-h"><header><span class="pn">5</span><h2 id="signup-flow-h">Build the sign-up workflow (leave it off)</h2><p class="tm">About 5 minutes</p></header><ol class="st"><li>Create another contact-based workflow from scratch, named <span class="copy"><code>NMS 2027 sign-up confirmation</code><button type="button" data-copy="NMS 2027 sign-up confirmation" aria-label="Copy workflow name">Copy</button></span>.</li><li>Trigger: <span class="path"><b>When an event occurs</b><i aria-hidden="true">›</i><b>Form submission</b></span>, and choose the summit sign-up form. Turn on re-enrollment.</li><li>Add an action: <span class="path"><b>Send marketing email</b></span>, and choose <b>NMS 2027 You’re in</b>.</li><li>Save it, but leave it off. The You’re in email carries each person’s own join link, which comes from the event platform’s HubSpot connection. We’ll send our platform recommendation first. Once you’ve picked one, the step that registers each person on the platform goes before the email, we map the join link, and then it can go live.</li></ol></section><section class="part" id="test" aria-labelledby="test-h"><header><span class="pn">6</span><h2 id="test-h">Test before anything goes live</h2><p class="tm">About 10 minutes</p></header><ol class="st"><li>In each email, use <b>Preview</b> as a specific contact, then <b>Send test email</b> to yourself. Open it in Gmail, Outlook and on a phone.</li><li>Once we’ve connected the sponsors page, send its form once with a test name. Check that the contact appears in HubSpot, the We got your note email arrives, and the team alert arrives.</li><li>Check the subject lines for a contact with no first name.</li><li>Tell us when it’s done, and we’ll test the live page against it from our side.</li></ol></section></main></div>
+<footer>Prepared for Community Boost, November 20, 2026.</footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+  var t=b.getAttribute('data-copy'),done=function(){var o=b.textContent;b.textContent='Copied';b.classList.add('done');setTimeout(function(){b.textContent=o;b.classList.remove('done')},1600)};
+  if(navigator.clipboard)navigator.clipboard.writeText(t).then(done,function(){});})});
+(function(){var ls=[].slice.call(document.querySelectorAll('.toc a')),ss=ls.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  var f=function(){var y=scrollY+120,i=0;ss.forEach(function(s,j){if(s&&s.offsetTop<=y)i=j});ls.forEach(function(a,j){a.classList.toggle('on',j===i)})};
+  addEventListener('scroll',function(){requestAnimationFrame(f)},{passive:true});f()})();
+</script>
+</body></html>
