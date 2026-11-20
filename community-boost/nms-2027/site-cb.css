@@ -857,13 +857,14 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 
 /* ---- the partner section as the tall blueprint sheet (Sean 2026-11-19: "make it a background", "the blueprint extended
    up, not super landscape"). The sheet runs the full width, anchored to the bottom; the heading sits over the floor
-   plan at its top, darkened just enough to read. Sheet: 1600 x 1500; the drawing under the heading zone is 940/1600 of
-   the width, so that is the bottom padding. ---- */
+   plan at its top, darkened just enough to read. Sheet: 1600 x 1260, full width even under the fixed sign-up form (Sean
+   2026-11-20: "go to the rest of the width, even if the form blocks it"); the title partner, the stage and the billboard
+   are in its left 61%, clear of the form. The drawing under the heading zone is 760/1600 of the width: the bottom padding. ---- */
 #partners.pt-bp{padding:0!important;max-width:none!important;width:auto!important;margin:0!important}
-.pt-bp-sheet{position:relative;overflow:hidden;color:#fff;padding:92px 0 calc(58.75vw + 10px);
- background:#06191E image-set(url(assets/blueprint/main-partners-bg-1600.webp) 1x, url(assets/blueprint/main-partners-bg-2400.webp) 2x) 50% 100%/100% auto no-repeat}
+.pt-bp-sheet{position:relative;overflow:hidden;color:#fff;padding:92px 0 calc(47.5vw + 10px);
+ background:#06191E image-set(url(assets/blueprint/main-partners-wide-1600.webp) 1x, url(assets/blueprint/main-partners-wide-2400.webp) 2x) 50% 100%/100% auto no-repeat}
 .pt-bp-sheet:before{content:"";position:absolute;inset:0;pointer-events:none;
- background:linear-gradient(180deg,rgba(4,18,22,.84) 0,rgba(4,18,22,.74) calc(100% - 58.75vw - 150px),rgba(4,18,22,.36) calc(100% - 58.75vw),rgba(4,18,22,0) calc(100% - 55.25vw))}
+ background:linear-gradient(180deg,rgba(4,18,22,.84) 0,rgba(4,18,22,.74) calc(100% - 47.5vw - 150px),rgba(4,18,22,.36) calc(100% - 47.5vw),rgba(4,18,22,0) calc(100% - 44vw))}
 .pt-bp-head{position:relative;text-align:center}
 .pt-bp-head p{max-width:48ch}
 .pt-bp-head h2{margin:0;font:700 clamp(34px,4.3vw,62px)/1 Geist,system-ui,sans-serif;letter-spacing:-.04em;color:#fff}
@@ -880,22 +881,13 @@ input.wm-radio:checked+label.wm-version:hover{background:#071407!important;color
 .pt-bp-btn:focus-visible{outline:3px solid #C7EBA2;outline-offset:3px}
 .pt-bp-hist{padding-top:56px;padding-bottom:var(--calm-section,96px)}
 @media (max-width:760px){
- .pt-bp-sheet{padding:64px 0 560px;background-size:auto 820px;background-position:30% 100%}
- .pt-bp-sheet:before{background:linear-gradient(180deg,rgba(4,18,22,.86) 0,rgba(4,18,22,.8) calc(100% - 565px),rgba(4,18,22,.4) calc(100% - 525px),rgba(4,18,22,0) calc(100% - 475px))}
+ .pt-bp-sheet{padding:64px 0 500px;background-size:auto 760px;background-position:6% 100%}
+ .pt-bp-sheet:before{background:linear-gradient(180deg,rgba(4,18,22,.86) 0,rgba(4,18,22,.8) calc(100% - 500px),rgba(4,18,22,.4) calc(100% - 460px),rgba(4,18,22,0) calc(100% - 410px))}
  .pt-bp-head{text-align:left}
  .pt-bp-head p{font-size:17px;margin-left:0}
  .pt-bp-ctas{display:grid;grid-template-columns:1fr 1fr}
  .pt-bp-btn{min-width:0}
  .pt-bp-go{grid-column:1 / -1}
-}
-/* from 1200px the sign-up form is fixed on the right (the rail): the sheet ends where the form begins and lies on
-   Catalyst, so the billboard is never under the form; the heading and the drawing share the content column's centre */
-@media (min-width:1200px){
- .pt-bp-sheet{--pt-bp-w:calc(100vw - var(--rail,340px) - var(--rgap,52px));background-color:#071407;
-  background-size:var(--pt-bp-w) auto,26px 100%;background-position:0 100%,var(--pt-bp-w) 0;background-repeat:no-repeat;
-  background-image:image-set(url(assets/blueprint/main-partners-bg-1600.webp) 1x, url(assets/blueprint/main-partners-bg-2400.webp) 2x),linear-gradient(90deg,rgba(0,0,0,.5),rgba(0,0,0,0));
-  padding-bottom:calc(var(--pt-bp-w) * .5875 + 10px)}
- .pt-bp-sheet:before{background:linear-gradient(180deg,rgba(4,18,22,.84) 0,rgba(4,18,22,.74) calc(100% - var(--pt-bp-w) * .5875 - 150px),rgba(4,18,22,.36) calc(100% - var(--pt-bp-w) * .5875),rgba(4,18,22,0) calc(100% - var(--pt-bp-w) * .5525))}
 }
 /* the best-of heading is CB's longer line now ("The conference that nonprofits can't stop talking about"): its highlight
    may wrap, and each line keeps its own underline */
