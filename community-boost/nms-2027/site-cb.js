@@ -59,19 +59,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
     var place = '<span class="cb-place">' + PIN + esc(city) + '</span>';
     // the summit's own dates (US Pacific, as the emails say them), small and grey, only where the visitor's dates differ
-    var PT = shifted ? ' <small class="cb-pt">Feb 23-24 PT</small>' : '';
+    var PT = shifted ? ' <small class="cb-pt">(Feb 23-24 in the US)</small>' : '';
     var html = {
       range: esc(range) + ' in ' + place + PT,                                   // Feb 23-24 in (pin) Chicago
       rangeY: esc(range) + ', ' + d[1].y,
       rangeYpt: esc(range) + ', ' + d[1].y,
-      heroSub: 'Your dates in ' + place + (shifted ? ' · Feb 23-24 PT' : ''),   // the small line under the eyebrow                            // the hero: theirs, then Pacific when it differs                                   // Feb 24-25, 2027
+      heroSub: 'Your dates in ' + place + (shifted ? ' <span class="cb-us">(Feb 23-24 in the US)</span>' : ''),   // Sean 2026-11-21: "Feb 23-24 PT" beside Manila read as Manila's dates   // the small line under the eyebrow                            // the hero: theirs, then Pacific when it differs                                   // Feb 24-25, 2027
       rangeShort: esc(range),
       from: 'On Zoom, you join from ' + place,                              // the day sheets' Where (the visitor joins from there, not the hosts)
       liveFrom: '<i class="cb-live" aria-hidden="true"></i>Live on Zoom',   // the hero eyebrow stays short, with the live dot                                    // hero line, sheets
       stubFrom: 'Joining from ' + place,
       city: place,
       calMonth: esc(rangeLong),
-      where: place + (shifted ? ' · Feb 23-24 PT' : ' · free on Zoom'),                                    // the header's second line
+      where: place + (shifted ? ' · your dates' : ' · free on Zoom'),   // the header: the date above is theirs; the US dates are in the hero line                                    // the header's second line
       foryou: '<b>For you:</b> ' + esc(d[0].wd + ', ' + d[0].md) + ' to ' + esc(d[1].wd + ', ' + d[1].md) + ' in ' + place +
               (shifted ? ' (Feb 23-24 in the US)' : '') + '. <span class="cb-fy-live">Come live and bring a campaign: on Day 2 you build it with the team.</span>'
     };

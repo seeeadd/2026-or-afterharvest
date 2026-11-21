@@ -1143,6 +1143,67 @@ section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:aut
 .pt-history-marks{align-items:stretch}
 @media (max-width:760px){.pt-nm-t{font-size:19px}.pt-history-marks{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pt-history-marks .pt-nm{font-size:15px}}
 
+/* ===== phone pass (Sean 2026-11-21) ===== */
+/* the visitor's dates first, the US dates as a plain aside ("Feb 23-24 PT" beside Manila read as Manila's dates) */
+.cb-us{white-space:nowrap;color:var(--cb-ink2);font-weight:500}
+/* the schedule calendar on the main page fills the phone ("not full width": it sat flush left with 32px open on the right) */
+@media (max-width:760px){
+ #schedule figure.gc.cbc{width:auto;margin-left:0;margin-right:0;border-left:0;border-right:0;border-radius:0}
+ #schedule figure.gc.cbc .gc-top,#schedule figure.gc.cbc .gc-main{border-radius:0}
+}
+
+/* the best-of lists with two write-ups (Sean 2026-11-21: "it looks a little bit unfinished because we removed something from it"):
+   the third clipping that peeked out half-hidden under the Iowa listing goes (the line above says two write-ups), and the two
+   columns become a pair: the same height, the closing line on one baseline, the passes tilted as mirror images */
+section.wa .wa-ia .wa-behind{display:none}
+@media (min-width:641px){
+ .wa-row.cb-wa-two{align-items:stretch!important}
+ section.wa .wa-row.cb-wa-two .wa-col{align-self:stretch!important}
+ .wa-row.cb-wa-two .wa-pass{flex:1 1 auto;display:flex}
+ .wa-row.cb-wa-two .wa-pass-b{flex:1 1 auto}
+ .wa-row.cb-wa-two .wa-pass-main{display:flex;flex-direction:column}
+ .wa-row.cb-wa-two .wa-more{margin-top:auto;padding-top:11px}
+ .wa-refined .wa-row.cb-wa-two .wa-np{--ticket-angle:-1deg;--ticket-drop:0px}
+ .wa-refined .wa-row.cb-wa-two .wa-ia{--ticket-angle:1deg;--ticket-drop:0px}
+}
+
+/* the hero: Ashley joins the right as co-host, three a side (Sean 2026-11-21) */
+.cb-hero-b .hb-main .hb-pano-balanced .hb-side.r.hb-side-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@container hero-stage (max-width: 740px){
+ .cb-hero-b .hb-main .hb-pano-balanced{grid-template-columns:repeat(12,minmax(0,1fr))}
+}
+
+/* past summit speakers, calmer (Sean 2026-11-21: "make this a little less overwhelming. Remove some lines that we don't need"):
+   no rule above or under the heading, none under each speaker, none before the organizations; the organization tiles lose
+   their outlines and sit on a soft fill */
+.sp-alumni{border-top:0!important}
+.sp-alumni-head{border-bottom:0!important;padding-bottom:6px!important}
+.sp-alumni-cards>li{border-bottom:0!important}
+.cb-orgs-wall{border-top:0!important;margin-top:38px!important;padding-top:0!important}
+.cb-orgs-wall li{border:0!important;background:#F3F7F1!important}
+.cb-orgs-wall .cb-and{background:var(--cb-tint)!important}
+
+/* the two columns' logo grids start on one line: the sentence above each takes two lines' room */
+@media (min-width:641px){.wa-row.cb-wa-two .wa-line{display:block;min-height:2.9em}}
+
+/* the closing section's day icons in blueprint drafting (Sean 2026-11-21, cb_edits_1121.py); the ribbon keeps its shape, new texture */
+#register .cp-icon.cp-icon-bp{filter:none!important}
+#register .closing-day-heading{grid-template-columns:44px minmax(0,1fr)}
+/* the status lights flat, the brand's own dot */
+.closing-status-light{background:#009B27!important;box-shadow:0 0 0 3px rgb(0 155 39/.14)!important}
+.closing-day.is-one .closing-status-light{background:#2F7A3F!important}
+.closing-status-light:before,.closing-status-light:after{display:none!important}
+
+/* hero name tags fit the name (Ashley Brannan and Jazzmin Ramirez were cut) */
+@container hero-stage (min-width: 741px){
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-chest{width:max-content!important;min-width:clamp(56px,7.2cqi,78px);max-width:100px;padding-inline:6px!important}
+}
+#register .closing-broadcast svg.cp-cam{display:block!important;width:22px!important;height:17px!important;filter:none!important;overflow:visible}
+
+/* speed: the far backgrounds load when their section is within about two screens (cb_edits_1121.py adds bg-in) */
+.lazybg .pt-bp-sheet:not(.bg-in){background-image:none!important}
+.lazybg section.d1:not(.bg-in) .cb-walk-head::after{background-image:none!important}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.

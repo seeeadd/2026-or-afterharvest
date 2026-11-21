@@ -209,6 +209,21 @@
  .tt-corner small .tt-place{font-size:11px}
  .tt-time,.tt-corner{padding:6px 7px}.tt-time b{font-size:11.5px}.tt-time small{font-size:9.5px}
 }
+.tt-stg{display:none}
+/* phones: the day as one full-width column in time order, every session keeping its stage colour and naming its stage, instead
+   of a table that showed Main Stage and a sliver of the next (Sean 2026-11-21: "the schedule ... not full width, so fix that") */
+@media (max-width:760px){
+ .tt-scroll{overflow:visible;padding:12px 12px 6px;scroll-snap-type:none}
+ .tt-grid{display:flex;flex-direction:column;gap:8px;grid-template-columns:none;grid-template-rows:none}
+ .tt-grid>.tt-corner,.tt-grid>.tt-lane,.tt-grid>.tt-time,.tt-grid>.tt-quiet,.tt-grid>.tt-sh{display:none}
+ .tt-grid>.tt-ev{order:var(--o);min-height:0;padding:12px 14px 13px 16px;border:0;border-radius:10px;box-shadow:inset 4px 0 0 var(--c)}
+ .tt-stg{display:block;margin:0 0 2px;font-size:11.5px;font-weight:700;letter-spacing:.01em;color:var(--c2)}
+ .tt-ev.tt-main.is-key .tt-stg{color:#9BE3AA}
+ .tt-ev h3,.tt-xs h3{font-size:15.5px;line-height:1.3;display:block;-webkit-line-clamp:unset;overflow:visible}
+ .tt-when{font-size:12.5px}
+ .tt-ev:has(.tt-face) .tt-who{padding-right:44px}
+ .tt-face{top:auto;bottom:12px;right:12px;width:32px;height:32px}
+}
 @media (prefers-reduced-motion:reduce){.tt-ev,.tt-tab{transition:none}}
 .sch-end{display:flex;flex-wrap:wrap;gap:12px;padding:40px var(--gut) 0}
 .sch-back{flex:none;width:18px;height:18px;margin-right:10px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}

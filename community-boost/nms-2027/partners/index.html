@@ -79,6 +79,12 @@
  .row-bg .ctas{justify-content:stretch}.row-bg .ctas .btn{flex:1}
 }
 
+/* Ashley on the partner form (Sean 2026-11-21: "add her in the partners area") */
+.inq-who{display:flex;align-items:center;gap:12px;margin:14px 0 4px}
+.inq-who img{flex:none;width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3px #D6E4D2}
+.inq-who span{display:grid;gap:1px;line-height:1.25}
+.inq-who b{font-size:15px;font-weight:700;color:var(--ink)}
+.inq-who small{font-size:13.5px;color:var(--ink2)}
 .inq-err{margin-top:12px;padding-left:10px;border-left:3px solid var(--rad);font-size:14px;font-weight:600;color:var(--ink)}
 .inq [aria-invalid="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .inq-done h2{font-size:26px}
@@ -220,6 +226,7 @@
 <div class="inq-body" data-form-body>
 <h2>Talk to our team</h2>
 <p>Tell us a little about your team and we’ll send the 2027 partner options.</p>
+<div class="inq-who"><img src="assets/ashley-brannan-192.webp" alt="" width="96" height="96" loading="lazy" decoding="async"><span><b>Ashley Brannan</b><small>Summit co-host, Community Boost</small></span></div>
 <div class="row2"><label>First name<input name="firstname" autocomplete="given-name" required></label><label>Last name <span class="opt">Optional</span><input name="lastname" autocomplete="family-name"></label></div>
 <label>Work email<input name="email" type="email" autocomplete="email" required></label>
 <label>Company<input name="company" autocomplete="organization" required></label>
