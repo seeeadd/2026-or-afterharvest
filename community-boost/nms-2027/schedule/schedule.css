@@ -297,4 +297,4 @@ html,body{max-width:100%;overflow-x:hidden}
 
 /* the day banners' drawings step back so the banner reads cleaner (Sean 2026-11-21: "a little bit less opaque ... too much going on") */
 .tt-allday .tt-a-art{opacity:.42}
-.tt-a2 .tt-a-art{opacity:.55}
+.tt-a2 .tt-a-art{opacity:.42}
