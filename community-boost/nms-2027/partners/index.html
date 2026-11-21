@@ -79,6 +79,34 @@
  .row-bg .ctas{justify-content:stretch}.row-bg .ctas .btn{flex:1}
 }
 
+
+/* phones and tablets: the page links behind a menu, so a visitor on the schedule or the sponsors page can always get home and to
+   the other pages (Sean 2026-11-21: "I still want them to be able to go back home or have an option to see the subpages") */
+.m-nav{display:none;position:relative;flex:none}
+.m-nav>summary{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;color:#0D1A0E;cursor:pointer;list-style:none}
+.m-nav>summary::-webkit-details-marker{display:none}
+.m-nav>summary:focus-visible{outline:2px solid #009B27;outline-offset:2px}
+.m-nav[open]>summary{background:rgba(7,20,7,.06)}
+.m-nav-panel{position:absolute;right:0;top:calc(100% + 8px);z-index:60;display:grid;min-width:220px;padding:6px;border-radius:12px;background:#fff;
+ box-shadow:0 0 0 1px rgba(7,20,7,.1),0 18px 40px -14px rgba(7,20,7,.35)}
+.m-nav-panel a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;font-size:15px;font-weight:600;color:#0D1A0E;text-decoration:none}
+.m-nav-panel a:hover,.m-nav-panel a:focus-visible{background:#F1F8EB}
+.m-nav-panel a[aria-current="page"]{color:#007A1F;background:#F1F8EB}
+.m-nav-panel a.m-home{border-bottom:1px solid #E6ECE4;border-radius:8px 8px 0 0;margin-bottom:4px}
+@media (max-width:1180px){.m-nav{display:block}}
+/* on the sponsors page the menu stays quiet: small and grey beside the partner button */
+.m-nav-quiet>summary{width:40px;height:40px;color:#6B746C}
+.m-nav-quiet>summary svg{width:19px;height:19px}
+
+/* "Become a partner" stands out in the bar (Sean 2026-11-21: "Make the 'Become a Partner' button more out there, more emphasized") */
+.nav .btn.nav-cta{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;font-size:15px;font-weight:700;
+ box-shadow:0 8px 18px -8px rgba(0,155,39,.7)}
+.nav .btn.nav-cta .nav-cta-ar{transition:transform .2s ease}
+.nav .btn.nav-cta:hover .nav-cta-ar{transform:translateX(3px)}
+@media (max-width:760px){.nav .btn.nav-cta{margin-left:auto;min-height:46px;padding:0 16px;font-size:14.5px}}
+/* phones: the logo alone (still the link home), so "Become a partner" has the room it needs */
+@media (max-width:420px){.nav .brand>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+@media (max-width:360px){.nav .btn.nav-cta{padding:0 12px;font-size:13.5px}.nav .btn.nav-cta .nav-cta-ar{display:none}}
 /* Ashley on the partner form (Sean 2026-11-21: "add her in the partners area") */
 .inq-who{display:flex;align-items:center;gap:12px;margin:14px 0 4px}
 .inq-who img{flex:none;width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3px #D6E4D2}
@@ -214,7 +242,8 @@
 <a class="brand" href="../"><img src="assets/nms-emblem-240-green.png" alt="" width="40" height="40"><span><b>Nonprofit Marketing Summit</b><small>Architects of Impact</small></span></a>
 <nav class="links" aria-label="Main navigation"><a href="../#days">The two days</a><a href="../schedule/">Schedule</a><a href="../#speakers">Speakers</a><a href="./" aria-current="page">Sponsors</a><a href="../#faq">Questions</a></nav>
 <div class="navdate"><b>Feb 23-24, 2027 PT</b><small>Free · live on Zoom</small></div>
-<a class="btn btn-primary btn-sm" href="#talk">Become a partner</a>
+<a class="btn btn-primary nav-cta" href="#talk">Become a partner <svg class="nav-cta-ar" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><path d="M1 7h16M12 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<details class="m-nav m-nav-quiet"><summary aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><nav class="m-nav-panel" aria-label="Pages"><a href="../" class="m-home">Summit home</a><a href="../#days">The two days</a><a href="../schedule/">Schedule</a><a href="../#speakers">Speakers</a><a href="./" aria-current="page">Sponsors</a><a href="../#faq">Questions</a></nav></details><script>document.addEventListener('click',function(e){document.querySelectorAll('details.m-nav[open]').forEach(function(d){if(!d.contains(e.target)||e.target.closest('.m-nav-panel a'))d.removeAttribute('open')})})</script>
 </div></header><main>
 <section class="hero-b paper-grid" id="top"><div class="wrap">
 <div class="grid">

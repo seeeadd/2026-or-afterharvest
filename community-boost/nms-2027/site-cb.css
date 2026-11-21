@@ -1246,6 +1246,26 @@ section.wa .wa-ia .wa-behind{display:none}
    the crystal spinning behind a little bit more visible"; it was at .055) */
 .wa.wa-refined .wa-rays{opacity:.13!important}
 
+/* the visitor's dates on one line, the summit's own Pacific dates on the line under it, everywhere (Sean 2026-11-21: "put it
+   under the line because what if their city has a long name"); a city too long for its line ends in an ellipsis instead of
+   running out of the bar */
+.signup-hours-date{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.signup-hours-date .cb-pt{display:block;margin:1px 0 0;font-size:.84em;line-height:1.25;overflow:hidden;text-overflow:ellipsis}
+.registration-bar .cb-pt,.cb-ticket .cb-pt{display:none!important}
+
+/* phones: the top bar sits flush on the top edge, full width, still floating over the page with its shadow (Sean 2026-11-21:
+   "make the sticky header really stick to the top so it's not looking that overwhelming") */
+@media (max-width:760px){
+ .nav-shell.event-nav.is-scrolled{top:0!important;width:100%!important;max-width:none!important;border-width:0 0 1px!important;border-radius:0!important;
+  box-shadow:0 1px #1d301f16,0 8px 20px -10px #15231633!important}
+}
+/* room under each day's "See Day N by time and stage" button (Sean 2026-11-21) */
+#schedule .cbc-day .cbc-daylink{margin-bottom:22px!important}
+/* the phone bottom bar: the date column may not grow past its cell, so a long city ends in an ellipsis before the button */
+.cb-mbar .mobile-bar-hours{min-width:0;overflow:hidden}
+.cb-mbar .mobile-bar-hours,.cb-mbar .signup-hours-pacific{display:block;min-width:0}
+.cb-mbar .signup-hours-date{display:block!important}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.

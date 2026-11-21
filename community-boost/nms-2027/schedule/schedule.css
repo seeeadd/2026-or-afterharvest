@@ -2,6 +2,26 @@
 /* the page around the table: the partners page's base (nav, buttons, fonts) plus this */
 .nav{position:sticky;top:0;z-index:20}
 @media (max-width:1180px){.links{display:none}.navdate{margin-left:auto}}
+/* phones and tablets: the page links behind a menu, so a visitor on the schedule or the sponsors page can always get home and to
+   the other pages (Sean 2026-11-21: "I still want them to be able to go back home or have an option to see the subpages") */
+.m-nav{display:none;position:relative;flex:none}
+.m-nav>summary{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;color:#0D1A0E;cursor:pointer;list-style:none}
+.m-nav>summary::-webkit-details-marker{display:none}
+.m-nav>summary:focus-visible{outline:2px solid #009B27;outline-offset:2px}
+.m-nav[open]>summary{background:rgba(7,20,7,.06)}
+.m-nav-panel{position:absolute;right:0;top:calc(100% + 8px);z-index:60;display:grid;min-width:220px;padding:6px;border-radius:12px;background:#fff;
+ box-shadow:0 0 0 1px rgba(7,20,7,.1),0 18px 40px -14px rgba(7,20,7,.35)}
+.m-nav-panel a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;font-size:15px;font-weight:600;color:#0D1A0E;text-decoration:none}
+.m-nav-panel a:hover,.m-nav-panel a:focus-visible{background:#F1F8EB}
+.m-nav-panel a[aria-current="page"]{color:#007A1F;background:#F1F8EB}
+.m-nav-panel a.m-home{border-bottom:1px solid #E6ECE4;border-radius:8px 8px 0 0;margin-bottom:4px}
+@media (max-width:1180px){.m-nav{display:block}}
+/* the narrowest phones: the logo alone (still the link home), so the bar never squeezes the button over the name */
+@media (max-width:360px){.nav .brand>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+/* on the sponsors page the menu stays quiet: small and grey beside the partner button */
+.m-nav-quiet>summary{width:40px;height:40px;color:#6B746C}
+.m-nav-quiet>summary svg{width:19px;height:19px}
+
 @media (max-width:760px){:root{--gut:16px}.nav-in{height:64px;gap:12px}.brand img{width:32px;height:32px}.brand b{font-size:12.5px}.brand small{display:none}
  .navdate{display:none}.nav .btn{margin-left:auto;min-height:44px;padding:0 14px;font-size:13px}}
 @media (max-width:400px){.brand{flex:0 1 auto;min-width:0}.nav .btn{flex:none;padding:0 12px}}   /* the name wraps before the button leaves the screen */
