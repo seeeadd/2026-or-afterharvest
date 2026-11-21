@@ -1394,6 +1394,15 @@ section.wa .wa-ia .wa-behind{display:none}
 .pt-bp-hist li:hover img{filter:none;opacity:1}
 @media (prefers-reduced-motion:reduce){.pt-bp-hist img{transition:none}}
 
+/* the speakers' companies on the best-of list keep their real logos (Sean 2026-11-21), in the same tiles as the names above,
+   at one visual size */
+.wa-logos{list-style:none!important;margin:12px 0 6px!important;padding:0!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
+.wa-logos li{display:flex!important;align-items:center;justify-content:center;min-height:52px;padding:8px 10px!important;background:var(--cb-tint);border:1px solid var(--cb-line);border-radius:6px}
+.wa-logos img{display:block;height:22px!important;width:auto!important;max-width:82%;object-fit:contain}
+.wa-logos img[src*="visa"]{height:17px!important}
+.wa-logos img[src*="tiktok"]{height:46px!important;max-height:46px}
+.wa-logos img[src*="np-digital"]{height:29px!important}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.

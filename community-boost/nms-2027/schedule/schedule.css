@@ -256,3 +256,24 @@ html,body{max-width:100%;overflow-x:hidden}
 .sch-end .btn-ghost:hover{background:rgba(7,20,7,.05)}
 .sch-end .btn:focus-visible{outline:3px solid var(--alt);outline-offset:2px}
 @media (max-width:560px){.sch-end .btn{flex:1 1 100%;min-width:0;padding:0 16px;white-space:normal;text-align:center}}
+
+/* calmer (Sean 2026-11-21: "a little bit less overwhelming ... unsaturate some stuff"): the stage headers become pale tints
+   of their stage colour with the colour kept as the line under them and a faint version of their pattern; the black
+   welcome and keynote cards become the Main Stage's own deeper tint */
+.tt-sh{border-bottom-width:3px}
+.tt-sh.tt-main{background:#E8F2E1;color:#0E2A16}
+.tt-sh.tt-main:before{opacity:.28}.tt-sh.tt-main:after{opacity:.35}
+.tt-sh.tt-mkt{background-color:#FFF0E7;color:#8A3A17;background-image:radial-gradient(rgba(252,117,64,.22) 1.4px,transparent 1.6px)}
+.tt-sh.tt-ai{background-color:#E7EFF1;color:#0F3E4A;background-image:linear-gradient(rgba(15,62,74,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(15,62,74,.08) 1px,transparent 1px)}
+.tt-sh.tt-ai{background-size:18px 18px}
+.tt-sh.tt-room{background-color:#EEF7E6;color:#1F5A2E;background-image:repeating-linear-gradient(135deg,rgba(31,90,46,.07) 0 1px,transparent 1px 8px)}
+.tt-sh small{opacity:.8}
+.tt-ev.tt-main.is-key{background:#DFEED5;box-shadow:inset 3px 0 0 #009B27}
+.tt-ev.tt-main.is-key h3{color:#14201a}.tt-ev.tt-main.is-key .tt-when{color:#007A1F}.tt-ev.tt-main.is-key .tt-who{color:#4A574D}
+.tt-ev.tt-main.is-key.is-tba{background:repeating-linear-gradient(135deg,transparent 0 7px,rgba(7,20,7,.045) 7px 8px),#DFEED5}
+.tt-ev.tt-main.is-key.is-tba h3{color:rgba(7,20,7,.62)}
+.tt-ev.tt-main.is-key .tt-stg{color:#007A1F}
+.tt-ev.tt-main.is-key:hover{background:#D6E9CA}
+/* the side panel stays in view while the table scrolls (Sean 2026-11-21: "keep the left section frozen ... so they know that
+   it's clickable") */
+@media (min-width:981px){.tt-side{position:sticky;top:var(--side-top,140px);align-self:start;max-height:calc(100vh - var(--side-top,140px) - 12px);overflow-y:auto}}
