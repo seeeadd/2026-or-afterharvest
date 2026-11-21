@@ -1402,6 +1402,9 @@ section.wa .wa-ia .wa-behind{display:none}
 .wa-logos img[src*="visa"]{height:17px!important}
 .wa-logos img[src*="tiktok"]{height:46px!important;max-height:46px}
 .wa-logos img[src*="np-digital"]{height:29px!important}
+.wa-logos img[src*="save-the-children"],.wa-logos img[src*="boys-girls"]{height:40px!important}
+.wa-logos img[src*="msf"]{height:30px!important}
+.wa-logos img[src*="nature-conservancy"]{height:28px!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
