@@ -108,7 +108,8 @@ html,body{max-width:100%;overflow-x:hidden}
 .nav .btn.nav-cta:hover .nav-cta-ar{transform:translateX(3px)}
 @media (max-width:760px){.nav .btn.nav-cta{margin-left:auto;min-height:46px;padding:0 16px;font-size:14.5px}}
 /* phones: the logo alone (still the link home), so "Become a partner" has the room it needs */
-@media (max-width:420px){.nav .brand>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+.nav-in{min-width:0}.nav .brand{min-width:0;flex:0 1 auto}.nav .btn{flex:none}
+@media (max-width:480px){.nav .brand>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 @media (max-width:360px){.nav .btn.nav-cta{padding:0 12px;font-size:13.5px}.nav .btn.nav-cta .nav-cta-ar{display:none}}
 /* Ashley on the partner form (Sean 2026-11-21: "add her in the partners area") */
 .inq-who{display:flex;align-items:center;gap:12px;margin:14px 0 4px}
@@ -230,7 +231,7 @@ html,body{max-width:100%;overflow-x:hidden}
 .ed-grow .ed-close,.is-big .ed-grow .ed-open{display:none}.is-big .ed-grow .ed-close{display:inline}
 .ed-in{min-height:64px;max-height:180px;overflow:auto;padding:10px 12px;font:15px/1.5 var(--sans);color:var(--ink);outline:none}
 .ed-in:empty::before{content:attr(data-placeholder);color:var(--ink3)}
-.ed-in ul{margin:4px 0;padding-left:20px}
+.ed-in ul,.ed-in ol{margin:4px 0;padding-left:22px}
 .ed-done{display:none}
 .ed textarea[hidden]{display:none!important}
 .ed-back{position:fixed;inset:0;z-index:90;background:rgba(7,20,7,.55);backdrop-filter:blur(2px)}
@@ -267,7 +268,7 @@ html,body{max-width:100%;overflow-x:hidden}
 <label>Company<input name="company" autocomplete="organization" required></label>
 <div class="ed" data-ed><span class="ed-l" id="ed-l">Anything else? <span class="opt">Optional</span></span>
 <div class="ed-box"><div class="ed-bar" role="toolbar" aria-label="Format your message">
-<button type="button" data-cmd="bold" aria-label="Bold" aria-pressed="false"><b>B</b></button><button type="button" data-cmd="italic" aria-label="Italic" aria-pressed="false"><i>I</i></button><button type="button" data-cmd="insertUnorderedList" aria-label="Bulleted list" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="4" cy="6" r="1.6"/><circle cx="4" cy="14" r="1.6"/><path d="M8 6h9M8 14h9"/></svg></button>
+<button type="button" data-cmd="bold" aria-label="Bold" aria-pressed="false"><b>B</b></button><button type="button" data-cmd="italic" aria-label="Italic" aria-pressed="false"><i>I</i></button><button type="button" data-cmd="underline" aria-label="Underline" aria-pressed="false"><u>U</u></button><button type="button" data-cmd="insertUnorderedList" aria-label="Bulleted list" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="4" cy="6" r="1.6"/><circle cx="4" cy="14" r="1.6"/><path d="M8 6h9M8 14h9"/></svg></button><button type="button" data-cmd="insertOrderedList" aria-label="Numbered list" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><text x="1.5" y="8.6" font-size="6.5" font-weight="700" font-family="Geist,system-ui,sans-serif" fill="currentColor" stroke="none">1</text><text x="1.5" y="16.6" font-size="6.5" font-weight="700" font-family="Geist,system-ui,sans-serif" fill="currentColor" stroke="none">2</text><path d="M8 6h9M8 14h9"/></svg></button>
 <button type="button" class="ed-grow" data-grow aria-label="Expand the message box" aria-expanded="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="ed-open" d="M12 3h5v5M17 3l-6 6M8 17H3v-5M3 17l6-6"/><path class="ed-close" d="M16 4l-5 5M11 5v4h4M4 16l5-5M9 15v-4H5"/></svg><span>Expand</span></button></div>
 <div class="ed-in" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="ed-l" data-placeholder="Your goals for 2027, the audience you want to reach, questions for our team"></div>
 <button type="button" class="btn btn-primary ed-done" data-grow-done>Done</button></div>
@@ -354,14 +355,15 @@ document.querySelectorAll('a[href="#talk"]').forEach(function(a){a.addEventListe
   t.addEventListener('keydown',function(e){if(e.key!=='Enter')return;e.preventDefault();var n=f.elements.firstname;
     f.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});setTimeout(function(){n.focus({preventScroll:true})},420)});
 })();
-// the message box: bold, italic and bullets, kept as plain marks in the email (*bold*, _italic_, • item); Expand brings it
+// the message box: bold, italic, underline, bullets and numbered lists, kept as plain marks in the email (*bold*, _italic_, • item, 1. item); Expand brings it
 // to the middle of the screen, Done or Esc puts it back
 document.querySelectorAll('[data-ed]').forEach(function(ed){
   var box=ed.querySelector('.ed-box'),inp=ed.querySelector('.ed-in'),ta=ed.querySelector('textarea'),grow=ed.querySelector('[data-grow]'),back=null;
   function txt(n){var s='';n.childNodes.forEach(function(k){
     if(k.nodeType===3){s+=k.nodeValue;return}if(k.nodeType!==1)return;var t=k.tagName,inner=txt(k);
     if(t==='B'||t==='STRONG')s+=inner.trim()?'*'+inner+'*':inner;else if(t==='I'||t==='EM')s+=inner.trim()?'_'+inner+'_':inner;
-    else if(t==='LI')s+='\n• '+inner.trim();else if(t==='UL'||t==='OL')s+=inner+'\n';else if(t==='BR')s+='\n';
+    else if(t==='U')s+=inner;
+    else if(t==='LI'){var ol=k.parentNode&&k.parentNode.tagName==='OL';s+='\n'+(ol?([].indexOf.call(k.parentNode.children,k)+1)+'. ':'• ')+inner.trim()}else if(t==='UL'||t==='OL')s+=inner+'\n';else if(t==='BR')s+='\n';
     else if(t==='DIV'||t==='P')s+='\n'+inner;else s+=inner});return s}
   function sync(){ta.value=txt(inp).replace(/\n{3,}/g,'\n\n').trim();ed.querySelectorAll('[data-cmd]').forEach(function(b){
     var on=false;try{on=document.queryCommandState(b.dataset.cmd)}catch(e){}b.setAttribute('aria-pressed',on&&ed.contains(document.activeElement)?'true':'false')})}

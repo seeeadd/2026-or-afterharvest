@@ -21,7 +21,8 @@ html,body{max-width:100%;overflow-x:hidden}
 @supports (overflow:clip){html,body{overflow-x:clip}}
 
 /* the narrowest phones: the logo alone (still the link home), so the bar never squeezes the button over the name */
-@media (max-width:360px){.nav .brand>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+.nav-in{min-width:0}.nav .brand{min-width:0;flex:0 1 auto}.nav .btn{flex:none}
+@media (max-width:480px){.nav .brand>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 /* on the sponsors page the menu stays quiet: small and grey beside the partner button */
 .m-nav-quiet>summary{width:40px;height:40px;color:#6B746C}
 .m-nav-quiet>summary svg{width:19px;height:19px}
