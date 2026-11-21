@@ -79,28 +79,49 @@
  .row-bg .ctas{justify-content:stretch}.row-bg .ctas .btn{flex:1}
 }
 
+/* a copy button beside the summit address: copy it or tap the link (Sean 2026-11-21) */
+.mail-row{white-space:nowrap}
+.copy-mail{display:inline-flex;align-items:center;gap:5px;min-height:28px;margin-left:6px;padding:0 9px;vertical-align:middle;border:1px solid #C9D7C5;border-radius:999px;
+ background:#F4F8F2;color:#0F4D1F;font:650 13px/1 var(--sans);cursor:pointer;white-space:nowrap}
+.copy-mail:hover{background:#E8F2E2}
+.copy-mail:focus-visible{outline:2px solid #009B27;outline-offset:2px}
+.copy-mail.is-ok{background:#009B27;border-color:#009B27;color:#fff}
 /* the send button: bigger, with a paper plane that lifts off now and then (Sean 2026-11-21) */
 .btn.inq-send{display:flex;align-items:center;justify-content:center;gap:12px;min-height:62px;font-size:18px;font-weight:700;box-shadow:0 10px 22px -10px rgba(0,120,30,.7)}
-.inq-plane{flex:none;animation:inq-fly 4.2s cubic-bezier(.4,0,.2,1) 1.2s infinite}
-.btn.inq-send:hover .inq-plane{animation:inq-go .7s cubic-bezier(.4,0,.2,1) both}
-@keyframes inq-fly{0%,70%,100%{transform:none;opacity:1}80%{transform:translate(9px,-7px) rotate(-8deg);opacity:0}81%{transform:translate(-9px,7px);opacity:0}92%{transform:none;opacity:1}}
-@keyframes inq-go{0%{transform:none}55%{transform:translate(10px,-8px) rotate(-8deg);opacity:0}56%{transform:translate(-8px,6px);opacity:0}100%{transform:none;opacity:1}}
-@media (prefers-reduced-motion:reduce){.inq-plane{animation:none!important}}
+.inq-plane{flex:none;overflow:visible}
+.inq-craft{transform-box:fill-box;transform-origin:center;animation:inq-fly 4.2s cubic-bezier(.4,0,.2,1) 1.2s infinite}
+.inq-trail{animation:inq-dash 1.4s linear infinite;opacity:.8}
+.btn.inq-send:hover .inq-craft{animation:inq-go .8s cubic-bezier(.4,0,.2,1) both}
+@keyframes inq-dash{to{stroke-dashoffset:-10}}
+@keyframes inq-fly{0%,70%,100%{transform:none;opacity:1}80%{transform:translate(12px,-9px) rotate(-6deg);opacity:0}81%{transform:translate(-10px,8px);opacity:0}92%{transform:none;opacity:1}}
+@keyframes inq-go{0%{transform:none}55%{transform:translate(14px,-10px) rotate(-6deg);opacity:0}56%{transform:translate(-10px,8px);opacity:0}100%{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.inq-craft,.inq-trail{animation:none!important}}
 /* after sending: where the message is, like a delivery tracker */
 .trk-lead{margin-top:6px!important;font-size:15px;color:var(--ink2)}
-.trk{list-style:none;margin:18px 0 6px;padding:0;display:grid;gap:0}
-.trk li{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:0 0 18px}
-.trk li:not(:last-child)::before{content:"";position:absolute;left:13px;top:24px;bottom:2px;width:2px;background:#DCE3DA}
-.trk li.is-done:not(:last-child)::before{background:#009B27}
-.trk li>i{position:relative;z-index:1;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px #C9D2C7}
-.trk li.is-done>i{background:#009B27;box-shadow:none}
-.trk li.is-done>i::after{content:"";position:absolute;left:10px;top:6px;width:6px;height:11px;border:solid #fff;border-width:0 2.4px 2.4px 0;transform:rotate(45deg)}
-.trk li.is-now>i{box-shadow:inset 0 0 0 2px #009B27}
-.trk li.is-now>i::after{content:"";position:absolute;inset:7px;border-radius:50%;background:#009B27;animation:trk-pulse 1.6s ease-in-out infinite}
-@keyframes trk-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.6);opacity:.55}}
-@media (prefers-reduced-motion:reduce){.trk li.is-now>i::after{animation:none}}
-.trk b{display:block;font-size:16px;line-height:1.3;color:var(--ink)}
-.trk li:not(.is-done):not(.is-now) b{color:#7A837B}
+.trk{list-style:none;margin:20px 0 8px;padding:0;display:grid;gap:0}
+.trk li{position:relative;display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:start;padding:0 0 20px}
+/* the route between the tiles: a drafted dimension line, inked green once the step is done */
+.trk li:not(:last-child)::before{content:"";position:absolute;left:25px;top:56px;bottom:4px;width:0;border-left:2px dashed #C9D2C7}
+.trk li.is-done:not(:last-child)::before{border-left:2px solid #009B27}
+.tl{position:relative;display:block;width:52px;height:52px}
+.tl>svg:first-child{display:block;width:52px;height:52px;border-radius:11px}
+.trk li .tl-bt,.trk li.is-done .tl-dr,.trk li.is-now .tl-dr{display:none}
+.trk li.is-done .tl-bt,.trk li.is-now .tl-bt{display:inline}
+.trk li:not(.is-done):not(.is-now) .tl>svg:first-child{opacity:.78}
+.tl-ok{position:absolute;right:-6px;bottom:-6px;width:22px;height:22px;opacity:0;transform:scale(.3)}
+.trk li.is-done .tl-ok{opacity:1;transform:none;animation:tl-pop .45s cubic-bezier(.3,1.6,.5,1) both}
+.trk li.is-now .tl{box-shadow:0 0 0 3px #fff,0 0 0 5px #009B27;border-radius:11px;animation:tl-ring 2s ease-in-out infinite}
+@keyframes tl-pop{0%{opacity:0;transform:scale(.3)}100%{opacity:1;transform:none}}
+@keyframes tl-ring{0%,100%{box-shadow:0 0 0 3px #fff,0 0 0 5px #009B27}50%{box-shadow:0 0 0 3px #fff,0 0 0 8px rgba(0,155,39,.25)}}
+.trk li.is-now .tl-fly{animation:tl-fly 2.4s cubic-bezier(.4,0,.2,1) infinite}
+.trk li.is-now .tl-lamp{animation:tl-lamp 1.8s ease-in-out infinite}
+.trk li.is-now .tl-bulb,.trk li.is-done .tl-bulb{animation:tl-bulb 1.8s ease-in-out var(--d) infinite}
+@keyframes tl-fly{0%,55%,100%{transform:none;opacity:1}75%{transform:translate(6px,-5px);opacity:0}76%{transform:translate(-5px,4px);opacity:0}90%{transform:none;opacity:1}}
+@keyframes tl-lamp{0%,100%{fill:#FC7540}50%{fill:#FFD27A}}
+@keyframes tl-bulb{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.trk li .tl,.trk li .tl *,.tl-ok{animation:none!important}}
+.trk b{display:block;padding-top:4px;font-size:16px;line-height:1.3;color:var(--ink)}
+.trk li:not(.is-done):not(.is-now) b{color:#6E786F}
 .trk small{display:block;margin-top:3px;font-size:14px;line-height:1.45;color:var(--ink2)}
 .trk li.is-now b{color:#007A1F}
 .trk-btn{margin-top:10px;min-height:44px;padding:0 18px;border:1.5px solid #009B27;border-radius:999px;background:#F1F8EB;color:#0F4D1F;font:700 15px/1 var(--sans);cursor:pointer}
@@ -230,13 +251,19 @@ html,body{max-width:100%;overflow-x:hidden}
 @media (max-width:420px){.pf-stats{display:grid;grid-template-columns:auto auto auto;justify-content:start;gap:10px 18px}.pf-stats b{font-size:clamp(22px,7vw,28px)}.pf-stats span{font-size:12.5px}}
 /* the hero's columns may shrink below the teams row (it is cut off on purpose) */
 .hero-b .grid>*{min-width:0}
-.pf-wall{list-style:none;display:flex;gap:8px;margin:12px 0 0;padding:0;overflow:hidden;
- -webkit-mask-image:linear-gradient(90deg,#000 72%,transparent);mask-image:linear-gradient(90deg,#000 72%,transparent)}
-.pf-wall li{flex:none;position:relative;display:flex;align-items:center;padding:8px 14px 10px;background:var(--t,#fff);border:1px solid var(--bd,var(--hair));
- color:var(--k,var(--ink));font-size:14px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
-.pf-wall li:after{content:"";position:absolute;left:-1px;right:-1px;bottom:-1px;height:3px;background:var(--band,var(--c))}
-.pf-wall .pf-more{padding:8px 14px 10px;background:#fff;color:var(--ink3);font-weight:500}
-.pf-wall .pf-more:after{content:none}
+/* the teams as a slow credits ticker (Sean 2026-11-21: the tinted chips "looks cheap"): one white strip, each name in its own
+   brand colour after a small mark in that colour, hairlines between, fading out at both ends; it stops under the pointer */
+.pf-wall{list-style:none;display:flex;width:max-content;margin:0;padding:0;animation:pf-run 46s linear infinite}
+.pf-tk{margin-top:12px;overflow:hidden;background:#fff;border-top:1px solid var(--hair2);border-bottom:1px solid var(--hair2);
+ -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.pf-tk:hover .pf-wall{animation-play-state:paused}
+.pf-wall li{flex:none;display:flex;align-items:center;gap:9px;height:50px;padding:0 22px;border-right:1px solid var(--hair);
+ color:var(--k,var(--ink));font-size:15px;font-weight:700;letter-spacing:-.015em;white-space:nowrap}
+.pf-wall li:before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--band,var(--c))}
+.pf-wall .pf-more{color:var(--ink3);font-weight:500}
+.pf-wall .pf-more:before{content:none}
+@keyframes pf-run{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.pf-wall{animation:none}.pf-tk{overflow-x:auto}}
 .pf small{display:block;margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink3)}
 @media (max-width:640px){.mq{padding:30px 16px 16px}.mq-panel{padding:12px 10px 10px}.mq-t{font-size:16px}.tc-slot input{font-size:28px}}
 @media (prefers-reduced-motion:reduce){.tc-slot input{transition:none}}
@@ -269,23 +296,51 @@ html,body{max-width:100%;overflow-x:hidden}
 .ed.is-big .ed-done{display:block;margin:0 12px 12px auto;width:auto;padding:0 22px}
 @keyframes ed-in{from{opacity:0;transform:translate(-50%,-46%)}}
 @media (prefers-reduced-motion:reduce){.ed.is-big .ed-box{animation:none}}
+
+/* the 2025 partners (mini): six session cards and an open 2027 card, the rest as one line of names */
+.p25{margin-top:44px;padding-top:30px;border-top:1px solid var(--hair2)}
+.p25-h{margin:0;font-size:clamp(26px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em}
+.p25-l{margin:8px 0 0;font-size:15px;line-height:1.5;color:var(--ink2);max-width:560px}
+.p25-g{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.p25-g li{position:relative;display:flex;flex-direction:column;gap:6px;padding:14px 16px 15px;background:#fff;border:1px solid var(--hair2);box-shadow:0 1px 0 rgba(15,30,15,.04)}
+.p25-g li:before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:3px;background:var(--c)}
+.p25-n{display:flex;align-items:center;gap:8px;margin:0;color:var(--k);font-size:14px;font-weight:750;letter-spacing:-.01em}
+.p25-n i{flex:none;width:8px;height:8px;border-radius:2px;background:var(--c)}
+.p25-n span{margin-left:auto;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;color:var(--ink3)}
+.p25-g b{font-size:15px;line-height:1.3;letter-spacing:-.01em;color:var(--ink)}
+.p25-g small{font-size:13px;line-height:1.4;color:var(--ink2)}
+.p25-g .p25-open{background:transparent;border:1.5px dashed #9BC79F;box-shadow:none}
+.p25-g .p25-open:before{content:none}
+.p25-open .p25-n{color:#007A1F}
+.p25-open b{color:#2F4A33}
+.p25-open a{margin-top:auto;align-self:flex-start;font-size:14px;font-weight:700;color:#007A1F;text-underline-offset:3px}
+.p25-also{margin:16px 0 0;font-size:13px;line-height:1.6;color:var(--ink3)}
+.p25-also b{color:var(--ink2);font-weight:650}
+@media (max-width:560px){.p25-g{grid-template-columns:1fr;gap:8px}.p25-g li{padding:12px 14px 13px;gap:4px}.p25-g b{font-size:14.5px}.p25-also{font-size:12.5px}}
+/* the form stays in view on the right while the hero and the 2025 partners scroll past (Sean 2026-11-21: "Why is the form
+   not frozen?"); on phones it comes right after the intro, before the 2025 partners */
+.hero-b .grid{grid-template-areas:"a f" "p f";grid-template-rows:auto 1fr}
+.hero-b .grid>.hb-a{grid-area:a}.hero-b .grid>.p25{grid-area:p}.hero-b .grid>.inq{grid-area:f}
+@media (min-width:901px){.hero-b .grid>.inq{position:sticky;top:88px;align-self:start}}
+@media (max-width:900px){.hero-b .grid{grid-template-areas:"a" "f" "p"}.hero-b .grid>.p25{margin-top:16px}}
 </style></head>
 <body class="dir-b"><header class="nav"><div class="wrap nav-in">
 <a class="brand" href="../"><img src="assets/nms-emblem-240-green.png" alt="" width="40" height="40"><span><b>Nonprofit Marketing Summit</b><small>Architects of Impact</small></span></a>
 <nav class="links" aria-label="Main navigation"><a href="../#days">The two days</a><a href="../schedule/">Schedule</a><a href="../#speakers">Speakers</a><a href="./" aria-current="page">Sponsors</a><a href="../#faq">Questions</a></nav>
 <div class="navdate"><b>Feb 23-24, 2027 PT</b><small>Free · live on Zoom</small></div>
-<a class="btn btn-primary nav-cta" href="#talk">Become a partner <svg class="nav-cta-ar" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><path d="M1 7h16M12 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<a class="btn btn-primary nav-cta" href="#talk">Become our partner <svg class="nav-cta-ar" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><path d="M1 7h16M12 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 <details class="m-nav m-nav-quiet"><summary aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><nav class="m-nav-panel" aria-label="Pages"><a href="../" class="m-home">Summit home</a><a href="../#days">The two days</a><a href="../schedule/">Schedule</a><a href="../#speakers">Speakers</a><a href="./" aria-current="page">Sponsors</a><a href="../#faq">Questions</a></nav></details><script>document.addEventListener('click',function(e){document.querySelectorAll('details.m-nav[open]').forEach(function(d){if(!d.contains(e.target)||e.target.closest('.m-nav-panel a'))d.removeAttribute('open')})})</script>
 </div></header><main>
 <section class="hero-b paper-grid" id="top"><div class="wrap">
 <div class="grid">
-<div>
+<div class="hb-a">
 <h1><span class="nw">Meet nonprofits</span> <em><span class="nw">while they</span> <span class="nw">plan 2027.</span></em></h1>
 <p class="lede">The 2027 Nonprofit Marketing Summit is Community Boost’s free two-day summit, live on Zoom. Partners take the title partnership or run a session or workshop for the nonprofit teams who attend.</p>
-<div class="tcard"><div class="mq"><img class="mq-crest" src="assets/nms-emblem-240-green.png" alt="" width="60" height="60"><div class="mq-panel"><p class="mq-t">Nonprofit Marketing Summit 2027</p><p class="mq-by">presented by</p><label class="tc-slot"><span class="vh">Your company</span><input data-tc placeholder="YOUR COMPANY" maxlength="38" autocomplete="organization" enterkeyhint="next" spellcheck="false"></label></div></div></div><div class="pf"><ul class="pf-stats"><li><b>180,000+</b><span>registrations</span></li><li><b>670+</b><span>sessions</span></li><li><b>10</b><span>summits since 2020</span></li></ul><p class="pf-line">Teams who have come include:</p><ul class="pf-wall" aria-label="Teams who have attended"><li style="--c:#4AA241;--k:#397E32;--t:#F4F9F4;--bd:#CCE5CA">The Nature Conservancy</li><li style="--c:#DA291C;--k:#C92417;--t:#FDF2F1;--bd:#F5C3BF">Save the Children</li><li style="--c:#EE0000;--k:#CC0000;--t:#FEF0F0;--bd:#FAB8B8">Doctors Without Borders</li><li style="--c:#000000;--k:#000000;--t:#F3F3F3;--bd:#CFCFCF">Innocence Project</li><li style="--c:#7E726D;--k:#6E625D;--t:#F7F7F6;--bd:#DBD8D6;--band:linear-gradient(90deg,#F5811C 0 25%,#D5078D 25% 50%,#82C43F 50% 75%,#6DB4C5 75% 100%)">Feed the Children</li><li style="--c:#0680C4;--k:#0570AC;--t:#F0F7FB;--bd:#B9DBEE">Boys &amp; Girls Clubs of America</li><li class="pf-more">and thousands more</li></ul><small>Totals as of March 2025. Teams named by NonProfit PRO, 2022.</small></div>
+<div class="tcard"><div class="mq"><img class="mq-crest" src="assets/nms-emblem-240-green.png" alt="" width="60" height="60"><div class="mq-panel"><p class="mq-t">Nonprofit Marketing Summit 2027</p><p class="mq-by">presented by</p><label class="tc-slot"><span class="vh">Your company</span><input data-tc placeholder="YOUR COMPANY" maxlength="38" autocomplete="organization" enterkeyhint="next" spellcheck="false"></label></div></div></div><div class="pf"><ul class="pf-stats"><li><b>180,000+</b><span>registrations</span></li><li><b>670+</b><span>sessions</span></li><li><b>10</b><span>summits since 2020</span></li></ul><p class="pf-line">Teams who have come include:</p><div class="pf-tk"><ul class="pf-wall" aria-label="Teams who have attended"><li style="--c:#4AA241;--k:#397E32">The Nature Conservancy</li><li style="--c:#DA291C;--k:#C92417">Save the Children</li><li style="--c:#EE0000;--k:#CC0000">Doctors Without Borders</li><li style="--c:#000000;--k:#000000">Innocence Project</li><li style="--c:#7E726D;--k:#6E625D;--band:conic-gradient(#F5811C 0 25%,#D5078D 25% 50%,#82C43F 50% 75%,#6DB4C5 75% 100%)">Feed the Children</li><li style="--c:#0680C4;--k:#0570AC">Boys &amp; Girls Clubs of America</li><li class="pf-more">and thousands more</li><li aria-hidden="true" style="--c:#4AA241;--k:#397E32">The Nature Conservancy</li><li aria-hidden="true" style="--c:#DA291C;--k:#C92417">Save the Children</li><li aria-hidden="true" style="--c:#EE0000;--k:#CC0000">Doctors Without Borders</li><li aria-hidden="true" style="--c:#000000;--k:#000000">Innocence Project</li><li aria-hidden="true" style="--c:#7E726D;--k:#6E625D;--band:conic-gradient(#F5811C 0 25%,#D5078D 25% 50%,#82C43F 50% 75%,#6DB4C5 75% 100%)">Feed the Children</li><li aria-hidden="true" style="--c:#0680C4;--k:#0570AC">Boys &amp; Girls Clubs of America</li><li aria-hidden="true" class="pf-more">and thousands more</li></ul></div><small>Totals as of March 2025. Teams named by NonProfit PRO, 2022.</small></div>
 <div class="ctas"><a class="btn btn-ghost" href="#people">See who attends</a></div>
 </div>
-<form class="inq" id="talk" novalidate data-partner-form>
+<div class="p25" id="partners-2025"><h2 class="p25-h">Who partnered in 2025</h2><p class="p25-l">Five stages ran side by side. These partners taught the nonprofit teams in the room.</p><ul class="p25-g"><li style="--c:#FFC001;--k:#1D1D1B"><p class="p25-n"><i aria-hidden="true"></i>Givebutter<span>Stage</span></p><b>The Givebutter Stage</b><small>One of five stages, named for the 2025 title sponsor</small></li><li style="--c:#F25022;--k:#CC431C"><p class="p25-n"><i aria-hidden="true"></i>Microsoft<span>Session</span></p><b>AI for Nonprofit Marketing Campaigns</b><small>Courtney Hodge, Microsoft</small></li><li style="--c:#004155;--k:#004155"><p class="p25-n"><i aria-hidden="true"></i>Blackbaud<span>Panel</span></p><b>Make the Moment Count: Securing the Support of Spontaneous Givers</b><small>Lori Poer, the Blackbaud Institute, with Asheville Humane Society</small></li><li style="--c:#2BB77A;--k:#1D8156"><p class="p25-n"><i aria-hidden="true"></i>Fundraise Up<span>Session</span></p><b>Effortless Giving: Reducing Donor Friction with AI</b><small>Josh Hirsch, Fundraise Up</small></li><li style="--c:#00B9FA;--k:#0078A3"><p class="p25-n"><i aria-hidden="true"></i>DonorPerfect<span>Session</span></p><b>Evolve Your Donor Journey Workflows with Storyboarding Exercises</b><small>Julia Gackenbach, DonorPerfect, on the Boost Stage</small></li><li style="--c:#ED3618;--k:#DA3116"><p class="p25-n"><i aria-hidden="true"></i>MemoryFox<span>Session</span></p><b>From Survey to Solutions: Insights from the Ethical Storytelling Report</b><small>Carly Euler, MemoryFox</small></li><li class="p25-open"><p class="p25-n">Your company<span>2027</span></p><b>Your stage or session, open for 2027</b><a href="#talk">Talk to our team</a></li></ul><p class="p25-also"><b>Also in 2025:</b> Classy from GoFundMe, GivingTuesday, The Giving Block, Bonterra, Neon One, DonorDock, Donately, Fifty &amp; Fifty, Public Interest Registry, Kindsight, Mittun, Boardable, Auctria, iDonate, GoFundraise, DonorSearch, Cause IQ, Dataro, WildApricot, McAllister &amp; Quinn, DMJ Studios, SendNexus, A Great Idea, Ploom Social, Itchy Palm Pictures, Foundation Group, Your Community Fundraiser, Nonprofit Learning Lab, The Human Stack, AFP-NYC, Fundraising Transformed, Club de Fundraising, Inside Philanthropy, Social Currant, Nonprofit411, Instrumentl, LG. Philanthropy.</p></div>
+<form class="inq" id="talk" novalidate data-partner-form data-hs="">
 <div class="tb"><span class="mono acc">Partner inquiry</span><span class="mono">NMS · 2027</span></div>
 <div class="inq-body" data-form-body>
 <h2>Talk to our team</h2>
@@ -302,24 +357,25 @@ html,body{max-width:100%;overflow-x:hidden}
 <button type="button" class="btn btn-primary ed-done" data-grow-done>Done</button></div>
 <textarea name="message" hidden></textarea></div>
 <p class="inq-err" role="alert" hidden>Please fill in your first name, a work email and your company.</p>
-<button class="btn btn-primary btn-block inq-send" type="submit"><span>Send to our team</span><svg class="inq-plane" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M21.5 2.5 10.2 13.8M21.5 2.5l-7.2 19-4.1-7.7-7.7-4.1Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></svg></button>
-<p class="alt">This opens an email to our team with your details. It reaches us when you press send. Or write to <a href="mailto:summit@communityboost.org">summit@communityboost.org</a>.</p>
+<button class="btn btn-primary btn-block inq-send" type="submit"><span>Send to our team</span><svg class="inq-plane" viewBox="0 0 44 26" width="44" height="26" aria-hidden="true"><path class="inq-trail" d="M2 23.5C8 23.5 10 17.5 15.5 15.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2.2 2.8"/><g class="inq-craft"><path d="M41 3 15 12.2l8.3 2.2Z" fill="#fff"/><path d="M41 3 23.3 14.4 26.6 22.6Z" fill="#CFF2D7"/><path d="M23.3 14.4 26.6 22.6l.4-5.4Z" fill="#9FDDAE"/><path d="M41 3 23.3 14.4" stroke="#0F6E25" stroke-width="1" stroke-linecap="round"/></g></svg></button>
+<p class="alt">This opens an email to our team with your details. It reaches us when you press send. Or write to <span class="mail-row"><a href="mailto:summit@communityboost.org">summit@communityboost.org</a><button type="button" class="copy-mail" data-copy-mail aria-label="Copy the email address summit@communityboost.org"><svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M13 4.5V4a1.5 1.5 0 0 0-1.5-1.5h-7A1.5 1.5 0 0 0 3 4v7a1.5 1.5 0 0 0 1.5 1.5H5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg><span>Copy</span></button></span></p>
 </div>
 <div class="inq-body inq-done" data-form-done hidden tabindex="-1">
-<h2 data-trk-h>One more step<span data-done-name></span>.</h2>
-<p class="trk-lead">Here is where your message is.</p>
+<h2 data-trk-h>Almost there<span data-done-name></span>!</h2>
+<p class="trk-lead" data-trk-lead>Your message is ready. Here’s the road it takes to our team.</p>
 <ol class="trk" data-trk>
-<li class="is-done"><i aria-hidden="true"></i><div><b>Message written</b><small>Your details are in a new email to summit@communityboost.org.</small></div></li>
-<li class="is-now" data-trk-step="send"><i aria-hidden="true"></i><div><b>Press send in your email app</b><small>It reaches our team the moment you send it.</small><button type="button" class="trk-btn" data-trk-sent>I’ve sent it</button></div></li>
-<li data-trk-step="read"><i aria-hidden="true"></i><div><b>Our team reads it</b><small>We look at what you shared about your team and your goals.</small></div></li>
-<li data-trk-step="reply"><i aria-hidden="true"></i><div><b>We reply with the 2027 partner options</b><small>Straight to the email you sent it from.</small></div></li>
+<li class="is-done"><span class="tl" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><rect width="48" height="48" rx="10" fill="#0E2213"/><g stroke="#21402A" stroke-width="1"><path d="M12 0V48M0 12H48"/><path d="M24 0V48M0 24H48"/><path d="M36 0V48M0 36H48"/></g><g class="tl-dr"><path d="M14 9H29L34 14V39H14Z" fill="none" stroke="#9BE3AA" stroke-width="1.4" stroke-dasharray="3 2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M17 17H27M17 22H30M17 27H25" fill="none" stroke="#5FB872" stroke-width="1.1"/><path d="M14 43H34M14 41.4V44.6M34 41.4V44.6" fill="none" stroke="#5FB872" stroke-width="1.1"/></g><g class="tl-bt"><path d="M14 9H29L34 14V39H14Z" fill="#2BC24F"/><path d="M29 9V14H34" fill="#B8F0C3"/><path d="M17.5 17.5H27M17.5 22H30M17.5 26.5H24" stroke="#0B1E10" stroke-width="1.6" stroke-linecap="round"/><g class="tl-pen"><path d="M37 19 26.5 33.5l-1 4 3.4-2.3L39.4 20.8Z" fill="#B8F0C3"/><path d="M25.5 37.5l1-4 2.4 1.7Z" fill="#FC7540"/></g></g><rect x=".5" y=".5" width="47" height="47" rx="9.5" fill="none" stroke="#2F5A38"/></svg><svg class="tl-ok" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#009B27" stroke="#fff" stroke-width="2"/><path d="M6 10.3 8.7 13 14 7.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Message written</b><small>Your details are in a new email to summit@communityboost.org.</small></div></li>
+<li class="is-now" data-trk-step="send" data-mail-only><span class="tl" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><rect width="48" height="48" rx="10" fill="#0E2213"/><g stroke="#21402A" stroke-width="1"><path d="M12 0V48M0 12H48"/><path d="M24 0V48M0 24H48"/><path d="M36 0V48M0 36H48"/></g><g class="tl-dr"><path d="M9 19H33V37H9Z" fill="none" stroke="#9BE3AA" stroke-width="1.4" stroke-dasharray="3 2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M9 19 21 29 33 19" fill="none" stroke="#9BE3AA" stroke-width="1.4" stroke-dasharray="3 2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M41 8 30 12.5l3.6 1Z" fill="none" stroke="#9BE3AA" stroke-width="1.4" stroke-dasharray="3 2.2" stroke-linejoin="round" stroke-linecap="round"/></g><g class="tl-bt"><path d="M9 19H33V37H9Z" fill="#2BC24F"/><path d="M9 19 21 29 33 19" fill="none" stroke="#0B1E10" stroke-width="1.6" stroke-linejoin="round"/><g class="tl-fly"><path d="M42 7 29.5 12.2l4 1.2Z" fill="#fff"/><path d="M42 7 33.5 13.4 35 18Z" fill="#B8F0C3"/><path d="M28 15C25.5 16 24.5 17.5 23.5 19" fill="none" stroke="#B8F0C3" stroke-width="1.1" stroke-dasharray="1.6 2" stroke-linecap="round"/></g></g><rect x=".5" y=".5" width="47" height="47" rx="9.5" fill="none" stroke="#2F5A38"/></svg><svg class="tl-ok" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#009B27" stroke="#fff" stroke-width="2"/><path d="M6 10.3 8.7 13 14 7.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Press send in your email app</b><small>It reaches our team the moment you send it.</small><button type="button" class="trk-btn" data-trk-sent>I’ve sent it</button></div></li>
+<li data-trk-step="read"><span class="tl" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><rect width="48" height="48" rx="10" fill="#0E2213"/><g stroke="#21402A" stroke-width="1"><path d="M12 0V48M0 12H48"/><path d="M24 0V48M0 24H48"/><path d="M36 0V48M0 36H48"/></g><g class="tl-dr"><path d="M12 38V22L24 12 36 22V38Z" fill="none" stroke="#9BE3AA" stroke-width="1.4" stroke-dasharray="3 2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M17 25H22V30H17ZM26 25H31V30H26ZM21 38V33H27V38" fill="none" stroke="#5FB872" stroke-width="1.1"/><path d="M12 43H36M12 41.4V44.6M36 41.4V44.6" fill="none" stroke="#5FB872" stroke-width="1.1"/></g><g class="tl-bt"><path d="M12 38V22L24 12 36 22V38Z" fill="#2BC24F"/><path d="M10 23 24 11 38 23" fill="none" stroke="#B8F0C3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 25H22V30H17Z" fill="#0B1E10"/><path class="tl-lamp" d="M26 25H31V30H26Z" fill="#FC7540"/><path d="M21 38V33H27V38Z" fill="#0B1E10"/></g><rect x=".5" y=".5" width="47" height="47" rx="9.5" fill="none" stroke="#2F5A38"/></svg><svg class="tl-ok" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#009B27" stroke="#fff" stroke-width="2"/><path d="M6 10.3 8.7 13 14 7.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Our team reads it</b><small>We look at what you shared about your team and your goals.</small></div></li>
+<li data-trk-step="reply"><span class="tl" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><rect width="48" height="48" rx="10" fill="#0E2213"/><g stroke="#21402A" stroke-width="1"><path d="M12 0V48M0 12H48"/><path d="M24 0V48M0 24H48"/><path d="M36 0V48M0 36H48"/></g><g class="tl-dr"><path d="M8 13H40V31H8Z" fill="none" stroke="#9BE3AA" stroke-width="1.4" stroke-dasharray="3 2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M17 31V39M31 31V39" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="11" cy="16" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="18" cy="16" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="24" cy="16" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="30" cy="16" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="37" cy="16" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="11" cy="28" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="18" cy="28" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="24" cy="28" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="30" cy="28" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><circle cx="37" cy="28" r="1.1" fill="none" stroke="#5FB872" stroke-width="1.1"/><text x="24" y="25" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-size="7.5" font-weight="800" fill="#5FB872" letter-spacing=".3">2027</text></g><g class="tl-bt"><path d="M8 13H40V31H8Z" fill="#2BC24F"/><path d="M11 16H37V28H11Z" fill="#0B2A12"/><path d="M17 31V39M31 31V39" stroke="#B8F0C3" stroke-width="1.8"/><circle class="tl-bulb" style="--d:0.00s" cx="9.8" cy="14.6" r="1.3" fill="#FFD27A"/><circle class="tl-bulb" style="--d:0.18s" cx="17" cy="14.6" r="1.3" fill="#FFD27A"/><circle class="tl-bulb" style="--d:0.36s" cx="24" cy="14.6" r="1.3" fill="#FFD27A"/><circle class="tl-bulb" style="--d:0.54s" cx="31" cy="14.6" r="1.3" fill="#FFD27A"/><circle class="tl-bulb" style="--d:0.72s" cx="38.2" cy="14.6" r="1.3" fill="#FFD27A"/><circle class="tl-bulb" style="--d:0.90s" cx="38.2" cy="29.4" r="1.3" fill="#FFD27A"/><circle class="tl-bulb" style="--d:1.08s" cx="31" cy="29.4" r="1.3" fill="#FFD27A"/><circle class="tl-bulb" style="--d:1.26s" cx="24" cy="29.4" r="1.3" fill="#FFD27A"/><circle class="tl-bulb" style="--d:1.44s" cx="17" cy="29.4" r="1.3" fill="#FFD27A"/><circle class="tl-bulb" style="--d:1.62s" cx="9.8" cy="29.4" r="1.3" fill="#FFD27A"/><text x="24" y="25" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-size="7.5" font-weight="800" fill="#FFE3A8" letter-spacing=".3">2027</text></g><rect x=".5" y=".5" width="47" height="47" rx="9.5" fill="none" stroke="#2F5A38"/></svg><svg class="tl-ok" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#009B27" stroke="#fff" stroke-width="2"/><path d="M6 10.3 8.7 13 14 7.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>We reply with the 2027 partner options</b><small>Straight to the email you sent it from.</small></div></li>
 </ol>
-<p class="trk-alt">No email opened? Copy your message and send it from your own inbox to <a href="mailto:summit@communityboost.org">summit@communityboost.org</a>.</p>
-<button class="btn btn-dark btn-block" type="button" data-copy>Copy my message</button>
+<p class="trk-alt" data-mail-only>No email opened? Copy your message and send it from your own inbox to <span class="mail-row"><a href="mailto:summit@communityboost.org">summit@communityboost.org</a><button type="button" class="copy-mail" data-copy-mail aria-label="Copy the email address summit@communityboost.org"><svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M13 4.5V4a1.5 1.5 0 0 0-1.5-1.5h-7A1.5 1.5 0 0 0 3 4v7a1.5 1.5 0 0 0 1.5 1.5H5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg><span>Copy</span></button></span></p>
+<button class="btn btn-dark btn-block" type="button" data-copy data-mail-only>Copy my message</button>
 </div></form>
+<script>document.addEventListener('click',function(e){var b=e.target.closest('[data-copy-mail]');if(!b)return;var l=b.querySelector('span');function done(){l.textContent='Copied';b.classList.add('is-ok');setTimeout(function(){l.textContent='Copy';b.classList.remove('is-ok')},1800)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('summit@communityboost.org').then(done,done)}else{var t=document.createElement('textarea');t.value='summit@communityboost.org';document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}t.remove();done()}})</script>
 <script>(function(){var f=document.querySelector('[data-partner-form]');if(!f)return;var t=f.querySelector('[data-trk]');if(!t)return;
 function sent(save){var a=t.querySelector('[data-trk-step=send]'),b=t.querySelector('[data-trk-step=read]');a.classList.remove('is-now');a.classList.add('is-done');b.classList.add('is-now');
-var btn=a.querySelector('[data-trk-sent]');if(btn)btn.remove();var h=f.querySelector('[data-trk-h]');if(h){var n=h.querySelector('[data-done-name]');h.textContent='Sent. Thank you'+(n?n.textContent:'')+'.';}
+var btn=a.querySelector('[data-trk-sent]');if(btn)btn.remove();var h=f.querySelector('[data-trk-h]');if(h){var n=h.querySelector('[data-done-name]');h.textContent='Sent. Thank you'+(n?n.textContent:'')+'!';var ld=f.querySelector('[data-trk-lead]');if(ld)ld.textContent='It’s on its way. Here’s what happens next.';}
 try{if(save)localStorage.setItem('nmsPartnerSent','1')}catch(e){}}
 t.addEventListener('click',function(e){if(e.target.closest('[data-trk-sent]'))sent(true)});
 try{if(localStorage.getItem('nmsPartnerSent')==='1'){new MutationObserver(function(m,o){var d=f.querySelector('[data-form-done]');if(d&&!d.hidden){sent(false);o.disconnect()}}).observe(f,{attributes:true,subtree:true,attributeFilter:['hidden']})}}catch(e){}})();</script>
@@ -373,10 +429,20 @@ document.querySelectorAll('[data-partner-form]').forEach(function(f){
     var g=function(n){return(f.elements[n].value||'').trim()};
     var body=['Name: '+(g('firstname')+' '+g('lastname')).trim(),'Work email: '+g('email'),'Company: '+g('company'),'',g('message')].join('\n');
     window.__ppMsg='To: summit@communityboost.org\nSubject: Partnering on the Nonprofit Marketing Summit 2027: '+g('company')+'\n\n'+body;
-    location.href='mailto:summit@communityboost.org?subject='+encodeURIComponent('Partnering on the Nonprofit Marketing Summit 2027: '+g('company'))+'&body='+encodeURIComponent(body);
-    f.querySelector('[data-done-name]').textContent=g('firstname')?', '+g('firstname'):'';
-    f.querySelector('[data-form-body]').hidden=true;var d=f.querySelector('[data-form-done]');d.hidden=false;
-    if(d.getBoundingClientRect().top<70)d.scrollIntoView({block:'center'});d.focus({preventScroll:true});
+    var show=function(){var dn=f.querySelector('[data-done-name]');if(dn)dn.textContent=g('firstname')?', '+g('firstname'):'';
+      f.querySelector('[data-form-body]').hidden=true;var d=f.querySelector('[data-form-done]');d.hidden=false;
+      if(d.getBoundingClientRect().top<70)d.scrollIntoView({block:'center'});d.focus({preventScroll:true})};
+    var mail=function(){location.href='mailto:summit@communityboost.org?subject='+encodeURIComponent('Partnering on the Nonprofit Marketing Summit 2027: '+g('company'))+'&body='+encodeURIComponent(body);show()};
+    var hs=f.getAttribute('data-hs');if(!hs||!window.fetch){mail();return}
+    var btn=f.querySelector('.inq-send'),bl=btn.querySelector('span'),was=bl.textContent;btn.disabled=true;bl.textContent='Sending…';
+    fetch(hs,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:['firstname','lastname','email','company','message'].map(function(n){return{name:n,value:g(n)}}),
+      context:{pageUri:location.href,pageName:document.title}})}).then(function(r){if(!r.ok)throw 0;
+      f.querySelectorAll('[data-mail-only]').forEach(function(x){x.remove()});
+      var t=f.querySelector('[data-trk]');t.querySelector('li b').textContent='Message sent';t.querySelector('li small').textContent='It’s with our team at Community Boost.';
+      var rd=t.querySelector('[data-trk-step=read]');rd&&rd.classList.add('is-now');
+      f.querySelector('[data-trk-h]').textContent='Sent. Thank you'+(g('firstname')?', '+g('firstname'):'')+'!';
+      var ld=f.querySelector('[data-trk-lead]');if(ld)ld.textContent='Here’s what happens next.';show()})
+    .catch(function(){btn.disabled=false;bl.textContent=was;mail()});
   });
   var cp=f.querySelector('[data-copy]');cp&&cp.addEventListener('click',function(){var t=window.__ppMsg||'';(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){cp.textContent='Copied. Paste it into a new email'},function(){cp.textContent='Write to summit@communityboost.org'})});
 });
