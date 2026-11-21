@@ -1132,6 +1132,17 @@ section.pb{contain-intrinsic-size:auto 1440px}#voices{contain-intrinsic-size:aut
 .fr-day li.ws-room{--bg:#F3FAEE;box-shadow:inset 3px 0 0 #73D88C}
 .fr-day li .ww-clash{color:#9A3B12;font-weight:600}
 
+/* the 2025 partners as names in their own brand colours, no logos (Sean 2026-11-21): the name in its brand's hue, a stripe of
+   the exact brand colour(s) along the bottom; the hanging boards keep their hooks (the boards' :before and :after) */
+.pt-ban.pt-name{overflow:hidden}
+.pt-nm-t{font:800 clamp(19px,1.9vw,27px)/1.1 Geist,system-ui,sans-serif;letter-spacing:-.025em;color:var(--k);text-align:center}
+.pt-nm-band{position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--band)}
+.pt-history-marks .pt-nm{position:relative;display:grid;place-items:center;min-height:48px;padding:8px 10px 11px;border-radius:4px;background:#fff;
+ box-shadow:0 0 0 1px #E6ECE4;font:750 15.5px/1.2 Geist,system-ui,sans-serif;letter-spacing:-.01em;color:var(--k);text-align:center;overflow:hidden}
+.pt-history-marks .pt-nm .pt-nm-band{height:3px}
+.pt-history-marks{align-items:stretch}
+@media (max-width:760px){.pt-nm-t{font-size:19px}.pt-history-marks{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pt-history-marks .pt-nm{font-size:15px}}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.
