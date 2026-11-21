@@ -1373,6 +1373,21 @@ section.wa .wa-ia .wa-behind{display:none}
  #schedule .cbc-day .cbc-more:active{background:#E2F1D8!important}
 }
 
+/* the past-stages names never run into the tile edge (Sean 2026-11-21, GivingTuesday): the name may wrap and shrink a
+   little on mid widths; "and many more" reads as a different kind of tile, an open dashed one with a plus */
+.cb-orgs-wall .cb-word span{min-width:0;overflow-wrap:normal;word-break:normal}
+@media (min-width:701px) and (max-width:1100px){
+ .cb-orgs-wall li.cb-word:not(.cb-and){gap:8px;padding:10px;font-size:13px}
+ .cb-orgs-wall .cb-word .bm{width:26px;height:26px;flex:none}
+}
+.cb-orgs-wall li.cb-and{display:flex!important;align-items:center;justify-content:center;gap:8px;background:transparent!important;
+ border:1.5px dashed rgb(0 155 39/.55)!important;box-shadow:none!important;color:rgb(0 122 31)!important;font-weight:650!important;font-size:14px!important}
+.cb-orgs-wall li.cb-and:before{content:"+";flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;
+ background:rgb(0 155 39);color:#fff;font-weight:700;font-size:16px;line-height:1}
+.cb-orgs-wall li.cb-and{text-align:left;line-height:1.2}
+@media (min-width:701px) and (max-width:1100px){.cb-orgs-wall li.cb-and{gap:6px;padding:8px!important;font-size:12.5px!important}.cb-orgs-wall li.cb-and:before{width:18px;height:18px;font-size:13px}}
+@media (max-width:700px){.cb-orgs-wall li.cb-and{flex-direction:column;text-align:center}}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.

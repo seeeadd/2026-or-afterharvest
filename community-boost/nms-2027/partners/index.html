@@ -297,26 +297,53 @@ html,body{max-width:100%;overflow-x:hidden}
 @keyframes ed-in{from{opacity:0;transform:translate(-50%,-46%)}}
 @media (prefers-reduced-motion:reduce){.ed.is-big .ed-box{animation:none}}
 
-/* the 2025 partners (mini): six session cards and an open 2027 card, the rest as one line of names */
+/* the 2025 partners: the old wall's layout in this page's look. Big tiles for the stage and the partners who taught, small
+   tiles with our brand marks for the rest, one dashed tile open for 2027 */
 .p25{margin-top:44px;padding-top:30px;border-top:1px solid var(--hair2)}
-.p25-h{margin:0;font-size:clamp(26px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em}
-.p25-l{margin:8px 0 0;font-size:15px;line-height:1.5;color:var(--ink2);max-width:560px}
-.p25-g{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.p25-g li{position:relative;display:flex;flex-direction:column;gap:6px;padding:14px 16px 15px;background:#fff;border:1px solid var(--hair2);box-shadow:0 1px 0 rgba(15,30,15,.04)}
-.p25-g li:before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:3px;background:var(--c)}
-.p25-n{display:flex;align-items:center;gap:8px;margin:0;color:var(--k);font-size:14px;font-weight:750;letter-spacing:-.01em}
-.p25-n i{flex:none;width:8px;height:8px;border-radius:2px;background:var(--c)}
-.p25-n span{margin-left:auto;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;color:var(--ink3)}
-.p25-g b{font-size:15px;line-height:1.3;letter-spacing:-.01em;color:var(--ink)}
-.p25-g small{font-size:13px;line-height:1.4;color:var(--ink2)}
-.p25-g .p25-open{background:transparent;border:1.5px dashed #9BC79F;box-shadow:none}
-.p25-g .p25-open:before{content:none}
-.p25-open .p25-n{color:#007A1F}
-.p25-open b{color:#2F4A33}
-.p25-open a{margin-top:auto;align-self:flex-start;font-size:14px;font-weight:700;color:#007A1F;text-underline-offset:3px}
+.p25-h{margin:0;font-size:clamp(26px,2.6vw,34px);line-height:1.12;letter-spacing:-.03em;max-width:620px}
+.p25-l{margin:8px 0 0;font-size:15px;line-height:1.5;color:var(--ink2);max-width:600px}
+.p25-g{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(78px,auto);
+ grid-auto-flow:row dense;gap:8px}
+.p25-g>li{position:relative;min-width:0;background:#fff;border:1px solid var(--hair2)}
+.p25-m{flex:none;position:relative;display:grid;place-items:center;width:30px;height:30px;border-radius:7px;overflow:hidden;background:var(--b);
+ color:var(--i);font:800 12px/1 var(--sans);font-style:normal;letter-spacing:-.02em;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.p25-m3{font-size:10px}
+.p25-m:after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--band,transparent)}
+.p25-s{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:10px 8px;text-align:center;background:#F6F8F4!important}
+.p25-s span{font-size:12.5px;font-weight:650;line-height:1.2;color:#3D463D;overflow-wrap:break-word;max-width:100%}
+.p25-b{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px;box-shadow:0 14px 26px -22px rgba(15,40,15,.45)}
+.p25-top{display:flex;align-items:center;gap:9px;margin:0;font-size:14px;font-weight:700;color:var(--ink)}
+.p25-top span{min-width:0}
+.p25-top em{margin-left:auto;flex:none;padding:4px 9px;border-radius:999px;background:#FDEBE6;color:#B23A1E;font:600 10.5px/1 var(--mono);
+ font-style:normal;letter-spacing:.05em;text-transform:uppercase}
+.p25-b b{font-size:clamp(17px,1.5vw,20px);line-height:1.22;letter-spacing:-.02em;color:var(--ink)}
+.p25-stage{background:#0B2A12!important;border-color:#0B2A12!important;background-image:radial-gradient(120% 90% at 0% 0%,rgba(0,155,39,.35),transparent 65%)!important}
+.p25-stage .p25-top{padding:9px 10px;margin:-2px -4px 4px;border-radius:9px;background:#fff}
+.p25-stage .p25-top em{background:#FFE7A3;color:#6B4E00}
+.p25-stage b{font-size:clamp(22px,2vw,28px);color:#fff}
+.p25-stage small{font-size:13.5px;line-height:1.45;color:#CFE6D2}
+.p25-open{background:transparent!important;border:1.5px dashed #E0907C!important}
+.p25-open a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:100%;padding:8px;text-align:center;text-decoration:none;
+ background:#FFF4F0}
+.p25-open b{font-size:14px;color:#B23A1E}
+.p25-open span{font:600 10px/1 var(--mono);letter-spacing:.06em;color:#B23A1E;text-transform:uppercase}
+.p25-open a:hover{background:#FDE7DF}
 .p25-also{margin:16px 0 0;font-size:13px;line-height:1.6;color:var(--ink3)}
 .p25-also b{color:var(--ink2);font-weight:650}
-@media (max-width:560px){.p25-g{grid-template-columns:1fr;gap:8px}.p25-g li{padding:12px 14px 13px;gap:4px}.p25-g b{font-size:14.5px}.p25-also{font-size:12.5px}}
+@media (max-width:1100px) and (min-width:901px){.p25-g{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.p25-g{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(74px,auto)}
+ .p25-b{grid-row:span 1;padding:14px 15px 15px}.p25-b b{font-size:16px}.p25-stage b{font-size:21px}.p25-also{font-size:12.5px}}
+
+/* "Talk to our team" buttons: bigger, with the paper plane from the form's send button */
+.btn.btn-talk{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:58px;padding:0 26px 0 30px;font-size:17px;font-weight:700}
+.btn-primary.btn-talk{box-shadow:0 10px 22px -10px rgba(0,120,30,.7)}
+.btn-talk .tp{flex:none;overflow:visible}
+.btn-talk .tp-craft{transform-box:fill-box;transform-origin:center;animation:inq-fly 4.2s cubic-bezier(.4,0,.2,1) 2s infinite}
+.btn-talk .tp-trail{animation:inq-dash 1.4s linear infinite;opacity:.75}
+.btn-talk:hover .tp-craft{animation:inq-go .8s cubic-bezier(.4,0,.2,1) both}
+@media (prefers-reduced-motion:reduce){.btn-talk .tp-craft,.btn-talk .tp-trail{animation:none!important}}
+.people-cta{padding:22px 24px 24px;border-top:1px solid var(--hair2)}
+.people-cta .btn-talk{width:100%}
 /* the form stays in view on the right while the hero and the 2025 partners scroll past (Sean 2026-11-21: "Why is the form
    not frozen?"); on phones it comes right after the intro, before the 2025 partners */
 .hero-b .grid{grid-template-areas:"a f" "p f";grid-template-rows:auto 1fr}
@@ -339,7 +366,7 @@ html,body{max-width:100%;overflow-x:hidden}
 <div class="tcard"><div class="mq"><img class="mq-crest" src="assets/nms-emblem-240-green.png" alt="" width="60" height="60"><div class="mq-panel"><p class="mq-t">Nonprofit Marketing Summit 2027</p><p class="mq-by">presented by</p><label class="tc-slot"><span class="vh">Your company</span><input data-tc placeholder="YOUR COMPANY" maxlength="38" autocomplete="organization" enterkeyhint="next" spellcheck="false"></label></div></div></div><div class="pf"><ul class="pf-stats"><li><b>180,000+</b><span>registrations</span></li><li><b>670+</b><span>sessions</span></li><li><b>10</b><span>summits since 2020</span></li></ul><p class="pf-line">Teams who have come include:</p><div class="pf-tk"><ul class="pf-wall" aria-label="Teams who have attended"><li style="--c:#4AA241;--k:#397E32">The Nature Conservancy</li><li style="--c:#DA291C;--k:#C92417">Save the Children</li><li style="--c:#EE0000;--k:#CC0000">Doctors Without Borders</li><li style="--c:#000000;--k:#000000">Innocence Project</li><li style="--c:#7E726D;--k:#6E625D;--band:conic-gradient(#F5811C 0 25%,#D5078D 25% 50%,#82C43F 50% 75%,#6DB4C5 75% 100%)">Feed the Children</li><li style="--c:#0680C4;--k:#0570AC">Boys &amp; Girls Clubs of America</li><li class="pf-more">and thousands more</li><li aria-hidden="true" style="--c:#4AA241;--k:#397E32">The Nature Conservancy</li><li aria-hidden="true" style="--c:#DA291C;--k:#C92417">Save the Children</li><li aria-hidden="true" style="--c:#EE0000;--k:#CC0000">Doctors Without Borders</li><li aria-hidden="true" style="--c:#000000;--k:#000000">Innocence Project</li><li aria-hidden="true" style="--c:#7E726D;--k:#6E625D;--band:conic-gradient(#F5811C 0 25%,#D5078D 25% 50%,#82C43F 50% 75%,#6DB4C5 75% 100%)">Feed the Children</li><li aria-hidden="true" style="--c:#0680C4;--k:#0570AC">Boys &amp; Girls Clubs of America</li><li aria-hidden="true" class="pf-more">and thousands more</li></ul></div><small>Totals as of March 2025. Teams named by NonProfit PRO, 2022.</small></div>
 <div class="ctas"><a class="btn btn-ghost" href="#people">See who attends</a></div>
 </div>
-<div class="p25" id="partners-2025"><h2 class="p25-h">Who partnered in 2025</h2><p class="p25-l">Five stages ran side by side. These partners taught the nonprofit teams in the room.</p><ul class="p25-g"><li style="--c:#FFC001;--k:#1D1D1B"><p class="p25-n"><i aria-hidden="true"></i>Givebutter<span>Stage</span></p><b>The Givebutter Stage</b><small>One of five stages, named for the 2025 title sponsor</small></li><li style="--c:#F25022;--k:#CC431C"><p class="p25-n"><i aria-hidden="true"></i>Microsoft<span>Session</span></p><b>AI for Nonprofit Marketing Campaigns</b><small>Courtney Hodge, Microsoft</small></li><li style="--c:#004155;--k:#004155"><p class="p25-n"><i aria-hidden="true"></i>Blackbaud<span>Panel</span></p><b>Make the Moment Count: Securing the Support of Spontaneous Givers</b><small>Lori Poer, the Blackbaud Institute, with Asheville Humane Society</small></li><li style="--c:#2BB77A;--k:#1D8156"><p class="p25-n"><i aria-hidden="true"></i>Fundraise Up<span>Session</span></p><b>Effortless Giving: Reducing Donor Friction with AI</b><small>Josh Hirsch, Fundraise Up</small></li><li style="--c:#00B9FA;--k:#0078A3"><p class="p25-n"><i aria-hidden="true"></i>DonorPerfect<span>Session</span></p><b>Evolve Your Donor Journey Workflows with Storyboarding Exercises</b><small>Julia Gackenbach, DonorPerfect, on the Boost Stage</small></li><li style="--c:#ED3618;--k:#DA3116"><p class="p25-n"><i aria-hidden="true"></i>MemoryFox<span>Session</span></p><b>From Survey to Solutions: Insights from the Ethical Storytelling Report</b><small>Carly Euler, MemoryFox</small></li><li class="p25-open"><p class="p25-n">Your company<span>2027</span></p><b>Your stage or session, open for 2027</b><a href="#talk">Talk to our team</a></li></ul><p class="p25-also"><b>Also in 2025:</b> Classy from GoFundMe, GivingTuesday, The Giving Block, Bonterra, Neon One, DonorDock, Donately, Fifty &amp; Fifty, Public Interest Registry, Kindsight, Mittun, Boardable, Auctria, iDonate, GoFundraise, DonorSearch, Cause IQ, Dataro, WildApricot, McAllister &amp; Quinn, DMJ Studios, SendNexus, A Great Idea, Ploom Social, Itchy Palm Pictures, Foundation Group, Your Community Fundraiser, Nonprofit Learning Lab, The Human Stack, AFP-NYC, Fundraising Transformed, Club de Fundraising, Inside Philanthropy, Social Currant, Nonprofit411, Instrumentl, LG. Philanthropy.</p></div>
+<div class="p25" id="partners-2025"><h2 class="p25-h">Who partnered in 2025</h2><p class="p25-l">Five stages ran side by side, and partners taught sessions on them.</p><ul class="p25-g" aria-label="2025 partners"><li class="p25-b p25-stage"><p class="p25-top"><i class="p25-m" style="--b:#FFBF00;--i:#1D1D1B" aria-hidden="true">GB</i><span>Givebutter</span><em>2025 · stage</em></p><b>The Givebutter Stage</b><small>One of five stages, named for the 2025 title sponsor.</small></li><li class="p25-s"><i class="p25-m" style="--b:#000000;--i:#FFFFFF;--band:linear-gradient(90deg,#00A75A 0% 100%)" aria-hidden="true">C</i><span>Classy from GoFundMe</span></li><li class="p25-b p25-session"><p class="p25-top"><i class="p25-m" style="--b:#737373;--i:#FFFFFF;--band:linear-gradient(90deg,#F25022 0% 25%,#7FBA00 25% 50%,#00A4EF 50% 75%,#FFB900 75% 100%)" aria-hidden="true">M</i><span>Microsoft</span><em>2025 · session</em></p><b>AI for Nonprofit Marketing Campaigns</b></li><li class="p25-s"><i class="p25-m" style="--b:#33487F;--i:#FFFFFF;--band:linear-gradient(90deg,#E81830 0% 100%)" aria-hidden="true">GT</i><span>GivingTuesday</span></li><li class="p25-s"><i class="p25-m" style="--b:#271A4E;--i:#FAD225" aria-hidden="true">GB</i><span>The Giving Block</span></li><li class="p25-s"><i class="p25-m" style="--b:#38135F;--i:#FFFFFF" aria-hidden="true">B</i><span>Bonterra</span></li><li class="p25-b p25-panel"><p class="p25-top"><i class="p25-m" style="--b:#004154;--i:#FFFFFF" aria-hidden="true">B</i><span>Blackbaud</span><em>2025 · panel</em></p><b>Make the Moment Count: Securing the Support of Spontaneous Givers</b></li><li class="p25-s"><i class="p25-m" style="--b:#282968;--i:#FFFFFF;--band:linear-gradient(90deg,#008BF5 0% 100%)" aria-hidden="true">N1</i><span>Neon One</span></li><li class="p25-s"><i class="p25-m" style="--b:#00B8F9;--i:#00364A" aria-hidden="true">DP</i><span>DonorPerfect</span></li><li class="p25-b p25-session"><p class="p25-top"><i class="p25-m" style="--b:#373C45;--i:#FFFFFF;--band:linear-gradient(90deg,#2BB77A 0% 100%)" aria-hidden="true">FU</i><span>Fundraise Up</span><em>2025 · session</em></p><b>Effortless Giving: Reducing Donor Friction with AI</b></li><li class="p25-s"><i class="p25-m" style="--b:#ED3618;--i:#FFFFFF" aria-hidden="true">MF</i><span>MemoryFox</span></li><li class="p25-open"><a href="#talk"><b>Your logo here</b><span>2027 · open</span></a></li></ul><p class="p25-also"><b>Also in 2025:</b> DonorDock, Donately, Fifty &amp; Fifty, Public Interest Registry, Kindsight, Mittun, Boardable, Auctria, iDonate, GoFundraise, DonorSearch, Cause IQ, Dataro, WildApricot, McAllister &amp; Quinn, DMJ Studios, SendNexus, A Great Idea, Ploom Social, Itchy Palm Pictures, Foundation Group, Your Community Fundraiser, Nonprofit Learning Lab, The Human Stack, AFP-NYC, Fundraising Transformed, Club de Fundraising, Inside Philanthropy, Social Currant, Nonprofit411, Instrumentl, LG. Philanthropy.</p></div>
 <form class="inq" id="talk" novalidate data-partner-form data-hs="">
 <div class="tb"><span class="mono acc">Partner inquiry</span><span class="mono">NMS · 2027</span></div>
 <div class="inq-body" data-form-body>
@@ -395,6 +422,7 @@ try{if(localStorage.getItem('nmsPartnerSent')==='1'){new MutationObserver(functi
 <li><i style="--c:#C7EBA2"></i><b>9%</b><span>Interns and volunteers</span></li>
 <li><i style="--c:#ffffff"></i><b>2%</b><span>Other roles</span></li>
 </ul>
+<div class="people-cta"><a class="btn btn-primary btn-talk" href="#talk"><span>Talk to our team</span><svg class="tp" viewBox="0 0 44 26" width="38" height="22" aria-hidden="true"><path class="tp-trail" d="M2 23.5C8 23.5 10 17.5 15.5 15.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2.2 2.8"/><g class="tp-craft"><path d="M41 3 15 12.2l8.3 2.2Z" fill="currentColor"/><path d="M41 3 23.3 14.4 26.6 22.6Z" fill="currentColor" opacity=".7"/><path d="M23.3 14.4 26.6 22.6l.4-5.4Z" fill="currentColor" opacity=".5"/></g></svg></a></div>
 </div>
 </article>
 
@@ -404,13 +432,13 @@ try{if(localStorage.getItem('nmsPartnerSent')==='1'){new MutationObserver(functi
 <h2><span class="nw">Fewer partners.</span> <em><span class="nw">More room for each.</span></em></h2>
 <p>We’re keeping the 2027 partner list short, so each partner gets real time with the nonprofits in the room.</p>
 <ul class="offer" aria-label="Ways to partner"><li id="title"><b>Title partnership</b><span>The summit name</span></li><li id="session"><b>A stage session</b><span>Run a workshop</span></li></ul>
-<div class="ctas"><a class="btn btn-light" href="#talk">Talk to our team</a></div></div>
+<div class="ctas"><a class="btn btn-light btn-talk" href="#talk"><span>Talk to our team</span><svg class="tp" viewBox="0 0 44 26" width="38" height="22" aria-hidden="true"><path class="tp-trail" d="M2 23.5C8 23.5 10 17.5 15.5 15.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2.2 2.8"/><g class="tp-craft"><path d="M41 3 15 12.2l8.3 2.2Z" fill="currentColor"/><path d="M41 3 23.3 14.4 26.6 22.6Z" fill="currentColor" opacity=".7"/><path d="M23.3 14.4 26.6 22.6l.4-5.4Z" fill="currentColor" opacity=".5"/></g></svg></a></div></div>
 </section>
 
 <section class="faq-b paper-grid" id="questions"><div class="wrap"><div class="in">
 <div><h2>Partner questions</h2>
 <p class="l">Have a question that isn’t here? Ask it in <a href="#talk">the form</a> and our team will reply with the 2027 partner options.</p>
-<div class="ctas"><a class="btn btn-primary" href="#talk">Talk to our team</a></div></div>
+<div class="ctas"><a class="btn btn-primary btn-talk" href="#talk"><span>Talk to our team</span><svg class="tp" viewBox="0 0 44 26" width="38" height="22" aria-hidden="true"><path class="tp-trail" d="M2 23.5C8 23.5 10 17.5 15.5 15.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2.2 2.8"/><g class="tp-craft"><path d="M41 3 15 12.2l8.3 2.2Z" fill="currentColor"/><path d="M41 3 23.3 14.4 26.6 22.6Z" fill="currentColor" opacity=".7"/><path d="M23.3 14.4 26.6 22.6l.4-5.4Z" fill="currentColor" opacity=".5"/></g></svg></a></div></div>
 <dl class="qa">
 <div><dt><span class="mono">Q1</span><b>What can a partner do at the summit?</b></dt><dd>Take the title partnership, or run a session or workshop for the nonprofit teams who attend. Send <a href="#talk">the form</a> and our team will reply with the options.</dd></div>
 <div><dt><span class="mono">Q2</span><b>Who runs it?</b></dt><dd>Community Boost, which has helped nonprofits reach the people who support their work since 2012: 1,500+ nonprofit partners and $150M+ raised online. The 2027 summit is the 11th since 2020.</dd></div>
