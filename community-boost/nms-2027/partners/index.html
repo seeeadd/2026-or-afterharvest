@@ -79,6 +79,34 @@
  .row-bg .ctas{justify-content:stretch}.row-bg .ctas .btn{flex:1}
 }
 
+/* the send button: bigger, with a paper plane that lifts off now and then (Sean 2026-11-21) */
+.btn.inq-send{display:flex;align-items:center;justify-content:center;gap:12px;min-height:62px;font-size:18px;font-weight:700;box-shadow:0 10px 22px -10px rgba(0,120,30,.7)}
+.inq-plane{flex:none;animation:inq-fly 4.2s cubic-bezier(.4,0,.2,1) 1.2s infinite}
+.btn.inq-send:hover .inq-plane{animation:inq-go .7s cubic-bezier(.4,0,.2,1) both}
+@keyframes inq-fly{0%,70%,100%{transform:none;opacity:1}80%{transform:translate(9px,-7px) rotate(-8deg);opacity:0}81%{transform:translate(-9px,7px);opacity:0}92%{transform:none;opacity:1}}
+@keyframes inq-go{0%{transform:none}55%{transform:translate(10px,-8px) rotate(-8deg);opacity:0}56%{transform:translate(-8px,6px);opacity:0}100%{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.inq-plane{animation:none!important}}
+/* after sending: where the message is, like a delivery tracker */
+.trk-lead{margin-top:6px!important;font-size:15px;color:var(--ink2)}
+.trk{list-style:none;margin:18px 0 6px;padding:0;display:grid;gap:0}
+.trk li{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:0 0 18px}
+.trk li:not(:last-child)::before{content:"";position:absolute;left:13px;top:24px;bottom:2px;width:2px;background:#DCE3DA}
+.trk li.is-done:not(:last-child)::before{background:#009B27}
+.trk li>i{position:relative;z-index:1;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px #C9D2C7}
+.trk li.is-done>i{background:#009B27;box-shadow:none}
+.trk li.is-done>i::after{content:"";position:absolute;left:10px;top:6px;width:6px;height:11px;border:solid #fff;border-width:0 2.4px 2.4px 0;transform:rotate(45deg)}
+.trk li.is-now>i{box-shadow:inset 0 0 0 2px #009B27}
+.trk li.is-now>i::after{content:"";position:absolute;inset:7px;border-radius:50%;background:#009B27;animation:trk-pulse 1.6s ease-in-out infinite}
+@keyframes trk-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.6);opacity:.55}}
+@media (prefers-reduced-motion:reduce){.trk li.is-now>i::after{animation:none}}
+.trk b{display:block;font-size:16px;line-height:1.3;color:var(--ink)}
+.trk li:not(.is-done):not(.is-now) b{color:#7A837B}
+.trk small{display:block;margin-top:3px;font-size:14px;line-height:1.45;color:var(--ink2)}
+.trk li.is-now b{color:#007A1F}
+.trk-btn{margin-top:10px;min-height:44px;padding:0 18px;border:1.5px solid #009B27;border-radius:999px;background:#F1F8EB;color:#0F4D1F;font:700 15px/1 var(--sans);cursor:pointer}
+.trk-btn:hover{background:#E2F1D8}
+.trk-btn:focus-visible{outline:2px solid #009B27;outline-offset:2px}
+.trk-alt{margin-top:4px!important;font-size:14px!important}
 /* the page never gets wider than the screen: iPhone Safari widened the whole page to fit a drawing that ran past the edge (Sean 2026-11-21) */
 html,body{max-width:100%;overflow-x:hidden}
 @supports (overflow:clip){html,body{overflow-x:clip}}
@@ -274,15 +302,27 @@ html,body{max-width:100%;overflow-x:hidden}
 <button type="button" class="btn btn-primary ed-done" data-grow-done>Done</button></div>
 <textarea name="message" hidden></textarea></div>
 <p class="inq-err" role="alert" hidden>Please fill in your first name, a work email and your company.</p>
-<button class="btn btn-primary btn-block" type="submit">Send to our team</button>
+<button class="btn btn-primary btn-block inq-send" type="submit"><span>Send to our team</span><svg class="inq-plane" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M21.5 2.5 10.2 13.8M21.5 2.5l-7.2 19-4.1-7.7-7.7-4.1Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></svg></button>
 <p class="alt">This opens an email to our team with your details. It reaches us when you press send. Or write to <a href="mailto:summit@communityboost.org">summit@communityboost.org</a>.</p>
 </div>
 <div class="inq-body inq-done" data-form-done hidden tabindex="-1">
-<h2>One more step<span data-done-name></span>.</h2>
-<p>We opened an email to summit@communityboost.org with your details. It reaches our team when you press send, and we’ll reply with the 2027 partner options.</p>
-<p>No email opened? Copy your message and send it from your own inbox to <a href="mailto:summit@communityboost.org">summit@communityboost.org</a>.</p>
+<h2 data-trk-h>One more step<span data-done-name></span>.</h2>
+<p class="trk-lead">Here is where your message is.</p>
+<ol class="trk" data-trk>
+<li class="is-done"><i aria-hidden="true"></i><div><b>Message written</b><small>Your details are in a new email to summit@communityboost.org.</small></div></li>
+<li class="is-now" data-trk-step="send"><i aria-hidden="true"></i><div><b>Press send in your email app</b><small>It reaches our team the moment you send it.</small><button type="button" class="trk-btn" data-trk-sent>I’ve sent it</button></div></li>
+<li data-trk-step="read"><i aria-hidden="true"></i><div><b>Our team reads it</b><small>We look at what you shared about your team and your goals.</small></div></li>
+<li data-trk-step="reply"><i aria-hidden="true"></i><div><b>We reply with the 2027 partner options</b><small>Straight to the email you sent it from.</small></div></li>
+</ol>
+<p class="trk-alt">No email opened? Copy your message and send it from your own inbox to <a href="mailto:summit@communityboost.org">summit@communityboost.org</a>.</p>
 <button class="btn btn-dark btn-block" type="button" data-copy>Copy my message</button>
 </div></form>
+<script>(function(){var f=document.querySelector('[data-partner-form]');if(!f)return;var t=f.querySelector('[data-trk]');if(!t)return;
+function sent(save){var a=t.querySelector('[data-trk-step=send]'),b=t.querySelector('[data-trk-step=read]');a.classList.remove('is-now');a.classList.add('is-done');b.classList.add('is-now');
+var btn=a.querySelector('[data-trk-sent]');if(btn)btn.remove();var h=f.querySelector('[data-trk-h]');if(h){var n=h.querySelector('[data-done-name]');h.textContent='Sent. Thank you'+(n?n.textContent:'')+'.';}
+try{if(save)localStorage.setItem('nmsPartnerSent','1')}catch(e){}}
+t.addEventListener('click',function(e){if(e.target.closest('[data-trk-sent]'))sent(true)});
+try{if(localStorage.getItem('nmsPartnerSent')==='1'){new MutationObserver(function(m,o){var d=f.querySelector('[data-form-done]');if(d&&!d.hidden){sent(false);o.disconnect()}}).observe(f,{attributes:true,subtree:true,attributeFilter:['hidden']})}}catch(e){}})();</script>
 </div>
 </div></section>
 <section class="people-b paper-grid" id="people"><div class="wrap">
