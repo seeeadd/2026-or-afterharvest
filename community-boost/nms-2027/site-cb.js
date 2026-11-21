@@ -105,6 +105,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     });
   }
   f.addEventListener('click', function (e) {
+    var m = e.target.closest('[data-cbc-more]');
+    if (m) {   // phones: the day's other sessions, one tap away
+      var day = m.closest('.cbc-day'), open = !day.classList.contains('is-open');
+      day.classList.toggle('is-open', open);
+      m.setAttribute('aria-expanded', open ? 'true' : 'false');
+      m.querySelector('.cbc-more-l').textContent = open ? 'View less' : 'View more';
+      if (!open && day.getBoundingClientRect().top < 0) day.scrollIntoView({ block: 'start' });
+      return;
+    }
     var b = e.target.closest('[data-cbc-view]');
     if (!b) return;
     var v = b.getAttribute('data-cbc-view');

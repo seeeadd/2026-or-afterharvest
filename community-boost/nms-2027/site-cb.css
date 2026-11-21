@@ -1196,13 +1196,52 @@ section.wa .wa-ia .wa-behind{display:none}
 
 /* hero name tags fit the name (Ashley Brannan and Jazzmin Ramirez were cut) */
 @container hero-stage (min-width: 741px){
- .cb-hero-b .hb-main .hb-pano-balanced .hb-chest{width:max-content!important;min-width:clamp(56px,7.2cqi,78px);max-width:100px;padding-inline:6px!important}
+ /* long names wrap to two lines inside the tag instead of widening it into the next tag */
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-chest b{white-space:normal!important;text-wrap:balance;line-height:1.12!important}
+ /* Adam stands in front of Ashley (Sean 2026-11-21: "change the desktop. We want Adam on front") */
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li:nth-child(2)>img{z-index:3}
+ /* her tag a step left so Adam's never covers the end of her name */
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li.cb-cohost .hb-chest{margin-left:-12px}
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-chest{z-index:5}
 }
 #register .closing-broadcast svg.cp-cam{display:block!important;width:22px!important;height:17px!important;filter:none!important;overflow:visible}
 
 /* speed: the far backgrounds load when their section is within about two screens (cb_edits_1121.py adds bg-in) */
 .lazybg .pt-bp-sheet:not(.bg-in){background-image:none!important}
 .lazybg section.d1:not(.bg-in) .cb-walk-head::after{background-image:none!important}
+/* phones: the row is one line, so Ashley stands next to Cameron; Cameron (the host, in the middle) stands in front of her, never
+   behind (Sean 2026-11-21: "dont have ashley cover cameron on the phone") */
+@container hero-stage (max-width: 740px){
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.l li.is-host>img{z-index:3}
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li.cb-cohost>img{z-index:2}
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-chest{z-index:5}
+}
+
+/* the main page schedule on phones: three sessions a day, then "View more" (Sean 2026-11-21) */
+.cbc-more{display:none}
+@media (max-width:760px){
+ #schedule .cbc-day:not(.is-open) .cbc-list>li:nth-child(n+4){display:none}
+ .cbc-more{display:flex;align-items:center;justify-content:center;gap:8px;width:calc(100% - 24px);min-height:46px;margin:4px 12px 6px;padding:8px 14px;
+  border:1px solid #CFE0C9;border-radius:10px;background:#F4F9F1;color:#0F4D1F;font:650 15px/1.2 Geist,system-ui,sans-serif;cursor:pointer}
+ .cbc-more small{font-size:13px;font-weight:500;color:#4D594F}
+ .cbc-day.is-open .cbc-more small{display:none}
+ .cbc-more:focus-visible{outline:2px solid #009B27;outline-offset:2px}
+}
+
+/* ---- memory (Sean 2026-11-21: on a phone the tab crashed at the town, "A problem repeatedly occurred"; on a laptop Safari
+   reloaded the page). Measured: the film spotlight (a fixed overlay with a 300vmax shadow, for the 2025 film player that is
+   hidden on this page, so it can never turn on) held a 3984 px square layer, about 50 MB on screen and far more in Safari, and
+   forced the form and the town footer into their own tall layers; every town layer and lit-window overlay asked for its own
+   full-size buffer (about 27 MB each at an iPhone's 3x). The overlay goes; the town paints normally. ---- */
+.film-spot{display:none!important}
+.lc-city>.lc-ras,.lc-city>.lc-near,.lc-city>.lc-svg-traffic,.lc-city>.lc-svg-notes,.lc-ras-live,.lc-svg{will-change:auto!important}
+/* phones: the town stands still as you scroll (the depth parallax made a phone redraw every layer on every scroll step) */
+@media (max-width:760px){
+ .lc-city>.lc-svg-far,.lc-city>.lc-svg-back,.lc-city>.lc-svg-mid,.lc-city>.lc-near{animation:none!important;transform:none!important}
+}
+/* Ashley at the others' scale: her photo is a closer crop than theirs, so she takes no host's extra height and stands a little
+   shorter (Sean 2026-11-21: "make ashley smaller here") */
+.cb-hero-b .hb-main .hb-pano-balanced .hb-side li.is-host.cb-cohost{--ih:calc(var(--ph) - 10px)!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
