@@ -1316,6 +1316,10 @@ section.wa .wa-ia .wa-behind{display:none}
 @container hero-stage (max-width: 330px){
  .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li.cb-cohost>img{transform:translateX(9px)}
 }
+/* phones: Ashley a little smaller (Sean 2026-11-21) */
+@container hero-stage (max-width: 740px){
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side li.is-host.cb-cohost{--ih:calc(var(--ph) + 6px)!important}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
