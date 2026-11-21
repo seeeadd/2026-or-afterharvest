@@ -298,3 +298,8 @@ html,body{max-width:100%;overflow-x:hidden}
 /* the day banners' drawings step back so the banner reads cleaner (Sean 2026-11-21: "a little bit less opaque ... too much going on") */
 .tt-allday .tt-a-art{opacity:.42}
 .tt-a2 .tt-a-art{opacity:.42}
+
+/* the dates in "Jump to a day" bigger and bolder (Sean 2026-11-21) */
+.tt-tab .tt-tab-d{font-size:15px;font-weight:650;letter-spacing:-.005em}
+.tt-tab.tt-on .tt-tab-d,.tt-tab[aria-current] .tt-tab-d{color:#fff}
+@media (max-width:1240px){.tt-tab .tt-tab-nm{display:none}.tt-tab .tt-tab-d{overflow:visible;text-overflow:clip}}
