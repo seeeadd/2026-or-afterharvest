@@ -1403,6 +1403,14 @@ section.wa .wa-ia .wa-behind{display:none}
 .wa-logos img[src*="tiktok"]{height:46px!important;max-height:46px}
 .wa-logos img[src*="np-digital"]{height:29px!important}
 
+/* the companies on past summit stages with their real logos, in full colour, centred in the same tiles */
+.cb-orgs-wall li.cb-logo{display:flex!important;align-items:center;justify-content:center}
+.cb-orgs-wall li.cb-logo img{display:block;height:24px;width:auto;max-width:80%;max-height:none;object-fit:contain;filter:none!important;opacity:1!important}
+.cb-orgs-wall li.cb-logo img[src*="meta"]{height:20px}
+.cb-orgs-wall li.cb-logo img[src*="tiktok"]{height:40px}
+.cb-orgs-wall li.cb-logo img[src*="mailchimp"]{height:22px}
+@media (min-width:701px){.cb-orgs-wall li.cb-word.cb-logo{justify-content:center!important;padding:10px!important}}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.
