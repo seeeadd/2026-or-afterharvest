@@ -36,7 +36,11 @@ main{max-width:1180px;margin:0 auto;padding:0 var(--gut)}
 .num{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;font-size:14px;font-weight:600;color:var(--rad)}
 .aud{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border-radius:999px;background:#E6F0F2;color:var(--teal);font-size:13px;font-weight:700}
 #partner-alert .aud{background:var(--teal);color:#fff}
-.note{margin:-4px 0 20px;padding:12px 14px;border-radius:10px;background:#E6F0F2;box-shadow:inset 3px 0 0 var(--teal);font-size:15px;line-height:1.5;color:var(--ink)}
+.note{display:flex;gap:14px;margin:0 0 24px;padding:18px 20px;border-radius:14px;background:#FFF0EB;box-shadow:inset 0 0 0 2px #E5482D,0 14px 28px -20px rgba(229,72,45,.7);color:#3D1208}
+.note-ic{flex:none;display:grid;place-items:center;width:32px;height:32px;margin-top:1px;border-radius:50%;background:#E5482D;color:#fff;font-weight:800;font-size:19px;line-height:1}
+.note>div>b:first-child{display:block;font-size:21px;line-height:1.2;letter-spacing:-.015em;color:#B3240E}
+.note p{margin:6px 0 0;font-size:16px;line-height:1.5}.note p b{color:#3D1208}
+#partner-alert .aud{background:#E5482D}
 .meta h2{margin:4px 0 18px;font-size:32px;line-height:1.1;letter-spacing:-.025em}
 dl{margin:0;display:grid;gap:12px}
 dt{font-size:13px;font-weight:600;color:var(--ink2)}
@@ -88,7 +92,7 @@ with sample values. <em>Orange text</em> marks what only your team can fill in. 
 </div></div>
 <main><section class="mail" id="youre-in" aria-labelledby="youre-in-h">
 <div class="meta">
- <p class="num">Email 1<span class="aud">To your attendees</span></p>
+ <p class="num">Email 1<span class="aud">Sent to attendees</span></p>
  <h2 id="youre-in-h">You’re in</h2>
  <dl>
   <dt>Goes to</dt><dd>Everyone who signs up for the summit</dd>
@@ -106,7 +110,7 @@ with sample values. <em>Orange text</em> marks what only your team can fill in. 
 </div>
 </section><section class="mail" id="partner-thanks" aria-labelledby="partner-thanks-h">
 <div class="meta">
- <p class="num">Email 2<span class="aud">To the partner</span></p>
+ <p class="num">Email 2<span class="aud">Sent to the partner</span></p>
  <h2 id="partner-thanks-h">We got your note</h2>
  <dl>
   <dt>Goes to</dt><dd>A partner who sends the form on the sponsors page</dd>
@@ -124,10 +128,10 @@ with sample values. <em>Orange text</em> marks what only your team can fill in. 
 </div>
 </section><section class="mail" id="partner-alert" aria-labelledby="partner-alert-h">
 <div class="meta">
- <p class="num">Email 3<span class="aud">To Community Boost</span></p>
- <h2 id="partner-alert-h">New partner inquiry</h2><p class="note">This one comes to you, Community Boost. It’s a notification, not an email you send: every time someone sends the partner form, HubSpot emails it to your team, so you know right away that a new partner wants in and can reply. Partners never see it.</p>
+ <p class="num">Email 3<span class="aud">Sent to you</span></p>
+ <h2 id="partner-alert-h">New partner inquiry</h2><div class="note" role="note"><span class="note-ic" aria-hidden="true">!</span><div><b>Heads up: this one is sent to you.</b><p>Not to the partner. Every time someone fills in the sponsors form, <b>HubSpot sends this email to Community Boost</b>, so you know right away that a new partner wants in. Partners never see it.</p></div></div>
  <dl>
-  <dt>Goes to</dt><dd>Community Boost: whoever on your team handles partners. Partners never see it.</dd>
+  <dt>Goes to</dt><dd>You: whoever at Community Boost handles partners.</dd>
   <dt>Sends</dt><dd>The moment a partner sends the form, while they get the “We got your note” email.</dd>
   <dt>Subject</dt><dd>New partner inquiry: Brightline Software</dd>
   <dt>Preview line</dt><dd>Maria Lopez sent the partner form.</dd>
