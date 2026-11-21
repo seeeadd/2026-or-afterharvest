@@ -79,6 +79,9 @@
  .row-bg .ctas{justify-content:stretch}.row-bg .ctas .btn{flex:1}
 }
 
+/* the page never gets wider than the screen: iPhone Safari widened the whole page to fit a drawing that ran past the edge (Sean 2026-11-21) */
+html,body{max-width:100%;overflow-x:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
 
 /* phones and tablets: the page links behind a menu, so a visitor on the schedule or the sponsors page can always get home and to
    the other pages (Sean 2026-11-21: "I still want them to be able to go back home or have an option to see the subpages") */
