@@ -188,6 +188,9 @@
 .ed-bar{display:flex;align-items:center;gap:2px;padding:4px;border-bottom:1px solid var(--hair)}
 .ed-bar button{display:grid;place-items:center;min-width:32px;height:30px;padding:0 6px;border:0;background:none;color:var(--ink);font:15px var(--sans);cursor:pointer}
 .ed-bar button:hover{background:rgba(7,20,7,.06)}
+/* the toolbar quieter (Sean 2026-11-21: "make this less opacity"): faded until you point at it; icons stay above 3:1, the Expand word above 4.5:1 */
+.ed-bar button{color:rgba(7,20,7,.5)}.ed-bar button.ed-grow{color:rgba(7,20,7,.6)}
+.ed-bar button:hover,.ed-bar button:focus-visible,.ed-bar button.ed-grow:hover,.ed-bar button.ed-grow:focus-visible{color:var(--ink)}
 .ed-bar button[aria-pressed="true"]{background:rgba(0,155,39,.12);color:var(--rad)}
 .ed-bar button i{font-family:Georgia,serif}
 .ed-bar svg{width:18px;height:18px;fill:currentColor;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
