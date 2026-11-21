@@ -339,6 +339,10 @@ html,body{max-width:100%;overflow-x:hidden}
 .p25-open a:hover i,.p25-open a:focus-visible i{background:#9BE3AA;color:#0E2213;border-style:solid}
 .p25-open a:focus-visible{outline:2px solid #009B27;outline-offset:2px}
 .p25-s.p25-has-logo{padding:12px 14px}
+/* the 2025 logos read as past partners: colour toned down, not grey; full colour on hover (Sean 2026-11-21) */
+.p25-logo{filter:saturate(.38);opacity:.9;transition:filter .25s,opacity .25s}
+.p25-g li:hover .p25-logo{filter:none;opacity:1}
+@media (prefers-reduced-motion:reduce){.p25-logo{transition:none}}
 .p25-s .p25-logo{display:block;max-width:78%;max-height:34px;width:auto;height:auto;object-fit:contain}
 .p25-top .p25-logo{display:block;height:24px;width:auto;max-width:58%;object-fit:contain;object-position:left center}
 .p25-also{margin:16px 0 0;font-size:13px;line-height:1.6;color:var(--ink3)}
