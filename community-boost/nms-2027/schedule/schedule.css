@@ -294,3 +294,7 @@ html,body{max-width:100%;overflow-x:hidden}
 .tt-filter input:not(:checked)+i{background:#fff;box-shadow:inset 0 0 0 1.5px #b9c2b9}
 .tt-filter label:has(input:not(:checked)){color:#7a837b;font-weight:500;background:#FAFBF9}
 @media (prefers-reduced-motion:reduce){.tt-filter label{transition:none}}
+
+/* the day banners' drawings step back so the banner reads cleaner (Sean 2026-11-21: "a little bit less opaque ... too much going on") */
+.tt-allday .tt-a-art{opacity:.42}
+.tt-a2 .tt-a-art{opacity:.55}
