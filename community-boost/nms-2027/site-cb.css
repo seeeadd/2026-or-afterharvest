@@ -1282,6 +1282,12 @@ section.wa .wa-ia .wa-behind{display:none}
 .lc-ras>picture>img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:contain;object-position:50% 100%;pointer-events:none;user-select:none}
 .motion-paused .lc-ras>picture>img{transition:none!important}
 @media (max-width:480px){.lc.is-yours .lc-ras-yours{background-image:var(--pic-ph,var(--pic))}}
+/* phones: Ashley at the others' person scale (her photo is a closer crop, the smaller image read as a smaller person), standing
+   in front of Cameron's arm (Sean 2026-11-21: "she looks like a dwarf ... put her in front of Cameron's right arm") */
+@container hero-stage (max-width: 740px){
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side li.is-host.cb-cohost{--ih:calc(var(--ph) + 14px)!important}
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li.cb-cohost>img{z-index:4}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
