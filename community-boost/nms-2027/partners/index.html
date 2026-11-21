@@ -290,6 +290,10 @@ html,body{max-width:100%;overflow-x:hidden}
 .ed-done{display:none}
 .ed textarea[hidden]{display:none!important}
 .ed-back{position:fixed;inset:0;z-index:90;background:rgba(7,20,7,.55);backdrop-filter:blur(2px)}
+.inq.ed-open{z-index:200!important}
+@media (max-width:900px){.inq.ed-open{position:relative}}
+html.ed-lock .hero-b,html.ed-lock .hero-b .grid{z-index:auto}
+html.ed-lock,html.ed-lock body{overflow:hidden}
 .ed.is-big .ed-box{position:fixed;z-index:91;left:50%;top:50%;transform:translate(-50%,-50%);width:min(760px,calc(100vw - 32px));
  display:flex;flex-direction:column;box-shadow:0 40px 90px -30px rgba(7,20,7,.7);animation:ed-in .22s cubic-bezier(.2,.8,.2,1)}
 .ed.is-big .ed-in{min-height:min(52vh,420px);max-height:min(64vh,560px);font-size:17px;padding:18px 20px}
@@ -523,9 +527,11 @@ document.querySelectorAll('[data-ed]').forEach(function(ed){
   inp.addEventListener('input',function(){if(!inp.textContent.trim()&&!inp.querySelector('li'))inp.innerHTML='';sync()});
   inp.addEventListener('keyup',sync);inp.addEventListener('mouseup',sync);
   inp.addEventListener('paste',function(e){e.preventDefault();var t=(e.clipboardData||window.clipboardData).getData('text/plain');document.execCommand('insertText',false,t)});
+  // the dim layer goes in the editor itself and the form is lifted above the page while open, so the frozen form's own layer can
+  // never put the box under the blur (Sean 2026-11-21: "why is the expanding of the text box making everything blurry?")
   function open(){if(ed.classList.contains('is-big'))return close();ed.classList.add('is-big');back=document.createElement('div');back.className='ed-back';
-    back.addEventListener('click',close);document.body.appendChild(back);grow.setAttribute('aria-expanded','true');grow.lastChild.textContent='Smaller';inp.focus()}
-  function close(){ed.classList.remove('is-big');back&&back.remove();back=null;grow.setAttribute('aria-expanded','false');grow.lastChild.textContent='Expand';inp.focus()}
+    back.addEventListener('click',close);ed.insertBefore(back,box);var fm=ed.closest('form');fm&&fm.classList.add('ed-open');document.documentElement.classList.add('ed-lock');grow.setAttribute('aria-expanded','true');grow.lastChild.textContent='Smaller';inp.focus()}
+  function close(){ed.classList.remove('is-big');back&&back.remove();back=null;var fm=ed.closest('form');fm&&fm.classList.remove('ed-open');document.documentElement.classList.remove('ed-lock');grow.setAttribute('aria-expanded','false');grow.lastChild.textContent='Expand';inp.focus()}
   grow.addEventListener('click',open);ed.querySelector('[data-grow-done]').addEventListener('click',close);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ed.classList.contains('is-big'))close()});
 });
