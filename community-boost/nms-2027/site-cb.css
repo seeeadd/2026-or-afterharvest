@@ -1269,6 +1269,9 @@ section.wa .wa-ia .wa-behind{display:none}
 @container hero-stage (max-width: 740px){
  .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li:nth-child(2)>img{z-index:2}
 }
+/* a name tag grows to hold everything on it, so Adam's second logo (Starlight) sits inside the tag, not under it (Sean 2026-11-21) */
+.cb-hero-b .hb-main .hb-pano-balanced .hb-chest{height:auto!important;padding-bottom:5px!important}
+.cb-hero-b .hb-main .hb-pano-balanced .hb-chest .hb-org.cb-logos2{height:auto!important;flex-wrap:wrap;justify-content:center;row-gap:2px}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
