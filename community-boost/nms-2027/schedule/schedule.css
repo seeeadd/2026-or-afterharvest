@@ -303,3 +303,21 @@ html,body{max-width:100%;overflow-x:hidden}
 .tt-tab .tt-tab-d{font-size:15px;font-weight:650;letter-spacing:-.005em}
 .tt-tab.tt-on .tt-tab-d,.tt-tab[aria-current] .tt-tab-d{color:#fff}
 @media (max-width:1240px){.tt-tab .tt-tab-nm{display:none}.tt-tab .tt-tab-d{overflow:visible;text-overflow:clip}}
+/* the time zone banner above the table (Sean 2026-11-21) */
+.tt-zbar{display:flex;align-items:center;gap:16px;margin-top:26px;max-width:780px;padding:14px 14px 14px 16px;border:1.5px solid #FC7540;border-radius:14px;background:#FFF5EF}
+.tt-zbar[hidden]{display:none}
+.tt-zic{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#FC7540}
+.tt-zic svg{width:24px;height:24px}.tt-zic path{fill:#fff}.tt-zic circle{fill:#FC7540}
+.tt-ztx{flex:1;min-width:0}
+.tt-zh{margin:0;font-size:19px;font-weight:700;line-height:1.3;color:#14201a;letter-spacing:-.01em}
+.tt-zh .tt-place{font-weight:700}.tt-zh .tt-pin{display:none}
+.tt-zs{margin:2px 0 0;font-size:15px;line-height:1.45;color:#4a524c}.tt-zs b{color:#14201a;font-weight:650;font-variant-numeric:tabular-nums}
+.tt-zs .tt-place{font-weight:600}.tt-zs .tt-pin{display:none}
+.tt-zsw{flex:none;display:flex;padding:4px;gap:4px;border:1px solid #f1c9b4;border-radius:10px;background:#fff}
+.tt-zsw button{min-height:42px;padding:0 16px;border:0;border-radius:7px;background:transparent;font:600 15px var(--sans);color:#3c4043;cursor:pointer;white-space:nowrap}
+.tt-zsw button:hover{background:#f6f8f6}
+.tt-zsw button[aria-pressed="true"]{background:var(--rad);color:#fff}
+.tt-zsw button:focus-visible{outline:2px solid var(--rad);outline-offset:2px}
+@media (max-width:700px){.tt-zbar{flex-wrap:wrap;gap:12px;margin-top:18px;padding:14px}
+ .tt-zbar{align-items:flex-start}.tt-zic{width:38px;height:38px}.tt-zic svg{width:20px;height:20px}.tt-ztx{flex-basis:calc(100% - 52px)}
+ .tt-zh{font-size:17px}.tt-zs{font-size:14px}.tt-zsw{width:100%}.tt-zsw button{flex:1;padding:0 8px}}
