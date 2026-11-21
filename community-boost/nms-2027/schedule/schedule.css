@@ -277,3 +277,20 @@ html,body{max-width:100%;overflow-x:hidden}
 /* the side panel stays in view while the table scrolls (Sean 2026-11-21: "keep the left section frozen ... so they know that
    it's clickable") */
 @media (min-width:981px){.tt-side{position:sticky;top:var(--side-top,140px);align-self:start;max-height:calc(100vh - var(--side-top,140px) - 12px);overflow-y:auto}}
+
+/* the side panel (Sean 2026-11-21): the calendar steps back, the stage switches step forward so they read as clickable */
+.tt-month{opacity:.6}
+.tt-mini b{opacity:.6}
+.tt-mini i:not(.is-day){opacity:.45}
+.tt-cals{margin-top:22px!important;font-size:15px!important;font-weight:700!important;color:#14201a!important}
+.tt-hint{margin:2px 0 8px;font-size:12.5px;color:#6b736d}
+.tt-filter{display:grid;gap:6px}
+.tt-filter label{gap:11px;padding:9px 10px;border:1px solid #DDE3DB;border-radius:9px;background:#fff;font-size:14px;font-weight:600;color:#14201a;
+ transition:background .15s,border-color .15s,box-shadow .15s}
+.tt-filter label:hover{background:var(--tint2);border-color:var(--c);box-shadow:0 1px 0 rgba(7,20,7,.04)}
+.tt-filter i{width:20px;height:20px;border-radius:5px;background:var(--c);box-shadow:none}
+.tt-filter i:after{width:9px;height:5px;border:2px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.tt-filter .tt-room i:after{border-color:#071407}
+.tt-filter input:not(:checked)+i{background:#fff;box-shadow:inset 0 0 0 1.5px #b9c2b9}
+.tt-filter label:has(input:not(:checked)){color:#7a837b;font-weight:500;background:#FAFBF9}
+@media (prefers-reduced-motion:reduce){.tt-filter label{transition:none}}
