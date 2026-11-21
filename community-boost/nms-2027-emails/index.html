@@ -20,7 +20,24 @@ a{color:inherit}
 .top nav span{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:700}
 .hero{position:relative;overflow:hidden;padding:64px var(--gut) 56px;background:var(--teal);color:#fff;
  background-image:linear-gradient(rgba(228,239,243,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(228,239,243,.07) 1px,transparent 1px);background-size:24px 24px}
-.hero-in{max-width:1180px;margin:0 auto}
+.hero-in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:48px;align-items:center}
+/* the way to the setup guide (Sean 2026-11-21: "a button ... about opening the setup guide ... add a graphic to it, really inviting them to click it"; "continue to set up") */
+.gcard{position:relative;display:block;padding:20px 20px 22px;border-radius:20px;background:rgba(7,20,7,.35);box-shadow:inset 0 0 0 1px rgba(199,235,162,.35),0 30px 60px -30px rgba(0,0,0,.6);color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.gcard:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1.5px #73D88C,0 36px 70px -30px rgba(0,0,0,.7)}
+.gcard:focus-visible{outline:3px solid #73D88C;outline-offset:4px}
+.gflow{display:block;width:100%;height:auto;margin-bottom:16px}
+.gflow text{font:700 13px Geist,system-ui,sans-serif;fill:#071407}.gflow text.s{font-weight:500;fill:#4D594F}.gflow text.w{fill:#fff;font-size:13.5px}
+.gflow .gl{fill:none;stroke:#73D88C;stroke-width:2;stroke-dasharray:5 5;animation:gdash 1.4s linear infinite}
+@keyframes gdash{to{stroke-dashoffset:-20}}
+.gk{display:block;font-size:13px;font-weight:700;color:#C7EBA2}
+.gt{display:block;margin-top:4px;font-size:23px;line-height:1.2;letter-spacing:-.02em}
+.gs{display:block;margin-top:6px;font-size:15px;color:rgba(255,255,255,.78)}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;min-height:54px;border-radius:12px;background:#009B27;font-size:17px;font-weight:700;box-shadow:0 14px 26px -14px rgba(0,155,39,.9)}
+.gcard:hover .gbtn{background:#00AE2C}
+.gbtn svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.gcard:hover .gbtn svg{transform:translateX(3px)}
+@media (max-width:980px){.hero-in{grid-template-columns:1fr;gap:32px}.gcard{max-width:460px}}
+@media (prefers-reduced-motion:reduce){.gflow .gl{animation:none}.gcard,.gbtn svg{transition:none}}
 .hero h1{margin:0;max-width:18ch;font-size:clamp(34px,5vw,60px);line-height:1.02;letter-spacing:-.035em;font-weight:700}
 .hero p{max-width:62ch;margin:18px 0 0;font-size:18px;color:rgba(255,255,255,.82)}
 .hero p em{font-style:normal;color:#FDBA8C;font-weight:600}
@@ -84,11 +101,31 @@ footer{padding:28px var(--gut);border-top:1px solid var(--hair);font-size:14px;c
 <header class="top"><img src="https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/assets/2027/nms-emblem-64-green.png" alt="" width="36" height="36"><p><b>Nonprofit Marketing Summit 2027</b><small>Confirmation emails</small></p>
 <nav aria-label="The three emails"><a href="#youre-in"><span>1</span>You’re in</a><a href="#partner-thanks"><span>2</span>We got your note</a><a href="#partner-alert"><span>3</span>New partner inquiry</a></nav></header>
 <div class="hero"><div class="hero-in">
+<div class="hero-tx">
 <h1>Three confirmation emails, ready for HubSpot</h1>
-<p>One for everyone who signs up for the summit, and two for partners who send the form on the sponsors page. They’re shown
-with sample values. <em>Orange text</em> marks what only your team can fill in. The setup steps are below the emails.</p>
+<p>One for everyone who signs up for the summit, one for partners who send the form on the sponsors page, and one alert
+sent to your team. They’re shown with sample values. <em>Orange text</em> marks what only your team can fill in.</p>
 <div class="ctl"><div class="seg" role="group" aria-label="Preview width"><button type="button" aria-pressed="true" data-w="desk">Desktop</button>
 <button type="button" aria-pressed="false" data-w="phone">Phone</button></div><small>Switches all three previews</small></div>
+</div>
+<a class="gcard" href="setup/">
+ <svg class="gflow" viewBox="0 0 380 132" aria-hidden="true">
+  <defs><marker id="ga" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0l10 5-10 5z" fill="#73D88C"/></marker></defs>
+  <path class="gl" d="M104 44h36" marker-end="url(#ga)"/><path class="gl" d="M238 44h36" marker-end="url(#ga)"/>
+  <path class="gl" d="M190 70v20q0 10 10 10h76" marker-end="url(#ga)"/>
+  <g><rect x="8" y="18" width="96" height="52" rx="12" fill="#fff"/><rect x="22" y="31" width="26" height="26" rx="6" fill="#E6F0F2"/>
+   <path d="M28 40h14M28 45h14M28 50h9" stroke="#0F3E4A" stroke-width="2" stroke-linecap="round"/><text x="56" y="41">Form</text><text x="56" y="56" class="s">sent</text></g>
+  <g><rect x="142" y="18" width="96" height="52" rx="12" fill="#fff"/><rect x="156" y="31" width="26" height="26" rx="6" fill="#E9F6EC"/>
+   <path d="M160 37h18v14h-18z M160 37l9 7 9-7" fill="none" stroke="#009B27" stroke-width="2" stroke-linejoin="round"/><text x="190" y="41">Send</text><text x="190" y="56" class="s">email</text></g>
+  <g><rect x="276" y="18" width="96" height="52" rx="12" fill="#fff"/><rect x="290" y="31" width="26" height="26" rx="6" fill="#FFF0EB"/>
+   <path d="M297 48c0-6 2-9 6-9s6 3 6 9l2 3h-16z M301 53a2 2 0 004 0" fill="none" stroke="#E5482D" stroke-width="2" stroke-linejoin="round"/><text x="324" y="41">Alert</text><text x="324" y="56" class="s">team</text></g>
+  <g><rect x="276" y="84" width="96" height="34" rx="10" fill="#009B27"/><path d="M292 101l5 5 9-10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><text x="314" y="106" class="w">Live</text></g>
+ </svg>
+ <span class="gk">Step-by-step guide</span>
+ <b class="gt">Ready? Continue to set it up in HubSpot.</b>
+ <span class="gs">6 steps, about 50 minutes, every click spelled out.</span>
+ <span class="gbtn">Open the setup guide<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span>
+</a>
 </div></div>
 <main><section class="mail" id="youre-in" aria-labelledby="youre-in-h">
 <div class="meta">
