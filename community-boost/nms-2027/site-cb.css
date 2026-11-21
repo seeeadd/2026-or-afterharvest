@@ -1288,6 +1288,23 @@ section.wa .wa-ia .wa-behind{display:none}
  .cb-hero-b .hb-main .hb-pano-balanced .hb-side li.is-host.cb-cohost{--ih:calc(var(--ph) + 14px)!important}
  .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li.cb-cohost>img{z-index:4}
 }
+/* phones: Ashley in front of Cameron only; Adam stays in front of Ashley (and of Dani) (Sean 2026-11-21) */
+@container hero-stage (max-width: 740px){
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li:nth-child(2)>img{z-index:5}
+}
+/* phones: Cameron in front with his face, Ashley over only his arm on her side (Sean 2026-11-21: "only Cameron's right arm. keep
+   Cameron's face on top"): his picture stays on top but is cut away over that arm; name tags always above the pictures */
+@container hero-stage (max-width: 740px){
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.l li.is-host>img{z-index:5;clip-path:polygon(0 0,100% 0,100% 50%,74% 58%,66% 100%,0 100%)}
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li:nth-child(2)>img{z-index:6}
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-chest{z-index:8!important}
+}
+/* the cut over Cameron's arm as a soft rounded fade, not a straight seam (Sean 2026-11-21: "it looks weird") */
+@container hero-stage (max-width: 740px){
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.l li.is-host>img{clip-path:none;
+  -webkit-mask-image:radial-gradient(ellipse 34% 52% at 100% 100%,transparent 55%,#000 92%);
+  mask-image:radial-gradient(ellipse 34% 52% at 100% 100%,transparent 55%,#000 92%)}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
