@@ -1265,6 +1265,10 @@ section.wa .wa-ia .wa-behind{display:none}
 .cb-mbar .mobile-bar-hours{min-width:0;overflow:hidden}
 .cb-mbar .mobile-bar-hours,.cb-mbar .signup-hours-pacific{display:block;min-width:0}
 .cb-mbar .signup-hours-date{display:block!important}
+/* phones: Adam stands in front of Dani too (Sean 2026-11-21: "make Adam in front ... put Dani's left shoulder on the back") */
+@container hero-stage (max-width: 740px){
+ .cb-hero-b .hb-main .hb-pano-balanced .hb-side.r li:nth-child(2)>img{z-index:2}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
