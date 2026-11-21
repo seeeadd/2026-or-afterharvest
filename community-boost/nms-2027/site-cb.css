@@ -1277,6 +1277,11 @@ section.wa .wa-ia .wa-behind{display:none}
 .cb-mbar .registration-bar-action{width:100%!important;min-height:52px!important;justify-content:center!important;font-size:1rem!important;font-weight:700}
 @media (max-width:360px){.cb-mbar .registration-bar-action{font-size:.92rem!important;padding-inline:8px!important}}
 @media (max-width:360px){.cb-mbar{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)!important}}
+/* the town's pictures sit in <picture> (phone copies up to 480 px, town_phone.js): the same placement as before */
+.lc-ras>picture{display:contents}
+.lc-ras>picture>img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:contain;object-position:50% 100%;pointer-events:none;user-select:none}
+.motion-paused .lc-ras>picture>img{transition:none!important}
+@media (max-width:480px){.lc.is-yours .lc-ras-yours{background-image:var(--pic-ph,var(--pic))}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
