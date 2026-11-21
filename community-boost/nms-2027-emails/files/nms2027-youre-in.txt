@@ -9,13 +9,13 @@ Tuesday, February 23, 2027
 Day 2: The Build
 Wednesday, February 24, 2027
 
-9:00 am to 2:30 pm PT each day (12:00 to 5:30 pm ET), live on Zoom
+9:00 am to 2:30 pm PT each day (12:00 to 5:30 pm ET), live online
 See every session by time and stage: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/schedule/
 
 Three things to do now:
 
 1. Put both days in your calendar. One tap holds both days before anything else lands on them.
-Add both days to Google Calendar: https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nonprofit%20Marketing%20Summit%202027%20%28live%20on%20Zoom%29&dates=20270223T170000Z/20270223T223000Z&ctz=America/Los_Angeles&recur=RRULE%3AFREQ%3DDAILY%3BCOUNT%3D2&details=Free%20and%20live%20on%20Zoom%2C%20hosted%20by%20Community%20Boost.%20Your%20link%20to%20join%20comes%20by%20email%20before%20the%20summit.%20Full%20schedule%3A%20https%3A//2026-or-afterharvest.vercel.app/community-boost/nms-2027/schedule/%20%20Questions%3A%20summit%40communityboost.org&location=Zoom%20%28link%20by%20email%20before%20the%20summit%29
+Add both days to Google Calendar: https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nonprofit%20Marketing%20Summit%202027%20%28live%20online%29&dates=20270223T170000Z/20270223T223000Z&ctz=America/Los_Angeles&recur=RRULE%3AFREQ%3DDAILY%3BCOUNT%3D2&details=Free%20and%20live%20online%2C%20hosted%20by%20Community%20Boost.%20Your%20link%20to%20join%20comes%20by%20email%20before%20the%20summit.%20Full%20schedule%3A%20https%3A//2026-or-afterharvest.vercel.app/community-boost/nms-2027/schedule/%20%20Questions%3A%20summit%40communityboost.org&location=Online%20%28your%20link%20to%20join%20comes%20by%20email%20before%20the%20summit%29
 
 Google Calendar shows the times in your own time zone. If they look off, check the time zone in your Google Calendar settings. Using Outlook or Apple Calendar? Add it with this file: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/assets/email/nms-2027.ics.
 

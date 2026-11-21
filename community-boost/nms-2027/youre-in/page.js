@@ -94,14 +94,14 @@ each('[data-when-local]', function(el){
                    : '<b>' + rangePT + '</b><span class="sep"> · </span><span class="nw">' + startPT + ' to ' + endPT + ' PT</span>';
 });
 each('[data-when-pt]', function(el){
-  el.textContent = L ? 'That’s ' + rangePT.replace(', 2027', '') + ', ' + startPT + ' to ' + endPT + ' PT. Free, live on Zoom.' : 'Free, live on Zoom.';
+  el.textContent = L ? 'That’s ' + rangePT.replace(', 2027', '') + ', ' + startPT + ' to ' + endPT + ' PT. Free, live online.' : 'Free, live online.';
 });
 /* the header's clock: their dates and start time first, PT under it (v3's markup, so its narrow-screen rules still apply) */
 (function(){
   var short = L ? L.mo + ' ' + L.dom + ' to ' + L.domLast : MOL[1].slice(0, 3) + ' ' + first.dom + ' to ' + last.dom;
   var startL = L ? L.start : startPT;
   each('[data-hd-main]', function(el){ el.innerHTML = '<span class="nw">' + short + '</span><span class="tm"> · <span class="nw">' + startL + (L ? ' in ' + city : ' PT') + '</span></span>'; });
-  each('[data-hd-sub]', function(el){ el.innerHTML = '<span class="tm2"><span class="nw">' + startL + (L ? ' in ' + city : ' PT') + '</span>' + (L ? ' · ' : '') + '</span>' + (L ? startPT + ' PT' : '') + '<span class="free">' + (L ? ' · free' : 'Free') + ', live on Zoom</span>'; });
+  each('[data-hd-sub]', function(el){ el.innerHTML = '<span class="tm2"><span class="nw">' + startL + (L ? ' in ' + city : ' PT') + '</span>' + (L ? ' · ' : '') + '</span>' + (L ? startPT + ' PT' : '') + '<span class="free">' + (L ? ' · free' : 'Free') + ', live online</span>'; });
   if (L) { var cb = document.querySelectorAll('.cal3 b'); for (var k = 0; k < cb.length; k++) cb[k].textContent = L.dom + (cb.length - 1 - k); var ce = document.querySelector('.cal3 em'); if (ce) ce.textContent = L.mo; }
 })();
 /* each day card: their date and time first, PT beside it */
@@ -116,13 +116,13 @@ each('[data-week-start]', function(el){ el.textContent = L ? L.longDay(first) + 
 
 /* ---- calendar links: one Google entry repeating daily, a hosted file for Outlook, Apple and the rest ---- */
 function z(d){ return d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''); }
-var details = 'Free and live on Zoom, hosted by Community Boost. Your personal Zoom link comes by email before the summit: search your inbox for "Nonprofit Marketing Summit". Questions: ' + EVENT.contact;
+var details = 'Free and live online, hosted by Community Boost. Your personal link to join comes by email before the summit: search your inbox for "Nonprofit Marketing Summit". Questions: ' + EVENT.contact;
 var gcal = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-  + '&text=' + encodeURIComponent(EVENT.name + ' (live on Zoom)')
+  + '&text=' + encodeURIComponent(EVENT.name + ' (live online)')
   + '&dates=' + z(start1) + '/' + z(at(first.date, EVENT.endPT)) + '&ctz=America/Los_Angeles'
   + (D.length > 1 ? '&recur=' + encodeURIComponent('RRULE:FREQ=DAILY;COUNT=' + D.length) : '')
   + '&details=' + encodeURIComponent(details)
-  + '&location=' + encodeURIComponent('Zoom (your personal link comes by email)');
+  + '&location=' + encodeURIComponent('Online (your link to join comes by email)');
 each('[data-cal="google"]', function(a){ a.href = gcal; });
 each('[data-cal="ics"]', function(a){ a.href = EVENT.icsUrl; });
 /* opening a calendar is not saving it: only "It's in my calendar" marks the step done */
@@ -219,7 +219,7 @@ if (!reduce && !seen && !q.has('still') && (state === 'pre' || state === 'week')
    The coworker invite and the videos never count toward "You're ready". ---- */
 var STEPS = ['1','2'], doneSet = {};
 try { (localStorage.getItem('nms27-yi4-done') || '').split(',').forEach(function(k){ if (STEPS.indexOf(k) >= 0) doneSet[k] = 1; }); } catch(e) {}
-var NEXT = {'1': 'Next: add the summit to your calendar', '2': 'Next: find your Zoom link'};
+var NEXT = {'1': 'Next: add the summit to your calendar', '2': 'Next: find your confirmation email'};
 function paint(){
   STEPS.forEach(function(k){
     var on = !!doneSet[k];
@@ -235,7 +235,7 @@ each('[data-done]', function(b){ b.addEventListener('click', function(){
   var k = b.dataset.done, on = !doneSet[k];
   if (on) doneSet[k] = 1; else delete doneSet[k];
   paint();
-  var msg = on ? (k === '1' ? 'Marked as saved in your calendar.' : 'Zoom link found.') : '';
+  var msg = on ? (k === '1' ? 'Marked as saved in your calendar.' : 'Confirmation email found.') : '';
   each(k === '1' ? '[data-cal-done]' : '[data-mail-done]', function(el){ el.textContent = msg; });
   if (on) { var all = STEPS.every(function(s){ return doneSet[s]; }); say(msg + (all ? ' You’re ready. See you at the summit.' : '')); }
 }); });
