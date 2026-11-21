@@ -1360,6 +1360,18 @@ section.wa .wa-ia .wa-behind{display:none}
   box-shadow:0 10px 22px -10px rgba(0,120,30,.7)!important}
  .pass-submit .arrow{width:26px!important;height:auto}
 }
+/* "View more" as a clear toggle button (Sean 2026-11-21: "make it look like a toggle and clickable") */
+@media (max-width:760px){
+ #schedule .cbc-day .cbc-more{display:flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;
+  width:calc(100% - 24px)!important;min-height:50px!important;margin:10px 12px 8px!important;padding:10px 18px!important;
+  border:1.5px solid #009B27!important;border-radius:999px!important;background:#F1F8EB!important;color:#0F4D1F!important;
+  font:700 15.5px/1.2 Geist,system-ui,sans-serif!important;cursor:pointer;box-shadow:0 4px 10px -6px rgba(0,120,30,.45)!important}
+ #schedule .cbc-day .cbc-more small{font-weight:500!important;color:#3F6B47!important;font-size:13.5px!important}
+ #schedule .cbc-day .cbc-more::after{content:"";width:9px;height:9px;margin-left:2px;border-right:2.2px solid currentColor;border-bottom:2.2px solid currentColor;
+  transform:translateY(-3px) rotate(45deg);transition:transform .2s ease}
+ #schedule .cbc-day.is-open .cbc-more::after{transform:translateY(2px) rotate(-135deg)}
+ #schedule .cbc-day .cbc-more:active{background:#E2F1D8!important}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
