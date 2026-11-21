@@ -1320,6 +1320,14 @@ section.wa .wa-ia .wa-behind{display:none}
 @container hero-stage (max-width: 740px){
  .cb-hero-b .hb-main .hb-pano-balanced .hb-side li.is-host.cb-cohost{--ih:calc(var(--ph) + 6px)!important}
 }
+/* past speakers on phones: seven in rows of three left Seth Godin alone at the left; the last one now stands in the middle of his
+   row, and the rows sit closer (Sean 2026-11-21: "Seth Godin is the only one in one line ... maybe by putting him in the middle") */
+@container summit-alumni (max-width:614px){
+ .sp-alumni-cards.cb-past-grid.cb-one-line{grid-template-columns:repeat(6,minmax(0,1fr))!important;row-gap:14px!important}
+ .sp-alumni-cards.cb-past-grid.cb-one-line>li{grid-column:span 2;padding-bottom:4px!important}
+ .sp-alumni-cards.cb-past-grid.cb-one-line>li:last-child:nth-child(3n+1){grid-column:3 / 5}
+ .sp-alumni-cards.cb-past-grid.cb-one-line>li:last-child:nth-child(3n+2){grid-column:4 / 6}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
