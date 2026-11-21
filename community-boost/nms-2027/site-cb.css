@@ -1242,6 +1242,9 @@ section.wa .wa-ia .wa-behind{display:none}
 /* Ashley at the others' scale: her photo is a closer crop than theirs, so she takes no host's extra height and stands a little
    shorter (Sean 2026-11-21: "make ashley smaller here") */
 .cb-hero-b .hb-main .hb-pano-balanced .hb-side li.is-host.cb-cohost{--ih:calc(var(--ph) - 10px)!important}
+/* the spinning crystal behind "The conference that nonprofits can't stop talking about", easier to see (Sean 2026-11-21: "make
+   the crystal spinning behind a little bit more visible"; it was at .055) */
+.wa.wa-refined .wa-rays{opacity:.13!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
