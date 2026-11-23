@@ -60,20 +60,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var place = '<span class="cb-place">' + PIN + esc(city) + '</span>';
     // the summit's own dates (US Pacific, as the emails say them), small and grey, only where the visitor's dates differ
     var PT = shifted ? ' <small class="cb-pt">(Feb 23-24 PT in the US)</small>' : '';
+    // CB 2026-11-23 feedback: "Remove location feature". The page no longer names the visitor's city anywhere; only the
+    // dates still move to the visitor's own calendar, with the US Pacific dates beside them when they differ. Spots that
+    // named the city (from, stubFrom, city, where, liveFrom) keep the words already in the markup.
+    var PTn = ' <small class="cb-pt">(Feb 23-24 PT in the US)</small>';
     var html = {
-      range: esc(range) + ' in ' + place + PT,                                   // Feb 23-24 in (pin) Chicago
+      range: esc(range) + (shifted ? PTn : ''),
       rangeY: esc(range) + ', ' + d[1].y,
       rangeYpt: esc(range) + ', ' + d[1].y,
-      heroSub: 'Your dates in ' + place + (shifted ? ' <span class="cb-us">(Feb 23-24 PT in the US)</span>' : ''),   // Sean 2026-11-21: "Feb 23-24 PT" beside Manila read as Manila's dates   // the small line under the eyebrow                            // the hero: theirs, then Pacific when it differs                                   // Feb 24-25, 2027
+      heroSub: shifted ? 'Your local dates <span class="cb-us">(Feb 23-24 PT in the US)</span>' : '',
       rangeShort: esc(range),
-      from: 'On Zoom, you join from ' + place,                              // the day sheets' Where (the visitor joins from there, not the hosts)
-      liveFrom: '<i class="cb-live" aria-hidden="true"></i>Live on Zoom',   // the hero eyebrow stays short, with the live dot                                    // hero line, sheets
-      stubFrom: 'Joining from ' + place,
-      city: place,
       calMonth: esc(rangeLong),
-      where: place + (shifted ? ' · your dates' : ' · free on Zoom'),   // the header: the date above is theirs; the US dates are in the hero line                                    // the header's second line
-      foryou: '<b>For you:</b> ' + esc(d[0].wd + ', ' + d[0].md) + ' to ' + esc(d[1].wd + ', ' + d[1].md) + ' in ' + place +
-              (shifted ? ' (Feb 23-24 PT in the US)' : '') + '. <span class="cb-fy-live">Come live and bring a campaign: on Day 2 you build it with the team.</span>'
+      city: '',
+      foryou: shifted ? '<b>Your dates:</b> ' + esc(d[0].wd + ', ' + d[0].md) + ' to ' + esc(d[1].wd + ', ' + d[1].md) +
+              ' (Feb 23-24 PT in the US). <span class="cb-fy-live">Come live and bring a campaign: on Day 2 you build it with the team.</span>' : ''
     };
     document.documentElement.classList.add('cb-here');
     if (shifted) document.documentElement.classList.add('cb-here-shift');
@@ -83,7 +83,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (!html[k]) { el.hidden = true; return; }
       el.innerHTML = html[k];
       el.hidden = false;
-      if (k === 'range' || k === 'from' || k === 'liveFrom' || k === 'stubFrom' || k === 'foryou') el.setAttribute('title', 'Dates where you are (' + city + ')');
+      if (shifted && (k === 'range' || k === 'foryou')) el.setAttribute('title', 'Your local dates');
     });
     document.querySelectorAll('[data-here-day]').forEach(function (el) {
       var k = +el.getAttribute('data-here-day'), f = el.getAttribute('data-here-fmt') || 'wd-md';

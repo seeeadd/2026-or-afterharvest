@@ -1411,6 +1411,14 @@ section.wa .wa-ia .wa-behind{display:none}
 .cb-orgs-wall li.cb-logo img[src*="mailchimp"]{height:22px}
 @media (min-width:701px){.cb-orgs-wall li.cb-word.cb-logo{justify-content:center!important;padding:10px!important}}
 
+/* the nonprofits' own logos on the past-stages grid (CB 2026-11-23), each sized to read about as large as its neighbours */
+.cb-orgs-wall li.cb-logo img[src*="charitywater"]{height:auto;width:82%;max-width:150px}
+.cb-orgs-wall li.cb-logo img[src*="irc"]{height:30px}
+.cb-orgs-wall li.cb-logo img[src*="savethechildren"]{height:auto;width:84%;max-width:150px}
+.cb-orgs-wall li.cb-logo img[src*="feedingamerica"]{height:40px}
+.cb-orgs-wall li.cb-logo img[src*="stjude"]{height:36px}
+.cb-orgs-wall li.cb-logo img[src*="givingtuesday"]{height:auto;width:84%;max-width:150px}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.
