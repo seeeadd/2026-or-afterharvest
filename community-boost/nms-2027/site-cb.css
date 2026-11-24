@@ -1418,6 +1418,10 @@ section.wa .wa-ia .wa-behind{display:none}
 .cb-orgs-wall li.cb-logo img[src*="feedingamerica"]{height:40px}
 .cb-orgs-wall li.cb-logo img[src*="stjude"]{height:36px}
 .cb-orgs-wall li.cb-logo img[src*="givingtuesday"]{height:auto;width:84%;max-width:150px}
+/* a quiet pointer to the schedule page's local-time view (Sean 2026-11-24) */
+.sc-tz{display:block;width:max-content;max-width:100%;margin:12px 0 0;font-size:14px;color:#4b554b;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(7,20,7,.3)}
+.sc-tz:hover{color:#009b27}
+@media (max-width:700px){.sc-tz{display:block;margin:10px 0 0}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply

@@ -42,6 +42,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
    Feb 24-25 in Manila or Sydney. The markup carries the Pacific dates, so with no script, or a zone it can't name, the page
    reads as before. Hooks (cb_edits.py): [data-here] on the spots, [data-here-day="0|1"] on per-day dates. */
 ;(function () {
+  // OFF on the main page (Sean 2026-11-24, after CB's "Remove location feature"): everyone sees the summit's own dates,
+  // Feb 23-24, 2027 PT, as the emails and invites say them. The schedule page keeps its own local-time view.
+  return;
   try {
     var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
     if (!/^[A-Za-z]+\/[A-Za-z_\-\/]+$/.test(tz) || /^Etc\//.test(tz)) return;
