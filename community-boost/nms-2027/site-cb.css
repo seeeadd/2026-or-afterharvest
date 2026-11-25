@@ -1949,6 +1949,14 @@ section.wa .wa-ia .wa-behind{display:none}
 .v-tabs span.on .v-tabface .bg{fill:#f6c34a;fill-opacity:.22;stroke:none}.v-tabs span.on .v-tabface .e,.v-tabs span.on .v-tabface .gp{fill:#f6c34a;stroke:none}
 @container (max-width:719px){.v-app{grid-template-columns:minmax(0,1fr)}.v-rail{display:none}}
 .v-go{white-space:nowrap;flex:none}.v .v-brand .v-logo{display:none}.v .v-brand{padding-left:6px}@container (max-width:719px){.v .v-brand .v-logo{display:grid}}
+/* the rail, light (Sean 2026-11-25: "did you really have to add the black sidebar?") */
+.v-rail{background:rgba(255,255,255,.32);backdrop-filter:blur(18px);border-right:1px solid rgba(255,255,255,.6);margin-right:4px}
+.v-rl-logo{background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.06),0 4px 12px -6px rgba(20,60,30,.25)}
+.v-rl-logo img{content:url(assets/cc/cc-mark-green.svg)}
+.v-rl{color:#5d6661}.v-rl .v-ic{stroke:#3a403c}
+.v-rl em{box-shadow:0 0 0 2px #f4f6f2;background:#009b27;color:#fff}
+.v-rl-on{background:rgba(255,255,255,.85);color:#16191a;box-shadow:0 1px 3px rgba(0,0,0,.07)}.v-rl-on .v-ic{stroke:#009b27}
+.v-rl-me img{box-shadow:0 0 0 2px #fff,0 2px 6px rgba(0,0,0,.15)}.v-rl-me i{box-shadow:0 0 0 2.5px #f4f6f2;background:#22a34a}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
