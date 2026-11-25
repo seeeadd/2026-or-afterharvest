@@ -1834,6 +1834,51 @@ section.wa .wa-ia .wa-behind{display:none}
 .cq-in-stage .v{max-width:none}.cq-in-stage .v-anim{}
 .v{container-type:inline-size}
 @container (max-width:719px){.v-nm b{white-space:normal;line-height:1.25}.v-tile{width:34px;height:34px}.v-chip{font-size:11.5px}}
+/* sleeker glass (Sean 2026-11-25: "more sleek and glass morphism"): colour behind, frosted layers on top, hairline light edges */
+.v-app{position:relative;isolation:isolate;background:#f1eee8}
+.v-app:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;filter:blur(40px) saturate(1.2);
+ background:radial-gradient(360px 300px at 6% 10%,rgba(115,216,140,.55),transparent 70%),radial-gradient(420px 340px at 52% 4%,rgba(199,235,162,.6),transparent 70%),
+ radial-gradient(420px 360px at 96% 30%,rgba(184,214,246,.55),transparent 70%),radial-gradient(460px 380px at 30% 100%,rgba(250,214,176,.6),transparent 70%),
+ radial-gradient(360px 300px at 88% 96%,rgba(115,216,140,.35),transparent 70%)}
+.v-chrome{background:rgba(255,255,255,.28);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.5)}
+.v-tab,.v-url{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7)}
+.v-main{background:rgba(255,255,255,.42);backdrop-filter:blur(30px) saturate(1.6);-webkit-backdrop-filter:blur(30px) saturate(1.6);
+ border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 30px 60px -34px rgba(20,40,25,.35)}
+.v-top{border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.4)}
+.v-s{background:rgba(255,255,255,.5);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.8);box-shadow:inset 0 1px 0 #fff,0 10px 24px -18px rgba(20,40,25,.3)}
+.v-s1{background:linear-gradient(150deg,rgba(214,240,196,.85),rgba(170,224,150,.6))}
+.v-list{background:rgba(255,255,255,.55);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px 0 #fff,0 14px 30px -22px rgba(20,40,25,.3)}
+.v-row+.v-row{border-top:1px solid rgba(20,30,25,.06)}
+.v-tile,.v-me,.v-find,.v-pin,.v-menu ul li.on,.v-lt span.on{background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.v-lt,.v-tabs span:not(.on),.v-pace,.v-chev{background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.7)}
+.v-tabs span.on{background:rgba(22,25,26,.9);backdrop-filter:blur(10px)}
+.v-row.hot{background:linear-gradient(180deg,rgba(255,246,222,.85),rgba(255,251,240,.7));backdrop-filter:blur(16px);border:1px solid rgba(240,200,95,.8)}
+.v-open{background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.9)}
+.v-rec{background:linear-gradient(120deg,rgba(232,246,225,.85),rgba(245,251,240,.7));border:1px solid rgba(200,232,188,.8)}
+.v-bar,.v-cbar{background:rgba(20,30,25,.07)}
+.v-chip{backdrop-filter:blur(8px)}
+.v-main,.v-s,.v-list,.v-row.hot{transition:none}
+.v-app:before{filter:blur(30px) saturate(1.35);opacity:1;
+ background:radial-gradient(340px 300px at 4% 8%,rgba(115,216,140,.8),transparent 70%),radial-gradient(420px 320px at 55% 0%,rgba(199,235,162,.85),transparent 70%),
+ radial-gradient(400px 380px at 100% 28%,rgba(160,200,245,.75),transparent 70%),radial-gradient(480px 380px at 28% 100%,rgba(250,200,150,.75),transparent 70%),
+ radial-gradient(380px 320px at 92% 100%,rgba(115,216,140,.55),transparent 70%)}
+.v-body{position:relative;isolation:isolate}
+.v-body:before{content:"";position:absolute;z-index:-1;inset:120px 6% auto 30%;height:420px;pointer-events:none;filter:blur(50px);
+ background:radial-gradient(closest-side at 30% 40%,rgba(115,216,140,.45),transparent),radial-gradient(closest-side at 80% 30%,rgba(160,200,245,.45),transparent),radial-gradient(closest-side at 60% 90%,rgba(250,205,150,.45),transparent)}
+.v-main{background:rgba(255,255,255,.3)}
+.v-s{background:rgba(255,255,255,.38)}
+.v-list{background:rgba(255,255,255,.45)}
+/* the Community Boost mark itself, cut by the card edge (Sean 2026-11-25: "variations of their logo ... you can cut their logo") */
+.v-mark{position:absolute;pointer-events:none;user-select:none}
+.v-mark-s{right:-46px;bottom:-58px;width:190px;height:190px;opacity:.55;transform:rotate(-18deg)}
+.v-mark-r{right:-34px;top:-40px;width:130px;height:130px;opacity:.14;transform:rotate(22deg)}
+.v-s1>*:not(.v-mark),.v-rec>*:not(.v-mark){position:relative}
+.v-s:not(.v-s1){overflow:hidden}
+.v .v-s>.v-mark,.v .v-rec>.v-mark{position:absolute}
+.v .v-s>.v-mark-s{right:-52px;bottom:-64px;left:auto;top:auto;width:200px;height:200px;opacity:.6}
+.v .v-rec>.v-mark-r{right:-30px;top:-38px;left:auto;width:130px;height:130px}
+.v .v-s.v-s1{background:linear-gradient(150deg,rgba(214,240,196,.88),rgba(165,222,140,.62))}.v .v-s1 .v-prog{margin-top:30px}
+.v .v-prog u em{display:none}.v .v-s1 .v-s-n span:last-child{visibility:visible}.v .v-s1 .v-prog{margin-top:16px;max-width:70%}.v .v-s>.v-mark-s{right:-70px;bottom:-80px;opacity:.5}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
