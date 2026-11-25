@@ -1901,6 +1901,54 @@ section.wa .wa-ia .wa-behind{display:none}
 .v .v-chip .bg,.cq .cq-face .bg{fill:currentColor;fill-opacity:.16;stroke:none}
 .v .v-chip .gp,.cq .cq-face .gp{fill:currentColor;stroke:none}
 .v .v-chip .ck,.cq .cq-face .ck{fill:#ff8a8a;fill-opacity:.55;stroke:none}
+/* Sean 2026-11-25: subtler marks, a light logo tile, the plan's own clock, a nudge to the one row to check, readable at section size */
+.v .v-s>.v-mark-s{opacity:.22;right:-84px;bottom:-96px;width:210px;height:210px}
+.v .v-rec>.v-mark-r{opacity:.07}
+.v .v-logo{background:#fff;border:1px solid rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.06),0 4px 12px -6px rgba(20,60,30,.25)}
+.v .v-logo img{width:24px;height:24px}
+.v-days{margin-top:12px;max-width:460px}
+.v-days-t{position:relative;display:block;height:6px;border-radius:6px;background:rgba(20,40,25,.08)}
+.v-days-t>i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--f)*100%);border-radius:6px;background:linear-gradient(90deg,#73d88c,#009b27)}
+.v-days-t .v-st{position:absolute;top:50%;left:calc(var(--f)*100%);transform:translate(-50%,-52%);font-size:13px;line-height:1;color:#e2a00b;text-shadow:0 0 0 #fff,0 1px 2px rgba(255,255,255,.9)}
+.v-days-t .v-end{transform:translate(-80%,-52%)}
+.v-days-t em{position:absolute;bottom:calc(100% + 5px);left:calc(var(--f)*100%);transform:translateX(-50%);padding:2px 7px;border-radius:20px;background:#16191a;color:#fff;font-size:10px;font-weight:600;font-style:normal;white-space:nowrap}
+.v-days-t em:after{content:"";position:absolute;top:100%;left:50%;margin-left:-3px;border:3px solid transparent;border-top-color:#16191a}
+.v-days{padding-top:16px}
+.v-days p{display:flex;gap:14px;flex-wrap:wrap;margin-top:7px!important;font-size:12px;color:#6b726d}.v-days p b{color:#16191a;font-weight:650}
+.v-days .v-gt{color:#9a6400;font-weight:550}
+.v-s-chip{display:flex;align-items:center;gap:10px}
+.v-go{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 11px;border-radius:20px;background:#16191a;color:#fff;font-size:12px;font-weight:600;box-shadow:0 6px 14px -8px rgba(0,0,0,.5)}
+.v-go i{font-style:normal;display:inline-block;animation:vnudge 1.8s ease-in-out infinite}
+@keyframes vnudge{0%,100%{transform:translateY(-1px)}50%{transform:translateY(2px)}}
+@media (prefers-reduced-motion:reduce){.v-go i{animation:none}}
+/* bigger type where it gets small at section size */
+.cq-in-stage .v .v-nm b{font-size:15px}.cq-in-stage .v .v-nm small,.cq-in-stage .v .v-r3 small,.cq-in-stage .v .v-r2 small{font-size:12.5px}
+.cq-in-stage .v .v-foot .v-keys{display:none}
+@container (max-width:719px){.v-days{max-width:none}.v-days p{gap:4px 12px;font-size:11.5px}}
+.v-go{cursor:pointer}.v-go:focus-visible{outline:2px solid #009b27;outline-offset:2px}
+.v-row.v-flash{animation:vflash 1.4s ease-out}
+@keyframes vflash{0%{box-shadow:0 0 0 0 rgba(240,180,40,.7)}40%{box-shadow:0 0 0 10px rgba(240,180,40,.18)}100%{box-shadow:0 0 0 0 rgba(240,180,40,0)}}
+/* Community Boost quirks (Sean 2026-11-25, after Slack): forest rail, ring dot on the selected item, ring count badges, the plan's mood in its tab */
+.v-app{grid-template-columns:66px 214px minmax(0,1fr);padding-left:0}
+.v-rail{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0 6px 0 0;padding:12px 0 12px;background:linear-gradient(180deg,#0b3d1c,#071407);border-radius:0 0 0 0}
+.v-rl-logo{display:grid;place-items:center;width:38px;height:38px;margin-bottom:10px;border-radius:12px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.v-rl-logo img{width:22px;height:22px}
+.v-rl{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;width:52px;padding:7px 0 6px;border-radius:12px;color:#b7cbbb;font-size:9.5px}
+.v-rl .v-ic{width:18px;height:18px;stroke:#cfe0d1}
+.v-rl small{font-size:9.5px;font-weight:550;letter-spacing:0}
+.v-rl em{position:absolute;top:2px;right:6px;display:grid;place-items:center;min-width:15px;height:15px;padding:0 4px;border-radius:8px;background:#73d88c;color:#071407;font-size:9px;font-weight:800;font-style:normal;box-shadow:0 0 0 2px #0b3d1c}
+.v-rl-on{background:rgba(115,216,140,.16);color:#fff}.v-rl-on .v-ic{stroke:#73d88c}
+.v-rl-me{position:relative;margin-top:auto}
+.v-rl-me img{width:34px;height:34px;border-radius:10px;object-fit:cover;object-position:50% 20%;box-shadow:0 0 0 2px rgba(255,255,255,.15)}
+.v-rl-me i{position:absolute;right:-3px;bottom:-3px;width:11px;height:11px;border-radius:50%;background:#73d88c;box-shadow:0 0 0 2.5px #071407}
+.v .v-brand{padding-top:0}
+.v-menu ul li.on{position:relative;padding-left:24px!important}
+.v-menu ul li.on:before{content:"";position:absolute;left:9px;top:50%;width:7px;height:7px;margin-top:-4.5px;border-radius:50%;border:1.6px solid #009b27;box-shadow:inset 0 0 0 1.6px #fff,inset 0 0 0 5px #009b27}
+.v-ringct{display:inline-grid!important;place-items:center;width:19px;height:19px;padding:0!important;border-radius:50%!important;background:transparent!important;border:1.6px solid currentColor!important;font-size:10px!important;opacity:.75}
+.v-tabs span.on .v-tabface{width:16px;height:16px;fill:none;stroke:#f6c34a;stroke-width:1.4;margin-right:2px}
+.v-tabs span.on .v-tabface .bg{fill:#f6c34a;fill-opacity:.22;stroke:none}.v-tabs span.on .v-tabface .e,.v-tabs span.on .v-tabface .gp{fill:#f6c34a;stroke:none}
+@container (max-width:719px){.v-app{grid-template-columns:minmax(0,1fr)}.v-rail{display:none}}
+.v-go{white-space:nowrap;flex:none}.v .v-brand .v-logo{display:none}.v .v-brand{padding-left:6px}@container (max-width:719px){.v .v-brand .v-logo{display:grid}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
