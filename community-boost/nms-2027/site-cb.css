@@ -2358,6 +2358,53 @@ section.wa .wa-ia .wa-behind{display:none}
  .v.z .z-tabs{-webkit-mask:none;mask:none}
  .z-agh{flex-wrap:wrap;gap:2px 8px}.z-agh small{flex-basis:100%}.z-agh span{margin-left:0}
 }
+/* ===== Day 2 screens, round 4 (Sean: "first page more their colors ... remove demo ... clever, artsy, easier to navigate") ===== */
+/* the volunteers tab in Community Boost's own greens */
+.v.z.t-vol .v-app{background:#eef4ea}
+.v.z.t-vol .v-app:before{background:radial-gradient(340px 300px at 4% 8%,rgba(0,155,39,.45),transparent 70%),radial-gradient(420px 320px at 55% 0%,rgba(190,236,140,.85),transparent 70%),
+ radial-gradient(400px 380px at 100% 28%,rgba(115,216,140,.6),transparent 70%),radial-gradient(480px 380px at 28% 100%,rgba(214,240,196,.9),transparent 70%),radial-gradient(380px 320px at 92% 100%,rgba(26,51,30,.25),transparent 70%)}
+.v.z.t-vol .v-body:before{background:radial-gradient(closest-side at 30% 40%,rgba(115,216,140,.5),transparent),radial-gradient(closest-side at 80% 30%,rgba(190,236,140,.5),transparent),radial-gradient(closest-side at 60% 90%,rgba(0,155,39,.2),transparent)}
+/* the grant card: forest, the mark cut by the edge, money left, CTR against Google's 5% line */
+.z-grant{position:relative;overflow:hidden;display:flex;align-items:center;gap:28px;padding:20px 24px;border-radius:20px;color:#e7f3e3;
+ background:linear-gradient(135deg,#0b3d1c 0%,#14522a 60%,#1c6a35 100%)!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:0 18px 36px -24px rgba(11,61,28,.75)!important}
+.z-gmk{position:absolute;right:-34px;top:-40px;width:170px;height:170px;opacity:.09;pointer-events:none}
+.z-g1{position:relative;flex:1;min-width:0}
+.z-gl{font-size:12.5px;color:#a9cfa9;margin-bottom:2px!important}
+.z-grant .z-gt{font-size:14px;color:#a9cfa9}.z-grant .z-gt b{font-size:24px;color:#fff;letter-spacing:-.03em}
+.z-grant .z-gbar{position:relative;display:block;height:8px;margin:10px 0 8px!important;border-radius:5px;background:rgba(255,255,255,.14)}
+.z-grant .z-gbar i{display:block;height:100%;width:calc(var(--f)*100%);border-radius:5px;background:linear-gradient(90deg,#73d88c,#c4f27a)}
+.z-grant .z-gbar u{position:absolute;top:-4px;bottom:-4px;left:calc(var(--f)*100%);width:2px;border-radius:2px;background:#fff;opacity:.55}
+.z-grant .z-gn{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;color:#a9cfa9}
+.z-grant .z-gn span:first-child{color:#c4f27a;font-weight:600}
+.z-g2{position:relative;display:flex;align-items:center;gap:12px;padding-left:24px;border-left:1px solid rgba(255,255,255,.14)}
+.z-gring svg{width:46px;height:46px;transform:rotate(-90deg)}
+.z-gring .t{fill:none;stroke:rgba(255,255,255,.14);stroke-width:4}.z-gring .f{fill:none;stroke:#73d88c;stroke-width:4;stroke-linecap:round}.z-gring .m{fill:none;stroke:#fff;stroke-width:7}
+.z-g2 p{display:flex;flex-direction:column}.z-g2 b{font-size:16px;color:#fff}.z-g2 small{font-size:12px;color:#a9cfa9}
+/* the ad group: one card, four tabs */
+.zr{display:none}
+.z-agt{display:flex;gap:4px;padding:4px;margin:0 0 18px!important;border-radius:14px;background:rgba(20,40,25,.05)}
+.zl{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;border-radius:10px;font-size:13px;color:#5f6862;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.zl em{font-style:normal;font-size:11px;padding:0 6px;border-radius:6px;background:rgba(20,40,25,.07)}
+.zl:hover{color:#16191a}
+.zr-k:checked~.z-agt .zl-k,.zr-h:checked~.z-agt .zl-h,.zr-d:checked~.z-agt .zl-d,.zr-s:checked~.z-agt .zl-s{background:#fff;color:#16191a;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.zr-k:checked~.z-agt .zl-k em,.zr-h:checked~.z-agt .zl-h em,.zr-d:checked~.z-agt .zl-d em,.zr-s:checked~.z-agt .zl-s em{background:#dff2db;color:#13702e}
+.z-pane{display:none;animation:zfade .25s ease}
+.zr-k:checked~.z-pk,.zr-h:checked~.z-ph,.zr-d:checked~.z-pd,.zr-s:checked~.z-ps{display:block}
+@keyframes zfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.z-ph .z-key{display:flex;align-items:center;gap:8px;margin:0 0 10px!important;font-size:12.5px;color:#7a837d}
+.z-agh{margin-bottom:16px!important;padding-bottom:14px!important}
+.z-ag{padding-bottom:14px}
+@media (prefers-reduced-motion:reduce){.z-pane{animation:none}}
+@container (max-width:719px){
+ .z-grant{flex-direction:column;align-items:stretch;gap:16px;padding:18px}
+ .z-g2{padding:14px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.14)}
+ .z-agt{overflow-x:auto;scrollbar-width:none}.zl{flex:none;padding:0 12px}
+ .z-ph .z-hl li.x{display:flex!important}.z-ph .z-key{display:flex!important}
+}
+.z-agh{display:grid!important;grid-template-columns:1fr auto;align-items:baseline;gap:2px 10px}
+.z-agh small{grid-column:1/-1}.z-agh span{margin:0!important;white-space:nowrap}
+.zl{font-size:12.5px;gap:5px;padding:0 6px}.zl em{display:none}
+.zr-k:checked~.z-agt .zl-k em,.zr-h:checked~.z-agt .zl-h em,.zr-d:checked~.z-agt .zl-d em,.zr-s:checked~.z-agt .zl-s em{display:inline}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
