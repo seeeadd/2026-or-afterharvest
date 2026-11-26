@@ -2599,6 +2599,10 @@ section.wa .wa-ia .wa-behind{display:none}
  .z-rx{grid-template-columns:1fr;padding:4px 14px 16px}.z-rxs{flex-direction:row;justify-content:space-between}.z-rxs b{font-size:18px}
  .z-rphd .z-seg{display:none}
 }
+.z-rx{grid-template-areas:"ad st" "cn st"}.z-rx>.gz{grid-area:ad}.z-rxs{grid-area:st}
+.z-rxc{grid-area:cn;font:11.5px/1.4 ui-monospace,Menlo,monospace;color:#7a837d;margin-top:-8px!important;word-break:break-all}
+@container (max-width:719px){.z-rx{grid-template-areas:"ad" "cn" "st"}.z-fc:first-child{display:inline-flex!important}}
+.z-rxc{word-break:normal!important;overflow-wrap:break-word}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
