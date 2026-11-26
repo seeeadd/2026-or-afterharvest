@@ -2631,6 +2631,14 @@ section.wa .wa-ia .wa-behind{display:none}
 .d2-gif{margin:8px 0 0;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:#f3f1ea;box-shadow:0 30px 60px -36px rgba(11,61,28,.45),0 0 0 1px rgba(11,61,28,.06)}
 .d2-gif img{display:block;width:100%;height:100%;object-fit:cover}
 @media (max-width:719px){.d2-gif{border-radius:14px}}
+/* Meet Cause Command: the video sits in a laptop so it reads apart from the Day 2 screens above (2026-11-26) */
+.cq-in-gif{position:relative;width:88%;margin:44px auto 64px;padding:2.1% 2.1% 2.6%;aspect-ratio:auto;overflow:visible;border-radius:20px 20px 6px 6px;background:linear-gradient(#1b1e1d,#0c0e0d);box-shadow:inset 0 0 0 1px #3b413e,0 0 0 1.5px #565d59,0 40px 70px -30px rgba(0,0,0,.75)}
+.cq-in-gif img{height:auto;aspect-ratio:16/9;border-radius:3px;background:#0f4a5c}
+.cq-in-gif:before{content:"";position:absolute;left:50%;top:.75%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#2c3431;box-shadow:inset 0 0 0 1.5px #1a201d}
+.cq-in-gif:after{content:"";position:absolute;left:-7.5%;right:-7.5%;top:100%;height:clamp(12px,2.2vw,26px);border-radius:2px 2px 50% 50%/2px 2px 100% 100%;background:linear-gradient(#e7e9e7 0,#c3c7c4 35%,#8e9490 100%);box-shadow:0 18px 26px -14px rgba(0,0,0,.7);
+ -webkit-mask:linear-gradient(#000,#000);}
+.cq-in-gif figcaption,.cq-in-gif i.cq-notch{display:none}
+@media (max-width:719px){.cq-in-gif{width:90%;margin:26px auto 40px;border-radius:12px 12px 4px 4px;padding:2.4% 2.4% 3%}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
