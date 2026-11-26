@@ -2528,6 +2528,32 @@ section.wa .wa-ia .wa-behind{display:none}
 .z-cols5 .z-form{gap:20px}
 @container (max-width:719px){.z-trk{padding:16px 12px}.z-trk b{font-size:11.5px}.z-trk small{font-size:10.5px}}
 .zl em{white-space:nowrap}
+/* results first, inside the tool (Sean 2026-11-26) */
+.z-res{position:relative;overflow:hidden;padding:22px 24px 16px;margin-bottom:26px;border-radius:20px;color:#cfe7cc;background:linear-gradient(135deg,#0b3d1c 0%,#14522a 60%,#1c6a35 100%);box-shadow:0 18px 36px -24px rgba(11,61,28,.75)}
+.z-res .z-gmk{position:absolute;right:-34px;top:-40px;width:170px;height:170px;opacity:.09;pointer-events:none}
+.z-rtop{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)}
+.z-rbig small,.z-rad small{display:block;font-size:12.5px;color:#9fc69f;margin-bottom:4px}
+.z-rbig p{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.z-rbig b{font-size:48px;line-height:1;font-weight:650;letter-spacing:-.045em;color:#fff;font-variant-numeric:tabular-nums}
+.z-rbig span{font-size:17px;color:#e7f3e3;font-weight:500}
+.z-rad p{display:flex;gap:18px}
+.z-rad span{display:flex;flex-direction:column;font-size:12px;color:#9fc69f}
+.z-rad b{font-size:22px;color:#c4f27a;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.z-rgr{position:relative;display:flex;align-items:center;gap:14px;padding-top:12px;font-size:12.5px;color:#9fc69f;white-space:nowrap}
+.z-rgv b{color:#fff;font-size:14px}
+.z-rgr .z-gsb{flex:1;min-width:60px}
+.z-rgc{padding-left:14px;border-left:1px solid rgba(255,255,255,.14)}.z-rgc b{color:#fff}
+.z.t-fam .z-res+.z-hd{margin-bottom:24px}
+.z-cols5 .z-lb .z-top li{grid-template-columns:24px minmax(0,1fr) 64px 56px;gap:10px;padding:12px 16px}
+.z-cols5 .z-lb .z-top li.on{margin:4px 8px;padding:12px 10px}
+@container (max-width:719px){
+ .z-res{padding:18px 16px 14px}.z-rbig b{font-size:40px}.z-rbig span{font-size:15px}
+ .z-rgr{flex-wrap:wrap;white-space:normal;gap:8px 12px}.z-rgr .z-gsb{flex-basis:100%;order:3}.z-rgc{border:0;padding:0}
+ .z-cols5 .z-lb .z-top li{grid-template-columns:22px minmax(0,1fr) 52px}
+}
+.z-cols5 .z-top .z-ad>b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.z-cols5 .z-top .z-ad>small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.z-cols5 .z-top li.on .z-ad>b{-webkit-line-clamp:3}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
