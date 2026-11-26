@@ -2527,6 +2527,7 @@ section.wa .wa-ia .wa-behind{display:none}
 .z-trk b{font-size:12.5px;font-weight:600;color:#16191a}.z-trk small{font-size:11.5px;color:#8e968f}
 .z-cols5 .z-form{gap:20px}
 @container (max-width:719px){.z-trk{padding:16px 12px}.z-trk b{font-size:11.5px}.z-trk small{font-size:10.5px}}
+.zl em{white-space:nowrap}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
