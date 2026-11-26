@@ -2622,6 +2622,11 @@ section.wa .wa-ia .wa-behind{display:none}
 .z-drh .z-tags{margin:0!important}
 .z.t-give .z-trk{margin-top:24px}
 @container (max-width:719px){.z-fg{grid-template-columns:1fr}.z-new{padding:18px 16px}.z-way span{font-size:12px}}
+/* the Cause Command ad as a GIF, always 16:9 (Sean 2026-11-26: "the aspect ratio of the video and not portrait") */
+.cq-in-gif{margin:0 0 28px;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:#0b3d1c;box-shadow:0 30px 60px -36px rgba(0,0,0,.6)}
+.cq-in-gif img{display:block;width:100%;height:100%;object-fit:cover}
+@media (max-width:719px){.cq-in-gif{border-radius:14px;margin-bottom:20px}}
+.cq-in-gif{margin-top:32px}@media (max-width:719px){.cq-in-gif{margin-top:22px}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
