@@ -2627,6 +2627,10 @@ section.wa .wa-ia .wa-behind{display:none}
 .cq-in-gif img{display:block;width:100%;height:100%;object-fit:cover}
 @media (max-width:719px){.cq-in-gif{border-radius:14px;margin-bottom:20px}}
 .cq-in-gif{margin-top:32px}@media (max-width:719px){.cq-in-gif{margin-top:22px}}
+/* the donor walkthrough GIF, always 16:9 */
+.d2-gif{margin:8px 0 0;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:#f3f1ea;box-shadow:0 30px 60px -36px rgba(11,61,28,.45),0 0 0 1px rgba(11,61,28,.06)}
+.d2-gif img{display:block;width:100%;height:100%;object-fit:cover}
+@media (max-width:719px){.d2-gif{border-radius:14px}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
