@@ -2687,6 +2687,16 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
 .v.z.t-give .v-body:before,.v.z.t-fam .v-body:before,.v.z.t-rep .v-body:before{opacity:.35}
 .v.z.t-give .v-main,.v.z.t-fam .v-main,.v.z.t-rep .v-main{background:rgba(255,255,255,.62)}
 .v.z.t-give .z-tabs span:not(.on),.v.z.t-give .z-seg,.v.z.t-fam .z-tabs span:not(.on),.v.z.t-fam .z-seg,.v.z.t-rep .z-tabs span:not(.on){background:rgba(20,40,25,.045);border-color:transparent}
+/* the summit's sun rises behind the laptop: the NMS landscape, rays turning, sun breathing (its own SVG animation) (Sean 2026-11-26) */
+.cq-stage{position:relative;isolation:isolate;margin-top:56px;padding-top:9%}
+.cq-stage .cq-sun{position:absolute;z-index:0;left:-8%;width:116%;max-width:none;height:auto;top:0;margin-top:-16%;pointer-events:none;opacity:.9;
+ -webkit-mask:linear-gradient(180deg,transparent 0,#000 30%,#000 100%);mask:linear-gradient(180deg,transparent 0,#000 30%,#000 100%)}
+.cq-stage .cq-in-gif{z-index:1;margin-top:0}
+@media (max-width:719px){.cq-stage{margin-top:30px;padding-top:12%}.cq-stage .cq-sun{left:-14%;width:128%;margin-top:-20%}}
+.cq-stage{margin-top:84px}
+.cq-stage .cq-sun{-webkit-mask:linear-gradient(180deg,transparent 0,transparent 14%,#000 42%);mask:linear-gradient(180deg,transparent 0,transparent 14%,#000 42%)}
+@media (max-width:719px){.cq-stage{margin-top:44px}}
+.cq-stage .cq-sun{-webkit-mask:linear-gradient(180deg,transparent 0,transparent 8%,#000 32%,#000 74%,transparent 98%);mask:linear-gradient(180deg,transparent 0,transparent 8%,#000 32%,#000 74%,transparent 98%)}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
