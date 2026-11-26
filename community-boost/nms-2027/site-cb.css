@@ -2512,6 +2512,21 @@ section.wa .wa-ia .wa-behind{display:none}
 .z-cols5 .z-pgi{display:none}
 .v.z .z-hd+.z-fcs{margin-bottom:26px!important}
 @container (max-width:719px){.z-cols5{display:flex;flex-direction:column;gap:22px}.z-cols5 .z-prev{order:-1}}
+/* the review track, from the app's own line: "Community Boost reviews it, then sends it to you for approval before anything goes live." */
+.z-trk{padding:18px 20px 20px}
+.z-trk ol{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.z-trk ol:before{content:"";position:absolute;left:12.5%;right:12.5%;top:17px;height:2px;background:repeating-linear-gradient(90deg,rgba(20,40,25,.16) 0 4px,transparent 4px 8px)}
+.z-trk ol:after{content:"";position:absolute;left:12.5%;width:25%;top:17px;height:2px;background:#22a34a}
+.z-trk li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;font-size:12.5px}
+.z-tk{position:relative;z-index:1;display:grid;place-items:center;width:36px;height:36px;margin-bottom:6px;border-radius:50%;background:#fff;border:1px solid rgba(20,40,25,.1);box-shadow:0 2px 6px -2px rgba(20,40,25,.2);color:#5f6862}
+.z-tk svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5}
+.z-trk li.dn .z-tk{background:#e6f6e3;border-color:rgba(0,155,39,.35);color:#13702e}
+.z-tk .bg{fill:currentColor;fill-opacity:.16;stroke:none}.z-tk .e,.z-tk .gp{fill:currentColor;stroke:none}.z-tk .ck{fill:#ff8a8a;fill-opacity:.55;stroke:none}
+.z-tk-cb img{width:20px;height:20px}
+.z-tk-g svg{width:17px;height:17px;stroke:none}
+.z-trk b{font-size:12.5px;font-weight:600;color:#16191a}.z-trk small{font-size:11.5px;color:#8e968f}
+.z-cols5 .z-form{gap:20px}
+@container (max-width:719px){.z-trk{padding:16px 12px}.z-trk b{font-size:11.5px}.z-trk small{font-size:10.5px}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
