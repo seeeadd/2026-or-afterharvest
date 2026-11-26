@@ -2676,6 +2676,17 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
 @media (max-width:719px){.cq-in-gif{width:100%;margin:24px auto 46px;padding:1.9% 1.9% 2.6%}.cq-lap-glare{inset:1.9% 1.9% 2.6%}.cq-lap-base{left:-4%;right:-4%}}
 .cq-in-gif{width:94%}.cq-lap-base{left:-4.6%;right:-4.6%}
 @media (max-width:719px){.cq-in-gif{width:92%}.cq-lap-base{left:-4.2%;right:-4.2%}}
+/* volunteer build: every recommendation listed, no tabs (2026-11-26) */
+.z-ag.z-agall .z-pane{display:block;animation:none}
+.z-ag.z-agall .z-pane+.z-pane{margin-top:22px;padding-top:18px;border-top:1px solid rgba(20,30,25,.08)}
+.z-ptl{display:flex;align-items:center;gap:8px;margin:0 0 10px!important;font-size:14px;font-weight:650;color:#16191a}
+.z-ptl em{font-style:normal;font-size:12px;font-weight:600;padding:2px 8px;border-radius:7px;background:#dff2db;color:#13702e}
+/* donations, families, report: the main panel whiter, like the volunteer screen (Sean 2026-11-26) */
+.v.z.t-give .v-app{background:#faf7f3}.v.z.t-fam .v-app{background:#f6f8fb}.v.z.t-rep .v-app{background:#f9f9f6}
+.v.z.t-give .v-app:before,.v.z.t-fam .v-app:before{opacity:.55}
+.v.z.t-give .v-body:before,.v.z.t-fam .v-body:before,.v.z.t-rep .v-body:before{opacity:.35}
+.v.z.t-give .v-main,.v.z.t-fam .v-main,.v.z.t-rep .v-main{background:rgba(255,255,255,.62)}
+.v.z.t-give .z-tabs span:not(.on),.v.z.t-give .z-seg,.v.z.t-fam .z-tabs span:not(.on),.v.z.t-fam .z-seg,.v.z.t-rep .z-tabs span:not(.on){background:rgba(20,40,25,.045);border-color:transparent}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
