@@ -2754,3 +2754,19 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
 @keyframes cbSig { 0% { opacity: 1; stroke-dashoffset: .1; } 100% { opacity: 1; stroke-dashoffset: -1.2; } }
 @keyframes cbBlink { 50% { opacity: .2; } }
 @keyframes cbTurn { to { transform: rotate(360deg); } }
+/* Day 2 plate v2 (make_day_cc.py): the Google Ad Grants row falls behind, the fix is approved, it is back on track; 8s loop */
+@media (prefers-reduced-motion: no-preference) {
+  .cb-anim .lpb { transform-box: fill-box; transform-origin: 0 50%; }
+  .cb-anim .lpk, .cb-anim .lpc { transform-box: fill-box; transform-origin: 50% 50%; }
+  .cb-motion .cb-anim.is-in .lpa { animation: cbLpA 8s linear calc(3.4s + var(--sg, 0s)) infinite; }
+  .cb-motion .cb-anim.is-in .lpg { animation: cbLpG 8s linear calc(3.4s + var(--sg, 0s)) infinite; }
+  .cb-motion .cb-anim.is-in .lpb { animation: cbLpB 8s cubic-bezier(.65, 0, .35, 1) calc(3.4s + var(--sg, 0s)) infinite; }
+  .cb-motion .cb-anim.is-in .lpc { animation: cbLpC 8s cubic-bezier(.65, 0, .35, 1) calc(3.4s + var(--sg, 0s)) infinite; }
+  .cb-motion .cb-anim.is-in .lpk { animation: cbLpK 8s linear calc(3.4s + var(--sg, 0s)) infinite; }
+}
+@keyframes cbLpA { 0%, 41% { opacity: 1; } 45%, 94% { opacity: 0; } 98%, 100% { opacity: 1; } }
+@keyframes cbLpG { 0%, 41% { opacity: 0; } 45%, 94% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@keyframes cbLpB { 0%, 40% { opacity: 0; transform: scaleX(.62); } 41% { opacity: 1; transform: scaleX(.62); } 52%, 94% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: scaleX(.62); } }
+@keyframes cbLpC { 0%, 14% { opacity: 0; transform: translate(26px, 14px); } 18% { opacity: 1; transform: translate(26px, 14px); }
+  33% { transform: none; } 36% { transform: scale(.9); } 38% { transform: none; opacity: 1; } 46%, 100% { opacity: 0; transform: none; } }
+@keyframes cbLpK { 0%, 34% { transform: none; filter: none; } 36% { transform: scale(.9); } 39%, 100% { transform: none; } }
