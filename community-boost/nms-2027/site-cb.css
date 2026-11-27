@@ -3014,6 +3014,145 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
  .dp-tab{flex-direction:row;align-items:center;gap:10px;padding:10px 12px;min-height:48px}
  .dp-tt b{font-size:15px}
 }
+/* v9: everything the screenshots show, laid out better (Sean: "you still oversimplified it") */
+.dp-camp{align-items:flex-start}
+.dp-camp-t{flex-wrap:wrap;row-gap:6px}
+.dp-ver{font-size:12.5px;font-weight:500;color:var(--mut)}
+.dp-camp-t .dp-watch{font-size:12px;padding:3px 9px}
+.dp-camp-s{margin-top:6px}
+.dp-camp-a{margin:4px 0 0;font-size:12.5px;color:var(--mut)}
+.dp-dl{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:7px 12px;border-radius:9px;border:1px solid rgba(20,40,25,.14);background:#fff;font-size:13px;font-weight:500;color:var(--ink)}
+.dp-dl:before{content:"";width:12px;height:12px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M8 2v8M4.5 7 8 10.5 11.5 7M3 14h10'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M8 2v8M4.5 7 8 10.5 11.5 7M3 14h10'/%3E%3C/svg%3E") center/contain no-repeat}
+.dp-camp-b small{display:block;margin-top:2px}
+.dpg .dp-pace-h{display:flex}
+.dp-mt{margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+.dp-mt p{display:grid;grid-template-columns:1fr 1fr 1fr;margin:0;padding:10px 14px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.dp-mt p span:not(:first-child){text-align:right}.dp-mt .dp-mt-h{border-top:0;background:rgba(243,248,240,.8);color:var(--mut);font-size:12px}
+.dp-mut{color:var(--mut)}
+.dp-pl9 .dp-pr{grid-template-columns:minmax(0,1.35fr) minmax(0,1.45fr) .62fr .62fr .6fr .8fr .55fr .5fr minmax(0,1.3fr);gap:10px;padding:12px 10px;font-size:13px}
+.dp-pl9 .dp-ph{padding:0 10px 4px;font-size:11.5px}
+.dp-ps small{display:block;font-size:11.5px;color:var(--mut);margin-top:4px;line-height:1.35}
+.dp-pl9 .dp-hot .dp-ps small:first-of-type{color:#8a5a00;font-weight:600}
+.dp-camp-c{margin:0;font-size:12px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.dp-camp-c small{display:none}
+@media (max-width:899px){
+ .dp-camp{flex-direction:column}.dp-camp-s,.dp-camp-a{display:block}.dp-camp-b{display:block;text-align:left}.dp-camp-t{font-size:16px}
+ .dp-pl9 .dp-pr{grid-template-columns:repeat(3,1fr)!important;gap:10px 12px}
+ .dp-pl9 .dp-pn,.dp-pl9 .dp-ps,.dp-pl9 .dp-camp-c{grid-column:1 / -1}
+ .dp-pl9 .dp-num{display:block}.dp-pl9 .dp-num small{display:block;font-size:11px;color:var(--mut)}
+ .dp-pl9 .dp-ps small{display:block!important}.dp-pl9 .dp-pn small{display:block!important}
+ .dp-pr:not(.dp-hot) .dp-num{display:block!important}
+ .dp-camp-c small{display:block;font-size:11px}
+ .dp-mt{font-size:12.5px}
+}
+@media (min-width:900px){.dp-fr{grid-template-columns:minmax(0,265px) 58px minmax(0,1fr)}.dp-today{left:calc(339px + (100% - 345px) * .414)}}
+.dp-pl9 .dp-hot .dp-ps small+small{color:var(--mut);font-weight:400}
+/* v10: Sean's layouts kept (week segments, six-column table), finer finish */
+.dp-fc{background:none}
+.dp-fr:not(.dp-fh) .dp-fc span{display:flex;align-items:center;justify-content:center}
+.sg{display:block;width:calc(100% - 6px);height:12px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 1px 2px rgba(0,0,0,.08)}
+.sg.soc{background:linear-gradient(180deg,#3a403d,#16191a)}.sg.sea{background:linear-gradient(180deg,#5d8ddc,#2c5fb5)}.sg.mail{background:linear-gradient(180deg,#4ccb6a,#009b27)}
+.dp-fc span.st{background:rgba(255,236,190,.45);border-radius:6px}
+.dp-fh .dp-fc span{font-size:12px;color:var(--mut);font-variant-numeric:tabular-nums}
+.dp-fh .dp-fc span.st{background:none;color:#9a6a00;font-weight:650}
+.dp-fr:not(.dp-fh){border-bottom:1px solid rgba(20,40,25,.05);border-radius:0}.dp-fr.dp-hot{border-radius:12px;border-bottom:0}
+.dp-fn{font-size:13.5px;color:var(--ink)}.dp-fb{font-size:13.5px}
+.dp-legend{padding-top:12px;border-top:1px solid var(--line)}
+/* table */
+.dp-pl:not(.dp-pl9) .dp-pr{grid-template-columns:minmax(0,1.5fr) minmax(0,1.75fr) .75fr .75fr .7fr .55fr;padding:14px 16px}
+.dp-pl:not(.dp-pl9) .dp-ph{padding:0 16px 8px;font-size:11.5px;letter-spacing:.02em;color:var(--mut);border-bottom:1px solid var(--line);margin-bottom:4px}
+.dp-pl .dp-num{text-align:right}.dp-pl .dp-ph p:nth-child(n+3){text-align:right}
+.dp-pace-c{justify-items:end}.dp-pace-c i{width:56px}
+.dp-pl .dp-pr:not(.dp-ph):not(.dp-hot){background:#fff;transition:border-color .2s,box-shadow .2s}
+.dp-pl .dp-pr:not(.dp-ph):hover{border-color:rgba(0,155,39,.3);box-shadow:0 10px 24px -18px rgba(11,61,28,.45)}
+.dp-pn b{font-size:14px}.dp-conv{font-weight:650}
+/* ===== v12: real-product finish (Sean: "very generic ... doesn't seem like a real product") =====
+   Flat surfaces, hairline borders, dense type and the app's own details, taken from his screenshots. No glow, no glass. */
+.dp{--pline:#e4e7e2;--psub:#6b7370}
+.dp .dpg{padding:0;border-radius:14px;background:#f6f8f4;box-shadow:0 0 0 1px var(--pline),0 24px 48px -32px rgba(16,24,20,.35)}
+.dp .dpg:before{display:none}
+.dp .dpg-in{gap:0;padding:18px;font-size:13px}
+.dp .dp-camp,.dp .dpg-body{border-radius:10px;border:1px solid var(--pline);background:#fff;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.dp .dp-camp{padding:18px 20px}
+.dp .dp-camp-t{font-size:17px;font-weight:600;letter-spacing:-.01em;gap:8px}
+.dp .dp-live{font-size:10.5px;padding:2px 7px;border-radius:5px;background:#e3f3df;color:#1d6b2f;letter-spacing:.04em}
+.dp .dp-ver{font-size:12.5px;color:var(--psub);font-weight:400}
+.dp .dp-camp-s{font-size:13px;color:#4d5551;margin-top:4px}.dp .dp-camp-a{font-size:12px;color:var(--psub)}
+.dp .dp-dl{margin-top:12px;padding:6px 11px;border-radius:7px;border-color:#d7dbd5;font-size:12.5px}
+.dp .dp-camp-b b{font-size:21px;font-weight:600}.dp .dp-camp-b small{font-size:11.5px;color:var(--psub)}
+.dp .dpg-tabs{display:flex;gap:22px;width:auto;margin:16px 4px 0;padding:0;border-radius:0;border:0;border-bottom:1px solid var(--pline);background:none;backdrop-filter:none}
+.dp .dpg-tabs span{padding:0 0 10px;border-radius:0;font-size:13px;color:#59615d;box-shadow:none;background:none;position:relative}
+.dp .dpg-tabs .on{color:#16191a;font-weight:600;background:none;box-shadow:none}
+.dp .dpg-tabs .on:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:#16191a;border-radius:2px}
+.dp .dpg-tabs em{background:#eef0ec;color:#59615d}
+.dp .dpg-body{margin-top:16px;padding:6px 0 14px}
+/* chips with the app's face */
+.dp .dp-chip,.dp .dp-watch{border-radius:999px;padding:3px 9px 3px 7px;font-size:12px;font-weight:600}
+.dp .dp-chip:before,.dp .dp-watch:before{display:none}
+.dp .dp-face{display:inline-flex;align-items:center;gap:5px}
+.dp .dp-face:before{content:"";display:block!important;width:13px;height:13px;border-radius:50%;background:currentColor;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.2' fill='black'/%3E%3Ccircle cx='5.6' cy='6.4' r='1' fill='white'/%3E%3Ccircle cx='10.4' cy='6.4' r='1' fill='white'/%3E%3Cpath d='M5 10.2c1.6 1.4 4.4 1.4 6 0' stroke='white' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.2' fill='black'/%3E%3Ccircle cx='5.6' cy='6.4' r='1' fill='white'/%3E%3Ccircle cx='10.4' cy='6.4' r='1' fill='white'/%3E%3Cpath d='M5 10.2c1.6 1.4 4.4 1.4 6 0' stroke='white' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.dp .dp-chip.w.dp-face:before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.2' fill='black'/%3E%3Ccircle cx='5.6' cy='6.4' r='1' fill='white'/%3E%3Ccircle cx='10.4' cy='6.4' r='1' fill='white'/%3E%3Cpath d='M5.2 10.6h5.6' stroke='white' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.2' fill='black'/%3E%3Ccircle cx='5.6' cy='6.4' r='1' fill='white'/%3E%3Ccircle cx='10.4' cy='6.4' r='1' fill='white'/%3E%3Cpath d='M5.2 10.6h5.6' stroke='white' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+.dp .dp-chip.ok{background:#e3f3df;color:#1d6b2f}.dp .dp-chip.w{background:#fdf0cf;color:#8a5a00}
+/* flowchart: the app's grid, flat bars in every week cell */
+.dp .dp-flow{padding:20px 0 0}
+.dp .dp-fr{padding:0 16px;border-radius:0;gap:0;grid-template-columns:minmax(0,1fr) 72px minmax(0,560px)}
+.dp .dp-fr:not(.dp-fh){border-bottom:1px solid #eef0ec;min-height:30px}
+.dp .dp-fh{padding-bottom:0;margin:0;border-bottom:1px solid var(--pline)}
+.dp .dp-fh .dp-fn,.dp .dp-fh .dp-fb{font-size:12px;color:var(--psub);font-weight:500;padding:9px 0}
+.dp .dp-fn{font-size:13px;font-weight:400;gap:8px}.dp .dp-fb{font-size:13px;font-weight:400;padding-right:12px}
+.dp .dp-fc{gap:0;height:100%;align-self:stretch;background:none}
+.dp .dp-fc span{height:auto!important;min-height:30px;border-left:1px solid #eef0ec;border-radius:0!important;display:flex;align-items:center;justify-content:center}
+.dp .dp-fc span.st{background:#fdf6e3}
+.dp .dp-fh .dp-fc span{font-size:11.5px;flex-direction:column;gap:0;line-height:1.15;padding:5px 0}
+.dp .dp-fh .dp-fc span.st{background:#fdf6e3;color:#9a6a00}
+.dp .sg{width:calc(100% - 6px);height:13px;border-radius:2px;box-shadow:none}
+.dp .sg.soc{background:#16191a}.dp .sg.sea{background:#2f6fb0}.dp .sg.mail{background:#1f8f33}
+.dp .dp-hot{background:none;box-shadow:none}
+.dp .dp-flow .dp-hot .dp-fn,.dp .dp-flow .dp-hot .dp-fb{font-weight:600}
+.dp .dp-end{font-size:10.5px;padding:1px 6px;border-radius:4px;background:#e3f3df;color:#1d6b2f;font-weight:600}
+.dp .dp-today{width:0;border-left:1.5px dashed #d9603a;background:none;top:20px}
+.dp .dp-today b{font-size:10.5px;padding:1px 6px;border-radius:4px;font-style:normal}
+.dp .dp-legend{margin:12px 16px 0;padding-top:0;border-top:0;font-size:12px}
+.dp .dp-stars{color:#9a6a00}
+/* pacing summary: the app's four figures, the two that matter underlined */
+.dp .dp-pace{padding:18px 20px 4px}
+.dp .dp-pace-h{font-size:11.5px;letter-spacing:.05em;margin-bottom:14px}
+.dp .dp-stats{gap:0;grid-template-columns:repeat(4,1fr)}
+.dp .dp-stats p{padding:4px 18px 10px 0;border:0;border-radius:0;background:none!important;box-shadow:none!important}
+.dp .dp-stats small{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--psub)}
+.dp .dp-stats b{font-size:30px;font-weight:500;letter-spacing:-.02em;color:#16191a!important}
+.dp .dp-stats .dp-key b{box-shadow:inset 0 -6px 0 #c7eba2;width:max-content}
+.dp .dp-meter{height:8px;margin:14px 0 6px;background:#eef0ec}.dp .dp-m-spent{background:#1f8f33}
+.dp .dp-src{font-size:12px;color:var(--psub);margin-top:10px}
+/* placement pacing: the app's table */
+.dp .dp-pl{gap:0;padding:0}
+.dp .dp-pl .dp-pr{border:0!important;border-bottom:1px solid #eef0ec!important;border-radius:0;background:#fff!important;box-shadow:none!important;padding:14px 18px}
+.dp .dp-pl .dp-ph{padding:10px 18px;border-bottom:1px solid var(--pline)!important;font-size:12px;color:var(--psub);margin:0}
+.dp .dp-pl .dp-hot{background:#fffaeb!important;box-shadow:inset 3px 0 0 #e8a317!important}
+.dp .dp-pn b{font-size:13.5px;font-weight:500}.dp .dp-pn small{font-size:12px}
+.dp .dp-ps small{font-size:12px}
+.dp .dp-num{font-size:13.5px}.dp .dp-conv{font-weight:500}
+.dp .dp-pace-c i{display:none}
+@media (max-width:899px){
+ .dp .dpg-in{padding:12px}.dp .dp-camp{padding:14px}.dp .dp-camp-a,.dp .dp-dl{display:none}
+ .dp .dpg-tabs{gap:14px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+ .dp .dp-fr{grid-template-columns:96px minmax(0,1fr)!important;padding:0 10px}.dp .dp-fb{display:none}
+ .dp .dp-fh .dp-fc span{font-size:0}.dp .dp-fh .dp-fc span.st{font-size:0}
+ .dp .dp-fh .dp-fc span.st:before{content:"★";font-size:10px}
+ .dp .dp-fn{font-size:12px;line-height:1.25;display:block;padding:6px 6px 6px 0}.dp .dp-fn .dot{margin-right:4px}
+ .dp .dp-today{left:calc(106px + (100% - 116px) * .414)}
+ .dp .dp-stats{grid-template-columns:1fr 1fr;row-gap:8px}.dp .dp-stats b{font-size:24px}
+ .dp .dp-pl .dp-ph{display:none}
+ .dp .dp-pl .dp-pr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px 10px;padding:14px}
+ .dp .dp-pl .dp-pn,.dp .dp-pl .dp-ps{grid-column:1 / -1}
+ .dp .dp-pl .dp-num{display:block!important;text-align:left}.dp .dp-pl .dp-num small{display:block!important;font-size:11px;color:var(--psub)}
+ .dp .dp-pl .dp-ps small{display:block!important}
+}
+.dp .dp-face:before{-webkit-mask:none!important;mask:none!important;background:center/contain no-repeat!important}
+.dp .dp-chip.ok.dp-face:before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.2' fill='%231d6b2f'/%3E%3Ccircle cx='5.6' cy='6.4' r='1' fill='%23fff'/%3E%3Ccircle cx='10.4' cy='6.4' r='1' fill='%23fff'/%3E%3Cpath d='M5 10.2c1.6 1.4 4.4 1.4 6 0' stroke='%23fff' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")!important}
+.dp .dp-chip.w.dp-face:before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.2' fill='%23b07800'/%3E%3Ccircle cx='5.6' cy='6.4' r='1' fill='%23fff'/%3E%3Ccircle cx='10.4' cy='6.4' r='1' fill='%23fff'/%3E%3Cpath d='M5.2 10.6h5.6' stroke='%23fff' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")!important}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
