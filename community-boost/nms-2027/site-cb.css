@@ -2989,6 +2989,21 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
  .dpf-name small,.dpf-foot{display:none}.dpf-row{padding:12px}
  .dp-nav{justify-content:stretch}.dp-next{width:100%;justify-content:center}
 }
+/* v6: the screenshot layouts back (Sean: "how it looked before ... improve the design"), polished */
+.dp-fc{position:relative;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),rgba(20,40,25,.06) calc(10% - 1px) 10%)}
+.dp-fh .dp-fc{background:none}
+.dp-fr:not(.dp-fh) .dp-fc{height:22px}
+.dp-fr:not(.dp-fh) .dp-fc span{height:22px}
+.bb{position:absolute;left:2px;top:5px;bottom:5px;width:calc(var(--n) * 10% - 4px);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.bb.soc{background:linear-gradient(90deg,#3a403d,#16191a)}.bb.sea{background:linear-gradient(90deg,#5b8ad8,#2c5fb5)}.bb.mail{background:linear-gradient(90deg,#4ccb6a,#009b27)}
+.dp-fr{padding:7px 8px}.dp-fr:not(.dp-fh):not(.dp-hot):hover{background:rgba(246,250,243,.9)}
+.dp-fn{font-weight:500}.dp-fb{font-weight:600;color:var(--ink)}
+.dpg .dp-fh{border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:4px}
+.dp-pace-c{display:grid;gap:5px}.dp-pace-c i{display:block;height:4px;border-radius:999px;background:linear-gradient(90deg,#3fbf5e var(--p),#e6ebe4 var(--p))}
+.dp-pl .dp-hot .dp-pace-c i{background:linear-gradient(90deg,var(--amb) var(--p),#f1e6c8 var(--p))}
+.dpg .dp-stats p{border:1px solid rgba(20,40,25,.06)}
+.dp-stats .dp-key b{color:var(--gd)}
+.dpg-tabs span{cursor:default}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
