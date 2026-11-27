@@ -3363,6 +3363,13 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
  .dq-tr{align-items:start}
  .dq-top{padding:16px 16px 14px}
 }
+/* v15: one focus per view (Sean 2026-11-27 "focus on a specific part, then make everything else less opaque") */
+.dq .dq-top,.dq .dq-tabs,.dq .dq-leg,.dq .dq-ph,.dq .dq-src,.dq .dq-ml,
+.dq-v-spend .dq-stats p:not(.k1):not(.k2),.dq-v-short .dq-tr:not(.hot):not(.dq-th),.dq-v-short .dq-th{opacity:.32;filter:saturate(.5);transition:opacity .3s,filter .3s}
+.dq-v-plan .dq-gr.mail{background-color:#f3fbf5}
+.dq-v-plan .dq-gr.mail .dq-gn{font-weight:650}
+.dq-v-spend .dq-stats .k1,.dq-v-spend .dq-stats .k2{box-shadow:0 8px 20px -12px rgba(16,60,28,.35);border-color:#cfe7d4}
+.dq-v-short .dq-tr.hot{box-shadow:inset 3px 0 0 #e8a317,0 10px 24px -14px rgba(154,96,0,.45);position:relative;z-index:1}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
