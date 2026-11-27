@@ -3004,6 +3004,16 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
 .dpg .dp-stats p{border:1px solid rgba(20,40,25,.06)}
 .dp-stats .dp-key b{color:var(--gd)}
 .dpg-tabs span{cursor:default}
+.dpg-vt{display:flex;align-items:baseline;gap:10px;margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.dpg-vt b{font-size:15px;font-weight:650;color:var(--ink)}.dpg-vt span{font-size:13px;color:var(--mut)}
+.dpg .dp-pace-h{display:none}
+.dpg .dp-pace .dp-stats{margin-top:0}
+.dpg-vt .dp-watch{font-style:normal;margin-left:6px;vertical-align:1px}
+@media (max-width:899px){
+ .dp-tabs{position:static;grid-template-columns:1fr;gap:6px;margin:0;padding:0;background:none;backdrop-filter:none}
+ .dp-tab{flex-direction:row;align-items:center;gap:10px;padding:10px 12px;min-height:48px}
+ .dp-tt b{font-size:15px}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
