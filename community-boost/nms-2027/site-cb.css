@@ -3371,6 +3371,9 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
 .dq-v-spend .dq-stats .k1,.dq-v-spend .dq-stats .k2{box-shadow:0 8px 20px -12px rgba(16,60,28,.35);border-color:#cfe7d4}
 .dq-v-short .dq-tr.hot{box-shadow:inset 3px 0 0 #e8a317,0 10px 24px -14px rgba(154,96,0,.45);position:relative;z-index:1}
 
+/* copy C heading: hand-set break (2026-11-27) */
+#d2-h span{display:block}
+
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
    its finished drawing. One build per plate that acts out the day, then a quiet loop that pauses off screen.
