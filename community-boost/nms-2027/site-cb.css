@@ -2968,6 +2968,27 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
  .dps-proj b{display:none}
 }
 .dps-meta b{color:var(--ink)}
+/* v5 usability: answer first, a Next button, no look-alike tabs, a simpler phone view (2026-11-27) */
+.dp-ans{display:flex;gap:12px;align-items:baseline;margin:6px 2px 16px;font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.01em;color:var(--gd);text-wrap:pretty}
+.dp-step{flex:none;font-size:12.5px;font-weight:650;letter-spacing:.02em;padding:4px 10px;border-radius:999px;background:#dff2db;color:#13702e;transform:translateY(-2px)}
+.dp-nav{display:flex;justify-content:flex-end;margin-top:14px}
+.dp-next{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:12px;border:1px solid rgba(0,155,39,.35);background:#fff;
+ font:inherit;font-size:15px;font-weight:650;color:#13702e;cursor:pointer;transition:background .2s,border-color .2s}
+.dp-next:hover{background:#f1f8ee;border-color:var(--g)}.dp-next:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+.dp-next svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dp-next-b{color:#3c4741;border-color:var(--line)}
+.dp-tab{cursor:pointer}.dp-tab:not([aria-selected="true"]):hover .dp-tn{background:#dff2db;color:#13702e}
+.dp-cap{display:none}
+@media (max-width:899px){
+ .dp-ans{font-size:17px;margin:4px 0 12px;flex-direction:column;gap:6px}.dp-step{transform:none}
+ .dp-tabs{position:sticky;top:64px;z-index:3;padding:6px;margin:0 -6px;border-radius:16px;background:rgba(246,250,243,.92);backdrop-filter:blur(10px)}
+ .dp-tab{flex-direction:row;align-items:center;gap:6px;padding:9px 8px;min-height:44px}.dp-tn{width:24px;height:24px;font-size:12px;box-shadow:none}.dp-tt b{font-size:13.5px}
+ .dp-in{padding:14px}.dp-camp{flex-direction:row;align-items:center;padding-bottom:12px}.dp-camp-s,.dp-camp-b{display:none}.dp-camp-t{font-size:16px}
+ .dpl-name small,.dpl-foot,.dpl-ticks{display:none}.dpl-row{padding:8px 6px}.dpl-track{height:24px}
+ .dps-scale,.dps-meta span:last-child{display:none}.dps-delta span{display:none}.dps-track{margin-top:36px}
+ .dpf-name small,.dpf-foot{display:none}.dpf-row{padding:12px}
+ .dp-nav{justify-content:stretch}.dp-next{width:100%;justify-content:center}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
