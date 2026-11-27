@@ -3153,6 +3153,60 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
 .dp .dp-face:before{-webkit-mask:none!important;mask:none!important;background:center/contain no-repeat!important}
 .dp .dp-chip.ok.dp-face:before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.2' fill='%231d6b2f'/%3E%3Ccircle cx='5.6' cy='6.4' r='1' fill='%23fff'/%3E%3Ccircle cx='10.4' cy='6.4' r='1' fill='%23fff'/%3E%3Cpath d='M5 10.2c1.6 1.4 4.4 1.4 6 0' stroke='%23fff' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")!important}
 .dp .dp-chip.w.dp-face:before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.2' fill='%23b07800'/%3E%3Ccircle cx='5.6' cy='6.4' r='1' fill='%23fff'/%3E%3Ccircle cx='10.4' cy='6.4' r='1' fill='%23fff'/%3E%3Cpath d='M5.2 10.6h5.6' stroke='%23fff' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")!important}
+/* ===== v13: design polish on the real-product finish (2026-11-27) ===== */
+.dp .dpg{background:linear-gradient(180deg,#f7faf5,#f1f5ee);box-shadow:0 0 0 1px #e1e6de,0 1px 0 rgba(255,255,255,.8) inset,0 30px 60px -40px rgba(11,40,20,.45)}
+.dp .dpg-in{padding:20px}
+.dp .dp-camp,.dp .dpg-body{border-color:#e3e8e0;box-shadow:0 1px 2px rgba(16,24,20,.04)}
+.dp .dp-camp{padding:20px 22px}
+.dp .dp-camp-t{font-size:17.5px}
+.dp .dp-camp-b{padding-left:20px;border-left:1px solid #eef1ec}
+.dp .dp-camp-b:before{content:"Budget";display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#7b847f;margin-bottom:2px}
+.dp .dpg-tabs .on{color:#0b3d1c}.dp .dpg-tabs .on:after{background:#0b3d1c;height:2px}
+.dp .dpg-tabs span:not(.on):hover{color:#16191a}
+/* flowchart */
+.dp .dp-fh .dp-fn,.dp .dp-fh .dp-fb,.dp .dp-pl .dp-ph p,.dp .dp-stats small{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#7b847f;font-weight:600}
+.dp .dp-fh .dp-fc span{font-size:11px;font-weight:600;color:#7b847f;font-variant-numeric:tabular-nums}
+.dp .dp-fh .dp-fc span.st{color:#9a6a00}
+.dp .dp-fc span{border-left-color:#f1f3ef}
+.dp .dp-fc span.st{background:#fdf7e6}
+.dp .dp-fr:not(.dp-fh){min-height:34px;transition:background .15s}
+.dp .dp-fr:not(.dp-fh):hover{background:#fafcf8}
+.dp .sg{height:14px;border-radius:3px;width:calc(100% - 8px)}
+.dp .sg.soc{background:linear-gradient(180deg,#2a2f2c,#121514)}.dp .sg.sea{background:linear-gradient(180deg,#3a7cc0,#2b66a6)}.dp .sg.mail{background:linear-gradient(180deg,#27a03d,#1b8a30)}
+.dp .dp-flow .dp-hot{background:#f5faf2}
+.dp .dp-today{border-left:2px solid #e0673f;opacity:.85}
+.dp .dp-today b{border-radius:6px;padding:2px 8px;font-weight:600;box-shadow:0 2px 6px -2px rgba(224,103,63,.6)}
+.dp .dp-legend{display:flex;gap:16px;margin:14px 16px 0;padding:10px 0 0;border-top:1px solid #f1f3ef}
+.dp .dp-legend .dot{border-radius:2px;width:10px;height:10px}
+/* pacing */
+.dp .dp-stats p{padding:6px 20px 12px;border-left:1px solid #eef1ec!important}
+.dp .dp-stats p:first-child{padding-left:0;border-left:0!important}
+.dp .dp-stats b{font-size:30px;font-weight:550;font-variant-numeric:tabular-nums}
+.dp .dp-stats .dp-key b{box-shadow:inset 0 -7px 0 #d6f2c4}
+.dp .dp-meter{height:10px;border-radius:999px;margin-top:18px}
+.dp .dp-m-spent{border-radius:999px;background:linear-gradient(90deg,#2aa748,#1b8a30)}
+.dp .dp-m-should{width:2px;top:-4px;bottom:-4px;background:#0b3d1c;border-radius:2px}
+.dp .dp-meter-l{font-size:12px}
+/* table */
+.dp .dp-pl .dp-pr{padding:15px 20px;transition:background .15s}
+.dp .dp-pl .dp-pr:not(.dp-ph):not(.dp-hot):hover{background:#fafcf8!important}
+.dp .dp-pl .dp-ph{background:#fafbf9!important;border-radius:10px 10px 0 0}
+.dp .dp-pl .dp-hot{background:linear-gradient(90deg,#fff7e3,#fffcf3)!important;box-shadow:inset 3px 0 0 #e8a317!important}
+.dp .dp-pn b{font-weight:600;font-size:13.5px}
+.dp .dp-num{font-variant-numeric:tabular-nums;color:#2b302d}.dp .dp-conv{font-weight:650;color:#16191a}
+.dp .dp-hot .dp-conv{color:#8a5a00}
+/* selector + answer */
+.dp-tab{transition:background .2s,box-shadow .2s,border-color .2s}
+.dp-ans{padding-left:14px;border-left:3px solid var(--g)}
+@media (max-width:899px){
+ .dp .dp-camp-b{padding-left:0;border-left:0;margin-top:10px}
+ .dp .dp-stats p{border-left:0!important;padding:6px 0 10px}
+ .dp-ans{padding-left:12px}
+ .dp .dp-fh .dp-fc span,.dp .dp-fh .dp-fc span.st{font-size:0}
+ .dp .dp-fh .dp-fc span.st:before{font-size:11px}
+ .dp .sg{height:12px;width:calc(100% - 6px)}
+ .dp .dp-fh .dp-fn{grid-column:1;grid-row:1;font-size:0;padding:0}.dp .dp-fh .dp-fc{grid-column:2;grid-row:1}
+}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
