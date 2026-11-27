@@ -26,7 +26,7 @@ Invite a coworker: https://2026-or-afterharvest.vercel.app/community-boost/nms-2
 
 Or copy your invite link: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/?utm_source=coworker-invite&utm_medium=referral&utm_campaign=nms2027&ref={{ contact.hs_object_id }}. They sign up with their own name and get their own seat.
 
-Day 2 marks the debut of our new Cause Command platform, so plan to stay for the whole day.
+Day 2 marks the debut of our new AI platform, so plan to stay for the whole day.
 Need a yes from your manager? There’s a note you can send as it is on your You’re in page: https://2026-or-afterharvest.vercel.app/community-boost/nms-2027/youre-in/.
 See you on February 23,
 
