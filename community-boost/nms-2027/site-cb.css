@@ -3365,7 +3365,7 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
 }
 /* v15: one focus per view (Sean 2026-11-27 "focus on a specific part, then make everything else less opaque") */
 .dq .dq-top,.dq .dq-tabs,.dq .dq-leg,.dq .dq-ph,.dq .dq-src,.dq .dq-ml,
-.dq-v-spend .dq-stats p:not(.k1):not(.k2),.dq-v-short .dq-tr:not(.hot):not(.dq-th),.dq-v-short .dq-th{opacity:.32;filter:saturate(.5);transition:opacity .3s,filter .3s}
+.dq-v-spend .dq-stats p:not(.k1):not(.k2),.dq-v-short .dq-tr:not(.hot):not(.dq-th),.dq-v-short .dq-th{opacity:.5;filter:saturate(.7);transition:opacity .3s,filter .3s}
 .dq-v-plan .dq-gr.mail{background-color:#f3fbf5}
 .dq-v-plan .dq-gr.mail .dq-gn{font-weight:650}
 .dq-v-spend .dq-stats .k1,.dq-v-spend .dq-stats .k2{box-shadow:0 8px 20px -12px rgba(16,60,28,.35);border-color:#cfe7d4}
