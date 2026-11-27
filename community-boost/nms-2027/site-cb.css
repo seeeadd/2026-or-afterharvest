@@ -2697,6 +2697,11 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
 .cq-stage .cq-sun{-webkit-mask:linear-gradient(180deg,transparent 0,transparent 14%,#000 42%);mask:linear-gradient(180deg,transparent 0,transparent 14%,#000 42%)}
 @media (max-width:719px){.cq-stage{margin-top:44px}}
 .cq-stage .cq-sun{-webkit-mask:linear-gradient(180deg,transparent 0,transparent 8%,#000 32%,#000 74%,transparent 98%);mask:linear-gradient(180deg,transparent 0,transparent 8%,#000 32%,#000 74%,transparent 98%)}
+/* real cases under the demo screens (2026-11-27) */
+.cb-case{margin:18px 0 4px;padding:14px 18px;border-radius:14px;background:#f1f8ee;border:1px solid rgba(0,155,39,.18)}
+.cb-case-t{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:650;color:#13702e}
+.cb-case-t i{width:8px;height:8px;border-radius:50%;background:#009b27;box-shadow:0 0 0 3px rgba(0,155,39,.18)}
+.cb-case p{margin:6px 0 0;font-size:15px;line-height:1.5;color:#2c3a30}.cb-case b{color:#0b3d1c;font-weight:650}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
