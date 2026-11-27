@@ -2706,6 +2706,28 @@ html.ccx-lb-on,html.ccx-lb-on body{overflow:hidden}
 .cq-stage .cq-ridge{position:absolute;z-index:0;left:-8%;width:116%;max-width:none;height:auto;bottom:22px;pointer-events:none;
  -webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 @media (max-width:719px){.cq-stage .cq-ridge{bottom:14px;left:-14%;width:128%}}
+/* Day 2 goals as outcome cards (2026-11-27): what you leave with, what the new tool does, the reveal held for Day 2 */
+.oc{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;margin:18px 0 6px}
+.oc-walk{grid-row:1 / 3;padding:28px;border-radius:20px;background:linear-gradient(160deg,#0b3d1c,#071407);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;min-height:240px;position:relative;overflow:hidden}
+.oc-walk:before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(252,117,64,.45),rgba(252,117,64,0) 70%)}
+.oc-k{margin:0 0 10px;font-size:13px;font-weight:650;letter-spacing:.01em;color:#13702e}
+.oc-walk .oc-k{color:#9fe3b0;position:relative}
+.oc-big{margin:0;font-size:26px;line-height:1.25;font-weight:700;letter-spacing:-.02em;position:relative;text-wrap:balance}
+.oc-does{padding:22px 24px;border-radius:20px;background:#fff;border:1px solid rgba(20,40,25,.1)}
+.oc-does ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.oc-does li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;line-height:1.45;color:#22302a}
+.oc-does li i{flex:none;width:20px;height:20px;margin-top:1px;border-radius:50%;background:#dff2db;position:relative}
+.oc-does li i:after{content:"";position:absolute;left:6.5px;top:4.5px;width:5px;height:9px;border:solid #13702e;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.oc-lock{display:flex;gap:14px;align-items:center;padding:16px 20px;border-radius:20px;background:repeating-linear-gradient(135deg,#f1f8ee 0 10px,#e9f4e3 10px 20px);border:1px dashed rgba(0,155,39,.35)}
+.oc-lock-i{flex:none;width:40px;height:40px;border-radius:12px;background:#0b3d1c;display:grid;place-items:center}
+.oc-lock-i svg{width:20px;height:20px;fill:none;stroke:#9fe3b0;stroke-width:2;stroke-linecap:round}
+.oc-lock p{margin:0;font-size:15px;line-height:1.4;color:#22302a}.oc-lock b{display:block;color:#0b3d1c}.oc-lock span{font-size:13.5px;color:#4f5d55}
+.oc-know{padding:18px 22px}.oc-know p{margin:0 0 10px;font-weight:650;color:#0b3d1c}
+.oc-know ul{margin:0;padding-left:20px;display:grid;gap:6px;color:#22302a}
+@media (max-width:719px){.oc{grid-template-columns:1fr}.oc-walk{grid-row:auto;min-height:0;padding:22px}.oc-big{font-size:21px}}
+.ww-panel .oc .oc-walk .oc-big{color:#fff!important;font-size:26px!important;line-height:1.25!important;font-weight:700!important}
+.ww-panel .oc .oc-k{font-size:13px!important}
+@media (max-width:719px){.ww-panel .oc .oc-walk .oc-big{font-size:21px!important}}
 
 /* The day plates' motion (art/make_days.py draws them; site-cb.js adds .cb-motion to <html> and .is-in to a plate the
    first time it is on screen, and starts its SMIL). Without .cb-motion, or with reduced motion, every plate is simply
